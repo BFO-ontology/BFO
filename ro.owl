@@ -27,19 +27,16 @@
 		<owl:imports rdf:resource="&dc;"/>
     </owl:Ontology>
 	<owl:ObjectProperty rdf:ID="adjacentTo">
-		<rdfs:label rdf:datatype="&xsd;string">adjacentTo</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">adjacent_to</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">C adjacent to C' if and only if: given any instance c that instantiates C at a time t, there is some c' such that: c' instantiates C' at time t and c and c' are in spatial proximity</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Note that adjacentTo as thus defined is not a symmetric relation, in contrast to its instance-level counterpart. For it can be the case that Cs are in general such as to be adjacent to instances of C1 while no analogous statement holds for C1s in general in relation to instances of C. Examples are: nuclear membrane adjacentTo cytoplasm; seminal vesicle adjacentTo urinary bladder; ovary adjacentTo parietal pelvic peritoneum</rdfs:comment>
 	</owl:ObjectProperty>
 	<owl:ObjectProperty rdf:ID="agentIn">
-		<rdfs:label rdf:datatype="&xsd;string">agentIn</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">agent_in</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<owl:inverseOf rdf:resource="#hasAgent"/>
 	</owl:ObjectProperty>
 	<owl:ObjectProperty rdf:ID="containedIn">
-		<rdfs:label rdf:datatype="&xsd;string">containedIn</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">contained_in</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Containment obtains in each case between material and immaterial continuants, for instance: lung containedIn thoracic cavity; bladder containedIn pelvic cavity. Hence containment is not a transitive relation. If c partOf c1 at t then we have also, by our definition and by the axioms of mereology applied to spatial regions, c locatedIn c1 at t. Thus, many examples of instance-level location relations for continuants are in fact cases of instance-level parthood. For material continuants location and parthood coincide. Containment is location not involving parthood, and arises only where some immaterial continuant is involved. To understand this relation, we first define overlap for continuants as follows: c1 overlap c2 at t =def for some c, c partOf c1 at t and c partOf c2 at t. The containment relation on the instance level can then be defined (see definition):</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">C containedIn C' if and only if: given any instance c that instantiates C at a time t, there is some c' such that: c' instantiates C' at time t and c locatedIn c' at t, and it is not the case that c *overlaps* c' at t. (c' is a conduit or cavity.)</rdfs:comment>
@@ -47,105 +44,89 @@
 	</owl:ObjectProperty>
 	<owl:ObjectProperty rdf:ID="contains">
 		<rdfs:label rdf:datatype="&xsd;string">contains</rdfs:label>
-		<rdfs:label rdf:datatype="&xsd;string">contains</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<owl:inverseOf rdf:resource="#containedIn"/>
 	</owl:ObjectProperty>
 	<owl:TransitiveProperty rdf:ID="derivedInto">
-		<rdfs:label rdf:datatype="&xsd;string">derivedInto</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">derived_into</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<owl:inverseOf rdf:resource="#derivesFrom"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="derivesFrom">
-		<rdfs:label rdf:datatype="&xsd;string">derivesFrom</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">derives_from</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Derivation on the instance level (*derivesFrom*) holds between distinct material continuants when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier continuant is inherited by the later. We say that one class C derivesFrom class C' if instances of C are connected to instances of C' via some chain of instance-level derivation relations. Example: osteocyte derivesFrom osteoblast. Formally: C derivesImmediatelyFrom C' if and only if: given any c and any t, if c instantiates C at time t, then there is some c' and some t', such that c' instantiates C' at t' and t' earlier-than t and c *derivesFrom* c'. C derivesFrom C' if and only if: there is an chain of immediate derivation relations connecting C to C'.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Derivation as a relation between instances. The temporal relation of derivation is more complex. Transformation, on the instance level, is just the relation of identity: each adult is identical to some child existing at some earlier time. Derivation on the instance-level is a relation holding between non-identicals. More precisely, it holds between distinct material continuants when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier continuant is inherited by the later. Thus we will have axioms to the effect that from c derivesFrom c1 we can infer that c and c1 are not identical and that there is some instant of time t such that c1 exists only prior to and c only subsequent to t. We will also be able to infer that the spatial region occupied by c as it begins to exist at t overlaps with the spatial region occupied by c1 as it ceases to exist in the same instant.</rdfs:comment>
 		<owl:inverseOf rdf:resource="#derivedInto"/>
 	</owl:TransitiveProperty>
 	<owl:ObjectProperty rdf:ID="hasAgent">
-		<rdfs:label rdf:datatype="&xsd;string">hasAgent</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">has_agent</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">As for hasParticipant, but with the additional condition that the component instance is causally active in the relevant process</rdfs:comment>
 		<owl:inverseOf rdf:resource="#agentIn"/>
 	</owl:ObjectProperty>
 	<owl:TransitiveProperty rdf:ID="hasPart">
-		<rdfs:label rdf:datatype="&xsd;string">hasPart</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">has_part</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<owl:inverseOf rdf:resource="#partOf"/>
 	</owl:TransitiveProperty>
 	<owl:ObjectProperty rdf:ID="hasParticipant">
-		<rdfs:label rdf:datatype="&xsd;string">hasParticipant</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">has_participant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">HasParticipant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane hasParticipant this particular sample of hemoglobin at this particular time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">P hasParticipant C if and only if: given any process p that instantiates P there is some continuant c, and some time t, such that: c instantiates C at t and c participates in p at t</rdfs:comment>
 		<owl:inverseOf rdf:resource="#participatesIn"/>
 	</owl:ObjectProperty>
 	<owl:TransitiveProperty rdf:ID="hasImproperPart">
-		<rdfs:label rdf:datatype="&xsd;string">hasImproperPart</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">has_improper_part</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subPropertyOf rdf:resource="#hasPart"/>
 		<owl:inverseOf rdf:resource="#improperPartOf"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="hasIntegralPart">
-		<rdfs:label rdf:datatype="&xsd;string">hasIntegralPart</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">has_integral_part</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subPropertyOf rdf:resource="#hasPart"/>
 		<owl:inverseOf rdf:resource="#integralPartOf"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="hasProperPart">
-		<rdfs:label rdf:datatype="&xsd;string">hasProperPart</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">has_proper_part</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subPropertyOf rdf:resource="#hasPart"/>
 		<owl:inverseOf rdf:resource="#properPartOf"/>
 	</owl:TransitiveProperty>	
 	<owl:TransitiveProperty rdf:ID="improperPartOf">
-		<rdfs:label rdf:datatype="&xsd;string">improperPartOf</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">improper_part_of</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">As for partOf, with the additional constraint that subject and object may be identical</rdfs:comment>
 		<rdfs:subPropertyOf rdf:resource="#partOf"/>
 		<owl:inverseOf rdf:resource="#hasImproperPart"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="integralPartOf">
-		<rdfs:label rdf:datatype="&xsd;string">integralPartOf</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">integral_part_of</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">C integralPartOf C' if and only if: C partOf C' AND C' hasPart C</rdfs:comment>
 		<rdfs:subPropertyOf rdf:resource="#partOf"/>
 		<owl:inverseOf rdf:resource="#hasIntegralPart"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="locatedIn">
-		<rdfs:label rdf:datatype="&xsd;string">locatedIn</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">located_in</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Location as a relation between instances: The primitive instance-level relation c locatedIn r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is partOf the spatial region occupied by c1. Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">C locatedIn C' if and only if: given any c that instantiates C at a time t, there is some c' such that: c' instantiates C' at time t and c *locatedIn* c'. (Here *locatedIn* is the instance-level location relation.)</rdfs:comment>
 		<owl:inverseOf rdf:resource="#locationOf"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="locationOf">
-		<rdfs:label rdf:datatype="&xsd;string">locationOf</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">location_of</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<owl:inverseOf rdf:resource="#locatedIn"/>
 	</owl:TransitiveProperty>
 	<owl:ObjectProperty rdf:ID="participatesIn">
-		<rdfs:label rdf:datatype="&xsd;string">participatesIn</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">participates_in</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<owl:inverseOf rdf:resource="#hasParticipant"/>
 	</owl:ObjectProperty>
 	<owl:TransitiveProperty rdf:ID="partOf">
-		<rdfs:label rdf:datatype="&xsd;string">partOf</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">part_of</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">For continuants: C partOf C' if and only if: given any c that instantiates C at a time t, there is some c' such that c' instantiates C' at time t, and c *partOf* c' at t. For processes: P partOf P' if and only if: given any p that instantiates P at a time t, there is some p' such that p' instantiates P' at time t, and p *partOf* p' at t. (Here *partOf* is the instance-level part-relation.)</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Parthood as a relation between instances: The primitive instance-level relation p partOf p1 is illustrated in assertions such as: this instance of rhodopsin mediated phototransduction partOf this instance of visual perception. This relation satisfies at least the following standard axioms of mereology: reflexivity (for all p, p partOf p); anti-symmetry (for all p, p1, if p partOf p1 and p1 partOf p then p and p1 are identical); and transitivity (for all p, p1, p2, if p partOf p1 and p1 partOf p2, then p partOf p2). Analogous axioms hold also for parthood as a relation between spatial regions. For parthood as a relation between continuants, these axioms need to be modified to take account of the incorporation of a temporal argument. Thus for example the axiom of transitivity for continuants will assert that if c partOf c1 at t and c1 partOf c2 at t, then also c partOf c2 at t. Parthood as a relation between classes: To define partOf as a relation between classes we again need to distinguish the two cases of continuants and processes, even though the explicit reference to instants of time now falls away. For continuants, we have C partOf C1 if and only if any instance of C at any time is an instance-level part of some instance of C1 at that time, as for example in: cell nucleus partOf cell.</rdfs:comment>
 		<owl:inverseOf rdf:resource="#hasPart"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="precededBy">
-		<rdfs:label rdf:datatype="&xsd;string">precededBy</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">preceded_by</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">P precededBy P' if and only if: given any process p that instantiates P at a time t, there is some process p' such that p' instantiates P' at time t', and t' is earlier than t.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">An example is: translation precededBy transcription; aging precededBy development (not however death precededBy aging). Where derivesFrom links classes of continuants, precededBy links classes of processes. Clearly, however, these two relations are not independent of each other. Thus if cells of type C1 deriveFrom cells of type C, then any cell division involving an instance of C1 in a given lineage is precededBy cellular processes involving an instance of C. The assertion P precededBy P1 tells us something about Ps in general: that is, it tells us something about what happened earlier, given what we know about what happened later. Thus it does not provide information pointing in the opposite direction, concerning instances of P1 in general; that is, that each is such as to be succeeded by some instance of P. Note that an assertion to the effect that P precededBy P1 is rather weak; it tells us little about the relations between the underlying instances in virtue of which the precededBy relation obtains. Typically we will be interested in stronger relations, for example in the relation immediatelyPrecededBy, or in relations which combine precededBy with a condition to the effect that the corresponding instances of P and P1 share participants, or that their participants are connected by relations of derivation, or (as a first step along the road to a treatment of causality) that the one process in some way affects (for example, initiates or regulates) the other.</rdfs:comment>
@@ -153,26 +134,22 @@
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="precedes">
 		<rdfs:label rdf:datatype="&xsd;string">precedes</rdfs:label>
-		<rdfs:label rdf:datatype="&xsd;string">precedes</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<owl:inverseOf rdf:resource="#precededBy"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="properPartOf">
-		<rdfs:label rdf:datatype="&xsd;string">properPartOf</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">proper_part_of</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">As for partOf, with the additional constraint that subject and object are distinct</rdfs:comment>
 		<rdfs:subPropertyOf rdf:resource="#partOf"/>
 		<owl:inverseOf rdf:resource="#hasProperPart"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="transformationOf">
-		<rdfs:label rdf:datatype="&xsd;string">transformationOf</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">transformation_of</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Relation between two classes, in which instances retain their identity yet change their classification by virtue of some kind of transformation. Formally: C transformationOf C' if and only if given any c and any t, if c instantiates C at time t, then for some t', c instantiates C' at t' and t' earlier t, and there is no t2 such that c instantiates C at t2 and c instantiates C' at t2.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">When an embryonic oenocyte (a type of insect cell) is transformed into a larval oenocyte, one and the same continuant entity preserves its identity while instantiating distinct classes at distinct times. The class-level relation transformationOf obtains between continuant classes C and C1 wherever each instance of the class C is such as to have existed at some earlier time as an instance of the distinct class C1 (see Figure 2 in paper). This relation is illustrated first of all at the molecular level of granularity by the relation between mature RNA and the pre-RNA from which it is processed, or between (UV-induced) thymine-dimer and thymine dinucleotide. At coarser levels of granularity it is illustrated by the transformations involved in the creation of red blood cells, for example, from reticulocyte to erythrocyte, and by processes of development, for example, from larva to pupa, or from (post-gastrular) embryo to fetus or from child to adult. It is also manifest in pathological transformations, for example, of normal colon into carcinomatous colon. In each such case, one and the same continuant entity instantiates distinct classes at different times in virtue of phenotypic changes.</rdfs:comment>
 		<owl:inverseOf rdf:resource="#transformedInto"/>
 	</owl:TransitiveProperty>
 	<owl:TransitiveProperty rdf:ID="transformedInto">
-		<rdfs:label rdf:datatype="&xsd;string">transformedInto</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">transformed_into</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<owl:inverseOf rdf:resource="#transformationOf"/>

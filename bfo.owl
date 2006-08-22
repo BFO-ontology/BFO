@@ -34,7 +34,6 @@
 		<owl:imports rdf:resource="span.owl"/>
 	</owl:Ontology>
 	<owl:Class rdf:ID="Entity">
-		<rdfs:label rdf:datatype="&xsd;string">Entity</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">entity</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">
 		</rdfs:comment>
