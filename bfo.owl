@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+<!ENTITY bfo "http://www.ifomis.uni-saarland.de/bfo/bfo.owl#">
+<!ENTITY snap "http://www.ifomis.uni-saarland.de/bfo/snap.owl#">
+<!ENTITY span "http://www.ifomis.uni-saarland.de/bfo/span.owl#">
+<!ENTITY dc "http://purl.org/dc/elements/1.1/">
+<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+<!ENTITY protege-dc "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#">
+]>
+
+<rdf:RDF xmlns:bfo="&bfo;"
+		xmlns:snap="&snap;"
+		xmlns:span="&span;"
+		xmlns:dc="&dc;"
+		xmlns:owl="&owl;"
+		xmlns:rdf="&rdf;"
+		xmlns:rdfs="&rdfs;"
+		xmlns:xsd="&xsd;"
+		xmlns:protege-dc="&protege-dc;">
+	<owl:Ontology rdf:about="">
+		<dc:title rdf:datatype="&xsd;string">Basic Formal Ontology (BFO)</dc:title>
+		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
+		<dc:source rdf:datatype="&xsd;string">Pierre Grenon and Barry Smith: "SNAP and SPAN: Towards Geospatial Dynamics"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Barry Smith and Pierre Grenon: "The Cornucopia of Formal-Ontological Relations"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Pierre Grenon, Barry Smith and Louis Goldberg: "Biodynamic Ontology: Applying BFO in the Biomedical Domain"</dc:source>
+		<rdfs:comment rdf:datatype="&xsd;string">This is a beta version! Documentation and examples are still missing. Comments are welcome!</rdfs:comment>
+		<owl:versionInfo rdf:datatype="&xsd;string">1.0 beta</owl:versionInfo>
+		<owl:imports rdf:resource="&dc;"/>
+		<owl:imports rdf:resource="snap.owl"/>
+		<owl:imports rdf:resource="span.owl"/>
+	</owl:Ontology>
+	<owl:Class rdf:ID="Entity">
+		<rdfs:label rdf:datatype="&xsd;string">Entity</rdfs:label>
+		<rdfs:label rdf:datatype="&xsd;string">entity</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">
+		</rdfs:comment>
+		<owl:equivalentClass rdf:resource="&owl;Thing"/>
+	</owl:Class>
+</rdf:RDF>
