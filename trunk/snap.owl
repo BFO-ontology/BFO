@@ -27,7 +27,6 @@
 		<owl:imports rdf:resource="span.owl"/>
 	</owl:Ontology>
 	<owl:Class rdf:ID="AggregateOfSubstances">
-		<rdfs:label rdf:datatype="&xsd;string">AggregateOfSubstances</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">aggregate_of_substances</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SubstantialEntity"/>
@@ -38,7 +37,6 @@
 		<owl:disjointWith rdf:resource="#Substance"/>
 	</owl:Class>
 	<owl:Class rdf:ID="BoundaryOfSubstance">
-		<rdfs:label rdf:datatype="&xsd;string">BoundaryOfSubstance</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">boundary_of_substance</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SubstantialEntity"/>
@@ -49,7 +47,6 @@
 		<owl:disjointWith rdf:resource="#Substance"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Cavity">
-		<rdfs:label rdf:datatype="&xsd;string">Cavity</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">cavity</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Site"/>
@@ -60,7 +57,6 @@
 		<owl:disjointWith rdf:resource="#Tunnel"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Condition">
-		<rdfs:label rdf:datatype="&xsd;string">Condition</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">condition</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#DependentContinuant"/>
@@ -72,14 +68,12 @@
 		<owl:disjointWith rdf:resource="#State"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Continuant">
-		<rdfs:label rdf:datatype="&xsd;string">Continuant</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="&bfo;Entity"/>
 		<owl:disjointWith rdf:resource="&span;Occurrent"/>
 	</owl:Class>
 	<owl:Class rdf:ID="DependentContinuant">
-		<rdfs:label rdf:datatype="&xsd;string">DependentContinuant</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">dependent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Continuant"/>
@@ -88,7 +82,6 @@
 		<owl:disjointWith rdf:resource="#SubstantialEntity"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Disposition">
-		<rdfs:label rdf:datatype="&xsd;string">Disposition</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">disposition</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#DependentContinuant"/>
@@ -100,7 +93,6 @@
 		<owl:disjointWith rdf:resource="#State"/>
 	</owl:Class>
 	<owl:Class rdf:ID="FiatPartOfSubstance">
-		<rdfs:label rdf:datatype="&xsd;string">FiatPartOfSubstance</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">fiat_part_of_substance</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SubstantialEntity"/>
@@ -111,7 +103,6 @@
 		<owl:disjointWith rdf:resource="#Substance"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Function">
-		<rdfs:label rdf:datatype="&xsd;string">Function</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">function</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#DependentContinuant"/>
@@ -123,7 +114,6 @@
 		<owl:disjointWith rdf:resource="#State"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Hole">
-		<rdfs:label rdf:datatype="&xsd;string">Hole</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">hole</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Site"/>
@@ -134,7 +124,6 @@
 		<owl:disjointWith rdf:resource="#Tunnel"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Hollow">
-		<rdfs:label rdf:datatype="&xsd;string">Hollow</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">hollow</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Site"/>
@@ -145,7 +134,6 @@
 		<owl:disjointWith rdf:resource="#Tunnel"/>
 	</owl:Class>
 	<owl:Class rdf:ID="IndependentContinuant">
-		<rdfs:label rdf:datatype="&xsd;string">IndependentContinuant</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">independent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Continuant"/>
@@ -154,7 +142,6 @@
 		<owl:disjointWith rdf:resource="#SpatialRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Line">
-		<rdfs:label rdf:datatype="&xsd;string">Line</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">line</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpatialRegion"/>
@@ -167,7 +154,6 @@
 		<owl:disjointWith rdf:resource="#ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Niche">
-		<rdfs:label rdf:datatype="&xsd;string">Niche</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">niche</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Site"/>
@@ -178,7 +164,6 @@
 		<owl:disjointWith rdf:resource="#Tunnel"/>
 	</owl:Class>
 	<owl:Class rdf:ID="OneDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">OneDimensional</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">one_dimensional</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpatialRegion"/>
@@ -191,7 +176,6 @@
 		<owl:disjointWith rdf:resource="#ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Place">
-		<rdfs:label rdf:datatype="&xsd;string">Place</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">place</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Site"/>
@@ -202,7 +186,6 @@
 		<owl:disjointWith rdf:resource="#Tunnel"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Point">
-		<rdfs:label rdf:datatype="&xsd;string">Point</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">point</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpatialRegion"/>
@@ -215,7 +198,6 @@
 		<owl:disjointWith rdf:resource="#Volume"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Power">
-		<rdfs:label rdf:datatype="&xsd;string">Power</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">power</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#DependentContinuant"/>
@@ -227,14 +209,12 @@
 		<owl:disjointWith rdf:resource="#State"/>
 	</owl:Class>
 	<owl:Class rdf:ID="OptionalQuality">
-		<rdfs:label rdf:datatype="&xsd;string">OptionalQuality</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">optional_quality</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Quality"/>
 		<owl:disjointWith rdf:resource="#RequiredQuality"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Quality">
-		<rdfs:label rdf:datatype="&xsd;string">Quality</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">quality</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#DependentContinuant"/>
@@ -246,14 +226,12 @@
 		<owl:disjointWith rdf:resource="#State"/>
 	</owl:Class>
 	<owl:Class rdf:ID="RequiredQuality">
-		<rdfs:label rdf:datatype="&xsd;string">RequiredQuality</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">required_quality</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Quality"/>
 		<owl:disjointWith rdf:resource="#OptionalQuality"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Role">
-		<rdfs:label rdf:datatype="&xsd;string">Role</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">role</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#DependentContinuant"/>
@@ -265,7 +243,6 @@
 		<owl:disjointWith rdf:resource="#State"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Site">
-		<rdfs:label rdf:datatype="&xsd;string">Site</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SubstantialEntity"/>
@@ -276,7 +253,6 @@
 		<owl:disjointWith rdf:resource="#Substance"/>
 	</owl:Class>
 	<owl:Class rdf:ID="SpatialRegion">
-		<rdfs:label rdf:datatype="&xsd;string">SpatialRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Continuant"/>
@@ -285,7 +261,6 @@
 		<owl:disjointWith rdf:resource="#SubstantialEntity"/>
 	</owl:Class>
 	<owl:Class rdf:ID="State">
-		<rdfs:label rdf:datatype="&xsd;string">State</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">state</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#DependentContinuant"/>
@@ -297,7 +272,6 @@
 		<owl:disjointWith rdf:resource="#Role"/>
 	</owl:Class>
 	<owl:Class rdf:ID="StructuralPartOfSubstance">
-		<rdfs:label rdf:datatype="&xsd;string">StructuralPartOfSubstance</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">structural_part_of_substance</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SubstantialEntity"/>
@@ -308,7 +282,6 @@
 		<owl:disjointWith rdf:resource="#Substance"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Substance">
-		<rdfs:label rdf:datatype="&xsd;string">Substance</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">substance</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SubstantialEntity"/>
@@ -319,7 +292,6 @@
 		<owl:disjointWith rdf:resource="#StructuralPartOfSubstance"/>
 	</owl:Class>
 	<owl:Class rdf:ID="SubstantialEntity">
-		<rdfs:label rdf:datatype="&xsd;string">SubstantialEntity</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">substantial_entity</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Continuant"/>
@@ -328,7 +300,6 @@
 		<owl:disjointWith rdf:resource="#SpatialRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Surface">
-		<rdfs:label rdf:datatype="&xsd;string">Surface</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">surface</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpatialRegion"/>
@@ -341,7 +312,6 @@
 		<owl:disjointWith rdf:resource="#ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ThreeDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">ThreeDimensional</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">three_dimensional</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpatialRegion"/>
@@ -354,7 +324,6 @@
 		<owl:disjointWith rdf:resource="#ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Tunnel">
-		<rdfs:label rdf:datatype="&xsd;string">Tunnel</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">tunnel</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Site"/>
@@ -365,7 +334,6 @@
 		<owl:disjointWith rdf:resource="#Place"/>
 	</owl:Class>
 	<owl:Class rdf:ID="TwoDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">TwoDimensional</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">two_dimensional</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpatialRegion"/>
@@ -378,7 +346,6 @@
 		<owl:disjointWith rdf:resource="#ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Volume">
-		<rdfs:label rdf:datatype="&xsd;string">Volume</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">volume</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpatialRegion"/>
@@ -391,7 +358,6 @@
 		<owl:disjointWith rdf:resource="#ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ZeroDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">ZeroDimensional</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">zero_dimensional</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpatialRegion"/>

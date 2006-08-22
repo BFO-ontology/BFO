@@ -27,7 +27,6 @@
 		<owl:imports rdf:resource="snap.owl"/>
 	</owl:Ontology>
 	<owl:Class rdf:ID="AggregateOfProcesses">
-		<rdfs:label rdf:datatype="&xsd;string">AggregateOfProcesses</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">aggregate_of_processes</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ProcessualEntity"/>
@@ -39,20 +38,17 @@
 		<owl:disjointWith rdf:resource="#TemporalBoundaryOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ConnectedSpacetimeRegion">
-		<rdfs:label rdf:datatype="&xsd;string">ConnectedSpacetimeRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">connected_spacetime_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ConnectedTemporalRegion">
-		<rdfs:label rdf:datatype="&xsd;string">ConnectedTemporalRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">connected_temporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#TemporalRegion"/>
 		<owl:disjointWith rdf:resource="#ScatteredTemporalRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="FiatPartOfProcess">
-		<rdfs:label rdf:datatype="&xsd;string">FiatPartOfProcess</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">fiat_part_of_process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ProcessualEntity"/>
@@ -64,7 +60,6 @@
 		<owl:disjointWith rdf:resource="#TemporalBoundaryOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:ID="InstantaneousTemporalBoundaryOfProcess">
-		<rdfs:label rdf:datatype="&xsd;string">InstantaneousTemporalBoundaryOfProcess</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">instantaneous_temporal_boundary_of_process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ProcessualEntity"/>
@@ -76,40 +71,34 @@
 		<owl:disjointWith rdf:resource="#StructuralPartOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:ID="InstantSpacetimeRegion">
-		<rdfs:label rdf:datatype="&xsd;string">InstantSpacetimeRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">instant_spacetime_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ConnectedSpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="InstantTemporalRegion">
-		<rdfs:label rdf:datatype="&xsd;string">InstantTemporalRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">instant_temporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ConnectedTemporalRegion"/>
 		<owl:disjointWith rdf:resource="#IntervalTemporalRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="IntervalSpacetimeRegion">
-		<rdfs:label rdf:datatype="&xsd;string">IntervalSpacetimeRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">interval_spacetime_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ConnectedSpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="IntervalTemporalRegion">
-		<rdfs:label rdf:datatype="&xsd;string">IntervalTemporalRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">interval_temporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ConnectedTemporalRegion"/>
 		<owl:disjointWith rdf:resource="#InstantTemporalRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Occurrent">
-		<rdfs:label rdf:datatype="&xsd;string">Occurrent</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">occurrent</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="&bfo;Entity"/>
 		<owl:disjointWith rdf:resource="&snap;Continuant"/>
 	</owl:Class>
 	<owl:Class rdf:ID="OneTDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">OneTDimensional</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">one_t_dimensional</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpacetimeRegion"/>
@@ -118,7 +107,6 @@
 		<owl:disjointWith rdf:resource="#ZeroTDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Process">
-		<rdfs:label rdf:datatype="&xsd;string">Process</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ProcessualEntity"/>
@@ -130,7 +118,6 @@
 		<owl:disjointWith rdf:resource="#TemporalBoundaryOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ProcessualEntity">
-		<rdfs:label rdf:datatype="&xsd;string">ProcessualEntity</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">processual_entity</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Occurrent"/>
@@ -138,20 +125,17 @@
 		<owl:disjointWith rdf:resource="#SpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ScatteredSpacetimeRegion">
-		<rdfs:label rdf:datatype="&xsd;string">ScatteredSpacetimeRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">scattered_spacetime_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ScatteredTemporalRegion">
-		<rdfs:label rdf:datatype="&xsd;string">ScatteredTemporalRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">scattered_temporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#TemporalRegion"/>
 		<owl:disjointWith rdf:resource="#ConnectedTemporalRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Setting">
-		<rdfs:label rdf:datatype="&xsd;string">Setting</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">setting</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ProcessualEntity"/>
@@ -163,21 +147,18 @@
 		<owl:disjointWith rdf:resource="#TemporalBoundaryOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:ID="SettingWithMobileSpatialComponent">
-		<rdfs:label rdf:datatype="&xsd;string">SettingWithMobileSpatialComponent</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">setting_with_mobile_spatial_component</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Setting"/>
 		<owl:disjointWith rdf:resource="#SettingWithStationarySpatialComponent"/>
 	</owl:Class>
 	<owl:Class rdf:ID="SettingWithStationarySpatialComponent">
-		<rdfs:label rdf:datatype="&xsd;string">SettingWithStationarySpatialComponent</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">setting_with_stationary_spatial_component</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Setting"/>
 		<owl:disjointWith rdf:resource="#SettingWithMobileSpatialComponent"/>
 	</owl:Class>
 	<owl:Class rdf:ID="SpacetimeRegion">
-		<rdfs:label rdf:datatype="&xsd;string">SpacetimeRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">spacetime_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Occurrent"/>
@@ -185,7 +166,6 @@
 		<owl:disjointWith rdf:resource="#TemporalRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="StructuralPartOfProcess">
-		<rdfs:label rdf:datatype="&xsd;string">StructuralPartOfProcess</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">structural_part_of_process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ProcessualEntity"/>
@@ -197,7 +177,6 @@
 		<owl:disjointWith rdf:resource="#TemporalBoundaryOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:ID="TemporalBoundaryOfProcess">
-		<rdfs:label rdf:datatype="&xsd;string">TemporalBoundaryOfProcess</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">temporal_boundary_of_process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#ProcessualEntity"/>
@@ -209,7 +188,6 @@
 		<owl:disjointWith rdf:resource="#StructuralPartOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:ID="TemporalRegion">
-		<rdfs:label rdf:datatype="&xsd;string">TemporalRegion</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">temporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#Occurrent"/>
@@ -217,7 +195,6 @@
 		<owl:disjointWith rdf:resource="#SpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ThreeTDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">ThreeTDimensional</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">three_t_dimensional</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpacetimeRegion"/>
@@ -226,7 +203,6 @@
 		<owl:disjointWith rdf:resource="#ZeroTDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="TwoTDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">TwoTDimensional</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">two_t_dimensional</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpacetimeRegion"/>
@@ -235,7 +211,6 @@
 		<owl:disjointWith rdf:resource="#ZeroTDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ZeroTDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">ZeroTDimensional</rdfs:label>
 		<rdfs:label rdf:datatype="&xsd;string">zero_t_dimensional</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="#SpacetimeRegion"/>
