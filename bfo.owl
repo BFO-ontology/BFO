@@ -53,7 +53,6 @@
 		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
 		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
 		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<owl:disjointWith rdf:resource="&snap;StructuralPartOfSubstance"/>
 		<owl:disjointWith rdf:resource="&snap;Substance"/>
 	</owl:Class>
@@ -63,7 +62,6 @@
 		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
 		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
 		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<owl:disjointWith rdf:resource="&snap;StructuralPartOfSubstance"/>
 		<owl:disjointWith rdf:resource="&snap;Substance"/>
 	</owl:Class>
@@ -100,7 +98,6 @@
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
-		<owl:disjointWith rdf:resource="&snap;SubstantialEntity"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Disposition">
 		<rdfs:label rdf:datatype="&xsd;string">disposition</rdfs:label>
@@ -119,7 +116,6 @@
 		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
 		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
 		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<owl:disjointWith rdf:resource="&snap;StructuralPartOfSubstance"/>
 		<owl:disjointWith rdf:resource="&snap;Substance"/>
 	</owl:Class>
@@ -158,7 +154,6 @@
 		<rdfs:label rdf:datatype="&xsd;string">independent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
-		<owl:equivalentClass rdf:resource="&snap;SubstantialEntity"/>
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 	</owl:Class>
@@ -266,12 +261,8 @@
 	<owl:Class rdf:about="&snap;Site">
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
-		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
-		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;StructuralPartOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Substance"/>
+		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;SubstantialEntity"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;SpatialRegion">
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
@@ -279,7 +270,6 @@
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
-		<owl:disjointWith rdf:resource="&snap;SubstantialEntity"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;State">
 		<rdfs:label rdf:datatype="&xsd;string">state</rdfs:label>
@@ -299,7 +289,6 @@
 		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
 		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
 		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<owl:disjointWith rdf:resource="&snap;Substance"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Substance">
@@ -309,16 +298,13 @@
 		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
 		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
 		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<owl:disjointWith rdf:resource="&snap;StructuralPartOfSubstance"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;SubstantialEntity">
 		<rdfs:label rdf:datatype="&xsd;string">substantial_entity</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
-		<owl:equivalentClass rdf:resource="&snap;IndependentContinuant"/>
-		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
+		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;Site"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Surface">
 		<rdfs:label rdf:datatype="&xsd;string">surface</rdfs:label>
