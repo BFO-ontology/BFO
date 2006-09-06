@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE rdf:RDF [
-<!ENTITY bfo "http://www.ifomis.uni-saarland.de/bfo#">
-<!ENTITY snap "http://www.ifomis.uni-saarland.de/bfo/snap#">
-<!ENTITY span "http://www.ifomis.uni-saarland.de/bfo/span#">
+<!ENTITY bfo "http://www.ifomis.uni-saarland.de/bfo/1.0#">
+<!ENTITY snap "http://www.ifomis.uni-saarland.de/bfo/1.0/snap#">
+<!ENTITY span "http://www.ifomis.uni-saarland.de/bfo/1.0/span#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
 <!ENTITY owl "http://www.w3.org/2002/07/owl#">
 <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -24,10 +24,12 @@
 	<owl:Ontology rdf:about="">
 		<dc:title rdf:datatype="&xsd;string">Basic Formal Ontology (BFO)</dc:title>
 		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
+		<dc:creator rdf:datatype="&xsd;string">Andrew Spear</dc:creator>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon and Barry Smith: "SNAP and SPAN: Towards Geospatial Dynamics"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Barry Smith and Pierre Grenon: "The Cornucopia of Formal-Ontological Relations"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon, Barry Smith and Louis Goldberg: "Biodynamic Ontology: Applying BFO in the Biomedical Domain"</dc:source>
-		<rdfs:comment rdf:datatype="&xsd;string">This is a beta version! Documentation and examples are still missing. Comments are welcome!</rdfs:comment>
+		<dc:source rdf:datatype="&xsd;date">2006-10-06</dc:source>
+		<rdfs:comment rdf:datatype="&xsd;string">This is a beta version! Documentation and examples are still incomplete or missing. Comments are welcome!</rdfs:comment>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.0 beta</owl:versionInfo>
 		<owl:imports rdf:resource="&dc;"/>
 	</owl:Ontology>	
@@ -39,7 +41,7 @@
 	<owl:Class rdf:about="&bfo;Entity">
 		<rdfs:label rdf:datatype="&xsd;string">entity</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">
-		</rdfs:comment>
+</rdfs:comment>
 		<owl:equivalentClass rdf:resource="&owl;Thing"/>
 	</owl:Class>
 	
@@ -49,7 +51,7 @@
 	
 	<owl:Class rdf:about="&snap;AggregateOfSubstances">
 		<rdfs:label rdf:datatype="&xsd;string">aggregate_of_substances</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A substantial entity that is a mereological sum of separate substances and possesses non-connected boundaries. (examples: a heap of stones, a group of commuters on the subway, a collection of random bacteria, a flock of geese, the patients in a hospital)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
 		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
 		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
@@ -58,7 +60,7 @@
 	</owl:Class>
 	<owl:Class rdf:about="&snap;BoundaryOfSubstance">
 		<rdfs:label rdf:datatype="&xsd;string">boundary_of_substance</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A substantial entity that is a (lower dimensional part of a spatial entity), normally a closed two-dimensional surface. (examples: the surface of skin, the surface of the earth, the surface of the interior of the stomach)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
 		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
 		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
@@ -88,13 +90,13 @@
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Continuant">
 		<rdfs:label rdf:datatype="&xsd;string">continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity, and has no temporal parts. (examples: a heart, a person, the color of tomato, the mass of a cloud, a symphony orchestra, the lawn in front of our building)</rdfs:comment>		
 		<rdfs:subClassOf rdf:resource="&bfo;Entity"/>
 		<owl:disjointWith rdf:resource="&span;Occurrent"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;DependentContinuant">
 		<rdfs:label rdf:datatype="&xsd;string">dependent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A continuant entity that can exist only if some other entity or entities exist, the existence of which makes its existence possible. (examples: the mass of a cloud, the color of a tomato)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
@@ -112,7 +114,7 @@
 	</owl:Class>
 	<owl:Class rdf:about="&snap;FiatPartOfSubstance">
 		<rdfs:label rdf:datatype="&xsd;string">fiat_part_of_substance</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A substantial entity that is part of a substance but is not demarcated by any physical discontinuities. (examples: upper and lower lobes of the left lung, the dorsal and ventral surfaces of the body, the east side of Saarbruecken)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
 		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
 		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
@@ -152,44 +154,28 @@
 	</owl:Class>
 	<owl:Class rdf:about="&snap;IndependentContinuant">
 		<rdfs:label rdf:datatype="&xsd;string">independent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A continuant entity that can exist and be what it is regardless of what other objects exist. (examples: a heart, a person, a symphony orchestra, the lawn in front of our building)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Line">
 		<rdfs:label rdf:datatype="&xsd;string">line</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a spatial region with one dimension. (examples: the space occupied by the edge of a table, the (idealized) space occupied by a surgical incision)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:equivalentClass rdf:resource="&snap;OneDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Point"/>
 		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;ThreeDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;TwoDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Volume"/>
-		<owl:disjointWith rdf:resource="&snap;ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Niche">
 		<rdfs:label rdf:datatype="&xsd;string">niche</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A site containing a medium (such as water or air) that is capable of being occupied by organisms.</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;Site"/>
 		<owl:disjointWith rdf:resource="&snap;Cavity"/>
 		<owl:disjointWith rdf:resource="&snap;Hole"/>
 		<owl:disjointWith rdf:resource="&snap;Hollow"/>
 		<owl:disjointWith rdf:resource="&snap;Place"/>
 		<owl:disjointWith rdf:resource="&snap;Tunnel"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;OneDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">one_dimensional</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:equivalentClass rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;Point"/>
-		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;ThreeDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;TwoDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;Volume"/>
-		<owl:disjointWith rdf:resource="&snap;ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Place">
 		<rdfs:label rdf:datatype="&xsd;string">place</rdfs:label>
@@ -203,14 +189,10 @@
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Point">
 		<rdfs:label rdf:datatype="&xsd;string">point</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a spatial region with no dimensions. (examples: a point)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:equivalentClass rdf:resource="&snap;ZeroDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;OneDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;ThreeDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;TwoDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Volume"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Power">
@@ -224,15 +206,9 @@
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<owl:disjointWith rdf:resource="&snap;State"/>
 	</owl:Class>
-	<owl:Class rdf:about="&snap;OptionalQuality">
-		<rdfs:label rdf:datatype="&xsd;string">optional_quality</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&snap;Quality"/>
-		<owl:disjointWith rdf:resource="&snap;RequiredQuality"/>
-	</owl:Class>
 	<owl:Class rdf:about="&snap;Quality">
 		<rdfs:label rdf:datatype="&xsd;string">quality</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A dependent continuant that (examples: the color of a tomato, the ambient temperature of air, the circumference of a waist, the shape of a nose)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;Condition"/>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
@@ -240,12 +216,6 @@
 		<owl:disjointWith rdf:resource="&snap;Power"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<owl:disjointWith rdf:resource="&snap;State"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;RequiredQuality">
-		<rdfs:label rdf:datatype="&xsd;string">required_quality</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&snap;Quality"/>
-		<owl:disjointWith rdf:resource="&snap;OptionalQuality"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Role">
 		<rdfs:label rdf:datatype="&xsd;string">role</rdfs:label>
@@ -260,13 +230,13 @@
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Site">
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">An independent continuant that is the sum of a substantial entity or entities and a spatial region or spatial regions. (examples: the front lawn of our building, a nasal cavity, a blood vein, an environment, sinuses, canals, ventricles, the lumen of the gastrointestinal tract, the interior of the aorta, the room in which one is located)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SubstantialEntity"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;SpatialRegion">
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A continuant entity at or in which other continuant entities can be located. (examples: the space occupied by an appendix, the space that was occupied by an appendix prior to its removal) </rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
@@ -293,7 +263,7 @@
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Substance">
 		<rdfs:label rdf:datatype="&xsd;string">substance</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A substantial entity that is self-connected and self-contained, possessing an internal unity and instantiating a natural kind, that maintains identity through time while gaining and losing qualities or parts, and that exists in its entirety at any moment in which it exists at all. (examples: an organism, a heart, a symphony orchestra, a chair)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
 		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
 		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
@@ -302,33 +272,17 @@
 	</owl:Class>
 	<owl:Class rdf:about="&snap;SubstantialEntity">
 		<rdfs:label rdf:datatype="&xsd;string">substantial_entity</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">Independent Continuant entities that are self-connected and maintain their identity through time while gaining and losing qualities or parts, and that exist in their entirety at any moment in which they exist at all. (examples: an organism, a heart, a symphony orchestra, a chair)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Surface">
 		<rdfs:label rdf:datatype="&xsd;string">surface</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A spatial region with two dimensions. (examples: the surface of the Atlantic Ocean, the surface of a patients skin, the surface of the interior lining of the stomach)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:equivalentClass rdf:resource="&snap;TwoDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;OneDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Point"/>
-		<owl:disjointWith rdf:resource="&snap;ThreeDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Volume"/>
-		<owl:disjointWith rdf:resource="&snap;ZeroDimensional"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;ThreeDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">three_dimensional</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:equivalentClass rdf:resource="&snap;Volume"/>
-		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;OneDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;Point"/>
-		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;TwoDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;ZeroDimensional"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Tunnel">
 		<rdfs:label rdf:datatype="&xsd;string">tunnel</rdfs:label>
@@ -340,41 +294,13 @@
 		<owl:disjointWith rdf:resource="&snap;Niche"/>
 		<owl:disjointWith rdf:resource="&snap;Place"/>
 	</owl:Class>
-	<owl:Class rdf:about="&snap;TwoDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">two_dimensional</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:equivalentClass rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;OneDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;Point"/>
-		<owl:disjointWith rdf:resource="&snap;ThreeDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;Volume"/>
-		<owl:disjointWith rdf:resource="&snap;ZeroDimensional"/>
-	</owl:Class>
 	<owl:Class rdf:about="&snap;Volume">
 		<rdfs:label rdf:datatype="&xsd;string">volume</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">A spatial region with three dimensions. (examples: a cube, the inside of a skull, the space occupied by a pulmonary artery)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:equivalentClass rdf:resource="&snap;ThreeDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;OneDimensional"/>
 		<owl:disjointWith rdf:resource="&snap;Point"/>
 		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;TwoDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;ZeroDimensional"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;ZeroDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">zero_dimensional</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:equivalentClass rdf:resource="&snap;Point"/>
-		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;OneDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;ThreeDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;TwoDimensional"/>
-		<owl:disjointWith rdf:resource="&snap;Volume"/>
 	</owl:Class>
 	
 	
@@ -383,7 +309,7 @@
 	
 	<owl:Class rdf:about="&span;AggregateOfProcesses">
 		<rdfs:label rdf:datatype="&xsd;string">aggregate_of_processes</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a processual entity that is the mereological sum of two or more processes.</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;FiatPartOfProcess"/>
 		<owl:disjointWith rdf:resource="&span;InstantaneousTemporalBoundaryOfProcess"/>
@@ -394,18 +320,18 @@
 	</owl:Class>
 	<owl:Class rdf:about="&span;ConnectedSpacetimeRegion">
 		<rdfs:label rdf:datatype="&xsd;string">connected_spacetime_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a space time region that has temporal and spatial dimensions such that all points within the spacetime region are mediately or immediately connected to all other points within the same space time region. (examples: the spatial and temporal location of an individual organism’s life, the spatial and temporal location of the development of a fetus)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;SpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:about="&span;ConnectedTemporalRegion">
 		<rdfs:label rdf:datatype="&xsd;string">connected_temporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a temporal region every point of which is mediately or immediately connected with every other point of which. (examples: the WWII years, the time from the beginning to the end of a heart attack, the time taken up by cellular meiosis)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;TemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;ScatteredTemporalRegion"/>
 	</owl:Class>
 	<owl:Class rdf:about="&span;FiatPartOfProcess">
 		<rdfs:label rdf:datatype="&xsd;string">fiat_part_of_process</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a processual entity that is part of a process, but that does not have bona fide beginnings and endings corresponding to real discontinuities. (examples: chewing during a meal, the middle part of a rainstorm, the worst part of a heart-attack)</rdfs:comment> 
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;AggregateOfProcesses"/>
 		<owl:disjointWith rdf:resource="&span;InstantaneousTemporalBoundaryOfProcess"/>
@@ -453,17 +379,9 @@
 		<rdfs:subClassOf rdf:resource="&bfo;Entity"/>
 		<owl:disjointWith rdf:resource="&snap;Continuant"/>
 	</owl:Class>
-	<owl:Class rdf:about="&span;OneTDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">one_t_dimensional</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&span;SpacetimeRegion"/>
-		<owl:disjointWith rdf:resource="&span;ThreeTDimensional"/>
-		<owl:disjointWith rdf:resource="&span;TwoTDimensional"/>
-		<owl:disjointWith rdf:resource="&span;ZeroTDimensional"/>
-	</owl:Class>
 	<owl:Class rdf:about="&span;Process">
 		<rdfs:label rdf:datatype="&xsd;string">process</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a processual entity that is a maximally connected spatio-temporal whole, and has bona fide beginnings and endings corresponding to real discontinuities. (examples: the life of an organism, the process of sleeping)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;AggregateOfProcesses"/>
 		<owl:disjointWith rdf:resource="&span;FiatPartOfProcess"/>
@@ -474,25 +392,25 @@
 	</owl:Class>
 	<owl:Class rdf:about="&span;ProcessualEntity">
 		<rdfs:label rdf:datatype="&xsd;string">processual_entity</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">an occurrent entity that exists in time by occurring or happening, has temporal parts, and always involves and depends on some SNAP entity.</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;Occurrent"/>
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;SpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:about="&span;ScatteredSpacetimeRegion">
 		<rdfs:label rdf:datatype="&xsd;string">scattered_spacetime_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a space time region that has spatial and temporal dimensions, and every spatial and temporal point of which is not connected with every other spatial and temporal point of which. (examples: the space and time occupied by the individual games of the World Series, the space and time occupied by the individual liaisons in a romantic affair)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;SpacetimeRegion"/>
 	</owl:Class>
 	<owl:Class rdf:about="&span;ScatteredTemporalRegion">
 		<rdfs:label rdf:datatype="&xsd;string">scattered_temporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a temporal region every point of which is not mediatley or immediately connected with every other point of which. (examples: the time occupied by the individual games of the World Series, the time occupied by the individual liaisons in a romantic affair)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;TemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;ConnectedTemporalRegion"/>
 	</owl:Class>
 	<owl:Class rdf:about="&span;Setting">
 		<rdfs:label rdf:datatype="&xsd;string">setting</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a processual entity that is the sum of processual entities, space time regions and temporal regions. (examples: a surgical operation as setting for a nosocomical infection, a routine check-up as setting for the finding of a tumor)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;AggregateOfProcesses"/>
 		<owl:disjointWith rdf:resource="&span;FiatPartOfProcess"/>
@@ -501,21 +419,9 @@
 		<owl:disjointWith rdf:resource="&span;StructuralPartOfProcess"/>
 		<owl:disjointWith rdf:resource="&span;TemporalBoundaryOfProcess"/>
 	</owl:Class>
-	<owl:Class rdf:about="&span;SettingWithMobileSpatialComponent">
-		<rdfs:label rdf:datatype="&xsd;string">setting_with_mobile_spatial_component</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&span;Setting"/>
-		<owl:disjointWith rdf:resource="&span;SettingWithStationarySpatialComponent"/>
-	</owl:Class>
-	<owl:Class rdf:about="&span;SettingWithStationarySpatialComponent">
-		<rdfs:label rdf:datatype="&xsd;string">setting_with_stationary_spatial_component</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&span;Setting"/>
-		<owl:disjointWith rdf:resource="&span;SettingWithMobileSpatialComponent"/>
-	</owl:Class>
 	<owl:Class rdf:about="&span;SpacetimeRegion">
 		<rdfs:label rdf:datatype="&xsd;string">spacetime_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">an occurrent entity at or in which processual entities can be located. (examples: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal setting occupied by a process of cellular meiosis)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;Occurrent"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
@@ -533,7 +439,7 @@
 	</owl:Class>
 	<owl:Class rdf:about="&span;TemporalBoundaryOfProcess">
 		<rdfs:label rdf:datatype="&xsd;string">temporal_boundary_of_process</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">a processual entity that is the fiat or bona fide instantaneous temporal boundary of a process. (examples: the forming of a synapse, the onset of REM sleep, the detaching of a finger in an industrial accident)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;AggregateOfProcesses"/>
 		<owl:disjointWith rdf:resource="&span;FiatPartOfProcess"/>
@@ -544,33 +450,9 @@
 	</owl:Class>
 	<owl:Class rdf:about="&span;TemporalRegion">
 		<rdfs:label rdf:datatype="&xsd;string">temporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:comment rdf:datatype="&xsd;string">an occurrent entity that is part of time. (examples: the time it takes to run a marathon, the duration of a surgical procedure, the moment of death)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="&span;Occurrent"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;SpacetimeRegion"/>
-	</owl:Class>
-	<owl:Class rdf:about="&span;ThreeTDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">three_t_dimensional</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&span;SpacetimeRegion"/>
-		<owl:disjointWith rdf:resource="&span;OneTDimensional"/>
-		<owl:disjointWith rdf:resource="&span;TwoTDimensional"/>
-		<owl:disjointWith rdf:resource="&span;ZeroTDimensional"/>
-	</owl:Class>
-	<owl:Class rdf:about="&span;TwoTDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">two_t_dimensional</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&span;SpacetimeRegion"/>
-		<owl:disjointWith rdf:resource="&span;OneTDimensional"/>
-		<owl:disjointWith rdf:resource="&span;ThreeTDimensional"/>
-		<owl:disjointWith rdf:resource="&span;ZeroTDimensional"/>
-	</owl:Class>
-	<owl:Class rdf:about="&span;ZeroTDimensional">
-		<rdfs:label rdf:datatype="&xsd;string">zero_t_dimensional</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subClassOf rdf:resource="&span;SpacetimeRegion"/>
-		<owl:disjointWith rdf:resource="&span;OneTDimensional"/>
-		<owl:disjointWith rdf:resource="&span;ThreeTDimensional"/>
-		<owl:disjointWith rdf:resource="&span;TwoTDimensional"/>
 	</owl:Class>
 </rdf:RDF>
