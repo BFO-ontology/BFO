@@ -405,8 +405,8 @@
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&span;ConnectedSpatiotemporalRegion"/>
-					<owl:Class rdf:about="&span;ScatteredSpatiotemporalRegion"/>
+					<owl:Class rdf:about="&span;InstantSpatiotemporalRegion"/>
+					<owl:Class rdf:about="&span;IntervalSpatiotemporalRegion"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
