@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE rdf:RDF [
-<!ENTITY ro "http://www.ifomis.de/bfo/ro.owl#">
+<!ENTITY base "http://www.ifomis.de/bfo/ro.owl">
+<!ENTITY ro "&base;#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
 <!ENTITY w3 "http://www.w3.org">
 <!ENTITY owl "&w3;/2002/07/owl#">
@@ -16,7 +17,7 @@
 		xmlns:rdf="&rdf;"
 		xmlns:rdfs="&rdfs;"
 		xmlns:xsd="&xsd;"
-		xml:base="&ro;">
+		xml:base="&base;">
 	<owl:Ontology rdf:about="">
 		<dc:title rdf:datatype="&xsd;string">Relationship Ontology (RO)</dc:title>
 		<dc:creator rdf:datatype="&xsd;string">Chris Mungall</dc:creator>
