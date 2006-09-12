@@ -1,15 +1,14 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE rdf:RDF [
-<!ENTITY bfo "http://www.ifomis.uni-saarland.de/bfo/1.0#">
-<!ENTITY snap "http://www.ifomis.uni-saarland.de/bfo/1.0/snap#">
-<!ENTITY span "http://www.ifomis.uni-saarland.de/bfo/1.0/span#">
+<!ENTITY bfo "http://www.ifomis.de/bfo/1.0#">
+<!ENTITY snap "http://www.ifomis.de/bfo/1.0/snap#">
+<!ENTITY span "http://www.ifomis.de/bfo/1.0/span#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
 <!ENTITY owl "http://www.w3.org/2002/07/owl#">
 <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
-<!ENTITY protege-dc "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#">
 ]>
 
 <rdf:RDF xmlns:bfo="&bfo;"
@@ -20,7 +19,7 @@
 		xmlns:rdf="&rdf;"
 		xmlns:rdfs="&rdfs;"
 		xmlns:xsd="&xsd;"
-		xmlns:protege-dc="&protege-dc;">
+		xml:base="&bfo;">
 	<owl:Ontology rdf:about="">
 		<dc:title rdf:datatype="&xsd;string">Basic Formal Ontology (BFO)</dc:title>
 		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
