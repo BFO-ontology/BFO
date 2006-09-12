@@ -3,10 +3,11 @@
 <!DOCTYPE rdf:RDF [
 <!ENTITY ro "http://www.ifomis.de/bfo/ro.owl#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
-<!ENTITY owl "http://www.w3.org/2002/07/owl#">
-<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
-<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+<!ENTITY w3 "http://www.w3.org">
+<!ENTITY owl "&w3;/2002/07/owl#">
+<!ENTITY rdf "&w3;/1999/02/22-rdf-syntax-ns#">
+<!ENTITY rdfs "&w3;/2000/01/rdf-schema#">
+<!ENTITY xsd "&w3;/2001/XMLSchema#">
 ]>
 
 <rdf:RDF xmlns:ro="&ro;"
