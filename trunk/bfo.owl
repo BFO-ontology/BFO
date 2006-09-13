@@ -26,11 +26,11 @@
 		<dc:title rdf:datatype="&xsd;string">Basic Formal Ontology (BFO)</dc:title>
 		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
 		<dc:contributor rdf:datatype="&xsd;string">Andrew Spear</dc:contributor>
-                <dc:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
+		<dc:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon and Barry Smith: "SNAP and SPAN: Towards Geospatial Dynamics"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Barry Smith and Pierre Grenon: "The Cornucopia of Formal-Ontological Relations"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon, Barry Smith and Louis Goldberg: "Biodynamic Ontology: Applying BFO in the Biomedical Domain"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2006-10-13</dc:date>
+		<dc:date rdf:datatype="&xsd;date">2006-10-14</dc:date>
 		<rdfs:comment rdf:datatype="&xsd;string">This is a beta version! Documentation and examples are still incomplete or missing. Comments are welcome!</rdfs:comment>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.0 beta</owl:versionInfo>
 		<owl:imports rdf:resource="&dc;"/>
@@ -74,29 +74,6 @@
 		<owl:disjointWith rdf:resource="&snap;StructuralPartOfSubstance"/>
 		<owl:disjointWith rdf:resource="&snap;Substance"/>
 	</owl:Class>
-	<owl:Class rdf:about="&snap;Cavity">
-		<rdfs:subClassOf rdf:resource="&snap;Site"/>
-		<rdfs:label rdf:datatype="&xsd;string">cavity</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Hole"/>
-		<owl:disjointWith rdf:resource="&snap;Hollow"/>
-		<owl:disjointWith rdf:resource="&snap;Niche"/>
-		<owl:disjointWith rdf:resource="&snap;Place"/>
-		<owl:disjointWith rdf:resource="&snap;Tunnel"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;Condition">
-		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
-		<rdfs:label rdf:datatype="&xsd;string">condition</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Disposition"/>
-		<owl:disjointWith rdf:resource="&snap;Function"/>
-		<owl:disjointWith rdf:resource="&snap;Power"/>
-		<owl:disjointWith rdf:resource="&snap;Quality"/>
-		<owl:disjointWith rdf:resource="&snap;Role"/>
-		<owl:disjointWith rdf:resource="&snap;State"/>
-	</owl:Class>
 	<owl:Class rdf:about="&snap;Continuant">
 		<rdfs:subClassOf rdf:resource="&bfo;Entity"/>
 		<owl:equivalentClass>
@@ -117,8 +94,7 @@
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:equivalentClass>
 			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&snap;Condition"/>					
+				<owl:unionOf rdf:parseType="Collection">					
 					<owl:Class rdf:about="&snap;Disposition"/>			
 					<owl:Class rdf:about="&snap;Function"/>
 					<owl:Class rdf:about="&snap;Power"/>
@@ -139,7 +115,6 @@
 		<rdfs:label rdf:datatype="&xsd;string">disposition</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the disposition of a vegetable to decay</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Condition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Power"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
@@ -161,34 +136,11 @@
 		<rdfs:label rdf:datatype="&xsd;string">function</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the function of a canal (i.e. the birth canal) to enable transport</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Condition"/>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Power"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<owl:disjointWith rdf:resource="&snap;State"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;Hole">
-		<rdfs:subClassOf rdf:resource="&snap;Site"/>
-		<rdfs:label rdf:datatype="&xsd;string">hole</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Cavity"/>
-		<owl:disjointWith rdf:resource="&snap;Hollow"/>
-		<owl:disjointWith rdf:resource="&snap;Niche"/>
-		<owl:disjointWith rdf:resource="&snap;Place"/>
-		<owl:disjointWith rdf:resource="&snap;Tunnel"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;Hollow">
-		<rdfs:subClassOf rdf:resource="&snap;Site"/>
-		<rdfs:label rdf:datatype="&xsd;string">hollow</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Cavity"/>
-		<owl:disjointWith rdf:resource="&snap;Hole"/>
-		<owl:disjointWith rdf:resource="&snap;Niche"/>
-		<owl:disjointWith rdf:resource="&snap;Place"/>
-		<owl:disjointWith rdf:resource="&snap;Tunnel"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;IndependentContinuant">
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
@@ -215,28 +167,6 @@
 		<owl:disjointWith rdf:resource="&snap;Surface"/>
 		<owl:disjointWith rdf:resource="&snap;Volume"/>
 	</owl:Class>
-	<owl:Class rdf:about="&snap;Niche">
-		<rdfs:subClassOf rdf:resource="&snap;Site"/>
-		<rdfs:label rdf:datatype="&xsd;string">niche</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: a site containing a medium (such as water or air) that is capable of being occupied by organisms</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Cavity"/>
-		<owl:disjointWith rdf:resource="&snap;Hole"/>
-		<owl:disjointWith rdf:resource="&snap;Hollow"/>
-		<owl:disjointWith rdf:resource="&snap;Place"/>
-		<owl:disjointWith rdf:resource="&snap;Tunnel"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;Place">
-		<rdfs:subClassOf rdf:resource="&snap;Site"/>
-		<rdfs:label rdf:datatype="&xsd;string">place</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Cavity"/>
-		<owl:disjointWith rdf:resource="&snap;Hole"/>
-		<owl:disjointWith rdf:resource="&snap;Hollow"/>
-		<owl:disjointWith rdf:resource="&snap;Niche"/>
-		<owl:disjointWith rdf:resource="&snap;Tunnel"/>
-	</owl:Class>
 	<owl:Class rdf:about="&snap;Point">
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">point</rdfs:label>
@@ -251,7 +181,6 @@
 		<rdfs:label rdf:datatype="&xsd;string">power</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the power of a refrigerator to slow down the decay of vegetables</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Condition"/>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
@@ -263,7 +192,6 @@
 		<rdfs:label rdf:datatype="&xsd;string">quality</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the color of a tomato, the ambient temperature of air, the circumference of a waist, the shape of a nose</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Condition"/>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Power"/>
@@ -275,7 +203,6 @@
 		<rdfs:label rdf:datatype="&xsd;string">role</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the role as a student, the role as the captain of a soccer team, the role as the president of a nation</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Condition"/>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Power"/>
@@ -312,7 +239,6 @@
 		<rdfs:label rdf:datatype="&xsd;string">state</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Condition"/>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Power"/>
@@ -365,17 +291,6 @@
 		<owl:disjointWith rdf:resource="&snap;Line"/>
 		<owl:disjointWith rdf:resource="&snap;Point"/>
 		<owl:disjointWith rdf:resource="&snap;Volume"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;Tunnel">
-		<rdfs:subClassOf rdf:resource="&snap;Site"/>
-		<rdfs:label rdf:datatype="&xsd;string">tunnel</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Cavity"/>
-		<owl:disjointWith rdf:resource="&snap;Hole"/>
-		<owl:disjointWith rdf:resource="&snap;Hollow"/>
-		<owl:disjointWith rdf:resource="&snap;Niche"/>
-		<owl:disjointWith rdf:resource="&snap;Place"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Volume">
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
@@ -442,13 +357,6 @@
 		<owl:disjointWith rdf:resource="&span;StructuralPartOfProcess"/>
 		<owl:disjointWith rdf:resource="&span;TemporalBoundaryOfProcess"/>
 	</owl:Class>
-	<owl:Class rdf:about="&span;InstantTemporalBoundaryOfProcess">
-		<rdfs:subClassOf rdf:resource="&span;TemporalBoundaryOfProcess"/>
-		<rdfs:label rdf:datatype="&xsd;string">instant_temporal_boundary_of_process</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;IntervalTemporalBoundaryOfProcess"/>
-	</owl:Class>
 	<owl:Class rdf:about="&span;InstantSpatiotemporalRegion">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedSpatiotemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">instant_spatiotemporal_region</rdfs:label>
@@ -467,13 +375,6 @@
 		<rdfs:label rdf:datatype="&xsd;string">interval_spatiotemporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-	</owl:Class>
-	<owl:Class rdf:about="&span;IntervalTemporalBoundaryOfProcess">
-		<rdfs:subClassOf rdf:resource="&span;TemporalBoundaryOfProcess"/>
-		<rdfs:label rdf:datatype="&xsd;string">instant_temporal_boundary_of_process</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;InstantTemporalBoundaryOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:about="&span;IntervalTemporalRegion">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedTemporalRegion"/>
@@ -582,14 +483,6 @@
 	</owl:Class>
 	<owl:Class rdf:about="&span;TemporalBoundaryOfProcess">
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&span;InstantTemporalBoundaryOfProcess"/>
-					<owl:Class rdf:about="&span;IntervalTemporalBoundaryOfProcess"/>
-				</owl:unionOf>
-			</owl:Class>
-		</owl:equivalentClass>
 		<rdfs:label rdf:datatype="&xsd;string">temporal_boundary_of_process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a processual entity that is the fiat or bona fide temporal boundary of a process</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the forming of a synapse, the onset of REM sleep, the detaching of a finger in an industrial accident</rdfs:comment>
