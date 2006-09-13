@@ -25,11 +25,12 @@
 	<owl:Ontology rdf:about="">
 		<dc:title rdf:datatype="&xsd;string">Basic Formal Ontology (BFO)</dc:title>
 		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
-		<dc:creator rdf:datatype="&xsd;string">Andrew Spear</dc:creator>
+		<dc:contributor rdf:datatype="&xsd;string">Andrew Spear</dc:contributor>
+                <dc:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon and Barry Smith: "SNAP and SPAN: Towards Geospatial Dynamics"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Barry Smith and Pierre Grenon: "The Cornucopia of Formal-Ontological Relations"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon, Barry Smith and Louis Goldberg: "Biodynamic Ontology: Applying BFO in the Biomedical Domain"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2006-10-07</dc:date>
+		<dc:date rdf:datatype="&xsd;date">2006-10-13</dc:date>
 		<rdfs:comment rdf:datatype="&xsd;string">This is a beta version! Documentation and examples are still incomplete or missing. Comments are welcome!</rdfs:comment>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.0 beta</owl:versionInfo>
 		<owl:imports rdf:resource="&dc;"/>
