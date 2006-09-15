@@ -54,23 +54,23 @@
 	<!-- SNAP -->
 
 
-	<owl:Class rdf:about="&snap;AggregateOfSubstances">
-		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
-		<rdfs:label rdf:datatype="&xsd;string">aggregate_of_substances</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: a substantial entity that is a mereological sum of separate substances and possesses non-connected boundaries</rdfs:comment>
+	<owl:Class rdf:about="&snap;AggregateOfObjects">
+		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+		<rdfs:label rdf:datatype="&xsd;string">aggregate_of_objects</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: a substantial entity that is a mereological sum of separate objects and possesses non-connected boundaries</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a heap of stones, a group of commuters on the subway, a collection of random bacteria, a flock of geese, the patients in a hospital</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Substance"/>
+		<owl:disjointWith rdf:resource="&snap;BoundaryOfObject"/>
+		<owl:disjointWith rdf:resource="&snap;FiatPartOfObject"/>
+		<owl:disjointWith rdf:resource="&snap;Object"/>
 	</owl:Class>
-	<owl:Class rdf:about="&snap;BoundaryOfSubstance">
-		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
-		<rdfs:label rdf:datatype="&xsd;string">boundary_of_substance</rdfs:label>
+	<owl:Class rdf:about="&snap;BoundaryOfObject">
+		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+		<rdfs:label rdf:datatype="&xsd;string">boundary_of_object</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a substantial entity that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the surface of the skin, the surface of the earth, the surface of the interior of the stomach</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
-		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Substance"/>
+		<owl:disjointWith rdf:resource="&snap;AggregateOfObjects"/>
+		<owl:disjointWith rdf:resource="&snap;FiatPartOfObject"/>
+		<owl:disjointWith rdf:resource="&snap;Object"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Continuant">
 		<rdfs:subClassOf rdf:resource="&bfo;Entity"/>
@@ -96,8 +96,7 @@
 					<owl:Class rdf:about="&snap;Disposition"/>			
 					<owl:Class rdf:about="&snap;Function"/>
 					<owl:Class rdf:about="&snap;Quality"/>					
-					<owl:Class rdf:about="&snap;Role"/>					
-					<owl:Class rdf:about="&snap;State"/>									
+					<owl:Class rdf:about="&snap;Role"/>						
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
@@ -110,21 +109,20 @@
 	<owl:Class rdf:about="&snap;Disposition">
 		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">disposition</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: a dependent continuant that always or with a significant degree of regularity initiates a process or transformation in the substantial entity it is a disposition of, under specific circumstances.  A general formula for dispositions is: X (substance) has the disposition D to (transform, initiate a process) R under conditions C</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: a dependent continuant that always or with a significant degree of regularity initiates a process or transformation in the substantial entity it is a disposition of, under specific circumstances.  A general formula for dispositions is: X (object) has the disposition D to (transform, initiate a process) R under conditions C</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the disposition of vegetables to decay when not refrigerated, the disposition of a vase to brake if dropped, the disposition of blood to coagulate, the disposition of a patient with a weakened immune system to contract disease</rdfs:comment>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
-		<owl:disjointWith rdf:resource="&snap;State"/>
 	</owl:Class>
-	<owl:Class rdf:about="&snap;FiatPartOfSubstance">
-		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
-		<rdfs:label rdf:datatype="&xsd;string">fiat_part_of_substance</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: a substantial entity that is part of a substance but is not demarcated by any physical discontinuities</rdfs:comment>
+	<owl:Class rdf:about="&snap;FiatPartOfObject">
+		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+		<rdfs:label rdf:datatype="&xsd;string">fiat_part_of_object</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: a substantial entity that is part of a object but is not demarcated by any physical discontinuities</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: upper and lower lobes of the left lung, the dorsal and ventral surfaces of the body, the east side of Saarbruecken</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
-		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;Substance"/>
+		<owl:disjointWith rdf:resource="&snap;AggregateOfObjects"/>
+		<owl:disjointWith rdf:resource="&snap;BoundaryOfObject"/>
+		<owl:disjointWith rdf:resource="&snap;Object"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Function">
 		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
@@ -134,15 +132,17 @@
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
-		<owl:disjointWith rdf:resource="&snap;State"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;IndependentContinuant">
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="&snap;AggregateOfObjects"/>
+					<owl:Class rdf:about="&snap;BoundaryOfObject"/>
+					<owl:Class rdf:about="&snap;FiatPartOfObject"/>
+					<owl:Class rdf:about="&snap;Object"/>
 					<owl:Class rdf:about="&snap;Site"/>
-					<owl:Class rdf:about="&snap;SubstantialEntity"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
@@ -178,7 +178,6 @@
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
-		<owl:disjointWith rdf:resource="&snap;State"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Role">
 		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
@@ -188,14 +187,13 @@
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
-		<owl:disjointWith rdf:resource="&snap;State"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Site">
 		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: an independent continuant that is the sum of a substantial entity or entities and a spatial region or spatial regions</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the front lawn of our building, a nasal cavity, a blood vein, an environment, sinuses, canals, ventricles, the lumen of the gastrointestinal tract, the interior of the aorta, the room in which one is located</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;SubstantialEntity"/>
+		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;SpatialRegion">
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
@@ -215,41 +213,14 @@
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 	</owl:Class>
-	<owl:Class rdf:about="&snap;State">
-		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
-		<rdfs:label rdf:datatype="&xsd;string">state</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Disposition"/>
-		<owl:disjointWith rdf:resource="&snap;Function"/>
-		<owl:disjointWith rdf:resource="&snap;Quality"/>
-		<owl:disjointWith rdf:resource="&snap;Role"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;Substance">
-		<rdfs:subClassOf rdf:resource="&snap;SubstantialEntity"/>
-		<rdfs:label rdf:datatype="&xsd;string">substance</rdfs:label>
+	<owl:Class rdf:about="&snap;Object">
+		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+		<rdfs:label rdf:datatype="&xsd;string">object</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a substantial entity that is self-connected and self-contained, possessing an internal unity and instantiating a natural kind, that maintains identity through time while gaining and losing qualities or parts and that exists in its entirety at any moment in which it exists at all</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a symphony orchestra, a chair</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;AggregateOfSubstances"/>
-		<owl:disjointWith rdf:resource="&snap;BoundaryOfSubstance"/>
-		<owl:disjointWith rdf:resource="&snap;FiatPartOfSubstance"/>
-	</owl:Class>
-	<owl:Class rdf:about="&snap;SubstantialEntity">
-		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&snap;AggregateOfSubstances"/>
-					<owl:Class rdf:about="&snap;BoundaryOfSubstance"/>
-					<owl:Class rdf:about="&snap;FiatPartOfSubstance"/>
-					<owl:Class rdf:about="&snap;Substance"/>
-				</owl:unionOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<rdfs:label rdf:datatype="&xsd;string">substantial_entity</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: independent continuants that are self-connected and maintain their identity through time while gaining and losing qualities or parts and that exist in their entirety at any moment in which they exist at all</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a symphony orchestra, a chair, a cell</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Site"/>
+		<owl:disjointWith rdf:resource="&snap;AggregateOfObjects"/>
+		<owl:disjointWith rdf:resource="&snap;BoundaryOfObject"/>
+		<owl:disjointWith rdf:resource="&snap;FiatPartOfObject"/>
 	</owl:Class>
 	<owl:Class rdf:about="&snap;Surface">
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
@@ -274,23 +245,13 @@
 	<!-- SPAN -->
 
 
-	<owl:Class rdf:about="&span;AggregateOfProcesses">
-		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
-		<rdfs:label rdf:datatype="&xsd;string">aggregate_of_processes</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: a processual entity that is the mereological sum of two or more processes</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;FiatPartOfProcess"/>
-		<owl:disjointWith rdf:resource="&span;Process"/>
-		<owl:disjointWith rdf:resource="&span;Setting"/>
-		<owl:disjointWith rdf:resource="&span;TemporalBoundaryOfProcess"/>
-	</owl:Class>
 	<owl:Class rdf:about="&span;ConnectedSpatiotemporalRegion">
 		<rdfs:subClassOf rdf:resource="&span;SpatiotemporalRegion"/>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&span;InstantSpatiotemporalRegion"/>
-					<owl:Class rdf:about="&span;IntervalSpatiotemporalRegion"/>
+					<owl:Class rdf:about="&span;SpatiotemporalInstant"/>
+					<owl:Class rdf:about="&span;SpatiotemporalInterval"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
@@ -303,8 +264,8 @@
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&span;InstantTemporalRegion"/>
-					<owl:Class rdf:about="&span;IntervalTemporalRegion"/>
+					<owl:Class rdf:about="&span;TemporalInstant"/>
+					<owl:Class rdf:about="&span;TemporalInterval"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
@@ -318,36 +279,35 @@
 		<rdfs:label rdf:datatype="&xsd;string">fiat_part_of_process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a processual entity that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: chewing during a meal, the middle part of a rainstorm, the worst part of a heart-attack, the most interesting part of Van Gogh’s life</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;AggregateOfProcesses"/>
 		<owl:disjointWith rdf:resource="&span;Process"/>
-		<owl:disjointWith rdf:resource="&span;Setting"/>
+		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<owl:disjointWith rdf:resource="&span;TemporalBoundaryOfProcess"/>
 	</owl:Class>
-	<owl:Class rdf:about="&span;InstantSpatiotemporalRegion">
+	<owl:Class rdf:about="&span;SpatiotemporalInstant">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedSpatiotemporalRegion"/>
-		<rdfs:label rdf:datatype="&xsd;string">instant_spatiotemporal_region</rdfs:label>
+		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_instant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a connected space time region at a specific moment</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space time region occupied by a single instantaneous temporal slice (part) of a process</rdfs:comment>
 	</owl:Class>
-	<owl:Class rdf:about="&span;InstantTemporalRegion">
+	<owl:Class rdf:about="&span;TemporalInstant">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedTemporalRegion"/>
-		<rdfs:label rdf:datatype="&xsd;string">instant_temporal_region</rdfs:label>
+		<rdfs:label rdf:datatype="&xsd;string">temporal_instant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a connected temporal region comprising a single moment of time</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: right now, the moment at which a finger is detached in an industrial accident, the moment at which a child is born, the moment of death</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;IntervalTemporalRegion"/>
+		<owl:disjointWith rdf:resource="&span;TemporalInterval"/>
 	</owl:Class>
-	<owl:Class rdf:about="&span;IntervalSpatiotemporalRegion">
+	<owl:Class rdf:about="&span;SpatiotemporalInterval">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedSpatiotemporalRegion"/>
-		<rdfs:label rdf:datatype="&xsd;string">interval_spatiotemporal_region</rdfs:label>
+		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_interval</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a connected space time region that endures for more than a single moment of time</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space time region occupied by a process, or by a fiat part of a process</rdfs:comment>
 	</owl:Class>
-	<owl:Class rdf:about="&span;IntervalTemporalRegion">
+	<owl:Class rdf:about="&span;TemporalInterval">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedTemporalRegion"/>
-		<rdfs:label rdf:datatype="&xsd;string">interval_temporal_region</rdfs:label>
+		<rdfs:label rdf:datatype="&xsd;string">temporal_interval</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a connected temporal region lasting for more than a single moment of time</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: any continuous temporal duration during which a process occurs</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;InstantTemporalRegion"/>
+		<owl:disjointWith rdf:resource="&span;TemporalInstant"/>
 	</owl:Class>
 	<owl:Class rdf:about="&span;Occurrent">
 		<rdfs:subClassOf rdf:resource="&bfo;Entity"/>
@@ -370,9 +330,8 @@
 		<rdfs:label rdf:datatype="&xsd;string">process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a processual entity that is a maximally connected spatio-temporal whole and has bona fide beginnings and endings corresponding to real discontinuities</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, the process of sleeping, the process of cell-division</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;AggregateOfProcesses"/>
 		<owl:disjointWith rdf:resource="&span;FiatPartOfProcess"/>
-		<owl:disjointWith rdf:resource="&span;Setting"/>
+		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<owl:disjointWith rdf:resource="&span;TemporalBoundaryOfProcess"/>
 	</owl:Class>
 	<owl:Class rdf:about="&span;ProcessualEntity">
@@ -380,10 +339,9 @@
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&span;AggregateOfProcesses"/>
 					<owl:Class rdf:about="&span;FiatPartOfProcess"/>
 					<owl:Class rdf:about="&span;Process"/>
-					<owl:Class rdf:about="&span;Setting"/>
+					<owl:Class rdf:about="&span;ProcessualContext"/>
 					<owl:Class rdf:about="&span;TemporalBoundaryOfProcess"/>						
 				</owl:unionOf>
 			</owl:Class>
@@ -407,12 +365,11 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the time occupied by the individual games of the World Cup, the time occupied by the individual liaisons in a romantic affair</rdfs:comment>
 		<owl:disjointWith rdf:resource="&span;ConnectedTemporalRegion"/>
 	</owl:Class>
-	<owl:Class rdf:about="&span;Setting">
+	<owl:Class rdf:about="&span;ProcessualContext">
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
-		<rdfs:label rdf:datatype="&xsd;string">setting</rdfs:label>
+		<rdfs:label rdf:datatype="&xsd;string">processual_context</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a processual entity that is the sum of processual entities, spatiotemporal regions and temporal regions</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: a surgical operation as setting for a nosocomical infection, a routine check-up as setting for the finding of a tumor</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;AggregateOfProcesses"/>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: a surgical operation as processual context for a nosocomical infection, a routine check-up as processual context for the finding of a tumor</rdfs:comment>
 		<owl:disjointWith rdf:resource="&span;FiatPartOfProcess"/>
 		<owl:disjointWith rdf:resource="&span;Process"/>
 		<owl:disjointWith rdf:resource="&span;TemporalBoundaryOfProcess"/>
@@ -438,7 +395,7 @@
 		<rdfs:label rdf:datatype="&xsd;string">temporal_boundary_of_process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a processual entity that is the fiat or bona fide temporal boundary of a process</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: birth, death, the forming of a synapse, the onset of REM sleep, the detaching of a finger in an industrial accident, the final separation of two cells at the end of cell-division, the incision at the beginning of a surgery</rdfs:comment>
-		<owl:disjointWith rdf:resource="&span;AggregateOfProcesses"/>
+
 		<owl:disjointWith rdf:resource="&span;FiatPartOfProcess"/>
 		<owl:disjointWith rdf:resource="&span;Process"/>
 		<owl:disjointWith rdf:resource="&span;Setting"/>
