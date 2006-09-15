@@ -95,7 +95,6 @@
 				<owl:unionOf rdf:parseType="Collection">					
 					<owl:Class rdf:about="&snap;Disposition"/>			
 					<owl:Class rdf:about="&snap;Function"/>
-					<owl:Class rdf:about="&snap;Power"/>
 					<owl:Class rdf:about="&snap;Quality"/>					
 					<owl:Class rdf:about="&snap;Role"/>					
 					<owl:Class rdf:about="&snap;State"/>									
@@ -114,7 +113,6 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: a dependent continuant that always or with a significant degree of regularity initiates a process or transformation in the substantial entity it is a disposition of, under specific circumstances.  A general formula for dispositions is: X (substance) has the disposition D to (transform, initiate a process) R under conditions C</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the disposition of vegetables to decay when not refrigerated, the disposition of a vase to brake if dropped, the disposition of blood to coagulate, the disposition of a patient with a weakened immune system to contract disease</rdfs:comment>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
-		<owl:disjointWith rdf:resource="&snap;Power"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<owl:disjointWith rdf:resource="&snap;State"/>
@@ -134,7 +132,6 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the function of a canal (i.e. the birth canal) to enable transport</rdfs:comment>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
-		<owl:disjointWith rdf:resource="&snap;Power"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<owl:disjointWith rdf:resource="&snap;State"/>
@@ -173,17 +170,6 @@
 		<owl:disjointWith rdf:resource="&snap;Surface"/>
 		<owl:disjointWith rdf:resource="&snap;Volume"/>
 	</owl:Class>
-	<owl:Class rdf:about="&snap;Power">
-		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
-		<rdfs:label rdf:datatype="&xsd;string">power</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition:</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the power of a refrigerator to slow down the decay of vegetables</rdfs:comment>
-		<owl:disjointWith rdf:resource="&snap;Disposition"/>
-		<owl:disjointWith rdf:resource="&snap;Function"/>
-		<owl:disjointWith rdf:resource="&snap;Quality"/>
-		<owl:disjointWith rdf:resource="&snap;Role"/>
-		<owl:disjointWith rdf:resource="&snap;State"/>
-	</owl:Class>
 	<owl:Class rdf:about="&snap;Quality">
 		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">quality</rdfs:label>
@@ -191,7 +177,6 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the color of a tomato, the ambient temperature of air, the circumference of a waist, the shape of a nose, the mass of a piece of gold</rdfs:comment>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
-		<owl:disjointWith rdf:resource="&snap;Power"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<owl:disjointWith rdf:resource="&snap;State"/>
 	</owl:Class>
@@ -202,7 +187,6 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the role as a student, the role as the captain of a soccer team, the role as the president of a nation</rdfs:comment>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
-		<owl:disjointWith rdf:resource="&snap;Power"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<owl:disjointWith rdf:resource="&snap;State"/>
 	</owl:Class>
@@ -238,7 +222,6 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Examples:</rdfs:comment>
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
-		<owl:disjointWith rdf:resource="&snap;Power"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 	</owl:Class>
