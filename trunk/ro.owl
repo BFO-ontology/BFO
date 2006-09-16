@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE rdf:RDF [
-<!ENTITY base "http://www.ifomis.de/bfo/ro.owl">
+<!ENTITY base "http://www.ifomis.org/bfo/ro.owl">
 <!ENTITY ro "&base;#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
 <!ENTITY w3 "http://www.w3.org">
