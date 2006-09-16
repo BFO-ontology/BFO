@@ -362,7 +362,7 @@
 		<owl:disjointWith rdf:resource="&snap;Continuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">occurrent</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An entity that has temporal parts and that happens, unfolds or develops through time. Sometimes also called perdurants.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, a surgical operation as processual context for a nosocomical infection, the spatiotemporal setting occupied by a process of cellular meiosis, the most interesting part of Van Gogh’s life, the spatiotemporal region occupied by the development of a cancer tumor</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, a surgical operation as processual context for a nosocomical infection, the spatiotemporal context occupied by a process of cellular meiosis, the most interesting part of Van Gogh’s life, the spatiotemporal region occupied by the development of a cancer tumor</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;Process">
@@ -378,7 +378,7 @@
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;FiatProcessPart"/>
 		<owl:disjointWith rdf:resource="&span;Process"/>
-		<owl:disjointWith rdf:resource="&span;Setting"/>
+		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">process_boundary</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is the fiat or bona fide process boundary.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: birth, death, the forming of a synapse, the onset of REM sleep, the detaching of a finger in an industrial accident, the final separation of two cells at the end of cell-division, the incision at the beginning of a surgery</rdfs:comment>
@@ -391,7 +391,7 @@
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">processual_context</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Full definition to be provided! Definition: An Occurrent entity consisting of a characteristic spatial shape inhering in some arrangement of other occurrent entities. Processual contexts are characteristically entities at or in which other occurrent entities can be located or occur.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: a surgical operation as processual context for a nosocomical infection, a routine check-up as setting for the finding of a tumor, a clinical trial as processual context for the discovery of a new treatment or drug</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: a surgical operation as processual context for a nosocomical infection, a routine check-up as processual context for the finding of a tumor, a clinical trial as processual context for the discovery of a new treatment or drug</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;ProcessualEntity">
@@ -458,7 +458,7 @@
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent at or in which processual entities can be located.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal setting occupied by a process of cellular meiosis</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal context occupied by a process of cellular meiosis</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;TemporalInstant">
