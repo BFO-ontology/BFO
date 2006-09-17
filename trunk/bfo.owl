@@ -6,6 +6,7 @@
 <!ENTITY snap "&base;/snap#">
 <!ENTITY span "&base;/span#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
+<!ENTITY protege-dc "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#">
 <!ENTITY w3 "http://www.w3.org">
 <!ENTITY owl "&w3;/2002/07/owl#">
 <!ENTITY rdf "&w3;/1999/02/22-rdf-syntax-ns#">
@@ -18,6 +19,7 @@
 		xmlns:span="&span;"
 		xmlns:dc="&dc;"
 		xmlns:owl="&owl;"
+		xmlns:protege-dc="&protege-dc;"
 		xmlns:rdf="&rdf;"
 		xmlns:rdfs="&rdfs;"
 		xmlns:xsd="&xsd;"
@@ -30,10 +32,9 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon and Barry Smith: "SNAP and SPAN: Towards Geospatial Dynamics"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Barry Smith and Pierre Grenon: "The Cornucopia of Formal-Ontological Relations"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon, Barry Smith and Louis Goldberg: "Biodynamic Ontology: Applying BFO in the Biomedical Domain"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2006-10-16</dc:date>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<dc:date rdf:datatype="&xsd;date">2006-10-17</dc:date>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.0 RC</owl:versionInfo>
-		<owl:imports rdf:resource="&dc;"/>
+		<owl:imports rdf:resource="&protege-dc;"/>
 	</owl:Ontology>
 
 
