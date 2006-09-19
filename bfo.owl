@@ -121,7 +121,8 @@
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<rdfs:label rdf:datatype="&xsd;string">function</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Full definition to be provided! Definition: A realizable entity that is a characteristic end-directed activity of a continuant entity in virtue of that continuant entity being a specific kind of entity in a specific context.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Remark: Full definition to be provided!</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A realizable entity that is a characteristic end-directed activity of a continuant entity in virtue of that continuant entity being a specific kind of entity in a specific context.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the function of a birth canal to enable transport, the function of the heart to pump blood, the function of reproduction in the transmission of genetic material, the function of digestion to nutriate the body, the function of radiation in neutralizing cancer cells</rdfs:comment>
 	</owl:Class>
 
@@ -142,7 +143,8 @@
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">independent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Full definition to be provided! Definition: An independent continuant consisting of a characteristic spatial shape inhering in some arrangement of other continuant entities. Sites are characteristically entities at or in which other continuant entities can be located.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Remark: Full definition to be provided!</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant consisting of a characteristic spatial shape inhering in some arrangement of other continuant entities. Sites are characteristically entities at or in which other continuant entities can be located.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a heart, a person, a symphony orchestra, the lawn in front of our building</rdfs:comment>
 	</owl:Class>
 
@@ -274,7 +276,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
-		<rdfs:label rdf:datatype="&xsd;string">fiat_object_part</rdfs:label>
+		<rdfs:label rdf:datatype="&xsd;string">substance_portion</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An aggregate of objects that is continuous and strongly homogeneous.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a tissue sample, a beaker of chemicals, a blood sample, a biopsy sample</rdfs:comment>
 	</owl:Class>
@@ -391,7 +393,8 @@
 		<owl:disjointWith rdf:resource="&span;SpatiotemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">processual_context</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Full definition to be provided! Definition: An Occurrent entity consisting of a characteristic spatial shape inhering in some arrangement of other occurrent entities. Processual contexts are characteristically entities at or in which other occurrent entities can be located or occur.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Remark: Full definition to be provided!</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: An Occurrent entity consisting of a characteristic spatial shape inhering in some arrangement of other occurrent entities. Processual contexts are characteristically entities at or in which other occurrent entities can be located or occur.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a surgical operation as processual context for a nosocomical infection, a routine check-up as processual context for the finding of a tumor, a clinical trial as processual context for the discovery of a new treatment or drug</rdfs:comment>
 	</owl:Class>
 
@@ -432,6 +435,7 @@
 
 	<owl:Class rdf:about="&span;SpatiotemporalInstant">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedSpatiotemporalRegion"/>
+		<owl:disjointWith rdf:resource="&span;SpatiotemporalInterval"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_instant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A connected space time region at a specific moment.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space time region occupied by a single instantaneous temporal slice (part) of a process</rdfs:comment>
@@ -439,6 +443,7 @@
 
 	<owl:Class rdf:about="&span;SpatiotemporalInterval">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedSpatiotemporalRegion"/>
+		<owl:disjointWith rdf:resource="&span;SpatiotemporalInstant"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_interval</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A connected space time region that endures for more than a single moment of time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space time region occupied by a process or by a fiat processual part</rdfs:comment>
