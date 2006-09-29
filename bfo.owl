@@ -32,7 +32,7 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon and Barry Smith: "SNAP and SPAN: Towards Geospatial Dynamics"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Barry Smith and Pierre Grenon: "The Cornucopia of Formal-Ontological Relations"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon, Barry Smith and Louis Goldberg: "Biodynamic Ontology: Applying BFO in the Biomedical Domain"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2006-09-20</dc:date>
+		<dc:date rdf:datatype="&xsd;date">2006-09-29</dc:date>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.0 RC</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc;"/>
 	</owl:Ontology>
@@ -68,7 +68,6 @@
 				<owl:unionOf rdf:parseType="Collection">
 					<owl:Class rdf:about="&snap;DependentContinuant"/>
 					<owl:Class rdf:about="&snap;IndependentContinuant"/>
-					<owl:Class rdf:about="&snap;SpatialRegion"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
@@ -89,7 +88,6 @@
 			</owl:Class>
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">dependent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that can exist and be what it is only if some other entity or entities exist, the existence of which makes its existence possible.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the mass of a cloud, the color of a tomato, the disposition of fish to decay, the property of being a doctor, the function of the heart to pump blood</rdfs:comment>
@@ -110,6 +108,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">fiat_object_part</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is part of an object but is not demarcated by any physical discontinuities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: upper and lower lobes of the left lung, the dorsal and ventral surfaces of the body, the east side of Saarbruecken</rdfs:comment>
@@ -139,7 +138,6 @@
 			</owl:Class>
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">independent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Remark: Full definition to be provided!</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant consisting of a characteristic spatial shape inhering in some arrangement of other continuant entities. Sites are characteristically entities at or in which other continuant entities can be located.</rdfs:comment>
@@ -162,6 +160,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">object</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is self-connected and self-contained, possessing an internal unity and instantiating a natural kind, that maintains identity through time while gaining and losing qualities or parts and that exists in its entirety at any moment in which it exists at all. Independent continuants are self-connected and maintain their identity through time while gaining and losing qualities or parts and exist in their entirety at any moment in which they exist at all.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a symphony orchestra, a chair, the bottom right portion of a human torso, a leg</rdfs:comment>
@@ -173,6 +172,7 @@
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">object_aggregate</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is a mereological sum of separate objects and possesses non-connected boundaries.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a heap of stones, a group of commuters on the subway, a collection of random bacteria, a flock of geese, the patients in a hospital</rdfs:comment>
@@ -184,6 +184,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">object_boundary</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of objects that exist at exactly the point where the object is separated off from the rest of the existing entities in the world.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the surface of the skin, the surface of the earth, the surface of the interior of the stomach, the outer surface of a cell or cell wall</rdfs:comment>
@@ -239,13 +240,14 @@
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is the sum of an independent continuant or entities and a spatial region or spatial regions.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the front lawn of our building, a nasal cavity, a blood vein, an environment, sinuses, canals, ventricles, the lumen of the gastrointestinal tract, the interior of the aorta, the room in which one is located</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;SpatialRegion">
-		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
+		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
@@ -256,8 +258,11 @@
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
-		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;FiatObjectPart"/>
+		<owl:disjointWith rdf:resource="&snap;Object"/>
+		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
+		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
+		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant at or in which other continuants can be located.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space occupied by an appendix, the space that was occupied by an appendix prior to its removal</rdfs:comment>
