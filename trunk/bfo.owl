@@ -134,6 +134,7 @@
 					<owl:Class rdf:about="&snap;ObjectAggregate"/>
 					<owl:Class rdf:about="&snap;ObjectBoundary"/>
 					<owl:Class rdf:about="&snap;Site"/>
+					<owl:Class rdf:about="&snap;SpatialRegion"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
