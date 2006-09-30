@@ -29,9 +29,15 @@
 		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
 		<dc:contributor rdf:datatype="&xsd;string">Andrew Spear</dc:contributor>
 		<dc:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
+		<dc:source rdf:datatype="&xsd;string">Barry Smith: "Against Fantology"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Barry Smith: "Beyond Concepts: Ontology as Reality Representation"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon and Barry Smith: "SNAP and SPAN: Towards Geospatial Dynamics"</dc:source>
-		<dc:source rdf:datatype="&xsd;string">Barry Smith and Pierre Grenon: "The Cornucopia of Formal-Ontological Relations"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon, Barry Smith and Louis Goldberg: "Biodynamic Ontology: Applying BFO in the Biomedical Domain"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Barry Smith and Pierre Grenon: "The Cornucopia of Formal Ontological Relations"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Barry Smith: "Basic Tools of Formal Ontology"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Spatio-temporality in Basic Formal Ontology: SNAP and SPAN, Upper-Level Ontology, and Framework for Formalization"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Nuts in BFO's Nutshell: Revisions to the Bi-categorial Axiomatization of BFO"</dc:source>
 		<dc:date rdf:datatype="&xsd;date">2006-09-29</dc:date>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.0 RC</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc;"/>
@@ -265,7 +271,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant at or in which other continuants can be located.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant at or in which other continuants can be located.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space occupied by an appendix, the space that was occupied by an appendix prior to its removal</rdfs:comment>
 	</owl:Class>
 
