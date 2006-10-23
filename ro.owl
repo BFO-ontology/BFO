@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE rdf:RDF [
-<!ENTITY base "http://www.ifomis.org/ro/1.0">
+<!ENTITY base "http://www.ifomis.org/obo/ro/1.0">
 <!ENTITY ro "&base;#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
 <!ENTITY protege-dc "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#">
