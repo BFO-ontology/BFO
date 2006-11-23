@@ -41,7 +41,7 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Spatio-temporality in Basic Formal Ontology: SNAP and SPAN, Upper-Level Ontology, and Framework for Formalization"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Nuts in BFO's Nutshell: Revisions to the Bi-categorial Axiomatization of BFO"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2006-10-04</dc:date>
+		<dc:date rdf:datatype="&xsd;date">2006-11-23</dc:date>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.0 RC</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc;"/>
 	</owl:Ontology>
@@ -339,7 +339,9 @@
 	<owl:Class rdf:about="&span;FiatProcessPart">
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;Process"/>
+		<owl:disjointWith rdf:resource="&span;ProcessAggregate"/>
 		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
+		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">fiat_process_part</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: chewing during a meal, the middle part of a rainstorm, the worst part of a heart-attack, the most interesting part of Van Gogh’s life</rdfs:comment>
@@ -350,7 +352,6 @@
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&span;ProcessualContext"/>
 					<owl:Class rdf:about="&span;ProcessualEntity"/>
 					<owl:Class rdf:about="&span;SpatiotemporalRegion"/>
 					<owl:Class rdf:about="&span;TemporalRegion"/>
@@ -366,16 +367,30 @@
 	<owl:Class rdf:about="&span;Process">
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;FiatProcessPart"/>
+		<owl:disjointWith rdf:resource="&span;ProcessAggregate"/>
 		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
+		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">process</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is a maximally connected spatio-temporal whole and has bona fide beginnings and endings corresponding to real discontinuities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, the process of sleeping, the process of cell-division</rdfs:comment>
+	</owl:Class>
+
+	<owl:Class rdf:about="&span;ProcessAggregate">
+		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
+		<owl:disjointWith rdf:resource="&span;FiatProcessPart"/>
+		<owl:disjointWith rdf:resource="&span;Process"/>
+		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
+		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
+		<rdfs:label rdf:datatype="&xsd;string">process_aggregate</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is a meriological sum of processes and possesses non-connected boundaries.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the beating of the hearts of each of seven individuals in the room, the playing of each of the members of an orchestra, a process of digestion and a process of thinking taken together</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;ProcessBoundary">
 		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;FiatProcessPart"/>
 		<owl:disjointWith rdf:resource="&span;Process"/>
+		<owl:disjointWith rdf:resource="&span;ProcessAggregate"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">process_boundary</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is the fiat or bona fide process boundary.</rdfs:comment>
@@ -383,10 +398,11 @@
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;ProcessualContext">
-		<rdfs:subClassOf rdf:resource="&span;Occurrent"/>
-		<owl:disjointWith rdf:resource="&span;ProcessualEntity"/>
-		<owl:disjointWith rdf:resource="&span;SpatiotemporalRegion"/>
-		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
+		<rdfs:subClassOf rdf:resource="&span;ProcessualEntity"/>
+		<owl:disjointWith rdf:resource="&span;FiatProcessPart"/>
+		<owl:disjointWith rdf:resource="&span;Process"/>
+		<owl:disjointWith rdf:resource="&span;ProcessAggregate"/>
+		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
 		<rdfs:label rdf:datatype="&xsd;string">processual_context</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent consisting of a characteristic spatial shape inhering in some arrangement of other occurrents. Processual contexts are characteristically entities at or in which other occurrents can be located or occur.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a surgical operation as processual context for a nosocomical infection, a routine check-up as processual context for the finding of a tumor, a clinical trial as processual context for the discovery of a new treatment or drug</rdfs:comment>
@@ -399,11 +415,12 @@
 				<owl:unionOf rdf:parseType="Collection">
 					<owl:Class rdf:about="&span;FiatProcessPart"/>
 					<owl:Class rdf:about="&span;Process"/>
+					<owl:Class rdf:about="&span;ProcessAggregate"/>
 					<owl:Class rdf:about="&span;ProcessBoundary"/>						
+					<owl:Class rdf:about="&span;ProcessualContext"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;SpatiotemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">processual_entity</rdfs:label>
@@ -453,7 +470,6 @@
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_region</rdfs:label>
@@ -487,7 +503,6 @@
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;SpatiotemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">temporal_region</rdfs:label>
