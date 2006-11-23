@@ -77,6 +77,7 @@
 				<owl:unionOf rdf:parseType="Collection">
 					<owl:Class rdf:about="&snap;DependentContinuant"/>
 					<owl:Class rdf:about="&snap;IndependentContinuant"/>
+					<owl:Class rdf:about="&snap;SpatialRegion"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
@@ -97,6 +98,7 @@
 			</owl:Class>
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">dependent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that can exist and be what it is only if some other entity or entities exist, the existence of which makes its existence possible.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the mass of a cloud, the smell of mozzarella, the liquidity of blood, the color of a tomato, the disposition of fish to decay, the property of being a doctor, the function of the heart to pump blood</rdfs:comment>
@@ -117,7 +119,6 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">fiat_object_part</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is part of an object but is not demarcated by any physical discontinuities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: upper and lower lobes of the left lung, the dorsal and ventral surfaces of the body, the east side of Saarbruecken, the lower right portion of a human torso</rdfs:comment>
@@ -142,24 +143,14 @@
 					<owl:Class rdf:about="&snap;ObjectAggregate"/>
 					<owl:Class rdf:about="&snap;ObjectBoundary"/>
 					<owl:Class rdf:about="&snap;Site"/>
-					<owl:Class rdf:about="&snap;SpatialRegion"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">independent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that can exist and be what it is regardless of what other objects exist.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a leg, a person, a symphony orchestra, a chair, the bottom right portion of a human torso, the lawn in front of our building</rdfs:comment>
-	</owl:Class>
-
-	<owl:Class rdf:about="&snap;Line">
-		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:disjointWith rdf:resource="&snap;Point"/>
-		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;Volume"/>
-		<rdfs:label rdf:datatype="&xsd;string">line</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with one dimension.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space occupied by the edge of a table, the (idealized) space occupied by a surgical incision</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;Object">
@@ -168,7 +159,6 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">object</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is maximally self-connected and self-contained, possessing an internal unity and instantiating a natural kind, that maintains identity through time while gaining and losing qualities or parts and that exists in its entirety at any moment in which it exists at all. Independent continuants are self-connected and maintain their identity through time while gaining and losing qualities or parts and exist in their entirety at any moment in which they exist at all.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a symphony orchestra, a chair, the bottom right portion of a human torso, a leg</rdfs:comment>
@@ -180,7 +170,6 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">object_aggregate</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is a mereological sum of separate objects and possesses non-connected boundaries.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a heap of stones, a group of commuters on the subway, a collection of random bacteria, a flock of geese, the patients in a hospital</rdfs:comment>
@@ -192,20 +181,19 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">object_boundary</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of objects that exist at exactly the point where the object is separated off from the rest of the existing entities in the world.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the surface of the skin, the surface of the earth, the surface of the interior of the stomach, the outer surface of a cell or cell wall</rdfs:comment>
 	</owl:Class>
 
-	<owl:Class rdf:about="&snap;Point">
+	<owl:Class rdf:about="&snap;OneDimensionalRegion">
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<owl:disjointWith rdf:resource="&snap;Volume"/>
-		<rdfs:label rdf:datatype="&xsd;string">point</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with no dimensions.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: a point</rdfs:comment>
+		<owl:disjointWith rdf:resource="&snap;ThreeDimensionalRegion"/>
+		<owl:disjointWith rdf:resource="&snap;TwoDimensionalRegion"/>
+		<owl:disjointWith rdf:resource="&snap;ZeroDimensionalRegion"/>
+		<rdfs:label rdf:datatype="&xsd;string">one_dimensional_region</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with one dimension.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space occupied by the edge of a table, the (idealized) space occupied by a surgical incision</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;Quality">
@@ -248,52 +236,58 @@
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant consisting of a characteristic spatial shape inhering in some arrangement of other continuant entities and of that which is enclosed in whole or in part by this characteristic spatial shape. Sites are characteristically entities at or in which other continuant entities can be located.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the front lawn of our building, a nasal cavity, a blood vein, an environment, sinuses, canals, ventricles, the lumen of the gastrointestinal tract, the interior of the aorta, the room in which one is located</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;SpatialRegion">
-		<rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&snap;Line"/>
-					<owl:Class rdf:about="&snap;Point"/>
-					<owl:Class rdf:about="&snap;Surface"/>
-					<owl:Class rdf:about="&snap;Volume"/>
+					<owl:Class rdf:about="&snap;OneDimensionalRegion"/>
+					<owl:Class rdf:about="&snap;ThreeDimensionalRegion"/>
+					<owl:Class rdf:about="&snap;TwoDimensionalRegion"/>
+					<owl:Class rdf:about="&snap;ZeroDimensionalRegion"/>
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<owl:disjointWith rdf:resource="&snap;FiatObjectPart"/>
-		<owl:disjointWith rdf:resource="&snap;Object"/>
-		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
-		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
-		<owl:disjointWith rdf:resource="&snap;Site"/>
+		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant possessing zero, one, two or three dimensions, at or in which other continuants can be located at.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space occupied by an appendix, the space that was occupied by an appendix prior to its removal, the space constitutive of a nasal cavity</rdfs:comment>
 	</owl:Class>
 
-	<owl:Class rdf:about="&snap;Surface">
+	<owl:Class rdf:about="&snap;ThreeDimensionalRegion">
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;Point"/>
-		<owl:disjointWith rdf:resource="&snap;Volume"/>
-		<rdfs:label rdf:datatype="&xsd;string">surface</rdfs:label>
+		<owl:disjointWith rdf:resource="&snap;OneDimensionalRegion"/>
+		<owl:disjointWith rdf:resource="&snap;TwoDimensionalRegion"/>
+		<owl:disjointWith rdf:resource="&snap;ZeroDimensionalRegion"/>
+		<rdfs:label rdf:datatype="&xsd;string">three_dimensional_region</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with three dimensions.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: a cube, the inside of a skull, the space occupied by a pulmonary artery</rdfs:comment>
+	</owl:Class>
+
+	<owl:Class rdf:about="&snap;TwoDimensionalRegion">
+		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
+		<owl:disjointWith rdf:resource="&snap;OneDimensionalRegion"/>
+		<owl:disjointWith rdf:resource="&snap;ThreeDimensionalRegion"/>
+		<owl:disjointWith rdf:resource="&snap;ZeroDimensionalRegion"/>
+		<rdfs:label rdf:datatype="&xsd;string">two_dimensional_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with two dimensions.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the surface of the Atlantic Ocean, the surface of a patients skin, the surface of the interior lining of the stomach</rdfs:comment>
 	</owl:Class>
 
-	<owl:Class rdf:about="&snap;Volume">
+	<owl:Class rdf:about="&snap;ZeroDimensionalRegion">
 		<rdfs:subClassOf rdf:resource="&snap;SpatialRegion"/>
-		<owl:disjointWith rdf:resource="&snap;Line"/>
-		<owl:disjointWith rdf:resource="&snap;Point"/>
-		<owl:disjointWith rdf:resource="&snap;Surface"/>
-		<rdfs:label rdf:datatype="&xsd;string">volume</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with three dimensions.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: a cube, the inside of a skull, the space occupied by a pulmonary artery</rdfs:comment>
+		<owl:disjointWith rdf:resource="&snap;OneDimensionalRegion"/>
+		<owl:disjointWith rdf:resource="&snap;ThreeDimensionalRegion"/>
+		<owl:disjointWith rdf:resource="&snap;TwoDimensionalRegion"/>
+		<rdfs:label rdf:datatype="&xsd;string">zero_dimensional_region</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with no dimensions.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: a point</rdfs:comment>
 	</owl:Class>
 
 
