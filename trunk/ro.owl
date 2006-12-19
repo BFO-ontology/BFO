@@ -37,6 +37,7 @@
 	<owl:ObjectProperty rdf:ID="agentIn">
 		<rdfs:label rdf:datatype="&xsd;string">agent_in</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string"/>
+		<rdfs:subPropertyOf rdf:resource="#participatesIn"/>
 		<owl:inverseOf rdf:resource="#hasAgent"/>
 	</owl:ObjectProperty>
 	<owl:ObjectProperty rdf:ID="containedIn">
@@ -64,6 +65,7 @@
 	<owl:ObjectProperty rdf:ID="hasAgent">
 		<rdfs:label rdf:datatype="&xsd;string">has_agent</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">As for hasParticipant, but with the additional condition that the component instance is causally active in the relevant process</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="#hasParticipant"/>
 		<owl:inverseOf rdf:resource="#agentIn"/>
 	</owl:ObjectProperty>
 	<owl:TransitiveProperty rdf:ID="hasPart">
