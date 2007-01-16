@@ -42,7 +42,7 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Nuts in BFO's Nutshell: Revisions to the Bi-categorial Axiomatization of BFO"</dc:source>
 		<dc:date rdf:datatype="&xsd;date">2006-12-06</dc:date>
-		<owl:versionInfo rdf:datatype="&xsd;string">1.0 RC</owl:versionInfo>
+		<owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc;"/>
 	</owl:Ontology>
 
