@@ -101,7 +101,7 @@
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">dependent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that inheres in or is born by other entities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that inheres in or is borne by other entities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the mass of a cloud, the smell of mozzarella, the liquidity of blood, the color of a tomato, the disposition of fish to decay, the role of being a doctor, the function of the heart to pump blood</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: property, trope, mode</rdfs:comment>
 	</owl:Class>
