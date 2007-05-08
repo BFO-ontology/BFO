@@ -4,7 +4,8 @@
 <!ENTITY base "http://www.ifomis.org/obo/ro/1.0">
 <!ENTITY ro "&base;#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
-<!ENTITY protege-dc "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#">
+<!ENTITY protege-dc-import "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl">
+<!ENTITY protege-dc "&protege-dc-import;#">
 <!ENTITY w3 "http://www.w3.org">
 <!ENTITY owl "&w3;/2002/07/owl#">
 <!ENTITY rdf "&w3;/1999/02/22-rdf-syntax-ns#">
@@ -27,7 +28,7 @@
 		<dc:source rdf:datatype="&xsd;string">Barry Smith, Werner Ceusters, Bert Klagges, Jacob Koehler, Anand Kumar, Jane Lomax, Chris Mungall, Fabian Neuhaus, Alan Rector and Cornelius Rosse: "Relations in Biomedical Ontologies"</dc:source>
 		<dc:date rdf:datatype="&xsd;date">2006-10-17</dc:date>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.0 RC</owl:versionInfo>
-		<owl:imports rdf:resource="&protege-dc;"/>
+		<owl:imports rdf:resource="&protege-dc-import;"/>
     </owl:Ontology>
 	<owl:ObjectProperty rdf:ID="adjacentTo">
 		<rdfs:label rdf:datatype="&xsd;string">adjacent_to</rdfs:label>
