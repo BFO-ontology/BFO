@@ -247,7 +247,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant consisting of a characteristic spatial shape in relation to some arrangement of other continuants and of the medium which is enclosed in whole or in part by this characteristic spatial shape. Sites are entities that can be occupied by other continuants.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: a city, a nasal cavity, a blood vein, an environment, sinuses, canals, ventricles, the lumen of the gastrointestinal tract, the location of the battle of Austerlitz, the interior of the aorta, the room in which one is located, the top of one’s desk including the things that are on it and the atmosphere surrounding them.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: a city, a nasal cavity, a blood vein, an environment, sinuses, canals, ventricles, the lumen of the gastrointestinal tract, the location of the battle of Austerlitz, the interior of the aorta, the room in which one is located, the top of one's desk including the things that are on it and the atmosphere surrounding them.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Comment: Sites should not be confused with spatial regions. Sites characteristically have a filling or medium and are capable of altering their spatial location (moving from one spatial region to another) without altering their identity.</rdfs:comment>
 	</owl:Class>
 
@@ -322,7 +322,7 @@
 		<owl:disjointWith rdf:resource="&span;ScatteredSpatiotemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">connected_spatiotemporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A space time region that has temporal and spatial dimensions such that all points within the spatiotemporal region are mediately or immediately connected to all other points within the same space time region.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the spatial and temporal location of an individual organism’s life, the spatial and temporal location of the development of a fetus</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the spatial and temporal location of an individual organism's life, the spatial and temporal location of the development of a fetus</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;ConnectedTemporalRegion">
@@ -349,7 +349,7 @@
 		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">fiat_process_part</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: chewing during a meal, the middle part of a rainstorm, the worst part of a heart-attack, the most interesting part of Van Gogh’s life</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: chewing during a meal, the middle part of a rainstorm, the worst part of a heart-attack, the most interesting part of Van Gogh's life</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;Occurrent">
@@ -366,7 +366,7 @@
 		<owl:disjointWith rdf:resource="&snap;Continuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">occurrent</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An entity that has temporal parts and that happens, unfolds or develops through time. Sometimes also called perdurants.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, a surgical operation as processual context for a nosocomical infection, the spatiotemporal context occupied by a process of cellular meiosis, the most interesting part of Van Gogh’s life, the spatiotemporal region occupied by the development of a cancer tumor</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, a surgical operation as processual context for a nosocomical infection, the spatiotemporal context occupied by a process of cellular meiosis, the most interesting part of Van Gogh's life, the spatiotemporal region occupied by the development of a cancer tumor</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: perdurant</rdfs:comment>
 	</owl:Class>
 
@@ -482,7 +482,7 @@
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent at or in which processual entities can be located.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal context occupied by a process of cellular meiosis</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: This is the time and space within which occurrents exist. Occurrents exist in space and time in a different way from that in which continuants do and thus the space and time in which they exist is itself different. Spatiotemporal region’s importance is primarily theoretical and it will not be used often in most domain ontology applications.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: This is the time and space within which occurrents exist. Occurrents exist in space and time in a different way from that in which continuants do and thus the space and time in which they exist is itself different. Spatiotemporal region's importance is primarily theoretical and it will not be used often in most domain ontology applications.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;TemporalInstant">
