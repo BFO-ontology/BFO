@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE rdf:RDF [
-<!ENTITY base "http://www.ifomis.org/bfo/1.0">
+<!ENTITY base "http://www.ifomis.org/bfo/1.1">
 <!ENTITY bfo "&base;#">
 <!ENTITY snap "&base;/snap#">
 <!ENTITY span "&base;/span#">
@@ -42,8 +42,8 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Spatio-temporality in Basic Formal Ontology: SNAP and SPAN, Upper-Level Ontology, and Framework for Formalization"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Nuts in BFO's Nutshell: Revisions to the Bi-categorial Axiomatization of BFO"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2007-05-08</dc:date>
-		<owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
+		<dc:date rdf:datatype="&xsd;date">2007-05-12</dc:date>
+		<owl:versionInfo rdf:datatype="&xsd;string">1.1 beta</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc-import;"/>
 	</owl:Ontology>
 
@@ -76,8 +76,9 @@
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&snap;DependentContinuant"/>
+					<owl:Class rdf:about="&snap;GenericallyDependentContinuant"/>
 					<owl:Class rdf:about="&snap;IndependentContinuant"/>
+					<owl:Class rdf:about="&snap;SpecificallyDependentContinuant"/>
 					<owl:Class rdf:about="&snap;SpatialRegion"/>
 				</owl:unionOf>
 			</owl:Class>
@@ -87,24 +88,6 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a heart, a person, the color of a tomato, the mass of a cloud, a symphony orchestra, the disposition of blood to coagulate, the lawn and atmosphere in front of our building</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: endurant</rdfs:comment>
-	</owl:Class>
-
-	<owl:Class rdf:about="&snap;DependentContinuant">
-		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<owl:Class rdf:about="&snap;Quality"/>
-					<owl:Class rdf:about="&snap;RealizableEntity"/>
-				</owl:unionOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
-		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
-		<rdfs:label rdf:datatype="&xsd;string">dependent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that inheres in or is borne by other entities.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the mass of a cloud, the smell of mozzarella, the liquidity of blood, the color of a tomato, the disposition of fish to decay, the role of being a doctor, the function of the heart to pump blood</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: property, trope, mode</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;Disposition">
@@ -137,6 +120,15 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the function of a birth canal to enable transport, the function of the heart in the body to pump blood, the function of reproduction in the transmission of genetic material, the digestive function of the stomach to nutriate the body, the function of a hammer to drive in nails, the function of a computer program to compute mathematical equations, the function of an automobile to provide transportation, the function of a judge in a court of law</rdfs:comment>
 	</owl:Class>
 
+	<owl:Class rdf:about="&snap;GenericallyDependentContinuant">
+		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
+		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
+		<owl:disjointWith rdf:resource="&snap;SpecificallyDependentContinuant"/>
+		<rdfs:label rdf:datatype="&xsd;string">generically_dependent_continuant</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that is dependent on one or other independent continuant bearers.</rdfs:comment>
+	</owl:Class>
+
 	<owl:Class rdf:about="&snap;IndependentContinuant">
 		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
 		<owl:equivalentClass>
@@ -150,8 +142,9 @@
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;GenericallyDependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
+		<owl:disjointWith rdf:resource="&snap;SpecificallyDependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">independent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that is a bearer of qualities and realizable entities, in which other entities inhere and which itself cannot inhere in anything.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a leg, a person, a symphony orchestra, a chair, the bottom right portion of a human torso, the lawn and atmosphere in front of our building</rdfs:comment>
@@ -206,15 +199,15 @@
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;Quality">
-		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
+		<rdfs:subClassOf rdf:resource="&snap;SpecificallyDependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;RealizableEntity"/>
 		<rdfs:label rdf:datatype="&xsd;string">quality</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A dependent continuant that is exhibited if it inheres in an entity or entities at all (a categorical property).</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A specifically dependent continuant that is exhibited if it inheres in an entity or entities at all (a categorical property).</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the color of a tomato, the ambient temperature of air, the circumference of a waist, the shape of a nose, the mass of a piece of gold, the weight of a chimpanzee</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;RealizableEntity">
-		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
+		<rdfs:subClassOf rdf:resource="&snap;SpecificallyDependentContinuant"/>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">					
@@ -226,7 +219,7 @@
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<rdfs:label rdf:datatype="&xsd;string">realizable_entity</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A dependent continuant that inheres in continuants and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A specifically dependent continuant that inheres in continuants and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the role of being a doctor, the function of the reproductive organs, the disposition of blood to coagulate, the disposition of metal to conduct electricity</rdfs:comment>
 	</owl:Class>
 
@@ -263,12 +256,32 @@
 				</owl:unionOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;GenericallyDependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;SpecificallyDependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is neither bearer of qualities nor inheres in any other entities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the sum total of all space in the universe, parts of the sum total of all space in the universe</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Comment: Spatial regions should not be confused with sites. Spatial regions exist as parts of pure or absolute space, have a dimensionality and a shape but require no filling in order to exist and are also immobile.</rdfs:comment>
+	</owl:Class>
+
+	<owl:Class rdf:about="&snap;SpecificallyDependentContinuant">
+		<rdfs:subClassOf rdf:resource="&snap;Continuant"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="&snap;Quality"/>
+					<owl:Class rdf:about="&snap;RealizableEntity"/>
+				</owl:unionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<owl:disjointWith rdf:resource="&snap;GenericallyDependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
+		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
+		<rdfs:label rdf:datatype="&xsd;string">specifically_dependent_continuant</rdfs:label>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that inheres in or is borne by other entities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the mass of a cloud, the smell of mozzarella, the liquidity of blood, the color of a tomato, the disposition of fish to decay, the role of being a doctor, the function of the heart to pump blood</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: property, trope, mode</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;ThreeDimensionalRegion">
