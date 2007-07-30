@@ -171,7 +171,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<rdfs:label rdf:datatype="&xsd;string">object</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A independent continuant that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial objects is independent of that of other entities and can be maintained through time and through loss and gain of parts and qualities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A independent continuant that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial objects is independent of that of other entities and can be maintained through time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a chair, a lung, an apple</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: substance</rdfs:comment>
 	</owl:Class>
@@ -221,15 +221,6 @@
 
 	<owl:Class rdf:about="&snap;RealizableEntity">
 		<rdfs:subClassOf rdf:resource="&snap;SpecificallyDependentContinuant"/>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">					
-					<owl:Class rdf:about="&snap;Disposition"/>			
-					<owl:Class rdf:about="&snap;Function"/>				
-					<owl:Class rdf:about="&snap;Role"/>						
-				</owl:unionOf>
-			</owl:Class>
-		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<rdfs:label rdf:datatype="&xsd;string">realizable_entity</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A specifically dependent continuant that inheres in continuants and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</rdfs:comment>
@@ -253,8 +244,8 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant consisting of a characteristic spatial shape in relation to some arrangement of other continuants and of the medium which is enclosed in whole or in part by this characteristic spatial shape. Sites are entities that can be occupied by other continuants.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: a city, a nasal cavity, a blood vein, an environment, sinuses, canals, ventricles, the lumen of the gastrointestinal tract, the location of the battle of Austerlitz, the interior of the aorta, the room in which one is located, the top of one's desk including the things that are on it and the atmosphere surrounding them.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: Sites should not be confused with spatial regions. Sites characteristically have a filling or medium and are capable of altering their spatial location (moving from one spatial region to another) without altering their identity.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: a particular room in a particular hospital, Maria's nostril or her intestines for a variety of bacteria.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the class site is a mixture of independent continuants which act as surrounding environments for other independent continuants, most importantly for instances of the class object. A site is typically made of objects or parts of an object and a surrounding medium in which is found an object occupying the site. Independent continuants may be associated with others (which, then, are sites) through a relation of "occupation". That relation is connected to, but distinct from, the relation of spatial location. Sites are not to be confused with spatial regions. In BFO, The class site allows for a so-called relational view of space which is different from the view corresponding to the class spatial region (see the comment on this class).</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;SpatialRegion">
@@ -274,7 +265,9 @@
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is neither bearer of qualities nor inheres in any other entities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the sum total of all space in the universe, parts of the sum total of all space in the universe</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: Spatial regions should not be confused with sites. Spatial regions exist as parts of pure or absolute space, have a dimensionality and a shape but require no filling in order to exist and are also immobile.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the class spatial region is a part of space. All parts of space are spatial regions and only spatial regions are parts of space. Space is the entire extent of the spatial universe, a designated individual, which is thus itself a spatial region.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of the class continuant are spatial entities, that is, they enter in the relation of (spatial) location with spatial regions. As a particular case, the exact spatial location of a spatial region is this region itself.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: Space and spatial regions are entities in their own rights which exist independently of any entities which can be located at them. This view of space is sometimes called "absolutist" or "the container view". In BFO, the class site allows for a so-called relational view of space, that is to say, a view according to which spatiality is a matter of relative location between entities and not a matter of being tied to space. The bridge between these two views is secured through the fact that while instances of the class site are not spatial regions, they are nevertheless spatial entities.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;SpecificallyDependentContinuant">
@@ -434,8 +427,8 @@
 		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
 		<rdfs:label rdf:datatype="&xsd;string">processual_context</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent consisting of a characteristic spatial shape inhering in some arrangement of other occurrents. Processual contexts are characteristically entities at or in which other occurrents can be located or occur.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: a surgical operation as processual context for a nosocomical infection, a routine check-up as processual context for the finding of a tumor, a clinical trial as processual context for the discovery of a new treatment or drug</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: setting</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: The processual context for a given manipulation occurring as part of an experiment is made of processual entities which occur in parallel, are not necessarily all parts of the experiment themselves and may involve  continuants which are in the spatial vicinity of the participants in the experiment.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of a processual context is a mixture of processual entities which stand as surrounding environments for other processual entities. The class processual context is the analogous among occurrents to the SNAP class site among continuants.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;ProcessualEntity">
@@ -505,7 +498,9 @@
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent at or in which processual entities can be located.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal context occupied by a process of cellular meiosis</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: This is the time and space within which occurrents exist. Occurrents exist in space and time in a different way from that in which continuants do and thus the space and time in which they exist is itself different. Spatiotemporal region's importance is primarily theoretical and it will not be used often in most domain ontology applications.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the class spatiotemporal region is a part of spacetime. All parts of spacetime are spatiotemporal regions and only spatiotemporal regions are parts of spacetime. In particular, neither spatial regions (see SNAP spatial region) nor temporal regions (see SPAN temporal region) are in BFO parts of spacetime. Spacetime is the entire extent of the spatiotemporal universe, a designated individual, which is thus itself a spatiotemporal region. Spacetime is among occurrents the analogous of space among continuants.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of the class occurrent are spatiotemporal entities, that is, they enter in the relation of (spatiotemporal) location with spatiotemporal regions. As a particular case, the exact spatiotemporal location of a spatiotemporal region is this region itself.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: Spacetime and spatiotemporal regions are entities in their own rights which exist independently of any entities which can be located at them. This view of spacetime can be called "absolutist" or "the container view". In BFO, the class processual context allows for a so-called relational view of spacetime, that is to say, a view according to which spatiotemporality is a matter of relative location between entities and not a matter of being tied to spacetime. In BFO, the bridge between these two views is secured through the fact that instances of the class processual context are too spatiotemporal entities.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;TemporalInstant">
@@ -539,6 +534,8 @@
 		<rdfs:label rdf:datatype="&xsd;string">temporal_region</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent that is part of time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the time it takes to run a marathon, the duration of a surgical procedure, the moment of death</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: This is the time that is common to both SNAP and SPAN entities. The time of temporal region and its sub-classes will normally be the time that should be referred to when sub-classing universals having to do with time in an ontology.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the class temporal region is a part of time. All parts of time are temporal regions and only temporal regions are parts of time. Time is the entire extent of the temporal universe, a designated individual, which is thus a temporal region itself.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of the class occurrent are temporal entities, that is, they enter in the relation of (temporal) location with temporal regions. As a particular case, the exact spatiotemporal location of a spatiotemporal region is this region itself. Continuants are not temporal entities in the technical sense just explained; they are related to time in a different way, not through temporal location but through a relation of existence at a time or during a period of time (see SNAP continuant).</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: Time and temporal regions are entities in their own rights which exist independently of any entities which can be located at them. This view of time can be called "absolutist" or "the container view" in analogy to what is traditionally the case with space (see SNAP spatial region).</rdfs:comment>
 	</owl:Class>
 </rdf:RDF>
