@@ -225,6 +225,7 @@
 		<rdfs:label rdf:datatype="&xsd;string">realizable_entity</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A specifically dependent continuant that inheres in continuants and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the role of being a doctor, the function of the reproductive organs, the disposition of blood to coagulate, the disposition of metal to conduct electricity</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: If a realizable entity inheres in a continuant, this does not imply that it is actually realized.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;Role">
