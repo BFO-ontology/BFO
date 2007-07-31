@@ -29,6 +29,8 @@
 		<dc:title rdf:datatype="&xsd;string">Basic Formal Ontology (BFO)</dc:title>
 		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
 		<dc:contributor rdf:datatype="&xsd;string">Andrew Spear</dc:contributor>
+		<dc:contributor rdf:datatype="&xsd;string">Pierre Grenon</dc:contributor>
+		<dc:contributor rdf:datatype="&xsd;string">Allen Ruttenberg</dc:contributor>
 		<dc:publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
 		<dc:identifier rdf:datatype="&xsd;string">&base;</dc:identifier>
 		<dc:format rdf:datatype="&xsd;string">application/rdf+xml</dc:format>
@@ -42,7 +44,7 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Spatio-temporality in Basic Formal Ontology: SNAP and SPAN, Upper-Level Ontology, and Framework for Formalization"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Nuts in BFO's Nutshell: Revisions to the Bi-categorial Axiomatization of BFO"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2007-05-12</dc:date>
+		<dc:date rdf:datatype="&xsd;date">2007-07-31</dc:date>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.1 beta</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc-import;"/>
 	</owl:Ontology>
@@ -84,7 +86,7 @@
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&span;Occurrent"/>
 		<rdfs:label rdf:datatype="&xsd;string">continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "bfo:Entity" ("entity") that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a heart, a person, the color of a tomato, the mass of a cloud, a symphony orchestra, the disposition of blood to coagulate, the lawn and atmosphere in front of our building</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: endurant</rdfs:comment>
 	</owl:Class>
@@ -102,7 +104,7 @@
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">dependent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that is either dependent on one or other independent continuant bearers or inheres in or is borne by other entities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:Continuant" ("continuant") that is either dependent on one or other "snap:IndependentContinuant" ("independent_continuant") bearers or inheres in or is borne by other entities.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;Disposition">
@@ -110,7 +112,7 @@
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<rdfs:label rdf:datatype="&xsd;string">disposition</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A realizable entity that essentially causes a specific process or transformation in the object in which it inheres, under specific circumstances and in conjunction with the laws of nature. A general formula for dispositions is: X (object) has the disposition D to (transform, initiate a process) R under conditions C.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:RealizableEntity" ("realizable_entity") that essentially causes a specific process or transformation in the "snap:Object" ("object") in which it inheres, under specific circumstances and in conjunction with the laws of nature. A general formula for dispositions is: X ("snap:Object" ("object")) has the disposition D to (transform, initiate a process) R under conditions C.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the disposition of vegetables to decay when not refrigerated, the disposition of a vase to brake if dropped, the disposition of blood to coagulate, the disposition of a patient with a weakened immune system to contract disease, the disposition of metal to conduct electricity.</rdfs:comment>
 	</owl:Class>
 
@@ -121,7 +123,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<rdfs:label rdf:datatype="&xsd;string">fiat_object_part</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is part of an object but is not demarcated by any physical discontinuities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:IndependentContinuant" ("independent_continuant") that is part of a "snap:Object" ("object") but is not demarcated by any physical discontinuities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: upper and lower lobes of the left lung, the dorsal and ventral surfaces of the body, the east side of Saarbruecken, the lower right portion of a human torso</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: fiat substance part</rdfs:comment>
 	</owl:Class>
@@ -131,7 +133,7 @@
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<rdfs:label rdf:datatype="&xsd;string">function</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A realizable entity the manifestation of which is an essentialy end-directed activity of a continuant entity in virtue of that continuant entity being a specific kind of entity in the kind or kinds of contexts that it is made for.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:RealizableEntity" ("realizable_entity") the manifestation of which is an essentialy end-directed activity of a "snap:Continuant" ("continuant") entity in virtue of that "snap:Continuant" ("continuant") entity being a specific kind of entity in the kind or kinds of contexts that it is made for.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the function of a birth canal to enable transport, the function of the heart in the body to pump blood, the function of reproduction in the transmission of genetic material, the digestive function of the stomach to nutriate the body, the function of a hammer to drive in nails, the function of a computer program to compute mathematical equations, the function of an automobile to provide transportation, the function of a judge in a court of law</rdfs:comment>
 	</owl:Class>
 
@@ -139,7 +141,7 @@
 		<rdfs:subClassOf rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpecificallyDependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">generically_dependent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that is dependent on one or other independent continuant bearers. For every instance of A requires some instance of (an independent continuant type) B but which instance of B serves can change from time to time.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:Continuant" ("continuant") that is dependent on one or other "snap:IndependentContinuant" ("independent_continuant") bearers. For every instance of A requires some instance of (a "snap:IndependentContinuant" ("independent_continuant") type) B but which instance of B serves can change from time to time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a certain PDF file that exists in different and in several hard drives</rdfs:comment>
 	</owl:Class>
 
@@ -159,7 +161,7 @@
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;SpatialRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">independent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that is a bearer of qualities and realizable entities, in which other entities inhere and which itself cannot inhere in anything.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:Continuant" ("continuant") that is a bearer of "snap:Quality" ("quality") and "snap:RealizableEntity" ("realizable_entity") entities, in which other entities inhere and which itself cannot inhere in anything.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a leg, a person, a symphony orchestra, a chair, the bottom right portion of a human torso, the lawn and atmosphere in front of our building</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: substantial entity</rdfs:comment>
 	</owl:Class>
@@ -171,7 +173,7 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<rdfs:label rdf:datatype="&xsd;string">object</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A independent continuant that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial objects is independent of that of other entities and can be maintained through time.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:IndependentContinuant" ("independent_continuant") that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial "snap:Object" ("object") entities is independent of that of other entities and can be maintained through time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: an organism, a heart, a chair, a lung, an apple</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: substance</rdfs:comment>
 	</owl:Class>
@@ -183,7 +185,7 @@
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<rdfs:label rdf:datatype="&xsd;string">object_aggregate</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is a mereological sum of separate objects and possesses non-connected boundaries.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:IndependentContinuant" ("independent_continuant") that is a mereological sum of separate "snap:Object" ("object") entities and possesses non-connected boundaries.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a heap of stones, a group of commuters on the subway, a collection of random bacteria, a flock of geese, the patients in a hospital</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: substance aggregate</rdfs:comment>
 	</owl:Class>
@@ -195,7 +197,7 @@
 		<owl:disjointWith rdf:resource="&snap;Object"/>
 		<owl:disjointWith rdf:resource="&snap;Site"/>
 		<rdfs:label rdf:datatype="&xsd;string">object_boundary</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of objects that exist at exactly the point where the object is separated off from the rest of the existing entities in the world.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:IndependentContinuant" ("independent_continuant") that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of "snap:Object" ("object") entities that exist at exactly the point where the "snap:Object" ("object") is separated off from the rest of the existing entities in the world.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the surface of the skin, the surface of the earth, the surface of the interior of the stomach, the outer surface of a cell or cell wall</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: substance boundary</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Comment: Boundaries are theoretically difficult entities to account for, however the intuitive notion of a physical boundary as a surface of some sort (whether inside or outside of a thing) will generally serve as a good guide for the use of this universal.</rdfs:comment>
@@ -207,7 +209,7 @@
 		<owl:disjointWith rdf:resource="&snap;TwoDimensionalRegion"/>
 		<owl:disjointWith rdf:resource="&snap;ZeroDimensionalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">one_dimensional_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with one dimension.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:SpatialRegion" ("spatial_region") with one dimension.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the part of space that is a line stretching from one end of absolute space to the other, an edge of a cube-shaped part of space</rdfs:comment>
 	</owl:Class>
 
@@ -215,7 +217,7 @@
 		<rdfs:subClassOf rdf:resource="&snap;SpecificallyDependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;RealizableEntity"/>
 		<rdfs:label rdf:datatype="&xsd;string">quality</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A specifically dependent continuant that is exhibited if it inheres in an entity or entities at all (a categorical property).</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:SpecificallyDependentContinuant" ("specifically_dependent_continuant") that is exhibited if it inheres in an entity or entities at all (a categorical property).</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the color of a tomato, the ambient temperature of air, the circumference of a waist, the shape of a nose, the mass of a piece of gold, the weight of a chimpanzee</rdfs:comment>
 	</owl:Class>
 
@@ -223,9 +225,9 @@
 		<rdfs:subClassOf rdf:resource="&snap;SpecificallyDependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;Quality"/>
 		<rdfs:label rdf:datatype="&xsd;string">realizable_entity</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A specifically dependent continuant that inheres in continuants and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:SpecificallyDependentContinuant" ("specifically_dependent_continuant") that inheres in "snap:Continuant" ("continuant") entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the role of being a doctor, the function of the reproductive organs, the disposition of blood to coagulate, the disposition of metal to conduct electricity</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: If a realizable entity inheres in a continuant, this does not imply that it is actually realized.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: If a "snap:RealizableEntity" ("realizable_entity") inheres in a "snap:Continuant" ("continuant"), this does not imply that it is actually realized.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;Role">
@@ -233,7 +235,7 @@
 		<owl:disjointWith rdf:resource="&snap;Disposition"/>
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<rdfs:label rdf:datatype="&xsd;string">role</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A realizable entity the manifestation of which brings about some result or end that is not essential to a continuant in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant in some kinds of natural, social or institutional contexts.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:RealizableEntity" ("realizable_entity") the manifestation of which brings about some result or end that is not essential to a "snap:Continuant" ("continuant") in virtue of the kind of thing that it is but that can be served or participated in by that kind of "snap:Continuant" ("continuant") in some kinds of natural, social or institutional contexts.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the role of a person as a surgeon, the role of an artificial heart in pumping blood, the role of a chemical compound in an experiment, the role of a drug in the treatment of a disease, the role of a patient relative as defined by a hospital administrative form, the role of a woman as a legal mother in the context of system of laws, the role of a biological grandfather as legal guardian in the context of a system of laws, the role of a tree in maintaining stability in an ecosystem, the role of ingested matter in digestion</rdfs:comment>
 	</owl:Class>
 
@@ -244,9 +246,9 @@
 		<owl:disjointWith rdf:resource="&snap;ObjectAggregate"/>
 		<owl:disjointWith rdf:resource="&snap;ObjectBoundary"/>
 		<rdfs:label rdf:datatype="&xsd;string">site</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant consisting of a characteristic spatial shape in relation to some arrangement of other continuants and of the medium which is enclosed in whole or in part by this characteristic spatial shape. Sites are entities that can be occupied by other continuants.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:IndependentContinuant" ("independent_continuant") consisting of a characteristic spatial shape in relation to some arrangement of other "snap:Continuant" ("continuant") entities and of the medium which is enclosed in whole or in part by this characteristic spatial shape. "snap:Site" ("site") entities are entities that can be occupied by other "snap:Continuant" ("continuant") entities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a particular room in a particular hospital, Maria's nostril or her intestines for a variety of bacteria.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the class site is a mixture of independent continuants which act as surrounding environments for other independent continuants, most importantly for instances of the class object. A site is typically made of objects or parts of an object and a surrounding medium in which is found an object occupying the site. Independent continuants may be associated with others (which, then, are sites) through a relation of "occupation". That relation is connected to, but distinct from, the relation of spatial location. Sites are not to be confused with spatial regions. In BFO, The class site allows for a so-called relational view of space which is different from the view corresponding to the class spatial region (see the comment on this class).</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of "snap:Site" ("Site") is a mixture of "snap:IndependentContinuant" ("independent_continuant") entities which act as surrounding environments for other "snap:IndependentContinuant" ("independent_continuant") entities, most importantly for instances of "snap:Object" ("object"). A "snap:Site" ("site") is typically made of "snap:Object" ("object") or "snap:FiatObjectPart" ("fiat_object_part") entities and a surrounding medium in which is found a "snap:Object" ("object") occupying the "snap:Site" ("site"). "snap:IndependentContinuant" ("independent_continuant") entities may be associated with others (which, then, are sites) through a relation of "occupation". That relation is connected to, but distinct from, the relation of spatial location. "snap:Site" ("site") entities are not to be confused with "snap:SpatialRegion" ("spatial_region") entities. In BFO, "snap:Site" ("site") allows for a so-called relational view of space which is different from the view corresponding to the class "snap:SpatialRegion" ("spatial_region") (see the comment on this class).</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;SpatialRegion">
@@ -264,11 +266,11 @@
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant that is neither bearer of qualities nor inheres in any other entities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:IndependentContinuant" ("independent_continuant") that is neither bearer of "snap:Quality" ("quality") entities nor inheres in any other entities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the sum total of all space in the universe, parts of the sum total of all space in the universe</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the class spatial region is a part of space. All parts of space are spatial regions and only spatial regions are parts of space. Space is the entire extent of the spatial universe, a designated individual, which is thus itself a spatial region.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of the class continuant are spatial entities, that is, they enter in the relation of (spatial) location with spatial regions. As a particular case, the exact spatial location of a spatial region is this region itself.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: Space and spatial regions are entities in their own rights which exist independently of any entities which can be located at them. This view of space is sometimes called "absolutist" or "the container view". In BFO, the class site allows for a so-called relational view of space, that is to say, a view according to which spatiality is a matter of relative location between entities and not a matter of being tied to space. The bridge between these two views is secured through the fact that while instances of the class site are not spatial regions, they are nevertheless spatial entities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of "snap:SpatialRegion" ("spatial_region") is a part of space. All parts of space are "snap:SpatialRegion" ("spatial_region") entities and only "snap:SpatialRegion" ("spatial_region") entities are parts of space. Space is the entire extent of the spatial universe, a designated individual, which is thus itself a "snap:SpatialRegion" ("spatial_region").</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of "snap:Continuant" ("continuant") are spatial entities, that is, they enter in the relation of (spatial) location with "snap:SpatialRegion" ("spatial_region") entities. As a particular case, the exact spatial location of a "snap:SpatialRegion" ("spatial_region") is this region itself.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: Space and "snap:SpatialRegion" ("spatial_region") entities are entities in their own rights which exist independently of any entities which can be located at them. This view of space is sometimes called "absolutist" or "the container view". In BFO, the class "snap:Site" ("site") allows for a so-called relational view of space, that is to say, a view according to which spatiality is a matter of relative location between entities and not a matter of being tied to space. The bridge between these two views is secured through the fact that while instances of "snap:Site" ("site") are not "snap:SpatialRegion" ("spatial_region") entities, they are nevertheless spatial entities.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;SpecificallyDependentContinuant">
@@ -283,7 +285,7 @@
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&snap;GenericallyDependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">specifically_dependent_continuant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:Continuant" ("continuant") that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the mass of a cloud, the smell of mozzarella, the liquidity of blood, the color of a tomato, the disposition of fish to decay, the role of being a doctor, the function of the heart to pump blood</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: property, trope, mode</rdfs:comment>
 	</owl:Class>
@@ -294,7 +296,7 @@
 		<owl:disjointWith rdf:resource="&snap;TwoDimensionalRegion"/>
 		<owl:disjointWith rdf:resource="&snap;ZeroDimensionalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">three_dimensional_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with three dimensions.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:SpatialRegion" ("spatial_region") with three dimensions.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a cube-shaped part of space, a sphere-shaped part of space</rdfs:comment>
 	</owl:Class>
 
@@ -304,7 +306,7 @@
 		<owl:disjointWith rdf:resource="&snap;ThreeDimensionalRegion"/>
 		<owl:disjointWith rdf:resource="&snap;ZeroDimensionalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">two_dimensional_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with two dimensions.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:SpatialRegion" ("spatial_region") with two dimensions.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the surface of a cube-shaped part of space, the surface of a sphere-shaped part of space, the surface of a rectilinear planar figure-shaped part of space</rdfs:comment>
 	</owl:Class>
 
@@ -314,7 +316,7 @@
 		<owl:disjointWith rdf:resource="&snap;ThreeDimensionalRegion"/>
 		<owl:disjointWith rdf:resource="&snap;TwoDimensionalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">zero_dimensional_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A spatial region with no dimensions.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "snap:SpatialRegion" ("spatial_region") with no dimensions.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: a point</rdfs:comment>
 	</owl:Class>
 
@@ -338,7 +340,7 @@
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&span;ScatteredSpatiotemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">connected_spatiotemporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A space time region that has temporal and spatial dimensions such that all points within the spatiotemporal region are mediately or immediately connected to all other points within the same space time region.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:SpaceTimeRegion" ("space_time_region") that has temporal and spatial dimensions such that all points within the spatiotemporal region are mediately or immediately connected to all other points within the same "span:SpaceTimeRegion" ("space_time_region").</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the spatial and temporal location of an individual organism's life, the spatial and temporal location of the development of a fetus</rdfs:comment>
 	</owl:Class>
 
@@ -354,7 +356,7 @@
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&span;ScatteredTemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">connected_temporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A temporal region every point of which is mediately or immediately connected with every other point of which.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:TemporalRegion" ("temporal_region") every point of which is mediately or immediately connected with every other point of which.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the 1970s years, the time from the beginning to the end of a heart attack, the time taken up by cellular meiosis</rdfs:comment>
 	</owl:Class>
 
@@ -365,7 +367,7 @@
 		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">fiat_process_part</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:ProcessualEntity" ("processual_entity") that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: chewing during a meal, the middle part of a rainstorm, the worst part of a heart-attack, the most interesting part of Van Gogh's life</rdfs:comment>
 	</owl:Class>
 
@@ -382,7 +384,7 @@
 		</owl:equivalentClass>
 		<owl:disjointWith rdf:resource="&snap;Continuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">occurrent</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An entity that has temporal parts and that happens, unfolds or develops through time. Sometimes also called perdurants.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "bfo:Entity" ("entity") that has temporal parts and that happens, unfolds or develops through time. Sometimes also called perdurants.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, a surgical operation as processual context for a nosocomical infection, the spatiotemporal context occupied by a process of cellular meiosis, the most interesting part of Van Gogh's life, the spatiotemporal region occupied by the development of a cancer tumor</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: perdurant</rdfs:comment>
 	</owl:Class>
@@ -394,7 +396,7 @@
 		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">process</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is a maximally connected spatio-temporal whole and has bona fide beginnings and endings corresponding to real discontinuities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:ProcessualEntity" ("processual_entity") that is a maximally connected spatio-temporal whole and has bona fide beginnings and endings corresponding to real discontinuities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, the process of sleeping, the process of cell-division</rdfs:comment>
 	</owl:Class>
 
@@ -405,7 +407,7 @@
 		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">process_aggregate</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is a meriological sum of processes and possesses non-connected boundaries.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:ProcessualEntity" ("processual_entity") that is a meriological sum of "span:Process" ("process") entities and possesses non-connected boundaries.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the beating of the hearts of each of seven individuals in the room, the playing of each of the members of an orchestra, a process of digestion and a process of thinking taken together</rdfs:comment>
 	</owl:Class>
 
@@ -416,7 +418,7 @@
 		<owl:disjointWith rdf:resource="&span;ProcessAggregate"/>
 		<owl:disjointWith rdf:resource="&span;ProcessualContext"/>
 		<rdfs:label rdf:datatype="&xsd;string">process_boundary</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A processual entity that is the fiat or bona fide instantaneous temporal process boundary.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:ProcessualEntity" ("processual_entity") that is the fiat or bona fide instantaneous temporal process boundary.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: birth, death, the forming of a synapse, the onset of REM sleep, the detaching of a finger in an industrial accident, the final separation of two cells at the end of cell-division, the incision at the beginning of a surgery</rdfs:comment>
 	</owl:Class>
 
@@ -427,9 +429,9 @@
 		<owl:disjointWith rdf:resource="&span;ProcessAggregate"/>
 		<owl:disjointWith rdf:resource="&span;ProcessBoundary"/>
 		<rdfs:label rdf:datatype="&xsd;string">processual_context</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent consisting of a characteristic spatial shape inhering in some arrangement of other occurrents. Processual contexts are characteristically entities at or in which other occurrents can be located or occur.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: The processual context for a given manipulation occurring as part of an experiment is made of processual entities which occur in parallel, are not necessarily all parts of the experiment themselves and may involve  continuants which are in the spatial vicinity of the participants in the experiment.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of a processual context is a mixture of processual entities which stand as surrounding environments for other processual entities. The class processual context is the analogous among occurrents to the SNAP class site among continuants.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:Occurrent" ("occurrent") consisting of a characteristic spatial shape inhering in some arrangement of other "span:Occurrent" ("occurrent") entities. "span:ProcessualContext" ("processual_context") entities are characteristically entities at or in which other "span:Occurrent" ("occurrent") entities can be located or occur.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: The processual context for a given manipulation occurring as part of an experiment is made of processual entities which occur in parallel, are not necessarily all parts of the experiment themselves and may involve "snap:Continuant" ("continuant") entities which are in the spatial vicinity of the participants in the experiment.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of a "span:ProcessualContext" ("processual_context") is a mixture of "span:ProcessualEntity" ("processual_entity") which stand as surrounding environments for other "span:ProcessualEntity" ("processual_entity") entities. The class "span:ProcessualContext" ("processual_context") is the analogous among "span:Occurrent" ("occurrent") entities to the class "snap:Site" ("site") among "snap:Continuant" ("continuant") entities.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;ProcessualEntity">
@@ -448,7 +450,7 @@
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;SpatiotemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">processual_entity</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:Occurrent" ("occurrent") that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the life of an organism, the process of meiosis, the course of a disease, the flight of a bird</rdfs:comment>
 	</owl:Class>
 
@@ -456,7 +458,7 @@
 		<rdfs:subClassOf rdf:resource="&span;SpatiotemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;ConnectedSpatiotemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">scattered_spatiotemporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A space time region that has spatial and temporal dimensions and every spatial and temporal point of which is not connected with every other spatial and temporal point of which.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:SpaceTimeRegion" ("space_time_region") that has spatial and temporal dimensions and every spatial and temporal point of which is not connected with every other spatial and temporal point of which.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space and time occupied by the individual games of the World Cup, the space and time occupied by the individual liaisons in a romantic affair</rdfs:comment>
 	</owl:Class>
 
@@ -464,7 +466,7 @@
 		<rdfs:subClassOf rdf:resource="&span;TemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;ConnectedTemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">scattered_temporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A temporal region every point of which is not mediately or immediately connected with every other point of which.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:TemporalRegion" ("temporal_region") every point of which is not mediately or immediately connected with every other point of which.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the time occupied by the individual games of the World Cup, the time occupied by the individual liaisons in a romantic affair</rdfs:comment>
 	</owl:Class>
 
@@ -472,7 +474,7 @@
 		<rdfs:subClassOf rdf:resource="&span;ConnectedSpatiotemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;SpatiotemporalInterval"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_instant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A connected space time region at a specific moment.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:ConnectedSpaceTimeRegion" ("connected_space_time_region") at a specific moment.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space time region occupied by a single instantaneous temporal slice (part) of a process</rdfs:comment>
 	</owl:Class>
 
@@ -480,7 +482,7 @@
 		<rdfs:subClassOf rdf:resource="&span;ConnectedSpatiotemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;SpatiotemporalInstant"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_interval</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A connected space time region that endures for more than a single moment of time.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:ConnectedSpaceTimeRegion" ("connected_space_time_region") that endures for more than a single moment of time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the space time region occupied by a process or by a fiat processual part</rdfs:comment>
 	</owl:Class>
 
@@ -497,18 +499,18 @@
 		<owl:disjointWith rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;TemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatiotemporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent at or in which processual entities can be located.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:Occurrent" ("occurrent") at or in which "span:ProcessualEntity" ("processual_entity") entities can be located.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal context occupied by a process of cellular meiosis</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the class spatiotemporal region is a part of spacetime. All parts of spacetime are spatiotemporal regions and only spatiotemporal regions are parts of spacetime. In particular, neither spatial regions (see SNAP spatial region) nor temporal regions (see SPAN temporal region) are in BFO parts of spacetime. Spacetime is the entire extent of the spatiotemporal universe, a designated individual, which is thus itself a spatiotemporal region. Spacetime is among occurrents the analogous of space among continuants.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of the class occurrent are spatiotemporal entities, that is, they enter in the relation of (spatiotemporal) location with spatiotemporal regions. As a particular case, the exact spatiotemporal location of a spatiotemporal region is this region itself.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: Spacetime and spatiotemporal regions are entities in their own rights which exist independently of any entities which can be located at them. This view of spacetime can be called "absolutist" or "the container view". In BFO, the class processual context allows for a so-called relational view of spacetime, that is to say, a view according to which spatiotemporality is a matter of relative location between entities and not a matter of being tied to spacetime. In BFO, the bridge between these two views is secured through the fact that instances of the class processual context are too spatiotemporal entities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the "span:SpatiotemporalRegion" ("spatiotemporal_region") is a part of spacetime. All parts of spacetime are "span:SpatiotemporalRegion" ("spatiotemporal_region") entities and only "span:SpatiotemporalRegion" ("spatiotemporal_region") entities are parts of spacetime. In particular, neither "snap:SpatialRegion" ("spatial_region") entities nor "span:TemporalRegion" ("temporal_region") entities are in BFO parts of spacetime. Spacetime is the entire extent of the spatiotemporal universe, a designated individual, which is thus itself a "span:SpatiotemporalRegion" ("spatiotemporal_region"). Spacetime is among occurrents the analogous of space among "snap:Continuant" ("continuant") entities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of "span:Occurrent" ("occurrent") are spatiotemporal entities, that is, they enter in the relation of (spatiotemporal) location with "span:SpatiotemporalRegion" ("spatiotemporal_region") entities. As a particular case, the exact spatiotemporal location of a "span:SpatiotemporalRegion" ("spatiotemporal_region") is this region itself.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: Spacetime and "span:SpatiotemporalRegion" ("spatiotemporal_region") entities are entities in their own rights which exist independently of any entities which can be located at them. This view of spacetime can be called "absolutist" or "the container view". In BFO, the class "span:ProcessualContext" ("processual_context") allows for a so-called relational view of spacetime, that is to say, a view according to which spatiotemporality is a matter of relative location between entities and not a matter of being tied to spacetime. In BFO, the bridge between these two views is secured through the fact that instances of "span:ProcessualContext" ("processual_context") are too spatiotemporal entities.</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&span;TemporalInstant">
 		<rdfs:subClassOf rdf:resource="&span;ConnectedTemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;TemporalInterval"/>
 		<rdfs:label rdf:datatype="&xsd;string">temporal_instant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A connected temporal region comprising a single moment of time.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:ConnectedTemporalRegion" ("connected_temporal_region") comprising a single moment of time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: right now, the moment at which a finger is detached in an industrial accident, the moment at which a child is born, the moment of death</rdfs:comment>
 	</owl:Class>
 
@@ -516,7 +518,7 @@
 		<rdfs:subClassOf rdf:resource="&span;ConnectedTemporalRegion"/>
 		<owl:disjointWith rdf:resource="&span;TemporalInstant"/>
 		<rdfs:label rdf:datatype="&xsd;string">temporal_interval</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: A connected temporal region lasting for more than a single moment of time.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A "span:ConnectedTemporalRegion" ("connected_temporal_region") lasting for more than a single moment of time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: any continuous temporal duration during which a process occurs</rdfs:comment>
 	</owl:Class>
 
@@ -533,10 +535,10 @@
 		<owl:disjointWith rdf:resource="&span;ProcessualEntity"/>
 		<owl:disjointWith rdf:resource="&span;SpatiotemporalRegion"/>
 		<rdfs:label rdf:datatype="&xsd;string">temporal_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An occurrent that is part of time.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: An "span:Occurrent" ("occurrent") that is part of time.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the time it takes to run a marathon, the duration of a surgical procedure, the moment of death</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of the class temporal region is a part of time. All parts of time are temporal regions and only temporal regions are parts of time. Time is the entire extent of the temporal universe, a designated individual, which is thus a temporal region itself.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of the class occurrent are temporal entities, that is, they enter in the relation of (temporal) location with temporal regions. As a particular case, the exact spatiotemporal location of a spatiotemporal region is this region itself. Continuants are not temporal entities in the technical sense just explained; they are related to time in a different way, not through temporal location but through a relation of existence at a time or during a period of time (see SNAP continuant).</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Comment: Time and temporal regions are entities in their own rights which exist independently of any entities which can be located at them. This view of time can be called "absolutist" or "the container view" in analogy to what is traditionally the case with space (see SNAP spatial region).</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of "span:TemporalRegion" ("temporal_region") is a part of time. All parts of time are "span:TemporalRegion" ("temporal_region") entities and only "span:TemporalRegion" ("temporal_region") entities are parts of time. Time is the entire extent of the temporal universe, a designated individual, which is thus a temporal region itself.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of "span:Occurrent" ("occurrent") are temporal entities, that is, they enter in the relation of (temporal) location with "span:TemporalRegion" ("temporal_region") entities. As a particular case, the exact spatiotemporal location of a "span:TemporalRegion" ("temporal_region") is this region itself. "snap:Continuant" ("continuant") entities are not temporal entities in the technical sense just explained; they are related to time in a different way, not through temporal location but through a relation of existence at a time or during a period of time (see "snap:Continuant" ("continuant")).</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Comment: Time and "span:TemporalRegion" ("temporal_region") entities are entities in their own rights which exist independently of any entities which can be located at them. This view of time can be called "absolutist" or "the container view" in analogy to what is traditionally the case with space (see "snap:SpatialRegion" ("spatial_region")).</rdfs:comment>
 	</owl:Class>
 </rdf:RDF>
