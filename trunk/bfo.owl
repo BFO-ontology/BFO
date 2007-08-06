@@ -30,7 +30,7 @@
 		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
 		<dc:contributor rdf:datatype="&xsd;string">Andrew Spear</dc:contributor>
 		<dc:contributor rdf:datatype="&xsd;string">Pierre Grenon</dc:contributor>
-		<dc:contributor rdf:datatype="&xsd;string">Allen Ruttenberg</dc:contributor>
+		<dc:contributor rdf:datatype="&xsd;string">Alan Ruttenberg</dc:contributor>
 		<dc:publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
 		<dc:identifier rdf:datatype="&xsd;string">&base;</dc:identifier>
 		<dc:format rdf:datatype="&xsd;string">application/rdf+xml</dc:format>
