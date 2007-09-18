@@ -44,8 +44,8 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Spatio-temporality in Basic Formal Ontology: SNAP and SPAN, Upper-Level Ontology, and Framework for Formalization"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Nuts in BFO's Nutshell: Revisions to the Bi-categorial Axiomatization of BFO"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2007-07-31</dc:date>
-		<owl:versionInfo rdf:datatype="&xsd;string">1.1 beta</owl:versionInfo>
+		<dc:date rdf:datatype="&xsd;date">2007-09-18</dc:date>
+		<owl:versionInfo rdf:datatype="&xsd;string">1.1</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc-import;"/>
 	</owl:Ontology>
 
