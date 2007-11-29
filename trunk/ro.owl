@@ -25,9 +25,10 @@
 		<dc:title rdf:datatype="&xsd;string">Relationship Ontology (RO)</dc:title>
 		<dc:creator rdf:datatype="&xsd;string">Chris Mungall</dc:creator>
 		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
+		<dc:creator rdf:datatype="&xsd;string">Stefan Schulz</dc:creator>
 		<dc:source rdf:datatype="&xsd;string">Barry Smith, Werner Ceusters, Bert Klagges, Jacob Koehler, Anand Kumar, Jane Lomax, Chris Mungall, Fabian Neuhaus, Alan Rector and Cornelius Rosse: "Relations in Biomedical Ontologies"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2006-10-17</dc:date>
-		<owl:versionInfo rdf:datatype="&xsd;string">1.0 RC</owl:versionInfo>
+		<dc:date rdf:datatype="&xsd;date">2007-11-29</dc:date>
+		<owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc-import;"/>
     </owl:Ontology>
 	<owl:ObjectProperty rdf:ID="adjacentTo">
