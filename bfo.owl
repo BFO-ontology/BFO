@@ -44,7 +44,7 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Spatio-temporality in Basic Formal Ontology: SNAP and SPAN, Upper-Level Ontology, and Framework for Formalization"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Nuts in BFO's Nutshell: Revisions to the Bi-categorial Axiomatization of BFO"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2007-09-18</dc:date>
+		<dc:date rdf:datatype="&xsd;dateTime"></dc:date>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.1</owl:versionInfo>
 		<owl:imports rdf:resource="&protege-dc-import;"/>
 	</owl:Ontology>
@@ -134,7 +134,7 @@
 		<owl:disjointWith rdf:resource="&snap;Role"/>
 		<rdfs:label rdf:datatype="&xsd;string">function</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A realizable entity [snap:RealizableEntity] the manifestation of which is an essentially end-directed activity of a continuant [snap:Continuant] entity in virtue of that continuant [snap:Continuant] entity being a specific kind of entity in the kind or kinds of contexts that it is made for.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the function of a birth canal to enable transport, the function of the heart in the body to pump blood, the function of reproduction in the transmission of genetic material, the digestive function of the stomach to nutriate the body, the function of a hammer to drive in nails, the function of a computer program to compute mathematical equations, the function of an automobile to provide transportation, the function of a judge in a court of law</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the function of a birth canal to enable transport, the function of the heart in the body: to pump blood, to receive de-oxygenated and oxygenated blood, etc., the function of reproduction in the transmission of genetic material, the digestive function of the stomach to nutriate the body, the function of a hammer to drive in nails, the function of a computer program to compute mathematical equations, the function of an automobile to provide transportation, the function of a judge in a court of law</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;GenericallyDependentContinuant">
@@ -236,7 +236,7 @@
 		<owl:disjointWith rdf:resource="&snap;Function"/>
 		<rdfs:label rdf:datatype="&xsd;string">role</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A realizable entity [snap:RealizableEntity] the manifestation of which brings about some result or end that is not essential to a continuant [snap:Continuant] in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant [snap:Continuant] in some kinds of natural, social or institutional contexts.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the role of a person as a surgeon, the role of an artificial heart in pumping blood, the role of a chemical compound in an experiment, the role of a drug in the treatment of a disease, the role of a patient relative as defined by a hospital administrative form, the role of a woman as a legal mother in the context of system of laws, the role of a biological grandfather as legal guardian in the context of a system of laws, the role of a tree in maintaining stability in an ecosystem, the role of ingested matter in digestion</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the role of a person as a surgeon, the role of a chemical compound in an experiment, the role of a patient relative as defined by a hospital administrative form, the role of a woman as a legal mother in the context of system of laws, the role of a biological grandfather as legal guardian in the context of a system of laws, the role of ingested matter in digestion, the role of a student in a university</rdfs:comment>
 	</owl:Class>
 
 	<owl:Class rdf:about="&snap;Site">
@@ -286,7 +286,7 @@
 		<owl:disjointWith rdf:resource="&snap;GenericallyDependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">specifically_dependent_continuant</rdfs:label>
 		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant [snap:Continuant] that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">Examples: the mass of a cloud, the smell of mozzarella, the liquidity of blood, the color of a tomato, the disposition of fish to decay, the role of being a doctor, the function of the heart to pump blood</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Examples: the mass of a cloud, the smell of mozzarella, the liquidity of blood, the color of a tomato, the disposition of fish to decay, the role of being a doctor, the function of the heart in the body: to pump blood, to receive de-oxygenated and oxygenated blood, etc.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Synonyms: property, trope, mode</rdfs:comment>
 	</owl:Class>
 
