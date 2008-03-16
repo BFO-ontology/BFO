@@ -266,7 +266,7 @@
 		<owl:disjointWith rdf:resource="&snap;DependentContinuant"/>
 		<owl:disjointWith rdf:resource="&snap;IndependentContinuant"/>
 		<rdfs:label rdf:datatype="&xsd;string">spatial_region</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Definition: An independent continuant [snap:IndependentContinuant] that is neither bearer of quality [snap:Quality] entities nor inheres in any other entities.</rdfs:comment>
+		<rdfs:comment rdf:datatype="&xsd;string">Definition: A continuant [snap:Continuant] that is neither bearer of quality [snap:Quality] entities nor inheres in any other entities.</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Examples: the sum total of all space in the universe, parts of the sum total of all space in the universe</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Comment: An instance of spatial region [snap:SpatialRegion] is a part of space. All parts of space are spatial region [snap:SpatialRegion] entities and only spatial region [snap:SpatialRegion] entities are parts of space. Space is the entire extent of the spatial universe, a designated individual, which is thus itself a spatial region [snap:SpatialRegion].</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of continuant [snap:Continuant] are spatial entities, that is, they enter in the relation of (spatial) location with spatial region [snap:SpatialRegion] entities. As a particular case, the exact spatial location of a spatial region [snap:SpatialRegion] is this region itself.</rdfs:comment>
