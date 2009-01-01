@@ -10,7 +10,7 @@
 <!ENTITY owl "&w3;2002/07/owl#">
 <!ENTITY rdf "&w3;1999/02/22-rdf-syntax-ns#">
 <!ENTITY rdfs "&w3;2000/01/rdf-schema#">
-<!ENTITY skos "&w3;2004/02/skos/core#">
+<!ENTITY skos "&w3;2008/05/skos#">
 <!ENTITY xsd "&w3;2001/XMLSchema#">
 ]>
 
