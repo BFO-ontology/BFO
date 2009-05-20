@@ -1,172 +1,328 @@
 <?xml version="1.0"?>
 
+
 <!DOCTYPE rdf:RDF [
-<!ENTITY base "http://www.ifomis.org/obo/ro/1.0">
-<!ENTITY ro "&base;#">
-<!ENTITY dc "http://purl.org/dc/elements/1.1/">
-<!ENTITY protege-dc-import "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl">
-<!ENTITY protege-dc "&protege-dc-import;#">
-<!ENTITY w3 "http://www.w3.org">
-<!ENTITY owl "&w3;/2002/07/owl#">
-<!ENTITY rdf "&w3;/1999/02/22-rdf-syntax-ns#">
-<!ENTITY rdfs "&w3;/2000/01/rdf-schema#">
-<!ENTITY xsd "&w3;/2001/XMLSchema#">
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY ro "http://www.ifomis.org/obo/ro/1.0#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
-<rdf:RDF xmlns:ro="&ro;"
-		xmlns:dc="&dc;"
-		xmlns:owl="&owl;"
-		xmlns:protege-dc="&protege-dc;"
-		xmlns:rdf="&rdf;"
-		xmlns:rdfs="&rdfs;"
-		xmlns:xsd="&xsd;"
-		xml:base="&base;">
-	<owl:Ontology rdf:about="">
-		<dc:title rdf:datatype="&xsd;string">Relationship Ontology (RO)</dc:title>
-		<dc:creator rdf:datatype="&xsd;string">Chris Mungall</dc:creator>
-		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
-		<dc:creator rdf:datatype="&xsd;string">Stefan Schulz</dc:creator>
-		<dc:source rdf:datatype="&xsd;string">Barry Smith, Werner Ceusters, Bert Klagges, Jacob Koehler, Anand Kumar, Jane Lomax, Chris Mungall, Fabian Neuhaus, Alan Rector and Cornelius Rosse: "Relations in Biomedical Ontologies"</dc:source>
-		<dc:date rdf:datatype="&xsd;date">2007-11-29</dc:date>
-		<owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
-		<owl:imports rdf:resource="&protege-dc-import;"/>
+
+<rdf:RDF xmlns="http://www.ifomis.org/obo/ro/1.0#"
+     xml:base="http://www.ifomis.org/obo/ro/1.0"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ro="http://www.ifomis.org/obo/ro/1.0#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
+        <dc:date rdf:datatype="&xsd;date">2007-11-29</dc:date>
+        <dc:source rdf:datatype="&xsd;string"
+            >Barry Smith, Werner Ceusters, Bert Klagges, Jacob Koehler, Anand Kumar, Jane Lomax, Chris Mungall, Fabian Neuhaus, Alan Rector and Cornelius Rosse: &quot;Relations in Biomedical Ontologies&quot;</dc:source>
+        <dc:creator rdf:datatype="&xsd;string">Chris Mungall</dc:creator>
+        <dc:creator rdf:datatype="&xsd;string"
+            >Holger Stenzhorn</dc:creator>
+        <dc:title rdf:datatype="&xsd;string"
+            >Relationship Ontology (RO)</dc:title>
+        <dc:creator rdf:datatype="&xsd;string">Stefan Schulz</dc:creator>
     </owl:Ontology>
-	<owl:ObjectProperty rdf:ID="adjacentTo">
-		<rdfs:label rdf:datatype="&xsd;string">adjacent_to</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Relation of proximity between disjoint continuants. Adjacent_to satisfies some of the axioms governing the relation referred to in the literature of qualitative topology as 'external connectedness' . Analogs of other mereotopological relations (qualitative relations between spatial regions involving parthood, boundary and connectedness) can also be defined, and these too can be applied to the material and immaterial continuants which occupy such regions on the instance level.</rdfs:comment>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="agentIn">
-		<rdfs:label rdf:datatype="&xsd;string">agent_in</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subPropertyOf rdf:resource="#participatesIn"/>
-		<owl:inverseOf rdf:resource="#hasAgent"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="containedIn">
-		<rdfs:label rdf:datatype="&xsd;string">contained_in</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Containment obtains in each case between material and immaterial continuants, for instance: lung containedIn thoracic cavity; bladder containedIn pelvic cavity. Hence containment is not a transitive relation. If c partOf c1 at t then we have also, by our definition and by the axioms of mereology applied to spatial regions, c locatedIn c1 at t. Thus, many examples of instance-level location relations for continuants are in fact cases of instance-level parthood. For material continuants location and parthood coincide. Containment is location not involving parthood, and arises only where some immaterial continuant is involved. To understand this relation, we first define overlap for continuants as follows: c1 overlap c2 at t =def for some c, c partOf c1 at t and c partOf c2 at t.</rdfs:comment>
-		<owl:inverseOf rdf:resource="#contains"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="contains">
-		<rdfs:label rdf:datatype="&xsd;string">contains</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<owl:inverseOf rdf:resource="#containedIn"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="derivedInto">
-		<rdfs:label rdf:datatype="&xsd;string">derived_into</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<owl:inverseOf rdf:resource="#derivesFrom"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="derivesFrom">
-		<rdfs:label rdf:datatype="&xsd;string">derives_from</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Derivation is a relation holding between non-identicals. More precisely, it holds between distinct material continuants when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier continuant is inherited by the later. Thus we will have axioms to the effect that from c derivesFrom c1 we can infer that c and c1 are not identical and that there is some instant of time t such that c1 exists only prior to and c only subsequent to t. We will also be able to infer that the spatial region occupied by c as it begins to exist at t overlaps with the spatial region occupied by c1 as it ceases to exist in the same instant.</rdfs:comment>
-		<owl:inverseOf rdf:resource="#derivedInto"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="hasAgent">
-		<rdfs:label rdf:datatype="&xsd;string">has_agent</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">As for hasParticipant, but with the additional condition that the component instance is causally active in the relevant process</rdfs:comment>
-		<rdfs:subPropertyOf rdf:resource="#hasParticipant"/>
-		<owl:inverseOf rdf:resource="#agentIn"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="hasPart">
-		<rdfs:label rdf:datatype="&xsd;string">has_part</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<owl:inverseOf rdf:resource="#partOf"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="hasParticipant">
-		<rdfs:label rdf:datatype="&xsd;string">has_participant</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">HasParticipant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane hasParticipant this particular sample of hemoglobin at this particular time.</rdfs:comment>
-		<owl:inverseOf rdf:resource="#participatesIn"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="hasImproperPart">
-		<rdfs:label rdf:datatype="&xsd;string">has_improper_part</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subPropertyOf rdf:resource="#hasPart"/>
-		<owl:inverseOf rdf:resource="#improperPartOf"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="hasIntegralPart">
-		<rdfs:label rdf:datatype="&xsd;string">has_integral_part</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subPropertyOf rdf:resource="#hasPart"/>
-		<owl:inverseOf rdf:resource="#integralPartOf"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="hasProperPart">
-		<rdfs:label rdf:datatype="&xsd;string">has_proper_part</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<rdfs:subPropertyOf rdf:resource="#hasPart"/>
-		<owl:inverseOf rdf:resource="#properPartOf"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>	
-	<owl:ObjectProperty rdf:ID="improperPartOf">
-		<rdfs:label rdf:datatype="&xsd;string">improper_part_of</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">As for partOf, with the additional constraint that subject and object may be identical</rdfs:comment>
-		<rdfs:subPropertyOf rdf:resource="#partOf"/>
-		<owl:inverseOf rdf:resource="#hasImproperPart"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="integralPartOf">
-		<rdfs:label rdf:datatype="&xsd;string">integral_part_of</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">C integralPartOf C' if and only if: C partOf C' AND C' hasPart C</rdfs:comment>
-		<rdfs:subPropertyOf rdf:resource="#partOf"/>
-		<owl:inverseOf rdf:resource="#hasIntegralPart"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="locatedIn">
-		<rdfs:label rdf:datatype="&xsd;string">located_in</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">The primitive instance-level relation c locatedIn r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is partOf the spatial region occupied by c1. Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus</rdfs:comment>
-		<owl:inverseOf rdf:resource="#locationOf"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="locationOf">
-		<rdfs:label rdf:datatype="&xsd;string">location_of</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<owl:inverseOf rdf:resource="#locatedIn"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="participatesIn">
-		<rdfs:label rdf:datatype="&xsd;string">participates_in</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<owl:inverseOf rdf:resource="#hasParticipant"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="partOf">
-		<rdfs:label rdf:datatype="&xsd;string">part_of</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">The primitive instance-level relation p partOf p1 is illustrated in assertions such as: this instance of rhodopsin mediated phototransduction partOf this instance of visual perception. This relation satisfies at least the following standard axioms of mereology: reflexivity (for all p, p partOf p); anti-symmetry (for all p, p1, if p partOf p1 and p1 partOf p then p and p1 are identical); and transitivity (for all p, p1, p2, if p partOf p1 and p1 partOf p2, then p partOf p2). Analogous axioms hold also for parthood as a relation between spatial regions. For parthood as a relation between continuants, these axioms need to be modified to take account of the incorporation of a temporal argument. Thus for example the axiom of transitivity for continuants will assert that if c partOf c1 at t and c1 partOf c2 at t, then also c partOf c2 at t.</rdfs:comment>
-		<owl:inverseOf rdf:resource="#hasPart"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="precededBy">
-		<rdfs:label rdf:datatype="&xsd;string">preceded_by</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">p precededBy p' if and only if: given any process p at a time t, there is some process p' at time t', and t' is earlier than t.</rdfs:comment>
-		<owl:inverseOf rdf:resource="#precedes"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="precedes">
-		<rdfs:label rdf:datatype="&xsd;string">precedes</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string"/>
-		<owl:inverseOf rdf:resource="#precededBy"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="properPartOf">
-		<rdfs:label rdf:datatype="&xsd;string">proper_part_of</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">As for partOf, with the additional constraint that subject and object are distinct</rdfs:comment>
-		<rdfs:subPropertyOf rdf:resource="#partOf"/>
-		<owl:inverseOf rdf:resource="#hasProperPart"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="transformationOf">
-		<rdfs:label rdf:datatype="&xsd;string">transformation_of</rdfs:label>
-		<rdfs:comment rdf:datatype="&xsd;string">Relation between two classes, in which instances retain their identity yet change their classification by virtue of some kind of transformation. Formally: C transformationOf C' if and only if given any c and any t, if c instantiates C at time t, then for some t', c instantiates C' at t' and t' earlier t, and there is no t2 such that c instantiates C at t2 and c instantiates C' at t2.</rdfs:comment>
-		<rdfs:comment rdf:datatype="&xsd;string">When an embryonic oenocyte (a type of insect cell) is transformed into a larval oenocyte, one and the same continuant entity preserves its identity while instantiating distinct classes at distinct times. The class-level relation transformationOf obtains between continuant classes C and C1 wherever each instance of the class C is such as to have existed at some earlier time as an instance of the distinct class C1 (see Figure 2 in paper). This relation is illustrated first of all at the molecular level of granularity by the relation between mature RNA and the pre-RNA from which it is processed, or between (UV-induced) thymine-dimer and thymine dinucleotide. At coarser levels of granularity it is illustrated by the transformations involved in the creation of red blood cells, for example, from reticulocyte to erythrocyte, and by processes of development, for example, from larva to pupa, or from (post-gastrular) embryo to fetus or from child to adult. It is also manifest in pathological transformations, for example, of normal colon into carcinomatous colon. In each such case, one and the same continuant entity instantiates distinct classes at different times in virtue of phenotypic changes.</rdfs:comment>
-		<owl:inverseOf rdf:resource="#transformedInto"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
-	<owl:ObjectProperty rdf:ID="transformedInto">
-		<rdfs:label rdf:datatype="&xsd;string">transformed_into</rdfs:label>
-		<owl:inverseOf rdf:resource="#transformationOf"/>
-		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
-	</owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;source"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#adjacentTo -->
+
+    <owl:ObjectProperty rdf:about="#adjacentTo">
+        <rdfs:label rdf:datatype="&xsd;string">adjacent_to</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Relation of proximity between disjoint continuants. Adjacent_to satisfies some of the axioms governing the relation referred to in the literature of qualitative topology as &#39;external connectedness&#39; . Analogs of other mereotopological relations (qualitative relations between spatial regions involving parthood, boundary and connectedness) can also be defined, and these too can be applied to the material and immaterial continuants which occupy such regions on the instance level.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#agentIn -->
+
+    <owl:ObjectProperty rdf:about="#agentIn">
+        <rdfs:label rdf:datatype="&xsd;string">agent_in</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <owl:inverseOf rdf:resource="#hasAgent"/>
+        <rdfs:subPropertyOf rdf:resource="#participatesIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#containedIn -->
+
+    <owl:ObjectProperty rdf:about="#containedIn">
+        <rdfs:label rdf:datatype="&xsd;string">contained_in</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Containment obtains in each case between material and immaterial continuants, for instance: lung containedIn thoracic cavity; bladder containedIn pelvic cavity. Hence containment is not a transitive relation. If c partOf c1 at t then we have also, by our definition and by the axioms of mereology applied to spatial regions, c locatedIn c1 at t. Thus, many examples of instance-level location relations for continuants are in fact cases of instance-level parthood. For material continuants location and parthood coincide. Containment is location not involving parthood, and arises only where some immaterial continuant is involved. To understand this relation, we first define overlap for continuants as follows: c1 overlap c2 at t =def for some c, c partOf c1 at t and c partOf c2 at t.</rdfs:comment>
+        <owl:inverseOf rdf:resource="#contains"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#contains -->
+
+    <owl:ObjectProperty rdf:about="#contains">
+        <rdfs:label rdf:datatype="&xsd;string">contains</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#derivedInto -->
+
+    <owl:ObjectProperty rdf:about="#derivedInto">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">derived_into</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <owl:inverseOf rdf:resource="#derivesFrom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#derivesFrom -->
+
+    <owl:ObjectProperty rdf:about="#derivesFrom">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">derives_from</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Derivation is a relation holding between non-identicals. More precisely, it holds between distinct material continuants when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier continuant is inherited by the later. Thus we will have axioms to the effect that from c derivesFrom c1 we can infer that c and c1 are not identical and that there is some instant of time t such that c1 exists only prior to and c only subsequent to t. We will also be able to infer that the spatial region occupied by c as it begins to exist at t overlaps with the spatial region occupied by c1 as it ceases to exist in the same instant.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasAgent -->
+
+    <owl:ObjectProperty rdf:about="#hasAgent">
+        <rdfs:label rdf:datatype="&xsd;string">has_agent</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >As for hasParticipant, but with the additional condition that the component instance is causally active in the relevant process</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#hasParticipant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasImproperPart -->
+
+    <owl:ObjectProperty rdf:about="#hasImproperPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string"
+            >has_improper_part</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#hasPart"/>
+        <owl:inverseOf rdf:resource="#improperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasIntegralPart -->
+
+    <owl:ObjectProperty rdf:about="#hasIntegralPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string"
+            >has_integral_part</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#hasPart"/>
+        <owl:inverseOf rdf:resource="#integralPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasPart -->
+
+    <owl:ObjectProperty rdf:about="#hasPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">has_part</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <owl:inverseOf rdf:resource="#partOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="#hasParticipant">
+        <rdfs:label rdf:datatype="&xsd;string">has_participant</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >HasParticipant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane hasParticipant this particular sample of hemoglobin at this particular time.</rdfs:comment>
+        <owl:inverseOf rdf:resource="#participatesIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasProperPart -->
+
+    <owl:ObjectProperty rdf:about="#hasProperPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">has_proper_part</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#hasPart"/>
+        <owl:inverseOf rdf:resource="#properPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#improperPartOf -->
+
+    <owl:ObjectProperty rdf:about="#improperPartOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string"
+            >improper_part_of</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >As for partOf, with the additional constraint that subject and object may be identical</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#partOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#integralPartOf -->
+
+    <owl:ObjectProperty rdf:about="#integralPartOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string"
+            >integral_part_of</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >C integralPartOf C&#39; if and only if: C partOf C&#39; AND C&#39; hasPart C</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#partOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#locatedIn -->
+
+    <owl:ObjectProperty rdf:about="#locatedIn">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">located_in</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >The primitive instance-level relation c locatedIn r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is partOf the spatial region occupied by c1. Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus</rdfs:comment>
+        <owl:inverseOf rdf:resource="#locationOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#locationOf -->
+
+    <owl:ObjectProperty rdf:about="#locationOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">location_of</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#partOf -->
+
+    <owl:ObjectProperty rdf:about="#partOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">part_of</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >The primitive instance-level relation p partOf p1 is illustrated in assertions such as: this instance of rhodopsin mediated phototransduction partOf this instance of visual perception. This relation satisfies at least the following standard axioms of mereology: reflexivity (for all p, p partOf p); anti-symmetry (for all p, p1, if p partOf p1 and p1 partOf p then p and p1 are identical); and transitivity (for all p, p1, p2, if p partOf p1 and p1 partOf p2, then p partOf p2). Analogous axioms hold also for parthood as a relation between spatial regions. For parthood as a relation between continuants, these axioms need to be modified to take account of the incorporation of a temporal argument. Thus for example the axiom of transitivity for continuants will assert that if c partOf c1 at t and c1 partOf c2 at t, then also c partOf c2 at t.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#participatesIn -->
+
+    <owl:ObjectProperty rdf:about="#participatesIn">
+        <rdfs:label rdf:datatype="&xsd;string">participates_in</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#precededBy -->
+
+    <owl:ObjectProperty rdf:about="#precededBy">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">preceded_by</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >p precededBy p&#39; if and only if: given any process p at a time t, there is some process p&#39; at time t&#39;, and t&#39; is earlier than t.</rdfs:comment>
+        <owl:inverseOf rdf:resource="#precedes"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#precedes -->
+
+    <owl:ObjectProperty rdf:about="#precedes">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">precedes</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#properPartOf -->
+
+    <owl:ObjectProperty rdf:about="#properPartOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">proper_part_of</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >As for partOf, with the additional constraint that subject and object are distinct</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#partOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#transformationOf -->
+
+    <owl:ObjectProperty rdf:about="#transformationOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string"
+            >transformation_of</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Relation between two classes, in which instances retain their identity yet change their classification by virtue of some kind of transformation. Formally: C transformationOf C&#39; if and only if given any c and any t, if c instantiates C at time t, then for some t&#39;, c instantiates C&#39; at t&#39; and t&#39; earlier t, and there is no t2 such that c instantiates C at t2 and c instantiates C&#39; at t2.</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >When an embryonic oenocyte (a type of insect cell) is transformed into a larval oenocyte, one and the same continuant entity preserves its identity while instantiating distinct classes at distinct times. The class-level relation transformationOf obtains between continuant classes C and C1 wherever each instance of the class C is such as to have existed at some earlier time as an instance of the distinct class C1 (see Figure 2 in paper). This relation is illustrated first of all at the molecular level of granularity by the relation between mature RNA and the pre-RNA from which it is processed, or between (UV-induced) thymine-dimer and thymine dinucleotide. At coarser levels of granularity it is illustrated by the transformations involved in the creation of red blood cells, for example, from reticulocyte to erythrocyte, and by processes of development, for example, from larva to pupa, or from (post-gastrular) embryo to fetus or from child to adult. It is also manifest in pathological transformations, for example, of normal colon into carcinomatous colon. In each such case, one and the same continuant entity instantiates distinct classes at different times in virtue of phenotypic changes.</rdfs:comment>
+        <owl:inverseOf rdf:resource="#transformedInto"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#transformedInto -->
+
+    <owl:ObjectProperty rdf:about="#transformedInto">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string"
+            >transformed_into</rdfs:label>
+    </owl:ObjectProperty>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.974) http://owlapi.sourceforge.net -->
+
