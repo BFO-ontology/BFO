@@ -6,8 +6,6 @@
 <!ENTITY snap "&base;/snap#">
 <!ENTITY span "&base;/span#">
 <!ENTITY dc "http://purl.org/dc/elements/1.1/">
-<!ENTITY protege-dc-import "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl">
-<!ENTITY protege-dc "&protege-dc-import;#">
 <!ENTITY w3 "http://www.w3.org">
 <!ENTITY owl "&w3;/2002/07/owl#">
 <!ENTITY rdf "&w3;/1999/02/22-rdf-syntax-ns#">
@@ -20,7 +18,6 @@
 		xmlns:span="&span;"
 		xmlns:dc="&dc;"
 		xmlns:owl="&owl;"
-		xmlns:protege-dc="&protege-dc;"
 		xmlns:rdf="&rdf;"
 		xmlns:rdfs="&rdfs;"
 		xmlns:xsd="&xsd;"
@@ -46,7 +43,6 @@
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE"</dc:source>
 		<dc:source rdf:datatype="&xsd;string">Pierre Grenon: "Nuts in BFO's Nutshell: Revisions to the Bi-categorial Axiomatization of BFO"</dc:source>
 		<owl:versionInfo rdf:datatype="&xsd;string">1.1</owl:versionInfo>
-		<owl:imports rdf:resource="&protege-dc-import;"/>
 	</owl:Ontology>
 
 
@@ -541,4 +537,21 @@
 		<rdfs:comment rdf:datatype="&xsd;string">Comment: All instances of occurrent [span:Occurrent] are temporal entities, that is, they enter in the relation of (temporal) location with temporal region [span:TemporalRegion] entities. As a particular case, the exact spatiotemporal location of a temporal region [span:TemporalRegion] is this region itself. Continuant [snap:Continuant] entities are not temporal entities in the technical sense just explained; they are related to time in a different way, not through temporal location but through a relation of existence at a time or during a period of time (see continuant [snap:Continuant].</rdfs:comment>
 		<rdfs:comment rdf:datatype="&xsd;string">Comment: Time and temporal region [span:TemporalRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of time can be called "absolutist" or "the container view" in analogy to what is traditionally the case with space (see spatial region [snap:SpatialRegion].</rdfs:comment>
 	</owl:Class>
+
+
+
+	<!--                       -->
+	<!-- Annotation Properties -->
+	<!--                       -->
+
+
+
+	<owl:AnnotationProperty rdf:about="&dc;contributor"/>
+	<owl:AnnotationProperty rdf:about="&dc;creator"/>
+	<owl:AnnotationProperty rdf:about="&dc;format"/>
+	<owl:AnnotationProperty rdf:about="&dc;identifier"/>
+	<owl:AnnotationProperty rdf:about="&dc;language"/>
+	<owl:AnnotationProperty rdf:about="&dc;publisher"/>
+	<owl:AnnotationProperty rdf:about="&dc;source"/>
+	<owl:AnnotationProperty rdf:about="&dc;title"/>
 </rdf:RDF>
