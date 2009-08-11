@@ -60,3 +60,19 @@ diffiult to translate the axioms in fol-derived directly to OWL, but
 much simpler to translate the axioms in fol-src (for the subset that
 can be expressed).
 
+More docs on translating to / syncing with OWL coming soon.
+
+CLIF NOTES
+
+http://www.common-logic.org
+
+This representation uses CLIF as it's primary form. P9 can be
+generated from this (see Makefile).
+
+More discussion required on what features of CLIF we should use for
+annotating axioms. At the moment:
+
+- every component should go into its own module (ideally this would
+  correspond with the modular layour of the OWL)
+
+- axioms are annotated using cl-comment
