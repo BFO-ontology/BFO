@@ -327,7 +327,7 @@ range("preceded_by", Occurrent).
  all x all y all z ((preceded_by2(x, y) & preceded_by2(y, z) -> preceded_by2(x, z))).
  all x all y all z all t ((preceded_by3(x, y, t) & preceded_by3(y, z, t) -> preceded_by3(x, z, t))).
 exported_identifier("preceded_by", "OBO_REL_I:0000017").
- all p all p1 ((preceded_by2(p, p1) <-> (occurs_at(p, "t") & occurs_at(p1, "t1") -> earlier_than("t1", "t")))).
+ all p all p1 ((preceded_by2(p, p1) <->  all t all t1 ((occurs_at(p, t) & occurs_at(p1, t1) -> earlier_than(t1, t))))).
 relation("immediately_preceded_by").
 exported_identifier("immediately_preceded_by", "OBO_REL_I:0000044").
  all p all p1 ((immediately_preceded_by(p, p1) <->  all t (first_instant_of(t, p) & last_instant_of(t, p1)))).
