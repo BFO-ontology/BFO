@@ -19,4 +19,4 @@ fol-derived/ro-core-type-type.%: fol-src/ro-core-type-type-src.clif
 	cl-expand-macros -m meta/bfo-meta.clif $< > $@.tmp && cl-expand-macros -m meta/bfo-meta-type-level.clif $@.tmp -to $* > $@
 
 owl-derived/ro-core-inst-inst.owl: fol-src/ro-core-inst-inst-src.clif
-	cl-expand-macros -m meta/bfo-meta-owl-mapping.clif $< -to owl > $@
+	cl-expand-macros -m meta/bfo-meta-owl-mapping.clif  -m meta/text-metadata-owl-mapping.clif $< -to owl > $@
