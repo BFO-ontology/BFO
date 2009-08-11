@@ -1268,8 +1268,9 @@
 (forall (p p1)
  (iff (preceded_by p p1)
 
-  (if (and (occurs_at p t)(occurs_at p1 t1))
-   (earlier_than t1 t))))
+  (forall (t t1)
+   (if (and (occurs_at p t)(occurs_at p1 t1))
+    (earlier_than t1 t)))))
 
 (relation immediately_preceded_by)
 

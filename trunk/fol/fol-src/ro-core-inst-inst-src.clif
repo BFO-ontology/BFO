@@ -467,11 +467,12 @@
            (exported_identifier preceded_by "OBO_REL_I:0000017")
            (text_definition preceded_by "P preceded_by P' if and only if: given any process p that instantiates P at a time t, there is some process p' such that p' instantiates P' at time t', and t' is earlier than t. ")
            (text_definition_xref preceded_by "PMID:15892874")
+
            (forall (p p1)
                    (iff (preceded_by p p1)
-                        (if (and (occurs_at p t)
-                                 (occurs_at p1 t1))
-                            (earlier_than t1 t))))
+                        (forall (t t1)
+                                (if (and (occurs_at p t)(occurs_at p1 t1))
+                                    (earlier_than t1 t)))))
 
            // see also ro-development
            (relation immediately_preceded_by)
