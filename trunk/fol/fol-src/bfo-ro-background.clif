@@ -152,13 +152,6 @@
            // Here a new functional operator 'the interval ( , )' has been introduced, which generates the name of an interval from a pair of names for times. 
 
 
-           (relation precedes)
-           (label precedes "precedes")
-           (domain precedes Occurrent)
-           (range precedes Occurrent)
-           (inverse_of precedes preceded_by)
-           (transitive precedes)
-           (exported_identifier precedes "OBO_REL_I:0000018")
 
            // imported IDs
            //(exported_identifier IndependentContinuant "bfo:IndependentContinuant")

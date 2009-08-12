@@ -9,33 +9,24 @@ normative("part_of").
  all x all y all z ((part_of2(x, y) & part_of2(y, z) -> part_of2(x, z))).
  all x all y all z all t ((part_of3(x, y, t) & part_of3(y, z, t) -> part_of3(x, z, t))).
 anti_symmetric("part_of").
-reflexive("part_of").
+( exists a exists b (part_of2(a, b)) -> part_of2("a", "a")).
+( exists a exists b exists t (part_of3(a, b, t)) -> part_of3("a", "a", "t")).
 exported_identifier("part_of", "OBO_REL_I:0000002").
 alternate_identifier("part_of", "OBO_REL:part_of").
 relation("part_of").
  all a all b ((part_of2(a, b) -> instance(a) & instance(b))).
  all a all b all t ((part_of3(a, b, t) -> instance(a) & instance(b))).
- all a all b ((part_of2(a, b) & instance_of2(a, IndependentContinuant) -> instance_of2(b, IndependentContinuant))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, IndependentContinuant, t) -> instance_of3(b, IndependentContinuant, t))).
- all a all b ((part_of2(a, b) & instance_of2(a, DependentContinuant) -> instance_of2(b, DependentContinuant))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, DependentContinuant, t) -> instance_of3(b, DependentContinuant, t))).
- all a all b ((part_of2(a, b) & instance_of2(a, Occurrent) -> instance_of2(b, Occurrent))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, Occurrent, t) -> instance_of3(b, Occurrent, t))).
- all a all b ((part_of2(a, b) & instance_of2(a, Process) -> instance_of2(b, Process))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, Process, t) -> instance_of3(b, Process, t))).
- all a all b ((part_of2(a, b) & instance_of2(a, Role) -> instance_of2(b, Role))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, Role, t) -> instance_of3(b, Role, t))).
- all a all b ((part_of2(a, b) & instance_of2(a, Quality) -> instance_of2(b, Quality))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, Quality, t) -> instance_of3(b, Quality, t))).
- all a all b ((part_of2(a, b) & instance_of2(a, RealizableEntity) -> instance_of2(b, RealizableEntity))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, RealizableEntity, t) -> instance_of3(b, RealizableEntity, t))).
- all a all b ((part_of2(a, b) & instance_of2(a, SpatialRegion) -> instance_of2(b, SpatialRegion))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, SpatialRegion, t) -> instance_of3(b, SpatialRegion, t))).
+ all a all b all t ((part_of3(a, b, t) & instance_of2(t, TemporalInstant) & instance_of3(a, IndependentContinuant, t) -> instance_of3(b, IndependentContinuant, t))).
+ all a all b all t ((part_of3(a, b, t) & instance_of2(t, TemporalInstant) & instance_of3(a, DependentContinuant, t) -> instance_of3(b, DependentContinuant, t))).
+ all a all b all t ((part_of3(a, b, t) & instance_of2(t, TemporalInstant) & instance_of3(a, Role, t) -> instance_of3(b, Role, t))).
+ all a all b all t ((part_of3(a, b, t) & instance_of2(t, TemporalInstant) & instance_of3(a, Quality, t) -> instance_of3(b, Quality, t))).
+ all a all b all t ((part_of3(a, b, t) & instance_of2(t, TemporalInstant) & instance_of3(a, RealizableEntity, t) -> instance_of3(b, RealizableEntity, t))).
+ all a all b all t ((part_of3(a, b, t) & instance_of2(t, TemporalInstant) & instance_of3(a, SpatialRegion, t) -> instance_of3(b, SpatialRegion, t))).
  all a all b ((part_of2(a, b) & instance_of2(a, ProcessualEntity) -> instance_of2(b, ProcessualEntity))).
- all a all b all t ((part_of3(a, b, t) & instance_of3(a, ProcessualEntity, t) -> instance_of3(b, ProcessualEntity, t))).
+ all a all b ((part_of2(a, b) & instance_of2(a, Occurrent) -> instance_of2(b, Occurrent))).
+ all a all b ((part_of2(a, b) & instance_of2(a, Process) -> instance_of2(b, Process))).
 atemporal_or_temporal("part_of").
- all i1 all i2 all t ((part_of3(i1, i2, t) -> instance_of2(t, "span:TemporalRegion") & instance_of3(i1, Continuant, t) & instance_of3(i2, Continuant, t))).
- all x all y all w ((part_of3(x, y, w) -> instance_of2(x, Continuant) & instance_of2(y, Continuant) & instance_of2(w, TemporalInstant))).
+ all i1 all i2 all t ((part_of3(i1, i2, t) -> instance_of2(t, TemporalInstant) & instance_of3(i1, Continuant, t) & instance_of3(i2, Continuant, t))).
  all i1 all i2 ((part_of2(i1, i2) -> instance_of2(i1, Occurrent) & instance_of2(i2, Occurrent))).
  all x all y all w ((part_of3(x, y, w) -> exists_at(x, w) & exists_at(y, w))).
 never_holds_between(Entity, Function).
@@ -49,7 +40,8 @@ relation("has_part").
  all x all y all z ((has_part2(x, y) & has_part2(y, z) -> has_part2(x, z))).
  all x all y all z all t ((has_part3(x, y, t) & has_part3(y, z, t) -> has_part3(x, z, t))).
 anti_symmetric("has_part").
-reflexive("has_part").
+( exists a exists b (has_part2(a, b)) -> has_part2("a", "a")).
+( exists a exists b exists t (has_part3(a, b, t)) -> has_part3("a", "a", "t")).
 exported_identifier("has_part", "OBO_REL_I:0000003").
 atemporal_or_temporal("has_part").
 relation("proper_part_of").
@@ -83,7 +75,8 @@ relation("adjacent_to").
 exported_identifier("adjacent_to", "OBO_REL_I:0000012").
 domain("adjacent_to", IndependentContinuant).
 range("adjacent_to", IndependentContinuant).
- all x all y ((adjacent_to2(x, y) -> -(overlaps2(x, y)))).
+-( exists x exists y (adjacent_to2(x, y) & overlaps2(x, y))).
+-( exists x exists y exists t (adjacent_to3(x, y, t) & overlaps3(x, y, t))).
 relation("contained_in").
 relation("contained_in").
  all a all b ((contained_in2(a, b) -> instance(a) & instance(b))).
@@ -111,11 +104,12 @@ range("located_in", IndependentContinuant).
 normative_direction_for("located_in", "location").
  all x all y all z ((located_in2(x, y) & located_in2(y, z) -> located_in2(x, z))).
  all x all y all z all t ((located_in3(x, y, t) & located_in3(y, z, t) -> located_in3(x, z, t))).
-reflexive("located_in").
+( exists a exists b (located_in2(a, b)) -> located_in2("a", "a")).
+( exists a exists b exists t (located_in3(a, b, t)) -> located_in3("a", "a", "t")).
  all i1 all i2 all i3 ((located_in2(i1, i2) & part_of2(i2, i3) -> located_in2(i1, i3))).
  all i1 all i2 all i3 all t ((located_in3(i1, i2, t) & part_of3(i2, i3, t) -> located_in3(i1, i3, t))).
 exported_identifier("located_in", "OBO_REL_I:0000008").
- all c all c1 ((located_in2(c, c1) <-> part_of2(regionFn(c), regionFn(c1)))).
+ all c all c1 ((located_in2(c, c1) <->  exists r exists r1 (occupies(c, r) & occupies(c1, r1) & part_of2(r, r1)))).
 relation("location_of").
 domain("location_of", Continuant).
 range("location_of", Continuant).
@@ -123,16 +117,18 @@ range("location_of", Continuant).
  all a all b all t ((location_of3(a, b, t) <-> located_in3(b, a, t))).
  all x all y all z ((location_of2(x, y) & location_of2(y, z) -> location_of2(x, z))).
  all x all y all z all t ((location_of3(x, y, t) & location_of3(y, z, t) -> location_of3(x, z, t))).
-reflexive("location_of").
+( exists a exists b (location_of2(a, b)) -> location_of2("a", "a")).
+( exists a exists b exists t (location_of3(a, b, t)) -> location_of3("a", "a", "t")).
 exported_identifier("location_of", "OBO_REL_I:0000009").
 relation("overlaps").
 domain("overlaps", IndependentContinuant).
 range("overlaps", IndependentContinuant).
  all x all y all z ((overlaps2(x, y) -> overlaps2(y, x))).
-reflexive("overlaps").
+( exists a exists b (overlaps2(a, b)) -> overlaps2("a", "a")).
+( exists a exists b exists t (overlaps3(a, b, t)) -> overlaps3("a", "a", "t")).
 intransitive("overlaps").
 exported_identifier("overlaps", "OBO_REL_I:0000201").
- all x all y ((overlaps2(x, y) <->  all z (part_of2(z, x) & part_of2(z, y)))).
+ all x all y ((overlaps2(x, y) <->  exists z (part_of2(z, x) & part_of2(z, y)))).
  all x all t ((exists_at(x, t) &  all z ((overlaps3(z, x, t) -> overlaps3("y", x, t))) -> part_of3(x, "y", t))).
 relation("partially_overlaps").
 subrelation("partially_overlaps", "overlaps").
@@ -145,11 +141,12 @@ exported_identifier("partially_overlaps", "OBO_REL_I:0000202").
 relation("underlaps").
 domain("underlaps", IndependentContinuant).
 range("underlaps", IndependentContinuant).
- all x all y all z ((underlaps(x, y) -> underlaps(y, x))).
-reflexive("underlaps").
+ all x all y all z ((underlaps2(x, y) -> underlaps2(y, x))).
+( exists a exists b (underlaps2(a, b)) -> underlaps2("a", "a")).
+( exists a exists b exists t (underlaps3(a, b, t)) -> underlaps3("a", "a", "t")).
 intransitive("underlaps").
 exported_identifier("underlaps", "OBO_REL_I:0000210").
- all x all y ((underlaps(x, y) <->  all z (part_of2(x, z) & part_of2(y, z)))).
+ all x all y ((underlaps2(x, y) <->  exists z (part_of2(x, z) & part_of2(y, z)))).
 relation("has_participant").
 relation("has_participant").
  all a all b ((has_participant2(a, b) -> instance(a) & instance(b))).
@@ -160,7 +157,7 @@ range("has_participant", IndependentContinuant).
  all a all b all t ((has_participant3(a, b, t) <-> participates_in3(b, a, t))).
 normative_direction_for("has_participant", "participation").
 exported_identifier("has_participant", "OBO_REL_I:0000019").
- all i1 all i2 all t ((has_participant3(i1, i2, t) -> instance_of2(t, "span:TemporalRegion") & instance_of3(i1, Occurrent, t) & instance_of3(i2, Continuant, t))).
+ all i1 all i2 all t ((has_participant3(i1, i2, t) -> instance_of2(t, TemporalInstant) & instance_of3(i1, Occurrent, t) & instance_of3(i2, Continuant, t))).
  all i1 all i2 all i3 ((realizes2(i1, i2) & inheres_in2(i2, i3) -> has_participant2(i1, i3))).
  all i1 all i2 all i3 all t ((realizes3(i1, i2, t) & inheres_in3(i2, i3, t) -> has_participant3(i1, i3, t))).
  all i1 all i2 all i3 ((has_participant2(i1, i2) & part_of2(i2, i3) -> has_participant2(i1, i3))).
@@ -174,7 +171,7 @@ range("participates_in", Occurrent).
  all a all b ((participates_in2(a, b) <-> has_participant2(b, a))).
  all a all b all t ((participates_in3(a, b, t) <-> has_participant3(b, a, t))).
 exported_identifier("participates_in", "OBO_REL_I:0000020").
- all i1 all i2 all t ((participates_in3(i1, i2, t) -> instance_of2(t, "span:TemporalRegion") & instance_of3(i1, Continuant, t) & instance_of3(i2, Occurrent, t))).
+ all i1 all i2 all t ((participates_in3(i1, i2, t) -> instance_of2(t, TemporalInstant) & instance_of3(i1, Continuant, t) & instance_of3(i2, Occurrent, t))).
  all i1 all i2 all i3 ((has_bearer2(i1, i2) & realized_by2(i2, i3) -> participates_in2(i1, i3))).
  all i1 all i2 all i3 all t ((has_bearer3(i1, i2, t) & realized_by3(i2, i3, t) -> participates_in3(i1, i3, t))).
 relation("has_agent").
@@ -209,7 +206,7 @@ normative_direction_for("inheres_in", "inherence").
 exact_synonym("inheres_in", "has_bearer").
 exported_identifier("inheres_in", "OBO_REL_I:0000026").
 domain("inheres_in", DependentContinuant).
- all i1 all i2 all t ((inheres_in3(i1, i2, t) -> instance_of2(t, "span:TemporalRegion") & instance_of3(i1, DependentContinuant, t) & instance_of3(i2, Entity, t))).
+ all i1 all i2 all t ((inheres_in3(i1, i2, t) -> instance_of2(t, TemporalInstant) & instance_of3(i1, DependentContinuant, t) & instance_of3(i2, Entity, t))).
 relation("bearer_of").
 relation("bearer_of").
  all a all b ((bearer_of2(a, b) -> instance(a) & instance(b))).
@@ -310,7 +307,7 @@ range("derives_from", Continuant).
 normative_direction_for("derives_from", "derives").
 exact_synonym("derives_from", "derived_from").
 exported_identifier("derives_from", "OBO_REL_I:0000015").
- all c all c1 ((derives_from2(c, c1) ->  all t (only_exists_prior_to(c1, t) & only_exists_subsequent_to(c, t)))).
+ all c all c1 ((derives_from2(c, c1) ->  exists t (only_exists_prior_to(c1, t) & only_exists_subsequent_to(c, t)))).
 relation("derived_into").
 domain("derived_into", Continuant).
 range("derived_into", Continuant).
@@ -330,6 +327,14 @@ exported_identifier("preceded_by", "OBO_REL_I:0000017").
  all p all p1 ((preceded_by2(p, p1) <->  all t all t1 ((occurs_at(p, t) & occurs_at(p1, t1) -> earlier_than(t1, t))))).
 relation("immediately_preceded_by").
 exported_identifier("immediately_preceded_by", "OBO_REL_I:0000044").
- all p all p1 ((immediately_preceded_by(p, p1) <->  all t (first_instant_of(t, p) & last_instant_of(t, p1)))).
+ all p all p1 ((immediately_preceded_by(p, p1) <->  exists t (first_instant_of(t, p) & last_instant_of(t, p1)))).
+relation("precedes").
+domain("precedes", Occurrent).
+range("precedes", Occurrent).
+ all a all b ((precedes2(a, b) <-> preceded_by2(b, a))).
+ all a all b all t ((precedes3(a, b, t) <-> preceded_by3(b, a, t))).
+ all x all y all z ((precedes2(x, y) & precedes2(y, z) -> precedes2(x, z))).
+ all x all y all z all t ((precedes3(x, y, t) & precedes3(y, z, t) -> precedes3(x, z, t))).
+exported_identifier("precedes", "OBO_REL_I:0000018").
 
 end_of_list.

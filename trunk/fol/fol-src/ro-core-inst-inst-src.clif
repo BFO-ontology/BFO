@@ -13,30 +13,28 @@
 //           (comment 
 //            (anti_symmetric part_of)
 //            "not included in Bittner and Donnelly / Logical properties of foundational relations: We do not include an axiom of antisymmetry for parthood among objects, since we want to leave open the possibility that there may be distinct objects which have exactly the same parts at a given time. For example, the FMA distinguishes between an anatomical entity and the tissue which constitutes that entity at a given time (Rosse and Mejino, 2003)")
-(reflexive part_of)
+           (weakly_reflexive part_of)
            (exported_identifier part_of "OBO_REL_I:0000002")
            (alternate_identifier part_of "OBO_REL:part_of")
            (comment part_of "The primitive instance-level relation p part_of p1 is illustrated in assertions such as: this instance of rhodopsin mediated phototransduction part_of this instance of visual perception.    This relation satisfies at least the following standard axioms of mereology: reflexivity (for all p, p part_of p); anti-symmetry (for all p, p1, if p part_of p1 and p1 part_of p then p and p1 are identical); and transitivity (for all p, p1, p2, if p part_of p1 and p1 part_of p2, then p part_of p2). Analogous axioms hold also for parthood as a relation between spatial regions.    For parthood as a relation between continuants, these axioms need to be modified to take account of the incorporation of a temporal argument. Thus for example the axiom of transitivity for continuants will assert that if c part_of c1 at t and c1 part_of c2 at t, then also c part_of c2 at t.")
            (text_definition part_of "part_of on the instance level is a primitive relation, holding either atemporally between two process instances or temporally between two continuant instances")
            (text_definition_xref part_of "PMID:15892874")
            (instance_instance part_of)
-           (homeomorphic_for part_of IndependentContinuant)
-           (homeomorphic_for part_of DependentContinuant)
+
+           (homeomorphic_for part_of IndependentContinuant TemporalInstant)
+           (homeomorphic_for part_of DependentContinuant TemporalInstant)
+           (homeomorphic_for part_of Role TemporalInstant)
+           (homeomorphic_for part_of Quality TemporalInstant)
+           (homeomorphic_for part_of RealizableEntity TemporalInstant)
+           (homeomorphic_for part_of SpatialRegion TemporalInstant)
+
+           (homeomorphic_for part_of ProcessualEntity)
            (homeomorphic_for part_of Occurrent)
            (homeomorphic_for part_of Process)
-           (homeomorphic_for part_of Role)
-           (homeomorphic_for part_of Quality)
-           (homeomorphic_for part_of RealizableEntity)
-           (homeomorphic_for part_of SpatialRegion)
-           (homeomorphic_for part_of ProcessualEntity)
+
            (atemporal_or_temporal part_of)
            (holds_temporally_between part_of Continuant Continuant)
 
-           (forall (x y w)
-                   (if (part_of x y w)
-                       (and (instance_of x Continuant)
-                            (instance_of y Continuant)
-                            (instance_of w TemporalInstant))))
            (holds_atemporally_between part_of Occurrent Occurrent)
 
            (forall (x y w)
@@ -54,7 +52,7 @@
            (inverse_of has_part part_of)
            (transitive has_part)
            (anti_symmetric has_part)
-           (reflexive has_part)
+           (weakly_reflexive has_part)
            (exported_identifier has_part "OBO_REL_I:0000003")
            (comment has_part "primitive instance-level relation, the inverse of *part_of*")
            (atemporal_or_temporal has_part)
@@ -102,10 +100,7 @@
            (text_definition adjacent_to "c adjacent to c' if and only if: c and c' are in spatial proximity")
            (domain adjacent_to IndependentContinuant)
            (range adjacent_to IndependentContinuant)
-           (forall (x y)
-                   (if (adjacent_to x y)
-                       (not (overlaps x y))))
-
+           (relation_disjoint_from adjacent_to overlaps)
 
            (relation contained_in)
            (instance_instance contained_in)
@@ -139,7 +134,7 @@
            (inverse_of located_in location_of)
            (normative_direction_for located_in "location")
            (transitive located_in)
-           (reflexive located_in)
+           (weakly_reflexive located_in)
            (transitive_over located_in part_of)
            (comment located_in "Location as a relation between instances: The primitive instance-level relation c located_in r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is part_of the spatial region occupied by c1. Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus")
            (exported_identifier located_in "OBO_REL_I:0000008")
@@ -147,7 +142,10 @@
            (text_definition_xref located_in "PMID:15892874")
            (forall (c c1)
                    (iff (located_in c c1)
-                        (part_of (regionFn c)  (regionFn c1))))
+                        (exists (r r1)
+                                (and (occupies c r)
+                                     (occupies c1 r1)
+                                     (part_of r r1)))))
 
            (text_definition_xref located_in "PMID:15892874")
 
@@ -157,7 +155,7 @@
            (range location_of Continuant)
            (inverse_of location_of located_in)
            (transitive location_of)
-           (reflexive location_of)
+           (weakly_reflexive location_of)
            (exported_identifier location_of "OBO_REL_I:0000009")
 
 
@@ -166,7 +164,7 @@
            (domain overlaps IndependentContinuant)
            (range overlaps IndependentContinuant)
            (symmetric overlaps)
-           (reflexive overlaps)
+           (weakly_reflexive overlaps)
            (intransitive overlaps)
            (text_definition overlaps "x overlaps y if and only if: there is some z such that: z part_of x and z part_of y (i.e. x and y share a part)")
            (comment overlaps "note that the definition of overlaps includes the case where x is part_of y - for example, a nucleus overlaps a cell. We also have the *partial_overlaps* relation for those cases where x and y overlap but neither is part of the other")
@@ -207,7 +205,7 @@
            (domain underlaps IndependentContinuant)
            (range underlaps IndependentContinuant)
            (symmetric underlaps)
-           (reflexive underlaps)
+           (weakly_reflexive underlaps)
            (intransitive underlaps)
            (exported_identifier underlaps "OBO_REL_I:0000210")
            (forall (x y)
@@ -446,8 +444,6 @@
                                (and (only_exists_prior_to c1 t)
                                     (only_exists_subsequent_to c t)))))
 
- 
-
 
            (relation derived_into)
            (label derived_into "derived_into")
@@ -456,6 +452,7 @@
            (inverse_of derived_into derives_from)
            (transitive derived_into)
            (exported_identifier derived_into "OBO_REL_I:0000016")
+
 
            (relation preceded_by)
            (label preceded_by "preceded_by")
@@ -482,6 +479,15 @@
                    (iff (immediately_preceded_by p p1)
                         (exists (t) (and (first_instant_of t p)
                                           (last_instant_of t p1)))))
+
+
+           (relation precedes)
+           (label precedes "precedes")
+           (domain precedes Occurrent)
+           (range precedes Occurrent)
+           (inverse_of precedes preceded_by)
+           (transitive precedes)
+           (exported_identifier precedes "OBO_REL_I:0000018")
 
            
 ) // end-of-module
