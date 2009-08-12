@@ -1,0 +1,316 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY ns1 'http://purl.obolibrary.org/obo/'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+    <!ENTITY owl 'http://www.w3.org/2002/07/owl#'>
+]>
+
+<rdf:RDF
+    xmlns:ns1="&ns1;"
+    xmlns:rdf="&rdf;"
+    xmlns:rdfs="&rdfs;"
+    xmlns:owl="&owl;"
+>
+<owl:Ontology rdf:about="http://example.org#"/>
+
+<rdf:Description rdf:about="http://example.org#ProcessualEntity">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:allValuesFrom rdf:resource="http://example.org#ProcessualEntity"/>
+      <owl:onProperty rdf:resource="http://example.org#part_of"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://example.org#Occurrent">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:allValuesFrom rdf:resource="http://example.org#Occurrent"/>
+      <owl:onProperty rdf:resource="http://example.org#part_of"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://example.org#Process">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:allValuesFrom rdf:resource="http://example.org#Process"/>
+      <owl:onProperty rdf:resource="http://example.org#part_of"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<owl:ObjectProperty rdf:about="http://example.org#adjacent_to"
+    rdfs:label="adjacent_to">
+  <ns1:IAO_0000115>c adjacent to c' if and only if: c and c' are in spatial proximity</ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+  <owl:propertyDisjointWith rdf:resource="http://example.org#overlaps"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#overlaps"
+    rdfs:label="overlaps">
+  <ns1:IAO_0000115>x overlaps y if and only if: there is some z such that: z part_of x and z part_of y (i.e. x and y share a part)</ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+</owl:ObjectProperty>
+
+<owl:SymmetricProperty rdf:about="http://example.org#partially_overlap"/>
+
+<owl:ObjectProperty rdf:about="http://example.org#underlaps"
+    rdfs:label="underlaps">
+  <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#part_of"
+    ns1:IAO_0000118="is_part_of"
+    rdfs:label="part_of">
+  <ns1:IAO_0000115>part_of on the instance level is a primitive relation, holding either atemporally between two process instances or temporally between two continuant instances</ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <owl:inverseOf rdf:resource="http://example.org#has_part"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#has_part"
+    rdfs:label="has_part">
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <owl:inverseOf rdf:resource="http://example.org#part_of"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#proper_part_of"
+    rdfs:label="proper_part_of">
+  <ns1:IAO_0000115>As for part_of, with the additional constraint that subject and object are distinct</ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#part_of"/>
+  <owl:inverseOf rdf:resource="http://example.org#has_proper_part"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#has_proper_part"
+    rdfs:label="has_proper_part">
+  <ns1:IAO_0000115>As for has_part, with the additional constraint that subject and object are distinct</ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#has_part"/>
+  <owl:inverseOf rdf:resource="http://example.org#proper_part_of"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#located_in"
+    ns1:IAO_0000115="Primitive"
+    rdfs:label="located_in">
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#Continuant"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+  <owl:inverseOf rdf:resource="http://example.org#location_of"/>
+  <owl:propertyChainAxiom rdf:parseType="Collection">
+    <rdf:Description rdf:about="http://example.org#located_in"/>
+    <rdf:Description rdf:about="http://example.org#part_of"/>
+  </owl:propertyChainAxiom>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#location_of"
+    rdfs:label="location_of">
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#Continuant"/>
+  <rdfs:range rdf:resource="http://example.org#Continuant"/>
+  <owl:inverseOf rdf:resource="http://example.org#located_in"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#derives_from"
+    ns1:IAO_0000118="derived_from"
+    rdfs:label="derives_from">
+  <ns1:IAO_0000115>Derivation on the instance level (*derives_from*) holds between distinct material continuants when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier continuant is inherited by the later.</ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#Continuant"/>
+  <rdfs:range rdf:resource="http://example.org#Continuant"/>
+  <owl:inverseOf rdf:resource="http://example.org#derived_into"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#derived_into"
+    rdfs:label="derived_into">
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#Continuant"/>
+  <rdfs:range rdf:resource="http://example.org#Continuant"/>
+  <owl:inverseOf rdf:resource="http://example.org#derives_from"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#preceded_by"
+    rdfs:label="preceded_by">
+  <ns1:IAO_0000115>P preceded_by P' if and only if: given any process p that instantiates P at a time t, there is some process p' such that p' instantiates P' at time t', and t' is earlier than t. </ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#Occurrent"/>
+  <rdfs:range rdf:resource="http://example.org#Occurrent"/>
+  <owl:inverseOf rdf:resource="http://example.org#precedes"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#precedes"
+    rdfs:label="precedes">
+  <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#Occurrent"/>
+  <rdfs:range rdf:resource="http://example.org#Occurrent"/>
+  <owl:inverseOf rdf:resource="http://example.org#preceded_by"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#partially_overlaps"
+    rdfs:label="partially_overlaps">
+  <ns1:IAO_0000115>x partially_overlaps y if and only if: x overlaps y and neither x is part_of y not y is part_of x</ns1:IAO_0000115>
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#overlaps"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#has_participant"
+    rdfs:label="has_participant">
+  <owl:propertyChainAxiom rdf:parseType="Collection">
+    <rdf:Description rdf:about="http://example.org#realizes"/>
+    <rdf:Description rdf:about="http://example.org#inheres_in"/>
+  </owl:propertyChainAxiom>
+  <owl:propertyChainAxiom rdf:parseType="Collection">
+    <rdf:Description rdf:about="http://example.org#has_participant"/>
+    <rdf:Description rdf:about="http://example.org#part_of"/>
+  </owl:propertyChainAxiom>
+  <ns1:IAO_0000115>Has_participant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane has_participant this particular sample of hemoglobin at this particular time.</ns1:IAO_0000115>
+  <rdfs:domain rdf:resource="http://example.org#Occurrent"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+  <owl:inverseOf rdf:resource="http://example.org#participates_in"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#participates_in"
+    rdfs:label="participates_in">
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#Occurrent"/>
+  <owl:inverseOf rdf:resource="http://example.org#has_participant"/>
+  <owl:propertyChainAxiom rdf:parseType="Collection">
+    <rdf:Description rdf:about="http://example.org#has_bearer"/>
+    <rdf:Description rdf:about="http://example.org#realized_by"/>
+  </owl:propertyChainAxiom>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#has_agent"
+    rdfs:label="has_agent">
+  <ns1:IAO_0000115>As for has_participant, but with the additional condition that the component instance is causally active in the relevant process</ns1:IAO_0000115>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#has_participant"/>
+  <owl:inverseOf rdf:resource="http://example.org#agent_in"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#agent_in"
+    rdfs:label="agent_in">
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#Occurrent"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#participates_in"/>
+  <owl:inverseOf rdf:resource="http://example.org#has_agent"/>
+</owl:ObjectProperty>
+
+<owl:FunctionalProperty rdf:about="http://example.org#quality_of"
+    ns1:IAO_0000118="is_quality_of"
+    rdfs:label="quality_of">
+  <ns1:IAO_0000115>A relation between a quality Q and an entity E. Q quality_of E iff: Q inheres_in E and Q is a quality</ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;ObjectProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#Quality"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#inheres_in"/>
+  <owl:inverseOf rdf:resource="http://example.org#has_quality"/>
+</owl:FunctionalProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#has_quality"
+    rdfs:label="has_quality">
+  <ns1:IAO_0000115>A relation between an entity and a quality. For types: E has_quality Q iff: for any eEt, exists qQt such that q inheres_in e at t. For instances: e has_quality q at t iff q inheres_in e at t and q instance-of Quality</ns1:IAO_0000115>
+  <rdfs:range rdf:resource="http://example.org#Quality"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#bearer_of"/>
+  <owl:inverseOf rdf:resource="http://example.org#quality_of"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#function_of"
+    rdfs:label="function_of">
+  <ns1:IAO_0000115>f function_of c at t iff : f inheres_in c at t and f instantiates a function</ns1:IAO_0000115>
+  <rdfs:domain rdf:resource="http://example.org#Function"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#inheres_in"/>
+  <owl:inverseOf rdf:resource="http://example.org#has_function"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#has_function"
+    ns1:IAO_0000115="Relation between an independent continuant and a function."
+    rdfs:label="has_function">
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#Function"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#bearer_of"/>
+  <owl:inverseOf rdf:resource="http://example.org#function_of"/>
+</owl:ObjectProperty>
+
+<owl:FunctionalProperty rdf:about="http://example.org#role_of"
+    rdfs:label="role_of">
+  <ns1:IAO_0000115>A relation between a role r and a continuant c. r role_of c at t iff: r inheres_in c at t and r instance_of Role at t</ns1:IAO_0000115>
+  <rdf:type rdf:resource="&owl;ObjectProperty"/>
+  <rdfs:domain rdf:resource="http://example.org#Role"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#inheres_in"/>
+  <owl:inverseOf rdf:resource="http://example.org#has_role"/>
+</owl:FunctionalProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#has_role"
+    rdfs:label="has_role">
+  <ns1:IAO_0000115>A relation between a continuant C and a role R. The inverse_of role_of.</ns1:IAO_0000115>
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#Role"/>
+  <rdfs:subPropertyOf rdf:resource="http://example.org#bearer_of"/>
+  <owl:inverseOf rdf:resource="http://example.org#role_of"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#realized_by"
+    rdfs:label="realized_by">
+  <ns1:IAO_0000115>Relation between a realizable entity (such as a function or role) and a process.</ns1:IAO_0000115>
+  <rdfs:domain rdf:resource="http://example.org#RealizableEntity"/>
+  <rdfs:range rdf:resource="http://example.org#Process"/>
+  <owl:inverseOf rdf:resource="http://example.org#realizes"/>
+  <owl:propertyChainAxiom rdf:parseType="Collection">
+    <rdf:Description rdf:about="http://example.org#realized_by"/>
+    <rdf:Description rdf:about="http://example.org#part_of"/>
+  </owl:propertyChainAxiom>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#contained_in"
+    rdfs:label="contained_in">
+  <ns1:IAO_0000115>c contained_in c' at t if and only if: c located_in c' at t, and it is not the case that c *overlaps* c' at t. (c' is a conduit or cavity.)</ns1:IAO_0000115>
+  <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
+  <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+  <owl:inverseOf rdf:resource="http://example.org#contains"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#inheres_in"
+    ns1:IAO_0000118="has_bearer"
+    rdfs:label="inheres_in">
+  <ns1:IAO_0000115>A primitive relation that holds between a dependent continuant instance and a bearer</ns1:IAO_0000115>
+  <rdfs:domain rdf:resource="http://example.org#DependentContinuant"/>
+  <owl:inverseOf rdf:resource="http://example.org#bearer_of"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#realizes"
+    ns1:IAO_0000115="Relation between a process and a realizable entity"
+    rdfs:label="realizes">
+  <rdfs:domain rdf:resource="http://example.org#Process"/>
+  <rdfs:range rdf:resource="http://example.org#RealizableEntity"/>
+  <owl:inverseOf rdf:resource="http://example.org#realized_by"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#bearer_of"
+    rdfs:label="bearer_of">
+  <ns1:IAO_0000118>bears</ns1:IAO_0000118>
+  <ns1:IAO_0000118>has_inherent</ns1:IAO_0000118>
+  <ns1:IAO_0000118>has_inherer</ns1:IAO_0000118>
+  <ns1:IAO_0000118>is_bearer_of</ns1:IAO_0000118>
+  <ns1:IAO_0000115>A relation between an entity and a dependent continuant; the reciprocal relation of inheres_in</ns1:IAO_0000115>
+  <rdfs:range rdf:resource="http://example.org#DependentContinuant"/>
+  <owl:inverseOf rdf:resource="http://example.org#inheres_in"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#contains"
+    rdfs:label="contains">
+  <owl:inverseOf rdf:resource="http://example.org#contained_in"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://example.org#immediately_preceded_by"
+    rdfs:label="immediately_preceded_by"/>
+
+</rdf:RDF>

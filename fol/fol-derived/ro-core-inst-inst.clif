@@ -38,7 +38,19 @@
 
 )
 
-(reflexive part_of)
+
+(if 
+(exists (a b)(part_of a b))
+
+
+ (part_of a a))
+
+
+(if 
+(exists (a b t)(part_of a b t))
+
+
+ (part_of a a t))
 
 (exported_identifier part_of "OBO_REL_I:0000002")
 
@@ -63,83 +75,33 @@
   (and (instance a)(instance b))))
 
 
-(forall (a b)
- (if (and (part_of a b)(instance_of a IndependentContinuant))
-  (instance_of b IndependentContinuant)))
-
-
 (forall (a b t)
- (if (and (part_of a b t)(instance_of a IndependentContinuant t))
+ (if (and (part_of a b t)(instance_of t TemporalInstant)(instance_of a IndependentContinuant t))
   (instance_of b IndependentContinuant t)))
 
 
-(forall (a b)
- (if (and (part_of a b)(instance_of a DependentContinuant))
-  (instance_of b DependentContinuant)))
-
-
 (forall (a b t)
- (if (and (part_of a b t)(instance_of a DependentContinuant t))
+ (if (and (part_of a b t)(instance_of t TemporalInstant)(instance_of a DependentContinuant t))
   (instance_of b DependentContinuant t)))
 
 
-(forall (a b)
- (if (and (part_of a b)(instance_of a Occurrent))
-  (instance_of b Occurrent)))
-
-
 (forall (a b t)
- (if (and (part_of a b t)(instance_of a Occurrent t))
-  (instance_of b Occurrent t)))
-
-
-(forall (a b)
- (if (and (part_of a b)(instance_of a Process))
-  (instance_of b Process)))
-
-
-(forall (a b t)
- (if (and (part_of a b t)(instance_of a Process t))
-  (instance_of b Process t)))
-
-
-(forall (a b)
- (if (and (part_of a b)(instance_of a Role))
-  (instance_of b Role)))
-
-
-(forall (a b t)
- (if (and (part_of a b t)(instance_of a Role t))
+ (if (and (part_of a b t)(instance_of t TemporalInstant)(instance_of a Role t))
   (instance_of b Role t)))
 
 
-(forall (a b)
- (if (and (part_of a b)(instance_of a Quality))
-  (instance_of b Quality)))
-
-
 (forall (a b t)
- (if (and (part_of a b t)(instance_of a Quality t))
+ (if (and (part_of a b t)(instance_of t TemporalInstant)(instance_of a Quality t))
   (instance_of b Quality t)))
 
 
-(forall (a b)
- (if (and (part_of a b)(instance_of a RealizableEntity))
-  (instance_of b RealizableEntity)))
-
-
 (forall (a b t)
- (if (and (part_of a b t)(instance_of a RealizableEntity t))
+ (if (and (part_of a b t)(instance_of t TemporalInstant)(instance_of a RealizableEntity t))
   (instance_of b RealizableEntity t)))
 
 
-(forall (a b)
- (if (and (part_of a b)(instance_of a SpatialRegion))
-  (instance_of b SpatialRegion)))
-
-
 (forall (a b t)
- (if (and (part_of a b t)(instance_of a SpatialRegion t))
+ (if (and (part_of a b t)(instance_of t TemporalInstant)(instance_of a SpatialRegion t))
   (instance_of b SpatialRegion t)))
 
 
@@ -148,21 +110,21 @@
   (instance_of b ProcessualEntity)))
 
 
-(forall (a b t)
- (if (and (part_of a b t)(instance_of a ProcessualEntity t))
-  (instance_of b ProcessualEntity t)))
+(forall (a b)
+ (if (and (part_of a b)(instance_of a Occurrent))
+  (instance_of b Occurrent)))
+
+
+(forall (a b)
+ (if (and (part_of a b)(instance_of a Process))
+  (instance_of b Process)))
 
 (atemporal_or_temporal part_of)
 
 
 (forall (i1 i2 t)
  (if (part_of i1 i2 t)
-  (and (instance_of t "span:TemporalRegion")(instance_of i1 Continuant t)(instance_of i2 Continuant t))))
-
-
-(forall (x y w)
- (if (part_of x y w)
-  (and (instance_of x Continuant)(instance_of y Continuant)(instance_of w TemporalInstant))))
+  (and (instance_of t TemporalInstant)(instance_of i1 Continuant t)(instance_of i2 Continuant t))))
 
 
 (forall (i1 i2)
@@ -216,7 +178,19 @@
 
 (anti_symmetric has_part)
 
-(reflexive has_part)
+
+(if 
+(exists (a b)(has_part a b))
+
+
+ (has_part a a))
+
+
+(if 
+(exists (a b t)(has_part a b t))
+
+
+ (has_part a a t))
 
 (exported_identifier has_part "OBO_REL_I:0000003")
 
@@ -350,10 +324,15 @@
 
 (range adjacent_to IndependentContinuant)
 
+(not 
+(exists (x y)(and (adjacent_to x y)(overlaps x y)))
 
-(forall (x y)
- (if (adjacent_to x y)
-  (not (overlaps x y))))
+)
+
+(not 
+(exists (x y t)(and (adjacent_to x y t)(overlaps x y t)))
+
+)
 
 (relation contained_in)
 
@@ -460,7 +439,19 @@
  (if (and (located_in x y t)(located_in y z t))
   (located_in x z t)))
 
-(reflexive located_in)
+
+(if 
+(exists (a b)(located_in a b))
+
+
+ (located_in a a))
+
+
+(if 
+(exists (a b t)(located_in a b t))
+
+
+ (located_in a a t))
 
 
 (forall (i1 i2 i3)
@@ -483,11 +474,8 @@
 
 (forall (c c1)
  (iff (located_in c c1)
-(part_of (regionFn c)
 
- (regionFn c1)
-
-)))
+  (exists (r r1)(and (occupies c r)(occupies c1 r1)(part_of r r1)))))
 
 (text_definition_xref located_in "PMID:15892874")
 
@@ -519,7 +507,19 @@
  (if (and (location_of x y t)(location_of y z t))
   (location_of x z t)))
 
-(reflexive location_of)
+
+(if 
+(exists (a b)(location_of a b))
+
+
+ (location_of a a))
+
+
+(if 
+(exists (a b t)(location_of a b t))
+
+
+ (location_of a a t))
 
 (exported_identifier location_of "OBO_REL_I:0000009")
 
@@ -536,7 +536,19 @@
  (if (overlaps x y)
   (overlaps y x)))
 
-(reflexive overlaps)
+
+(if 
+(exists (a b)(overlaps a b))
+
+
+ (overlaps a a))
+
+
+(if 
+(exists (a b t)(overlaps a b t))
+
+
+ (overlaps a a t))
 
 (intransitive overlaps)
 
@@ -550,7 +562,7 @@
 (forall (x y)
  (iff (overlaps x y)
 
-  (forall (z)(and (part_of z x)(part_of z y)))))
+  (exists (z)(and (part_of z x)(part_of z y)))))
 
 
 (forall (x t)
@@ -601,7 +613,19 @@
  (if (underlaps x y)
   (underlaps y x)))
 
-(reflexive underlaps)
+
+(if 
+(exists (a b)(underlaps a b))
+
+
+ (underlaps a a))
+
+
+(if 
+(exists (a b t)(underlaps a b t))
+
+
+ (underlaps a a t))
 
 (intransitive underlaps)
 
@@ -611,7 +635,7 @@
 (forall (x y)
  (iff (underlaps x y)
 
-  (forall (z)(and (part_of x z)(part_of y z)))))
+  (exists (z)(and (part_of x z)(part_of y z)))))
 
 (relation has_participant)
 
@@ -654,7 +678,7 @@
 
 (forall (i1 i2 t)
  (if (has_participant i1 i2 t)
-  (and (instance_of t "span:TemporalRegion")(instance_of i1 Occurrent t)(instance_of i2 Continuant t))))
+  (and (instance_of t TemporalInstant)(instance_of i1 Occurrent t)(instance_of i2 Continuant t))))
 
 
 (forall (i1 i2 i3)
@@ -711,7 +735,7 @@
 
 (forall (i1 i2 t)
  (if (participates_in i1 i2 t)
-  (and (instance_of t "span:TemporalRegion")(instance_of i1 Continuant t)(instance_of i2 Occurrent t))))
+  (and (instance_of t TemporalInstant)(instance_of i1 Continuant t)(instance_of i2 Occurrent t))))
 
 
 (forall (i1 i2 i3)
@@ -840,7 +864,7 @@
 
 (forall (i1 i2 t)
  (if (inheres_in i1 i2 t)
-  (and (instance_of t "span:TemporalRegion")(instance_of i1 DependentContinuant t)(instance_of i2 Entity t))))
+  (and (instance_of t TemporalInstant)(instance_of i1 DependentContinuant t)(instance_of i2 Entity t))))
 
 (relation bearer_of)
 
@@ -1196,7 +1220,7 @@
 (forall (c c1)
  (if (derives_from c c1)
   
-  (forall (t)(and (only_exists_prior_to c1 t)(only_exists_subsequent_to c t)))))
+  (exists (t)(and (only_exists_prior_to c1 t)(only_exists_subsequent_to c t)))))
 
 (relation derived_into)
 
@@ -1282,6 +1306,36 @@
 (forall (p p1)
  (iff (immediately_preceded_by p p1)
 
-  (forall (t)(and (first_instant_of t p)(last_instant_of t p1)))))
+  (exists (t)(and (first_instant_of t p)(last_instant_of t p1)))))
+
+(relation precedes)
+
+(label precedes precedes)
+
+(domain precedes Occurrent)
+
+(range precedes Occurrent)
+
+
+(forall (a b)
+ (iff (precedes a b)
+(preceded_by b a)))
+
+
+(forall (a b t)
+ (iff (precedes a b t)
+(preceded_by b a t)))
+
+
+(forall (x y z)
+ (if (and (precedes x y)(precedes y z))
+  (precedes x z)))
+
+
+(forall (x y z t)
+ (if (and (precedes x y t)(precedes y z t))
+  (precedes x z t)))
+
+(exported_identifier precedes "OBO_REL_I:0000018")
 
 

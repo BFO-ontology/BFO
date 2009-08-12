@@ -177,7 +177,7 @@
          (holds_temporally_between rel U1 U2)
          (forall (i1 i2 t)
                  (if (rel i1 i2 t)
-                     (and (instance_of t span:TemporalRegion)
+                     (and (instance_of t TemporalInstant)
                           (instance_of i1 U1 t)
                           (instance_of i2 U2 t))))))
 
@@ -190,11 +190,12 @@
 (example homeomorphic_for (homeomorphic_for part_of IndependentContinuant) "BFO")
 (example homeomorphic_for (homeomorphic_for part_of Process) "BFO")
 // @Axiom: homeomorphic time-indexed relations
-(forall (r U)
+(forall (r U X)
         (if 
-            (homeomorphic_for r U)
+            (homeomorphic_for r U X)
             (forall (a b t)
                     (if (and (r a b t)
+                             (instance_of t X)
                              (instance_of a U t))
                         (instance_of b U t)))))
 
@@ -519,5 +520,24 @@
                          (and (is_a x a t)
                               (is_a x b t))))))
 
+
+(metarelation relation_disjoint_from)
+(symmetric relation_disjoint_from)
+(text_definition relation_disjoint_from "R is relation_disjoint_from S if there is no x,y (optionally: t) such that xRy(t) and xSy(t)")
+(forall (r s)
+        (iff
+         (relation_disjoint_from r s)
+         (not (exists (x y)
+                      (and (r x y)
+                           (s x y))))))
+
+(forall (r s)
+        (iff
+         (relation_disjoint_from r s)
+         (not (exists (x y t)
+                      (and (r x y t)
+                           (s x y t))))))
+
+         
 
 

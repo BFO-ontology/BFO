@@ -64,6 +64,10 @@
         (iff (subrelation p q)
              (owl:SubPropertyOf p q)))
 
+(forall (p q)
+        (iff (relation_disjoint_from p q)
+             (owl:DisjointProperties p q)))
+
 // CHAINS
 (forall (p q)
         (iff (transitive_over p q)
@@ -79,5 +83,9 @@
         (if (homeomorphic_for r A)
             (owl:SubClassOf A (owl:allValuesFrom r A))))
 
+// CLASSES
+(forall (p q)
+        (iff (disjoint_from p q)
+             (owl:DisjointClasses p q)))
 
 
