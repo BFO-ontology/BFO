@@ -39,18 +39,16 @@
 )
 
 
-(if 
-(exists (a b)(part_of a b))
+(forall (a b)
+ (if 
+ (exists (a b)(part_of a b))
+  (part_of a a)))
 
 
- (part_of a a))
-
-
-(if 
-(exists (a b t)(part_of a b t))
-
-
- (part_of a a t))
+(forall (a b t)
+ (if 
+ (exists (a b t)(part_of a b t))
+  (part_of a a t)))
 
 (exported_identifier part_of "OBO_REL_I:0000002")
 
@@ -179,18 +177,16 @@
 (anti_symmetric has_part)
 
 
-(if 
-(exists (a b)(has_part a b))
+(forall (a b)
+ (if 
+ (exists (a b)(has_part a b))
+  (has_part a a)))
 
 
- (has_part a a))
-
-
-(if 
-(exists (a b t)(has_part a b t))
-
-
- (has_part a a t))
+(forall (a b t)
+ (if 
+ (exists (a b t)(has_part a b t))
+  (has_part a a t)))
 
 (exported_identifier has_part "OBO_REL_I:0000003")
 
@@ -440,18 +436,16 @@
   (located_in x z t)))
 
 
-(if 
-(exists (a b)(located_in a b))
+(forall (a b)
+ (if 
+ (exists (a b)(located_in a b))
+  (located_in a a)))
 
 
- (located_in a a))
-
-
-(if 
-(exists (a b t)(located_in a b t))
-
-
- (located_in a a t))
+(forall (a b t)
+ (if 
+ (exists (a b t)(located_in a b t))
+  (located_in a a t)))
 
 
 (forall (i1 i2 i3)
@@ -508,18 +502,16 @@
   (location_of x z t)))
 
 
-(if 
-(exists (a b)(location_of a b))
+(forall (a b)
+ (if 
+ (exists (a b)(location_of a b))
+  (location_of a a)))
 
 
- (location_of a a))
-
-
-(if 
-(exists (a b t)(location_of a b t))
-
-
- (location_of a a t))
+(forall (a b t)
+ (if 
+ (exists (a b t)(location_of a b t))
+  (location_of a a t)))
 
 (exported_identifier location_of "OBO_REL_I:0000009")
 
@@ -537,18 +529,16 @@
   (overlaps y x)))
 
 
-(if 
-(exists (a b)(overlaps a b))
+(forall (a b)
+ (if 
+ (exists (a b)(overlaps a b))
+  (overlaps a a)))
 
 
- (overlaps a a))
-
-
-(if 
-(exists (a b t)(overlaps a b t))
-
-
- (overlaps a a t))
+(forall (a b t)
+ (if 
+ (exists (a b t)(overlaps a b t))
+  (overlaps a a t)))
 
 (intransitive overlaps)
 
@@ -557,6 +547,28 @@
 (comment overlaps "note that the definition of overlaps includes the case where x is part_of y - for example, a nucleus overlaps a cell. We also have the *partial_overlaps* relation for those cases where x and y overlap but neither is part of the other")
 
 (exported_identifier overlaps "OBO_REL_I:0000201")
+
+
+(forall (i1 i2 i3)
+ (if (and (has_part i1 i2)(part_of i2 i3))
+  (overlaps i1 i3)))
+
+
+(forall (i1 i2 i3 t)
+ (if (and (has_part i1 i2 t)(part_of i2 i3 t))
+  (overlaps i1 i3 t)))
+
+
+(forall (i1 i3)
+ (if (overlaps i1 i3)
+  
+  (exists (i2)(and (has_part i1 i2)(part_of i2 i3)))))
+
+
+(forall (i1 i3 t)
+ (if (overlaps i1 i3 t)
+  
+  (exists (i2)(and (has_part i1 i2 t)(part_of i2 i3 t)))))
 
 
 (forall (x y)
@@ -573,8 +585,6 @@
   (part_of x y t)))
 
 (relation partially_overlaps)
-
-(subrelation partially_overlaps overlaps)
 
 (label partially_overlaps partially_overlaps)
 
@@ -595,6 +605,28 @@
 
 (text_definition partially_overlaps "x partially_overlaps y if and only if: x overlaps y and neither x is part_of y not y is part_of x")
 
+(subrelation partially_overlaps overlaps)
+
+(not 
+(exists (x y)(and (partially_overlaps x y)(part_of x y)))
+
+)
+
+(not 
+(exists (x y t)(and (partially_overlaps x y t)(part_of x y t)))
+
+)
+
+(not 
+(exists (x y)(and (partially_overlaps x y)(has_part x y)))
+
+)
+
+(not 
+(exists (x y t)(and (partially_overlaps x y t)(has_part x y t)))
+
+)
+
 
 (forall (x y)
  (iff (partially_overlaps x y)
@@ -614,18 +646,16 @@
   (underlaps y x)))
 
 
-(if 
-(exists (a b)(underlaps a b))
+(forall (a b)
+ (if 
+ (exists (a b)(underlaps a b))
+  (underlaps a a)))
 
 
- (underlaps a a))
-
-
-(if 
-(exists (a b t)(underlaps a b t))
-
-
- (underlaps a a t))
+(forall (a b t)
+ (if 
+ (exists (a b t)(underlaps a b t))
+  (underlaps a a t)))
 
 (intransitive underlaps)
 
@@ -859,12 +889,18 @@
 
 (text_definition inheres_in "A primitive relation that holds between a dependent continuant instance and a bearer")
 
-(domain inheres_in DependentContinuant)
+(text_definition_xref inheres_in "ontology.buffalo.edu/bfo/SQU.pdf")
+
+(obsolete_axiom (domain inheres_in DependentContinuant)
+
+)
+
+(domain inheres_in SpecificallyDependentContinuant)
 
 
 (forall (i1 i2 t)
  (if (inheres_in i1 i2 t)
-  (and (instance_of t TemporalInstant)(instance_of i1 DependentContinuant t)(instance_of i2 Entity t))))
+  (and (instance_of t TemporalInstant)(instance_of i1 SpecificallyDependentContinuant t)(instance_of i2 Entity t))))
 
 (relation bearer_of)
 
@@ -1337,5 +1373,39 @@
   (precedes x z t)))
 
 (exported_identifier precedes "OBO_REL_I:0000018")
+
+(relation occurs_in)
+
+(label occurs_in occurs_in)
+
+(exact_synonym occurs_in unfolds_in)
+
+(exact_synonym occurs_in process_located_in)
+
+(exact_synonym occurs_in all_participants_located_in)
+
+
+(forall (i1 i2 i3)
+ (if (and (has_participant i1 i2)(located_in i2 i3))
+  (occurs_in i1 i3)))
+
+
+(forall (i1 i2 i3 t)
+ (if (and (has_participant i1 i2 t)(located_in i2 i3 t))
+  (occurs_in i1 i3 t)))
+
+(exported_identifier occurs_in "OBO_REL_I:0000064")
+
+(text_definition occurs_in "p occurs_in s at t : all the participants of of p are spatially contained by s at t.")
+
+(all_only_chain occurs_in has_participant located_in)
+
+
+(forall (p s t)
+ (iff (occurs_in p s t)
+
+  (forall (c)
+   (if (has_participant p c t)
+    (located_in c s t)))))
 
 

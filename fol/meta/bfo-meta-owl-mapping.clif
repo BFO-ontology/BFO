@@ -77,6 +77,10 @@
         (iff (holds_over_chain p q r)
              (owl:SubPropertyOf (owl:PropertyChain q r) p)))
 
+(forall (p q r)
+        (iff (equivalent_to_chain p q r)
+             (owl:SubPropertyOf (owl:PropertyChain q r) p)))
+
 
 // GCIs
 (forall (r A)
