@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE rdf:RDF [
     <!ENTITY ns1 'http://purl.obolibrary.org/obo/'>
+    <!ENTITY owl 'http://www.w3.org/2002/07/owl#'>
     <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
     <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
-    <!ENTITY owl 'http://www.w3.org/2002/07/owl#'>
 ]>
 
 <rdf:RDF
     xmlns:ns1="&ns1;"
+    xmlns:owl="&owl;"
     xmlns:rdf="&rdf;"
     xmlns:rdfs="&rdfs;"
-    xmlns:owl="&owl;"
 >
 <owl:Ontology rdf:about="http://example.org#"/>
 
@@ -56,6 +56,10 @@
   <rdf:type rdf:resource="&owl;SymmetricProperty"/>
   <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
   <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
+  <owl:propertyChainAxiom rdf:parseType="Collection">
+    <rdf:Description rdf:about="http://example.org#has_part"/>
+    <rdf:Description rdf:about="http://example.org#part_of"/>
+  </owl:propertyChainAxiom>
 </owl:ObjectProperty>
 
 <owl:SymmetricProperty rdf:about="http://example.org#partially_overlap"/>
@@ -155,6 +159,8 @@
 
 <owl:ObjectProperty rdf:about="http://example.org#partially_overlaps"
     rdfs:label="partially_overlaps">
+  <owl:propertyDisjointWith rdf:resource="http://example.org#has_part"/>
+  <owl:propertyDisjointWith rdf:resource="http://example.org#part_of"/>
   <ns1:IAO_0000115>x partially_overlaps y if and only if: x overlaps y and neither x is part_of y not y is part_of x</ns1:IAO_0000115>
   <rdfs:domain rdf:resource="http://example.org#IndependentContinuant"/>
   <rdfs:range rdf:resource="http://example.org#IndependentContinuant"/>
@@ -270,6 +276,18 @@
   </owl:propertyChainAxiom>
 </owl:ObjectProperty>
 
+<owl:ObjectProperty rdf:about="http://example.org#occurs_in"
+    rdfs:label="occurs_in">
+  <ns1:IAO_0000118>all_participants_located_in</ns1:IAO_0000118>
+  <ns1:IAO_0000118>process_located_in</ns1:IAO_0000118>
+  <ns1:IAO_0000118>unfolds_in</ns1:IAO_0000118>
+  <ns1:IAO_0000115>p occurs_in s at t : all the participants of of p are spatially contained by s at t.</ns1:IAO_0000115>
+  <owl:propertyChainAxiom rdf:parseType="Collection">
+    <rdf:Description rdf:about="http://example.org#has_participant"/>
+    <rdf:Description rdf:about="http://example.org#located_in"/>
+  </owl:propertyChainAxiom>
+</owl:ObjectProperty>
+
 <owl:ObjectProperty rdf:about="http://example.org#contained_in"
     rdfs:label="contained_in">
   <ns1:IAO_0000115>c contained_in c' at t if and only if: c located_in c' at t, and it is not the case that c *overlaps* c' at t. (c' is a conduit or cavity.)</ns1:IAO_0000115>
@@ -282,7 +300,7 @@
     ns1:IAO_0000118="has_bearer"
     rdfs:label="inheres_in">
   <ns1:IAO_0000115>A primitive relation that holds between a dependent continuant instance and a bearer</ns1:IAO_0000115>
-  <rdfs:domain rdf:resource="http://example.org#DependentContinuant"/>
+  <rdfs:domain rdf:resource="http://example.org#SpecificallyDependentContinuant"/>
   <owl:inverseOf rdf:resource="http://example.org#bearer_of"/>
 </owl:ObjectProperty>
 

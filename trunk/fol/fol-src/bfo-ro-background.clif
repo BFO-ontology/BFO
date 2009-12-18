@@ -82,7 +82,6 @@
                              (if (exists_at c t2)
                                  (earlier_than t2 t)))))
 
-           // TODO: shoukd these relations be moved out into a separate "background" ontology?
            (relation exists_at)
            (text_definition exists_at "A primitive relation between a continuant and an instant of time.")
            (label exists_at "exists_at")
@@ -168,18 +167,5 @@
            (text_definition_xref earlier_than "PMID:15892874")
 
 
-           (relation occurs_in)
-           (label occurs_in "occurs_in")
-           (exact_synonym occurs_in "unfolds_in")
-           (exact_synonym occurs_in "process_located_in")
-           (holds_over_chain occurs_in has_participant located_in)
-           (exported_identifier occurs_in "OBO_REL_I:0000064")
-           (text_definition occurs_in "p occurs_in s at t : the participants of of p are spatially contained by s at t.")
-           // @Axiom: p occurs_in s at t iff forall c such that c participates_in p at t, c located_in s at t
-           (forall (p s t)
-                   (iff (occurs_in p s t)
-                        (forall (c) 
-                                (if (has_participant p c t)
-                                    (located_in c s t)))))
 
 )

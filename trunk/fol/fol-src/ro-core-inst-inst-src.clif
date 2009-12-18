@@ -169,6 +169,7 @@
            (text_definition overlaps "x overlaps y if and only if: there is some z such that: z part_of x and z part_of y (i.e. x and y share a part)")
            (comment overlaps "note that the definition of overlaps includes the case where x is part_of y - for example, a nucleus overlaps a cell. We also have the *partial_overlaps* relation for those cases where x and y overlap but neither is part of the other")
            (exported_identifier overlaps "OBO_REL_I:0000201")
+           (equivalent_to_chain overlaps has_part part_of)
            (forall (x y)
                    (iff (overlaps x y)
                         (exists (z) (and (part_of z x)
@@ -184,7 +185,6 @@
 
 
            (relation partially_overlaps)
-           (subrelation partially_overlaps overlaps)
            (label partially_overlaps "partially_overlaps")
            (example partially_overlaps "A National Park whose area is included in two counties would have this relationship to each of the counties." "GAZ")
            (domain partially_overlaps IndependentContinuant)
@@ -193,6 +193,9 @@
            (symmetric partially_overlap)
            (exported_identifier partially_overlaps "OBO_REL_I:0000202")
            (text_definition partially_overlaps "x partially_overlaps y if and only if: x overlaps y and neither x is part_of y not y is part_of x")
+           (subrelation partially_overlaps overlaps)
+           (relation_disjoint_from partially_overlaps part_of)
+           (relation_disjoint_from partially_overlaps has_part)
            (forall (x y)
                    (iff (partially_overlaps x y)
                         (and (overlaps x y)
@@ -284,9 +287,11 @@
            (exact_synonym inheres_in "has_bearer")
            (exported_identifier inheres_in "OBO_REL_I:0000026")
            (text_definition inheres_in "A primitive relation that holds between a dependent continuant instance and a bearer")
-           (domain inheres_in DependentContinuant)
-           (holds_temporally_between inheres_in DependentContinuant Entity)
-           //(text_definition_xref inheres_in "GOC:Neuhaus")
+           (text_definition_xref inheres_in "ontology.buffalo.edu/bfo/SQU.pdf")
+           (obsolete_axiom
+	    (domain inheres_in DependentContinuant))
+           (domain inheres_in SpecificallyDependentContinuant)
+           (holds_temporally_between inheres_in SpecificallyDependentContinuant Entity)
 
 
            (relation bearer_of)
@@ -387,7 +392,6 @@
            (label realizes "realizes")
            (inverse_of realizes realized_by)
            (comment realizes "in BFO realizable is the parent of function, role and disposition. We should also have realization_of and has_realizable for consistency. Will the terminology get too confusing?")
-           // OBI
            (narrow_synonym realizes "is_realization_of")
            (narrow_synonym realizes "realization_of")
            (narrow_synonym realizes "is_functioning_of")
@@ -398,8 +402,6 @@
            (example realizes (realizes "reaction1" "function1") "")
            (domain realizes Process)
            (range realizes RealizableEntity)
-
-           // OBI
 
            (relation realized_by)
            (label realized_by "realized_by")
@@ -488,6 +490,23 @@
            (inverse_of precedes preceded_by)
            (transitive precedes)
            (exported_identifier precedes "OBO_REL_I:0000018")
+
+           (relation occurs_in)
+           (label occurs_in "occurs_in")
+           (exact_synonym occurs_in "unfolds_in")
+           (exact_synonym occurs_in "process_located_in")
+           (exact_synonym occurs_in "all_participants_located_in")
+           (holds_over_chain occurs_in has_participant located_in)
+           (exported_identifier occurs_in "OBO_REL_I:0000064")
+           (text_definition occurs_in "p occurs_in s at t : all the participants of of p are spatially contained by s at t.")
+           // @Axiom: p occurs_in s at t iff forall c such that c participates_in p at t, c located_in s at t
+           //(equivalent_to_chain occurs_in has_participant located_in)
+           (all_only_chain occurs_in has_participant located_in)
+           (forall (p s t)
+                   (iff (occurs_in p s t)
+                        (forall (c) 
+                                (if (has_participant p c t)
+                                    (located_in c s t)))))
 
            
 ) // end-of-module

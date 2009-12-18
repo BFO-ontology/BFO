@@ -1,14 +1,17 @@
 BFO First-Order Logic Representation (Experimental)
 
-The representation is in CLIF and is subdivided into 3 directories:
+The representation is in CLIF (Common Logic Interchange Format) and is
+subdivided into 3 directories:
 
-* fol-src
-* fol-derived
-* meta
+* fol-src/
+* fol-derived/
+* meta/
 
-The 'source' is in fol-src; this uses a high-level representation in
-which relations are in the domain of discourse. For example, it
-contains sentences of the form:
+RO and BFO are currently maintained in separate files.
+
+The primary copy is in the fol-src/ directory - this uses a high-level
+representation in which relations are in the domain of discourse. For
+example, it contains sentences of the form:
 
   (transitive part_of)
 
@@ -46,12 +49,15 @@ fol-derived. Here we see for example:
    (if (and (part_of x y t)(part_of y z t))
     (part_of x z t)))
 
-This could be considered the more 'accurate' representation of BFO,
-since relations are removed from the domain of discourse.
+This could be considered in some sense the more accurate
+representation of BFO, since relations are removed from the domain of
+discourse. However, the primary representation is more convenient,
+readable, and easier to translate to OWL.
 
 The translation is handled by the Makefile in this directory. cltools
-is required. At the moment translations to CLIF and to Prover9 are
-supported.
+is required (http://github.com/cmungall/cltools/). At the moment
+translations to CLIF and to Prover9 are supported, and pregenerated in
+this directory.
 
 Why do it this way? One reason is that the macro approach is easier to
 maintain as it involves less repetitive typing. Also, in abstracting
