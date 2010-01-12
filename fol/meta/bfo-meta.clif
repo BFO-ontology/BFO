@@ -1,4 +1,6 @@
-
+// Alternative names:
+//  obolog?
+//  FOLWUT (FOL With Universal Terms)?
 // TODO: convert these to correct CLIF form
 //(imports instance_of)
 //(imports is_a)
@@ -411,7 +413,7 @@
 // ****************************************
 (unary_metarelation symmetric)
 (example symmetric (symmetric instance_level_adjacent_to) "RO")
-(counter_example symmetric (not (symmetric type_level_adjacent_to)) "RO")
+//(counter_example symmetric (not (symmetric type_level_adjacent_to)) "RO")
 
 (forall (r)
         (iff (symmetric r)
@@ -609,6 +611,7 @@
                               (iff (or (exists_at x t)
                                        (exists_at y t))
                                    (s x y t)))))))
+
 (example permanent_form_of (permanent_form_of permanent_part_of part_of) "Bittner, Logical properties of mereogeometrical relations, Applied Ontology 2009")
 
 (metarelation transitive_version_of)

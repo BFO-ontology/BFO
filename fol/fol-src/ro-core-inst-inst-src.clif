@@ -114,6 +114,7 @@
            (holds_temporally contained_in) 
            (domain contained_in IndependentContinuant)
            (range contained_in IndependentContinuant)
+	   (subrelation contained_in located_in)
            (forall (x y t)
                    (iff (contained_in x y t)
                         (and (located_in x y t)
