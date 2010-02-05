@@ -16,6 +16,8 @@ Alan's opinion only:
   * [Bfo2DeterminableDeterminate Temporal derivative]
   * [Bfo2DeterminableDeterminate Quantities]
   * [Bfo2DeterminableDeterminate Extended and instantaneous determinate quality instances]
+  * Physical fields, that depend but don't necessarily inhere in anything
+  * Body of energy (dual with mass)
   * Candidates for dropping
    * Subclasses of spatial region
    * [Proper_parthood].
