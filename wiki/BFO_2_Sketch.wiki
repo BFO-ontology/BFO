@@ -10,6 +10,8 @@ Alan's opinion only:
    * relations to spatial, temporal, and spatio-temporal regions.
    * dependecy super-property
    * bounds
+  * Distinguish type level versus instance level relations
+  * Based on OWL 2/CL
   * [Bfo2DeterminableDeterminate Determinable and determinate qualities]
   * [Bfo2DeterminableDeterminate Temporal derivative]
   * [Bfo2DeterminableDeterminate Quantities]
