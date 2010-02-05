@@ -1,0 +1,33 @@
+From Barry:
+
+== Background on Determinables and Determinates ==
+
+Determinable Quality Type, e.g. Color, Speed, Temperature
+
+Determinate Quality Type, e.g. red of this specific hue, 30mph, 87 degrees Celsius
+
+Quality Dimension = the space formed by all determinate types of a given determinable type (e.g. color space ...) (Cf. DOLCE)
+
+Quantity = subclass of Quality (a quality that can be measured) (in all senses of 'quality' here defined)
+
+Instantaneous Determinable Quality Instance, this color of this petal here now, this instantaneous speed, this instantaneous temperature [These are, believe it or not, instantaneous continuants]
+
+Extended Determinable Quality Instance, my temperature (T(BS), the temperature I have, over my life time, which cycles through different temperature determinates as my temperature (T(BS)) changes; the speed of this ball as it moves through the air, reducing to zero as it reaches its highest point, and then accelerating until it reaches the ground]
+
+In the sense in which one physiology variable influences another, 'physiology variable' means 'extended determinable quality instance'
+
+Extended Determinable Quality Instance Course =def. the process which corresponds to the projection of an extended determinable quality instance onto time
+
+[think of integrals in the differential calculus, perhaps] [and compare: the course of a disease]
+
+In the sense in which asserts PhysiologyProcess has PhysiologyVariable
+'Physiology variable' means 'determinable quality type'
+
+Rate
+x is a temporal derivative quality of y =def.
+(1) there is some independent continuant z, and x and y are qualities of z
+(2) y is an extended determinable quality instance of type Y (temperature, speed, acceleration, rigidity ...)
+(3) y is projected on some process of change in z along Y
+(4) x is the rate at which y is changing
+
+Axiom: As y changes, a series of instances of determinate qualities will inhere in z.
