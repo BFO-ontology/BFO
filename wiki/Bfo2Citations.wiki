@@ -12,3 +12,5 @@ Just the beginning of the list, started by Alan. Where the citations differ from
  * Maureen Donnelly: "On parts and holes: the spatial structure of the human body"
  * Thomas Bittner: Axioms for Parthood and Containment Relations in Bio-Ontologies
  * S Schulz and A Kumar and T Bittner: Biomedical ontologies: What part-of is and isn’t
+
+Perhaps of use: http://www.obofoundry.org/wiki/index.php/PATO:Main_Page#Presentations.2C_papers
