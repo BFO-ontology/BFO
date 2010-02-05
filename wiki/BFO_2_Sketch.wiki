@@ -29,5 +29,5 @@ Alan's opinion only:
    * Consider reorganizing dependent/independent split because "dependent" currently doesn't cover all cases of  dependence.
   * Rewrite documentation to be usable, correct errors
    * Clarify sites as immaterial continuants. Explain parts, region relations
-   * Include more citations to papers that discuss various elements of the theory behind certain entities.
+   * Include more [Bfo2Citations citations] to papers that discuss various elements of the theory behind certain entities.
  
