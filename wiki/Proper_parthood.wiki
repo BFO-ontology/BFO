@@ -1,0 +1,14 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Alan wants to deprecate this. What's the justification?
+
+Is the plan to make part_of ==> proper_part_of? I think this would make a lot of mereological axioms harded. Consider the role chain for overlaps
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
