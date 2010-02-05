@@ -1,0 +1,27 @@
+= Alan's notes =
+
+Alan's opinion only:
+
+  * Add relations essential to working with BFO
+   * inheres_in, bearer_of
+   * participates_in,has_participant
+   * part_of, has_part
+   * realizes, realized_by
+   * relations to spatial, temporal, and spatio-temporal regions.
+   * dependecy super-property
+   * bounds
+  * [Bfo2DeterminableDeterminate Determinable and determinate qualities]
+  * [Bfo2DeterminableDeterminate Temporal derivative]
+  * [Bfo2DeterminableDeterminate Quantities]
+  * [Bfo2DeterminableDeterminate Extended and instantaneous determinate quality instances]
+  * Candidates for dropping
+   * Subclasses of spatial region
+   * Proper parthood.
+   * Process (rename !ProcessualEntity->Process).
+   * !ProcessualContext
+  * Candidates for reorganization
+   * Disposition super function, role. Disposition syn: Capability?
+   * Object aggregate, fiat object part as defined classes defined with new relations.
+  * Rewrite documentation to be usable, correct errors
+   * Clarify sites as immaterial continuants. Explain parts, region relations
+ 
