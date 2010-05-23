@@ -15,6 +15,8 @@
     (precedes !obo:BFO_0000063)
     (course-of !obo:BFO_0000064)
     (has-course !obo:BFO_0000065)
+    (occurs-in !obo:BFO_0000066)
+    (contains-process !obo:BFO_0000067)
     ))
 
 (defun id-for-bfo-axiom (i)
@@ -34,13 +36,8 @@
        (progv (mapcar 'first ,classes) (mapcar 'second ,classes)
 	 ,@body))))
 
-(defmacro nax (id ax &optional label)
-  (print ax)
-  `(,(first ax) ,(second ax) '(annotation !obo:IAO_0010000 ,(id-for-bfo-axiom id))
-     ,@(and label `('(annotation !rdfs:label ,(format nil "~a@en" label))))
-     ,@(cddr ax)))
-
 (defun nax (id ax &optional label)
+  "named axiom - id is a number. label is optional."
   `(,(first ax)  (annotation !obo:IAO_0010000 ,(id-for-bfo-axiom id))
      ,@(and label `((annotation !rdfs:label ,(format nil "~a@en" label))))
      ,@(cdr ax)))
@@ -60,6 +57,7 @@
       (with-ontology rel (:about !obo:bfo/relations.owl :collecting t)
 	  ((progv (mapcar 'car *bfo2-relations*) (mapcar 'second *bfo2-relations*)
 	     (with-label-vars-from "~/repos/bfo/trunk/src/ontology/bfo2.owl"  
+	       (asq (imports !obo:bfo.owl))
 	       (loop for (var uri) in *bfo2-relations* do
 		    (as `(declaration (object-property ,uri))
 			(label uri (substitute #\space #\- (string-downcase (string var))))))
@@ -89,19 +87,18 @@
 		(nax 15 `(object-property-domain ,immediately-precedes ,process))
 		(nax 16 `(object-property-range ,immediately-precedes ,process))
 		(nax 17 `(inverse-object-properties ,immediately-precedes ,immediately-preceded-by))
-;		(nax 18 `(irreflexive-object-property ,immediately-preceded-by)) ;; can't because of transitive superproperty
-;		(nax 19 `(irreflexive-object-property ,immediately-precedes))
-;		(nax 20 `(asymmetric-object-property ,immediately-preceded-by))
-;		(nax 21 `(asymmetric-object-property ,immediately-precedes))
+
 		(nax 19 `(object-property-domain ,precedes ,process))
 		(nax 20 `(object-property-range ,precedes ,process))
 		(nax 21 `(inverse-object-properties ,precedes ,preceded-by))
 		(nax 22 `(sub-object-property-of ,immediately-preceded-by ,preceded-by))
 		(nax 23 `(sub-object-property-of ,immediately-precedes ,precedes))
-;		(nax 24 `(irreflexive-object-property ,preceded-by)) 
-;		(nax 25 `(irreflexive-object-property ,precedes))
-;		(nax 26 `(asymmetric-object-property ,preceded-by))
-;		(nax 27 `(asymmetric-object-property ,precedes))
+		(nax 24 `(object-property-domain ,occurs-in ,process))
+		(nax 25 `(object-property-range ,occurs-in ,independent-continuant))
+		(nax 26 `(inverse-object-properties ,occurs-in ,contains-process))
+		#|(nax 27 |# `(sub-object-property-of (object-property-chain ,part-of ,occurs-in) ,occurs-in); ) ;"part a process that occurs in C occurs in C")
+		#|(nax 18 |# `(sub-object-property-of (object-property-chain ,occurs-in ,part-of) ,occurs-in) ;) ;"if p occurs in c, then p occurs in anything that c is part of")
+
 		(nax 28 `(transitive-object-property ,precedes))
 		(nax 29 `(transitive-object-property ,preceded-by))
 		(nax 30 `(functional-object-property ,immediately-preceded-by))
@@ -112,13 +109,23 @@
 		(nax 35 `(object-property-domain ,realizes ,process))
 		(nax 36 `(object-property-range ,realizes ,realizable-entity))
 		(nax 37 `(inverse-object-properties ,realizes ,realized-by))
-		(nax 38 `(sub-object-property-of (object-property-chain ,realizes ,inheres-in) ,has-participant) "bearers of realizables participate in their realizaton")  ; note OWLAPI bug.
-		))))
+		#|(nax 38 |# `(sub-object-property-of (object-property-chain ,realizes ,inheres-in) ,has-participant) ; "bearers of realizables participate in their realizaton")  ; note OWLAPI bug.
+		     ))))
 	(write-rdfxml rel "~/repos/bfo/trunk/src/ontology/bfo2-relations.owl")))))
 		
-(bfo2-relations)
+;(bfo2-relations)
 	     
 
 
 ;(with-label-vars-from "~/repos/bfo/trunk/src/ontology/bfo2.owl"  entity) -> !obo:BFO_0000001
+
+;; these axioms violate global constaints
+;		(nax 18 `(irreflexive-object-property ,immediately-preceded-by)) 
+;		(nax 19 `(irreflexive-object-property ,immediately-precedes))
+;		(nax 20 `(asymmetric-object-property ,immediately-preceded-by))
+;		(nax 21 `(asymmetric-object-property ,immediately-precedes))
 	   
+;		(nax 24 `(irreflexive-object-property ,preceded-by)) 
+;		(nax 25 `(irreflexive-object-property ,precedes))
+;		(nax 26 `(asymmetric-object-property ,preceded-by))
+;		(nax 27 `(asymmetric-object-property ,precedes))
