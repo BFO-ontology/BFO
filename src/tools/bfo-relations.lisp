@@ -36,13 +36,23 @@
        (progv (mapcar 'first ,classes) (mapcar 'second ,classes)
 	 ,@body))))
 
+(defmacro def-metadata (prop ont &rest prop-val)
+  `(setf (getf (get ',ont 'metadata) ',prop)
+	 (append
+	  (loop for (key val) on (getf (get ',ont 'metadata) ',prop) by #'cddr
+	     when (not (getf ',prop-val key))
+	     collect key collect val)
+	  ',prop-val)))
+
+(defmacro def-axiom (number ont axiom &optional doc)
+  `(setf (getf (get ',ont 'axioms) ',number)
+	 `(:number ,,number :documentation ,,doc :axioms ,',axiom)))
+
 (defun nax (id ax &optional label)
   "named axiom - id is a number. label is optional."
   `(,(first ax)  (annotation !obo:IAO_0010000 ,(id-for-bfo-axiom id))
      ,@(and label `((annotation !rdfs:label ,(format nil "~a@en" label))))
      ,@(cdr ax)))
-
-
 
 (defun bfo2-relations ()
   (let ((definition !obo:IAO_0000115)
@@ -115,6 +125,21 @@
 		
 ;(bfo2-relations)
 	     
+(def-metadata concretizes bfo
+  :editor-note
+  "A generically dependent continuant may inhere in more than one entity. It does so by virtue of the fact that there is, for each entity that it inheres, a specifically dependent *concretization* of the generically dependent continuant that is specifically dependent. For instance, consider a story, which is an information artifact that inheres in some number of books. Each book bears some quality that carries the story. The relation between this quality and the generically dependent continuant is that the former is the concretization of the latter."
+  :definition
+  "a relationship between a generically dependent continuant and at least one specifically dependent continuant upon which it existentially depends"
+  :definition-editor
+  "Alan Ruttenberg"
+  :definition-editor
+  "Barry Smith")
+
+
+;(def-axiom 1 bfo 
+;  `(object-property-domain ,part-of ,entity)
+;  "domain of part of")
+
 
 
 ;(with-label-vars-from "~/repos/bfo/trunk/src/ontology/bfo2.owl"  entity) -> !obo:BFO_0000001
