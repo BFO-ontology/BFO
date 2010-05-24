@@ -1,0 +1,203 @@
+format-version: 1.2
+
+[Term]
+id: BFO:0000001
+name: entity
+namespace: BFO
+
+[Term]
+id: BFO:0000002
+name: continuant
+namespace: BFO
+is_a: BFO:0000001  ! entity
+
+[Term]
+id: BFO:0000003
+name: occurrent
+namespace: BFO
+is_a: BFO:0000001  ! entity
+
+[Term]
+id: BFO:0000004
+name: processual entity
+namespace: BFO
+is_a: BFO:0000003  ! occurrent
+
+[Term]
+id: BFO:0000005
+name: bearing continant
+namespace: BFO
+is_a: BFO:0000002  ! continuant
+
+[Term]
+id: BFO:0000006
+name: dependent continuant
+namespace: BFO
+is_a: BFO:0000002  ! continuant
+
+[Term]
+id: BFO:0000007
+name: specifically dependent continuant
+namespace: BFO
+is_a: BFO:0000006  ! dependent continuant
+
+[Term]
+id: BFO:0000008
+name: generically dependent continuant
+namespace: BFO
+is_a: BFO:0000006  ! dependent continuant
+
+[Term]
+id: BFO:0000009
+name: process
+namespace: BFO
+is_a: BFO:0000004  ! processual entity
+
+[Term]
+id: BFO:0000010
+name: instantaneous process boundary
+namespace: BFO
+is_a: BFO:0000004  ! processual entity
+
+[Term]
+id: BFO:0000011
+name: quality
+namespace: BFO
+is_a: BFO:0000007  ! specifically dependent continuant
+
+[Term]
+id: BFO:0000012
+name: disposition
+namespace: BFO
+is_a: BFO:0000007  ! specifically dependent continuant
+
+[Term]
+id: BFO:0000013
+name: role
+namespace: BFO
+is_a: BFO:0000007  ! specifically dependent continuant
+
+[Term]
+id: BFO:0000014
+name: function
+namespace: BFO
+is_a: BFO:0000012  ! disposition
+
+[Term]
+id: BFO:0000015
+name: material entity
+namespace: BFO
+is_a: BFO:0000005  ! bearing continant
+
+[Term]
+id: BFO:0000016
+name: immaterial entity
+namespace: BFO
+is_a: BFO:0000005  ! bearing continant
+
+[Term]
+id: BFO:0000017
+name: boundary
+namespace: BFO
+is_a: BFO:0000005  ! bearing continant
+
+[Term]
+id: BFO:0000018
+name: spatial region
+namespace: BFO
+is_a: BFO:0000002  ! continuant
+
+[Term]
+id: BFO:0000019
+name: physical field
+namespace: BFO
+is_a: BFO:0000005  ! bearing continant
+
+[Term]
+id: BFO:0000020
+name: portion of energy
+namespace: BFO
+is_a: BFO:0000005  ! bearing continant
+
+[Term]
+id: BFO:0000021
+name: temporal region
+namespace: BFO
+is_a: BFO:0000003  ! occurrent
+
+[Term]
+id: BFO:0000022
+name: spatiotemporal region
+namespace: BFO
+is_a: BFO:0000003  ! occurrent
+
+[Term]
+id: BFO:0000023
+name: temporal instant
+namespace: BFO
+is_a: BFO:0000021  ! temporal region
+
+[Typedef]
+id: BFO:0000024
+name: specifically depends on
+namespace: BFO
+
+[Typedef]
+id: BFO:0000025
+name: part of
+namespace: BFO
+
+[Typedef]
+id: BFO:0000026
+name: has part
+namespace: BFO
+
+[Typedef]
+id: BFO:0000027
+name: inheres in
+namespace: BFO
+is_a: BFO:0000024  ! specifically depends on
+
+[Typedef]
+id: BFO:0000028
+name: is concretization of
+namespace: BFO
+
+[Typedef]
+id: BFO:0000029
+name: generically depends on
+namespace: BFO
+
+[Typedef]
+id: BFO:0000030
+name: has participant
+namespace: BFO
+
+[Typedef]
+id: BFO:0000031
+name: participates in
+namespace: BFO
+inverse_of: BFO:0000030  ! has participant
+domain: BFO:0000005  ! bearing continant
+range: BFO:0000004  ! processual entity
+
+[Typedef]
+id: BFO:0000032
+name: projects onto
+namespace: BFO
+
+[Typedef]
+id: BFO:0000033
+name: located in
+namespace: BFO
+
+[Typedef]
+id: BFO:0000034
+name: contained in
+namespace: BFO
+
+[Typedef]
+id: BFO:0000035
+name: occurs in
+namespace: BFO
+
