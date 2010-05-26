@@ -1,4 +1,5 @@
 BFO First-Order Logic Representation (Experimental)
+---------------------------------------------------
 
 The representation is in CLIF (Common Logic Interchange Format) and is
 subdivided into 3 directories:
