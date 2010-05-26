@@ -1,12 +1,17 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.obolibrary.org/obo/bfo.owl#"
-     xml:base="http://purl.obolibrary.org/obo/bfo/classes.owl"
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/bfo/core-classes.owl#"
+     xml:base="http://purl.obolibrary.org/obo/bfo/core-classes.owl"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#">
-    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/classes.owl"/>
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/core-classes.owl">
+        <dc:source>Pierre Grenon and Barry Smith: &quot;SNAP and SPAN: Towards Geospatial Dynamics&quot;</dc:source>
+        <dc:contributor>Andrew Spear</dc:contributor>
+        <dc:contributor>Alan Ruttenberg</dc:contributor>
+    </owl:Ontology>
     
 
 
@@ -18,9 +23,13 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
     <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
         <rdfs:label xml:lang="en">editor preferred term</rdfs:label>
     </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
     <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
         <rdfs:label xml:lang="en">alternative term</rdfs:label>
     </owl:AnnotationProperty>
@@ -124,27 +133,11 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/BFO_0000006 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000006">
-        <rdfs:label xml:lang="en">spatial region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <obo:IAO_0000115 xml:lang="en">A continuant  that is neither bearer of quality  entities nor inheres in any other entities.</obo:IAO_0000115>
-        <obo:IAO_0000116 xml:lang="en">All instances of continuant [snap:Continuant] are spatial entities, that is, they enter in the relation of (spatial) location with spatial region [snap:SpatialRegion] entities. As a particular case, the exact spatial location of a spatial region [snap:SpatialRegion] is this region itself.</obo:IAO_0000116>
-        <obo:IAO_0000116 xml:lang="en">An instance of spatial region [snap:SpatialRegion] is a part of space. All parts of space are spatial region [snap:SpatialRegion] entities and only spatial region [snap:SpatialRegion] entities are parts of space. Space is the entire extent of the spatial universe, a designated individual, which is thus itself a spatial region [snap:SpatialRegion].</obo:IAO_0000116>
-        <obo:IAO_0000116 xml:lang="en">Space and spatial region [snap:SpatialRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of space is sometimes called &quot;absolutist&quot; or &quot;the container view&quot;. In BFO, the class site [snap:Site] allows for a so-called relational view of space, that is to say, a view according to which spatiality is a matter of relative location between entities and not a matter of being tied to space. The bridge between these two views is secured through the fact that while instances of site [snap:Site] are not spatial region [snap:SpatialRegion] entities, they are nevertheless spatial entities.</obo:IAO_0000116>
-        <obo:IAO_0000112 xml:lang="en">parts of the sum total of all space in the universe</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">spatial region</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the sum total of all space in the universe</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/BFO_0000007 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000007">
         <rdfs:label xml:lang="en">process</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <obo:IAO_0000115 xml:lang="en">A processual entity  that is a maximally connected spatiotemporal whole and has bona fide beginnings and endings corresponding to real discontinuities.</obo:IAO_0000115>
         <obo:IAO_0000111 xml:lang="en">process</obo:IAO_0000111>
         <obo:IAO_0000112 xml:lang="en">the life of an organism</obo:IAO_0000112>
@@ -167,104 +160,6 @@
         <obo:IAO_0000112 xml:lang="en">the duration of a surgical procedure</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">the moment of death</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">the time it takes to run a marathon</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000009 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000009">
-        <rdfs:label xml:lang="en">two dimensional region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial region  with two dimensions.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">the surface of a cube-shaped part of space</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the surface of a rectilinear planar figure-shaped part of space</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the surface of a sphere-shaped part of space</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">two dimensional region</obo:IAO_0000111>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000010 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000010">
-        <rdfs:label xml:lang="en">scattered spatiotemporal region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
-        <obo:IAO_0000115 xml:lang="en">A space time region  that has spatial and temporal dimensions and every spatial and temporal point of which is not connected with every other spatial and temporal point of which.</obo:IAO_0000115>
-        <obo:IAO_0000111 xml:lang="en">scattered spatiotemporal region</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the space and time occupied by the individual games of the World Cup</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the space and time occupied by the individual liaisons in a romantic affair</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000011 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000011">
-        <rdfs:label xml:lang="en">spatiotemporal region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <obo:IAO_0000116 xml:lang="en">All instances of occurrent [span:Occurrent] are spatiotemporal entities, that is, they enter in the relation of (spatiotemporal) location with spatiotemporal region [span:SpatiotemporalRegion] entities. As a particular case, the exact spatiotemporal location of a spatiotemporal region [span:SpatiotemporalRegion] is this region itself.</obo:IAO_0000116>
-        <obo:IAO_0000116 xml:lang="en">An instance of the spatiotemporal region [span:SpatiotemporalRegion] is a part of spacetime. All parts of spacetime are spatiotemporal region [span:SpatiotemporalRegion] entities and only spatiotemporal region [span:SpatiotemporalRegion] entities are parts of spacetime. In particular, neither spatial region [snap:SpatialRegion] entities nor temporal region [span:TemporalRegion] entities are in BFO parts of spacetime. Spacetime is the entire extent of the spatiotemporal universe, a designated individual, which is thus itself a spatiotemporal region [span:SpatiotemporalRegion]. Spacetime is among occurrents the analogous of space among continuant [snap:Continuant] entities.</obo:IAO_0000116>
-        <obo:IAO_0000115 xml:lang="en">An occurrent  at or in which processual entity  entities can be located.</obo:IAO_0000115>
-        <obo:IAO_0000116 xml:lang="en">Spacetime and spatiotemporal region [span:SpatiotemporalRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of spacetime can be called &quot;absolutist&quot; or &quot;the container view&quot;. In BFO, the class processual context [span:ProcessualContext] allows for a so-called relational view of spacetime, that is to say, a view according to which spatiotemporality is a matter of relative location between entities and not a matter of being tied to spacetime. In BFO, the bridge between these two views is secured through the fact that instances of processual context [span:ProcessualContext] are too spatiotemporal entities.</obo:IAO_0000116>
-        <obo:IAO_0000111 xml:lang="en">spatiotemporal region</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the spatiotemporal context occupied by a process of cellular meiosis</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the spatiotemporal region occupied by a human life</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the spatiotemporal region occupied by the development of a cancer tumor</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000012 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000012">
-        <rdfs:label xml:lang="en">spatiotemporal instant</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000013"/>
-        <obo:IAO_0000115 xml:lang="en">A connected space time region  at a specific moment.</obo:IAO_0000115>
-        <obo:IAO_0000111 xml:lang="en">spatiotemporal instant</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the space time region occupied by a single instantaneous temporal slice (part) of a process</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000013 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000013">
-        <rdfs:label xml:lang="en">connected spatiotemporal region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
-        <obo:IAO_0000115 xml:lang="en">A space time region  that has temporal and spatial dimensions such that all points within the spatiotemporal region are mediately or immediately connected to all other points within the same space time region .</obo:IAO_0000115>
-        <obo:IAO_0000111 xml:lang="en">connected spatiotemporal region</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the spatial and temporal location of an individual organism&#39;s life</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the spatial and temporal location of the development of a fetus</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000014 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000014">
-        <rdfs:label xml:lang="en">process aggregate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-        <obo:IAO_0000115 xml:lang="en">A processual entity  that is a mereological sum of process  entities and possesses non-connected boundaries.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">a process of digestion and a process of thinking taken together</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">process aggregate</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the beating of the hearts of each of seven individuals in the room</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the playing of each of the members of an orchestra</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000015 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000015">
-        <rdfs:label xml:lang="en">processual entity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <obo:IAO_0000115 xml:lang="en">An occurrent  that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity.</obo:IAO_0000115>
-        <obo:IAO_0000111 xml:lang="en">processual entity</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the course of a disease</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the flight of a bird</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the life of an organism</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the process of meiosis</obo:IAO_0000112>
     </owl:Class>
     
 
@@ -297,18 +192,6 @@
         <obo:IAO_0000112 xml:lang="en">the disposition of metal to conduct electricity</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">the function of the reproductive organs</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">the role of being a doctor</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000018 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000018">
-        <rdfs:label xml:lang="en">zero dimensional region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial region  with no dimensions.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">a point</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">zero dimensional region</obo:IAO_0000111>
     </owl:Class>
     
 
@@ -398,22 +281,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/BFO_0000024 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000024">
-        <rdfs:label xml:lang="en">fiat object part</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is part of an object  but is not demarcated by any physical discontinuities.</obo:IAO_0000115>
-        <obo:IAO_0000111 xml:lang="en">fiat object part</obo:IAO_0000111>
-        <obo:IAO_0000118 xml:lang="en">fiat substance part</obo:IAO_0000118>
-        <obo:IAO_0000112 xml:lang="en">the dorsal and ventral surfaces of the body</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the east side of Saarbruecken</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the lower right portion of a human torso</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the upper and lower lobes of the left lung</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/BFO_0000025 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000025">
@@ -431,49 +298,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/BFO_0000026 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000026">
-        <rdfs:label xml:lang="en">one dimensional region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial region  with one dimension.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">an edge of a cube-shaped part of space</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">one dimensional region</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the part of space that is a line stretching from one end of absolute space to the other</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000027 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000027">
-        <rdfs:label xml:lang="en">object aggregate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is a mereological sum of separate object  entities and possesses non-connected boundaries.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">a collection of random bacteria</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">a flock of geese</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">a group of commuters on the subway</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">a heap of stones</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">object aggregate</obo:IAO_0000111>
-        <obo:IAO_0000118 xml:lang="en">substance aggregate</obo:IAO_0000118>
-        <obo:IAO_0000112 xml:lang="en">the patients in a hospital</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000028 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000028">
-        <rdfs:label xml:lang="en">three dimensional region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial region  with three dimensions.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">a cube-shaped part of space</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">a sphere-shaped part of space</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">three dimensional region</obo:IAO_0000111>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/BFO_0000029 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000029">
@@ -484,23 +308,6 @@
         <obo:IAO_0000112 xml:lang="en">Maria&#39;s nostril or her intestines for a variety of bacteria</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">a particular room in a particular hospital</obo:IAO_0000112>
         <obo:IAO_0000111 xml:lang="en">site</obo:IAO_0000111>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000030 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000030">
-        <rdfs:label xml:lang="en">object</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial object  entities is independent of that of other entities and can be maintained through time.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">a chair</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">a heart</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">a lung</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">an apple</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">an organism</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">object</obo:IAO_0000111>
-        <obo:IAO_0000118 xml:lang="en">substance</obo:IAO_0000118>
     </owl:Class>
     
 
@@ -530,26 +337,11 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/BFO_0000033 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000033">
-        <rdfs:label xml:lang="en">fiat process part</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-        <obo:IAO_0000115 xml:lang="en">A processual entity  that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">chewing during a meal</obo:IAO_0000112>
-        <obo:IAO_0000111 xml:lang="en">fiat process part</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the middle part of a rainstorm</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the most interesting part of Van Gogh&#39;s life</obo:IAO_0000112>
-        <obo:IAO_0000112 xml:lang="en">the worst part of a heart-attack</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/BFO_0000034 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000034">
         <rdfs:label xml:lang="en">function</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
         <obo:IAO_0000115 xml:lang="en">A realizable entity  the manifestation of which is an essentially end-directed activity of a continuant  entity in virtue of that continuant  entity being a specific kind of entity in the kind or kinds of contexts that it is made for.</obo:IAO_0000115>
         <obo:IAO_0000111 xml:lang="en">function</obo:IAO_0000111>
         <obo:IAO_0000112 xml:lang="en">the digestive function of the stomach to nutriate the body</obo:IAO_0000112>
@@ -568,7 +360,7 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000035">
         <rdfs:label xml:lang="en">process boundary</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <obo:IAO_0000115 xml:lang="en">A processual entity  that is the fiat or bona fide instantaneous temporal process boundary.</obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">birth</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">death</obo:IAO_0000112>
@@ -578,32 +370,6 @@
         <obo:IAO_0000112 xml:lang="en">the forming of a synapse</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">the incision at the beginning of a surgery</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">the onset of REM sleep</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000036 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000036">
-        <rdfs:label xml:lang="en">spatiotemporal interval</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000013"/>
-        <obo:IAO_0000115 xml:lang="en">A connected space time region  that endures for more than a single moment of time.</obo:IAO_0000115>
-        <obo:IAO_0000111 xml:lang="en">spatiotemporal interval</obo:IAO_0000111>
-        <obo:IAO_0000112 xml:lang="en">the space time region occupied by a process or by a fiat processual part</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000037 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000037">
-        <rdfs:label xml:lang="en">processual context</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-        <obo:IAO_0000116 xml:lang="en">An instance of a processual context [span:ProcessualContext] is a mixture of processual entity [span:ProcessualEntity] which stand as surrounding environments for other processual entity [span:ProcessualEntity] entities. The class processual context [span:ProcessualContext] is the analogous among occurrent [span:Occurrent] entities to the class site [snap:Site] among continuant [snap:Continuant] entities.</obo:IAO_0000116>
-        <obo:IAO_0000115 xml:lang="en">An occurrent  consisting of a characteristic spatial shape inhering in some arrangement of other occurrent  entities. processual context  entities are characteristically entities at or in which other occurrent  entities can be located or occur.</obo:IAO_0000115>
-        <obo:IAO_0000116 xml:lang="en">The processual context for a given manipulation occurring as part of an experiment is made of processual entities which occur in parallel, are not necessarily all parts of the experiment themselves and may involve continuant [snap:Continuant] entities which are in the spatial vicinity of the participants in the experiment.</obo:IAO_0000116>
-        <obo:IAO_0000111 xml:lang="en">processual context</obo:IAO_0000111>
-        <obo:IAO_0000118 xml:lang="en">setting</obo:IAO_0000118>
     </owl:Class>
     
 
@@ -630,6 +396,29 @@
         <obo:IAO_0000116 xml:lang="en">Material entity [snap:MaterialEntity] subsumes object [snap:Object], fiat object part [snap:FiatObjectPart], and object aggregate [snap:ObjectAggregate], which assume a three level theory of granularity, which is inadequate for some domains, such as biology.</obo:IAO_0000116>
         <obo:IAO_0000111 xml:lang="en">material entity</obo:IAO_0000111>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo/core-classes.owl">
+        <dc:source>Pierre Grenon, Barry Smith and Louis Goldberg: &quot;Biodynamic Ontology: Applying BFO in the Biomedical Domain&quot;</dc:source>
+        <dc:source>Pierre Grenon: &quot;BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE&quot;</dc:source>
+        <dc:source>Pierre Grenon: &quot;Nuts in BFO&#39;s Nutshell: Revisions to the Bi-categorial Axiomatization of BFO&quot;</dc:source>
+        <dc:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
+        <dc:source>Pierre Grenon: &quot;Spatio-temporality in Basic Formal Ontology: SNAP and SPAN, Upper-Level Ontology, and Framework for Formalization&quot;</dc:source>
+        <dc:contributor>Pierre Grenon</dc:contributor>
+        <dc:source>Barry Smith: &quot;Basic Tools of Formal Ontology&quot;</dc:source>
+        <dc:source>Barry Smith: &quot;Beyond Concepts: Ontology as Reality Representation&quot;</dc:source>
+        <dc:source>Barry Smith: &quot;Against Fantology&quot;</dc:source>
+        <dc:source>Barry Smith and Pierre Grenon: &quot;The Cornucopia of Formal Ontological Relations&quot;</dc:source>
+    </rdf:Description>
 </rdf:RDF>
 
 
