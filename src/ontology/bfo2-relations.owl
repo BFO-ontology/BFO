@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.obolibrary.org/obo/bfo/relations.owl#"
-     xml:base="http://purl.obolibrary.org/obo/bfo/relations.owl"
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/bfo/core-relations.owl#"
+     xml:base="http://purl.obolibrary.org/obo/bfo/core-relations.owl"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#">
-      <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/core-relations.owl">
-      <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo/core-classes.owl"/>
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/core-relations.owl">
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo/core-classes.owl"/>
     </owl:Ontology>
     
 
@@ -46,7 +46,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000050 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000050">
-        <rdfs:label xml:lang="en">part of</rdfs:label>
+        <rdfs:label xml:lang="en">is part of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">part of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">part_of</obo:IAO_0000118>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
@@ -78,6 +80,7 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000051">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">has part</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_part</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
@@ -99,6 +102,7 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000052">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:label xml:lang="en">inheres in</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">inheres_in</obo:IAO_0000118>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
     </owl:ObjectProperty>
     <owl:Axiom>
@@ -119,7 +123,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000053 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000053">
-        <rdfs:label xml:lang="en">bearer of</rdfs:label>
+        <rdfs:label xml:lang="en">is bearer of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">bearer of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">bearer_of</obo:IAO_0000118>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000005"/>
     </owl:ObjectProperty>
@@ -147,7 +153,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000054 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
-        <rdfs:label xml:lang="en">realized by</rdfs:label>
+        <rdfs:label xml:lang="en">is realized by</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">realized by</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">realized_by</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
@@ -167,16 +175,16 @@
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010036"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010037"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010036"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
@@ -191,6 +199,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000056">
         <rdfs:label xml:lang="en">participates in</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">participates_in</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000056"/>
@@ -205,6 +214,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000057">
         <rdfs:label xml:lang="en">has participant</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_participant</obo:IAO_0000118>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000056"/>
@@ -213,12 +223,6 @@
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000052"/>
         </owl:propertyChainAxiom>
     </owl:ObjectProperty>
-    <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010004"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
@@ -231,13 +235,21 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010006"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
     </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010004"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000058 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000058">
-        <rdfs:label xml:lang="en">concretization of</rdfs:label>
+        <rdfs:label xml:lang="en">is concretization of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">concretization of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">concretization_of</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000058"/>
@@ -257,16 +269,16 @@
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000058"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000059"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010033"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000059"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010032"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000059"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010033"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000058"/>
@@ -281,15 +293,11 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000060">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:label xml:lang="en">immediately preceded by</rdfs:label>
+        <rdfs:label xml:lang="en">is immediately preceded by</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">immediately preceded by</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">immediately_preceded_by</obo:IAO_0000118>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000062"/>
     </owl:ObjectProperty>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000060"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000062"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010022"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000060"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010030"/>
@@ -302,6 +310,12 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010017"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
     </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000060"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000062"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010022"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
+    </owl:Axiom>
     
 
 
@@ -310,22 +324,17 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000061">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:label xml:lang="en">immediately precedes</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">immediately_precedes</obo:IAO_0000118>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000060"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000063"/>
     </owl:ObjectProperty>
     <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000061"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000063"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010023"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000061"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010031"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-        <owl:annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010015"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
@@ -334,10 +343,16 @@
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000061"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010015"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010031"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        <owl:annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000061"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000063"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010023"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000060"/>
@@ -352,7 +367,9 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000062">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label xml:lang="en">preceded by</rdfs:label>
+        <rdfs:label xml:lang="en">is preceded by</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">preceded by</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">preceded_by</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000062"/>
@@ -408,7 +425,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000064 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000064">
-        <rdfs:label xml:lang="en">course of</rdfs:label>
+        <rdfs:label xml:lang="en">is course of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">course of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">course_of</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000064"/>
@@ -423,10 +442,17 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000065">
         <rdfs:label xml:lang="en">has course</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_course</obo:IAO_0000118>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000064"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000065"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010010"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000065"/>
@@ -439,12 +465,6 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010012"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000065"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010010"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-    </owl:Axiom>
     
 
 
@@ -452,24 +472,19 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000066">
         <rdfs:label xml:lang="en">occurs in</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">occurs_in</obo:IAO_0000118>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000067"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000050"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000066"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000050"/>
         </owl:propertyChainAxiom>
         <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000066"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000050"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000066"/>
         </owl:propertyChainAxiom>
     </owl:ObjectProperty>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000066"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000067"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010026"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
-    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000066"/>
@@ -482,18 +497,56 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010025"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
     </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000066"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000067"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010026"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000067 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000067">
-        <rdfs:label xml:lang="en">contains process</rdfs:label>
+        <rdfs:label xml:lang="en">has site of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_site_of</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000066"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000067"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010026"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000068 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000068">
+        <rdfs:label xml:lang="en">begins to exist during</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">begins_to_exist_during</obo:IAO_0000118>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000069"/>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000068"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000069"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010039"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000069 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000069">
+        <rdfs:label xml:lang="en">ceases to exist during</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">ceases_to_exist_during</obo:IAO_0000118>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000068"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000069"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010039"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
     </owl:Axiom>
 </rdf:RDF>
