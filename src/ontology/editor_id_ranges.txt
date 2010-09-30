@@ -1,0 +1,16 @@
+
+BFO NUMBER CHECKOUT LIST
+
+File to contain BFO ID number reservations.  Edit the file and state what
+numbers you are taking.  This way other curators at your site will not
+use the same numbers.
+
+
+Allocated number ranges for additions:
+
+Start	End	Group	Curator	Comment
+BFO_0000001	BFO_0000099	BFO	BFO	Initial
+BFO_0000100	BFO_0000199	LBL	cjm	Relation IDs
+BFO_0010000	BFO_0019999	BFO	BFO	Axiom IDs
+
+
