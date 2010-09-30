@@ -67,6 +67,12 @@
         <owl:inverseOf rdf:resource="&obo;BFO_0000051"/>
     </owl:ObjectProperty>
     <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000001"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000050"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010002"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000050"/>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000051"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010003"/>
@@ -79,12 +85,6 @@
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010001"/>
         <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000001"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000050"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010002"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
-    </owl:Axiom>
     
 
 
@@ -96,16 +96,16 @@
         <obo:IAO_0000118 xml:lang="en">has_part</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000050"/>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000051"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010003"/>
-        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000051"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010013"/>
         <owl:annotatedProperty rdf:resource="&rdf;type"/>
         <owl:annotatedTarget rdf:resource="&owl;TransitiveProperty"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000050"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000051"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010003"/>
+        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
     </owl:Axiom>
     
 
@@ -123,16 +123,10 @@
         <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000100"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000005"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000052"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010042"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000052"/>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000053"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010009"/>
-        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000070"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010041"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000004"/>
@@ -141,16 +135,22 @@
         <owl:annotatedProperty rdf:resource="&rdfs;range"/>
     </owl:Axiom>
     <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000005"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000052"/>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000070"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010041"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010042"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000052"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010014"/>
         <owl:annotatedProperty rdf:resource="&rdf;type"/>
         <owl:annotatedTarget rdf:resource="&owl;FunctionalProperty"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000052"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000053"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010009"/>
+        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
     </owl:Axiom>
     
 
@@ -210,16 +210,16 @@
         <owl:inverseOf rdf:resource="&obo;BFO_0000054"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000017"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000055"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010036"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000055"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010035"/>
         <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000017"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000055"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010036"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000054"/>
@@ -259,16 +259,16 @@
         </owl:propertyChainAxiom>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000056"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000057"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010006"/>
-        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000002"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000057"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010005"/>
         <owl:annotatedProperty rdf:resource="&rdfs;range"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000056"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000057"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010006"/>
+        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
@@ -290,16 +290,16 @@
         <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000070"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000058"/>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000070"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010040"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000005"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000058"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010045"/>
         <owl:annotatedProperty rdf:resource="&rdfs;range"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000058"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000059"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010034"/>
+        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000031"/>
@@ -308,10 +308,10 @@
         <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000058"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000059"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010034"/>
-        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000058"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000070"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010040"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
     </owl:Axiom>
     
 
@@ -325,10 +325,10 @@
         <owl:inverseOf rdf:resource="&obo;BFO_0000058"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000020"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000058"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000059"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010033"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010034"/>
+        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000031"/>
@@ -337,10 +337,10 @@
         <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000058"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000020"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000059"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010034"/>
-        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010033"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
     </owl:Axiom>
     
 
@@ -362,15 +362,15 @@
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000060"/>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000062"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010022"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000060"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010030"/>
         <owl:annotatedProperty rdf:resource="&rdf;type"/>
         <owl:annotatedTarget rdf:resource="&owl;FunctionalProperty"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000060"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000062"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010022"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
     </owl:Axiom>
     
 
@@ -387,18 +387,6 @@
         <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000063"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000061"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010016"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000061"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010031"/>
-        <owl:annotatedProperty rdf:resource="&rdf;type"/>
-        <owl:annotatedTarget rdf:resource="&owl;FunctionalProperty"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000060"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000061"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010017"/>
@@ -412,9 +400,21 @@
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000061"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010031"/>
+        <owl:annotatedProperty rdf:resource="&rdf;type"/>
+        <owl:annotatedTarget rdf:resource="&owl;FunctionalProperty"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000061"/>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000063"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010023"/>
         <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000061"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010016"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
     </owl:Axiom>
     
 
@@ -428,16 +428,16 @@
         <obo:IAO_0000118 xml:lang="en">preceded_by</obo:IAO_0000118>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000062"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010029"/>
-        <owl:annotatedProperty rdf:resource="&rdf;type"/>
-        <owl:annotatedTarget rdf:resource="&owl;TransitiveProperty"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000062"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000063"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010021"/>
         <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000062"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010029"/>
+        <owl:annotatedProperty rdf:resource="&rdf;type"/>
+        <owl:annotatedTarget rdf:resource="&owl;TransitiveProperty"/>
     </owl:Axiom>
     
 
@@ -454,6 +454,12 @@
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000063"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010020"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000063"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010019"/>
         <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
@@ -462,12 +468,6 @@
         <owl:annotatedSource rdf:resource="&obo;BFO_0000063"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010021"/>
         <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000063"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010020"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000063"/>
@@ -504,12 +504,6 @@
         <owl:inverseOf rdf:resource="&obo;BFO_0000064"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000065"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010011"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000002"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000065"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010010"/>
@@ -520,6 +514,12 @@
         <owl:annotatedSource rdf:resource="&obo;BFO_0000065"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010012"/>
         <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000065"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010011"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
     </owl:Axiom>
     
 
@@ -549,16 +549,16 @@
         <owl:annotatedProperty rdf:resource="&rdfs;range"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000066"/>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000067"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010026"/>
-        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000066"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010024"/>
         <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000066"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000067"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010026"/>
+        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
     </owl:Axiom>
     
 
@@ -588,12 +588,6 @@
         <owl:inverseOf rdf:resource="&obo;BFO_0000069"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000002"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000068"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010046"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000068"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010048"/>
@@ -604,6 +598,12 @@
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000069"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010039"/>
         <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000002"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000068"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010046"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
     
 
@@ -617,12 +617,6 @@
         <rdfs:range rdf:resource="&obo;BFO_0000007"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000002"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000069"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010047"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000069"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010049"/>
@@ -633,6 +627,12 @@
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000069"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010039"/>
         <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000002"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000069"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010047"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
     
 
@@ -676,16 +676,16 @@
         <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000051"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000072"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000074"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010054"/>
-        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000051"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000072"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010056"/>
         <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000072"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000074"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010054"/>
+        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
     </owl:Axiom>
     
 
@@ -698,8 +698,8 @@
         <obo:IAO_0000118 xml:lang="en">granular_part_of</obo:IAO_0000118>
         <rdfs:range rdf:resource="&obo;BFO_0000040"/>
         <rdfs:domain rdf:resource="&obo;BFO_0000040"/>
-        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000050"/>
         <owl:inverseOf rdf:resource="&obo;BFO_0000071"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000101"/>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000071"/>
@@ -719,21 +719,7 @@
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010053"/>
         <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000050"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000073"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010058"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
-    </owl:Axiom>
     
-    <!-- http://purl.obolibrary.org/obo/BFO_0000100 -->
-
-    <owl:ObjectProperty rdf:about="&obo;BFO_0000100">
-        <rdfs:label xml:lang="en">has locus</rdfs:label>
-        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
-        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Relates a place with an entity which occurs, inheres, or is part of it. See BioTop and Shulz et al Scalable representations of diseases in biomedical ontologies. Relation added to RO by cjm, 2010-09-29</obo:IAO_0000115>
-    </owl:ObjectProperty>
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000074 -->
@@ -748,22 +734,16 @@
         <owl:inverseOf rdf:resource="&obo;BFO_0000072"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000072"/>
-        <owl:annotatedSource rdf:resource="&obo;BFO_0000074"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010054"/>
-        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000050"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000074"/>
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010059"/>
         <owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000072"/>
         <owl:annotatedSource rdf:resource="&obo;BFO_0000074"/>
-        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010051"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010054"/>
+        <owl:annotatedProperty rdf:resource="&owl;inverseOf"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
@@ -771,9 +751,35 @@
         <obo:IAO_0010000 rdf:resource="&obo;BFO_0010050"/>
         <owl:annotatedProperty rdf:resource="&rdfs;domain"/>
     </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget rdf:resource="&obo;BFO_0000007"/>
+        <owl:annotatedSource rdf:resource="&obo;BFO_0000074"/>
+        <obo:IAO_0010000 rdf:resource="&obo;BFO_0010051"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;range"/>
+    </owl:Axiom>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/BFO_0000100 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000100">
+        <rdfs:label xml:lang="en">has locus</rdfs:label>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Relates a place with an entity which occurs, inheres, or is part of it. See BioTop and Shulz et al Scalable representations of diseases in biomedical ontologies. Relation added to RO by cjm, 2010-09-29</obo:IAO_0000115>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000101 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000101">
+        <rdfs:label xml:lang="en">physical part of</rdfs:label>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000050"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000100"/>
+    </owl:ObjectProperty>
     
 
 
