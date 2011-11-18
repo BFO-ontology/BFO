@@ -2,9 +2,4 @@
 
 = Introduction =
 
-BFO 2.0 will be available in several different logical languages meeting the needs of a diverse range of users within the community. Of central importance to the biomedical community is the Web Ontology Language (OWL) implementation. This page gathers together documentation surrounding the implementation effort, current status and ongoing discussions. 
-
-
-= Details =
-
-BFO in OWL and time-dependent relations proposal is documented ...
+BFO 2.0 will be available in several different logical languages meeting the needs of a diverse range of users within the community. Of central importance to the biomedical community is the Web Ontology Language (OWL) implementation. This page will gather together documentation surrounding the implementation effort, current status and ongoing discussions. 
