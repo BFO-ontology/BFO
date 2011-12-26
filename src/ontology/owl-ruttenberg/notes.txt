@@ -1,0 +1,62 @@
+entity
+  continuant
+    bearing continuant
+      material entity
+      boundary
+      immaterial entity
+      portion of energy
+      physical field
+    dependent continuant
+      specifically dependent continuant
+        quality
+        disposition
+          function
+        role
+      generically dependent continuant
+    spatial region
+  occurrent
+    temporal region
+      temporal instant
+    spatiotemporal region
+    processual entity
+      process
+      instantaneous process boundary
+
+course_of
+concretization_of
+is_about
+has_physical_basis
+
+specifically_depends_on
+generically_depends_on
+inheres_in
+function_of
+
+has_part
+participates_in
+located_in
+contained_in
+
+
+projects_onto
+  continuant -> spatial region  (t)
+  process -> spatiotemporal region 
+  process -> spatial region (t)
+  process -> temporal region 
+  spatiotemporal region -> temporal region
+
+
+has_part
+  material entity -> material entity, immaterial entity, boundary, portion of energy? (t)
+  immaterial entity -> immaterial entity ? (t)
+  boundary -> boundary (t)
+  physical field -> physical field (t)
+  dependent continuant -> / 
+  spatial region -> spatial region 
+  temporal region -> temporal region 
+  spatiotemporal region -> spatiotemporal region
+  processual entity -> processual entity
+  instantaneous process boundary -> instantaneous process boundary
+ 
+
+p occurs_at t =∀t′ . t′ part_of t ⇒ ∃c. p has_participant c at t′ (D5.3) 
