@@ -1,0 +1,14 @@
+
+Everything here is derived from fol-src. See README is above directory for details
+
+Formats:
+
+* prover9
+* CLIF
+
+Coming soon:
+
+* KIF
+* OBO
+* OWL-DL
+* OWL-Full (with types in the domain of discourse and type-level relationship)

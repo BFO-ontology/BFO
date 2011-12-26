@@ -1,0 +1,513 @@
+(cl-module ro-core-inst-inst
+           
+           (relation part_of)
+           (label part_of "part_of")
+           (exact_synonym part_of "is_part_of")
+           (inverse_of part_of has_part)
+           (normative_direction_for part_of "part")
+           (normative part_of)
+           (transitive part_of)
+           (anti_symmetric part_of)
+           (example part_of (part_of "John Doe's Heart" "John Doe's Body" t1))
+           (example part_of (part_of "John Doe's childhood" "John Doe's lifespan"))
+//           (comment 
+//            (anti_symmetric part_of)
+//            "not included in Bittner and Donnelly / Logical properties of foundational relations: We do not include an axiom of antisymmetry for parthood among objects, since we want to leave open the possibility that there may be distinct objects which have exactly the same parts at a given time. For example, the FMA distinguishes between an anatomical entity and the tissue which constitutes that entity at a given time (Rosse and Mejino, 2003)")
+           (weakly_reflexive part_of)
+           (exported_identifier part_of "OBO_REL_I:0000002")
+           (alternate_identifier part_of "OBO_REL:part_of")
+           (comment part_of "The primitive instance-level relation p part_of p1 is illustrated in assertions such as: this instance of rhodopsin mediated phototransduction part_of this instance of visual perception.    This relation satisfies at least the following standard axioms of mereology: reflexivity (for all p, p part_of p); anti-symmetry (for all p, p1, if p part_of p1 and p1 part_of p then p and p1 are identical); and transitivity (for all p, p1, p2, if p part_of p1 and p1 part_of p2, then p part_of p2). Analogous axioms hold also for parthood as a relation between spatial regions.    For parthood as a relation between continuants, these axioms need to be modified to take account of the incorporation of a temporal argument. Thus for example the axiom of transitivity for continuants will assert that if c part_of c1 at t and c1 part_of c2 at t, then also c part_of c2 at t.")
+           (text_definition part_of "part_of on the instance level is a primitive relation, holding either atemporally between two process instances or temporally between two continuant instances")
+           (text_definition_xref part_of "PMID:15892874")
+           (instance_instance part_of)
+
+           (homeomorphic_for part_of IndependentContinuant TemporalInstant)
+           (homeomorphic_for part_of DependentContinuant TemporalInstant)
+           (homeomorphic_for part_of Role TemporalInstant)
+           (homeomorphic_for part_of Quality TemporalInstant)
+           (homeomorphic_for part_of RealizableEntity TemporalInstant)
+           (homeomorphic_for part_of SpatialRegion TemporalInstant)
+
+           (homeomorphic_for part_of ProcessualEntity)
+           (homeomorphic_for part_of Occurrent)
+           (homeomorphic_for part_of Process)
+
+           (atemporal_or_temporal part_of)
+           (holds_temporally_between part_of Continuant Continuant)
+
+           (holds_atemporally_between part_of Occurrent Occurrent)
+
+           (forall (x y w)
+                   (if (part_of x y w)
+                       (and (exists_at x w)
+                            (exists_at y w))))
+
+           (never_holds_between Entity Function)
+           (never_holds_between Entity Disposition)
+
+
+           (relation has_part)
+           (instance_instance has_part)
+           (label has_part "has_part")
+           (inverse_of has_part part_of)
+           (transitive has_part)
+           (anti_symmetric has_part)
+           (weakly_reflexive has_part)
+           (exported_identifier has_part "OBO_REL_I:0000003")
+           (comment has_part "primitive instance-level relation, the inverse of *part_of*")
+           (atemporal_or_temporal has_part)
+
+
+           (relation proper_part_of)
+           (instance_instance proper_part_of)
+           (label proper_part_of "proper_part_of")
+           (subrelation proper_part_of part_of)
+           (inverse_of proper_part_of has_proper_part)
+           (normative_direction_for proper_part_of "proper_part")
+           (transitive proper_part_of)
+           (proper_subrelation proper_part_of part_of)
+           (exported_identifier proper_part_of "OBO_REL_I:0000006")
+           (text_definition proper_part_of "As for part_of, with the additional constraint that subject and object are distinct")
+           (text_definition_xref proper_part_of "PMID:15892874")
+           (forall (x y)
+                   (iff (proper_part_of x y)
+                        (and (part_of x y)
+                             (not (part_of y x)))))
+
+
+           (relation has_proper_part)
+           (instance_instance has_proper_part)
+           (label has_proper_part "has_proper_part")
+           (subrelation has_proper_part has_part)
+           (inverse_of has_proper_part proper_part_of)
+           (transitive has_proper_part)
+           (text_definition has_proper_part "As for has_part, with the additional constraint that subject and object are distinct")
+           (exported_identifier has_proper_part "OBO_REL_I:0000007")
+
+
+
+           // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+           // spatial
+           // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+           (relation adjacent_to)
+           (instance_instance adjacent_to)
+           (label adjacent_to "adjacent_to")
+           (symmetric adjacent_to)
+           (comment adjacent_to
+                    "Note that adjacent_to is only symmetric at the instance level")
+           (exported_identifier adjacent_to "OBO_REL_I:0000012")
+           (text_definition adjacent_to "c adjacent to c' if and only if: c and c' are in spatial proximity")
+           (domain adjacent_to IndependentContinuant)
+           (range adjacent_to IndependentContinuant)
+           (relation_disjoint_from adjacent_to overlaps)
+
+           (relation contained_in)
+           (instance_instance contained_in)
+           (label contained_in "contained_in")
+           (inverse_of contained_in contains)
+           (normative_direction_for contained_in "containment")
+           (comment contained_in "Containment obtains in each case between material and immaterial continuants, for instance: lung contained_in thoracic cavity; bladder contained_in pelvic cavity. Hence containment is not a transitive relation.    If c part_of c1 at t then we have also, by our definition and by the axioms of mereology applied to spatial regions, c located_in c1 at t. Thus, many examples of instance-level location relations for continuants are in fact cases of instance-level parthood. For material continuants location and parthood coincide. Containment is location not involving parthood, and arises only where some immaterial continuant is involved. To understand this relation, we first define overlap for continuants as follows:    c1 overlap c2 at t =def for some c, c part_of c1 at t and c part_of c2 at t. The containment relation on the instance level can then be defined (see definition):")
+           (exported_identifier contained_in "OBO_REL_I:0000010")
+           (text_definition contained_in "c contained_in c' at t if and only if: c located_in c' at t, and it is not the case that c *overlaps* c' at t. (c' is a conduit or cavity.)")
+           (text_definition_xref contained_in "PMID:15892874")
+           (holds_temporally contained_in) 
+           (domain contained_in IndependentContinuant)
+           (range contained_in IndependentContinuant)
+	   (subrelation contained_in located_in)
+           (forall (x y t)
+                   (iff (contained_in x y t)
+                        (and (located_in x y t)
+                             (not (overlaps x y t)))))
+
+
+           (relation contains)
+           (instance_instance contains)
+           (label contains "contains")
+           (inverse_of contains contained_in)
+           (exported_identifier contains "OBO_REL_I:0000011")
+
+
+           (relation located_in)
+           (label located_in "located_in")
+           (domain located_in Continuant)
+           (range located_in IndependentContinuant)
+           (inverse_of located_in location_of)
+           (normative_direction_for located_in "location")
+           (transitive located_in)
+           (weakly_reflexive located_in)
+           (transitive_over located_in part_of)
+           (comment located_in "Location as a relation between instances: The primitive instance-level relation c located_in r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is part_of the spatial region occupied by c1. Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus")
+           (exported_identifier located_in "OBO_REL_I:0000008")
+           (text_definition located_in "Primitive")
+           (text_definition_xref located_in "PMID:15892874")
+           (forall (c c1)
+                   (iff (located_in c c1)
+                        (exists (r r1)
+                                (and (occupies c r)
+                                     (occupies c1 r1)
+                                     (part_of r r1)))))
+
+           (text_definition_xref located_in "PMID:15892874")
+
+           (relation location_of)
+           (label location_of "location_of")
+           (domain location_of Continuant)
+           (range location_of Continuant)
+           (inverse_of location_of located_in)
+           (transitive location_of)
+           (weakly_reflexive location_of)
+           (exported_identifier location_of "OBO_REL_I:0000009")
+
+
+           (relation overlaps)
+           (label overlaps "overlaps")
+           (domain overlaps IndependentContinuant)
+           (range overlaps IndependentContinuant)
+           (symmetric overlaps)
+           (weakly_reflexive overlaps)
+           (intransitive overlaps)
+           (text_definition overlaps "x overlaps y if and only if: there is some z such that: z part_of x and z part_of y (i.e. x and y share a part)")
+           (comment overlaps "note that the definition of overlaps includes the case where x is part_of y - for example, a nucleus overlaps a cell. We also have the *partial_overlaps* relation for those cases where x and y overlap but neither is part of the other")
+           (exported_identifier overlaps "OBO_REL_I:0000201")
+           (equivalent_to_chain overlaps has_part part_of)
+           (forall (x y)
+                   (iff (overlaps x y)
+                        (exists (z) (and (part_of z x)
+                                          (part_of z y)))))
+           // AM4 in Bittner and Donnelly / Logical properties of foundational relations 
+           (forall (x t)
+                   (if (and (exists_at x t)
+                            (forall (z)
+                                    (if (overlaps z x t)
+                                        (overlaps y x t))))
+                       (part_of x y t)))
+
+
+
+           (relation partially_overlaps)
+           (label partially_overlaps "partially_overlaps")
+           (example partially_overlaps "A National Park whose area is included in two counties would have this relationship to each of the counties." "GAZ")
+           (domain partially_overlaps IndependentContinuant)
+           (range partially_overlaps IndependentContinuant)
+           (intransitive partially_overlap)
+           (symmetric partially_overlap)
+           (exported_identifier partially_overlaps "OBO_REL_I:0000202")
+           (text_definition partially_overlaps "x partially_overlaps y if and only if: x overlaps y and neither x is part_of y not y is part_of x")
+           (subrelation partially_overlaps overlaps)
+           (relation_disjoint_from partially_overlaps part_of)
+           (relation_disjoint_from partially_overlaps has_part)
+           (forall (x y)
+                   (iff (partially_overlaps x y)
+                        (and (overlaps x y)
+                             (not (part_of x y))
+                             (not (part_of y x)))))
+
+
+           (relation underlaps)
+           (label underlaps "underlaps")
+           (domain underlaps IndependentContinuant)
+           (range underlaps IndependentContinuant)
+           (symmetric underlaps)
+           (weakly_reflexive underlaps)
+           (intransitive underlaps)
+           (exported_identifier underlaps "OBO_REL_I:0000210")
+           (forall (x y)
+                   (iff (underlaps x y)
+                        (exists (z) (and (part_of x z)
+                                          (part_of y z)))))
+
+           // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+           // participation
+           // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+           (relation has_participant)
+           (instance_instance has_participant)
+           (label has_participant "has_participant")
+           (domain has_participant Occurrent)
+           (range has_participant IndependentContinuant)
+           (inverse_of has_participant participates_in)
+           (normative_direction_for has_participant "participation")
+           (text_definition has_participant "Has_participant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane has_participant this particular sample of hemoglobin at this particular time.")
+           (exported_identifier has_participant "OBO_REL_I:0000019")
+           (text_definition_xref has_participant "PMID:15892874")
+           (holds_temporally_between has_participant Occurrent Continuant)
+           (holds_over_chain has_participant realizes inheres_in)
+           // @Axiom: has_participant . part_of --> has_participant. See Dumontier OWLED2008
+           (transitive_over has_participant part_of)
+
+
+           (relation participates_in)
+           (instance_instance participates_in)
+           (label participates_in "participates_in")
+           (domain participates_in IndependentContinuant)
+           (range participates_in Occurrent)
+           (inverse_of participates_in has_participant)
+           (exported_identifier participates_in "OBO_REL_I:0000020")
+           (holds_temporally_between participates_in Continuant Occurrent)
+           (holds_over_chain participates_in has_bearer realized_by)
+
+
+           (relation has_agent)
+           (instance_instance has_agent)
+           (label has_agent "has_agent")
+           (subrelation has_agent has_participant)
+           (type_domain has_agent Occurrent)
+           (type_range has_agent IndependentContinuant)
+           (inverse_of has_agent agent_in)
+           (normative_direction_for has_agent "agency")
+           (exported_identifier has_agent "OBO_REL_I:0000021")
+           (text_definition has_agent "As for has_participant, but with the additional condition that the component instance is causally active in the relevant process")
+           (text_definition_xref has_agent "PMID:15892874")
+
+
+           (relation agent_in)
+           (instance_instance agent_in)
+           (label agent_in "agent_in")
+           (subrelation agent_in participates_in)
+           (domain agent_in IndependentContinuant)
+           (range agent_in Occurrent)
+           (inverse_of agent_in has_agent)
+           (exported_identifier agent_in "OBO_REL_I:0000022")
+           (instance_level agent_id)
+
+
+           // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+           // dependents
+           // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+           // DC
+
+           (relation inheres_in)
+           (instance_instance inheres_in)
+           (label inheres_in "inheres_in")
+           (inverse_of inheres_in bearer_of)
+           (normative_direction_for inheres_in "inherence")
+           (comment inheres_in "This relation links qualities, functions, dispositions and other dependent continuants to their bearers. Examples: The redness that ineres in a Drosophila eye; Catalytic activity function inheres_in catalytic molecule.")
+           (exact_synonym inheres_in "has_bearer")
+           (exported_identifier inheres_in "OBO_REL_I:0000026")
+           (text_definition inheres_in "A primitive relation that holds between a dependent continuant instance and a bearer")
+           (text_definition_xref inheres_in "ontology.buffalo.edu/bfo/SQU.pdf")
+           (obsolete_axiom
+	    (domain inheres_in DependentContinuant))
+           (domain inheres_in SpecificallyDependentContinuant)
+           (holds_temporally_between inheres_in SpecificallyDependentContinuant Entity)
+
+
+           (relation bearer_of)
+           (instance_instance bearer_of)
+           (label bearer_of "bearer_of")
+           (inverse_of bearer_of inheres_in)
+           (exact_synonym bearer_of "has_inherent")
+           (exact_synonym bearer_of "has_inherer")
+           (exact_synonym bearer_of "bears")
+           (exact_synonym bearer_of "is_bearer_of")
+           (exported_identifier bearer_of "OBO_REL_I:0000027")
+           (text_definition bearer_of "A relation between an entity and a dependent continuant; the reciprocal relation of inheres_in")
+           (range bearer_of DependentContinuant)
+
+
+
+           // QUALITY
+
+           (relation quality_of)
+           (label quality_of "quality_of")
+           (equivalent_relation_between quality_of specifically_inheres_in Quality Entity)
+           (subrelation quality_of inheres_in)
+           (inverse_of quality_of has_quality)
+           (functional quality_of)
+           (normative_direction_for quality_of "quality")
+           (exact_synonym quality_of "is_quality_of")
+           (exported_identifier quality_of "OBO_REL_I:0000028")
+           (text_definition quality_of "A relation between a quality Q and an entity E. Q quality_of E iff: Q inheres_in E and Q is a quality")
+           (domain quality_of Quality)
+
+
+           (relation has_quality)
+           (label has_quality "has_quality")
+           (subrelation has_quality bearer_of)
+           (inverse_of has_quality quality_of)
+           (exported_identifier has_quality "OBO_REL_I:0000029")
+           (text_definition has_quality "A relation between an entity and a quality. For types: E has_quality Q iff: for any eEt, exists qQt such that q inheres_in e at t. For instances: e has_quality q at t iff q inheres_in e at t and q instance-of Quality")
+           (range has_quality Quality)
+
+
+           // REALIZABLE
+
+           // FUNCTION
+
+           (relation function_of)
+           (label function_of "function_of")
+           (subrelation function_of inheres_in)
+           (equivalent_relation_between function_of inheres_in Function IndependentContinuant)
+           (inverse_of function_of has_function)
+           (normative_direction_for function_of "function")
+           (comment function_of "Example: 'to blood pump' function_of 'heart'")
+           (exported_identifier function_of "OBO_REL_I:0000030")
+           (text_definition function_of "f function_of c at t iff : f inheres_in c at t and f instantiates a function")
+           (domain function_of Function)
+           (range function_of IndependentContinuant)
+
+
+           (relation has_function)
+           (label has_function "has_function")
+           (subrelation has_function bearer_of)
+           (equivalent_relation_between has_function bearer_of IndependentContinuant Function)
+           (inverse_of has_function function_of)
+           (comment has_function "heart has_function to-pump-blood")
+           (exported_identifier has_function "OBO_REL_I:0000031")
+           (text_definition has_function "Relation between an independent continuant and a function.")
+           (domain has_function IndependentContinuant)
+           (range has_function Function)
+
+
+           // ROLE
+
+           (relation role_of)
+           (functional role_of)
+           (label role_of "role_of")
+           (subrelation role_of inheres_in)
+           (equivalent_relation_between role_of inheres_in Role IndependentContinuant)
+           (inverse_of role_of has_role)
+           (normative_direction_for role_of "role")
+           (exported_identifier role_of "OBO_REL_I:0000032")
+           (text_definition role_of "A relation between a role r and a continuant c. r role_of c at t iff: r inheres_in c at t and r instance_of Role at t")
+           (domain role_of Role)
+           // weaken to Continuant?
+           (range role_of IndependentContinuant)
+
+
+           (relation has_role)
+           (label has_role "has_role")
+           (equivalent_relation_between has_role bearer_of IndependentContinuant Role)
+           (subrelation has_role bearer_of)
+           (inverse_of has_role role_of)
+           (exported_identifier has_role "OBO_REL_I:0000033")
+           (text_definition has_role "A relation between a continuant C and a role R. The inverse_of role_of.")
+           (domain has_role IndependentContinuant)
+           (range has_role Role)
+
+
+           (relation realizes)
+           (label realizes "realizes")
+           (inverse_of realizes realized_by)
+           (comment realizes "in BFO realizable is the parent of function, role and disposition. We should also have realization_of and has_realizable for consistency. Will the terminology get too confusing?")
+           (narrow_synonym realizes "is_realization_of")
+           (narrow_synonym realizes "realization_of")
+           (narrow_synonym realizes "is_functioning_of")
+           (narrow_synonym realizes "executes")
+           //(exact_synonym realizes "has_function_part")
+           (exported_identifier realizes "OBO_REL_I:0000034")
+           (text_definition realizes "Relation between a process and a realizable entity")
+           (example realizes (realizes "reaction1" "function1") "")
+           (domain realizes Process)
+           (range realizes RealizableEntity)
+
+           (relation realized_by)
+           (label realized_by "realized_by")
+           (inverse_of realized_by realizes)
+           (transitive_over realized_by part_of)
+           (normative_direction_for realized_by "realization")
+           (related_synonym realized_by "executed_during")
+           (narrow_synonym realized_by "realized_as")
+           // OBI
+           (narrow_synonym realized_by "is_realized_as")
+           (narrow_synonym realized_by "executed_by")
+           (narrow_synonym realized_by "has_realization")
+           (narrow_synonym realized_by "has_functioning")
+           (exported_identifier realized_by "OBO_REL_I:0000035")
+           (text_definition realized_by "Relation between a realizable entity (such as a function or role) and a process.")
+           (example realized_by (realized_by "function1" "reaction1") "")
+           (domain realized_by RealizableEntity)
+           (range realized_by Process)
+
+
+
+           // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+           // development and change
+           // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+           (relation derives_from)
+           (label derives_from "derives_from")
+           (label derives_from "derives_from")
+           (domain derives_from Continuant)
+           (range derives_from Continuant)
+           (inverse_of derives_from derived_into)
+           (transitive derives_from)
+           (normative_direction_for derives_from "derives")
+           (comment derives_from "Derivation as a relation between instances. The temporal relation of derivation is more complex. Transformation, on the instance level, is just the relation of identity: each adult is identical to some child existing at some earlier time. Derivation on the instance-level is a relation holding between non-identicals. More precisely, it holds between distinct material continuants when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier continuant is inherited by the later. Thus we will have axioms to the effect that from c derives_from c1 we can infer that c and c1 are not identical and that there is some instant of time t such that c1 exists only prior to and c only subsequent to t. We will also be able to infer that the spatial region occupied by c as it begins to exist at t overlaps with the spatial region occupied by c1 as it ceases to exist in the same instant.")
+           (exact_synonym derives_from "derived_from")
+           (exported_identifier derives_from "OBO_REL_I:0000015")
+           (text_definition derives_from "Derivation on the instance level (*derives_from*) holds between distinct material continuants when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier continuant is inherited by the later.")
+           (text_definition_xref derives_from "PMID:15892874")
+           (forall (c c1)
+                   (if (derives_from c c1)
+                       (exists (t)
+                               (and (only_exists_prior_to c1 t)
+                                    (only_exists_subsequent_to c t)))))
+
+
+           (relation derived_into)
+           (label derived_into "derived_into")
+           (domain derived_into Continuant)
+           (range derived_into Continuant)
+           (inverse_of derived_into derives_from)
+           (transitive derived_into)
+           (exported_identifier derived_into "OBO_REL_I:0000016")
+
+
+           (relation preceded_by)
+           (label preceded_by "preceded_by")
+           (domain preceded_by Occurrent)
+           (range preceded_by Occurrent)
+           (inverse_of preceded_by precedes)
+           (transitive preceded_by)
+           (comment preceded_by "An example is: translation preceded_by transcription; aging preceded_by development (not however death preceded_by aging). Where derives_from links classes of continuants, preceded_by links classes of processes. Clearly, however, these two relations are not independent of each other. Thus if cells of type C1 derive_from cells of type C, then any cell division involving an instance of C1 in a given lineage is preceded_by cellular processes involving an instance of C.    The assertion P preceded_by P1 tells us something about Ps in general: that is, it tells us something about what happened earlier, given what we know about what happened later. Thus it does not provide information pointing in the opposite direction, concerning instances of P1 in general; that is, that each is such as to be succeeded by some instance of P. Note that an assertion to the effect that P preceded_by P1 is rather weak; it tells us little about the relations between the underlying instances in virtue of which the preceded_by relation obtains. Typically we will be interested in stronger relations, for example in the relation immediately_preceded_by, or in relations which combine preceded_by with a condition to the effect that the corresponding instances of P and P1 share participants, or that their participants are connected by relations of derivation, or (as a first step along the road to a treatment of causality) that the one process in some way affects (for example, initiates or regulates) the other.")
+           (exported_identifier preceded_by "OBO_REL_I:0000017")
+           (text_definition preceded_by "P preceded_by P' if and only if: given any process p that instantiates P at a time t, there is some process p' such that p' instantiates P' at time t', and t' is earlier than t. ")
+           (text_definition_xref preceded_by "PMID:15892874")
+
+           (forall (p p1)
+                   (iff (preceded_by p p1)
+                        (forall (t t1)
+                                (if (and (occurs_at p t)(occurs_at p1 t1))
+                                    (earlier_than t1 t)))))
+
+           // see also ro-development
+           (relation immediately_preceded_by)
+           (label immediately_preceded_by "immediately_preceded_by")
+           (exported_identifier immediately_preceded_by "OBO_REL_I:0000044")
+           (forall (p p1)
+                   (iff (immediately_preceded_by p p1)
+                        (exists (t) (and (first_instant_of t p)
+                                          (last_instant_of t p1)))))
+
+
+           (relation precedes)
+           (label precedes "precedes")
+           (domain precedes Occurrent)
+           (range precedes Occurrent)
+           (inverse_of precedes preceded_by)
+           (transitive precedes)
+           (exported_identifier precedes "OBO_REL_I:0000018")
+
+           (relation occurs_in)
+           (label occurs_in "occurs_in")
+           (exact_synonym occurs_in "unfolds_in")
+           (exact_synonym occurs_in "process_located_in")
+           (exact_synonym occurs_in "all_participants_located_in")
+           (holds_over_chain occurs_in has_participant located_in)
+           (exported_identifier occurs_in "OBO_REL_I:0000064")
+           (text_definition occurs_in "p occurs_in s at t : all the participants of of p are spatially contained by s at t.")
+           // @Axiom: p occurs_in s at t iff forall c such that c participates_in p at t, c located_in s at t
+           //(equivalent_to_chain occurs_in has_participant located_in)
+           (all_only_chain occurs_in has_participant located_in)
+           (forall (p s t)
+                   (iff (occurs_in p s t)
+                        (forall (c) 
+                                (if (has_participant p c t)
+                                    (located_in c s t)))))
+
+           
+) // end-of-module
