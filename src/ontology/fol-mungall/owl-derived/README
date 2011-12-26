@@ -1,0 +1,49 @@
+EXPERIMENTAL!!!
+
+This directory contains OWL documents that have been generated from
+fol-src (see Makefile in the directory above).
+
+Translation from FOL is hard; however, we are translating from mostly
+atomic sentences that utilize second-order style predicates defined in
+../bfo-meta/
+
+This means we are translating sentences of the form
+
+  (transitive part_of)
+
+Rather than
+
+  (forall (r)
+          (iff (transitive r)
+               (forall (x y z)
+                       (if (and (r x y)
+                                (r y z))
+                           (r x z)))))
+
+The file ../bfo-meta/bfo-meta-owl-mapping.clif contains translation axioms such as
+
+  (forall (p)
+          (iff (transitive p)
+               (owl:TransitiveProperty p)))
+
+These axioms are applied directly to generate OWL as atomic CLIF
+sentences, in this case:
+
+  (owl:TransitiveProperty part_of)
+
+The Thea2 library is used to generate RDF/XML from these atomic sentences.
+
+There are also some (incomplete) text metadata mapping rules in ../bfo-meta
+
+We do not attempt to translate anything more complex than atomic
+sentences. However, this should be sufficient to generate DL for many
+purposes. For other purposes the full FOL should be used.
+
+We also apply a simplistic mapping where the temporal arguments in the
+bfo-meta theories are ignored.
+
+//
+
+Using this automated procedure it is possible to autogenerate OWL from
+the source CLIF. The resulting OWL could be used directly or could be
+used to check the manually maintained OWL.

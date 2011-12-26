@@ -1,0 +1,27 @@
+
+* bfo-ro-background.clif
+
+these are background theorems needed for defining core relations and
+classes, but not intended to be used directly in ontology
+construction. It also includes the is_a and instance_of relations
+which are typically considered as separate from the ontology and part
+of the logical language when working with owl or obo.
+
+Examples: exists_at/2
+
+* bfo-taxonomy-src.clif
+
+the core BFO taxonomy (derived from the OWL)
+
+* ro-core-inst-inst-src.clif
+
+the core RO instance-level relations, plus related axioms. Note that
+this is the 'source' representation (see ../README)
+
+* ro-core-type-type-src.clif
+
+RO type level relations. These are mostly fairly trivially defined
+all-some versions defined in terms of the instance level
+relations. They are defined using 'macro-style' atomic sentences which
+compile to all-some quantified sentences in ../fol-derived. See
+bfo-meta-type-level.clif for details
