@@ -19,7 +19,7 @@
     (has-site-of !obo:BFO_0000067)
     (begins-to-exist-during !obo:BFO_0000068)
     (ceases-to-exist-during !obo:BFO_0000069)
-    (depends-on !obo:BFO_0000070)
+    (s-depends-on !obo:BFO_0000070)
     (has-granular-part !obo:BFO_0000071)
     (has-granular-process-part !obo:BFO_0000072)
     (is-granular-part-of !obo:BFO_0000073)
@@ -33,6 +33,7 @@
     (is-role-of !obo:BFO_0000081)
     (is-located-in !obo:BFO_0000082)
     (is-located-at !obo:BFO_0000083)
+    (g-depends-on !obo:BFO_0000084)
     ))
 
 (defun id-for-bfo-axiom (i)
@@ -137,8 +138,8 @@
 		(nax 38 `(sub-object-property-of (object-property-chain ,realizes ,inheres-in) ,has-participant)) ; "bearers of realizables participate in their realizaton")  ; note OWLAPI bug.
 
                 (nax 39 `(inverse-object-properties ,begins-to-exist-during ,ceases-to-exist-during))
-		(nax 40 `(sub-object-property-of ,is-concretization-of ,depends-on))
-		(nax 41 `(sub-object-property-of ,inheres-in ,depends-on))
+		(nax 40 `(sub-object-property-of ,is-concretization-of ,s-depends-on))
+		(nax 41 `(sub-object-property-of ,inheres-in ,s-depends-on))
 		(nax 42 `(object-property-domain ,inheres-in ,dependent-continuant))
 		(nax 43 `(object-property-range ,inheres-in ,independent-continuant))
 		(nax 44 `(object-property-domain ,is-concretization-of ,generically-dependent-continuant))
@@ -170,6 +171,15 @@
 		(nax 71 `(sub-object-property-of ,is-role-of ,inheres-in))
 		(nax 72 `(sub-object-property-of ,is-function-of ,inheres-in))
 		(nax 73 `(sub-object-property-of ,is-quality-of ,inheres-in))
+		(nax 74 `(object-property-domain ,is-quality-of ,quality))
+		(nax 75 `(object-property-domain ,is-role-of ,role))
+		(nax 76 `(object-property-domain ,is-function-of ,function))
+		(nax 77 `(object-property-domain ,s-depends-on ,specifically-dependent-continuant))
+		(nax 78 `(object-property-domain ,g-depends-on ,generically-dependent-continuant))
+		(nax 79 `(object-property-range ,s-depends-on ,independent-continuant))
+		(nax 80 `(object-property-range ,g-depends-on ,independent-continuant))
+		(nax 81 `(sub-object-property-of ,inheres-in ,s-depends-on))
+		(nax 82 `(sub-object-property-of ,is-part-of ,is-located-in))
 		))))
 	(write-rdfxml bfo-2-relations "~/repos/bfo/trunk/src/ontology/bfo2-relations.owl")))))
 		
