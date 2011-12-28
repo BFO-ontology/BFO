@@ -28,6 +28,11 @@
     (is-fiat-part-of !obo:BFO_0000076)
     (has-participant-beginning-to-exist !obo:BFO_0000077)
     (has-participant-ceasing-to-exist !obo:BFO_0000078)
+    (is-function-of !obo:BFO_0000079)
+    (is-quality-of !obo:BFO_0000080)
+    (is-role-of !obo:BFO_0000081)
+    (is-located-in !obo:BFO_0000082)
+    (is-located-at !obo:BFO_0000083)
     ))
 
 (defun id-for-bfo-axiom (i)
@@ -66,7 +71,7 @@
 	     (definition (thing s)  `(annotation-assertion ,definition ,thing ,(@en s))))
       (with-ontology bfo-2-relations (:about !obo:bfo/core-relations.owl :collecting t)
 	  ((progv (mapcar 'car *bfo2-relations*) (mapcar 'second *bfo2-relations*)
-	     (with-label-vars-from "~/repos/bfo/trunk/src/ontology/bfo2.owl"  
+	     (with-label-vars-from "~/repos/bfo/trunk/src/ontology/owl-ruttenberg/bfo2-classes.owl"  
 	       (asq (imports !obo:bfo/core-classes.owl))
 	       (loop for (var uri) in *bfo2-relations* do
 		    (as `(declaration (object-property ,uri))
@@ -75,7 +80,7 @@
 		      (as (alternative-label uri (substitute #\_ #\- (#"replaceFirst" (string-downcase (string var)) "is-" "")))))
 		    (if (#"matches" (string-downcase (string var)) "^is-.*")
 			(as (alternative-label uri (substitute #\space #\- (#"replaceFirst" (string-downcase (string var)) "is-" ""))))
-		    ))
+			))
 	       (as
 		`(declaration (annotation-property ,axiom-id))
 		`(annotation-assertion !rdfs:label ,axiom-id "axiom id")
@@ -87,7 +92,7 @@
 	       (as
 		(nax 1 `(object-property-domain ,is-part-of ,entity) "domain of part of")
 		(nax 2 `(object-property-range ,is-part-of ,entity))
-		(nax 70 (transitive-object-property ,is-part-of))
+		(nax 70 `(transitive-object-property ,is-part-of))
 		(nax 3 `(inverse-object-properties ,is-part-of ,has-part))
 		(nax 4 `(object-property-domain ,has-participant ,process))
 		(nax 5 `(object-property-range ,has-participant ,continuant))
@@ -110,12 +115,16 @@
 		(nax 22 `(sub-object-property-of ,is-immediately-preceded-by ,is-preceded-by))
 		(nax 23 `(sub-object-property-of ,immediately-precedes ,precedes))
 		(nax 24 `(object-property-domain ,occurs-in ,process))
+
 		(nax 25 `(object-property-range ,occurs-in ,independent-continuant))
 		(nax 26 `(inverse-object-properties ,occurs-in ,has-site-of))
-		#|(nax 27 |# `(sub-object-property-of (object-property-chain ,is-part-of ,occurs-in) ,occurs-in); ) ;"part a process that occurs in C occurs in C")
-		#|(nax 18 |# `(sub-object-property-of (object-property-chain ,occurs-in ,is-part-of) ,occurs-in) ;) ;"if p occurs in c, then p occurs in anything that c is part of")
+		(nax 27 `(sub-object-property-of (object-property-chain ,is-part-of ,occurs-in) ,occurs-in) ) ;"part a process that occurs in C occurs in C")
+		(nax 18 `(sub-object-property-of (object-property-chain ,occurs-in ,is-part-of) ,occurs-in)) ;"if p occurs in c, then p occurs in anything that c is part of")
 
 		(nax 28 `(transitive-object-property ,precedes))
+
+
+
 		(nax 29 `(transitive-object-property ,is-preceded-by))
 		(nax 30 `(functional-object-property ,is-immediately-preceded-by))
 		(nax 31 `(functional-object-property ,immediately-precedes))
@@ -125,7 +134,7 @@
 		(nax 35 `(object-property-domain ,realizes ,process))
 		(nax 36 `(object-property-range ,realizes ,realizable-entity))
 		(nax 37 `(inverse-object-properties ,realizes ,is-realized-by))
-		#|(nax 38 |# `(sub-object-property-of (object-property-chain ,realizes ,inheres-in) ,has-participant) ; "bearers of realizables participate in their realizaton")  ; note OWLAPI bug.
+		(nax 38 `(sub-object-property-of (object-property-chain ,realizes ,inheres-in) ,has-participant)) ; "bearers of realizables participate in their realizaton")  ; note OWLAPI bug.
 
                 (nax 39 `(inverse-object-properties ,begins-to-exist-during ,ceases-to-exist-during))
 		(nax 40 `(sub-object-property-of ,is-concretization-of ,depends-on))
@@ -158,12 +167,15 @@
 		(nax 67 `(inverse-object-properties ,has-participant-ceasing-to-exist ,ceases-to-exist-during))
 		(nax 68 `(sub-object-property-of ,is-course-of ,has-participant))
 		(nax 69 `(sub-object-property-of ,has-course ,participates-in))
-		     ))))
+		(nax 71 `(sub-object-property-of ,is-role-of ,inheres-in))
+		(nax 72 `(sub-object-property-of ,is-function-of ,inheres-in))
+		(nax 73 `(sub-object-property-of ,is-quality-of ,inheres-in))
+		))))
 	(write-rdfxml bfo-2-relations "~/repos/bfo/trunk/src/ontology/bfo2-relations.owl")))))
 		
 ;(bfo2-relations)
 	     
-(def-metadata concretizes bfo2-relations
+'(def-metadata concretizes bfo2-relations
   :editor-note
   "A generically dependent continuant may inhere in more than one entity. It does so by virtue of the fact that there is, for each entity that it inheres, a specifically dependent *concretization* of the generically dependent continuant that is specifically dependent. For instance, consider a story, which is an information artifact that inheres in some number of books. Each book bears some quality that carries the story. The relation between this quality and the generically dependent continuant is that the former is the concretization of the latter."
   :definition
