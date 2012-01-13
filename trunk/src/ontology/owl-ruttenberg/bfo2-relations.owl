@@ -355,7 +355,7 @@
         <rdfs:label xml:lang="en">is concretization of</rdfs:label>
         <obo:IAO_0000118 xml:lang="en">concretization of</obo:IAO_0000118>
         <obo:IAO_0000118 xml:lang="en">concretization_of</obo:IAO_0000118>
-        <rdfs:range rdf:resource="&obo;BFO_0000005"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000020"/>
         <rdfs:domain rdf:resource="&obo;BFO_0000031"/>
         <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000070"/>
     </owl:ObjectProperty>
@@ -390,8 +390,8 @@
 
     <owl:ObjectProperty rdf:about="&obo;BFO_0000059">
         <rdfs:label xml:lang="en">concretizes</rdfs:label>
-        <rdfs:range rdf:resource="&obo;BFO_0000020"/>
-        <rdfs:domain rdf:resource="&obo;BFO_0000031"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000031"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000020"/>
         <owl:inverseOf rdf:resource="&obo;BFO_0000058"/>
     </owl:ObjectProperty>
     <owl:Axiom>
