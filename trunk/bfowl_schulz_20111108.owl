@@ -1,0 +1,2462 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2011/10/bfo.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.semanticweb.org/ontologies/2011/10/bfo.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.semanticweb.org/ontologies/2011/10/bfo.owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">BFOWL Draft</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Nov 8, 2011</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">This is a tentative version to draft a core version of BFO in OWL, addressing the following needs:
+
+- Providing a first OWL-DL version of BFO with classes, relationships and axioms to be used as an upper level for OBO ontologies
+
+- Concentrate on an uncontroversial but still sufficient subset of BFO, which contains all classes that are necessary for constraining domains and ranges of the proposed relations (object properties)
+
+- Putting emphasis on three kinds of axioms:
+
+-- Disjointness axioms, which strictly partition the complete taxonomy
+
+-- Existential quantification, which express ontological dependency 
+
+-- Value restrictions, which together with disjointness axioms, reduces to a minimum the possibility of having nonsensical expressions in a consistent ontology   
+</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="#Author"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Stefan Schulz, Medical University of Graz, Austria. </Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#Continuant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DependentContinuant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Disposition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Entity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Function"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GenericallyDependentContinuant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#IndependentContinuant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MaterialEntity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Occurrent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OneDimensionalEntity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Process"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProcessBoundary"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProcessModifier"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Quality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RealizableEntity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Role"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Site"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpecificallyDependentContinuant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemporalInstant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemporalInterval"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemporalRegion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ThreeDimensionalEntity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TwoDimensionalEntity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ZeroDimensionalEntity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#adjacentTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#agentIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#bearerOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#concretizedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#concretizes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#containedIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#contains"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#continuantBoundaryOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#denotedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#denotes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#derivedInto"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#derivesFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#genericallyDependsOn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#granularPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAgent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasContinuantBoundary"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDuration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGranularPart"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOccurrentBoundary"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOutcome"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasParticipant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasProcessModifier"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasProperPart"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#includes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#inheresIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#locatedIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#occurrentBoundaryOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#occursIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#outcomeOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#participantOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#precededBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#precedes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#processModifierOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#properPartOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#realizedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#realizes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#transformationOf"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#Author"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Continuant"/>
+        <ObjectUnionOf>
+            <Class IRI="#DependentContinuant"/>
+            <Class IRI="#IndependentContinuant"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#DependentContinuant"/>
+        <ObjectUnionOf>
+            <Class IRI="#GenericallyDependentContinuant"/>
+            <Class IRI="#SpecificallyDependentContinuant"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Entity"/>
+        <ObjectUnionOf>
+            <Class IRI="#Continuant"/>
+            <Class IRI="#Occurrent"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GenericallyDependentContinuant"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#DependentContinuant"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#genericallyDependsOn"/>
+                <Class IRI="#IndependentContinuant"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#IndependentContinuant"/>
+        <ObjectUnionOf>
+            <Class IRI="#OneDimensionalEntity"/>
+            <Class IRI="#ThreeDimensionalEntity"/>
+            <Class IRI="#TwoDimensionalEntity"/>
+            <Class IRI="#ZeroDimensionalEntity"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Occurrent"/>
+        <ObjectUnionOf>
+            <Class IRI="#Process"/>
+            <Class IRI="#ProcessBoundary"/>
+            <Class IRI="#ProcessModifier"/>
+            <Class IRI="#TemporalRegion"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Process"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasDuration"/>
+                <Class IRI="#TemporalInterval"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasParticipant"/>
+                <Class IRI="#IndependentContinuant"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasDuration"/>
+                <Class IRI="#TemporalInstant"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasParticipant"/>
+                <Class IRI="#IndependentContinuant"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#occurrentBoundaryOf"/>
+            <Class IRI="#Process"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ProcessModifier"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#processModifierOf"/>
+            <Class IRI="#Process"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SpecificallyDependentContinuant"/>
+        <ObjectUnionOf>
+            <Class IRI="#Quality"/>
+            <Class IRI="#RealizableEntity"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SpecificallyDependentContinuant"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#specificallyDependsOn"/>
+            <Class IRI="#IndependentContinuant"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TemporalRegion"/>
+        <ObjectUnionOf>
+            <Class IRI="#TemporalInstant"/>
+            <Class IRI="#TemporalInterval"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ThreeDimensionalEntity"/>
+        <ObjectUnionOf>
+            <Class IRI="#MaterialEntity"/>
+            <Class IRI="#Site"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <ObjectUnionOf>
+            <Class IRI="#Process"/>
+            <Class IRI="#ProcessBoundary"/>
+        </ObjectUnionOf>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasParticipant"/>
+            <Class IRI="#IndependentContinuant"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Continuant"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DependentContinuant"/>
+        <Class IRI="#Continuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DependentContinuant"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#inheresIn"/>
+            <Class IRI="#IndependentContinuant"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DependentContinuant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#inheresIn"/>
+            <Class IRI="#IndependentContinuant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Disposition"/>
+        <Class IRI="#RealizableEntity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Function"/>
+        <Class IRI="#Disposition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GenericallyDependentContinuant"/>
+        <Class IRI="#DependentContinuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GenericallyDependentContinuant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasProperPart"/>
+            <Class IRI="#GenericallyDependentContinuant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GenericallyDependentContinuant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#properPartOf"/>
+            <Class IRI="#SpecificallyDependentContinuant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#IndependentContinuant"/>
+        <Class IRI="#Continuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MaterialEntity"/>
+        <Class IRI="#ThreeDimensionalEntity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MaterialEntity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasProperPart"/>
+            <ObjectUnionOf>
+                <Class IRI="#MaterialEntity"/>
+                <Class IRI="#Site"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MaterialEntity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#properPartOf"/>
+            <Class IRI="#MaterialEntity"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Occurrent"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OneDimensionalEntity"/>
+        <Class IRI="#IndependentContinuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OneDimensionalEntity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#continuantBoundaryOf"/>
+            <Class IRI="#TwoDimensionalEntity"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Process"/>
+        <Class IRI="#Occurrent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Process"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasParticipant"/>
+            <ObjectUnionOf>
+                <Class IRI="#GenericallyDependentContinuant"/>
+                <Class IRI="#IndependentContinuant"/>
+            </ObjectUnionOf>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Process"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#occursIn"/>
+            <Class IRI="#TemporalInterval"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Process"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasProperPart"/>
+            <ObjectUnionOf>
+                <Class IRI="#Process"/>
+                <Class IRI="#ProcessBoundary"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Process"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#locatedIn"/>
+            <ObjectUnionOf>
+                <Class IRI="#IndependentContinuant"/>
+                <Class IRI="#Occurrent"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Process"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#occursIn"/>
+            <Class IRI="#TemporalInterval"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Process"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#properPartOf"/>
+            <Class IRI="#Process"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessBoundary"/>
+        <Class IRI="#Occurrent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasProperPart"/>
+                <Class IRI="#Entity"/>
+            </ObjectSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasParticipant"/>
+            <ObjectUnionOf>
+                <Class IRI="#GenericallyDependentContinuant"/>
+                <Class IRI="#IndependentContinuant"/>
+            </ObjectUnionOf>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#occurrentBoundaryOf"/>
+            <Class IRI="#Process"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#occursIn"/>
+            <Class IRI="#TemporalInstant"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#locatedIn"/>
+            <ObjectUnionOf>
+                <Class IRI="#IndependentContinuant"/>
+                <Class IRI="#Occurrent"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#occursIn"/>
+            <Class IRI="#TemporalRegion"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessBoundary"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#properPartOf"/>
+            <Class IRI="#Process"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessModifier"/>
+        <Class IRI="#Occurrent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessModifier"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#processModifierOf"/>
+            <Class IRI="#Process"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Quality"/>
+        <Class IRI="#SpecificallyDependentContinuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RealizableEntity"/>
+        <Class IRI="#SpecificallyDependentContinuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RealizableEntity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#realizedBy"/>
+            <Class IRI="#Occurrent"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Role"/>
+        <Class IRI="#RealizableEntity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Site"/>
+        <Class IRI="#ThreeDimensionalEntity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Site"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasProperPart"/>
+            <Class IRI="#Site"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Site"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#properPartOf"/>
+            <ObjectUnionOf>
+                <Class IRI="#MaterialEntity"/>
+                <Class IRI="#Site"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpecificallyDependentContinuant"/>
+        <Class IRI="#DependentContinuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemporalInstant"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#TemporalRegion"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasProperPart"/>
+                    <Class IRI="#Occurrent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemporalInterval"/>
+        <Class IRI="#TemporalRegion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemporalRegion"/>
+        <Class IRI="#Occurrent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemporalRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasProperPart"/>
+            <Class IRI="#TemporalRegion"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemporalRegion"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#properPartOf"/>
+            <Class IRI="#TemporalInterval"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThreeDimensionalEntity"/>
+        <Class IRI="#IndependentContinuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TwoDimensionalEntity"/>
+        <Class IRI="#IndependentContinuant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TwoDimensionalEntity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#continuantBoundaryOf"/>
+            <ObjectUnionOf>
+                <Class IRI="#MaterialEntity"/>
+                <Class IRI="#ThreeDimensionalEntity"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ZeroDimensionalEntity"/>
+        <Class IRI="#IndependentContinuant"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Continuant"/>
+        <Class IRI="#Occurrent"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DependentContinuant"/>
+        <Class IRI="#IndependentContinuant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Disposition"/>
+        <Class IRI="#Role"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GenericallyDependentContinuant"/>
+        <Class IRI="#SpecificallyDependentContinuant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#OneDimensionalEntity"/>
+        <Class IRI="#ThreeDimensionalEntity"/>
+        <Class IRI="#TwoDimensionalEntity"/>
+        <Class IRI="#ZeroDimensionalEntity"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Process"/>
+        <Class IRI="#ProcessBoundary"/>
+        <Class IRI="#ProcessModifier"/>
+        <Class IRI="#TemporalRegion"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Process"/>
+        <Class IRI="#ProcessBoundary"/>
+        <Class IRI="#TemporalRegion"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Quality"/>
+        <Class IRI="#RealizableEntity"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#TemporalInstant"/>
+        <Class IRI="#TemporalInterval"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#agentIn"/>
+        <ObjectProperty IRI="#participantOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#containedIn"/>
+        <ObjectProperty IRI="#locatedIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#contains"/>
+        <ObjectProperty IRI="#includes"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#continuantBoundaryOf"/>
+        <ObjectProperty IRI="#properPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#genericallyDependsOn"/>
+        <ObjectProperty IRI="#inheresIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#granularPartOf"/>
+        <ObjectProperty IRI="#properPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasAgent"/>
+        <ObjectProperty IRI="#hasParticipant"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasContinuantBoundary"/>
+        <ObjectProperty IRI="#hasProperPart"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasDuration"/>
+        <ObjectProperty IRI="#occursIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGranularPart"/>
+        <ObjectProperty IRI="#hasProperPart"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasOccurrentBoundary"/>
+        <ObjectProperty IRI="#hasProperPart"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasOutcome"/>
+        <ObjectProperty IRI="#hasParticipant"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasProperPart"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#occurrentBoundaryOf"/>
+        <ObjectProperty IRI="#properPartOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#occursIn"/>
+        <ObjectProperty IRI="#locatedIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#outcomeOf"/>
+        <ObjectProperty IRI="#participantOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#properPartOf"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+        <ObjectProperty IRI="#inheresIn"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasAgent"/>
+        <ObjectProperty IRI="#agentIn"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#bearerOf"/>
+        <ObjectProperty IRI="#inheresIn"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#concretizes"/>
+        <ObjectProperty IRI="#concretizedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#contains"/>
+        <ObjectProperty IRI="#containedIn"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasContinuantBoundary"/>
+        <ObjectProperty IRI="#continuantBoundaryOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#denotedBy"/>
+        <ObjectProperty IRI="#denotes"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#derivesFrom"/>
+        <ObjectProperty IRI="#derivedInto"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#granularPartOf"/>
+        <ObjectProperty IRI="#hasGranularPart"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasOccurrentBoundary"/>
+        <ObjectProperty IRI="#occurrentBoundaryOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#outcomeOf"/>
+        <ObjectProperty IRI="#hasOutcome"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#participantOf"/>
+        <ObjectProperty IRI="#hasParticipant"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#processModifierOf"/>
+        <ObjectProperty IRI="#hasProcessModifier"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#properPartOf"/>
+        <ObjectProperty IRI="#hasProperPart"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#locatedIn"/>
+        <ObjectProperty IRI="#includes"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#precededBy"/>
+        <ObjectProperty IRI="#precedes"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#realizedBy"/>
+        <ObjectProperty IRI="#realizes"/>
+    </InverseObjectProperties>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#adjacentTo"/>
+    </SymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#containedIn"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#contains"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hasProperPart"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#includes"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#locatedIn"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#precededBy"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#properPartOf"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#adjacentTo"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#bearerOf"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#concretizedBy"/>
+        <Class IRI="#GenericallyDependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#concretizes"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#containedIn"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#contains"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#continuantBoundaryOf"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#denotes"/>
+        <Class IRI="#GenericallyDependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#derivedInto"/>
+        <Class IRI="#MaterialEntity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#derivesFrom"/>
+        <Class IRI="#MaterialEntity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#genericallyDependsOn"/>
+        <Class IRI="#GenericallyDependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasParticipant"/>
+        <ObjectUnionOf>
+            <Class IRI="#Process"/>
+            <Class IRI="#ProcessBoundary"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasProcessModifier"/>
+        <Class IRI="#Process"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#includes"/>
+        <ObjectUnionOf>
+            <Class IRI="#IndependentContinuant"/>
+            <Class IRI="#Occurrent"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inheresIn"/>
+        <Class IRI="#DependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#locatedIn"/>
+        <ObjectUnionOf>
+            <Class IRI="#IndependentContinuant"/>
+            <Class IRI="#Occurrent"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#occurrentBoundaryOf"/>
+        <Class IRI="#ProcessBoundary"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#occursIn"/>
+        <ObjectUnionOf>
+            <Class IRI="#Process"/>
+            <Class IRI="#ProcessBoundary"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#participantOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#GenericallyDependentContinuant"/>
+            <Class IRI="#IndependentContinuant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#precededBy"/>
+        <Class IRI="#Occurrent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#precedes"/>
+        <Class IRI="#Occurrent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#processModifierOf"/>
+        <Class IRI="#ProcessModifier"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#realizedBy"/>
+        <Class IRI="#RealizableEntity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#realizes"/>
+        <Class IRI="#Occurrent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+        <Class IRI="#SpecificallyDependentContinuant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#transformationOf"/>
+        <Class IRI="#MaterialEntity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#adjacentTo"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#bearerOf"/>
+        <Class IRI="#DependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#concretizedBy"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#concretizes"/>
+        <Class IRI="#GenericallyDependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#containedIn"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#contains"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#continuantBoundaryOf"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#denotedBy"/>
+        <Class IRI="#GenericallyDependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#derivedInto"/>
+        <Class IRI="#MaterialEntity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#derivesFrom"/>
+        <Class IRI="#MaterialEntity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#genericallyDependsOn"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDuration"/>
+        <ObjectUnionOf>
+            <Class IRI="#TemporalInstant"/>
+            <Class IRI="#TemporalInterval"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasParticipant"/>
+        <ObjectUnionOf>
+            <Class IRI="#GenericallyDependentContinuant"/>
+            <Class IRI="#IndependentContinuant"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasProcessModifier"/>
+        <Class IRI="#ProcessModifier"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#includes"/>
+        <ObjectUnionOf>
+            <Class IRI="#IndependentContinuant"/>
+            <Class IRI="#Occurrent"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inheresIn"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#locatedIn"/>
+        <ObjectUnionOf>
+            <Class IRI="#IndependentContinuant"/>
+            <Class IRI="#Occurrent"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#occurrentBoundaryOf"/>
+        <Class IRI="#Process"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#occursIn"/>
+        <Class IRI="#TemporalRegion"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#participantOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Process"/>
+            <Class IRI="#ProcessBoundary"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#precededBy"/>
+        <Class IRI="#Occurrent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#precedes"/>
+        <Class IRI="#Occurrent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#processModifierOf"/>
+        <Class IRI="#Process"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#realizedBy"/>
+        <Class IRI="#Process"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#realizes"/>
+        <Class IRI="#RealizableEntity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#specificallyDependsOn"/>
+        <Class IRI="#IndependentContinuant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#transformationOf"/>
+        <Class IRI="#MaterialEntity"/>
+    </ObjectPropertyRange>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#bearerOf"/>
+            <ObjectProperty IRI="#realizedBy"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#participantOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#containedIn"/>
+            <ObjectProperty IRI="#properPartOf"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#containedIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#contains"/>
+            <ObjectProperty IRI="#hasProperPart"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#contains"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasProperPart"/>
+            <ObjectProperty IRI="#contains"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#contains"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#includes"/>
+            <ObjectProperty IRI="#hasProperPart"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#includes"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#locatedIn"/>
+            <ObjectProperty IRI="#properPartOf"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#locatedIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#participantOf"/>
+            <ObjectProperty IRI="#properPartOf"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#participantOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#properPartOf"/>
+            <ObjectProperty IRI="#containedIn"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#containedIn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#properPartOf"/>
+            <ObjectProperty IRI="#includes"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#includes"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#properPartOf"/>
+            <ObjectProperty IRI="#locatedIn"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#locatedIn"/>
+    </SubObjectPropertyOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Author</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Author</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConnectedSpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatiotemporal region [SpatiotemporalRegion] that has temporal and spatial dimensions such that all points within the spatiotemporal region are mediately or immediately connected to all other points within the same spatiotemporal region [SpatiotemporalRegion].</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConnectedSpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the spatial and temporal location of an individual organism&#39;s life, the spatial and temporal location of the development of a fetus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ConnectedSpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">connected_spatiotemporal_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConnectedTemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A temporal region [TemporalRegion] every point of which is mediately or immediately connected with every other point of which.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConnectedTemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the 1970s years, the time from the beginning to the end of a heart attack, the time taken up by cellular meiosis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ConnectedTemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">connected_temporal_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Continuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: An entity [bfo:Entity] that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Continuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: a heart, a person, the color of a tomato, the mass of a cloud, a symphony orchestra, the disposition of blood to coagulate, the lawn and atmosphere in front of our building</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Continuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Synonyms: endurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Continuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">continuant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A continuant [Continuant] that is either dependent on one or other independent continuant [IndependentContinuant] bearers or inheres in or is borne by other entities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">dependent_continuant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Disposition</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A realizable entity [RealizableEntity] that essentially causes a specific process or transformation in the object [Object] in which it inheres, under specific circumstances and in conjunction with the laws of nature. A general formula for dispositions is: X (object [Object] has the disposition D to (transform, initiate a process) R under conditions C.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Disposition</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the disposition of vegetables to decay when not refrigerated, the disposition of a vase to brake if dropped, the disposition of blood to coagulate, the disposition of a patient with a weakened immune system to contract disease, the disposition of metal to conduct electricity.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Disposition</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">disposition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Entity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FiatObjectPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A material entity [MaterialEntity] that is part of an object [Object] but is not demarcated by any physical discontinuities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FiatObjectPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: upper and lower lobes of the left lung, the dorsal and ventral surfaces of the body, the east side of Saarbruecken, the lower right portion of a human torso</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FiatObjectPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Synonyms: fiat substance part</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FiatObjectPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">fiat_object_part</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FiatProcessPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A processual entity [ProcessualEntity] that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FiatProcessPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: chewing during a meal, the middle part of a rainstorm, the worst part of a heart-attack, the most interesting part of Van Gogh&#39;s life</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FiatProcessPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">fiat_process_part</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Function</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A realizable entity [RealizableEntity] the manifestation of which is an essentially end-directed activity of a continuant [Continuant] entity in virtue of that continuant [Continuant] entity being a specific kind of entity in the kind or kinds of contexts that it is made for.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Function</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the function of a birth canal to enable transport, the function of the heart in the body: to pump blood, to receive de-oxygenated and oxygenated blood, etc., the function of reproduction in the transmission of genetic material, the digestive function of the stomach to nutriate the body, the function of a hammer to drive in nails, the function of a computer program to compute mathematical equations, the function of an automobile to provide transportation, the function of a judge in a court of law</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Function</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">function</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#GenericallyDependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A continuant [Continuant] that is dependent on one or other independent continuant [IndependentContinuant] bearers. For every instance of A requires some instance of (an independent continuant [IndependentContinuant] type) B but which instance of B serves can change from time to time.
+
+Also abbreviated as &#39;&#39;GDC&#39;&#39;</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#GenericallyDependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: a certain PDF file that exists in different and in several hard drives</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GenericallyDependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">generically_dependent_continuant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#IndependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A continuant [Continuant] that is a bearer of quality [Quality] and realizable entity [RealizableEntity] entities, in which other entities inhere and which itself cannot inhere in anything.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#IndependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: an organism, a heart, a leg, a person, a symphony orchestra, a chair, the bottom right portion of a human torso, the lawn and atmosphere in front of our building</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#IndependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Synonyms: substantial entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">independent_continuant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#MaterialEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: An independent continuant [IndependentContinuant] that is spatially extended whose identity is independent of that of other entities and can be maintained through time. Note: Material entity [MaterialEntity] subsumes object [Object], fiat object part [FiatObjectPart], and object aggregate [ObjectAggregate], which assume a three level theory of granularity, which is inadequate for some domains, such as biology.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#MaterialEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: collection of random bacteria, a chair, dorsal surface of the body</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MaterialEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">material_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Object</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A material entity [MaterialEntity] that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial object [Object] entities is independent of that of other entities and can be maintained through time.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Object</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: an organism, a heart, a chair, a lung, an apple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Object</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Synonyms: substance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Object</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectAggregate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A material entity [MaterialEntity] that is a mereological sum of separate object [Object] entities and possesses non-connected boundaries.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectAggregate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: a heap of stones, a group of commuters on the subway, a collection of random bacteria, a flock of geese, the patients in a hospital</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectAggregate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Synonyms: substance aggregate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ObjectAggregate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">object_aggregate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: Boundaries are theoretically difficult entities to account for, however the intuitive notion of a physical boundary as a surface of some sort (whether inside or outside of a thing) will generally serve as a good guide for the use of this universal.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: An independent continuant [IndependentContinuant] that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of object [Object] entities that exist at exactly the point where the object [Object] is separated off from the rest of the existing entities in the world.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the surface of the skin, the surface of the earth, the surface of the interior of the stomach, the outer surface of a cell or cell wall</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Synonyms: substance boundary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ObjectBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">object_boundary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Occurrent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: An entity [bfo:Entity] that has temporal parts and that happens, unfolds or develops through time. Sometimes also called perdurants.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Occurrent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the life of an organism, a surgical operation as processual context for a nosocomical infection, the spatiotemporal context occupied by a process of cellular meiosis, the most interesting part of Van Gogh&#39;s life, the spatiotemporal region occupied by the development of a cancer tumor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Occurrent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Synonyms: perdurant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Occurrent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">occurrent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OneDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatial entity with one dimension.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OneDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Example: the edge of a cube</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OneDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">one_dimensional_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OneDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatial region [SpatialRegion] with one dimension.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OneDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the part of space that is a line stretching from one end of absolute space to the other, an edge of a cube-shaped part of space</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OneDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">one_dimensional_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Process</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A processual entity [ProcessualEntity] that is a maximally connected spatiotemporal whole and has bona fide beginnings and endings corresponding to real discontinuities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Process</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the life of an organism, the process of sleeping, the process of cell-division</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Process</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">process</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessAggregate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A processual entity [ProcessualEntity] that is a mereological sum of process [Process] entities and possesses non-connected boundaries.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessAggregate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the beating of the hearts of each of seven individuals in the room, the playing of each of the members of an orchestra, a process of digestion and a process of thinking taken together</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessAggregate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">process_aggregate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A processual entity [ProcessualEntity] that is the fiat or bona fide instantaneous temporal process boundary.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: birth, death, the forming of a synapse, the onset of REM sleep, the detaching of a finger in an industrial accident, the final separation of two cells at the end of cell-division, the incision at the beginning of a surgery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">process_boundary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessModifier</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">A property that modifies a process.
+
+
+NOT MEANT TO SOLVE THE PROBLEM WITH THE &quot;PROCESS QUALITIES&quot;, JUST PROVIDING A PLACE FOR THEM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessModifier</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Example: &#39;&#39;intermittent&#39;&#39; for describing a process pattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessModifier</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">PROCESS_MODIFIER</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessualContext</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: An instance of a processual context [ProcessualContext] is a mixture of processual entity [ProcessualEntity] which stand as surrounding environments for other processual entity [ProcessualEntity] entities. The class processual context [ProcessualContext] is the analogous among occurrent [Occurrent] entities to the class site [Site] among continuant [Continuant] entities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessualContext</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: An occurrent [Occurrent] consisting of a characteristic spatial shape inhering in some arrangement of other occurrent [Occurrent] entities. Processual context [ProcessualContext] entities are characteristically entities at or in which other occurrent [Occurrent] entities can be located or occur.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessualContext</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: The processual context for a given manipulation occurring as part of an experiment is made of processual entities which occur in parallel, are not necessarily all parts of the experiment themselves and may involve continuant [Continuant] entities which are in the spatial vicinity of the participants in the experiment.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessualContext</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">processual_context</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessualEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: An occurrent [Occurrent] that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessualEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the life of an organism, the process of meiosis, the course of a disease, the flight of a bird</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessualEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">processual_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Quality</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A specifically dependent continuant [SpecificallyDependentContinuant] that is exhibited if it inheres in an entity or entities at all (a categorical property).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Quality</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the color of a tomato, the ambient temperature of air, the circumference of a waist, the shape of a nose, the mass of a piece of gold, the weight of a chimpanzee</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Quality</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#RealizableEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: If a realizable entity [RealizableEntity] inheres in a continuant [Continuant], this does not imply that it is actually realized.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#RealizableEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A specifically dependent continuant [SpecificallyDependentContinuant] that inheres in continuant [Continuant] entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#RealizableEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the role of being a doctor, the function of the reproductive organs, the disposition of blood to coagulate, the disposition of metal to conduct electricity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RealizableEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">realizable_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Role</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A realizable entity [RealizableEntity] the manifestation of which brings about some result or end that is not essential to a continuant [Continuant] in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant [Continuant] in some kinds of natural, social or institutional contexts.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Role</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the role of a person as a surgeon, the role of a chemical compound in an experiment, the role of a patient relative as defined by a hospital administrative form, the role of a woman as a legal mother in the context of system of laws, the role of a biological grandfather as legal guardian in the context of a system of laws, the role of ingested matter in digestion, the role of a student in a university</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Role</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ScatteredSpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatiotemporal region [SpatiotemporalRegion] that has spatial and temporal dimensions and every spatial and temporal point of which is not connected with every other spatial and temporal point of which.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ScatteredSpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the space and time occupied by the individual games of the World Cup, the space and time occupied by the individual liaisons in a romantic affair</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ScatteredSpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">scattered_spatiotemporal_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ScatteredTemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A temporal region [TemporalRegion] every point of which is not mediately or immediately connected with every other point of which.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ScatteredTemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the time occupied by the individual games of the World Cup, the time occupied by the individual liaisons in a romantic affair</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ScatteredTemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">scattered_temporal_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Site</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: An instance of Site is an independent continuant which act as surrounding environment for other independent continuants.  Sites have a volume but not a mass. They are physical but immaterial. Sites share two dimensional boundaries with their (material) hosts.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Site</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: a particular room in a particular hospital, Maria&#39;s nostril or her intestines for a variety of bacteria.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Site</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">site</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatialRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: All instances of continuant [Continuant] are spatial entities, that is, they enter in the relation of (spatial) location with spatial region [SpatialRegion] entities. As a particular case, the exact spatial location of a spatial region [SpatialRegion] is this region itself.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatialRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: An instance of spatial region [SpatialRegion] is a part of space. All parts of space are spatial region [SpatialRegion] entities and only spatial region [SpatialRegion] entities are parts of space. Space is the entire extent of the spatial universe, a designated individual, which is thus itself a spatial region [SpatialRegion].</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatialRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: Space and spatial region [SpatialRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of space is sometimes called &#39;&#39;absolutist&#39;&#39; or &#39;&#39;the container view&#39;&#39;. In BFO, the class site [Site] allows for a so-called relational view of space, that is to say, a view according to which spatiality is a matter of relative location between entities and not a matter of being tied to space. The bridge between these two views is secured through the fact that while instances of site [Site] are not spatial region [SpatialRegion] entities, they are nevertheless spatial entities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatialRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A continuant [Continuant] that is neither bearer of quality [Quality] entities nor inheres in any other entities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatialRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the sum total of all space in the universe, parts of the sum total of all space in the universe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpatialRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">spatial_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalInstant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A connected spatiotemporal region [ConnectedSpatiotemporalRegion] at a specific moment.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalInstant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the spatiotemporal region occupied by a single instantaneous temporal slice (part) of a process</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpatiotemporalInstant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">spatiotemporal_instant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalInterval</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A connected spatiotemporal region [ConnectedSpatiotemporalRegion] that endures for more than a single moment of time.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalInterval</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the spatiotemporal region occupied by a process or by a fiat processual part</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpatiotemporalInterval</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">spatiotemporal_interval</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: All instances of occurrent [Occurrent] are spatiotemporal entities, that is, they enter in the relation of (spatiotemporal) location with spatiotemporal region [SpatiotemporalRegion] entities. As a particular case, the exact spatiotemporal location of a spatiotemporal region [SpatiotemporalRegion] is this region itself.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: An instance of the spatiotemporal region [SpatiotemporalRegion] is a part of spacetime. All parts of spacetime are spatiotemporal region [SpatiotemporalRegion] entities and only spatiotemporal region [SpatiotemporalRegion] entities are parts of spacetime. In particular, neither spatial region [SpatialRegion] entities nor temporal region [TemporalRegion] entities are in BFO parts of spacetime. Spacetime is the entire extent of the spatiotemporal universe, a designated individual, which is thus itself a spatiotemporal region [SpatiotemporalRegion]. Spacetime is among occurrents the analogous of space among continuant [Continuant] entities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: Spacetime and spatiotemporal region [SpatiotemporalRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of spacetime can be called &#39;&#39;absolutist&#39;&#39; or &#39;&#39;the container view&#39;&#39;. In BFO, the class processual context [ProcessualContext] allows for a so-called relational view of spacetime, that is to say, a view according to which spatiotemporality is a matter of relative location between entities and not a matter of being tied to spacetime. In BFO, the bridge between these two views is secured through the fact that instances of processual context [ProcessualContext] are too spatiotemporal entities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: An occurrent [Occurrent] at or in which processual entity [ProcessualEntity] entities can be located.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal context occupied by a process of cellular meiosis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpatiotemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">spatiotemporal_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpecificallyDependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A continuant [Continuant] that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpecificallyDependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the mass of a cloud, the smell of mozzarella, the liquidity of blood, the color of a tomato, the disposition of fish to decay, the role of being a doctor, the function of the heart in the body: to pump blood, to receive de-oxygenated and oxygenated blood, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpecificallyDependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Synonyms: property, trope, mode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpecificallyDependentContinuant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">specifically_dependent_continuant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalInstant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A connected temporal region [ConnectedTemporalRegion] comprising a single moment of time.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalInstant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: right now, the moment at which a finger is detached in an industrial accident, the moment at which a child is born, the moment of death</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TemporalInstant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">temporal_instant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalInterval</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A connected temporal region [ConnectedTemporalRegion] lasting for more than a single moment of time.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalInterval</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: any continuous temporal duration during which a process occurs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TemporalInterval</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">temporal_interval</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: All instances of occurrent [Occurrent] are temporal entities, that is, they enter in the relation of (temporal) location with temporal region [TemporalRegion] entities. As a particular case, the exact spatiotemporal location of a temporal region [TemporalRegion] is this region itself. Continuant [Continuant] entities are not temporal entities in the technical sense just explained; they are related to time in a different way, not through temporal location but through a relation of existence at a time or during a period of time (see continuant [Continuant].</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: An instance of temporal region [TemporalRegion] is a part of time. All parts of time are temporal region [TemporalRegion] entities and only temporal region [TemporalRegion] entities are parts of time. Time is the entire extent of the temporal universe, a designated individual, which is thus a temporal region itself.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Comment: Time and temporal region [TemporalRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of time can be called &#39;&#39;absolutist&#39;&#39; or &#39;&#39;the container view&#39;&#39; in analogy to what is traditionally the case with space (see spatial region [SpatialRegion].</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: An occurrent [Occurrent] that is part of time.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the time it takes to run a marathon, the duration of a surgical procedure, the moment of death</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TemporalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">temporal_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ThreeDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatial entity with three dimensions.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ThreeDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Example: a cube or a cube-shapes empty space</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ThreeDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">three_dimensional_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ThreeDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatial region [SpatialRegion] with three dimensions.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ThreeDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: a cube-shaped part of space, a sphere-shaped part of space</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ThreeDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">three_dimensional_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TwoDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatial entity with three dimensions.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TwoDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Example: Surfaces of three-dimensional bodies, e.g. the surface of a cube</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TwoDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">two_dimensional_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TwoDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatial region [SpatialRegion] with two dimensions.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TwoDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: the surface of a cube-shaped part of space, the surface of a sphere-shaped part of space, the surface of a rectilinear planar figure-shaped part of space</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TwoDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">two_dimensional_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ZeroDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatial entity with zero dimensions.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ZeroDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Example: a point</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ZeroDimensionalEntity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">zero_dimensional_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ZeroDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Definition: A spatial region [SpatialRegion] with no dimensions.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ZeroDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Examples: a point</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ZeroDimensionalRegion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">zero_dimensional_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#adjacentTo</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">adjacentTo relates two physical objects that abut without physical overlap.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#adjacentTo</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">adjacent_to</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#agentIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">agentIn (inverse: hasAgent) relates a participant with a process, with the condition that this participant is causally active in the relevant process.
+This is the reason why agentIn is subsumed by the relation causedBy. 
+
+Example: A physician is the agent in a opeeration process; a solvent is the agent in a solving process. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#agentIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">agent_in</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#bearerOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">inheresIn (inverse: bearerOf) relates a quality, role, function, or dispositionwith the physical entity it depends on.
+Example: a color inheres in a paint, the ability to fly inheres in a bird.  </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#bearerOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">bearer_of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#concretizedBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">concretizes (inverse: concretizedBy) relates an independent continuant with a GDC. 
+
+Example a USB stick concretized some data.  </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#concretizedBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">concretized_by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#concretizes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">concretizes (inverse: concretizedBy) relates an independent continuant with a GDC. 
+
+Example a USB stick concretized some data.  </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#concretizes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">concretizes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#containedIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">contains (inverse: physically contained in) relates two independent continuants that are colocated in space but not part of each other. 
+
+Examples: E.g. Food is contained in my stomach, en embryo is contained in a uterus.  </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#containedIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">contained_in</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#contains</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">contains (inverse: physically contained in) relates two independent continuants that are colocated in space but not part of each other. 
+
+Examples: E.g. Food is contained in my stomach, en embryo is contained in a uterus.  </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#contains</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">contains</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#continuantBoundaryOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">continuantBoundaryOf (inverse: hasContinuantBoundary) relates a three-dimensional physical object with its two dimensional boundary. 
+Example: the surface of my liver physically bounds my liver. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#continuantBoundaryOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">continuant_boundary_of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#denotedBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">denotedBy (inverse: denotes) relates entities with symbols, which are information entities. In contrast to encoding, the denoted entity is completely independent on the denoting one. 
+
+Example: The inflamation of a sinus is denoted by the word &amp;quot;Sinusitis&amp;quot;, as well as by the ICD code &#39;&#39;J10&#39;&#39;
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#denotedBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">DENOTED_BY</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#denotes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">denotedBy (inverse: denotes) relates entities with symbols, which are information entities (GDCs). 
+
+Example: The inflamation of a sinus is denoted by the word &#39;&#39;Sinusitis&#39;&#39;, as well as by the ICD code &#39;&#39;J10&#39;&#39;
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#denotes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">DENOTES</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#derivedInto</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">DerivesFrom (inverse: derivedInto) holds between  distinct material objects  when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier object is included into the later. 
+
+
+There is some instant of time t such that the first object exists only prior to and the second one  only subsequent to t. 
+ 
+Example:
+&#39;&#39;Three simple kinds of instance-level derivation can then be distinguished (Figure 3): first, the succession of one single continuant by another single continuant across a temporal threshold (for example, this blastocyst derives from this zygote); second, the fusion of two or more continuants into one continuant (for example, this zygote derives from this sperm and from this ovum); and third, the fission of an earlier single continuant to create a plurality of later continuants (for example, these promyelocytes derive from this myeoloblast). &#39;&#39; from http://genomebiology.com/2005/6/5/R46 </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#derivedInto</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">derivedInto</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#derivesFrom</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">DerivesFrom (inverse: derivedInto) holds between  distinct material objects  when one succeeds the other across a temporal divide in such a way that at least a biologically significant portion of the matter of the earlier object is included into the later. 
+
+
+There is some instant of time t such that the first object exists only prior to and the second one  only subsequent to t. 
+ 
+Example:
+&#39;&#39;Three simple kinds of instance-level derivation can then be distinguished (Figure 3): first, the succession of one single continuant by another single continuant across a temporal threshold (for example, this blastocyst derives from this zygote); second, the fusion of two or more continuants into one continuant (for example, this zygote derives from this sperm and from this ovum); and third, the fission of an earlier single continuant to create a plurality of later continuants (for example, these promyelocytes derive from this myeoloblast). &#39;&#39; from http://genomebiology.com/2005/6/5/R46 </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#derivesFrom</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">derives_from</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#genericallyDependsOn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">generically_depends_on</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#granularPartOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasGranularPart (inverse: granularPartOf) relate  Pluralities with their constituents. The constituents are of the same sort. 
+
+Generally pluralities have a high number of grains. The loss of a grain has no effect on the sortality of the identity of the plurality.
+
+Example: A cow is a granular part of a herd of cows. A water molecule is a granular part of some amount of water. A cardiac cycle is a granular part of a heart beating process. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#granularPartOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">granular part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasAgent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasAgent (inverse: agentIn) relates a participant with a process, with the condition that this participant is causally active in the relevant process.
+This is the reason why agentIn is subsumed by the relation causedBy. 
+
+Example: A physician is the agent in a opeeration process; a solvent is the agent in a solving process. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasAgent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has_agent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasContinuantBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasContinuantBoundary (inverse: continuantBoundaryOf) relates a three-dimensional physical object with its two dimensional boundary. 
+Example: the surface of my liver physically bounds my liver. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasContinuantBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has_continuant_boundary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasDuration</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasDuration relates a process with the time interval it completely covers.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDuration</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has_duration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasGranularPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasGranularPart (inverse: granularPartOf) relate  Pluralities with their constituents. The constituents are of the same sort. 
+
+Generally pluralities have a high number of grains. The loss of a grain has no effect on the sortality of the identity of the plurality.
+
+Example: A cow is a granular part of a herd of cows. A water molecule is a granular part of some amount of water. A cardiac cycle is a granular part of a heart beating process. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasGranularPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has granular part</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasOccurrentBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasOccurrentBoundary (inverse occurrentBoundaryOf) relates a process with a process boundary, or a time interval with time point.
+
+Examples: The beginning of a piece of music, the beginning of an hour. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasOccurrentBoundary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has_occurrent_boundary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasOutcome</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">outcomeOf (inverse: hasOutcome) relates a participant to a process. This participant either
+- a) comes into being during the process
+or - b) undergoes some change during the process, so that it instantiates a different class at the end of the process 
+and it constitutes (one of) the main result(s) of the process
+
+Example: a Protein molecule is the outcome of a translation process.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasOutcome</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">HAS_OUTCOME</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasParticipant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">HasParticipant (inverse: participatesIn) relates a process with a non processual entity which plays some role in the process. Process participants may exist during the whole process, remain unchanged or undergo changes; they may come into being or get out of being during the process. 
+
+Process participation is distinguished from process location.
+Example: An urea molecule which is excreted in a renal filtration process is participant of this process.
+A person who undergoes an operation is participant of this process.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasParticipant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has_Participant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasProcessModifier</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">processModifierOf (inverse: hasProcessModifier) links a quality that further characterizes a process to this process. Process qualities are asserted where the process cannot sufficiently be described by the qualities of its participants only. 
+Example: The process of heart beating has the process quality heart rate.
+
+NOT MEANT TO SOLVE THE PROBLEM WITH THE &quot;PROCESS QUALITIES&quot;, JUST PROVIDING A PLACE FOR THEM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasProcessModifier</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">HAS_PROCESS_MODIFIER</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasProcessQuality</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">processModifierOf (abstract: hasProcessModifier) links a quality that further characterizes a process to this process. Process qualities are asserted where the process cannot sufficiently be described by the qualities of its participants only. 
+Example: The process of heart beating has the process quality heart rate.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasProperPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasProperPart (inverse: properPartOf) is the general, irreflexive, mereological relation. 
+It obtains between independent continuants and independent continuants, between occurrents and occurrents, as well as between certain types of GDCs .   
+This relation is irreflexive, i.e. nothing cannot have itself as a proper part.
+ 
+Examples: my thumb is a proper physical part of my hand, this keyboard is a proper physical part of my computer. My infancy is part of my life, and this header is part of that document
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasProperPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has_proper_part</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasProperPhysicalPart</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasProperPart (inverse: properPartOf) obtains between ***** physical objects. The distinction between parthood and locatedness is complex and does not obey strict criteria. 
+This relation is irreflexive, i.e. a physical object cannot have itself as a physical proper part.
+Note that for abstract entities like information artefacts there is a separate relation pair &#39;&#39;abstractPartOf&#39;&#39; and &#39;&#39;hasAbstractPart&#39;&#39;
+For processes there are the relations &#39;&#39;hasProcessualPart&#39;&#39; and &#39;&#39;processualPartOf&#39;&#39;
+Examples: my thumb is a proper physical part of my hand, this keyboard is a proper physical part of my computer.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#includes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">locatedIn (inverse: Includes) is a very broad relation which relates an entity with the place it occurs, is contained, or is part of. (spatiotemporal inclusion)
+
+Example: A heart pumping process is located in a heart. The right ventricle is located in the heart. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#includes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">includes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#inheresIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">inheresIn (inverse: bearerOf) relates a quality, role, function, or dispositionwith the physical entity it depends on.
+Example: a color inheres in a paint, the ability to fly inheres in a bird.  </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#inheresIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">inheres_in</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#locatedIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">locatedIn (inverse: Includes) is a very broad relation which relates an entity with the place it occurs, is contained, or is part of. (spatiotemporal inclusion)
+
+Example: A heart pumping process is located in a heart. The right ventricle is located in the heart. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#locatedIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">located_in</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#occurrentBoundaryOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasOccurrentBoundary (inverse occurrentBoundaryOf) relates a process with a process boundary, or a time interval with time point.
+
+Examples: The beginning of a piece of music, the beginning of an hour. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#occurrentBoundaryOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">occurrent_boundary_of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#occursIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">occurs in relates a process with the time intervals in which it is enclosed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#occursIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">occurs_in</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#outcomeOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">outcomeOf (inverse: hasOutcome) relates a participant to a process. This participant either
+- a) comes into being during the process
+or - b) undergoes some change during the process, so that it instantiates a different class at the end of the process 
+and it constitutes (one of) the main result(s) of the process
+
+Example: a Protein molecule is the outcome of a translation process.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#outcomeOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">OUTCOME_OF</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#participantOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">HasParticipant (inverse: participatesIn) relates a process with a non processual entity which plays some role in the process. Process participants may exist during the whole process, remain unchanged or undergo changes; they may come into being or get out of being during the process. 
+
+Process participation is distinguished from process location.
+Example: An urea molecule which is excreted in a renal filtration process is participant of this process.
+A person who undergoes an operation is participant of this process.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#participantOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">participant_of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#participatesIn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">HasParticipant (inverse: participatesIn) relates a process with a non processual entity which plays some role in the process. Process participants may exist during the whole process, remain unchanged or undergo changes; they may come into being or get out of being during the process. 
+Process participation is distinguished from process location.
+Example: 
+An urea molecule which is excreted in a renal filtration process is participant of this process.
+A person who undergoes an operation is participant of this process.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#precededBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">precedes (inverse: precededBy) relates two processes, one of which ends or totally happens before the second one begins. 
+Example: fecundation preceeds embryonic development.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#precededBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">preceded_by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#precedes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">precedes (inverse: precededBy) relates two processes, one of which ends or totally happens before the second one begins. 
+Example: fecundation preceeds embryonic development.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#precedes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">precedes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#processModifierOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">
+processModifierOf (inverse: hasProcessModifier) links a quality that further characterizes a process to this process. Process qualities are asserted where the process cannot sufficiently be described by the qualities of its participants only. 
+Example: The process of heart beating has the process quality heart rate.
+
+NOT MEANT TO SOLVE THE PROBLEM WITH THE &quot;PROCESS QUALITIES&quot;, JUST PROVIDING A PLACE FOR THEM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#processModifierOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">PROCESS_MODIFIER_OF</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#properPartOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasProperPart (inverse: properPartOf) is the general, irreflexive, mereological relation. 
+
+It obtains between independent continuants and independent continuants, between occurrents and occurrents, as well as between certain types of GDCs .   
+This relation is irreflexive, i.e. nothing cannot have itself as a proper part.
+ 
+Examples: my thumb is a proper physical part of my hand, this keyboard is a proper physical part of my computer. My infancy is part of my life, and this header is part of that document
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#properPartOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">proper_part_of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#realizedBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Realization occurs if a disposition or function manifests itself as a process. Example: the disposition of a bird to fly (which exists even when it does not fly) is realized by its process of flying.  </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#realizedBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">realized_by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#realizes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Realization occurs if a disposition or function manifests itself as a process. 
+Example: the disposition of a bird to fly (which exists even when it does not fly) is realized by its process of flying.  </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#realizes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">realizes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#specificallyDependsOn</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">specifically_depends_on</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#transformationOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">transformation_of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>rdf:OWLDatatypeImpl_00000009346124329222</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">PlainLiteral</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>rdfs:OWLAnnotationPropertyImpl_00000009346109837876</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">comment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>rdfs:OWLAnnotationPropertyImpl_00000009346139909684</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">label</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>xsd:OWLDatatypeImpl_00000009346126375979</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">string</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>owl:OWLObjectPropertyImpl_00000009346133422957</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">topObjectProperty</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
