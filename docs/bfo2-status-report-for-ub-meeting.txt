@@ -1,0 +1,42 @@
+(Alan Ruttenberg)
+
+- Design 
+-- Every OWL Statement has a specified reading in BFO2 Reference
+-- OWL reasoning is sound for BFO2, but not complete.
+-- As much as possible is generated directly from specification
+-- Possibly push back on spec, where necessary
+-- Develop a test suite
+-- Driven in the immediate term by OBI requirements and developments
+-- OWL reasons over individuals
+
+- Implementation 
+-- Two :(
+-- Alan's in lisp, generates OWL, axioms numbered and commented in the
+   ontology. Wants to pull, documentation, examples, notes from
+   annotation of BFO2-reference
+-- Stefan's manually maintained 
+
+- Organizational
+-- Not terribly organized yet on the personel side
+-- Online getting organized - http://code.google.com/p/bfo, http://groups.google.com/group/bfo-owl-devel, google docs
+
+- Issues
+-- Two and Three arity predicates - Virtually no continuant relations
+   can be defined currently. Some alternatives have been proposed, but
+   we are blocked on the semantics of rdf:type.
+-- How to represent Adult: Adult subclassOf Person, children subclassOf person, adult disjointFrom child bang!
+-- Permanent versus generic parthood, temporal illustrative of problems
+-- OWL Semantics is agnostic to time. Atemporal assertions OK -
+   Occurrents. Makes us lean to saying what we can as occurrent.
+-- Inverse relations - when to define
+-- label policy
+-- OWL/BFO2 issue - instantiation versus existence
+-- Part-of or proper-part-of
+
+- History
+-- Much discussion and development, as well as prototypes made by
+   Chris Mungall and Myself, in consultation with Barry, Robert
+   Stevens, Bjoern Peters.
+-- Version currently at http://purl.obolibrary.org/obo/bfo.owl is ruttenberg's
+-- Agreement then pullback makes work harder, e.g aggregate-of/fiat-part-of relations
+
