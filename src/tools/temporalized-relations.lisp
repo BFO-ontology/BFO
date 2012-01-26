@@ -13,12 +13,9 @@
   `((declaration ,form) (annotation-assertion !rdfs:label ,(second form) (:literal ,label "@en"))
 	  ,@(if comment `((annotation-assertion !rdfs:comment ,(second form) (:literal ,(car comment) "@en"))))
 	  ))
-  
 
-
-(with-ontology ()
-    (
-     ;; from BFO
+(with-ontology temporalized-relations ()
+    ( ;; from BFO
      (declare-labeled "continuant" (class !continuant))
      (declare-labeled "occurrent" (class !occurrent))
      (disjointclasses !continuant !occurrent)
@@ -57,8 +54,8 @@
        (comment "make it self loop"
 	 (sub-class-of !continuant (object-has-self !self_c)))
 
-       (object-property-domain !self_c !c) ; necessary?
-       (object-property-range !self_c !c)  ; necessary?
+       (object-property-domain !self_c !continuant) ; necessary?
+       (object-property-range !self_c !continuant)  ; necessary?
 
        (declare-labeled "self p" (object-property !self_p)
 	 "A property that relates every process instance to itself")
@@ -71,9 +68,9 @@
        (comment "make it loop"
 	 (sub-class-of !process (object-has-self !self_p))
 
-     ))
+	 ))
 
-    ;; axioms specific to parthood
+     ;; axioms specific to parthood
 
      (declare-labeled "has part at all times" (object-property !has_part_at_all_times)
        "c1 has part at all times c2 means forall(t) if exists(c1,t) then exists(c2,t) and part_of(c1,c2,t)")
@@ -100,7 +97,7 @@
        "relates processes to their process parts")
 
      (comment "since process parthood is atemporal, these are inverse still"
-	 (inverse-object-properties !process_has_part !part_of_process))
+       (inverse-object-properties !process_has_part !part_of_process))
      (comment "process parthood is transitive"
        (transitive-object-property !part_of_process))
      (comment "process parthood is transitive"
@@ -114,7 +111,6 @@
      (object-property-range !part_of_process !process)
 
      ;; now the terms that give us some further entailments via chaining
-     (comment "if you 
      (sub-object-property-of (object-property-chain !has_part_during !course_of) !has_part_at_some_time)
      (sub-object-property-of (object-property-chain !part_of_during !course_of) !part_of_at_some_time)
      (sub-object-property-of (object-property-chain !part_of_during !part_of_process) !part_of_during)
@@ -129,32 +125,24 @@
      (disjoint-object-properties !self_c !has_proper_part_at_all_times)
      (disjoint-object-properties !self_p !proper_part_of_processs)
 
+     (sub-object-property-of (object-property-chain !general_part_of !self_c) !part_of_at_all_times)
+     (sub-object-property-of (object-property-chain !general_part_of !self_p) !part_of_process)
+     (sub-object-property-of (object-property-chain !general_has_part !self_p) !process_has_part)
+     (sub-object-property-of !self_p !general_has_part)
+     (sub-object-property-of !self_p !general_part_of)
+     (sub-object-property-of !self_c !general_has_part)
+     (sub-object-property-of !self_c !general_part_of)
 
-
-
-       (sub-object-property-of (object-property-chain !general_part_of !self_c) !part_of_at_all_times)
-       (sub-object-property-of (object-property-chain !general_part_of !self_p) !part_of_process)
-       (sub-object-property-of (object-property-chain !general_has_part !self_p) !process_has_part))
-       (sub-object-property-of !self_p !general_has_part)
-       (sub-object-property-of !self_p !general_part_of)
-       (sub-object-property-of !self_c !general_has_part)
-       (sub-object-property-of !self_c !general_part_of)
-
-
-
-
-
-
-     (annotation-assertion !rdfs:label !has_part_at_all_times "has part at all times"@en)
+     (annotation-assertion !rdfs:label !has_part_at_all_times "has part at all times@en")
      (sub-object-property-of !has_part_at_all_times !has_part_at_some_time)
      (transitive-object-property !has_part_at_all_times)
 
-     (annotation-assertion !rdfs:label !has_part_at_some_time "has part at some time"@en)
-     (annotation-assertion !rdfs:label !has_part_during "has part during"@en)
+     (annotation-assertion !rdfs:label !has_part_at_some_time "has part at some time@en")
+     (annotation-assertion !rdfs:label !has_part_during "has part during@en")
      (object-property-domain !has_part_during !continuant)
      (object-property-range !has_part_during !occurrent)
 
-     (annotation-assertion !rdfs:label !has_proper_part_at_all_times "has proper part at all times"@en)
+     (annotation-assertion !rdfs:label !has_proper_part_at_all_times "has proper part at all times@en")
      (sub-object-property-of !has_proper_part_at_all_times !has_part_at_all_times)
      (asymmetricobject-property !has_proper_part_at_all_times)
      (annotation-assertion !rdfs:label !part_of_at_all_times "part of at all times")
@@ -173,9 +161,9 @@
      (annotation-assertion !rdfs:label !part_of_process "part of process")
 
 
-     (annotation-assertion !rdfs:label !process_has_part "process has part"@en)
+     (annotation-assertion !rdfs:label !process_has_part "process has part@en")
 
-     (annotation-assertion !rdfs:label !proper_part_of_processs "proper part of processs"@en)
+     (annotation-assertion !rdfs:label !proper_part_of_processs "proper part of processs@en")
      (sub-object-property-of !proper_part_of_processs !part_of_process)
 
 
@@ -184,22 +172,22 @@
      (differentindividuals !c1 !c2 !c3 !o1 !o2 !o3)
      (declaration (named-individual !c1))
      (annotation-assertion !rdfs:label !c1 "c1")
-     (classassertion !c !c1)
+     (classassertion !continuant !c1)
      (object-property-assertion !part_of_at_all_times !c1 !c2)
      (declaration (named-individual !c2))
      (annotation-assertion !rdfs:label !c2 "c2")
-     (classassertion !c !c2)
+     (classassertion !continuant !c2)
      (declaration (named-individual !c3))
-     (annotation-assertion !rdfs:label !c3 "c3"@en)
+     (annotation-assertion !rdfs:label !c3 "c3@en")
      (declaration (named-individual !o1))
      (annotation-assertion !rdfs:label !o1 "o1")
-     (classassertion !o !o1)
+     (classassertion !occurrent !o1)
      (object-property-assertion !part_of_process !o1 !o2)
      (declaration (named-individual !o2))
      (annotation-assertion !rdfs:label !o2 "o2")
-     (classassertion !o !o2)
+     (classassertion !occurrent !o2)
      (declaration (named-individual !o3))
-     (annotation-assertion !rdfs:label !o3 "o3"@en)
+     (annotation-assertion !rdfs:label !o3 "o3@en")
 
 
      ;; general part of, to not have to worry about continuant/occurrent distinction
@@ -207,9 +195,9 @@
      (sub-class-of !continuant (object-all-values-from !general_part_of !continuant))
      (sub-class-of !occurrent (object-all-values-from !general_part_of !occurrent))
      (declaration (object-property !general_has_part))
-     (annotation-assertion !rdfs:label !general_has_part "general has part"@en)
+     (annotation-assertion !rdfs:label !general_has_part "general has part@en")
      (declaration (object-property !general_part_of))
-     (annotation-assertion !rdfs:label !general_part_of "general part of")
+     (annotation-assertion !rdfs:label !general_part_of "general part of@en")
      (transitive-object-property !general_part_of)
      (object-property-domain !general_part_of (objectunionof !occurrent !continuant))
      (object-property-range !general_part_of (objectunionof !occurrent !continuant))
@@ -217,5 +205,5 @@
      (object-property-assertion !general_part_of !occurrent3 !occurrent2)
      (sub-class-of (object-some-values-from !general_part_of !continuant) !continuant)
      (sub-class-of (object-some-values-from !general_part_of !occurrent) !occurrent)
-
-     ))
+     )
+  (write-rdfxml temporalized-relations))
