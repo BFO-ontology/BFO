@@ -1,0 +1,150 @@
+(Alan Ruttenberg)
+
+Introductory: 
+
+The problem with spatial regions. 
+ - Denseness of space is not verified scientifically
+ - lower dimension regions have zero measure in real space, i.e. some
+   spatial projection from spacetime.
+ - At least, given what we know (and which has been verified) about
+   special and general relativity, space is necessarily perspectival
+   as a) there is no preferred spacetime origin or orientation and b)
+   entities traveling in relative motion to each other, or in
+   different gravitational fields, see/measure/interact the same
+   physical phenomena differently in their own frame that would occur
+   in the others frame. A consequence of this is that c) there is only
+   a partial order on time - specifically there are cases where one
+   can not determine in a universal way (i.e. independent of frame)
+   whether they occur at the same time or whether one precedes the
+   other.
+
+
+Types: 
+
+frame: 
+
+A frame is an orientation, in spacetime, of the spatial and temporal
+dimensions, and a relative metric (relative to nearby frames) upon
+them. The laws of physics are such that they necessarily involve the
+spatial and temporal dimensions and their metrics, but are invariant,
+in a variety of different senses, across certain transformations of
+frames. Because frames are orientations of spacetime, and are not
+constrained so that solely spatial dimensions in one frame are solely
+spatial dimensions in another frame, spatial and temporal regions
+necessarily depend on frame. According to general relativity, frames
+can vary from spatiotemporal instant(sti) to sti, but the covariance
+between how they vary from sti to sti and how the laws of physics
+manifest is governed by presence and proximity of mass/energy density.
+[the above needs checking by a physicist]
+
+[I'm not sure this is needed. I think a single frame can be the
+genesis of a complete coordinate system. Check
+
+frame field: 
+
+A frame field is a collection of frames at each sti in spacetime.
+]
+
+[I'm not sure inertial frame field belongs on this side - strongly leaning towards it being a coordinate system yielding certain approximations 
+
+inertial frame field: 
+
+An inertial frame field is a frame field in which the spatial and
+temporal metrics are constant and their orientation remains
+unchanged from sti to sti. Physical laws take the same form in
+all intertial frame fields, characterized by a lack of the
+so-called 'fictitious forces'.
+]
+
+coordinate system:
+
+A coordinate system is a plan specification of a plan realized as
+computing of coordinates of some entity or in construction or a
+specification of how to translate coordinates constructed by such
+process to another coordinate system.
+
+[note above 
+An inertial coordinate system is a coordinate system, with the
+computation constructing coordinates whose distance metric is
+everywhere and always directly proportional to the metric of a
+inertial frame field.
+]
+
+earth based coordinate system:
+
+an earth based coordinate system is a spatiotemporal coordinate
+system whose plan is realized as construction of spatial
+coordinates that are defined by reference to the planet earth
+and, aside for periodic adjustments for accuracy, do not vary in
+time, and whose time coordinate is constructed by reference to a
+periodic process as measured by an observer who is at rest in the
+coordinate system.
+
+geodetic coordinate system:
+
+a geodetic coordinate system is an earth-based spatiotemporal
+coordinate system whose plan is realized as construction of
+coordinates that expressed as longitude, lattitude and elevation.
+
+earth based laboratory coordinate system:
+
+a euclidean earth based coordinate system, typically in terms SI
+units, with one spatial axis aligned to point at the center of the
+earch (i.e. in the direction gravity pulls). Note: unspecified as to
+temporal and spatial origins, and orientation of spatial axes
+perpendicular to the gravity aligned one.
+
+
+coordinate datum:
+
+A coordinate datum is a name for a position in a metric space
+editor note: Coordinates can be used to name elements of
+lists. Is a list a metric space? I think so but this should be
+verified.
+
+spatiotemporal coordinate datum:
+
+A spatiotemporal coordinate datum is a 4 part coordinate datum that
+represents a frame.
+
+spatial coordinate datum:
+
+A spatial coordinate is the  of all or
+some of the spatial coordinates of a spatiotemporal coordinate
+datum and is about part of a spatial region.
+
+temporal coordinate datum:
+
+A temporal coordinate is the part of a spatiotemporal coordinate datum
+that designates the time-like dimension and is about part of a
+temporal region.
+
+Axioms:
+
+Meta: Predications on time must specify a frame
+Every spatial region depends on a frame
+Every temporal region depends on a frame
+
+International Celestial Reference System instanceOf coordinate system
+
+World Geodetic System is_a earth base coordinate system
+WGS 84 instance_of World Geodetic System (note only defines position on earth, not altitude/depth)
+International Celestial Reference System instanceOf coordinate system
+
+Todo: Need euclidean coordinate system, something that explains
+coordinate transformations, a lab x,y,z coordinate system class and
+constraints on its metrics, something that makes clearer the partition
+into spacelike and timelike coordinate parts.
+
+Some cites:
+http://aa.usno.navy.mil/faq/docs/ICRS_doc.php
+http://www.physicsforums.com/showthread.php?t=168631
+http://en.wikipedia.org/wiki/Method_of_moving_frames
+http://en.wikipedia.org/wiki/Manifold
+http://plato.stanford.edu/entries/spacetime-holearg/
+http://plato.stanford.edu/entries/spacetime-iframes/
+http://plato.stanford.edu/entries/spacetime-theories/
+http://en.wikipedia.org/wiki/World_Geodetic_System
+
+
+
