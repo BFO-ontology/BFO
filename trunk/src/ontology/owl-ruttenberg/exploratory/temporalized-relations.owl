@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://www.w3.org/2002/07/owl"
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/temporal-prototype.owl#"
+     xml:base="http://purl.obolibrary.org/obo/temporal-prototype.owl"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:example="http://purl.obolibrary.org/obo/example/">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/temporal-prototype.owl"/>
     
 
 
@@ -34,333 +35,333 @@
 
     <!-- http://purl.obolibrary.org/obo/example/course_of -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/course_of">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/course_of">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:label xml:lang="en">is course of</rdfs:label>
         <rdfs:comment xml:lang="en">relates a course to unique material entity</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/example/course"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/segment_of_course_of"/>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/general_has_part -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/general_has_part">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/general_has_part">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">general has part</rdfs:label>
         <rdfs:comment xml:lang="en">A has part relation that can be applied to either occurrents or continuants. for occurrents it is the timeless has part and for continuants it is  has permanent specific part</rdfs:comment>
         <rdfs:range>
-            <Class>
-                <unionOf rdf:parseType="Collection">
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000002"/>
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000003"/>
-                </unionOf>
-            </Class>
+                </owl:unionOf>
+            </owl:Class>
         </rdfs:range>
         <rdfs:domain>
-            <Class>
-                <unionOf rdf:parseType="Collection">
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000002"/>
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000003"/>
-                </unionOf>
-            </Class>
+                </owl:unionOf>
+            </owl:Class>
         </rdfs:domain>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/general_part_of -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/general_part_of">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/general_part_of">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">general part of</rdfs:label>
         <rdfs:comment xml:lang="en">A part of relation that can be applied to either occurrents or continuants. for occurrents it is the timeless part of and for continuants it is permanent part of specific </rdfs:comment>
         <rdfs:range>
-            <Class>
-                <unionOf rdf:parseType="Collection">
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000002"/>
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000003"/>
-                </unionOf>
-            </Class>
+                </owl:unionOf>
+            </owl:Class>
         </rdfs:range>
         <rdfs:domain>
-            <Class>
-                <unionOf rdf:parseType="Collection">
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000002"/>
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000003"/>
-                </unionOf>
-            </Class>
+                </owl:unionOf>
+            </owl:Class>
         </rdfs:domain>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/has_course -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_course">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_course">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:label xml:lang="en">has course</rdfs:label>
         <rdfs:comment xml:lang="en">relates a material entity to it&#39;s unique course</rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/example/course"/>
-        <inverseOf rdf:resource="http://purl.obolibrary.org/obo/example/course_of"/>
-    </ObjectProperty>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/example/course_of"/>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/has_part_at_all_times -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_part_at_all_times">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_part_at_all_times">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">has part at all times</rdfs:label>
         <rdfs:comment xml:lang="en">c1 has part at all times c2 means forall(t) if exists(c1,t) then exists(c2,t) and part_of(c2,c1,t). This is known as permanent specific parthood in that the had part is the same particular throughout</rdfs:comment>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_some_time"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/general_has_part"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/self_c"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/has_part_at_some_time -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_part_at_some_time">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_part_at_some_time">
         <rdfs:label xml:lang="en">has part at some time</rdfs:label>
         <rdfs:comment xml:lang="en">c1 has part at some time c2 means there is some t such that exists(c1,t) and exists(c2,t) and part_of(c2,c1,t)</rdfs:comment>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/has_part_during"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/segment_of_course_of"/>
-        </propertyChainAxiom>
-        <propertyChainAxiom rdf:parseType="Collection">
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/has_part_during"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/course_of"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/has_part_during -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_part_during">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_part_during">
         <rdfs:label xml:lang="en">has part during</rdfs:label>
         <rdfs:comment xml:lang="en">c1 has part during p2 means forall(t) if t is in the temporal projection of p2, and if instance_of(p2,course) and course_of(c2,p2) then part_of(c1,c2,t) or if segment_of_course_of(p2,p2c) and course_of(c2,p2c) then part_of(c1,c2,t)</rdfs:comment>
         <rdfs:comment xml:lang="en">c1 has part during p2 means forall(t) if t is part of the temporal projection of p2, and if instance_of(p2,course) and course_of(c2,p2) then has_part(c1,c2,t) or if segment_of_course_of(p2,p2c) and course_of(c2,p2c) has_part(c1,c2,t)</rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/example/course_segment"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/has_part_during"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/has_temporal_part"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/has_participant_at_some_time -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_participant_at_some_time">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_participant_at_some_time">
         <rdfs:label xml:lang="en">has participant at some time</rdfs:label>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/has_proper_part_at_all_times -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_proper_part_at_all_times">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_proper_part_at_all_times">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdfs:label xml:lang="en">has proper part at all times</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_all_times"/>
-        <propertyDisjointWith rdf:resource="http://purl.obolibrary.org/obo/example/self_c"/>
-    </ObjectProperty>
+        <owl:propertyDisjointWith rdf:resource="http://purl.obolibrary.org/obo/example/self_c"/>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/has_stage -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_stage">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_stage">
         <rdfs:label xml:lang="en">has stage</rdfs:label>
         <rdfs:comment xml:lang="en"></rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/example/stage"/>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/has_temporal_part -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_temporal_part">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/has_temporal_part">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">has temporal part</rdfs:label>
         <rdfs:comment xml:lang="en"></rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/self_t"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/is_segment_of_course -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/is_segment_of_course">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/is_segment_of_course">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:label xml:lang="en">is segment of course</rdfs:label>
         <rdfs:comment xml:lang="en">a is segment of course of b if a is a course segment and b is a course and a is a temporal part of b.</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/example/course"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/example/course_segment"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/temporal_part_of"/>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/occurrent_has_part -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/occurrent_has_part">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/occurrent_has_part">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">has part that is occurrent</rdfs:label>
         <rdfs:comment xml:lang="en">relates occurrent to their occurrent parts</rdfs:comment>
-        <inverseOf rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/general_has_part"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/self_o"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
-    <Axiom>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">since occurrent parthood is atemporal, these are inverse</rdfs:comment>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
-    </Axiom>
-    <Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">occurrent parthood is transitive</rdfs:comment>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-        <annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-    </Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        <owl:annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/part_of_at_all_times -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/part_of_at_all_times">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/part_of_at_all_times">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">part of at all times</rdfs:label>
         <rdfs:comment xml:lang="en">c1 part of at all times c2 means forall(t) if exists(c1,t) then exists(c2,t) and part_of(c1,c2,t). This is known as permanent specific parthood in that the had part is the same particular throughout</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_some_time"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/general_part_of"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/self_c"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/part_of_at_some_time -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/part_of_at_some_time">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/part_of_at_some_time">
         <rdfs:label xml:lang="en">part of at some time</rdfs:label>
         <rdfs:comment xml:lang="en">c1 part of at some time c2 means there is some t such that exists(c1,t) and exists(c2,t) and part_of(c1,c2,t)</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/part_of_during"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/segment_of_course_of"/>
-        </propertyChainAxiom>
-        <propertyChainAxiom rdf:parseType="Collection">
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/part_of_during"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/course_of"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/part_of_during -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/part_of_during">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/part_of_during">
         <rdfs:label xml:lang="en">part of during</rdfs:label>
         <rdfs:comment xml:lang="en">c1 part of during p2 means forall(t) if t is part of the temporal projection of p2, and if instance_of(p2,course) and course_of(c2,p2) then part_of(c1,c2,t) or if segment_of_course_of(p2,p2c) and course_of(c2,p2c) then part_of(c1,c2,t)</rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/example/course_segment"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/part_of_during"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/has_temporal_part"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/part_of_occurrent -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/part_of_occurrent">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/part_of_occurrent">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">is part of occurrent</rdfs:label>
         <rdfs:comment xml:lang="en">relates occurrents to other occurrents that they are part of</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/general_part_of"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/self_o"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
-    <Axiom>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">since occurrent parthood is atemporal, these are inverse</rdfs:comment>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
-    </Axiom>
-    <Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">occurrent parthood is transitive</rdfs:comment>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
-        <annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-    </Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        <owl:annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/participates_in_at_some_time -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/participates_in_at_some_time">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/participates_in_at_some_time">
         <rdfs:label xml:lang="en">participates in at some time</rdfs:label>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-        <inverseOf rdf:resource="http://purl.obolibrary.org/obo/example/has_participant_at_some_time"/>
-    </ObjectProperty>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/example/has_participant_at_some_time"/>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/proper_part_of_occurrent -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/proper_part_of_occurrent">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/proper_part_of_occurrent">
         <rdfs:label xml:lang="en">is proper part of occurrent</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-        <propertyDisjointWith rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
-    </ObjectProperty>
+        <owl:propertyDisjointWith rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/segment_of_course_of -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/segment_of_course_of">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/segment_of_course_of">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:label xml:lang="en">is segment of course of</rdfs:label>
         <rdfs:comment xml:lang="en">relates a temporal part of a course to the unique material entity whose course the segment is temporal part of.</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/example/course_segment"/>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/self_c -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/self_c">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/self_c">
         <rdfs:label xml:lang="en">self c</rdfs:label>
         <rdfs:comment xml:lang="en">A property that relates every continuant instance to itself</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
@@ -369,13 +370,13 @@
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_all_times"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_all_times"/>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/self_o -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/self_o">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/self_o">
         <rdfs:label xml:lang="en">self o</rdfs:label>
         <rdfs:comment xml:lang="en">A property that relates every occurent instance to itself</rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
@@ -386,115 +387,115 @@
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/example/temporal_part_of"/>
-    </ObjectProperty>
-    <Axiom>
-        <rdfs:comment xml:lang="en">every occurrent has part itself</rdfs:comment>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-    </Axiom>
-    <Axiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">every occurrent is part of itself</rdfs:comment>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-    </Axiom>
-    <Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">enforce that self_o only relates occurrents</rdfs:comment>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-    </Axiom>
-    <Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">enforce that self_o only relates occurrents</rdfs:comment>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-    </Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">every occurrent has part itself</rdfs:comment>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/self_p -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/self_p">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/self_p">
         <rdfs:label xml:lang="en">self p</rdfs:label>
         <rdfs:comment xml:lang="en">A property that relates every process instance to itself</rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-    </ObjectProperty>
-    <Axiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">enforce that self_p only relates processes</rdfs:comment>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_p"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-    </Axiom>
-    <Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_p"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">enforce that self_p only relates processes</rdfs:comment>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_p"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-    </Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_p"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/self_t -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/self_t">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/self_t">
         <rdfs:label xml:lang="en">self t</rdfs:label>
         <rdfs:comment xml:lang="en">A property that relates every temporal region to itself</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-    </ObjectProperty>
-    <Axiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">enforce that self_t only relates occurrents</rdfs:comment>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_t"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
-    </Axiom>
-    <Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_t"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">enforce that self_t only relates occurrents</rdfs:comment>
-        <annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_t"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
-    </Axiom>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/example/self_t"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/stage_of -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/stage_of">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/stage_of">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:label xml:lang="en">is stage of</rdfs:label>
         <rdfs:comment xml:lang="en"></rdfs:comment>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/example/stage"/>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/temporal_part_of -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/temporal_part_of">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/temporal_part_of">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:label xml:lang="en">is temporal part of</rdfs:label>
         <rdfs:comment xml:lang="en">a is temporal part of b if a and b are occurrents, and there is no part of b that doesn&#39;t overlap a and occupies a temporal region that overlaps the temporal region of a.</rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <propertyChainAxiom rdf:parseType="Collection">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/self_t"/>
-        </propertyChainAxiom>
-    </ObjectProperty>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/transformation_of -->
 
-    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/transformation_of">
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/example/transformation_of">
         <rdfs:label xml:lang="en">transformation of</rdfs:label>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/example/stage"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/example/stage"/>
-    </ObjectProperty>
+    </owl:ObjectProperty>
     
 
 
@@ -511,363 +512,282 @@
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000002 -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000002">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000002">
         <rdfs:label xml:lang="en">continuant</rdfs:label>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_c"/>
-                <hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasSelf>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_c"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
         </rdfs:subClassOf>
-        <disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-    </Class>
-    <Axiom>
+        <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+    </owl:Class>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">make it self loop</rdfs:comment>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <annotatedTarget>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_c"/>
-                <hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasSelf>
-            </Restriction>
-        </annotatedTarget>
-    </Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_c"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000003 -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000003">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000003">
         <rdfs:label xml:lang="en">occurrent</rdfs:label>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
-                <hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasSelf>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
-    </Class>
-    <Axiom>
+    </owl:Class>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">make it loop</rdfs:comment>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <annotatedTarget>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
-                <hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasSelf>
-            </Restriction>
-        </annotatedTarget>
-    </Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_o"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000007 -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000007">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000007">
         <rdfs:label xml:lang="en">process</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_p"/>
-                <hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasSelf>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_p"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
         </rdfs:subClassOf>
-    </Class>
-    <Axiom>
+    </owl:Class>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">make it loop</rdfs:comment>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <annotatedTarget>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_p"/>
-                <hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasSelf>
-            </Restriction>
-        </annotatedTarget>
-    </Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_p"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000008 -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000008">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000008">
         <rdfs:label xml:lang="en">temporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_t"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_t"/>
-                <hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasSelf>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
-    </Class>
-    <Axiom>
+    </owl:Class>
+    <owl:Axiom>
         <rdfs:comment xml:lang="en">make it loop</rdfs:comment>
-        <annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <annotatedTarget>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_t"/>
-                <hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasSelf>
-            </Restriction>
-        </annotatedTarget>
-    </Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/self_t"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000029 -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000029">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000029">
         <rdfs:label xml:lang="en">site</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_all_times"/>
-                <allValuesFrom>
-                    <Class>
-                        <unionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_some_time"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_all_times"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_all_times"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000029"/>
                             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
-                        </unionOf>
-                    </Class>
-                </allValuesFrom>
-            </Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_some_time"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_all_times"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_some_time"/>
-                <allValuesFrom>
-                    <Class>
-                        <unionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_some_time"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000029"/>
                             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
-                        </unionOf>
-                    </Class>
-                </allValuesFrom>
-            </Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
         </rdfs:subClassOf>
-    </Class>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040">
         <rdfs:label xml:lang="en">material entity</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_some_time"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_all_times"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_all_times"/>
-                <allValuesFrom>
-                    <Class>
-                        <unionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_some_time"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000029"/>
                             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
-                        </unionOf>
-                    </Class>
-                </allValuesFrom>
-            </Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_some_time"/>
-                <allValuesFrom>
-                    <Class>
-                        <unionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_all_times"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_some_time"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_all_times"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000029"/>
                             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
-                        </unionOf>
-                    </Class>
-                </allValuesFrom>
-            </Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
         </rdfs:subClassOf>
-    </Class>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/course -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/example/course">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/example/course">
         <rdfs:label xml:lang="en">course</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/example/course_segment"/>
         <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_temporal_part"/>
-                <allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/example/course_segment"/>
-            </Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_temporal_part"/>
+                <owl:allValuesFrom rdf:resource="http://purl.obolibrary.org/obo/example/course_segment"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">At each moment a material entity is located in a spatial region. The stitching together of these across time amounts to a spatiotemporal region. The course of a material entity is the sum of all processes (fiat or bona fide) that are located in that spatiotemporal region. These processes may be wholly located, or may be parts of other processes cut so that the part&#39;s location is wholly located(so fiat). Each material entity is in a 1:1 correspondence with its course.</rdfs:comment>
-    </Class>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/course_segment -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/example/course_segment">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/example/course_segment">
         <rdfs:label xml:lang="en">course segment</rdfs:label>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/temporal_part_of"/>
-                <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/example/course"/>
-            </Restriction>
-        </equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/temporal_part_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/example/course"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <rdfs:comment xml:lang="en">A temporal part of a course</rdfs:comment>
-    </Class>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/example/stage -->
 
-    <Class rdf:about="http://purl.obolibrary.org/obo/example/stage">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/example/stage">
         <rdfs:label xml:lang="en">stage</rdfs:label>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/stage_of"/>
-                <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-            </Restriction>
-        </equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/stage_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:comment xml:lang="en">A stage of a continuant is a representation of the continuant that allows for predication over a temporal interval. Although an OWL individual, it does not represent an additional BFO particular.</rdfs:comment>
-    </Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/example/c1 -->
-
-    <NamedIndividual rdf:about="http://purl.obolibrary.org/obo/example/c1">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <rdfs:label>c1</rdfs:label>
-        <example:part_of_at_all_times rdf:resource="http://purl.obolibrary.org/obo/example/c2"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/example/c2 -->
-
-    <NamedIndividual rdf:about="http://purl.obolibrary.org/obo/example/c2">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <rdfs:label>c2</rdfs:label>
-    </NamedIndividual>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/example/c3 -->
-
-    <NamedIndividual rdf:about="http://purl.obolibrary.org/obo/example/c3">
-        <rdfs:label xml:lang="en">c3</rdfs:label>
-    </NamedIndividual>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/example/continuant3 -->
-
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/continuant3">
-        <example:general_part_of rdf:resource="http://purl.obolibrary.org/obo/example/continuant2"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/example/o1 -->
-
-    <NamedIndividual rdf:about="http://purl.obolibrary.org/obo/example/o1">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <rdfs:label>o1</rdfs:label>
-        <example:part_of_occurrent rdf:resource="http://purl.obolibrary.org/obo/example/o2"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/example/o2 -->
-
-    <NamedIndividual rdf:about="http://purl.obolibrary.org/obo/example/o2">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <rdfs:label>o2</rdfs:label>
-    </NamedIndividual>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/example/o3 -->
-
-    <NamedIndividual rdf:about="http://purl.obolibrary.org/obo/example/o3">
-        <rdfs:label xml:lang="en">o3</rdfs:label>
-    </NamedIndividual>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/example/occurrent3 -->
-
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/occurrent3">
-        <example:general_part_of rdf:resource="http://purl.obolibrary.org/obo/example/occurrent2"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -879,76 +799,65 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <Restriction>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_all_times"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-    </Restriction>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/c1"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/c2"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/c3"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/o1"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/o2"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/example/o3"/>
-        </distinctMembers>
-    </rdf:Description>
-    <Restriction>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-    </Restriction>
-    <Restriction>
-        <rdfs:subClassOf>
-            <Class>
-                <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000029"/>
-                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
-                </unionOf>
-            </Class>
-        </rdfs:subClassOf>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_some_time"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-    </Restriction>
-    <Restriction>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-    </Restriction>
-    <Restriction>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-    </Restriction>
-    <Restriction>
+    <owl:Restriction>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-    </Restriction>
-    <Restriction>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+    </owl:Restriction>
+    <owl:Restriction>
         <rdfs:subClassOf>
-            <Class>
-                <unionOf rdf:parseType="Collection">
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000029"/>
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
-                </unionOf>
-            </Class>
+                </owl:unionOf>
+            </owl:Class>
         </rdfs:subClassOf>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_during"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-    </Restriction>
-    <Restriction>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
-    </Restriction>
-    <Restriction>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_at_some_time"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_at_all_times"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/general_part_of"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+    </owl:Restriction>
+    <owl:Restriction>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-        <onProperty rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
-        <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-    </Restriction>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/part_of_occurrent"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/occurrent_has_part"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000029"/>
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/example/has_part_during"/>
+        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+    </owl:Restriction>
 </rdf:RDF>
 
 
