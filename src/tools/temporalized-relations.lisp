@@ -39,7 +39,8 @@
 
 (defparameter participant-class !continuant)
 
-(with-ontology temporalized-relations (:collecting t :base "http://purl.obolibrary.org/obo/example/")
+(with-ontology temporalized-relations (:collecting t :base "http://purl.obolibrary.org/obo/example/"
+						   :about !obo:temporal-prototype.owl)
     ( ;; from BFO
      (as
       (declare-labeled "continuant" (class !continuant))
@@ -405,10 +406,13 @@ Options:
 
      '(annotation-assertion !rdfs:label !proper_part_of_occurrent "is proper part of occurrent@en")
      '(sub-object-property-of !proper_part_of_occurrent !part_of_occurrent)
+     ))
+  (write-rdfxml temporalized-relations))
 
 
+(with-ontology temporal-test-1 (:collecting t :base "http://purl.obolibrary.org/obo/example/")
      ;; small tests.
-
+    (as
      '(differentindividuals !c1 !c2 !c3 !o1 !o2 !o3)
      '(declaration (named-individual !c1))
      '(annotation-assertion !rdfs:label !c1 "c1")
@@ -429,12 +433,116 @@ Options:
      '(declaration (named-individual !o3))
      '(annotation-assertion !rdfs:label !o3 "o3@en")
      '(object-property-assertion !general_part_of !continuant3 !continuant2)
-     '(object-property-assertion !general_part_of !occurrent3 !occurrent2)
+     '(object-property-assertion !general_part_of !occurrent3 !occurrent2))
+  (write-rdfxml temporal-test-1))
 
+(with-ontology organism-temporal-test (:collecting t
+				       :base "http://purl.obolibrary.org/obo/example/"
+				       :about !obo:organism-temporal-test.owl)
+    ((as
+      '(imports !obo:temporal-prototype.owl)
 
+      ;; declarations of external terms
+
+      (declare-labeled "alternative term" (annotation-property !alternative-term))
+      '(declaration (class !material-entity))
+     
+      ;; organism and organism stage
+
+      (declare-labeled "organism" (class !organism) "Whatever OBI says it is. Key for us is that an organism can change a lot while still maintaining identity")
+      (declare-labeled "organism stage" (class !organism_stage) "A stage of an organism")
+      '(sub-class-of !organism !material_entity)
+
+      '(declaration (object-property !stage_of) )
+      '(declaration (object-property !has_stage) )
+      '(inverse-object-properties !stage_of !has_stage)
+      '(equivalent-classes !organism_stage
+	(object-intersection-of !organism (object-some-values-from !stage_of !organism)))
+
+      (declare-labeled "larva" (class !larva))
+      (declare-labeled "adult" (class !adult))
+      (declare-labeled "pupa" (class !pupa))
+      (declare-labeled "egg" (class !egg))
+
+      (declare-labeled "moth" (class !moth))
+      (declare-labeled "caterpillar" (class !caterpillar))
+
+     ;; scaffold for stages
+
+     '(sub-class-of !egg !organism_stage)
+     '(sub-class-of !larva !organism_stage)
+     '(sub-class-of !pupa !organism_stage)
+     '(sub-class-of !adult !organism_stage)
+     '(sub-class-of !moth !adult)
+     '(sub-class-of !caterpillar !larva) 
+     '(disjoint-classes !adult !pupa !larva !egg)
+
+     ;; one kind of moth
+      (declare-labeled  "laothoe populi" (class !laothoe_populi))
+     '(annotation-assertion !alternative-term !laothoe_populi "Poplar Hawk-moth")
+     '(sub-class-of !laothoe_populi !organism)
+
+     ;; and its stages
+
+     (declare-labeled "Poplar Hawk-moth caterpillar" (class !laothoe_populi_larva) )
+     (declare-labeled "Poplar Hawk-moth pupa" (class !laothoe_populi_pupa))
+     (declare-labeled "Poplar Hawk-moth adult" (class !laothoe_populi_adult))
+
+     '(sub-class-of !laothoe_populi_pupa (object-intersection-of !pupa (object-some-values-from !stage_of !laothoe_populi)))
+     '(sub-class-of !laothoe_populi_larva (object-intersection-of !caterpillar (object-some-values-from !stage_of !laothoe_populi)))
+     `(sub-class-of !laothoe_populi_adult (object-intersection-of !moth (object-some-values-from !stage_of !laothoe_populi)))
+     `(sub-class-of !laothoe_populi_egg (object-intersection-of !egg (object-some-values-from !stage_of !laothoe_populi)))
+
+     ;; !!
+     `(sub-class-of (annotation !editor-note "here we assert that stages are organisms. I don't know if there is a way to assert this at the organism level but in any case.@en")
+		    (object-some-values-from !stage_of !laothoe_populi)
+		    !laothoe_populi)
+    
+     ;; Ok, let's add a part
+
+     (declare-labeled "moth wing" (class !moth_wing))
+     '(sub-class-of !moth-wing (object-intersection-of !material-entity (object-some-values-from !part_of_at_all_times !moth)))
+     '(sub-class-of !laothoe_populi_adult (object-some-values-from !has_part_at_all_times !moth_wing))
+
+     ;; now some goodness
+
+     '(sub-object-property-of
+       (annotation !editor-note "if something has a stage that has a part at some time, the thing it is a stage of has that part at some time")
+       (object-property-chain !has_stage !has_part_at_some_time) !has_part_at_some_time)
+
+     ;; self stage
+     (declare-labeled "self stage"  (object-property !self_stage)
+		      "A property that relates every continuant instance to itself")
+     (comment "make it self loop"
+	      (sub-class-of !stage (object-has-self !self_stage)))
+
+     '(object-property-domain !self_stage !stage)   ; necessary?
+     '(object-property-range !self_stage !stage)    ; necessary?
+
+     (declare-labeled "has part moth wing at some time" (class !probe1))
+     '(equivalent-classes !probe1 (object-some-values-from !has_part_at_some_time !moth_wing))
+
+     (declare-labeled "Poplar Hawk-moth that has reached adulthood" (class !probe2))
+     '(equivalent-classes !probe2 (object-intersection-of !laothoe_populi
+				   (object-some-values-from !has_stage !laothoe_populi_adult)))
+
+     '(sub-class-of
+       (object-intersection-of !laothoe_populi (object-some-values-from !has_stage !laothoe_populi_adult))
+       (object-intersection-of !laothoe_populi (object-some-values-from !has_stage !laothoe_populi_pupa)))
+
+     '(sub-class-of
+       (object-intersection-of !laothoe_populi (object-some-values-from !has_stage !laothoe_populi_pupa))
+       (object-intersection-of !laothoe_populi (object-some-values-from !has_stage !laothoe_populi_larva)))
+
+     '(sub-class-of
+       (object-intersection-of !laothoe_populi (object-some-values-from !has_stage !laothoe_populi_larva))
+       (object-intersection-of !laothoe_populi (object-some-values-from !has_stage !laothoe_populi_egg)))
 
      ))
-  (write-rdfxml temporalized-relations))
+
+  (write-rdfxml organism-temporal-test))
+
+
 
 #|
 (about !obo:example/course
