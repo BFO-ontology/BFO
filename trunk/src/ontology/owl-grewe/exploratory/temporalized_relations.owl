@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY temporalized_relations "http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.halbordnung.de/ontologies/bfo-exploratory/temporalized_relations.owl#"
+     xml:base="http://www.halbordnung.de/ontologies/bfo-exploratory/temporalized_relations.owl"
+     xmlns:temporalized_relations="http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.halbordnung.de/ontologies/bfo-exploratory/temporalized_relations.owl">
+        <dc:creator>Niels Grewe</dc:creator>
+        <rdfs:comment xml:lang="en">Ontology to test reification procedures for making temporally qualified assertions about continuants.</rdfs:comment>
+        <owl:imports rdf:resource="&obo;bfo/core-classes.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#hasPart -->
+
+    <owl:ObjectProperty rdf:about="&temporalized_relations;hasPart">
+        <rdfs:subPropertyOf rdf:resource="&temporalized_relations;hasPartAtSomeTime"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&temporalized_relations;temporalQualificationOf"/>
+            <rdf:Description rdf:about="&temporalized_relations;hasPart"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#hasPartAtSomeTime -->
+
+    <owl:ObjectProperty rdf:about="&temporalized_relations;hasPartAtSomeTime">
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&temporalized_relations;hasTemporalQualification"/>
+            <rdf:Description rdf:about="&temporalized_relations;hasPart"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#hasTemporalQualification -->
+
+    <owl:ObjectProperty rdf:about="&temporalized_relations;hasTemporalQualification">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <owl:inverseOf rdf:resource="&temporalized_relations;temporalQualificationOf"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#temporalQualificationOf -->
+
+    <owl:ObjectProperty rdf:about="&temporalized_relations;temporalQualificationOf">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_00000009 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_00000009">
+        <rdfs:label xml:lang="en">caterpillar</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_0000008"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&temporalized_relations;hasPart"/>
+                        <owl:someValuesFrom rdf:resource="&temporalized_relations;TBFO_0000006"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000001 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000001">
+        <rdfs:label xml:lang="en">OWL reification artifact entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment xml:lang="en">Entities of this kind lack ontological `backing&#39; and are merely technical artifacts necessary to work around limitations of the OWL 2 ontology description language.</rdfs:comment>
+        <dc:creator xml:lang="en">Niels Grewe</dc:creator>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000003 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000003">
+        <rdfs:label xml:lang="en">lepidopteran</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&temporalized_relations;hasPart"/>
+                <owl:someValuesFrom rdf:resource="&temporalized_relations;TBFO_0000007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000004 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000004">
+        <rdfs:label xml:lang="en">lepidopteran part</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000005 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000005">
+        <rdfs:label>butterfly</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_0000008"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&temporalized_relations;hasPart"/>
+                <owl:someValuesFrom rdf:resource="&temporalized_relations;TBFO_0000006"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000006 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000006">
+        <rdfs:label xml:lang="en">butterfly wing</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_0000004"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000007 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000007">
+        <rdfs:label xml:lang="en">lepidopteran skin</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_0000004"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000008 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000008">
+        <rdfs:label xml:lang="en">lepidopteran stage</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;BFO_0000040"/>
+                    <rdf:Description rdf:about="&temporalized_relations;TBFO_000002"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&temporalized_relations;temporalQualificationOf"/>
+                        <owl:someValuesFrom rdf:resource="&temporalized_relations;TBFO_0000003"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_000002"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_000002 -->
+
+    <owl:Class rdf:about="&temporalized_relations;TBFO_000002">
+        <rdfs:label xml:lang="en">temporally qualified continuant</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;BFO_0000002"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&temporalized_relations;temporalQualificationOf"/>
+                        <owl:someValuesFrom rdf:resource="&obo;BFO_0000002"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_0000001"/>
+        <rdfs:comment xml:lang="en">A continuant with only a portion of its history or course considered.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#ButterflyStageOfLepidopteran_0 -->
+
+    <owl:NamedIndividual rdf:about="&temporalized_relations;ButterflyStageOfLepidopteran_0">
+        <rdf:type rdf:resource="&temporalized_relations;TBFO_0000005"/>
+        <obo:IAO_0000116 xml:lang="en">Individual to test inferences over temporal qualifications</obo:IAO_0000116>
+        <temporalized_relations:hasPart rdf:resource="&temporalized_relations;ButterflyWing_0"/>
+        <temporalized_relations:temporalQualificationOf rdf:resource="&temporalized_relations;Lepidopteran_0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#ButterflyWing_0 -->
+
+    <owl:NamedIndividual rdf:about="&temporalized_relations;ButterflyWing_0">
+        <rdf:type rdf:resource="&temporalized_relations;TBFO_0000006"/>
+        <obo:IAO_0000116 xml:lang="en">Individual to test inferences over temporal qualifications</obo:IAO_0000116>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#CaterpillarStageOfLepidopteran_0 -->
+
+    <owl:NamedIndividual rdf:about="&temporalized_relations;CaterpillarStageOfLepidopteran_0">
+        <rdf:type rdf:resource="&temporalized_relations;TBFO_00000009"/>
+        <obo:IAO_0000116 xml:lang="en">Individual to test inferences over temporal qualifications</obo:IAO_0000116>
+        <temporalized_relations:temporalQualificationOf rdf:resource="&temporalized_relations;Lepidopteran_0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#LepidopteranSkin_0 -->
+
+    <owl:NamedIndividual rdf:about="&temporalized_relations;LepidopteranSkin_0">
+        <rdf:type rdf:resource="&temporalized_relations;TBFO_0000007"/>
+        <obo:IAO_0000116 xml:lang="en">Individual to test inferences over temporal qualifications</obo:IAO_0000116>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#Lepidopteran_0 -->
+
+    <owl:NamedIndividual rdf:about="&temporalized_relations;Lepidopteran_0">
+        <rdf:type rdf:resource="&temporalized_relations;TBFO_0000003"/>
+        <obo:IAO_0000116 xml:lang="en">Individual to test inferences over temporal qualifications</obo:IAO_0000116>
+        <temporalized_relations:hasTemporalQualification rdf:resource="&temporalized_relations;ButterflyStageOfLepidopteran_0"/>
+        <temporalized_relations:hasTemporalQualification rdf:resource="&temporalized_relations;CaterpillarStageOfLepidopteran_0"/>
+        <temporalized_relations:hasPart rdf:resource="&temporalized_relations;LepidopteranSkin_0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;BFO_0000002"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&temporalized_relations;hasTemporalQualification"/>
+                        <owl:allValuesFrom>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&temporalized_relations;hasPart"/>
+                                <owl:someValuesFrom rdf:resource="&obo;BFO_0000002"/>
+                            </owl:Restriction>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&obo;BFO_0000002"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&temporalized_relations;hasPart"/>
+                <owl:someValuesFrom rdf:resource="&obo;BFO_0000002"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
