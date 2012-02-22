@@ -116,9 +116,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_00000009 -->
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000009 -->
 
-    <owl:Class rdf:about="&temporalized_relations;TBFO_00000009">
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000009">
         <rdfs:label xml:lang="en">caterpillar</rdfs:label>
         <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_0000008"/>
         <rdfs:subClassOf>
@@ -211,7 +211,7 @@
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&obo;BFO_0000040"/>
-                    <rdf:Description rdf:about="&temporalized_relations;TBFO_000002"/>
+                    <rdf:Description rdf:about="&temporalized_relations;TBFO_0000002"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&temporalized_relations;temporalQualificationOf"/>
                         <owl:someValuesFrom rdf:resource="&temporalized_relations;TBFO_0000003"/>
@@ -219,14 +219,14 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_000002"/>
+        <rdfs:subClassOf rdf:resource="&temporalized_relations;TBFO_0000002"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_000002 -->
+    <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#TBFO_0000002 -->
 
-    <owl:Class rdf:about="&temporalized_relations;TBFO_000002">
+    <owl:Class rdf:about="&temporalized_relations;TBFO_0000002">
         <rdfs:label xml:lang="en">temporally qualified continuant</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
@@ -279,7 +279,7 @@
     <!-- http://www.semanticweb.org/ontologies/2012/1/temporalized_relations.owl#CaterpillarStageOfLepidopteran_0 -->
 
     <owl:NamedIndividual rdf:about="&temporalized_relations;CaterpillarStageOfLepidopteran_0">
-        <rdf:type rdf:resource="&temporalized_relations;TBFO_00000009"/>
+        <rdf:type rdf:resource="&temporalized_relations;TBFO_0000009"/>
         <obo:IAO_0000116 xml:lang="en">Individual to test inferences over temporal qualifications</obo:IAO_0000116>
         <temporalized_relations:temporalQualificationOf rdf:resource="&temporalized_relations;Lepidopteran_0"/>
     </owl:NamedIndividual>
