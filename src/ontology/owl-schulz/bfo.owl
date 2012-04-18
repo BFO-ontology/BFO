@@ -1294,8 +1294,8 @@ stefan.schulz@medunigraz.at</Literal>
         <ObjectProperty IRI="#hasContinuantPart"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#dependsOn"/>
         <ObjectProperty IRI="#invDependsOn"/>
+        <ObjectProperty IRI="#dependsOn"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#dispositionOf"/>
@@ -1563,7 +1563,7 @@ stefan.schulz@medunigraz.at</Literal>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#invLocatedIn"/>
-        <Class IRI="#MaterialEntity"/>
+        <Class IRI="#IndependentContinuant"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#invSpecificallyDependsOn"/>
@@ -1786,7 +1786,7 @@ stefan.schulz@medunigraz.at</Literal>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#invLocatedIn"/>
-        <Class IRI="#MaterialEntity"/>
+        <Class IRI="#IndependentContinuant"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#invSpecificallyDependsOn"/>
@@ -2063,8 +2063,8 @@ a is a continuant fiat boundary = Def. a is an immaterial entity that is of zero
         <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: a is a disposition means: 
 a is a realizable entity 
 &amp; a is such that if it ceases to exist, then its bearer is physically changed, 
-&amp; aâ€™s realization occurs when and because this bearer is in some special physical circumstances, 
-&amp; this realization occurs in virtue of the bearerâ€™s physical make-up. 
+&amp; a’s realization occurs when and because this bearer is in some special physical circumstances, 
+&amp; this realization occurs in virtue of the bearer’s physical make-up. 
 
 EXAMPLES:
 - an atom of element X has the disposition to decay to an atom of element Y
@@ -2139,7 +2139,7 @@ children are innately disposed to categorize objects in certain ways.
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Function</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: A function is a disposition that exists in virtue of the bearerâ€™s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. [064-001]
+        <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: A function is a disposition that exists in virtue of the bearer’s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. [064-001]
 - the function of amylase in saliva to break down starch into sugar
 - the function of a hammer to drive in nails
 - the function of a heart pacemaker to regulate the beating of a heart through electricity
@@ -2185,7 +2185,7 @@ a is an immaterial entity = Def. a is an independent continuant that has no mate
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#ImmaterialEntity</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The roots of BFOâ€™s treatment of â€˜immaterial entityâ€™ lie in the application of theories of qualitative spatial reasoning to the geospatial world and the treatment of cavities in the FMA-
+        <Literal datatypeIRI="&rdf;PlainLiteral">The roots of BFO’s treatment of ‘immaterial entity’ lie in the application of theories of qualitative spatial reasoning to the geospatial world and the treatment of cavities in the FMA-
 
 Immaterial entities are divided into two subgroups:
 1. boundaries and sites, which bound, or are demarcated in relation, to material entities, and which can thus change size, shape and location as their material hosts move (for example: your nasal passage; the hold of a ship; the boundary of Wales (which moves with the rotation of the Earth) 
@@ -2256,7 +2256,7 @@ Figure 2: Subtypes of independent continuant
 
 THEOREM: every entity of which a material entity is part is also a material entity. [021-001]
 
-â€˜Matterâ€™ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.
+‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -2320,7 +2320,7 @@ manifests causal unity of one or other of the types CUn listed above
 
 More formally:
 
-If a is an object aggregate, then if a exists at t, there are objects o1, â€¦,on at t such that:
+If a is an object aggregate, then if a exists at t, there are objects o1, …,on at t such that:
 for all x (x continuant_part_of a at t iff x overlaps some oi at t)
 
 </Literal>
@@ -2377,7 +2377,7 @@ THEOREM: Every occurrent occupies some temporal region. [109-001]</Literal>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Occurrent</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">EXAMPLES: the life of an organism, a surgical, the spatiotemporal setting occupied by a process of cellular meiosis, the most interesting part of Van Goghâ€™s life, the spatiotemporal region occupied by the development of a cancer tumor.
+        <Literal datatypeIRI="&rdf;PlainLiteral">EXAMPLES: the life of an organism, a surgical, the spatiotemporal setting occupied by a process of cellular meiosis, the most interesting part of Van Gogh’s life, the spatiotemporal region occupied by the development of a cancer tumor.
 Since temporal regions are temporal parts of themselves this means that 0-dimensional temporal regions are also occurrents.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -2517,8 +2517,8 @@ EXAMPLES: John thinking about Mary, John worrying about Mary, a moving body caus
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#ProcessProfile</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: We can now elucidate what is meant by â€˜process profileâ€™ as follows:
-a is a process profile means: aÂ¬ is a process of the sort that can be represented by a chart plotting measurement results on a single dimension against a time axis. [093-001]
+        <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: We can now elucidate what is meant by ‘process profile’ as follows:
+a is a process profile means: a¬ is a process of the sort that can be represented by a chart plotting measurement results on a single dimension against a time axis. [093-001]
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -2651,13 +2651,13 @@ a is a realizable entity
 &amp; a is not such that, if it ceases to exist, then the physical make-up of the bearer is thereby changed. [061-001]
 
 EXAMPLES:
-â€¢	the priest role 
-â€¢	the student role
-â€¢	the role of subject in a clinical trial
-â€¢	the role of a stone in marking a boundary
-â€¢	the role of a building in serving as a military target
+•	the priest role 
+•	the student role
+•	the role of subject in a clinical trial
+•	the role of a stone in marking a boundary
+•	the role of a building in serving as a military target
 
-â€˜Roleâ€™ is another name for what we might call an extrinsic or externally-grounded realizable entity. An entity has a certain role not because of the way it itself is, but because of something that happens or obtains externally, for example a student is enrolled in an institution of learning, a patient is enrolled in a clinical trial. 
+‘Role’ is another name for what we might call an extrinsic or externally-grounded realizable entity. An entity has a certain role not because of the way it itself is, but because of something that happens or obtains externally, for example a student is enrolled in an institution of learning, a patient is enrolled in a clinical trial. 
 There are no relational roles. Thus each role is the role of exactly one bearer.
 </Literal>
     </AnnotationAssertion>
@@ -2706,7 +2706,7 @@ There are no relational roles. Thus each role is the role of exactly one bearer.
         <IRI>#Site</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: a is a site means: a is a three-dimensional immaterial entity that is (partially or wholly) bounded by a material entity or a three-dimensional immaterial part thereof. [034-001]
 
-EXAMPLES: a hole in the interior of a portion of cheese, a rabbit hole, the interior of your bedroom, the Grand Canyon, the Piazza San Marco, an air traffic control region defined in the airspace above an airport, the interior of a kangaroo pouch, your left nostril (a fiat part â€“ the opening â€“ of your left nasal cavity), the lumen of your gut, the hold of a ship, the cockpit of an aircraft, the interior of the trunk of your car, the interior of your refrigerator, the interior of your office, Manhattan Canyon)
+EXAMPLES: a hole in the interior of a portion of cheese, a rabbit hole, the interior of your bedroom, the Grand Canyon, the Piazza San Marco, an air traffic control region defined in the airspace above an airport, the interior of a kangaroo pouch, your left nostril (a fiat part – the opening – of your left nasal cavity), the lumen of your gut, the hold of a ship, the cockpit of an aircraft, the interior of the trunk of your car, the interior of your refrigerator, the interior of your office, Manhattan Canyon)
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -2729,7 +2729,7 @@ EXAMPLES: a hole in the interior of a portion of cheese, a rabbit hole, the inte
         <IRI>#SpatialRegion</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: A spatial region is a continuant entity that is a continuant_part_of spaceR as defined relative to some frame R. [035-001]
 
-â€˜Maximalâ€™, in the above, means that any instance entity including spaceR as proper part is not a spatial region. Space is, in common parlance, the whole of space. The term â€˜spaceâ€™ is the name of a certain particular. As we shall see below, spacetime and time, similarly, are maximal instances of spatiotemporal and temporal region, respectively.
+‘Maximal’, in the above, means that any instance entity including spaceR as proper part is not a spatial region. Space is, in common parlance, the whole of space. The term ‘space’ is the name of a certain particular. As we shall see below, spacetime and time, similarly, are maximal instances of spatiotemporal and temporal region, respectively.
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -2781,7 +2781,7 @@ EXAMPLES: a hole in the interior of a portion of cheese, a rabbit hole, the inte
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#SpatiotemporalRegion</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: A spatiotemporal region is an occurrent entity that is part of spacetime. [095-001]
-â€˜Spacetimeâ€™ here refers to the maximal instance of the universal spatiotemporal region.
+‘Spacetime’ here refers to the maximal instance of the universal spatiotemporal region.
 Spatiotemporal regions are such that they can be occupied_by processes.
 
 EXAMPLES: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal region occupied by a process of cellular meiosis.
@@ -2831,7 +2831,7 @@ Every spatiotemporal or temporal region occupies itself.</Literal>
 
 EXAMPLES: of one-sided specifically dependent continuants: the mass of this tomato, the color of this tomato, the smell of this portion of mozzarella, the disposition of this fish to decay, the role of being a doctor, the function of this heart: to pump blood, the shape of this region of space.
 
-EXAMPLES: of relational dependent continuants (multiple bearers): Johnâ€™s love for Mary, the ownership relation between John and this statue, the relation of authority between John and his subordinates.
+EXAMPLES: of relational dependent continuants (multiple bearers): John’s love for Mary, the ownership relation between John and this statue, the relation of authority between John and his subordinates.
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -2847,7 +2847,7 @@ EXAMPLES: of relational dependent continuants (multiple bearers): Johnâ€™s 
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#TemporalRegion</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Given a temporal reference frame R, we can define â€˜timeRâ€™ as the maximal instance of the universal temporal region.
+        <Literal datatypeIRI="&rdf;PlainLiteral">Given a temporal reference frame R, we can define ‘timeR’ as the maximal instance of the universal temporal region.
 
 ELUCIDATION: A temporal region is an occurrent entity that is part of time as defined relative to some reference frame. [100-001]
 
@@ -2898,7 +2898,7 @@ EXAMPLES: a cube-shaped region of space, a sphere-shaped region of space,
         <IRI>#TwoDimensionalContinuantFiatBoundary</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: a two-dimensional continuant fiat boundary (surface) is a self-connected fiat surface whose location is defined in relation to some material entity. [033-001]
 
-â€˜Self-connectedâ€™ is to be understood in the (topological) sense; thus an entity a is self-connected if and only if: given any two points in a, a continuous line can be traced in a which connects these points.
+‘Self-connected’ is to be understood in the (topological) sense; thus an entity a is self-connected if and only if: given any two points in a, a continuous line can be traced in a which connects these points.
 
 From this it follows that a two-dimensional continuant fiat boundary (surface) may have holes, as for example in the case of the surface of one side of a compact disk. 
 </Literal>
@@ -3250,7 +3250,7 @@ EXAMPLE: the surface of my liver physically bounds my liver.</Literal>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#hasFunction</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: A function is a disposition that exists in virtue of the bearerâ€™s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. [064-001] </Literal>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: A function is a disposition that exists in virtue of the bearer’s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. [064-001] </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -3277,7 +3277,7 @@ a is a disposition
 &amp; b continuant_part_of c at t
 &amp; c has_disposition a at t because b continuant_part_of c at t. [071-001]
 
-EXAMPLES: the material basis of Johnâ€™s disposition to cough is the viral infection in Johnâ€™s upper respiratory tract; the material basis of the disposition to wear unevenly of Johnâ€™s tires is the worn suspension of his car.
+EXAMPLES: the material basis of John’s disposition to cough is the viral infection in John’s upper respiratory tract; the material basis of the disposition to wear unevenly of John’s tires is the worn suspension of his car.
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -3305,7 +3305,7 @@ RANGE: entity in category X
 THEOREM: if b has_member_part a at t then a continuant_part_of b at t. [104-001]
 
 EXAMPLES: trees in a forest; pieces in a chess set.
- â€˜Categoryâ€™ in the above refers to categories other than entity.</Literal>
+ ‘Category’ in the above refers to categories other than entity.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -3675,7 +3675,7 @@ a is a disposition
 &amp; b continuant_part_of c at t
 &amp; c has_disposition a at t because b continuant_part_of c at t. [071-001]
 
-EXAMPLES: the material basis of Johnâ€™s disposition to cough is the viral infection in Johnâ€™s upper respiratory tract; the material basis of the disposition to wear unevenly of Johnâ€™s tires is the worn suspension of his car.
+EXAMPLES: the material basis of John’s disposition to cough is the viral infection in John’s upper respiratory tract; the material basis of the disposition to wear unevenly of John’s tires is the worn suspension of his car.
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -3700,13 +3700,13 @@ EXAMPLES: the material basis of Johnâ€™s disposition to cough is the viral 
 RANGE: aggregate of X
 THEOREM: if a member_part_of b at t then a continuant_part_of b at t. [104-001]
 EXAMPLES: trees in a forest; pieces in a chess set.
- â€˜Categoryâ€™ in the above refers to categories other than entity.
+ ‘Category’ in the above refers to categories other than entity.
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#memberPartOf</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: a member_part_of b at t =Def. there is a mutually exhaustive and pairwise disjoint partition of b into entities of category X: x1, â€¦,xn with a = xi for some natural number i. [026-002]</Literal>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ELUCIDATION: a member_part_of b at t =Def. there is a mutually exhaustive and pairwise disjoint partition of b into entities of category X: x1, …,xn with a = xi for some natural number i. [026-002]</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -4046,10 +4046,10 @@ a and b do not share common parts
         <IRI>#specificallyDependsOn</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">EXAMPLES: The s-dependence of a pain on the organism that is experiencing the pain, the dependence of a shape on the shaped object, the dependence of a gait on the walking object.
 
-If a s-depends on b we can also say that aâ€™s existence necessitates the existence of b, or that a is of necessity associated with some b because a is an instance of a certain universal. 
+If a s-depends on b we can also say that a’s existence necessitates the existence of b, or that a is of necessity associated with some b because a is an instance of a certain universal. 
 For continuants, if b is such that a s-depends on b, then if b ceases to exist, so also does a. The ceasing to exist of a occurs as a matter of necessity (it is in a sense immediate and automatic).
 
- Thus s-dependence is different from the sort of dependence which is involved, for instance, when we assert that an organism is dependent on food or shelter; or that a child is dependent on its mother. Your body is dependent on molecules of oxygen for its life, not however for its existence. Similar s-dependence is different from the sort of dependence that is involved when we assert that every object requires, at any given time t, some spatial region at which it is located at that time. (We use â€˜located_atâ€™ for dependence of this sort.) 
+ Thus s-dependence is different from the sort of dependence which is involved, for instance, when we assert that an organism is dependent on food or shelter; or that a child is dependent on its mother. Your body is dependent on molecules of oxygen for its life, not however for its existence. Similar s-dependence is different from the sort of dependence that is involved when we assert that every object requires, at any given time t, some spatial region at which it is located at that time. (We use ‘located_at’ for dependence of this sort.) 
 
 
 For occurrents, s-dependence obtains between every process and its participants in the sense that, as a matter of necessity, this process could not have existed unless these or those participants existed also. A process may have a succession of participants at different phases of its unfolding (thus there may be different players on the field at different times during the course of a football game); but the process s-depends on all of these players nonetheless.
