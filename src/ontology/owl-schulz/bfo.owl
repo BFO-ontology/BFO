@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE rdf:RDF [
-    <!ENTITY bfo2 "http://www.ifomis.org/bfo/bfo2#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/">
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
@@ -12,16 +12,20 @@
 
 <rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.w3.org/2002/07/owl"
-     xmlns:bfo2="http://www.ifomis.org/bfo/bfo2#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <Ontology rdf:about="http://www.ifomis.org/bfo/bfo2">
-        <rdfs:label>BFOWL Draft</rdfs:label>
-        <bfo2:Author>Stefan Schulz, Medical University of Graz, Austria. 
-
-stefan.schulz@medunigraz.at</bfo2:Author>
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <Ontology rdf:about="http://purl.obolibrary.org/bfo/bfo2.owl">
+        <rdfs:label>BFOWL 2 Working Draft</rdfs:label>
+        <dc:creator>Stefan Schulz, Medical University of Graz, Austria. 
+stefan.schulz@medunigraz.at</dc:creator>
+	   <dc:contributor>Alan Ruttenberg</dc:contributor>
+	   <dc:contributor>Janna Hastings</dc:contributor>
+	   <dc:contributor>Chris Mungall</dc:contributor>
+	   <dc:contributor>David Osumi-Sutherland</dc:contributor>
         <rdfs:comment>Taking into consideration Barry Smith&#39;s BFO Draft Document version March 2012</rdfs:comment>
         <versionInfo>Apr 18, 2012</versionInfo>
         <rdfs:comment>This is a tentative version to draft a core version of BFO in OWL, addressing the following needs:
@@ -51,10 +55,33 @@ stefan.schulz@medunigraz.at</bfo2:Author>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <AnnotationProperty rdf:about="&bfo2;Author">
+    <AnnotationProperty rdf:about="&obo;Author">
         <rdfs:label>Author</rdfs:label>
     </AnnotationProperty>
-    
+ 
+   <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
+        <rdfs:label xml:lang="en">editor preferred term</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
+        <rdfs:label xml:lang="en">alternative term</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000116">
+        <rdfs:label xml:lang="en">editor note</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000112">
+        <rdfs:label xml:lang="en">example of usage</rdfs:label>
+    </owl:AnnotationProperty>
+    <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
+        <rdfs:label xml:lang="en">definition</rdfs:label>
+    </owl:AnnotationProperty>
+     <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0010000">
+        <rdfs:label>axiom id</rdfs:label>
+    </owl:AnnotationProperty>
 
 
     <!-- 
@@ -79,21 +106,24 @@ stefan.schulz@medunigraz.at</bfo2:Author>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#InvGenericallyDependsOn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000101 -->
 
-    <ObjectProperty rdf:about="&bfo2;InvGenericallyDependsOn">
-        <rdfs:label>inv_generically_depends_on</rdfs:label>
-        <rdfs:range rdf:resource="&bfo2;GenericallyDependentContinuant"/>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;invDependsOn"/>
+    <ObjectProperty rdf:about="&obo;BFO_0000101">
+	   <rdfs:label>inv generically depends on</rdfs:label>
+	<obo:IAO_0000118 xml:lang="en">inv_generically_depends_on</obo:IAO_0000118>
+        <rdfs:range rdf:resource="&obo;BFO_0000031"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000122"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#bearerOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000053 -->
 
-    <ObjectProperty rdf:about="&bfo2;bearerOf">
-        <rdfs:label>bearer_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000053">
+        <rdfs:label xml:lang="en">is bearer of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">bearer of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">bearer_of</obo:IAO_0000118>
         <rdfs:seeAlso>[053-001]</rdfs:seeAlso>
         <rdfs:seeAlso>DEFINITION: a bearer_of b at t =Def. b s-depends on a &amp; a is an independent continuant &amp; b exists at t. [053-001]
 DOMAIN:  independent continuant
@@ -101,117 +131,132 @@ RANGE: specifically dependent continuant
 
 Bearer_of in contrast to inherence, is time-indexed, since if a is a bearer of some b only at some time during which a exists, but b cannot similarly inhere in a only at some times during which b exists.
 </rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:range rdf:resource="&bfo2;SpecificallyDependentContinuant"/>
-        <inverseOf rdf:resource="&bfo2;inheresIn"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;invSpecificallyDependsOn"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000020"/>
+        <inverseOf rdf:resource="&obo;BFO_0000052"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000125"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#boundaryDependentOn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000102 -->
 
-    <ObjectProperty rdf:about="&bfo2;boundaryDependentOn">
-        <rdfs:label>boundary_dependent_on</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000102">
+        <rdfs:label>is boundary dependent on</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">is_boundary_dependent_on</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">boundary_dependent_on</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">boundary dependent on</obo:IAO_0000118>
         <rdfs:comment>a is boundary_dependent_on b = Def. a and b are occurrents &amp; a temporal_part of b at t &amp; a is  necessarily such that it cannot exist unless either (b exists or there exists some temporal_part of b which includes a as temporal_part)</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;temporalPartOf"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000139"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#concretizationOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000058 -->
 
-    <ObjectProperty rdf:about="&bfo2;concretizationOf">
-        <rdfs:label>concretization_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000058">
+        <rdfs:label xml:lang="en">is concretization of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">concretization of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">concretization_of</obo:IAO_0000118>
         <rdfs:comment>ELUCIDATION: a concretizes b at t means: a is a specifically dependent continuant &amp; b is a generically dependent continuant &amp; for some material entity c, a s-depends on c at t and b g-depends on c at t, and if b migrates from bearer c to another bearer d than a copy of a will be created in d. [075-001]</rdfs:comment>
         <rdfs:seeAlso>[075-002]</rdfs:seeAlso>
         <rdfs:seeAlso>[075-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;GenericallyDependentContinuant"/>
-        <rdfs:range rdf:resource="&bfo2;SpecificallyDependentContinuant"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000031"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000020"/>
     </ObjectProperty>
-    
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#concretizes -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000059 -->
 
-    <ObjectProperty rdf:about="&bfo2;concretizes">
-        <rdfs:label>concretizes</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000059">
+        <rdfs:label xml:lang="en">concretizes</rdfs:label>
         <rdfs:comment>ELUCIDATION: a concretizes b at t means: a is a specifically dependent continuant &amp; b is a generically dependent continuant &amp; for some material entity c, a s-depends on c at t and b g-depends on c at t, and if b migrates from bearer c to another bearer d than a copy of a will be created in d. [075-001]
 
 AXIOM: if a g-depends on b at some time, then there is some c, which is a concretization of a and which s-depends on b. [076-001]</rdfs:comment>
         <rdfs:seeAlso>[076-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[075-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;GenericallyDependentContinuant"/>
-        <rdfs:domain rdf:resource="&bfo2;SpecificallyDependentContinuant"/>
-        <inverseOf rdf:resource="&bfo2;concretizationOf"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000031"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000020"/>
+        <inverseOf rdf:resource="&obo;BFO_0000058"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#containedIn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000103 -->
 
-    <ObjectProperty rdf:about="&bfo2;containedIn">
-        <rdfs:label>contained_in</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000103">
+        <rdfs:label>is contained in</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">is_contained_in</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">contained in</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">contained_in</obo:IAO_0000118>
         <rdfs:comment>ELUCIDATION: a contained_in b at t means: a is a material entity &amp; b is a site &amp; for all spatial regions r1, r2, if a located_at r1 at t and b located_at r2 at t, then r1 part_of the of r2 &amp; if b is moved a sufficient distance in space then this will cause a to be moved also in virtue of its position in relation to b.</rdfs:comment>
-        <rdfs:domain rdf:resource="&bfo2;MaterialEntity"/>
-        <rdfs:range rdf:resource="&bfo2;Site"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000029"/>
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;containedIn"/>
-            <rdf:Description rdf:about="&bfo2;partOf"/>
+            <rdf:Description rdf:about="&obo;BFO_0000103"/>
+            <rdf:Description rdf:about="&obo;BFO_0000050"/>
         </propertyChainAxiom>
         <propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;partOf"/>
-            <rdf:Description rdf:about="&bfo2;containedIn"/>
+            <rdf:Description rdf:about="&obo;BFO_0000050"/>
+            <rdf:Description rdf:about="&obo;BFO_0000103"/>
         </propertyChainAxiom>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#continuantBoundaryOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000104 -->
 
-    <ObjectProperty rdf:about="&bfo2;continuantBoundaryOf">
-        <rdfs:label>continuant_boundary_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000104">
+        <rdfs:label>is continuant boundary of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">is_continuant_boundary_of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">continuant boundary of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">continuant_boundary_of</obo:IAO_0000118>
         <rdfs:comment>continuantBoundaryOf (inverse: hasContinuantBoundary) relates a three-dimensional physical object with its two dimensional boundary. 
 EXAMPLE: the surface of my liver physically bounds my liver.</rdfs:comment>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;properPartOf"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000135"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#continuant_part_of -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000105 -->
 
-    <ObjectProperty rdf:about="&bfo2;continuant_part_of">
+    <ObjectProperty rdf:about="&obo;BFO_0000105">
+<rdfs:label>is continuant part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">is_continuant_part_of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">continuant part of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">continuant_part_of</obo:IAO_0000118>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:seeAlso>[002-001]</rdfs:seeAlso>
         <rdfs:comment>a continuant_part_of b at t =Def. a is a part of b at t &amp; t is a time &amp; a and b are continuants. </rdfs:comment>
         <rdfs:seeAlso>[111-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[110-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[003-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Continuant"/>
-        <rdfs:domain rdf:resource="&bfo2;Continuant"/>
-        <inverseOf rdf:resource="&bfo2;hasContinuantPart"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;partOf"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000002"/>
+        <inverseOf rdf:resource="&obo;BFO_0000110"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000050"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#dependsOn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000106 -->
 
-    <ObjectProperty rdf:about="&bfo2;dependsOn">
-        <rdfs:label>depends_on</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000106">
+        <rdfs:label>depends on</rdfs:label>
+	<obo:IAO_0000118 xml:lang="en">depends_on</obo:IAO_0000118>
         <rdfs:comment>DEFINITION: gDependsOn or sDependsOn</rdfs:comment>
         <rdfs:comment>inheresIn (inverse: bearerOf) relates a quality, role, function, or dispositionwith the physical entity it depends on.
 EXAMPLE: a color inheres in a paint, the ability to fly inheres in a bird.</rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <inverseOf rdf:resource="&bfo2;invDependsOn"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <inverseOf rdf:resource="&obo;BFO_0000122"/>
         <rdfs:domain>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;DependentContinuant"/>
-                    <rdf:Description rdf:about="&bfo2;Occurrent"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000005"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000003"/>
                 </unionOf>
             </Class>
         </rdfs:domain>
@@ -219,47 +264,57 @@ EXAMPLE: a color inheres in a paint, the ability to fly inheres in a bird.</rdfs
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#dispositionOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000107 -->
 
-    <ObjectProperty rdf:about="&bfo2;dispositionOf">
-        <rdfs:label>disposition_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000107">
+        <rdfs:label>is disposition of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">is_disposition_of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">disposition_of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">disposition of</obo:IAO_0000118>
         <rdfs:comment>DEFINITION: a disposition_of b at t =Def. a is a disposition and a inheres_in b at t. [066-001]</rdfs:comment>
         <rdfs:seeAlso>[066-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;Disposition"/>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <inverseOf rdf:resource="&bfo2;hasDisposition"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;inheresIn"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <inverseOf rdf:resource="&obo;BFO_0000112"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000052"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#exists_at -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000108 -->
 
-    <ObjectProperty rdf:about="&bfo2;exists_at">
-        <rdfs:label>exists_at</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000108">
+        <rdfs:label>exists at</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">exists_at</obo:IAO_0000118>
         <rdfs:seeAlso>[118-001]</rdfs:seeAlso>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#functionOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000079 -->
 
-    <ObjectProperty rdf:about="&bfo2;functionOf">
-        <rdfs:label>function_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000079">
+        <rdfs:label xml:lang="en">is function of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">function of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">function_of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">is_function_of</obo:IAO_0000118>
         <rdfs:seeAlso>[067-001]</rdfs:seeAlso>
         <rdfs:comment>DEFINITION: a function_of b at t =Def. a is a function and a inheres_in b at t. [067-001]</rdfs:comment>
-        <rdfs:domain rdf:resource="&bfo2;Function"/>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;dispositionOf"/>
-        <inverseOf rdf:resource="&bfo2;hasFunction"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000034"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000107"/>
+        <inverseOf rdf:resource="&obo;BFO_0000085"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#gDependsOn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000084 -->
 
-    <ObjectProperty rdf:about="&bfo2;gDependsOn">
-        <rdfs:label>generically_depends_on</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000084">
+        <rdfs:label xml:lang="en">generically depends on</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">generically_depends_on</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">g depends on</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">g_depends_on</obo:IAO_0000118>
         <rdfs:seeAlso>[073-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: a generically-depends on b at t1 means: a exists at t1 and b exists at t1 
 &amp; for some type B it holds that (b instantiates B at t1) 
@@ -272,86 +327,92 @@ AXIOM: if a generically-depends on b at some time t, then a generically-depends 
 
 DEFINITION: a is a generically dependent continuant = Def. a is a continuant that generically depends on one or more other entities. [074-001]</rdfs:comment>
         <rdfs:seeAlso>[072-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;GenericallyDependentContinuant"/>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <inverseOf rdf:resource="&bfo2;InvGenericallyDependsOn"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;dependsOn"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000031"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <inverseOf rdf:resource="&obo;BFO_0000101"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000106"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasContinuantBoundary -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000109 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasContinuantBoundary">
-        <rdfs:label>has_continuant_boundary</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000109">
+        <rdfs:label>has continuant boundary</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_continuant_boundary</obo:IAO_0000118>
         <rdfs:comment>hasContinuantBoundary (inverse: continuantBoundaryOf) relates a three-dimensional physical object with its two dimensional boundary. 
 EXAMPLE: the surface of my liver physically bounds my liver.</rdfs:comment>
-        <inverseOf rdf:resource="&bfo2;continuantBoundaryOf"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasProperPart"/>
+        <inverseOf rdf:resource="&obo;BFO_0000104"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000120"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasContinuantPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000110 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasContinuantPart">
+    <ObjectProperty rdf:about="&obo;BFO_0000110">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>has_continuant_part</rdfs:label>
+        <rdfs:label>has continuant part</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_continuant_part</obo:IAO_0000118>
         <rdfs:comment> a has_continuant_part b at t = Def. b continuant_part_of a at t. </rdfs:comment>
         <rdfs:seeAlso>[006-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;Continuant"/>
-        <rdfs:range rdf:resource="&bfo2;Continuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasPart"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000051"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasContinuantProperPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000111 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasContinuantProperPart">
+    <ObjectProperty rdf:about="&obo;BFO_0000111">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>has_continuant_proper_part</rdfs:label>
+        <rdfs:label>has continuant proper part</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_continuant_proper_part</obo:IAO_0000118>
         <rdfs:seeAlso>[006-002]</rdfs:seeAlso>
         <rdfs:comment>a has_continuant_proper_part b at t = Def. b proper_continuant_part_of a at t. </rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;Continuant"/>
-        <rdfs:domain rdf:resource="&bfo2;Continuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasContinuantPart"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasProperPart"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000110"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000120"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasDisposition -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000112 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasDisposition">
-        <rdfs:label>has_disposition</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000112">
+        <rdfs:label>has disposition</rdfs:label>
+ <obo:IAO_0000118 xml:lang="en">has_disposition</obo:IAO_0000118>
         <rdfs:comment>DEFINITION: a has_disposition b at t =Def. b disposition_of a at t. [069-001]</rdfs:comment>
         <rdfs:seeAlso>[069-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Disposition"/>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;bearerOf"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000053"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasFunction -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000085 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasFunction">
-        <rdfs:label>has_function</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000085">
+        <rdfs:label xml:lang="en">has function</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_function</obo:IAO_0000118>
         <rdfs:comment>ELUCIDATION: A function is a disposition that exists in virtue of the bearer’s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. [064-001] </rdfs:comment>
         <rdfs:seeAlso>[070-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[064-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Function"/>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasDisposition"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000034"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000112"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasMaterialBasis -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000113 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasMaterialBasis">
-        <rdfs:label>has_material_basis</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000113">
+        <rdfs:label>has material basis</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_material_basis</obo:IAO_0000118>
         <rdfs:seeAlso>[071-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: a has_material_basis b at t means: 
 a is a disposition 
@@ -362,29 +423,31 @@ a is a disposition
 
 EXAMPLES: the material basis of John’s disposition to cough is the viral infection in John’s upper respiratory tract; the material basis of the disposition to wear unevenly of John’s tires is the worn suspension of his car.
 </rdfs:comment>
-        <rdfs:domain rdf:resource="&bfo2;Disposition"/>
-        <rdfs:range rdf:resource="&bfo2;MaterialEntity"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000040"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasMaterialPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000114 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasMaterialPart">
+    <ObjectProperty rdf:about="&obo;BFO_0000114">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>has_material_part</rdfs:label>
-        <rdfs:range rdf:resource="&bfo2;MaterialEntity"/>
-        <rdfs:domain rdf:resource="&bfo2;MaterialEntity"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasContinuantPart"/>
-        <inverseOf rdf:resource="&bfo2;materialPartOf"/>
+        <rdfs:label>has material part</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_material_part</obo:IAO_0000118>
+        <rdfs:range rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000110"/>
+        <inverseOf rdf:resource="&obo;BFO_0000128"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasMemberPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000115 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasMemberPart">
-        <rdfs:label>has_member_part</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000115">
+        <rdfs:label>has member part</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_member_part</obo:IAO_0000118>
         <rdfs:seeAlso>[026-002]</rdfs:seeAlso>
         <rdfs:comment>DOMAIN: aggregate of X 
 
@@ -394,77 +457,82 @@ THEOREM: if b has_member_part a at t then a continuant_part_of b at t. [104-001]
 
 EXAMPLES: trees in a forest; pieces in a chess set.
  ‘Category’ in the above refers to categories other than entity.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasProperPart"/>
-        <inverseOf rdf:resource="&bfo2;memberPartOf"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000120"/>
+        <inverseOf rdf:resource="&obo;BFO_0000129"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasOccurrentBoundary -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000116 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasOccurrentBoundary">
-        <rdfs:label>has_occurrent_boundary</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000116">
+        <rdfs:label>has occurrent boundary</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_occurrent_boundary</obo:IAO_0000118>
         <rdfs:comment>hasOccurrentBoundary (inverse occurrentBoundaryOf) relates a process with a process boundary, or a time interval with time point.
 
 EXAMPLES: The beginning of a piece of music, the beginning of an hour.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasProperPart"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000120"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasOccurrentPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000117 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasOccurrentPart">
+    <ObjectProperty rdf:about="&obo;BFO_0000117">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>has_occurrent_part</rdfs:label>
+        <rdfs:label>has occurrent part</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_occurrent_part</obo:IAO_0000118>
         <rdfs:comment>a has_occurrent_part b = Def. b occurrent_part_of a   for occurrents. </rdfs:comment>
         <rdfs:seeAlso>[007-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasPart"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000051"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasOccurrentProperPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000118 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasOccurrentProperPart">
+    <ObjectProperty rdf:about="&obo;BFO_0000118">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>has_occurrent_proper_part</rdfs:label>
+        <rdfs:label>has occurrent proper part</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_occurrent_proper_part</obo:IAO_0000118>
         <rdfs:seeAlso>[007-002]</rdfs:seeAlso>
         <rdfs:comment>a has_occurrent_proper_part b = Def. b occurrent_proper_part_of a 
 
  for occurrents. </rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasOccurrentPart"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasProperPart"/>
-        <inverseOf rdf:resource="&bfo2;proper_occurrent_part_of"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000117"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000120"/>
+        <inverseOf rdf:resource="&obo;BFO_0000138"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000051 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasPart">
+    <ObjectProperty rdf:about="&obo;BFO_0000051">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ReflexiveProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>has_part</rdfs:label>
+        <rdfs:label xml:lang="en">has part</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_part</obo:IAO_0000118>
         <rdfs:comment>hasPart (inverse: PartOf) is the general, reflexive, mereological relation. 
 
 It obtains between independent continuants and independent continuants, between occurrents and occurrents, as well as between certain types of GDCs .   
  
 EXAMPLES: my thumb is a proper physical part of my hand, this keyboard is a proper physical part of my computer. My infancy is part of my life, and this header is part of that document</rdfs:comment>
-        <inverseOf rdf:resource="&bfo2;partOf"/>
+        <inverseOf rdf:resource="&obo;BFO_0000050"/>
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasParticipant -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000057 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasParticipant">
-        <rdfs:label>has_participant</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000057">
+        <rdfs:label xml:lang="en">has participant</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_participant</obo:IAO_0000118>
         <rdfs:seeAlso>[091-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[088-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[090-001]</rdfs:seeAlso>
@@ -484,55 +552,59 @@ AXIOM: if a has_participant b at t &amp; b is a generically dependent continuant
 there is some material entity c, b g-depends on c &amp; a s-depends on c. [091-001]</rdfs:comment>
         <rdfs:seeAlso>[087-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[089-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Continuant"/>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <inverseOf rdf:resource="&bfo2;participatesIn"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;specificallyDependsOn"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <inverseOf rdf:resource="&obo;BFO_0000056"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000070"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasProcessProfile -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000119 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasProcessProfile">
+    <ObjectProperty rdf:about="&obo;BFO_0000119">
         <rdfs:label>has_process_profile</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_participant</obo:IAO_0000118>
         <rdfs:seeAlso>[094-001]</rdfs:seeAlso>
         <rdfs:comment>DEFINITION: if a process_profile_of b then b has_process_profile a</rdfs:comment>
-        <rdfs:domain rdf:resource="&bfo2;Process"/>
-        <rdfs:range rdf:resource="&bfo2;ProcessProfile"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasOccurrentProperPart"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000007"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000144"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000118"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasProperPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000120 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasProperPart">
+    <ObjectProperty rdf:about="&obo;BFO_0000120">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>has_proper_part</rdfs:label>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasPart"/>
-        <inverseOf rdf:resource="&bfo2;properPartOf"/>
+        <rdfs:label>has proper part</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_proper_part</obo:IAO_0000118>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000051"/>
+        <inverseOf rdf:resource="&obo;BFO_0000135"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasQuality -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000086 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasQuality">
-        <rdfs:label>has_quality</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000086">
+        <rdfs:label xml:lang="en">has quality</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_quality</obo:IAO_0000118>
         <rdfs:comment>b has_quality a at t = Def. a is a quality &amp; b is an independent continuant &amp; a s-depends_on b at t. [056-002]</rdfs:comment>
         <rdfs:seeAlso>[056-002]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;MaterialEntity"/>
-        <rdfs:range rdf:resource="&bfo2;Quality"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;bearerOf"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000019"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000053"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasRole -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000087 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasRole">
-        <rdfs:label>has_role</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000087">
+        <rdfs:label xml:lang="en">has role</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">has_role</obo:IAO_0000118>
         <rdfs:seeAlso>[068-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: a is a role means: 
 a is a realizable entity 
@@ -541,29 +613,31 @@ a is a realizable entity
 
 DEFINITION: a has_role b at t =Def. b role_of a at t. [068-001]</rdfs:comment>
         <rdfs:seeAlso>[061-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:range rdf:resource="&bfo2;Role"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;bearerOf"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000023"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000053"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#hasTemporalPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000121 -->
 
-    <ObjectProperty rdf:about="&bfo2;hasTemporalPart">
+    <ObjectProperty rdf:about="&obo;BFO_0000121">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>has_temporal_part</rdfs:label>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;hasPart"/>
+        <rdfs:label>has temporal part</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">has_temporal_part</obo:IAO_0000118>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000051"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#inheresIn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000052 -->
 
-    <ObjectProperty rdf:about="&bfo2;inheresIn">
-        <rdfs:label>inheres_in</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000052">
+        <rdfs:label xml:lang="en">inheres in</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">inheres_in</obo:IAO_0000118>
         <rdfs:seeAlso>[051-001]</rdfs:seeAlso>
         <rdfs:comment>DEFINITION: a inheres_in b at t =Def. a is a dependent continuant &amp; b is an independent continuant &amp; a s-depends on b at t. [051-001]
 
@@ -571,23 +645,24 @@ DOMAIN: specifically dependent continuant
 
 RANGE: independent continuant
 </rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:domain rdf:resource="&bfo2;SpecificallyDependentContinuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;specificallyDependsOn"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000020"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000070"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#invDependsOn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000122 -->
 
-    <ObjectProperty rdf:about="&bfo2;invDependsOn">
-        <rdfs:label>inv_depends_on</rdfs:label>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
+    <ObjectProperty rdf:about="&obo;BFO_0000122">
+        <rdfs:label>inv depends on</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">inv_depends_on</obo:IAO_0000118>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
         <rdfs:range>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;DependentContinuant"/>
-                    <rdf:Description rdf:about="&bfo2;Occurrent"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000005"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000003"/>
                 </unionOf>
             </Class>
         </rdfs:range>
@@ -595,54 +670,57 @@ RANGE: independent continuant
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#invLocatedAt -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000123 -->
 
-    <ObjectProperty rdf:about="&bfo2;invLocatedAt">
+    <ObjectProperty rdf:about="&obo;BFO_0000123">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>inv_located_at</rdfs:label>
+        <rdfs:label>inv located at</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">inv_located_at</obo:IAO_0000118>
         <rdfs:seeAlso>[042-002]</rdfs:seeAlso>
         <rdfs:seeAlso>[042-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:domain rdf:resource="&bfo2;SpatialRegion"/>
-        <inverseOf rdf:resource="&bfo2;locatedAt"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000006"/>
+        <inverseOf rdf:resource="&obo;BFO_0000083"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#invLocatedIn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000124 -->
 
-    <ObjectProperty rdf:about="&bfo2;invLocatedIn">
+    <ObjectProperty rdf:about="&obo;BFO_0000124">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>inv_located_in</rdfs:label>
+        <rdfs:label>inv located in</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">inv_located_in</obo:IAO_0000118>
         <rdfs:seeAlso>[047-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[045-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[046-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#invSpecificallyDependsOn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000125 -->
 
-    <ObjectProperty rdf:about="&bfo2;invSpecificallyDependsOn">
-        <rdfs:label>inv_specifically_depends_on</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000125">
+        <rdfs:label>inv specifically depends on</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">inv_specifically_depends_on</obo:IAO_0000118>
         <rdfs:seeAlso>[016-002]</rdfs:seeAlso>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;invDependsOn"/>
-        <inverseOf rdf:resource="&bfo2;specificallyDependsOn"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000122"/>
+        <inverseOf rdf:resource="&obo;BFO_0000070"/>
         <rdfs:domain>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;Continuant"/>
-                    <rdf:Description rdf:about="&bfo2;Process"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000002"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000007"/>
                 </unionOf>
             </Class>
         </rdfs:domain>
         <rdfs:range>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;DependentContinuant"/>
-                    <rdf:Description rdf:about="&bfo2;Process"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000005"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000007"/>
                 </unionOf>
             </Class>
         </rdfs:range>
@@ -650,19 +728,20 @@ RANGE: independent continuant
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#isOccupiedBy -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000126 -->
 
-    <ObjectProperty rdf:about="&bfo2;isOccupiedBy">
-        <rdfs:label>is_occupied_by</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000126">
+        <rdfs:label>is occupied by</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">is_occupied_by</obo:IAO_0000118>
         <rdfs:comment>ELUCIDATION: r is_occupied_by a. This is a primitive relation between an occurrent and a temporal or spatiotemporal region which it exactly occupies. [082-002]</rdfs:comment>
         <rdfs:seeAlso>[082-002]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <inverseOf rdf:resource="&bfo2;occupies"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <inverseOf rdf:resource="&obo;BFO_0000130"/>
         <rdfs:domain>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;SpatiotemporalRegion"/>
-                    <rdf:Description rdf:about="&bfo2;TemporalRegion"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000011"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000008"/>
                 </unionOf>
             </Class>
         </rdfs:domain>
@@ -670,11 +749,14 @@ RANGE: independent continuant
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#locatedAt -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000083 -->
 
-    <ObjectProperty rdf:about="&bfo2;locatedAt">
+    <ObjectProperty rdf:about="&obo;BFO_0000083">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>located_at</rdfs:label>
+        <rdfs:label xml:lang="en">is located at</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">located at</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">located_at</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">is_located_at</obo:IAO_0000118>
         <rdfs:comment>AXIOM: every region is located_at itself at all times. [042-001]
 
 AXIOM: if a located at r at t &amp; a&#39; 
@@ -689,17 +771,20 @@ RANGE: spatial region
         <rdfs:seeAlso>[042-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[043-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[041-002]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:range rdf:resource="&bfo2;SpatialRegion"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000006"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#locatedIn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000082 -->
 
-    <ObjectProperty rdf:about="&bfo2;locatedIn">
+    <ObjectProperty rdf:about="&obo;BFO_0000082">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>located_in</rdfs:label>
+        <rdfs:label xml:lang="en">is located in</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">is_located_in</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">located in</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">located_in</obo:IAO_0000118>
         <rdfs:seeAlso>[046-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[045-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[047-001]</rdfs:seeAlso>
@@ -717,30 +802,31 @@ For all material entities a and b, parthood implies location:
 
 AXIOM: if a continuant_part_of b at t, then a is continuant_located_in b at t. [047-001]
 </rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:domain rdf:resource="&bfo2;IndependentContinuant"/>
-        <inverseOf rdf:resource="&bfo2;invLocatedIn"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <inverseOf rdf:resource="&obo;BFO_0000124"/>
         <propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;continuant_part_of"/>
-            <rdf:Description rdf:about="&bfo2;locatedIn"/>
+            <rdf:Description rdf:about="&obo;BFO_0000105"/>
+            <rdf:Description rdf:about="&obo;BFO_0000082"/>
         </propertyChainAxiom>
         <propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;locatedAt"/>
-            <rdf:Description rdf:about="&bfo2;continuant_part_of"/>
-            <rdf:Description rdf:about="&bfo2;invLocatedAt"/>
+            <rdf:Description rdf:about="&obo;BFO_0000083"/>
+            <rdf:Description rdf:about="&obo;BFO_0000105"/>
+            <rdf:Description rdf:about="&obo;BFO_0000123"/>
         </propertyChainAxiom>
         <propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;locatedIn"/>
-            <rdf:Description rdf:about="&bfo2;continuant_part_of"/>
+            <rdf:Description rdf:about="&obo;BFO_0000082"/>
+            <rdf:Description rdf:about="&obo;BFO_0000105"/>
         </propertyChainAxiom>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#materialBasisOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000127 -->
 
-    <ObjectProperty rdf:about="&bfo2;materialBasisOf">
-        <rdfs:label>material_basis_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000127">
+        <rdfs:label>material basis of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">material_basis_of</obo:IAO_0000118>
         <rdfs:comment>ELUCIDATION: b material_basis_of a at t means: 
 a is a disposition 
 &amp; b is a material entity 
@@ -751,29 +837,31 @@ a is a disposition
 EXAMPLES: the material basis of John’s disposition to cough is the viral infection in John’s upper respiratory tract; the material basis of the disposition to wear unevenly of John’s tires is the worn suspension of his car.
 </rdfs:comment>
         <rdfs:seeAlso>[071-002]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Disposition"/>
-        <rdfs:domain rdf:resource="&bfo2;MaterialEntity"/>
-        <inverseOf rdf:resource="&bfo2;hasMaterialBasis"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000040"/>
+        <inverseOf rdf:resource="&obo;BFO_0000113"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#materialPartOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000128 -->
 
-    <ObjectProperty rdf:about="&bfo2;materialPartOf">
+    <ObjectProperty rdf:about="&obo;BFO_0000128">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>material_part_of</rdfs:label>
-        <rdfs:domain rdf:resource="&bfo2;MaterialEntity"/>
-        <rdfs:range rdf:resource="&bfo2;MaterialEntity"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;continuant_part_of"/>
+        <rdfs:label>material part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">material_part_of</obo:IAO_0000118>
+        <rdfs:domain rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000105"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#memberPartOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000129 -->
 
-    <ObjectProperty rdf:about="&bfo2;memberPartOf">
-        <rdfs:label>member_part_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000129">
+        <rdfs:label>member part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">member_part_of</obo:IAO_0000118>
         <rdfs:comment>ELUCIDATION: a member_part_of b at t =Def. there is a mutually exhaustive and pairwise disjoint partition of b into entities of category X: x1, …,xn with a = xi for some natural number i. [026-002]</rdfs:comment>
         <rdfs:seeAlso>[026-002]</rdfs:seeAlso>
         <rdfs:comment>DOMAIN: entity in category X
@@ -782,23 +870,23 @@ THEOREM: if a member_part_of b at t then a continuant_part_of b at t. [104-001]
 EXAMPLES: trees in a forest; pieces in a chess set.
  ‘Category’ in the above refers to categories other than entity.
 </rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;properPartOf"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000135"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#occupies -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000130 -->
 
-    <ObjectProperty rdf:about="&bfo2;occupies">
+    <ObjectProperty rdf:about="&obo;BFO_0000130">
         <rdfs:label>occupies</rdfs:label>
         <rdfs:comment>ELUCIDATION: a occupies r. This is a primitive relation between an occurrent and a temporal or spatiotemporal region which it exactly occupies. [082-001]</rdfs:comment>
         <rdfs:seeAlso>[082-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
         <rdfs:range>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;SpatiotemporalRegion"/>
-                    <rdf:Description rdf:about="&bfo2;TemporalRegion"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000011"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000008"/>
                 </unionOf>
             </Class>
         </rdfs:range>
@@ -806,49 +894,53 @@ EXAMPLES: trees in a forest; pieces in a chess set.
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#occurrentBoundaryOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000131 -->
 
-    <ObjectProperty rdf:about="&bfo2;occurrentBoundaryOf">
-        <rdfs:label>occurrent_boundary_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000131">
+        <rdfs:label>occurrent boundary of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">occurrent_boundary_of</obo:IAO_0000118>
         <rdfs:comment>hasOccurrentBoundary (inverse occurrentBoundaryOf) relates a process with a process boundary, or a time interval with time point.
 
 EXAMPLES: The beginning of a piece of music, the beginning of an hour.</rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;Process"/>
-        <rdfs:domain rdf:resource="&bfo2;ProcessBoundary"/>
-        <inverseOf rdf:resource="&bfo2;hasOccurrentBoundary"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;properPartOf"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000007"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000035"/>
+        <inverseOf rdf:resource="&obo;BFO_0000116"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000135"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#occurrent_part_of -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000132 -->
 
-    <ObjectProperty rdf:about="&bfo2;occurrent_part_of">
+    <ObjectProperty rdf:about="&obo;BFO_0000132">
+        <rdfs:label xml:lang="en">occurrent part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">occurrent_part_of</obo:IAO_0000118>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:seeAlso>[112-001]</rdfs:seeAlso>
         <rdfs:comment>occurrent_part_of b =Def. a is a part of b &amp; a and b are ocurrents. </rdfs:comment>
         <rdfs:seeAlso>[003-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[113-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <inverseOf rdf:resource="&bfo2;hasOccurrentPart"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;partOf"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <inverseOf rdf:resource="&obo;BFO_0000117"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000050"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#occursIn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000066 -->
 
-    <ObjectProperty rdf:about="&bfo2;occursIn">
-        <rdfs:label>occurs_in</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000066">
+        <rdfs:label xml:lang="en">occurs in</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">occurs_in</obo:IAO_0000118>
         <rdfs:comment>occurs in relates a process with the time intervals in which it is enclosed</rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;TemporalRegion"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000008"/>
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;Process"/>
-                    <rdf:Description rdf:about="&bfo2;ProcessBoundary"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000007"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000035"/>
                 </unionOf>
             </Class>
         </rdfs:domain>
@@ -856,11 +948,13 @@ EXAMPLES: The beginning of a piece of music, the beginning of an hour.</rdfs:com
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#partOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000050 -->
 
-    <ObjectProperty rdf:about="&bfo2;partOf">
+    <ObjectProperty rdf:about="&obo;BFO_0000050">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>part_of</rdfs:label>
+        <rdfs:label xml:lang="en">is part of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">part of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">part_of</obo:IAO_0000118>
         <rdfs:comment>hasPart (inverse: PartOf) is the general, reflexive, mereological relation. 
 
 It obtains between independent continuants and independent continuants, between occurrents and occurrents, as well as between certain types of GDCs .   
@@ -871,60 +965,64 @@ EXAMPLES: my thumb is a proper physical part of my hand, this keyboard is a prop
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#participatesIn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000056 -->
 
-    <ObjectProperty rdf:about="&bfo2;participatesIn">
-        <rdfs:label>participates_in</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000056">
+        <rdfs:label xml:lang="en">participates in</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">participates_in</obo:IAO_0000118>
         <rdfs:seeAlso>[106-002]</rdfs:seeAlso>
         <rdfs:comment>THEOREM: if a realizable entity a is realized in a process p, then p stands in the has_participant relation to the bearer of a. [106-002]</rdfs:comment>
         <rdfs:seeAlso>[086-003]</rdfs:seeAlso>
         <rdfs:comment>if a has_participant b at t then b participates_in a at t</rdfs:comment>
-        <rdfs:domain rdf:resource="&bfo2;Continuant"/>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;invSpecificallyDependsOn"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000125"/>
         <propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;participatesIn"/>
-            <rdf:Description rdf:about="&bfo2;temporalPartOf"/>
+            <rdf:Description rdf:about="&obo;BFO_0000056"/>
+            <rdf:Description rdf:about="&obo;BFO_0000139"/>
         </propertyChainAxiom>
         <propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;bearerOf"/>
-            <rdf:Description rdf:about="&bfo2;realizedIn"/>
+            <rdf:Description rdf:about="&obo;BFO_0000053"/>
+            <rdf:Description rdf:about="&obo;BFO_0000054"/>
         </propertyChainAxiom>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#precededBy -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000062 -->
 
-    <ObjectProperty rdf:about="&bfo2;precededBy">
+    <ObjectProperty rdf:about="&obo;BFO_0000062">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>preceded_by</rdfs:label>
+        <rdfs:label xml:lang="en">is preceded by</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">preceded by</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">preceded_by</obo:IAO_0000118>
         <rdfs:comment>precedes (inverse: precededBy) relates two processes, one of which ends or totally happens before the second one begins. 
-EXAMPLE: fecundation preceeds embryonic development.</rdfs:comment>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <inverseOf rdf:resource="&bfo2;precedes"/>
+EXAMPLE: fecundation precedes embryonic development.</rdfs:comment>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <inverseOf rdf:resource="&obo;BFO_0000063"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#precedes -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000063 -->
 
-    <ObjectProperty rdf:about="&bfo2;precedes">
+    <ObjectProperty rdf:about="&obo;BFO_0000063">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>precedes</rdfs:label>
+        <rdfs:label xml:lang="en">precedes</rdfs:label>
         <rdfs:comment>precedes (inverse: precededBy) relates two processes, one of which ends or totally happens before the second one begins. 
 EXAMPLE: fecundation preceeds embryonic development.</rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#processProfileOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000133 -->
 
-    <ObjectProperty rdf:about="&bfo2;processProfileOf">
-        <rdfs:label>process_profile_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000133">
+        <rdfs:label>process profile of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">process profile of</obo:IAO_0000118>
         <rdfs:seeAlso>[094-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: a process_profile_of b holds when 
 a is a process profile
@@ -934,29 +1032,30 @@ a is a process profile
 DOMAIN: process profile
 RANGE:  process
 </rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;Process"/>
-        <rdfs:domain rdf:resource="&bfo2;ProcessProfile"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;proper_occurrent_part_of"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000007"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000144"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000138"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#projectsOnto -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000134 -->
 
-    <ObjectProperty rdf:about="&bfo2;projectsOnto">
-        <rdfs:label>projects_onto</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000134">
+        <rdfs:label>projects onto</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">projects_onto</obo:IAO_0000118>
         <rdfs:seeAlso>[080-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: To say that each spatiotemporal region r projects_onto some temporal region t is to say that t serves as the temporal extension of r. [080-001]
 ELUCIDATION: To say that spatiotemporal region r projects_onto spatial region s at t is to say that s serves as the spatial extent of r at t. [081-001]
 
 Every spatiotempoeral region projects onto some time region, and at every time instant within its extent onto some spatial region (all of this relative to some frame).</rdfs:comment>
         <rdfs:seeAlso>[081-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;SpatiotemporalRegion"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000011"/>
         <rdfs:range>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;SpatialRegion"/>
-                    <rdf:Description rdf:about="&bfo2;TemporalRegion"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000006"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000008"/>
                 </unionOf>
             </Class>
         </rdfs:range>
@@ -964,102 +1063,112 @@ Every spatiotempoeral region projects onto some time region, and at every time i
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#properPartOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000135 -->
 
-    <ObjectProperty rdf:about="&bfo2;properPartOf">
+    <ObjectProperty rdf:about="&obo;BFO_0000135">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>proper_part_of</rdfs:label>
+        <rdfs:label>proper part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">proper_part_of</obo:IAO_0000118>
         <rdfs:comment>DEFINITION:
 For continuants:
 a proper_part_of b at t =Def. a part_of b at t  &amp; a and b are not identical
 
 For occurrents:	
 a proper_part_of b =Def. a part_of b &amp; a and b are not identical</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;partOf"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000050"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#properTemporalPartOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000136 -->
 
-    <ObjectProperty rdf:about="&bfo2;properTemporalPartOf">
-        <rdfs:label>proper_temporal_part_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000136">
+        <rdfs:label>proper temporal part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">proper_temporal_part_of</obo:IAO_0000118>
         <rdfs:comment>DEFINITION: a proper_temporal_part_of b =Def. a temporal_part_of b &amp; not (a = b). [116-001]
 
 AXIOM: if a proper_temporal_part_of b, then there is some c which is a proper_temporal_part_of b and which shares no parts with a. [117-001]</rdfs:comment>
         <rdfs:seeAlso>[117-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[116-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;temporalPartOf"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000139"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#proper_continuant_part_of -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000137 -->
 
-    <ObjectProperty rdf:about="&bfo2;proper_continuant_part_of">
+    <ObjectProperty rdf:about="&obo;BFO_0000137">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>proper_continuant_part_of</rdfs:label>
+        <rdfs:label>proper continuant part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">proper_continuant_part_of</obo:IAO_0000118>
         <rdfs:comment>a has_continuant_part b at t = Def. b continuant_part_of a at t.</rdfs:comment>
         <rdfs:seeAlso>[006-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Continuant"/>
-        <rdfs:domain rdf:resource="&bfo2;Continuant"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;continuant_part_of"/>
-        <inverseOf rdf:resource="&bfo2;hasContinuantProperPart"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;properPartOf"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000105"/>
+        <inverseOf rdf:resource="&obo;BFO_0000111"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000135"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#proper_occurrent_part_of -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000138 -->
 
-    <ObjectProperty rdf:about="&bfo2;proper_occurrent_part_of">
+    <ObjectProperty rdf:about="&obo;BFO_0000138">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>proper_occurrent_part_of</rdfs:label>
+        <rdfs:label>proper occurrent part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">proper_occurrent_part_of</obo:IAO_0000118>
         <rdfs:comment>a proper_occurrent_part_of b =Def. a occurrent_part_of b &amp; a and b are not identical. </rdfs:comment>
         <rdfs:seeAlso>[005-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;occurrent_part_of"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;properPartOf"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000132"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000135"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#qualityOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000080 -->
 
-    <ObjectProperty rdf:about="&bfo2;qualityOf">
-        <rdfs:label>quality_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000080">
+        <rdfs:label xml:lang="en">is quality of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">quality of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">is_quality_of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">quality_of</obo:IAO_0000118>
         <rdfs:seeAlso>[056-001]</rdfs:seeAlso>
         <rdfs:comment>DEFINITION: a quality_of b at t = Def. a is a quality &amp; b is an independent continuant &amp; a s-depends_on b at t. [056-001]
 </rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;MaterialEntity"/>
-        <rdfs:domain rdf:resource="&bfo2;Quality"/>
-        <inverseOf rdf:resource="&bfo2;hasQuality"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;inheresIn"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000019"/>
+        <inverseOf rdf:resource="&obo;BFO_0000086"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000052"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#realizedIn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000054 -->
 
-    <ObjectProperty rdf:about="&bfo2;realizedIn">
-        <rdfs:label>realized_in</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000054">
+	<rdfs:label xml:lang="en">is realized by</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">realized by</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">realized_by</obo:IAO_0000118>
         <rdfs:comment>ELUCIDATION: if a realizes b at t, then there is some material entity c &amp; a is a process in which c participates at t &amp; b is a disposition or role of which c is bearer.</rdfs:comment>
+        <rdfs:comment>(JH) Should there also be a synonymous name `realized in' here as well?</rdfs:comment>
         <rdfs:comment>There are also reciprocal realizable dependent continuants (e.g. husband/wife; complementary dispositions (for example of key and lock), as described in [28]).
  
 AXIOM: if a realizable entity is realized in a process p, then its bearer participates in p.</rdfs:comment>
-        <rdfs:range rdf:resource="&bfo2;Process"/>
-        <rdfs:domain rdf:resource="&bfo2;RealizableEntity"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000007"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000017"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#realizes -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000055 -->
 
-    <ObjectProperty rdf:about="&bfo2;realizes">
-        <rdfs:label>realizes</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000055">
+        <rdfs:label xml:lang="en">realizes</rdfs:label>
         <rdfs:seeAlso>[059-002]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: to say that a realizes b at t is to assert that 
 there is some material entity c 
@@ -1071,32 +1180,38 @@ THEOREM: if a realizable entity a is realized in a process p, then p stands in t
 AXIOM: All realizable dependent continuants have material entities or sites as their bearers. [060-001]
 </rdfs:comment>
         <rdfs:seeAlso>[060-001]</rdfs:seeAlso>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:range rdf:resource="&bfo2;RealizableEntity"/>
-        <inverseOf rdf:resource="&bfo2;realizedIn"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000017"/>
+        <inverseOf rdf:resource="&obo;BFO_0000054"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#roleOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000081 -->
 
-    <ObjectProperty rdf:about="&bfo2;roleOf">
-        <rdfs:label>role_of</rdfs:label>
+    <ObjectProperty rdf:about="&obo;BFO_0000081">
+        <rdfs:label xml:lang="en">is role of</rdfs:label>
+        <obo:IAO_0000118 xml:lang="en">role of</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">role_of</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">is_role_of</obo:IAO_0000118>
         <rdfs:comment>DEFINITION: a has_role b at t =Def. b role_of a at t</rdfs:comment>
         <rdfs:seeAlso>[068-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:domain rdf:resource="&bfo2;Role"/>
-        <inverseOf rdf:resource="&bfo2;hasRole"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;inheresIn"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000023"/>
+        <inverseOf rdf:resource="&obo;BFO_0000087"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000052"/>
     </ObjectProperty>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#specificallyDependsOn -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000070 -->
 
-    <ObjectProperty rdf:about="&bfo2;specificallyDependsOn">
-        <rdfs:label>specifically_depends_on</rdfs:label>
-        <rdfs:seeAlso>[014-001]</rdfs:seeAlso>
+    <ObjectProperty rdf:about="&obo;BFO_0000070">
+        <rdfs:label xml:lang="en">specifically depends on</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">specifically_depends_on</obo:IAO_0000118>
+<obo:IAO_0000118 xml:lang="en">s depends on</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">s_depends_on</obo:IAO_0000118>        
+	   <rdfs:seeAlso>[014-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[054-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[016-001]</rdfs:seeAlso>
         <rdfs:seeAlso>[013-001]</rdfs:seeAlso>
@@ -1125,24 +1240,24 @@ a and b do not share common parts
         <rdfs:comment>THEOREM: an entity does not specifically depend on any of its parts or on anything it is part of.
 
 (comment: not expressible in DL)</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;dependsOn"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000106"/>
         <rdfs:domain>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;DependentContinuant"/>
-                    <rdf:Description rdf:about="&bfo2;Process"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000005"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000007"/>
                 </unionOf>
             </Class>
         </rdfs:domain>
         <propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;concretizationOf"/>
-            <rdf:Description rdf:about="&bfo2;gDependsOn"/>
+            <rdf:Description rdf:about="&obo;BFO_0000058"/>
+            <rdf:Description rdf:about="&obo;BFO_0000084"/>
         </propertyChainAxiom>
         <rdfs:range>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;Continuant"/>
-                    <rdf:Description rdf:about="&bfo2;Process"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000002"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000007"/>
                 </unionOf>
             </Class>
         </rdfs:range>
@@ -1150,21 +1265,22 @@ a and b do not share common parts
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#temporalPartOf -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000139 -->
 
-    <ObjectProperty rdf:about="&bfo2;temporalPartOf">
+    <ObjectProperty rdf:about="&obo;BFO_0000139">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:label>temporal_part_of</rdfs:label>
+        <rdfs:label>temporal part of</rdfs:label>
+<obo:IAO_0000118 xml:lang="en">temporal_part_of</obo:IAO_0000118>
         <rdfs:comment>DEFINITION: a temporal_part_of b =Def.
 a occurrent_part_of b &amp; 
 &amp; for some temporal region r, a occupies r 
 &amp; for all occurrents c, r&#39; (if c occupies r&#39;  &amp; r&#39; occurrent_part_of r 
 then (c occurrent_part_of a iff c occurrent_part_of b)). [078-001]</rdfs:comment>
         <rdfs:seeAlso>[078-001]</rdfs:seeAlso>
-        <rdfs:range rdf:resource="&bfo2;Occurrent"/>
-        <rdfs:domain rdf:resource="&bfo2;Occurrent"/>
-        <inverseOf rdf:resource="&bfo2;hasTemporalPart"/>
-        <rdfs:subPropertyOf rdf:resource="&bfo2;occurrent_part_of"/>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+        <inverseOf rdf:resource="&obo;BFO_0000121"/>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000132"/>
     </ObjectProperty>
     
 
@@ -1202,38 +1318,48 @@ forall a:A and t:time: exists some b:B and R_ter(a, b, t)</rdfs:comment>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Continuant -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000002 -->
 
-    <Class rdf:about="&bfo2;Continuant">
+    <Class rdf:about="&obo;BFO_0000002">
         <rdfs:label>continuant</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">An entity  that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a heart</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a person</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a symphony orchestra</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">continuant</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">endurant</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the color of a tomato</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of blood to coagulate</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the lawn and atmosphere in front of our building</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the mass of a cloud</obo:IAO_0000112>
         <equivalentClass>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;DependentContinuant"/>
-                    <rdf:Description rdf:about="&bfo2;IndependentContinuant"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000005"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000004"/>
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;Entity"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasPart"/>
-                <allValuesFrom rdf:resource="&bfo2;Continuant"/>
+                <onProperty rdf:resource="&obo;BFO_0000051"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000002"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;exists_at"/>
-                <someValuesFrom rdf:resource="&bfo2;OneDimensionalTemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000108"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000143"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;partOf"/>
-                <allValuesFrom rdf:resource="&bfo2;Continuant"/>
+                <onProperty rdf:resource="&obo;BFO_0000050"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000002"/>
             </Restriction>
         </rdfs:subClassOf>
-        <disjointWith rdf:resource="&bfo2;Occurrent"/>
+        <disjointWith rdf:resource="&obo;BFO_0000003"/>
         <rdfs:seeAlso>[026-002]</rdfs:seeAlso>
         <rdfs:comment>EXAMPLES: a heart, a person, the color of a tomato, the mass of a cloud, a symphony orchestra, the disposition of blood to coagulate, the lawn and atmosphere in front of our building</rdfs:comment>
         <rdfs:seeAlso>[008-001]</rdfs:seeAlso>
@@ -1252,32 +1378,32 @@ AXIOM: if a is a continuant, then there is some one-dimensional temporal region 
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ContinuantFiatBoundary -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000140 -->
 
-    <Class rdf:about="&bfo2;ContinuantFiatBoundary">
-        <rdfs:label>continuant_fiat_boundary</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000140">
+        <rdfs:label>continuant fiat boundary</rdfs:label>
         <equivalentClass>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;OneDimensionalContinuantFiatBoundary"/>
-                    <rdf:Description rdf:about="&bfo2;TwoDimensionalContinuantFiatBoundary"/>
-                    <rdf:Description rdf:about="&bfo2;ZeroDimensionalContinuantFiatBoundary"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000142"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000146"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000147"/>
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;ImmaterialEntity"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000141"/>
         <rdfs:subClassOf>
             <Class>
                 <complementOf>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;hasPart"/>
-                        <someValuesFrom rdf:resource="&bfo2;SpatialRegion"/>
+                        <onProperty rdf:resource="&obo;BFO_0000051"/>
+                        <someValuesFrom rdf:resource="&obo;BFO_0000006"/>
                     </Restriction>
                 </complementOf>
             </Class>
         </rdfs:subClassOf>
-        <disjointWith rdf:resource="&bfo2;Site"/>
-        <disjointWith rdf:resource="&bfo2;SpatialRegion"/>
+        <disjointWith rdf:resource="&obo;BFO_0000029"/>
+        <disjointWith rdf:resource="&obo;BFO_0000006"/>
         <rdfs:seeAlso>[029-001]</rdfs:seeAlso>
         <rdfs:comment>DEFINITION: 
 a is a continuant fiat boundary = Def. a is an immaterial entity that is of zero, one or two dimensions and does not include a spatial region as part. [029-001]</rdfs:comment>
@@ -1285,31 +1411,40 @@ a is a continuant fiat boundary = Def. a is an immaterial entity that is of zero
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#DependentContinuant -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000005 -->
 
-    <Class rdf:about="&bfo2;DependentContinuant">
-        <rdfs:label>dependent_continuant</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000005">
+        <rdfs:label xml:lang="en">dependent continuant</rdfs:label>
+<obo:IAO_0000115 xml:lang="en">A continuant  that is either dependent on one or other independent continuant  bearers or inheres in or is borne by other entities.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">dependent continuant</obo:IAO_0000111>
         <equivalentClass>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;GenericallyDependentContinuant"/>
-                    <rdf:Description rdf:about="&bfo2;SpecificallyDependentContinuant"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000031"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000020"/>
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;Continuant"/>
-        <disjointWith rdf:resource="&bfo2;IndependentContinuant"/>
-        <rdfs:comment>DEFINITION: A continuant [Continuant] that is either dependent on one or other independent continuant [IndependentContinuant] bearers or inheres in or is borne by other entities.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
+        <disjointWith rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:comment>DEFINITION: A continuant [BFO_0000002] that is either dependent on one or other independent continuant [BFO_0000004] bearers or inheres in or is borne by other entities.</rdfs:comment>
     </Class>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Disposition -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000016 -->
 
-    <Class rdf:about="&bfo2;Disposition">
-        <rdfs:label>disposition</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;RealizableEntity"/>
-        <disjointWith rdf:resource="&bfo2;Role"/>
+    <Class rdf:about="&obo;BFO_0000016">
+    <rdfs:label xml:lang="en">disposition</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A realizable entity  that essentially causes a specific process or transformation in the object  in which it inheres, under specific circumstances and in conjunction with the laws of nature. A general formula for dispositions is: X (object  has the disposition D to (transform, initiate a process) R under conditions C.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">disposition</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the disposition of a patient with a weakened immune system to contract disease</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of a vase to brake if dropped</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of blood to coagulate</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of metal to conduct electricity</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of vegetables to decay when not refrigerated</obo:IAO_0000112>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000017"/>
+        <disjointWith rdf:resource="&obo;BFO_0000023"/>
         <rdfs:comment>ELUCIDATION: a is a disposition means: 
 a is a realizable entity 
 &amp; a is such that if it ceases to exist, then its bearer is physically changed, 
@@ -1328,30 +1463,38 @@ children are innately disposed to categorize objects in certain ways.
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Entity -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000001 -->
 
-    <Class rdf:about="&bfo2;Entity">
+    <Class rdf:about="&obo;BFO_0000001">
         <rdfs:label>entity</rdfs:label>
         <rdfs:seeAlso>[000-001]</rdfs:seeAlso>
+        <obo:IAO_0000111 xml:lang="en">entity</obo:IAO_0000111>
         <rdfs:comment>An entity is anything that exists or has existed or will exist</rdfs:comment>
     </Class>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#FiatObjectPart -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000024 -->
 
-    <Class rdf:about="&bfo2;FiatObjectPart">
-        <rdfs:label>fiat_object_part</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000024">
+        <rdfs:label xml:lang="en">fiat object part</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is part of an object  but is not demarcated by any physical discontinuities.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">fiat object part</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">fiat substance part</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the dorsal and ventral surfaces of the body</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the east side of Saarbruecken</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the lower right portion of a human torso</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the upper and lower lobes of the left lung</obo:IAO_0000112>
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;MaterialEntity"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000040"/>
                     <Class>
-                        <complementOf rdf:resource="&bfo2;Object"/>
+                        <complementOf rdf:resource="&obo;BFO_0000030"/>
                     </Class>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;proper_continuant_part_of"/>
-                        <someValuesFrom rdf:resource="&bfo2;Object"/>
+                        <onProperty rdf:resource="&obo;BFO_0000137"/>
+                        <someValuesFrom rdf:resource="&obo;BFO_0000030"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
@@ -1365,11 +1508,22 @@ children are innately disposed to categorize objects in certain ways.
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Function -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000034 -->
 
-    <Class rdf:about="&bfo2;Function">
-        <rdfs:label>function</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;Disposition"/>
+    <Class rdf:about="&obo;BFO_0000034">
+        <rdfs:label xml:lang="en">function</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A realizable entity  the manifestation of which is an essentially end-directed activity of a continuant  entity in virtue of that continuant  entity being a specific kind of entity in the kind or kinds of contexts that it is made for.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">function</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the digestive function of the stomach to nutriate the body</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of a birth canal to enable transport</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of a computer program to compute mathematical equations</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of a hammer to drive in nails</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of a judge in a court of law</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of an automobile to provide transportation</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of reproduction in the transmission of genetic material</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of the heart in the body: to pump blood, to receive de-oxygenated and oxygenated blood, etc.</obo:IAO_0000112>
+
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:comment>ELUCIDATION: A function is a disposition that exists in virtue of the bearer’s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. [064-001]
 - the function of amylase in saliva to break down starch into sugar
 - the function of a hammer to drive in nails
@@ -1383,35 +1537,38 @@ Functions are realized in processes called functionings. Each function has a bea
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#GenericallyDependentContinuant -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000031 -->
 
-    <Class rdf:about="&bfo2;GenericallyDependentContinuant">
-        <rdfs:label>generically_dependent_continuant</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000031">
+         <rdfs:label xml:lang="en">generically dependent continuant</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A continuant  that is dependent on one or other independent continuant  bearers. For every instance of A requires some instance of (an independent continuant  type) B but which instance of B serves can change from time to time.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a certain PDF file that exists in different and in several hard drives</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">generically dependent continuant</obo:IAO_0000111>
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;DependentContinuant"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000005"/>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;gDependsOn"/>
-                        <someValuesFrom rdf:resource="&bfo2;IndependentContinuant"/>
+                        <onProperty rdf:resource="&obo;BFO_0000084"/>
+                        <someValuesFrom rdf:resource="&obo;BFO_0000004"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;DependentContinuant"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000005"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;partOf"/>
-                <allValuesFrom rdf:resource="&bfo2;GenericallyDependentContinuant"/>
+                <onProperty rdf:resource="&obo;BFO_0000050"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000031"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasPart"/>
-                <allValuesFrom rdf:resource="&bfo2;GenericallyDependentContinuant"/>
+                <onProperty rdf:resource="&obo;BFO_0000051"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000031"/>
             </Restriction>
         </rdfs:subClassOf>
-        <disjointWith rdf:resource="&bfo2;SpecificallyDependentContinuant"/>
+        <disjointWith rdf:resource="&obo;BFO_0000020"/>
         <rdfs:seeAlso>[074-001]</rdfs:seeAlso>
         <rdfs:comment>DEFINITION: a is a generically dependent continuant = Def. a is a continuant that generically depends on one or more other entities. [074-001]
 
@@ -1420,19 +1577,19 @@ EXAMPLES:  the pdf file on your laptop, the pdf file that is a copy thereof on m
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ImmaterialEntity -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000141 -->
 
-    <Class rdf:about="&bfo2;ImmaterialEntity">
-        <rdfs:label>immaterial_entity</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000141">
+        <rdfs:label>immaterial entity</rdfs:label>
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;IndependentContinuant"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000004"/>
                     <Class>
                         <complementOf>
                             <Restriction>
-                                <onProperty rdf:resource="&bfo2;hasPart"/>
-                                <someValuesFrom rdf:resource="&bfo2;MaterialEntity"/>
+                                <onProperty rdf:resource="&obo;BFO_0000051"/>
+                                <someValuesFrom rdf:resource="&obo;BFO_0000040"/>
                             </Restriction>
                         </complementOf>
                     </Class>
@@ -1441,23 +1598,23 @@ EXAMPLES:  the pdf file on your laptop, the pdf file that is a copy thereof on m
         </equivalentClass>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;locatedAt"/>
-                <someValuesFrom rdf:resource="&bfo2;ThreeDimensionalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000083"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000028"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;memberPartOf"/>
-                <allValuesFrom rdf:resource="&bfo2;ImmaterialEntity"/>
+                <onProperty rdf:resource="&obo;BFO_0000129"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000141"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasMemberPart"/>
-                <allValuesFrom rdf:resource="&bfo2;ImmaterialEntity"/>
+                <onProperty rdf:resource="&obo;BFO_0000115"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000141"/>
             </Restriction>
         </rdfs:subClassOf>
-        <disjointWith rdf:resource="&bfo2;MaterialEntity"/>
+        <disjointWith rdf:resource="&obo;BFO_0000040"/>
         <rdfs:comment>The roots of BFO’s treatment of ‘immaterial entity’ lie in the application of theories of qualitative spatial reasoning to the geospatial world and the treatment of cavities in the FMA-
 
 Immaterial entities are divided into two subgroups:
@@ -1473,19 +1630,30 @@ a is an immaterial entity = Def. a is an independent continuant that has no mate
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#IndependentContinuant -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000004 -->
 
-    <Class rdf:about="&bfo2;IndependentContinuant">
-        <rdfs:label>independent_continuant</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000004">
+        <rdfs:label xml:lang="en">independent continuant</rdfs:label>
+<obo:IAO_0000115 xml:lang="en">A continuant  that is a bearer of quality  and realizable entity  entities, in which other entities inhere and which itself cannot inhere in anything.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a chair</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a heart</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a leg</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a person</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a symphony orchestra</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">an organism</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">independent continuant</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">substantial entity</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the bottom right portion of a human torso</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the lawn and atmosphere in front of our building</obo:IAO_0000112>
         <equivalentClass>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;ImmaterialEntity"/>
-                    <rdf:Description rdf:about="&bfo2;MaterialEntity"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000141"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000040"/>
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;Continuant"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
         <rdfs:seeAlso> [017-001]
 
 </rdfs:seeAlso>
@@ -1501,31 +1669,35 @@ AXIOM: Every independent continuant is such that there are entities which is s-d
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#MaterialEntity -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
 
-    <Class rdf:about="&bfo2;MaterialEntity">
-        <rdfs:label>material_entity</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000040">
+        <rdfs:label xml:lang="en">material entity</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is spatially extended whose identity is independent of that of other entities and can be maintained through time.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Examples: collection of random bacteria, a chair, dorsal surface of the body</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">Material entity [snap:MaterialEntity] subsumes object [snap:Object], fiat object part [snap:FiatObjectPart], and object aggregate [snap:ObjectAggregate], which assume a three level theory of granularity, which is inadequate for some domains, such as biology.</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">material entity</obo:IAO_0000111>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasPart"/>
-                <someValuesFrom rdf:resource="&bfo2;MaterialEntity"/>
+                <onProperty rdf:resource="&obo;BFO_0000051"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000040"/>
             </Restriction>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;IndependentContinuant"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000004"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;partOf"/>
-                <allValuesFrom rdf:resource="&bfo2;MaterialEntity"/>
+                <onProperty rdf:resource="&obo;BFO_0000050"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000040"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasPart"/>
+                <onProperty rdf:resource="&obo;BFO_0000051"/>
                 <allValuesFrom>
                     <Class>
                         <unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&bfo2;MaterialEntity"/>
-                            <rdf:Description rdf:about="&bfo2;Site"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000040"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000029"/>
                         </unionOf>
                     </Class>
                 </allValuesFrom>
@@ -1533,14 +1705,14 @@ AXIOM: Every independent continuant is such that there are entities which is s-d
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasMemberPart"/>
-                <allValuesFrom rdf:resource="&bfo2;ObjectAggregate"/>
+                <onProperty rdf:resource="&obo;BFO_0000115"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000027"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;memberPartOf"/>
-                <allValuesFrom rdf:resource="&bfo2;MaterialEntity"/>
+                <onProperty rdf:resource="&obo;BFO_0000129"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000040"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:seeAlso>[020-001]</rdfs:seeAlso>
@@ -1567,11 +1739,19 @@ THEOREM: every entity of which a material entity is part is also a material enti
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Object -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000030 -->
 
-    <Class rdf:about="&bfo2;Object">
-        <rdfs:label>object</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;MaterialEntity"/>
+    <Class rdf:about="&obo;BFO_0000030">
+        <rdfs:label xml:lang="en">object</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial object  entities is independent of that of other entities and can be maintained through time.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a chair</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a heart</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a lung</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">an apple</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">an organism</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">object</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">substance</obo:IAO_0000118>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
         <rdfs:comment>ELUCIDATION: a is an object means: a is a material entity which 
 manifests causal unity of one or other of the types CUn listed above 
 &amp; is of a type (a material universal) instances of which are maximal relative to this criterion of causal unity. [024-001]
@@ -1583,11 +1763,19 @@ manifests causal unity of one or other of the types CUn listed above
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ObjectAggregate -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000027 -->
 
-    <Class rdf:about="&bfo2;ObjectAggregate">
-        <rdfs:label>object_aggregate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;MaterialEntity"/>
+    <Class rdf:about="&obo;BFO_0000027">
+        <rdfs:label xml:lang="en">object aggregate</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is a mereological sum of separate object  entities and possesses non-connected boundaries.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a collection of random bacteria</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a flock of geese</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a group of commuters on the subway</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a heap of stones</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">object aggregate</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">substance aggregate</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the patients in a hospital</obo:IAO_0000112>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
         <rdfs:comment>ELUCIDATION: a is an object aggregate means: a is a material entity consisting exactly of a plurality of objects as member_parts. [025-002]
 
 More formally:
@@ -1602,54 +1790,62 @@ for all x (x continuant_part_of a at t iff x overlaps some oi at t)
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Occurrent -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000003 -->
 
-    <Class rdf:about="&bfo2;Occurrent">
+    <Class rdf:about="&obo;BFO_0000003">
         <rdfs:label>occurrent</rdfs:label>
+<obo:IAO_0000115 xml:lang="en">An entity  that has temporal parts and that happens, unfolds or develops through time. Sometimes also called perdurants.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a surgical operation as processual context for a nosocomical infection</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">occurrent</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">perdurant</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the life of an organism</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the most interesting part of Van Gogh&#39;s life</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal context occupied by a process of cellular meiosis</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal region occupied by the development of a cancer tumor</obo:IAO_0000112>
         <equivalentClass>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;Process"/>
-                    <rdf:Description rdf:about="&bfo2;ProcessBoundary"/>
-                    <rdf:Description rdf:about="&bfo2;ProcessProfile"/>
-                    <rdf:Description rdf:about="&bfo2;SpatiotemporalRegion"/>
-                    <rdf:Description rdf:about="&bfo2;TemporalRegion"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000007"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000035"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000144"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000011"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000008"/>
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;Entity"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;memberPartOf"/>
-                <allValuesFrom rdf:resource="&bfo2;Occurrent"/>
+                <onProperty rdf:resource="&obo;BFO_0000129"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000003"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;occupies"/>
-                <someValuesFrom rdf:resource="&bfo2;TemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000130"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000008"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasMemberPart"/>
-                <allValuesFrom rdf:resource="&bfo2;Occurrent"/>
+                <onProperty rdf:resource="&obo;BFO_0000115"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000003"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;occupies"/>
-                <someValuesFrom rdf:resource="&bfo2;SpatiotemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000130"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000011"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;specificallyDependsOn"/>
+                <onProperty rdf:resource="&obo;BFO_0000070"/>
                 <allValuesFrom>
                     <Class>
                         <unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&bfo2;IndependentContinuant"/>
-                            <rdf:Description rdf:about="&bfo2;Occurrent"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000004"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000003"/>
                         </unionOf>
                     </Class>
                 </allValuesFrom>
@@ -1668,17 +1864,17 @@ THEOREM: Every occurrent occupies some temporal region. [109-001]</rdfs:comment>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#OneDimensionalContinuantFiatBoundary -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000142 -->
 
-    <Class rdf:about="&bfo2;OneDimensionalContinuantFiatBoundary">
-        <rdfs:label>one_dimensional_continuant_fiat_boundary</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000142">
+        <rdfs:label>one dimensional continuant fiat boundary</rdfs:label>
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;ContinuantFiatBoundary"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000140"/>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;locatedAt"/>
-                        <someValuesFrom rdf:resource="&bfo2;OneDimensionalRegion"/>
+                        <onProperty rdf:resource="&obo;BFO_0000083"/>
+                        <someValuesFrom rdf:resource="&obo;BFO_0000026"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
@@ -1692,11 +1888,15 @@ EXAMPLES: The Equator, all geopolitical boundaries, all lines of latitude and lo
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#OneDimensionalRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000026 -->
 
-    <Class rdf:about="&bfo2;OneDimensionalRegion">
-        <rdfs:label>one_dimensional_region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;SpatialRegion"/>
+    <Class rdf:about="&obo;BFO_0000026">
+        <rdfs:label xml:lang="en">one dimensional region</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A spatial region  with one dimension.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">an edge of a cube-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">one dimensional region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the part of space that is a line stretching from one end of absolute space to the other</obo:IAO_0000112>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000006"/>
         <rdfs:comment>EXAMPLE: an edge of a cube-shaped portion of space.</rdfs:comment>
         <rdfs:seeAlso>[038-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: A one-dimensional spatial region is a line or aggregate of lines stretching from one point in space to another. [038-001]
@@ -1709,12 +1909,12 @@ A line is a connected one-dimensional spatial region.
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#OneDimensionalTemporalRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000143 -->
 
-    <Class rdf:about="&bfo2;OneDimensionalTemporalRegion">
-        <rdfs:label>one_dimensional_temporal_region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;TemporalRegion"/>
-        <disjointWith rdf:resource="&bfo2;ZeroDimensionalTemporalRegion"/>
+    <Class rdf:about="&obo;BFO_0000143">
+        <rdfs:label>one dimensional temporal region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000008"/>
+        <disjointWith rdf:resource="&obo;BFO_0000148"/>
         <rdfs:comment>ELUCIDATION: A one-dimensional temporal region is a temporal region that is extended. [103-001]
 
 EXAMPLE: the temporal region during which a process occurs.</rdfs:comment>
@@ -1723,55 +1923,60 @@ EXAMPLE: the temporal region during which a process occurs.</rdfs:comment>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Process -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000007 -->
 
-    <Class rdf:about="&bfo2;Process">
-        <rdfs:label>process</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;Occurrent"/>
+    <Class rdf:about="&obo;BFO_0000007">
+        <rdfs:label xml:lang="en">process</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A processual entity  that is a maximally connected spatiotemporal whole and has bona fide beginnings and endings corresponding to real discontinuities.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">process</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the life of an organism</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the process of cell-division</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the process of sleeping</obo:IAO_0000112>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000003"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;partOf"/>
-                <allValuesFrom rdf:resource="&bfo2;Process"/>
+                <onProperty rdf:resource="&obo;BFO_0000050"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000007"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasParticipant"/>
-                <someValuesFrom rdf:resource="&bfo2;MaterialEntity"/>
+                <onProperty rdf:resource="&obo;BFO_0000057"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000040"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;occursIn"/>
-                <allValuesFrom rdf:resource="&bfo2;OneDimensionalTemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000066"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000143"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;specificallyDependsOn"/>
-                <someValuesFrom rdf:resource="&bfo2;IndependentContinuant"/>
+                <onProperty rdf:resource="&obo;BFO_0000070"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000004"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;specificallyDependsOn"/>
-                <allValuesFrom rdf:resource="&bfo2;IndependentContinuant"/>
+                <onProperty rdf:resource="&obo;BFO_0000070"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000004"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;occursIn"/>
-                <someValuesFrom rdf:resource="&bfo2;OneDimensionalTemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000066"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000143"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;locatedIn"/>
+                <onProperty rdf:resource="&obo;BFO_0000082"/>
                 <allValuesFrom>
                     <Class>
                         <unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&bfo2;IndependentContinuant"/>
-                            <rdf:Description rdf:about="&bfo2;Occurrent"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000004"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000003"/>
                         </unionOf>
                     </Class>
                 </allValuesFrom>
@@ -1779,8 +1984,8 @@ EXAMPLE: the temporal region during which a process occurs.</rdfs:comment>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasTemporalPart"/>
-                <someValuesFrom rdf:resource="&bfo2;Occurrent"/>
+                <onProperty rdf:resource="&obo;BFO_0000121"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000003"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>EXAMPLES: the life of an organism, the process of sleeping, the process of cell-division, a beating of the heart, the process of meiosis, the course of a disease, the flight of a bird, the process of aging.
@@ -1793,46 +1998,55 @@ EXAMPLES: John thinking about Mary, John worrying about Mary, a moving body caus
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ProcessBoundary -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000035 -->
 
-    <Class rdf:about="&bfo2;ProcessBoundary">
-        <rdfs:label>process_boundary</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;Occurrent"/>
+    <Class rdf:about="&obo;BFO_0000035">
+        <rdfs:label xml:lang="en">process boundary</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A processual entity  that is the fiat or bona fide instantaneous temporal process boundary.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">birth</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">death</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">process boundary</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the detaching of a finger in an industrial accident</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the final separation of two cells at the end of cell-division</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the forming of a synapse</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the incision at the beginning of a surgery</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the onset of REM sleep</obo:IAO_0000112>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000003"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;occurrentBoundaryOf"/>
-                <someValuesFrom rdf:resource="&bfo2;Process"/>
+                <onProperty rdf:resource="&obo;BFO_0000131"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000007"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;occursIn"/>
-                <someValuesFrom rdf:resource="&bfo2;ZeroDimensionalTemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000066"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000148"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;occupies"/>
-                <someValuesFrom rdf:resource="&bfo2;ZeroDimensionalTemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000130"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000148"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;proper_occurrent_part_of"/>
-                <allValuesFrom rdf:resource="&bfo2;Process"/>
+                <onProperty rdf:resource="&obo;BFO_0000138"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000007"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;occursIn"/>
-                <allValuesFrom rdf:resource="&bfo2;TemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000066"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000008"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Class>
                 <complementOf>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;hasOccurrentProperPart"/>
+                        <onProperty rdf:resource="&obo;BFO_0000118"/>
                         <someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
                     </Restriction>
                 </complementOf>
@@ -1846,11 +2060,11 @@ EXAMPLES: John thinking about Mary, John worrying about Mary, a moving body caus
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ProcessProfile -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000144 -->
 
-    <Class rdf:about="&bfo2;ProcessProfile">
-        <rdfs:label>process_profile</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;Occurrent"/>
+    <Class rdf:about="&obo;BFO_0000144">
+        <rdfs:label>process profile</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000003"/>
         <rdfs:seeAlso>[093-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: We can now elucidate what is meant by ‘process profile’ as follows:
 a is a process profile means: a¬ is a process of the sort that can be represented by a chart plotting measurement results on a single dimension against a time axis. [093-001]
@@ -1859,12 +2073,21 @@ a is a process profile means: a¬ is a process of the sort that can be represent
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Quality -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000019 -->
 
-    <Class rdf:about="&bfo2;Quality">
-        <rdfs:label>quality</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;SpecificallyDependentContinuant"/>
-        <disjointWith rdf:resource="&bfo2;RealizableEntity"/>
+    <Class rdf:about="&obo;BFO_0000019">
+        <rdfs:label xml:lang="en">quality</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A specifically dependent continuant  that is exhibited if it inheres in an entity or entities at all (a categorical property).</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">quality</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the ambient temperature of air</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the circumference of a waist</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the color of a tomato</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the mass of a piece of gold</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the shape of a nose</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the weight of a chimpanzee</obo:IAO_0000112>
+
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000020"/>
+        <disjointWith rdf:resource="&obo;BFO_0000017"/>
         <rdfs:comment>ELUCIDATION: a quality is an specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized.</rdfs:comment>
         <rdfs:seeAlso>[115-001]</rdfs:seeAlso>
         <rdfs:comment>Solubility, in order to be realized or manifested, requires a process in which some solid piece of salt or sugar participates. Their crystalline quality, in contrast, does not stand in need of any realization process of this sort.
@@ -1878,31 +2101,38 @@ For some qualities, e.g. surface color, specifically dependence is not on the ma
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#RealizableEntity -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000017 -->
 
-    <Class rdf:about="&bfo2;RealizableEntity">
-        <rdfs:label>realizable_entity</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000017">
+	<rdfs:label xml:lang="en">realizable entity</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A specifically dependent continuant  that inheres in continuant  entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">If a realizable entity [snap:RealizableEntity] inheres in a continuant [snap:Continuant], this does not imply that it is actually realized.</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">realizable entity</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the disposition of blood to coagulate</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of metal to conduct electricity</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of the reproductive organs</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of being a doctor</obo:IAO_0000112>
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;SpecificallyDependentContinuant"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000020"/>
                     <Class>
-                        <complementOf rdf:resource="&bfo2;Quality"/>
+                        <complementOf rdf:resource="&obo;BFO_0000019"/>
                     </Class>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;inheresIn"/>
+                        <onProperty rdf:resource="&obo;BFO_0000052"/>
                         <someValuesFrom>
                             <Class>
                                 <unionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&bfo2;MaterialEntity"/>
-                                    <rdf:Description rdf:about="&bfo2;Site"/>
+                                    <rdf:Description rdf:about="&obo;BFO_0000040"/>
+                                    <rdf:Description rdf:about="&obo;BFO_0000029"/>
                                 </unionOf>
                             </Class>
                         </someValuesFrom>
                     </Restriction>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;realizedIn"/>
-                        <allValuesFrom rdf:resource="&bfo2;Process"/>
+                        <onProperty rdf:resource="&obo;BFO_0000054"/>
+                        <allValuesFrom rdf:resource="&obo;BFO_0000007"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
@@ -1917,11 +2147,11 @@ EXAMPLES: the role of being a doctor, the function of your reproductive organs, 
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#RelationalQuality -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000145 -->
 
-    <Class rdf:about="&bfo2;RelationalQuality">
-        <rdfs:label>relational_quality</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;Quality"/>
+    <Class rdf:about="&obo;BFO_0000145">
+        <rdfs:label>relational quality</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
         <rdfs:comment>DEFINITION: a is a relational quality = Def. for some independent continuants b, c and for some time t: a quality_of b at t &amp; a quality_of c at t. [057-001]
 
 EXAMPLES: a marriage bond, an instance of love, an obligation between one person and another.
@@ -1932,11 +2162,20 @@ EXAMPLES: a marriage bond, an instance of love, an obligation between one person
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Role -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000023 -->
 
-    <Class rdf:about="&bfo2;Role">
-        <rdfs:label>role</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;RealizableEntity"/>
+    <Class rdf:about="&obo;BFO_0000023">
+        <rdfs:label xml:lang="en">role</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A realizable entity  the manifestation of which brings about some result or end that is not essential to a continuant  in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant  in some kinds of natural, social or institutional contexts.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">role</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the role of a biological grandfather as legal guardian in the context of a system of laws</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a chemical compound in an experiment</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a patient relative as defined by a hospital administrative form</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a person as a surgeon</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a student in a university</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a woman as a legal mother in the context of system of laws</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of ingested matter in digestion</obo:IAO_0000112>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000017"/>
         <rdfs:comment>ELUCIDATION: a is a role means: a is a realizable entity which exists because its bearer is in some special physical, social, or institutional set of circumstances in which the bearer does not have to be, and is not such that, if it ceases to exist, then the physical make-up of the bearer is thereby changed.</rdfs:comment>
         <rdfs:comment>ELUCIDATION: a is a role means: 
 a is a realizable entity 
@@ -1957,29 +2196,34 @@ There are no relational roles. Thus each role is the role of exactly one bearer.
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#Site -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000029 -->
 
-    <Class rdf:about="&bfo2;Site">
-        <rdfs:label>site</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000029">
+<rdfs:label xml:lang="en">site</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  consisting of a characteristic spatial shape in relation to some arrangement of other continuant  entities and of the medium which is enclosed in whole or in part by this characteristic spatial shape. Site  entities are entities that can be occupied by other continuant  entities.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">An instance of Site [snap:Site] is a mixture of independent continuant [snap:IndependentContinuant] entities which act as surrounding environments for other independent continuant [snap:IndependentContinuant] entities, most importantly for instances of object [snap:Object]. A site [snap:Site] is typically made of object [snap:Object] or fiat object part [snap:FiatObjectPart] entities and a surrounding medium in which is found an object [snap:Object] occupying the site [snap:Site]. Independent continuant [snap:IndependentContinuant] entities may be associated with others (which, then, are sites) through a relation of &quot;occupation&quot;. That relation is connected to, but distinct from, the relation of spatial location. Site [snap:Site] entities are not to be confused with spatial region [snap:SpatialRegion] entities. In BFO, site [snap:Site] allows for a so-called relational view of space which is different from the view corresponding to the class spatial region [snap:SpatialRegion] (see the comment on this class).</obo:IAO_0000116>
+        <obo:IAO_0000112 xml:lang="en">Maria&#39;s nostril or her intestines for a variety of bacteria</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a particular room in a particular hospital</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">site</obo:IAO_0000111>
         <rdfs:subClassOf>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;ImmaterialEntity"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000141"/>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;locatedAt"/>
-                        <someValuesFrom rdf:resource="&bfo2;ThreeDimensionalRegion"/>
+                        <onProperty rdf:resource="&obo;BFO_0000083"/>
+                        <someValuesFrom rdf:resource="&obo;BFO_0000028"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;partOf"/>
+                <onProperty rdf:resource="&obo;BFO_0000050"/>
                 <allValuesFrom>
                     <Class>
                         <unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&bfo2;MaterialEntity"/>
-                            <rdf:Description rdf:about="&bfo2;Site"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000040"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000029"/>
                         </unionOf>
                     </Class>
                 </allValuesFrom>
@@ -1987,11 +2231,11 @@ There are no relational roles. Thus each role is the role of exactly one bearer.
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasPart"/>
-                <allValuesFrom rdf:resource="&bfo2;Site"/>
+                <onProperty rdf:resource="&obo;BFO_0000051"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000029"/>
             </Restriction>
         </rdfs:subClassOf>
-        <disjointWith rdf:resource="&bfo2;SpatialRegion"/>
+        <disjointWith rdf:resource="&obo;BFO_0000006"/>
         <rdfs:comment>ELUCIDATION: a is a site means: a is a three-dimensional immaterial entity that is (partially or wholly) bounded by a material entity or a three-dimensional immaterial part thereof. [034-001]
 
 EXAMPLES: a hole in the interior of a portion of cheese, a rabbit hole, the interior of your bedroom, the Grand Canyon, the Piazza San Marco, an air traffic control region defined in the airspace above an airport, the interior of a kangaroo pouch, your left nostril (a fiat part – the opening – of your left nasal cavity), the lumen of your gut, the hold of a ship, the cockpit of an aircraft, the interior of the trunk of your car, the interior of your refrigerator, the interior of your office, Manhattan Canyon)
@@ -2001,31 +2245,39 @@ EXAMPLES: a hole in the interior of a portion of cheese, a rabbit hole, the inte
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#SpatialRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000006 -->
 
-    <Class rdf:about="&bfo2;SpatialRegion">
-        <rdfs:label>spatial_region</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000006">
+        <rdfs:label xml:lang="en">spatial region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:IAO_0000115 xml:lang="en">A continuant  that is neither bearer of quality  entities nor inheres in any other entities.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">All instances of continuant [snap:Continuant] are spatial entities, that is, they enter in the relation of (spatial) location with spatial region [snap:SpatialRegion] entities. As a particular case, the exact spatial location of a spatial region [snap:SpatialRegion] is this region itself.</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">An instance of spatial region [snap:SpatialRegion] is a part of space. All parts of space are spatial region [snap:SpatialRegion] entities and only spatial region [snap:SpatialRegion] entities are parts of space. Space is the entire extent of the spatial universe, a designated individual, which is thus itself a spatial region [snap:SpatialRegion].</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">Space and spatial region [snap:SpatialRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of space is sometimes called &quot;absolutist&quot; or &quot;the container view&quot;. In BFO, the class site [snap:Site] allows for a so-called relational view of space, that is to say, a view according to which spatiality is a matter of relative location between entities and not a matter of being tied to space. The bridge between these two views is secured through the fact that while instances of site [snap:Site] are not spatial region [snap:SpatialRegion] entities, they are nevertheless spatial entities.</obo:IAO_0000116>
+        <obo:IAO_0000112 xml:lang="en">parts of the sum total of all space in the universe</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">spatial region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the sum total of all space in the universe</obo:IAO_0000112>
         <equivalentClass>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;OneDimensionalRegion"/>
-                    <rdf:Description rdf:about="&bfo2;ThreeDimensionalRegion"/>
-                    <rdf:Description rdf:about="&bfo2;TwoDimensionalRegion"/>
-                    <rdf:Description rdf:about="&bfo2;ZeroDimensionalRegion"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000026"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000028"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000009"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000018"/>
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;ImmaterialEntity"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000141"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasContinuantPart"/>
-                <allValuesFrom rdf:resource="&bfo2;SpatialRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000110"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000006"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;continuant_part_of"/>
-                <allValuesFrom rdf:resource="&bfo2;SpatialRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000105"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000006"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>AXIOM: All continuant parts of spatial regions are spatial regions. [036-001]</rdfs:comment>
@@ -2039,27 +2291,35 @@ EXAMPLES: a hole in the interior of a portion of cheese, a rabbit hole, the inte
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#SpatiotemporalRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000011 -->
 
-    <Class rdf:about="&bfo2;SpatiotemporalRegion">
-        <rdfs:label>spatiotemporal_region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;Occurrent"/>
+    <Class rdf:about="&obo;BFO_0000011">
+        <rdfs:label xml:lang="en">spatiotemporal region</rdfs:label>
+        <obo:IAO_0000116 xml:lang="en">All instances of occurrent [span:Occurrent] are spatiotemporal entities, that is, they enter in the relation of (spatiotemporal) location with spatiotemporal region [span:SpatiotemporalRegion] entities. As a particular case, the exact spatiotemporal location of a spatiotemporal region [span:SpatiotemporalRegion] is this region itself.</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">An instance of the spatiotemporal region [span:SpatiotemporalRegion] is a part of spacetime. All parts of spacetime are spatiotemporal region [span:SpatiotemporalRegion] entities and only spatiotemporal region [span:SpatiotemporalRegion] entities are parts of spacetime. In particular, neither spatial region [snap:SpatialRegion] entities nor temporal region [span:TemporalRegion] entities are in BFO parts of spacetime. Spacetime is the entire extent of the spatiotemporal universe, a designated individual, which is thus itself a spatiotemporal region [span:SpatiotemporalRegion]. Spacetime is among occurrents the analogous of space among continuant [snap:Continuant] entities.</obo:IAO_0000116>
+        <obo:IAO_0000115 xml:lang="en">An occurrent  at or in which processual entity  entities can be located.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Spacetime and spatiotemporal region [span:SpatiotemporalRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of spacetime can be called &quot;absolutist&quot; or &quot;the container view&quot;. In BFO, the class processual context [span:ProcessualContext] allows for a so-called relational view of spacetime, that is to say, a view according to which spatiotemporality is a matter of relative location between entities and not a matter of being tied to spacetime. In BFO, the bridge between these two views is secured through the fact that instances of processual context [span:ProcessualContext] are too spatiotemporal entities.</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">spatiotemporal region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal context occupied by a process of cellular meiosis</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal region occupied by a human life</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal region occupied by the development of a cancer tumor</obo:IAO_0000112>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000003"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;projectsOnto"/>
-                <someValuesFrom rdf:resource="&bfo2;TemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000134"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000008"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasPart"/>
-                <allValuesFrom rdf:resource="&bfo2;SpatiotemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000051"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000011"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;projectsOnto"/>
-                <someValuesFrom rdf:resource="&bfo2;SpatialRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000134"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000006"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>EXAMPLES: the spatiotemporal region occupied by a human life, the spatiotemporal region occupied by the development of a cancer tumor, the spatiotemporal context occupied by a process of cellular meiosis</rdfs:comment>
@@ -2084,17 +2344,30 @@ Every spatiotemporal or temporal region occupies itself.</rdfs:comment>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#SpecificallyDependentContinuant -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000020 -->
 
-    <Class rdf:about="&bfo2;SpecificallyDependentContinuant">
-        <rdfs:label>specifically_dependent_continuant</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000020">
+                <rdfs:label xml:lang="en">specifically dependent continuant</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A continuant  that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</obo:IAO_0000115>
+        <obo:IAO_0000118 xml:lang="en">mode</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">property</obo:IAO_0000118>
+        <obo:IAO_0000111 xml:lang="en">specifically dependent continuant</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the color of a tomato</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of fish to decay</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of the heart in the body: to pump blood, to receive de-oxygenated and oxygenated blood, etc.</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the liquidity of blood</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the mass of a cloud</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of being a doctor</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the smell of mozzarella</obo:IAO_0000112>
+        <obo:IAO_0000118 xml:lang="en">trope</obo:IAO_0000118>
+
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;DependentContinuant"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000005"/>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;specificallyDependsOn"/>
-                        <someValuesFrom rdf:resource="&bfo2;IndependentContinuant"/>
+                        <onProperty rdf:resource="&obo;BFO_0000070"/>
+                        <someValuesFrom rdf:resource="&obo;BFO_0000004"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
@@ -2102,16 +2375,16 @@ Every spatiotemporal or temporal region occupies itself.</rdfs:comment>
         <equivalentClass>
             <Class>
                 <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;Quality"/>
-                    <rdf:Description rdf:about="&bfo2;RealizableEntity"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000019"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000017"/>
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&bfo2;DependentContinuant"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000005"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;specificallyDependsOn"/>
-                <allValuesFrom rdf:resource="&bfo2;IndependentContinuant"/>
+                <onProperty rdf:resource="&obo;BFO_0000070"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000004"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>DEFINITION: a is a specifically dependent continuant = Def. a is a continuant which s-depends on some independent continuant. [050-001]
@@ -2125,35 +2398,43 @@ EXAMPLES: of relational dependent continuants (multiple bearers): John’s love 
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#TemporalRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000008 -->
 
-    <Class rdf:about="&bfo2;TemporalRegion">
-        <rdfs:label>temporal_region</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000008">
+        <rdfs:label xml:lang="en">temporal region</rdfs:label>
+<obo:IAO_0000116 xml:lang="en">All instances of occurrent [span:Occurrent] are temporal entities, that is, they enter in the relation of (temporal) location with temporal region [span:TemporalRegion] entities. As a particular case, the exact spatiotemporal location of a temporal region [span:TemporalRegion] is this region itself. Continuant [snap:Continuant] entities are not temporal entities in the technical sense just explained; they are related to time in a different way, not through temporal location but through a relation of existence at a time or during a period of time (see continuant [snap:Continuant].</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">An instance of temporal region [span:TemporalRegion] is a part of time. All parts of time are temporal region [span:TemporalRegion] entities and only temporal region [span:TemporalRegion] entities are parts of time. Time is the entire extent of the temporal universe, a designated individual, which is thus a temporal region itself.</obo:IAO_0000116>
+        <obo:IAO_0000115 xml:lang="en">An occurrent  that is part of time.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Time and temporal region [span:TemporalRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of time can be called &quot;absolutist&quot; or &quot;the container view&quot; in analogy to what is traditionally the case with space (see spatial region [snap:SpatialRegion].</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">temporal region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the duration of a surgical procedure</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the moment of death</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the time it takes to run a marathon</obo:IAO_0000112>
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;Occurrent"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000003"/>
                     <Class>
                         <unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&bfo2;OneDimensionalTemporalRegion"/>
-                            <rdf:Description rdf:about="&bfo2;ZeroDimensionalTemporalRegion"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000143"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000148"/>
                         </unionOf>
                     </Class>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;hasOccurrentPart"/>
-                        <allValuesFrom rdf:resource="&bfo2;TemporalRegion"/>
+                        <onProperty rdf:resource="&obo;BFO_0000117"/>
+                        <allValuesFrom rdf:resource="&obo;BFO_0000008"/>
                     </Restriction>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;proper_occurrent_part_of"/>
-                        <allValuesFrom rdf:resource="&bfo2;OneDimensionalTemporalRegion"/>
+                        <onProperty rdf:resource="&obo;BFO_0000138"/>
+                        <allValuesFrom rdf:resource="&obo;BFO_0000143"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
         </equivalentClass>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasPart"/>
-                <allValuesFrom rdf:resource="&bfo2;TemporalRegion"/>
+                <onProperty rdf:resource="&obo;BFO_0000051"/>
+                <allValuesFrom rdf:resource="&obo;BFO_0000008"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:seeAlso>[107-001]</rdfs:seeAlso>
@@ -2170,11 +2451,15 @@ AXIOM: Every temporal region r is such that r occupies r. [107-001]</rdfs:commen
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ThreeDimensionalRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000028 -->
 
-    <Class rdf:about="&bfo2;ThreeDimensionalRegion">
-        <rdfs:label>three_dimensional_region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;SpatialRegion"/>
+    <Class rdf:about="&obo;BFO_0000028">
+        <rdfs:label xml:lang="en">three dimensional region</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A spatial region  with three dimensions.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a cube-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a sphere-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">three dimensional region</obo:IAO_0000111>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000006"/>
         <rdfs:comment>ELUCIDATION: A three-dimensional spatial region is  a spatial region that is of three dimensions. [040-001]
 
 EXAMPLES: a cube-shaped region of space, a sphere-shaped region of space, 
@@ -2184,17 +2469,17 @@ EXAMPLES: a cube-shaped region of space, a sphere-shaped region of space,
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#TwoDimensionalContinuantFiatBoundary -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000146 -->
 
-    <Class rdf:about="&bfo2;TwoDimensionalContinuantFiatBoundary">
-        <rdfs:label>two_dimensional_continuant_fiat_boundary</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000146">
+        <rdfs:label>two dimensional continuant fiat boundary</rdfs:label>
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;ContinuantFiatBoundary"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000140"/>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;locatedAt"/>
-                        <someValuesFrom rdf:resource="&bfo2;TwoDimensionalRegion"/>
+                        <onProperty rdf:resource="&obo;BFO_0000083"/>
+                        <someValuesFrom rdf:resource="&obo;BFO_0000009"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
@@ -2210,11 +2495,16 @@ From this it follows that a two-dimensional continuant fiat boundary (surface) m
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#TwoDimensionalRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000009 -->
 
-    <Class rdf:about="&bfo2;TwoDimensionalRegion">
-        <rdfs:label>two_dimensional_region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;SpatialRegion"/>
+    <Class rdf:about="&obo;BFO_0000009">
+        <rdfs:label xml:lang="en">two dimensional region</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A spatial region  with two dimensions.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">the surface of a cube-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the surface of a rectilinear planar figure-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the surface of a sphere-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">two dimensional region</obo:IAO_0000111>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000006"/>
         <rdfs:seeAlso>[039-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: A two-dimensional spatial region is a spatial region that is of two dimensions. [039-001]
 
@@ -2226,17 +2516,17 @@ A surface is a connected one-dimensional spatial region.
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ZeroDimensionalContinuantFiatBoundary -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000147 -->
 
-    <Class rdf:about="&bfo2;ZeroDimensionalContinuantFiatBoundary">
-        <rdfs:label>zero_dimensional_continuant_fiat_boundary</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000147">
+        <rdfs:label>zero dimensional continuant fiat boundary</rdfs:label>
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;ContinuantFiatBoundary"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000140"/>
                     <Restriction>
-                        <onProperty rdf:resource="&bfo2;locatedAt"/>
-                        <someValuesFrom rdf:resource="&bfo2;ZeroDimensionalRegion"/>
+                        <onProperty rdf:resource="&obo;BFO_0000083"/>
+                        <someValuesFrom rdf:resource="&obo;BFO_0000018"/>
                     </Restriction>
                 </intersectionOf>
             </Class>
@@ -2250,30 +2540,33 @@ EXAMPLES: the geographic North Pole; the quadripoint where the boundaries of Col
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ZeroDimensionalRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000018 -->
 
-    <Class rdf:about="&bfo2;ZeroDimensionalRegion">
-        <rdfs:label>zero_dimensional_region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&bfo2;SpatialRegion"/>
+    <Class rdf:about="&obo;BFO_0000018">
+        <rdfs:label xml:lang="en">zero dimensional region</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A spatial region  with no dimensions.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a point</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">zero dimensional region</obo:IAO_0000111>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000006"/>
         <rdfs:seeAlso>[037-001]</rdfs:seeAlso>
         <rdfs:comment>ELUCIDATION: A zero-dimensional spatial region is a point in space. [037-001]</rdfs:comment>
     </Class>
     
 
 
-    <!-- http://www.ifomis.org/bfo/bfo2#ZeroDimensionalTemporalRegion -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000148 -->
 
-    <Class rdf:about="&bfo2;ZeroDimensionalTemporalRegion">
-        <rdfs:label>zero_dimensional_temporal_region</rdfs:label>
+    <Class rdf:about="&obo;BFO_0000148">
+        <rdfs:label>zero dimensional temporal region</rdfs:label>
         <rdfs:subClassOf>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&bfo2;TemporalRegion"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000008"/>
                     <Class>
                         <complementOf>
                             <Restriction>
-                                <onProperty rdf:resource="&bfo2;hasOccurrentProperPart"/>
-                                <someValuesFrom rdf:resource="&bfo2;Occurrent"/>
+                                <onProperty rdf:resource="&obo;BFO_0000118"/>
+                                <someValuesFrom rdf:resource="&obo;BFO_0000003"/>
                             </Restriction>
                         </complementOf>
                     </Class>
@@ -2297,7 +2590,7 @@ EXAMPLES: a temporal region that is occupied by a process boundary; right now; t
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="&bfo2;hasProperPhysicalPart">
+    <rdf:Description rdf:about="&obo;hasProperPhysicalPart">
         <rdfs:comment>hasProperPart (inverse: properPartOf) obtains between ***** physical objects. The distinction between parthood and locatedness is complex and does not obey strict criteria. 
 This relation is irreflexive, i.e. a physical object cannot have itself as a physical proper part.
 Note that for abstract entities like information artefacts there is a separate relation pair &#39;&#39;abstractPartOf&#39;&#39; and &#39;&#39;hasAbstractPart&#39;&#39;
@@ -2307,7 +2600,7 @@ EXAMPLES: my thumb is a proper physical part of my hand, this keyboard is a prop
     <rdf:Description rdf:about="&xsd;OWLDatatypeImpl_00000009346126375979">
         <rdfs:label>string</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;hasProcessQuality">
+    <rdf:Description rdf:about="&obo;hasProcessQuality">
         <rdfs:comment>processModifierOf (abstract: hasProcessModifier) links a quality that further characterizes a process to this process. Process qualities are asserted where the process cannot sufficiently be described by the qualities of its participants only. 
 EXAMPLE: The process of heart beating has the process quality heart rate.</rdfs:comment>
     </rdf:Description>
@@ -2317,12 +2610,12 @@ EXAMPLE: The process of heart beating has the process quality heart rate.</rdfs:
     <rdf:Description rdf:about="&rdfs;OWLAnnotationPropertyImpl_00000009346139909684">
         <rdfs:label>label</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;ConnectedSpatiotemporalRegion">
+    <rdf:Description rdf:about="&obo;ConnectedSpatiotemporalRegion">
         <rdfs:label>connected_spatiotemporal_region</rdfs:label>
         <rdfs:comment>EXAMPLES: the spatial and temporal location of an individual organism&#39;s life, the spatial and temporal location of the development of a fetus</rdfs:comment>
         <rdfs:comment>DEFINITION: A spatiotemporal region [SpatiotemporalRegion] that has temporal and spatial dimensions such that all points within the spatiotemporal region are mediately or immediately connected to all other points within the same spatiotemporal region [SpatiotemporalRegion].</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;ScatteredSpatiotemporalRegion">
+    <rdf:Description rdf:about="&obo;ScatteredSpatiotemporalRegion">
         <rdfs:label>scattered_spatiotemporal_region</rdfs:label>
         <rdfs:comment>EXAMPLES: the space and time occupied by the individual games of the World Cup, the space and time occupied by the individual liaisons in a romantic affair</rdfs:comment>
         <rdfs:comment>DEFINITION: A spatiotemporal region [SpatiotemporalRegion] that has spatial and temporal dimensions and every spatial and temporal point of which is not connected with every other spatial and temporal point of which.</rdfs:comment>
@@ -2330,56 +2623,59 @@ EXAMPLE: The process of heart beating has the process quality heart rate.</rdfs:
     <rdf:Description rdf:about="&rdfs;OWLAnnotationPropertyImpl_00000009346109837876">
         <rdfs:label>comment</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;ProcessAggregate">
+    <rdf:Description rdf:about="&obo;ProcessAggregate">
         <rdfs:label>process_aggregate</rdfs:label>
         <rdfs:comment>EXAMPLES: the beating of the hearts of each of seven individuals in the room, the playing of each of the members of an orchestra, a process of digestion and a process of thinking taken together</rdfs:comment>
-        <rdfs:comment>DEFINITION: A processual entity [ProcessualEntity] that is a mereological sum of process [Process] entities and possesses non-connected boundaries.</rdfs:comment>
+        <rdfs:comment>DEFINITION: A processual entity [ProcessualEntity] that is a mereological sum of process [BFO_0000007] entities and possesses non-connected boundaries.</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;FiatProcessPart">
+    <rdf:Description rdf:about="&obo;FiatProcessPart">
         <rdfs:label>fiat_process_part</rdfs:label>
         <rdfs:comment>EXAMPLES: chewing during a meal, the middle part of a rainstorm, the worst part of a heart-attack, the most interesting part of Van Gogh&#39;s life</rdfs:comment>
         <rdfs:comment>DEFINITION: A processual entity [ProcessualEntity] that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities.</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;ScatteredTemporalRegion">
+    <rdf:Description rdf:about="&obo;ScatteredTemporalRegion">
         <rdfs:label>scattered_temporal_region</rdfs:label>
-        <rdfs:comment>DEFINITION: A temporal region [TemporalRegion] every point of which is not mediately or immediately connected with every other point of which.</rdfs:comment>
+        <rdfs:comment>DEFINITION: A temporal region [BFO_0000008] every point of which is not mediately or immediately connected with every other point of which.</rdfs:comment>
         <rdfs:comment>EXAMPLES: the time occupied by the individual games of the World Cup, the time occupied by the individual liaisons in a romantic affair</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;ProcessualEntity">
+    <rdf:Description rdf:about="&obo;ProcessualEntity">
         <rdfs:label>processual_entity</rdfs:label>
-        <rdfs:comment>DEFINITION: An occurrent [Occurrent] that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity.</rdfs:comment>
+        <rdfs:comment>DEFINITION: An occurrent [BFO_0000003] that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity.</rdfs:comment>
         <rdfs:comment>EXAMPLES: the life of an organism, the process of meiosis, the course of a disease, the flight of a bird</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;SpatiotemporalInterval">
+    <rdf:Description rdf:about="&obo;SpatiotemporalInterval">
         <rdfs:label>spatiotemporal_interval</rdfs:label>
         <rdfs:comment>EXAMPLES: the spatiotemporal region occupied by a process or by a fiat processual part</rdfs:comment>
         <rdfs:comment>DEFINITION: A connected spatiotemporal region [ConnectedSpatiotemporalRegion] that endures for more than a single moment of time.</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;ObjectBoundary">
-        <rdfs:label>object_boundary</rdfs:label>
+
+
+
+    <rdf:Description rdf:about="&obo;BFO_0000025">
+        <rdfs:label>object boundary</rdfs:label>
         <rdfs:comment>EXAMPLES: the surface of the skin, the surface of the earth, the surface of the interior of the stomach, the outer surface of a cell or cell wall</rdfs:comment>
-        <rdfs:comment>DEFINITION: An independent continuant [IndependentContinuant] that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of object [Object] entities that exist at exactly the point where the object [Object] is separated off from the rest of the existing entities in the world.</rdfs:comment>
+        <rdfs:comment>DEFINITION: An independent continuant [BFO_0000004] that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of object [Object] entities that exist at exactly the point where the object [Object] is separated off from the rest of the existing entities in the world.</rdfs:comment>
         <rdfs:comment>Synonyms: substance boundary</rdfs:comment>
         <rdfs:comment>Comment: Boundaries are theoretically difficult entities to account for, however the intuitive notion of a physical boundary as a surface of some sort (whether inside or outside of a thing) will generally serve as a good guide for the use of this universal.</rdfs:comment>
     </rdf:Description>
     <rdf:Description rdf:about="&rdf;OWLDatatypeImpl_00000009346124329222">
         <rdfs:label>PlainLiteral</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;SpatiotemporalInstant">
+    <rdf:Description rdf:about="&obo;SpatiotemporalInstant">
         <rdfs:label>spatiotemporal_instant</rdfs:label>
         <rdfs:comment>EXAMPLES: the spatiotemporal region occupied by a single instantaneous temporal slice (part) of a process</rdfs:comment>
         <rdfs:comment>DEFINITION: A connected spatiotemporal region [ConnectedSpatiotemporalRegion] at a specific moment.</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;ConnectedTemporalRegion">
+    <rdf:Description rdf:about="&obo;ConnectedTemporalRegion">
         <rdfs:label>connected_temporal_region</rdfs:label>
         <rdfs:comment>EXAMPLES: the 1970s years, the time from the beginning to the end of a heart attack, the time taken up by cellular meiosis</rdfs:comment>
-        <rdfs:comment>DEFINITION: A temporal region [TemporalRegion] every point of which is mediately or immediately connected with every other point of which.</rdfs:comment>
+        <rdfs:comment>DEFINITION: A temporal region [BFO_0000008] every point of which is mediately or immediately connected with every other point of which.</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&bfo2;ProcessualContext">
+    <rdf:Description rdf:about="&obo;ProcessualContext">
         <rdfs:label>processual_context</rdfs:label>
-        <rdfs:comment>EXAMPLES: The processual context for a given manipulation occurring as part of an experiment is made of processual entities which occur in parallel, are not necessarily all parts of the experiment themselves and may involve continuant [Continuant] entities which are in the spatial vicinity of the participants in the experiment.</rdfs:comment>
-        <rdfs:comment>Comment: An instance of a processual context [ProcessualContext] is a mixture of processual entity [ProcessualEntity] which stand as surrounding environments for other processual entity [ProcessualEntity] entities. The class processual context [ProcessualContext] is the analogous among occurrent [Occurrent] entities to the class site [Site] among continuant [Continuant] entities.</rdfs:comment>
-        <rdfs:comment>DEFINITION: An occurrent [Occurrent] consisting of a characteristic spatial shape inhering in some arrangement of other occurrent [Occurrent] entities. Processual context [ProcessualContext] entities are characteristically entities at or in which other occurrent [Occurrent] entities can be located or occur.</rdfs:comment>
+        <rdfs:comment>EXAMPLES: The processual context for a given manipulation occurring as part of an experiment is made of processual entities which occur in parallel, are not necessarily all parts of the experiment themselves and may involve continuant [BFO_0000002] entities which are in the spatial vicinity of the participants in the experiment.</rdfs:comment>
+        <rdfs:comment>Comment: An instance of a processual context [ProcessualContext] is a mixture of processual entity [ProcessualEntity] which stand as surrounding environments for other processual entity [ProcessualEntity] entities. The class processual context [ProcessualContext] is the analogous among occurrent [BFO_0000003] entities to the class site [Site] among continuant [BFO_0000002] entities.</rdfs:comment>
+        <rdfs:comment>DEFINITION: An occurrent [BFO_0000003] consisting of a characteristic spatial shape inhering in some arrangement of other occurrent [BFO_0000003] entities. Processual context [ProcessualContext] entities are characteristically entities at or in which other occurrent [BFO_0000003] entities can be located or occur.</rdfs:comment>
     </rdf:Description>
     
 
@@ -2395,99 +2691,99 @@ EXAMPLE: The process of heart beating has the process quality heart rate.</rdfs:
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasDisposition"/>
-                <someValuesFrom rdf:resource="&bfo2;Disposition"/>
+                <onProperty rdf:resource="&obo;BFO_0000112"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000016"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&bfo2;bearerOf"/>
-        <someValuesFrom rdf:resource="&bfo2;Disposition"/>
+        <onProperty rdf:resource="&obo;BFO_0000053"/>
+        <someValuesFrom rdf:resource="&obo;BFO_0000016"/>
     </Restriction>
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;invSpecificallyDependsOn"/>
-                <someValuesFrom rdf:resource="&bfo2;Disposition"/>
+                <onProperty rdf:resource="&obo;BFO_0000125"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000016"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&bfo2;hasDisposition"/>
-        <someValuesFrom rdf:resource="&bfo2;Disposition"/>
+        <onProperty rdf:resource="&obo;BFO_0000112"/>
+        <someValuesFrom rdf:resource="&obo;BFO_0000016"/>
     </Restriction>
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;invSpecificallyDependsOn"/>
-                <someValuesFrom rdf:resource="&bfo2;Function"/>
+                <onProperty rdf:resource="&obo;BFO_0000125"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000034"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&bfo2;hasFunction"/>
-        <someValuesFrom rdf:resource="&bfo2;Function"/>
+        <onProperty rdf:resource="&obo;BFO_0000085"/>
+        <someValuesFrom rdf:resource="&obo;BFO_0000034"/>
     </Restriction>
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;invSpecificallyDependsOn"/>
-                <someValuesFrom rdf:resource="&bfo2;Role"/>
+                <onProperty rdf:resource="&obo;BFO_0000125"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000023"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&bfo2;hasRole"/>
-        <someValuesFrom rdf:resource="&bfo2;Role"/>
+        <onProperty rdf:resource="&obo;BFO_0000087"/>
+        <someValuesFrom rdf:resource="&obo;BFO_0000023"/>
     </Restriction>
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;invSpecificallyDependsOn"/>
-                <someValuesFrom rdf:resource="&bfo2;Quality"/>
+                <onProperty rdf:resource="&obo;BFO_0000125"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000019"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&bfo2;hasQuality"/>
-        <someValuesFrom rdf:resource="&bfo2;Quality"/>
+        <onProperty rdf:resource="&obo;BFO_0000086"/>
+        <someValuesFrom rdf:resource="&obo;BFO_0000019"/>
     </Restriction>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;OneDimensionalRegion"/>
-            <rdf:Description rdf:about="&bfo2;ThreeDimensionalRegion"/>
-            <rdf:Description rdf:about="&bfo2;TwoDimensionalRegion"/>
-            <rdf:Description rdf:about="&bfo2;ZeroDimensionalRegion"/>
+            <rdf:Description rdf:about="&obo;BFO_0000026"/>
+            <rdf:Description rdf:about="&obo;BFO_0000028"/>
+            <rdf:Description rdf:about="&obo;BFO_0000009"/>
+            <rdf:Description rdf:about="&obo;BFO_0000018"/>
         </members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;Process"/>
-            <rdf:Description rdf:about="&bfo2;ProcessBoundary"/>
-            <rdf:Description rdf:about="&bfo2;ProcessProfile"/>
-            <rdf:Description rdf:about="&bfo2;SpatiotemporalRegion"/>
-            <rdf:Description rdf:about="&bfo2;TemporalRegion"/>
+            <rdf:Description rdf:about="&obo;BFO_0000007"/>
+            <rdf:Description rdf:about="&obo;BFO_0000035"/>
+            <rdf:Description rdf:about="&obo;BFO_0000144"/>
+            <rdf:Description rdf:about="&obo;BFO_0000011"/>
+            <rdf:Description rdf:about="&obo;BFO_0000008"/>
         </members>
     </rdf:Description>
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasRole"/>
-                <someValuesFrom rdf:resource="&bfo2;Role"/>
+                <onProperty rdf:resource="&obo;BFO_0000087"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000023"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&bfo2;bearerOf"/>
-        <someValuesFrom rdf:resource="&bfo2;Role"/>
+        <onProperty rdf:resource="&obo;BFO_0000053"/>
+        <someValuesFrom rdf:resource="&obo;BFO_0000023"/>
     </Restriction>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&bfo2;OneDimensionalContinuantFiatBoundary"/>
-            <rdf:Description rdf:about="&bfo2;TwoDimensionalContinuantFiatBoundary"/>
-            <rdf:Description rdf:about="&bfo2;ZeroDimensionalContinuantFiatBoundary"/>
+            <rdf:Description rdf:about="&obo;BFO_0000142"/>
+            <rdf:Description rdf:about="&obo;BFO_0000146"/>
+            <rdf:Description rdf:about="&obo;BFO_0000147"/>
         </members>
     </rdf:Description>
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&bfo2;hasFunction"/>
-                <someValuesFrom rdf:resource="&bfo2;Function"/>
+                <onProperty rdf:resource="&obo;BFO_0000085"/>
+                <someValuesFrom rdf:resource="&obo;BFO_0000034"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&bfo2;bearerOf"/>
-        <someValuesFrom rdf:resource="&bfo2;Function"/>
+        <onProperty rdf:resource="&obo;BFO_0000053"/>
+        <someValuesFrom rdf:resource="&obo;BFO_0000034"/>
     </Restriction>
 </rdf:RDF>
 
