@@ -8,6 +8,6 @@ When a group of people met to discuss BFO2 in december 2012, it was proposed (an
 
 Alan wants to deprecate this. What's the justification?
 
-[someone said] Is the plan to make part_of ==> proper_part_of? I think this would make a lot of mereological axioms harder. Consider the role chain for overlaps
+someone said: Is the plan to make part_of ==> proper_part_of? I think this would make a lot of mereological axioms harder. Consider the role chain for overlaps
 
 Alan: I looked over the ro properties, saw proper_part_of, and didn't recall anyone actually using it. In the interest of slimming BFO I made a note suggesting we consider dropping it from BFO main. I imagine we can have additional BFO-based modules, but think it would be good if we trimmed BFO to what seemed essential.
