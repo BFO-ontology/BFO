@@ -1,9 +1,11 @@
+#labels Phase-Design
 = About this page = 
 
-This page, authored by Alan Ruttenberg, is to record a proposal, comments, and a vote on whether to adopt it. Please do not modify the *Background* and *Proposal* sections. Add comments, with your name, in the *Comments* section. Put your vote in the *Record of Votes* section.
+This page, authored by Alan Ruttenberg, is to record a proposal, comments, and a vote on whether to adopt it. Please do not modify the *Background* and *Proposal* sections. Add comments, with your name, in the *Comments* section. Put your vote in the *Record of Votes* section. 
 
 = Background =
-On April 30, 2012, Alan Ruttenberg sent the following message:
+
+On April 30, 2012, Alan Ruttenberg sent the following [https://groups.google.com/forum/?fromgroups#!topic/bfo-devel/DoDg9N4Tn6w message]:
 
 Thus far we haven't had any global, agreed-upon method for tracking and then marking as resolved issue related to our effort. As Barry has indicated to me that his work on the first draft of the reference is nearly complete, it is appropriate, now, that we do. 
 
