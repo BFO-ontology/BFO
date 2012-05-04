@@ -21,6 +21,7 @@ A number of principles should guide our work
  * Maximal use of reasoning to ensure quality/correctness. It is easy to make mistakes when ontologies have no automated procedure to test them. By adding as many constraining axioms which correspond to textual descriptions in BFO2 Reference, we have he best change of finding conceptual errors.
 
  * Careful attention to explicit representation, with the OWL file, of attribution of current contributors, past contributors, of document status wrt to the reference, descriptions, in variant versions, of how and why the contents was chosen.
+ 
 
 = Authors = 
 Alan Ruttenberg
