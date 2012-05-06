@@ -1,5 +1,7 @@
 # The BFO reference is in draft form and will change. How do we develop OWL for BFO given that
 
+*The principles enumerated in this document were approved by all attending the OWL group meeting on May 4. As such, please do not edit the Introduction or Principles. Instead add any comments to the Comments section*
+
 = Introduction =
 
 The BFO2 reference is in draft form and is expected to change. The scope of these changes can not yet be forseen. Some issues are, for example, inadequate axiomitization, either by omission, or by them being expressed only informally, and legitimate arguments about ontology content. Examples of the latter are concerns over the use of the s-depends relationship and of process profiles. Example omissions are energy, fields, dependency equations that go beyond one-sided and reciprocal.
@@ -10,18 +12,19 @@ At the same time, OWL does not have the ability to compute the same entailments 
 
 A number of principles should guide our work
 
- * A clear _reading_ of the OWL version in terms of BFO reference. A translation is a mapping from the OWL model - axioms, entities, relations, etc. To the formal language used in the reference, currently FOL. A reading can be considered a data transformation that takes asserted and inferred axioms and results in FOL using types defined in BFO2 reference. This translation should be complete - no assertions in the OWL file can be left untranslated. In our current version, the most obvious missing reading is of binary relations with the same name as the ternary time-indexed relations in BFO2 reference. 
+ * Principle 1: A clear _reading_ of the OWL version in terms of BFO reference. A translation is a mapping from the OWL model - axioms, entities, relations, etc. To the formal language used in the reference, currently FOL. A reading can be considered a data transformation that takes asserted and inferred axioms and results in FOL using types defined in BFO2 reference. This translation should be complete - no assertions in the OWL file can be left untranslated. In our current version, the most obvious missing reading is of binary relations with the same name as the ternary time-indexed relations in BFO2 reference. 
 
- * Transparency of process to the consumers and testers of BFO2 OWL releases. For example, consumers of BFO should be made aware of gaps in the BFO2 reading of a released OWL version, with a straightforward way of finding the relevant discussions among our records of meetings, emails, etc. Discussion of issues should be on the documented mailing lists, and version control comments should note changes relative to previous versions, and the justification of such change (typically recorded in meeting notes or in an email discussion. Issue tracking though be thorough and resolutions should be well documented.
+ * Principle 2: Transparency of process to the consumers and testers of BFO2 OWL releases. For example, consumers of BFO should be made aware of gaps in the BFO2 reading of a released OWL version, with a straightforward way of finding the relevant discussions among our records of meetings, emails, etc. Discussion of issues should be on the documented mailing lists, and version control comments should note changes relative to previous versions, and the justification of such change (typically recorded in meeting notes or in an email discussion. Issue tracking though be thorough and resolutions should be well documented.
 
- * An ethic of trying to achieve consensus on decisions, and where this is not possible, an attempt to find acceptable mitigating actions.  For example, where there are disagreements on the acceptability of items from the current BFO2 reference, a reasonable option is to keep consensus elements in one OWL file, non-consensus items in another, and provide users two documented version, one which imports the contentious assertions, one which does not. 
+ * Principle 3: An ethic of trying to achieve consensus on decisions, and where this is not possible, an attempt to find acceptable mitigating actions.  For example, where there are disagreements on the acceptability of items from the current BFO2 reference, a reasonable option is to keep consensus elements in one OWL file, non-consensus items in another, and provide users two documented version, one which imports the contentious assertions, one which does not. 
 
- * Responsiveness to clients of BFO2 OWL. For example it has been sometimes requested that subsets of BFO2 be released for specific purposes, for instance to reduce complexity to domain specific curators. http://obofoundry.org/id_policy.shtml outlines a way to publish these multiple versions in an organized way, and existing scripts are able to subset effectively.
+ * Principle 4: Responsiveness to clients of BFO2 OWL. For example it has been sometimes requested that subsets of BFO2 be released for specific purposes, for instance to reduce complexity to domain specific curators. http://obofoundry.org/id_policy.shtml outlines a way to publish these multiple versions in an organized way, and existing scripts are able to subset effectively.
 
- * Maximal use of reasoning to ensure quality/correctness. It is easy to make mistakes when ontologies have no automated procedure to test them. By adding as many constraining axioms which correspond to textual descriptions in BFO2 Reference, we have he best change of finding conceptual errors.
+ * Principle 5: Maximal use of reasoning to ensure quality/correctness. It is easy to make mistakes when ontologies have no automated procedure to test them. By adding as many constraining axioms which correspond to textual descriptions in BFO2 Reference, we have he best change of finding conceptual errors. We will aim to make clear the relation between the FOL and the OWL, indepedendently of the reference. We will examine the reference with a mind to ensuring axioms that are not so labeled are marked explicitly as axioms.
 
- * Careful attention to explicit representation, with the OWL file, of attribution of current contributors, past contributors, of document status wrt to the reference, descriptions, in variant versions, of how and why the contents was chosen.
+ * Principle 6: Careful attention to explicit representation, with the OWL file, of attribution of current contributors, past contributors, of document status wrt to the reference, descriptions, in variant versions, of how and why the contents was chosen.
  
+= Comments =
 
 = Authors = 
 Alan Ruttenberg
