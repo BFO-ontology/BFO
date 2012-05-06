@@ -42,6 +42,8 @@ At the moment, any transactions on the issues list are directed to bfo-discuss@g
 
 Please record any comments on the above here, and indicate who you are. Anonymous comments will be removed. If you don't have permission to edit this page, send you comment to bfo-devel@googlegroups.com and they will be added here.
 
+Melanie Courtot raises the issue of whether having all the issues for the different aspects on the same issue tracker will be confusing for users, and whether those interested in only one aspect will be annoyed by receiving issue notifications from all efforts. Alan responds that there are some PROs: Easy to see all issues about BFO, easier to manage one issue list, and some possible mitigation strategies: e.g. showing how to set up gmail filter to see only, e.g. BFO OWL issue notifications. However he doesn't feel too strongly about this one way or the other. Alan will raise issue on Monday in summary of vote, probe for whether Melanie has further thoughts and whether there are others who think this is worth discussing further, and decide from there what to do.
+
 = Record of votes =
 
 You can record your vote, before May 7, by leaving your name followed by "agree", or "disagree". Votes to disagree must be accompanied by an alternative proposal (you can point to another page or comment in -line).
@@ -62,3 +64,4 @@ You can record your vote, before May 7, by leaving your name followed by "agree"
  * Mark Jensen: Agree
  * Bjoern Peters: Agree
  * Bill Hogan: Agree
+ * Tom Bittner: Agree
