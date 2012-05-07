@@ -1,4 +1,5 @@
-#labels Phase-Design
+#labels Featured,Phase-Implementation
+#How we record issues and resolutions
 = About this page = 
 
 The proposal on this page was put up for vote in [https://groups.google.com/forum/#!topic/bfo-devel/DoDg9N4Tn6w an email] to the mailing list. As of May 7, all speaking voted to approve, and so this policy is now active. Please do not change the text below, other than to add to the Comments section. 
@@ -65,3 +66,5 @@ The below records votes received before May 7
  * Bjoern Peters: Agree
  * Bill Hogan: Agree
  * Tom Bittner: Agree
+ * Stefan Schulz: Agree
+ * Carmelo Gaudioso: Agree
