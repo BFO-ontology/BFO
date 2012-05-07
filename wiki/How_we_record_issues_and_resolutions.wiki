@@ -1,7 +1,7 @@
 #labels Phase-Design
 = About this page = 
 
-This page, authored by Alan Ruttenberg, is to record a proposal, comments, and a vote on whether to adopt it. Please do not modify the *Background* and *Proposal* sections. Add comments, with your name, in the *Comments* section. Put your vote in the *Record of Votes* section. 
+The proposal on this page was put up for vote in [https://groups.google.com/forum/#!topic/bfo-devel/DoDg9N4Tn6w an email] to the mailing list. As of May 7, all speaking voted to approve, and so this policy is now active. Please do not change the text below, other than to add to the Comments section. 
 
 = Background =
 
@@ -13,9 +13,9 @@ If you plan to be active in further development of BFO2, please respond, by Mond
 
 At that point, if there are only messages in support, and none dissenting, this will be considered policy. If there is a mixture of support/dissent I will send out a doodle poll to have a teleconference to discuss the differences of opinion.  
 
-= Proposal =
+= Approved =
 
-I propose that we use the issue tracker on the BFO google code project (http://code.google.com/p/bfo/issues)  to track all issues, which would be marked to indicate they are in one of four categories: 
+We use the issue tracker on the BFO google code project (http://code.google.com/p/bfo/issues)  to track all issues, which would be marked to indicate they are in one of four categories: 
 
 Reference issues: Issues in either design choices made in the document, including omissions, or more mundane errors of fact, exposition, grammar, or concerns thereof, in the document. 
 
@@ -25,18 +25,18 @@ FOL issues: Issues related to the FOL rendering, including axioms included, fide
 
 Process issues: We have hardly any at the moment, including how we decide on a policy such as this. We can bootstrap by agreeing to what I propose here so that at least the construction of the rest of our policy can be recorded by raising issues and recording their resolutions.
 
-I had already created a number of labels to indicate issue status. I now propose that we adopt uniform use of them as policy when submitting (or curating) issues, i.e. that we request that issue submitters tag their issues with one of the following:
+We request that issue submitters tag their issues with one of the following:
 
  * _Type-BFO2-Reference_ 
  * _Type-BFO2-OWL_       
  * _Type-BFO2-FOL_       
  * _Type-BFO2-Process_   
 
-The templates for issue reports can be customized - see http://code.google.com/p/bfo/issues/entry - most of the fields can have initial values. We would customize the templates to indicate the above.
+We will customize the templates to indicate the above.  
 
-Proposals for resolution of an issue would be recorded as a comment on the issue, with a status tag: _Proposal-to-resolve_. Issues would be marked as resolved by a comment indicating the resolution adopted, the authority/process by which the issue was decided to be resolved and a summary of changed to documents (ideally diffs). As we currently have no agreed upon process for agreeing that issues are resolved, if we agree on this proposal I will submit that as an issue, we will create a process, and muddle through trying to get as close to consensus on it as we can. 
+Proposals for resolution of an issue will be recorded as a comment on the issue, with a status tag: _Proposal-to-resolve_. Issues would be marked as resolved by a comment indicating the resolution adopted, the authority/process by which the issue was decided to be resolved and a summary of changed to documents (ideally diffs). 
 
-At the moment, any transactions on the issues list are directed to bfo-discuss@googlegroups.com. During this phase of development I propose we direct transactions to bfo-devel@googlegroups.com. Once this phase of development is complete, we would once again have issue transactions directed to the larger bfo-discuss@googlegroups.com
+During this phase of development we will direct transactions to bfo-devel@googlegroups.com. Once this phase of development is complete, we will once again have issue transactions directed to the larger bfo-discuss@googlegroups.com
 
 = Comments =
 
@@ -46,7 +46,7 @@ Melanie Courtot raises the issue of whether having all the issues for the differ
 
 = Record of votes =
 
-You can record your vote, before May 7, by leaving your name followed by "agree", or "disagree". Votes to disagree must be accompanied by an alternative proposal (you can point to another page or comment in -line).
+The below records votes received before May 7 
 
  * Alan Ruttenberg: Agree
  * Barry Smith: Agree
