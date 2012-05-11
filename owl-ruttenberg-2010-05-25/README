@@ -1,0 +1,51 @@
+This isn't a release. But I need somewhere to keep the frozen version
+of what I put at /obo/bfo.owl back in 2010 when there was activity and
+demand for some sort of prototype, so here it will be.  The purl
+/obo/bfo/2010-05-25/ruttenberg-bfo2.owl is the purl I chose that onts
+that used it can (e.g. particular versions of OBI).
+
+What's here:
+============
+
+README - this file
+
+Lisp code used to generate these files
+======================================
+
+Note, however, that I have hand edited the ontologyIRIs and versionIRIs in this release, so they don't match the code.
+
+bfo-relations.lisp - mapping relations ids from ro to new ids as well as a collection of axioms
+bfo1.1-to-2.lisp - mapping ids and labels from 1.1 into the new ids,
+		 and apportioning classes into one the components - granularity,
+		 regions, classes
+
+Different "slims"
+=================
+
+Each of these is intended as a top-level import for BFO. The
+ontologyIRI is http://purl.obolibrary.org/obo/bfo.owl and the version
+IRI is to to the purl that leads here.
+
+ruttenberg-bfo2.owl - what I considered to be a useful subset, adequate for OBI and avoiding controversial aspects of BFO we were working on.
+ruttenberg-bfo2-granularity.owl - parts of BFO that were a (IMO) poor implementation of 3-level granularity.
+ruttenberg-bfo2-regions.owl - the region terms. There is an ongoing discussion of BFO's treatment of regions as substantial, with Bjoern's opposing (with my sympathies) proposal that we only use relative relations. 
+ruttenberg-bfo2-all.owl - everything that was in BFO other than the agreed-upon changes to function, removal of processual entity, etc.
+
+Components mixed and matched into the slims
+===========================================
+
+The pieces of BFO that are mixed and matched as imports for the above slims
+
+ruttenberg-granularity.owl
+ruttenberg-regions.owl
+ruttenberg-relations.owl
+ruttenberg-classes.owl
+
+OBO translations
+================
+
+Ad-hoc translations to OBO, primarily for non-reasoning uses within OBO edit.
+
+ruttenberg-bfo2-relations.obo
+ruttenberg-bfo2-classes.obo
+

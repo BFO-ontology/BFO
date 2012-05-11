@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/"
+     xml:base="http://purl.obolibrary.org/obo/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-regions.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
+        <rdfs:label xml:lang="en">editor preferred term</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
+        <rdfs:label xml:lang="en">alternative term</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000116">
+        <rdfs:label xml:lang="en">editor note</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000112">
+        <rdfs:label xml:lang="en">example of usage</rdfs:label>
+    </owl:AnnotationProperty>
+    <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
+        <rdfs:label xml:lang="en">definition</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000006 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000006">
+        <rdfs:label xml:lang="en">spatial region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:IAO_0000115 xml:lang="en">A continuant  that is neither bearer of quality  entities nor inheres in any other entities.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">All instances of continuant [snap:Continuant] are spatial entities, that is, they enter in the relation of (spatial) location with spatial region [snap:SpatialRegion] entities. As a particular case, the exact spatial location of a spatial region [snap:SpatialRegion] is this region itself.</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">An instance of spatial region [snap:SpatialRegion] is a part of space. All parts of space are spatial region [snap:SpatialRegion] entities and only spatial region [snap:SpatialRegion] entities are parts of space. Space is the entire extent of the spatial universe, a designated individual, which is thus itself a spatial region [snap:SpatialRegion].</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">Space and spatial region [snap:SpatialRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of space is sometimes called &quot;absolutist&quot; or &quot;the container view&quot;. In BFO, the class site [snap:Site] allows for a so-called relational view of space, that is to say, a view according to which spatiality is a matter of relative location between entities and not a matter of being tied to space. The bridge between these two views is secured through the fact that while instances of site [snap:Site] are not spatial region [snap:SpatialRegion] entities, they are nevertheless spatial entities.</obo:IAO_0000116>
+        <obo:IAO_0000112 xml:lang="en">parts of the sum total of all space in the universe</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">spatial region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the sum total of all space in the universe</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000009 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000009">
+        <rdfs:label xml:lang="en">two dimensional region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:IAO_0000115 xml:lang="en">A spatial region  with two dimensions.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">the surface of a cube-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the surface of a rectilinear planar figure-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the surface of a sphere-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">two dimensional region</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000010 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000010">
+        <rdfs:label xml:lang="en">scattered spatiotemporal region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
+        <obo:IAO_0000115 xml:lang="en">A space time region  that has spatial and temporal dimensions and every spatial and temporal point of which is not connected with every other spatial and temporal point of which.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">scattered spatiotemporal region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the space and time occupied by the individual games of the World Cup</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the space and time occupied by the individual liaisons in a romantic affair</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000011 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000011">
+        <rdfs:label xml:lang="en">spatiotemporal region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:IAO_0000116 xml:lang="en">All instances of occurrent [span:Occurrent] are spatiotemporal entities, that is, they enter in the relation of (spatiotemporal) location with spatiotemporal region [span:SpatiotemporalRegion] entities. As a particular case, the exact spatiotemporal location of a spatiotemporal region [span:SpatiotemporalRegion] is this region itself.</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">An instance of the spatiotemporal region [span:SpatiotemporalRegion] is a part of spacetime. All parts of spacetime are spatiotemporal region [span:SpatiotemporalRegion] entities and only spatiotemporal region [span:SpatiotemporalRegion] entities are parts of spacetime. In particular, neither spatial region [snap:SpatialRegion] entities nor temporal region [span:TemporalRegion] entities are in BFO parts of spacetime. Spacetime is the entire extent of the spatiotemporal universe, a designated individual, which is thus itself a spatiotemporal region [span:SpatiotemporalRegion]. Spacetime is among occurrents the analogous of space among continuant [snap:Continuant] entities.</obo:IAO_0000116>
+        <obo:IAO_0000115 xml:lang="en">An occurrent  at or in which processual entity  entities can be located.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Spacetime and spatiotemporal region [span:SpatiotemporalRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of spacetime can be called &quot;absolutist&quot; or &quot;the container view&quot;. In BFO, the class processual context [span:ProcessualContext] allows for a so-called relational view of spacetime, that is to say, a view according to which spatiotemporality is a matter of relative location between entities and not a matter of being tied to spacetime. In BFO, the bridge between these two views is secured through the fact that instances of processual context [span:ProcessualContext] are too spatiotemporal entities.</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">spatiotemporal region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal context occupied by a process of cellular meiosis</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal region occupied by a human life</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal region occupied by the development of a cancer tumor</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000012 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000012">
+        <rdfs:label xml:lang="en">spatiotemporal instant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000013"/>
+        <obo:IAO_0000115 xml:lang="en">A connected space time region  at a specific moment.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">spatiotemporal instant</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the space time region occupied by a single instantaneous temporal slice (part) of a process</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000013 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000013">
+        <rdfs:label xml:lang="en">connected spatiotemporal region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
+        <obo:IAO_0000115 xml:lang="en">A space time region  that has temporal and spatial dimensions such that all points within the spatiotemporal region are mediately or immediately connected to all other points within the same space time region .</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">connected spatiotemporal region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the spatial and temporal location of an individual organism&#39;s life</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatial and temporal location of the development of a fetus</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000018 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000018">
+        <rdfs:label xml:lang="en">zero dimensional region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:IAO_0000115 xml:lang="en">A spatial region  with no dimensions.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a point</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">zero dimensional region</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000026 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000026">
+        <rdfs:label xml:lang="en">one dimensional region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:IAO_0000115 xml:lang="en">A spatial region  with one dimension.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">an edge of a cube-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">one dimensional region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the part of space that is a line stretching from one end of absolute space to the other</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000028 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000028">
+        <rdfs:label xml:lang="en">three dimensional region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:IAO_0000115 xml:lang="en">A spatial region  with three dimensions.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a cube-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a sphere-shaped part of space</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">three dimensional region</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000036 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000036">
+        <rdfs:label xml:lang="en">spatiotemporal interval</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000013"/>
+        <obo:IAO_0000115 xml:lang="en">A connected space time region  that endures for more than a single moment of time.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">spatiotemporal interval</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the space time region occupied by a process or by a fiat processual part</obo:IAO_0000112>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.0.0.1453) http://owlapi.sourceforge.net -->
+

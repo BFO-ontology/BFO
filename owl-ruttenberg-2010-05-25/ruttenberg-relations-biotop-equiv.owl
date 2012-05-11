@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl 'http://www.w3.org/2002/07/owl#'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+]>
+
+<rdf:RDF
+    xmlns:owl="&owl;"
+    xmlns:rdf="&rdf;"
+>
+<owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-relations-biotop-equiv.owl">
+  <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-relations.owl"/>
+  <owl:imports rdf:resource="http://purl.org/biotop/biotop.owl"/>
+</owl:Ontology>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000100">
+  <owl:equivalentProperty rdf:resource="http://purl.org/biotop/biotop.owl#hasLocus"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000101">
+  <owl:equivalentProperty rdf:resource="http://purl.org/biotop/biotop.owl#physicalPartOf"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000052">
+  <owl:equivalentProperty rdf:resource="http://purl.org/biotop/biotop.owl#inheresIn"/>
+</rdf:Description>
+
+</rdf:RDF>
