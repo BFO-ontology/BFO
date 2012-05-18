@@ -6,8 +6,8 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="https://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-relations.owl">
-        <owl:imports rdf:resource="https://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-classes.owl"/>
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-relations.owl">
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-classes.owl"/>
     </owl:Ontology>
     
 
