@@ -1,0 +1,13 @@
+#summary A page to collect current issues for which we may want to survey the BFO community
+#labels Featured,Phase-Design
+
+= Introduction =
+
+This page has been created following discussion at http://code.google.com/p/bfo/issues/detail?id=34. It aims at collecting those issues for which we may want to poll the BFO users community.
+
+
+= Details =
+
+== Use of underscores ==
+
+BFO2 developers disagree as to whether relations labels should contain underscores or spaces as word separators, see  http://code.google.com/p/bfo/issues/detail?id=31. It is unclear how to solve this. One proposal is to poll the BFO community, as one argument relies on such a survey dated 2007.
