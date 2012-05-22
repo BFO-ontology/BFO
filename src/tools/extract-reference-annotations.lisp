@@ -17,7 +17,7 @@
 		do (write-string (#"replaceAll" (car match) "</{0,1}.*?>" "") s) 
 		)
 	     )))
-      (all-matches extracted-text  "(?i)(as|a|axiom|domain|range|note|example)\\((.*?)\\)\\[(.*?)\\]" 1 2 3))))
+      (all-matches extracted-text  "(?i)(as|at|a|axiom|domain|range|note|example)\\((.*?)\\)\\[(.*?)\\]" 1 2 3))))
 
 ;; simpler, but doesn't see hidden text
 ;; (#"parseToString" (new 'tika) (new 'file (translate-logical-pathname "bfo:docs;bfo2-reference;BFO2-Reference.docx")))
