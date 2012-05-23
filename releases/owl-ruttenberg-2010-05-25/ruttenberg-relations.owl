@@ -624,7 +624,6 @@
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000056"/>
-        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000069"/>
     </owl:ObjectProperty>
     <owl:Axiom>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000056"/>
@@ -650,13 +649,6 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010048"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000068"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/BFO_0000069"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/BFO_0010039"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#inverseOf"/>
-    </owl:Axiom>
-    
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000069 -->
