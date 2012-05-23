@@ -7,3 +7,9 @@ spatiotemporal region generalizes BFO 1.O by allowing both connected and non-con
 similarly for temporal and spatial region
 
 See http://code.google.com/p/bfo/issues/detail?id=44
+
+=== part_of ===
+
+part_of is no longer in BFO2,  rather we have continuant_part_of, occurrent_part_of, and temporal_part_of (the last is a child of occurrent_part_of)
+
+See http://code.google.com/p/bfo/issues/detail?id=46
