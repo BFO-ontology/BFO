@@ -1,6 +1,6 @@
 # Collected notes relating BFO 1.1 to BFO 2
 
-= Scattered verus connected = 
+=== Scattered versus connected ===
 
 spatiotemporal region generalizes BFO 1.O by allowing both connected and non-connected spatiotemporal regions
 
