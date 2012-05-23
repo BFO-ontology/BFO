@@ -1,0 +1,38 @@
+http://code.google.com/p/bfo/issues/detail?id=22 
+
+Here are my comments on the FOL rendering of BFO. 
+
+ #. For ease of locating terms, primitves should be listed in alphabetical order. 
+ #. Definitions which utilize a term should not occurr before the term is defined or listed as primitive, e.g., "RelationalQuality(a)"   uses 'qualityOf(a,b,t)' before it is mentioned. 
+ #. 'projectsOnto' should be 'ProjectOnTo' 
+ #. Sometimes it reads "where a and b are occurrents etc. Some times it doesn't this should be uniform. 
+ #. Enlgish Translations of the Axioms would be nice. 
+ #. 't' is always used for a time, but 'r' needs to be explicitly asserted as an instance of a Region (Some times 'r' is asserted to be a region and sometimes it is not..see next comment.....why is there only one sorted variable? Why is this never explicitly stated? 
+ #.In the definition of 'temporalPartOf' 'r' is the subject of the predicate 'TemporalRegion'  But 'r1'  is not designated as a region...slipping into multi-sorted? Should add predicate for 'r1' This also occurrs in definition 14. 
+ #. We should either use a single sorted language or a properly multi-sorted language and not just wing it....The range of variables should be set in advance of the use of them. 
+ #. Since the Universe of discourse is the class of Entities...Entity(x) is trivially true and should not occurr in any sentence as, when coupled with a quantifying expression it is redundant. If it is informative then all axioms should have Entity(x) or 'y' or whatever as a conjunct in their antecedent. 
+ #. Maybe this is a problem with BFO? but axiom 33 says that if x is a continuant then there is a temporal region and a time  and that temporal region exists at that time and x exists at that time too....but don't temporal regions always exist? 
+ #. "axiom"  49 (041 -002) is incorrect. It implies that only independent continuants can be located in a region... Also it's source number from BFO document is a primitive relation.. 
+
+Final Comment: The use of a first-order language here is suboptimal. The   
+definitions mix Meta linguistic variables with object language variables in   
+a manner that produces confusion. For example in the 'continuantPartOfAt'   
+elucidation' 'a' and 'b' are specified at contiuants. That is a use of 'a'   
+and 'b'.  When predicates are defined 'a' and 'b' are metalinguistic   
+variables. This is evident from the use of '=df' which is a meta-linguistic   
+operator that is used to define an entire class of sentences/ phrases that   
+use that particle being defined. Then when, as in axiom 51 the terms are   
+being used.. there is no mention of the fact that 'x' and 'y' are used to   
+refer to continuants as in 'Continuant(x)', nor is there any indication   
+that 'r' refers to a region in axiom 50. 
+
+In order to adequately express BFO in a First Order language, and specify   
+what that expression means.. we need to be much more careful in keeping the   
+object language and the meta-language distinct. We also need to either   
+specify a multi-sorted language, and use variables like 'r' for regions   
+and 't' for times 'p' for process...etc.. or we need to Stay single sorted   
+and use phrases like 'Continuant(x)' or 'Region(r)'. As it stands there is   
+no way that this can be understood as an ideographic representation of BFO   
+in a FOL. 
+
+LFJ 
