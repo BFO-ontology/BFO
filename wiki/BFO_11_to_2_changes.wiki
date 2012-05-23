@@ -8,7 +8,25 @@ similarly for temporal and spatial region
 
 See http://code.google.com/p/bfo/issues/detail?id=44
 
-=== part_of ===
+===  Reciprocal dependence ===
+ 
+Multiple entities can be reciprocally dependent on each other, for example between color hue, saturation and brightness; such cases can also involve reciprocal generic dependence as in the case of a disposition of a key to open a lock or some equivalent lock, and of the lock to be opened by this or some equivalent key.
+
+=== Boundaries and regions ===
+
+In BFO 1.1 the assumption was made that the external surface of a material entity such as a cell could be treated as if it were a boundary in the mathematical sense. The new document propounds the view that when we talk about external surfaces of material objects in this way then we are talking about something fiat. More generally, the focus in discussion of boundaries in BFO 2.0 is now on fiat boundaries, which means: boundaries for which there is no assumption that they coincide with physical discontinuities. The ontology of boundaries becomes more closely allied with the ontology of regions.
+
+=== Revision of treatment of spatial location ===
+
+We generalize the treatment of ‘located_in’ and remove the relation ‘contained_in’. 
+
+=== exists_at ===
+
+New relation exists_at(e,t) added
+
+=== Relations of parthood disambiguated ===
+
+BFO 1. distinguished between parthood among continuants and occurrents by means of the "at t" suffix used for the former; BFO2 has distinct relations: continuant_part_of and occurrent_part_of (still using the at t suffix for the former).
 
 part_of is no longer in BFO2,  rather we have continuant_part_of, occurrent_part_of, and temporal_part_of (the last is a child of occurrent_part_of)
 
