@@ -1,3 +1,18 @@
+raw extraction from BFO2 reference text.
+
+types of extraction
+
+a - a single annotations. Heading ':' text.
+as - a set of annotations
+at - a set of annotation of a ternary relation
+note - an editor note
+axiom - a freetext description of an axiom
+domain - domain of a relation
+range - range of a relation
+example - example of usage
+
+
+****************
 material entity - note
 
 Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of  Material Entity. Users are invited to propose new subcategories of Material Entity.
