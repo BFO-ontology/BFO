@@ -267,10 +267,12 @@ c-part-of
  (material-basis-of nil !obo:BFO_0000127)  
  (concretizes nil !obo:BFO_0000059)
  (concretization-of !obo:BFO_0000058 )
- (st-projects-onto-s nil nil (:issue 41)) ; wait to check new version for these 4
- (s-projection-of-st nil nil (:issue 41))
- (st-projects-onto-t nil nil (:issue 41))
- (t-projection-of-st nil nil (:issue 41))
+ (st-projects-onto-s nil !obo:BFO_0000151 (:issue 41)) ; in version end of may
+ (s-projection-of-st nil !obo:BFO_0000152 (:issue 41))
+ (st-projects-onto-t nil !obo:BFO_0000153 (:issue 41))
+ (t-projection-of-st nil !obo:BFO_0000154 (:issue 41))
+ (spans nil !obo:BFO_0000155)
+ (span-of nil !obo:BFO_0000156)
  (participates-in nil !obo:BFO_0000056)
  (has-participant nil !obo:BFO_0000057)
  (exists-at nil !obo:BFO_0000108) 
