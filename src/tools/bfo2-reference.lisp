@@ -34,74 +34,91 @@
 ;;   '(' relation-symbol inverse-symbol ')' ( :binary | :ternary ) props* ')' 
 
 (terms
- '((entity :unary)
-   (continuant :unary)
-   (occurrent :unary)
-   (ic :unary)
-   (sdc :unary)
-   (gdc :unary)
-   (process :unary)
-   (p-boundary :unary)
-   (t-region :unary)
-   (st-region :unary)
-   (s-region :unary)
-   (material :unary)
-   (immaterial :unary)
-   (object :unary)
-   (fiat-object :unary)
-   (object-aggregate :unary)
-   (quality :unary)
-   (r-quality :unary)
-   (realizable :unary)
-   (disposition :unary)
-   (function :unary)
-   (role :unary)
-   (process-profile :unary)
-   (0d-t-region :unary)
-   (1d-t-region :unary)
-   (0d-s-region :unary)
-   (1d-s-region :unary)
-   (2d-s-region :unary)
-   (3d-s-region :unary)
-   (site :unary)
-   (cf-boundary :unary)
-   (0d-cf-boundary :unary)
-   (1d-cf-boundary :unary)
-   (2d-cf-boundary :unary)
-   (exists-at  :binary)
-   ((o-part-of o-has-part) :binary)
-   ((t-part-of t-has-part) :binary)
-   ((occupies occupied-by)  :binary)
-   ((profile-of has-profile) :binary)
-   ((c-part-of c-has-part) :ternary)
-   ((c-ppart-of c-has-ppart) :ternary)
-   ((m-part-of m-has-part) :ternary)
-   ((located-in has-location) :ternary)
-   ((located-at-r r-location-of) :ternary)
-   ((inheres-in bearer-of) :ternary)
-   ((s-dep-on has-s-dep) :ternary)
-   ((g-dep-on has-g-dep) :ternary)
-   ((q-of has-q) :ternary)
-   ((f-of has-f) :ternary)
-   ((r-of has-r) :ternary)
-   ((d-of has-d) :ternary)
-   ((realizes realized-in) :binary)
-   ((has-material-basis material-basis-of) :ternary)
-   ((concretizes concretization-of) :ternary)
-   ((st-projects-onto-s s-projection-of-st) :ternary)
-   ((st-projects-onto-t t-projection-of-st) :binary)
-   ((has-participant participates-in) :ternary)
-))
+ (entity :unary)
+ (continuant :unary)
+ (occurrent :unary)
+ (ic :unary)
+ (sdc :unary)
+ (gdc :unary)
+ (process :unary)
+ (p-boundary :unary)
+ (t-region :unary)
+ (st-region :unary)
+ (s-region :unary)
+ (material :unary)
+ (immaterial :unary)
+ (object :unary)
+ (fiat-object :unary)
+ (object-aggregate :unary)
+ (quality :unary)
+ (r-quality :unary)
+ (realizable :unary)
+ (disposition :unary)
+ (function :unary)
+ (role :unary)
+ (process-profile :unary)
+ (0d-t-region :unary)
+ (1d-t-region :unary)
+ (0d-s-region :unary)
+ (1d-s-region :unary)
+ (2d-s-region :unary)
+ (3d-s-region :unary)
+ (site :unary)
+ (cf-boundary :unary)
+ (0d-cf-boundary :unary)
+ (1d-cf-boundary :unary)
+ (2d-cf-boundary :unary)
+ ((exists-at has-existing-entities)  :binary)
+ ((o-part-of o-has-part) :binary)
+ ((t-part-of t-has-part) :binary)
+ ((occupies occupied-by)  :binary)
+ ((profile-of has-profile) :binary)
+ ((c-part-of c-has-part) :ternary)
+ ((c-ppart-of c-has-ppart) :ternary)
+ ((member-part-of member-has-part) :ternary)
+ ((located-in has-location) :ternary)
+ ((located-at-r r-location-of) :ternary)
+ ((inheres-in bearer-of) :ternary)
+ ((s-depends-on has-s-dep) :ternary)
+ ((g-depends-on has-g-dep) :ternary)
+ ((q-of has-q) :ternary)
+ ((f-of has-f) :ternary)
+ ((r-of has-r) :ternary)
+ ((d-of has-d) :ternary)
+ ((realizes realized-in) :binary)
+ ((has-material-basis material-basis-of) :ternary)
+ ((concretizes concretization-of) :ternary)
+ ((st-projects-onto-s s-projection-of-st) :ternary)
+ ((st-projects-onto-t t-projection-of-st) :binary)
+ ((has-participant participates-in) :ternary)
+ ((spans span-of) :binary)
+ )
 
-;; define the class hierarchy (unary symbols). This is done from the figure.
+;; define the class hierarchy (unary symbols). This is done from the
+;; figure. parenthesized properties are either "d" for disjoint
+;; children, and/or "c" for covering axiom (the children instances completely
+;; exhaust the parent instances).
+
 (class-hierarchy "
-entity
--continuant
---ic
----object
----fiat-object
----object-aggregate
---sdc
+entity(d)
+-continuant(d)
+--ic(d)
+---material
+----object
+----fiat-object
+----object-aggregate
+---immaterial(d)
+----site
+----cf-boundary(dc)
+-----0d-cf-boundary
+-----1d-cf-boundary
+-----2d-cf-boundary
+----s-region(dc)
+-----0d-s-region
+-----1d-s-region
+-----2d-s-region
+-----3d-s-region
+--sdc(d)
 ---quality
 ----r-quality
 ---realizable
@@ -109,18 +126,7 @@ entity
 -----function
 ----role
 --gdc
---immaterial
----site
----cf-boundary
-----0d-cf-boundary
-----1d-cf-boundary
-----2d-cf-boundary
----s-region
-----0d-s-region
-----1d-s-region
-----2d-s-region
-----3d-s-region
--occurrent
+-occurrent(d)
 --process
 ---process-profile
 --p-boundary
@@ -158,22 +164,23 @@ st-projects-onto-t
 
 (ternary-property-hierarchy "
 located-at-r 
-s-dep-on 
+s-depends-on 
 -inheres-in 
 --q-of 
 --f-of 
 --r-of 
 --d-of 
-g-dep-on 
+g-depends-on 
 located-in 
 located-at
 has-participant
 has-material-basis 
 concretizes 
 st-projects-onto-s 
+spans
 c-part-of 
 -c-ppart-of 
--m-part-of 
+-member-part-of 
 ")
 
 ;; URIs of terms both current in bfo2 reference as well as those used,
@@ -204,12 +211,12 @@ c-part-of
  (st-region !span:SpatioTemporalRegion !obo:BFO_0000011)
  (s-region !snap:SpatialRegion !obo:BFO_0000006 )
  (material !snap:MaterialEntity !obo:BFO_0000040) 
- (immaterial nil nil)  ("immaterial entity" !obo:BFO_0000141)
+ (immaterial nil !obo:BFO_0000141)  
  (object !snap:Object !obo:BFO_0000030) 
  (fiat-object !snap:FiatObjectPart !obo:BFO_0000024) 
  (object-aggregate !snap:ObjectAggregate !obo:BFO_0000027) 
  (quality !snap:Quality !obo:BFO_0000019) 
- (r-quality nil nil)  ("relational quality" !obo:BFO_0000145) 
+ (r-quality nil !obo:BFO_0000145)  
  (realizable !snap:RealizableEntity !obo:BFO_0000017)  
  (disposition !snap:Disposition !obo:BFO_0000016) 
  (function !snap:Function !obo:BFO_0000034) 
@@ -241,17 +248,17 @@ c-part-of
  (c-part-of nil !obo:BFO_0000105)
  (c-ppart-of nil !obo:BFO_0000137)
  (c-has-ppart nil !obo:BFO_0000111)
- (m-part-of nil !obo:BFO_0000129)
- (m-has-part nil !obo:BFO_0000115)
+ (member-part-of nil !obo:BFO_0000129)
+ (member-has-part nil !obo:BFO_0000115)
  (located-in nil !obo:BFO_0000082)
  (has-location nil !obo:BFO_0000124)
  (located-at-r nil !obo:BFO_0000083)
- (r-located-at nil !obo:BFO_0000123)
+ (r-location-of nil !obo:BFO_0000123)
  (inheres-in nil !obo:BFO_0000052)
  (bearer-of nil !obo:BFO_0000053)
- (s-dep-on nil !obo:BFO_0000070) 
- (has-s-dep nil !obo:BFO_0000150) ; alan assigned
- (g-dep-on nil nil !obo:BFO_0000084)
+ (s-depends-on nil !obo:BFO_0000070) 
+ (has-s-dep nil !obo:BFO_0000125) 
+ (g-depends-on nil !obo:BFO_0000084)
  (has-g-dep nil !obo:BFO_0000101)
  (q-of nil !obo:BFO_0000080)
  (has-q nil !obo:BFO_0000086)  
@@ -266,16 +273,17 @@ c-part-of
  (has-material-basis nil !obo:BFO_0000113)  
  (material-basis-of nil !obo:BFO_0000127)  
  (concretizes nil !obo:BFO_0000059)
- (concretization-of !obo:BFO_0000058 )
- (st-projects-onto-s nil !obo:BFO_0000151 (:issue 41)) ; in version end of may
- (s-projection-of-st nil !obo:BFO_0000152 (:issue 41))
- (st-projects-onto-t nil !obo:BFO_0000153 (:issue 41))
- (t-projection-of-st nil !obo:BFO_0000154 (:issue 41))
- (spans nil !obo:BFO_0000155)
- (span-of nil !obo:BFO_0000156)
+ (concretization-of nil !obo:BFO_0000058 )
+ (st-projects-onto-s nil !obo:BFO_0000151 (:issue 41)) ; in version end of may, alan assigned
+ (s-projection-of-st nil !obo:BFO_0000152 (:issue 41)) ; alan assigned
+ (st-projects-onto-t nil !obo:BFO_0000153 (:issue 41)) ; alan assigned
+ (t-projection-of-st nil !obo:BFO_0000154 (:issue 41)) ; alan assigned
+ (spans nil !obo:BFO_0000155) ; in version end of may alan assigned
+ (span-of nil !obo:BFO_0000156) ; in version end of may alan assigned
  (participates-in nil !obo:BFO_0000056)
  (has-participant nil !obo:BFO_0000057)
  (exists-at nil !obo:BFO_0000108) 
+ (has-existing-entities nil !obo:BFO_0000157)  ; alan assigned
 
 ;; obsolete terms that were in BFO 1.1
 
@@ -331,21 +339,22 @@ c-part-of
  ;; leftover terms from owl-schulz. Majority could be defined but are not in spec. 
  ;; submit issues where appropriate
 
- ("depends on" nil !obo:BFO_0000106 (:maybe schulz))
- ("inv depends on" nil !obo:BFO_0000122 (:maybe schulz))
- ("has continuant boundary" nil !obo:BFO_0000109 (:maybe schulz))
- ("has occurrent boundary" nil !obo:BFO_0000116 (:maybe schulz))
- ("has occurrent proper part" nil !obo:BFO_0000118 (:maybe schulz))
- ("has proper part" nil !obo:BFO_0000120 :not (:issue 46))
- ("proper part of" nil !obo:BFO_0000135 :not (:issue 46))
- ("proper temporal part of" nil !obo:BFO_0000136 (:maybe schulz) (:note "inverse was not defined"))
- ("has material part" nil !obo:BFO_0000114 :maybe (:issue 33))
- ("material part of" nil !obo:BFO_0000128 :maybe (:issue 33))
- ("is boundary dependent on" nil !obo:BFO_0000102 (:maybe schulz))
- ("occurrent boundary of" nil !obo:BFO_0000131 (:maybe schulz))
- ("is continuant boundary of" nil !obo:BFO_0000104 (:maybe schulz))
- ("is contained in" nil !obo:BFO_0000103 :obsolete)
- ("one dimensional temporal region" nil !obo:BFO_0000143 (:duplicate !obo:BFO_0000038))
- ("projects onto" nil !obo:BFO_0000134 :not (:issue 41))
- ("occupies" nil !obo:BFO_0000130 (:duplicate !obo:BFO_0000066))
+ (depends-on nil !obo:BFO_0000106 (:maybe schulz))
+ (inv-depends-on nil !obo:BFO_0000122 (:maybe schulz))
+ (has-c-boundary nil !obo:BFO_0000109 (:maybe schulz))
+ (has-o-boundary nil !obo:BFO_0000116 (:maybe schulz))
+ (o-has-ppart nil !obo:BFO_0000118 (:maybe schulz))
+ (o-ppart-of nil !obo:BFO_0000138 (:maybe schulz))
+ (has-ppart nil !obo:BFO_0000120 :not (:issue 46))
+ (ppart-of nil !obo:BFO_0000135 :not (:issue 46))
+ (t-ppart-of nil !obo:BFO_0000136 (:maybe schulz) (:note "inverse was not defined"))
+ (has-material-part nil !obo:BFO_0000114 (:maybe schulz) (:issue 33))
+ (material-part-of nil !obo:BFO_0000128 (:maybe schulz) (:issue 33))
+ (b-depends-on nil !obo:BFO_0000102 (:maybe schulz))
+ (o-boundary-of nil !obo:BFO_0000131 (:maybe schulz))
+ (c-boundary-of nil !obo:BFO_0000104 (:maybe schulz))
+ (contained-in nil !obo:BFO_0000103 :obsolete)
+ (1d-t-region-dup nil !obo:BFO_0000143 (:duplicate !obo:BFO_0000038))
+ (projects-onto nil !obo:BFO_0000134 :not (:issue 41))
+ (occupies-dup nil !obo:BFO_0000130 (:duplicate !obo:BFO_0000066))
 )
