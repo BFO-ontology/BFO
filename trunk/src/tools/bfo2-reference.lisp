@@ -73,24 +73,33 @@
  ((t-part-of t-has-part) :binary)
  ((occupies occupied-by)  :binary)
  ((profile-of has-profile) :binary)
- ((c-part-of c-has-part) :ternary)
- ((c-ppart-of c-has-ppart) :ternary)
- ((member-part-of member-has-part) :ternary)
- ((located-in has-location) :ternary)
- ((located-at-r r-location-of) :ternary)
- ((inheres-in bearer-of) :ternary)
- ((s-depends-on has-s-dep) :ternary)
- ((g-depends-on has-g-dep) :ternary)
- ((q-of has-q) :ternary)
- ((f-of has-f) :ternary)
- ((r-of has-r) :ternary)
- ((d-of has-d) :ternary)
  ((realizes realized-in) :binary)
- ((has-material-basis material-basis-of) :ternary)
- ((concretizes concretization-of) :ternary)
- ((st-projects-onto-s s-projection-of-st) :ternary)
+
+ ((c-part-of c-has-part) :ternary (:temporal (:all :some) (:all :some) "as Mathias suggests") (:issue 49))
+ ((c-ppart-of c-has-ppart) :ternary (:temporal (:all :some) (:all :some) "Mathias suggest not parallel to part of, seems not to alan") (:issue 49))
+ ((member-part-of member-has-part) :ternary (:issue 49) (:temporal (:all :some) (:all :some) "Seems to be similar enough to part of (parts aren't permanent or defining except at an instant, so offer full set"))
+ ((located-in has-location) :ternary (:temporal (:some :all) (:some :all)) (:issue 49))
+ ((located-at-r r-location-of) :ternary (:temporal (:some) (:some) "Include some some for now, but note that the all versions can be used to define frames") (:issue 49))
+
+ ((inheres-in bearer-of) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too") (:issue 49))
+ ((q-of has-q) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+  (:issue 49))
+ ((f-of has-f) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+  (:issue 49))
+ ((r-of has-r) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+  (:issue 49))
+ ((d-of has-d) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+  (:issue 49))
+
+ ((s-depends-on has-s-dep) :ternary (:temporal (:all :some) (:some :all) "specific dependents inhere in there bearers for their whole life. Buf the s-dependence of a process on a partcipant can hold only at some times. So both. I think Mathias leaves out the process case? (I would be happy to leave it out of BFO altogether") (:issue 49))
+ ((g-depends-on has-g-dep) :ternary (:temporal (:some) (:some) "Define some times in both directions agreeing with Mathias") (:issue 49))
+
+
+ ((has-material-basis material-basis-of) :ternary (:temporal (:all) (:some :all) "Follow Mathias as at all times for the forward relation, both for the reverse relation") (:issue 49))
+ ((concretizes concretization-of) :ternary (:temporal (:some :all) (:some :all)) (:issue 49) "Unsure of this one - Alan. Include both for now")
+ ((st-projects-onto-s s-projection-of-st) :ternary (:temporal (:some) (:some) "Things tend to move and change shape in time, so at some times in both directions") (:issue 49))
  ((st-projects-onto-t t-projection-of-st) :binary)
- ((has-participant participates-in) :ternary)
+ ((has-participant participates-in) :ternary (:temporal (:some :all) (:some :all) "at some times is parallels the class-class definition. At all times is permanent participation, requested by Stefan") (:issue 49))
  ((spans span-of) :binary)
  )
 
@@ -109,11 +118,11 @@ entity(d)
 ----object-aggregate
 ---immaterial(d)
 ----site
-----cf-boundary(dc)
+----cf-boundary(d)
 -----0d-cf-boundary
 -----1d-cf-boundary
 -----2d-cf-boundary
-----s-region(dc)
+----s-region(d)
 -----0d-s-region
 -----1d-s-region
 -----2d-s-region
@@ -121,7 +130,7 @@ entity(d)
 --sdc(d)
 ---quality
 ----r-quality
----realizable
+---realizable(d)
 ----disposition
 -----function
 ----role
@@ -131,7 +140,7 @@ entity(d)
 ---process-profile
 --p-boundary
 --st-region
---t-region
+--t-region(d)
 ---0d-t-region
 ---1d-t-region
 ")
