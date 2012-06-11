@@ -22,11 +22,17 @@
 	      :pathname ""
 	      :components
 	      ((:jar-directory "lib")))
-     (:module files :pathname ""
-	      :depends-on (jars)
+     (:module spec :pathname ""
+	      :components
+	      ((:static-file "bfo2-reference.lisp")))
+     (:module parse :pathname "" :depends-on (spec)
+	      :components
+	      ((:file "parse-specification")))
+     (:module process :pathname ""
 	      :components
 	      ((:file "extract-reference-annotations")
-	       (:file "process-axioms.lisp")
+	       (:file "process-axioms")
+	       (:file "generate-bfo")
 	       )))
     :depends-on (owl2))
 
