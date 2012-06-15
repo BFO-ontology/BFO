@@ -8,6 +8,7 @@
   2prop2subprop
   3prop2subprop
   terms-with-md-siblings
+  term2annotation
   )
 
 
@@ -55,34 +56,34 @@
 	(parent2child (make-hash-table :test 'equal)))
     (read-line stream)
     (flet ((emit (child parent)
-					(let ((emit (list child parent))) (print-db emit))
-	     (push child (gethash parent parent2child))))
+					;(let ((emit (list child parent))) (print-db emit))
+	     (and child parent
+		  (push child (gethash parent parent2child)))
+	     (unless (and child (gethash child parent2child))
+	       (setf (gethash child parent2child) nil))))
       (loop with stack = nil and indent = 0 and lastchild = nil
 	 for line = (read-line stream nil :eof)
 	 until (eq line :eof)
-	 for ((depth name flags)) = (all-matches line "(-*)([0-9a-z-]+)(\\(([a-z]+)\\)){0,1}" 1 2 4)
+	 for ((depth name flags)) = (all-matches line "(-*)([_0-9a-z-]+)(\\(([a-z]+)\\)){0,1}" 1 2 4)
 	 for new-indent = (length depth)
-	 for name-symbol = (intern name)
+	 for name-symbol = (intern (string-upcase name))
 	 do
-					(print-db line depth name flags indent new-indent name-symbol lastchild stack)
+;;;					(print-db line depth name flags indent new-indent name-symbol lastchild stack)
 	 (when (find #\d flags) (push name-symbol (bfo-terms-with-md-siblings bfo-struct)))
 	 (cond ;((null stack)		; first line
 		;(setq stack (list name-symbol)))
 	       ((= indent new-indent) ;; add another sibling and replace lastchild
-		(and stack
-		     (emit name-symbol (first stack)))
+		(emit name-symbol (first stack))
 		(setq lastchild name-symbol))
 	       ((= (1+ indent) new-indent) ;; go one level deeper
 		(and lastchild (push lastchild stack))
-		(and stack
-		     (emit name-symbol (first stack)))
+		(emit name-symbol (first stack))
 		(setq indent new-indent)
 		(setq lastchild name-symbol)))
 	 (when (< new-indent indent) ; going up a level
-					(print-db (- new-indent indent))
+;;;	   (print-db (- new-indent indent))
 	   (loop repeat (- indent new-indent) do  (pop stack))
-	   (and stack
-		(emit name-symbol (first stack)))
+	   (emit name-symbol (first stack))
 	   (setq lastchild name-symbol)
 	   (setq indent new-indent)))
       (funcall result-setter parent2child bfo-struct)))

@@ -68,26 +68,47 @@
  (0d-cf-boundary :unary)
  (1d-cf-boundary :unary)
  (2d-cf-boundary :unary)
- ((exists-at has-existing-entities)  :binary)
- ((o-part-of o-has-part) :binary)
- ((t-part-of t-has-part) :binary)
+ ((exists-at during-which-exists)  :binary)
+ ((o-part-of o-has-part) :binary :transitive)
+ ((t-part-of t-has-part) :binary :transitive)
  ((occupies occupied-by)  :binary)
  ((profile-of has-profile) :binary)
  ((realizes realized-in) :binary)
 
- ((c-part-of c-has-part) :ternary (:temporal (:all :some) (:all :some) "as Mathias suggests") (:issue 49))
- ((c-ppart-of c-has-ppart) :ternary (:temporal (:all :some) (:all :some) "Mathias suggest not parallel to part of, seems not to alan") (:issue 49))
- ((member-part-of member-has-part) :ternary (:issue 49) (:temporal (:all :some) (:all :some) "Seems to be similar enough to part of (parts aren't permanent or defining except at an instant, so offer full set"))
- ((located-in has-location) :ternary (:temporal (:some :all) (:some :all)) (:issue 49))
- ((located-at-r r-location-of) :ternary (:temporal (:some) (:some) "Include some some for now, but note that the all versions can be used to define frames") (:issue 49))
+ ((c-part-of c-has-part) :ternary (:issue 49)
+  (:temporal (:all :some) (:all :some) "as Mathias suggests")
+  (:local-irreflexive continuant) :transitive-at-a-time)
+ ((c-ppart-of c-has-ppart) :ternary (:issue 49)
+  (:temporal (:all :some) (:all :some) "Mathias suggest not parallel to part of, seems not to alan")
+  (:locally-irreflexive continuant) :transitive-at-a-time
+  )
 
- ((inheres-in bearer-of) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too") (:issue 49))
+ ((member-part-of has-member-part) :ternary (:issue 49)
+  (:temporal (:all :some) (:all :some) "Seems to be similar enough to part of (parts aren't permanent or defining except at an instant, so offer full set")
+  )
+ 
+ ((located-in has-location) :ternary  (:issue 49)
+  (:temporal (:some :all) (:some :all))
+  :transitive-at-a-time (:locally-reflexive continuant)
+  )
+
+ ((located-at-r r-location-of) :ternary  (:issue 49)
+  (:temporal (:some) (:some) "Include some some for now, but note that the all versions can be used to define frames")
+  (:locally-reflexive s-region)
+  )
+
+ ((inheres-in bearer-of) :ternary (:issue 49)
+  (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too"))
+ 
  ((q-of has-q) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
+
  ((f-of has-f) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
+
  ((r-of has-r) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
+
  ((d-of has-d) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
 
@@ -96,11 +117,17 @@
 
 
  ((has-material-basis material-basis-of) :ternary (:temporal (:all) (:some :all) "Follow Mathias as at all times for the forward relation, both for the reverse relation") (:issue 49))
+ 
  ((concretizes concretization-of) :ternary (:temporal (:some :all) (:some :all)) (:issue 49) "Unsure of this one - Alan. Include both for now")
+ 
  ((st-projects-onto-s s-projection-of-st) :ternary (:temporal (:some) (:some) "Things tend to move and change shape in time, so at some times in both directions") (:issue 49))
+ 
  ((st-projects-onto-t t-projection-of-st) :binary)
+ 
  ((has-participant participates-in) :ternary (:temporal (:some :all) (:some :all) "at some times is parallels the class-class definition. At all times is permanent participation, requested by Stefan") (:issue 49))
+ 
  ((spans span-of) :binary)
+ 
  )
 
 ;; define the class hierarchy (unary symbols). This is done from the
@@ -149,11 +176,21 @@ entity(d)
 
 (binary-property-hierarchy "
 realizes
+realized-in
 o-part-of
 -t-part-of
+o-has-part
+-t-has-part
 profile-of
+has-profile
 occupies
+occupied-by
 st-projects-onto-t 
+t-projection-of-st
+spans
+span-of
+exists-at
+during-which-exists
 ")
 
 ;; define the ternary property hierarchy. You can't have a ternary
@@ -165,31 +202,58 @@ st-projects-onto-t
 ;; superproperties (i.e. q-of at some time /-> inheres-in at all times)
 ;; Also consider: "during" variants of the properties, if we get histories.
 
-;; Note: These *really* don't make any sense without a temporal
-;; reading, so for the purposes here we will have them all be
-;; considered "at-all-times". BUT beware because that isn't the sense
-;; of all the current class-level relations. has-participant, for
-;; example, is at-some-time in the old RO.
-
 (ternary-property-hierarchy "
-located-at-r 
-s-depends-on 
--inheres-in 
---q-of 
---f-of 
---r-of 
---d-of 
-g-depends-on 
-located-in 
-located-at
-has-participant
-has-material-basis 
-concretizes 
-st-projects-onto-s 
-spans
-c-part-of 
--c-ppart-of 
--member-part-of 
+located-at-r_st 
+r-location-of_st
+s-depends-on_st
+-s-depends-on_at
+--inheres-in_at
+---q-of_at 
+---f-of_at 
+---r-of_at 
+---d-of_at 
+has-s-dep_st
+-has-s-dep_at
+--bearer-of_at
+---has-q_at
+---has-f_at
+---has-r_at 
+---has-d_at
+g-depends-on_st
+has-g-dep_st
+participates-in_st
+-participates-in_at
+has-participant_st
+-has-participant_at
+has-material-basis_at
+concretizes_st 
+-concretizes_at 
+concretization-of_st
+-concretization-of_at
+st-projects-onto-s_st 
+s-projection-of-st_st
+c-part-of_st
+-c-part-of_at
+c-ppart-of_st
+-c-ppart-of_at
+member-part-of_st
+-member-part-of_at
+located-in_st 
+-located-in_at
+--c-part-of_at 
+---c-ppart-of_at 
+---member-part-of_at
+c-has-part_st 
+-c-has-part_at 
+c-has-ppart_st
+-c-has-ppart_at
+has-member-part_st
+-has-member-part_at
+has-location_st
+-has-location_at
+--c-has-part_at 
+---c-has-ppart_at
+----has-member-part_at
 ")
 
 ;; URIs of terms both current in bfo2 reference as well as those used,
@@ -253,46 +317,66 @@ c-part-of
  (occupied-by nil !obo:BFO_0000126)
  (has-profile nil !obo:BFO_0000119)
  (profile-of nil !obo:BFO_0000133)
- (c-has-part nil !obo:BFO_0000110)
- (c-part-of nil !obo:BFO_0000105)
- (c-ppart-of nil !obo:BFO_0000137)
- (c-has-ppart nil !obo:BFO_0000111)
- (member-part-of nil !obo:BFO_0000129)
- (member-has-part nil !obo:BFO_0000115)
- (located-in nil !obo:BFO_0000082)
- (has-location nil !obo:BFO_0000124)
- (located-at-r nil !obo:BFO_0000083)
- (r-location-of nil !obo:BFO_0000123)
- (inheres-in nil !obo:BFO_0000052)
- (bearer-of nil !obo:BFO_0000053)
- (s-depends-on nil !obo:BFO_0000070) 
- (has-s-dep nil !obo:BFO_0000125) 
- (g-depends-on nil !obo:BFO_0000084)
- (has-g-dep nil !obo:BFO_0000101)
- (q-of nil !obo:BFO_0000080)
- (has-q nil !obo:BFO_0000086)  
- (f-of nil !obo:BFO_0000079)
- (has-f nil !obo:BFO_0000085)
- (r-of nil !obo:BFO_0000081)
- (has-r nil !obo:BFO_0000087)
- (d-of nil !obo:BFO_0000107) 
- (has-d nil !obo:BFO_0000112)
+ (c-has-part_at nil !obo:BFO_0000110)
+ (c-has-part_st nil !obo:BFO_0000178) ; alanr assigned
+ (c-part-of_at nil !obo:BFO_0000177) ; alanr assigned
+ (c-part-of_st nil !obo:BFO_0000176) ;alanr assigned
+ (c-ppart-of_at nil !obo:BFO_0000137)
+ (c-ppart-of_st nil !obo:BFO_0000175) ;alanr assigned
+ (c-has-ppart_at nil !obo:BFO_0000111)
+ (c-has-ppart_st nil  !obo:BFO_0000174) ;alanr assigned
+ (member-part-of_st nil !obo:BFO_0000129)
+ (member-part-of_at nil !obo:BFO_0000173) ;alanr assigned
+ (has-member-part_st nil !obo:BFO_0000115)
+ (has-member-part_at nil !obo:BFO_0000172) ;alanr assigned
+ (located-in_at nil !obo:BFO_0000082)
+ (located-in_st nil !obo:BFO_0000171) ;alanr assigned
+ (has-location_st nil !obo:BFO_0000124)
+ (has-location_at nil !obo:BFO_0000170)
+ (located-at-r_st nil !obo:BFO_0000083)
+ (r-location-of_st nil !obo:BFO_0000123)
+ (inheres-in_at nil !obo:BFO_0000052)
+ (bearer-of_st nil !obo:BFO_0000053) 
+ (bearer-of_at nil !obo:BFO_0000158)  ; alan assigned
+ (s-depends-on_at nil !obo:BFO_0000070) 
+ (s-depends-on_st nil !obo:BFO_0000169)  ; alanr assigned
+ (has-s-dep_st nil !obo:BFO_0000125) 
+ (has-s-dep_at nil !obo:BFO_0000168)  ; alanr assigned
+ (g-depends-on_st nil !obo:BFO_0000084)
+ (has-g-dep_st nil !obo:BFO_0000101)
+ (q-of_at nil !obo:BFO_0000080)
+ (has-q_st nil !obo:BFO_0000086)  
+ (has-q_at nil !obo:BFO_0000159)   ; alan assigned
+ (f-of_at nil !obo:BFO_0000079)
+ (has-f_st nil !obo:BFO_0000085)
+ (has-f_at nil !obo:BFO_0000160) ; alanr assigned
+ (r-of_at nil !obo:BFO_0000081)
+ (has-r_st nil !obo:BFO_0000087)
+ (has-r_at nil !obo:BFO_0000161) ;alanr assigned
+ (d-of_at nil !obo:BFO_0000107) 
+ (has-d_st nil !obo:BFO_0000112)
+ (has-d_at nil !obo:BFO_0000162) ;alanr assigned
  (realized-in nil !obo:BFO_0000054 (:issue 39))
  (realizes nil !obo:BFO_0000055 (:issue 39))
- (has-material-basis nil !obo:BFO_0000113)  
- (material-basis-of nil !obo:BFO_0000127)  
- (concretizes nil !obo:BFO_0000059)
- (concretization-of nil !obo:BFO_0000058 )
- (st-projects-onto-s nil !obo:BFO_0000151 (:issue 41)) ; in version end of may, alan assigned
- (s-projection-of-st nil !obo:BFO_0000152 (:issue 41)) ; alan assigned
+ (has-material-basis_at nil !obo:BFO_0000113)  
+ (material-basis-of_st nil !obo:BFO_0000127)  
+ (material-basis-of_at nil !obo:BFO_0000163) ; alanr assigned
+ (concretizes_st nil !obo:BFO_0000059)
+ (concretizes_at nil !obo:BFO_0000164) ; alanr assignd
+ (concretization-of_st nil !obo:BFO_0000058 )
+ (concretization-of_at nil !obo:BFO_0000165) ; alanr assigned
+ (st-projects-onto-s_st nil !obo:BFO_0000151 (:issue 41)) ; in version end of may, alan assigned
+ (s-projection-of-st_st nil !obo:BFO_0000152 (:issue 41)) ; alan assigned
  (st-projects-onto-t nil !obo:BFO_0000153 (:issue 41)) ; alan assigned
  (t-projection-of-st nil !obo:BFO_0000154 (:issue 41)) ; alan assigned
  (spans nil !obo:BFO_0000155) ; in version end of may alan assigned
  (span-of nil !obo:BFO_0000156) ; in version end of may alan assigned
- (participates-in nil !obo:BFO_0000056)
- (has-participant nil !obo:BFO_0000057)
+ (participates-in_st nil !obo:BFO_0000056)
+ (participates-in_at nil !obo:BFO_0000166) ; alanr assigned
+ (has-participant_st nil !obo:BFO_0000057)
+ (has-participant_at nil !obo:BFO_0000167)
  (exists-at nil !obo:BFO_0000108) 
- (has-existing-entities nil !obo:BFO_0000157)  ; alan assigned
+ (during-which-exists nil !obo:BFO_0000157)  ; alan assigned
 
 ;; obsolete terms that were in BFO 1.1
 
