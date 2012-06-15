@@ -6,7 +6,9 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo.owl"/>
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo.owl">
+        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/bfo/dev/bfo.owl"/>
+    </owl:Ontology>
     
 
 
