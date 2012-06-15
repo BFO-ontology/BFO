@@ -20,17 +20,18 @@
 
 (defun read-bfo2-reference-spec ()
   (with-open-file (f "bfo:src;tools;bfo2-reference.lisp")
-    (let ((terms (read f))
-	  (class-tree (read f))
-	  (2-prop-tree (read f))
-	  (3-prop-tree (read f))
-	  (uris (eval-uri-reader-macro (read f))))
-      (let ((struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree :3-prop-tree 3-prop-tree :uris uris)))
-	(parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
-	(parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
-	(parse-bfo2-tree (second class-tree) #'(setf bfo-class2subclass) struct)
-	struct
-	))))
+    (with-open-file (g "bfo:src;tools;bfo2-uris.lisp")
+      (let ((terms (read f))
+	    (class-tree (read f))
+	    (2-prop-tree (read f))
+	    (3-prop-tree (read f))
+	    (uris (eval-uri-reader-macro (read g))))
+	(let ((struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree :3-prop-tree 3-prop-tree :uris uris)))
+	  (parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
+	  (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
+	  (parse-bfo2-tree (second class-tree) #'(setf bfo-class2subclass) struct)
+	  struct
+	  )))))
 
 
 (defun active-iris ()
