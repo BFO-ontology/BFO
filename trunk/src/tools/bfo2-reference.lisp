@@ -70,7 +70,7 @@
  (2d-cf-boundary :unary)
  ((exists-at during-which-exists)  :binary)
  ((o-part-of o-has-part) :binary :transitive)
- ((t-part-of t-has-part) :binary :transitive)
+ ((t-part-of has-t-part) :binary :transitive)
  ((occupies occupied-by)  :binary)
  ((profile-of has-profile) :binary)
  ((realizes realized-in) :binary)
@@ -180,7 +180,7 @@ realized-in
 o-part-of
 -t-part-of
 o-has-part
--t-has-part
+-has-t-part
 profile-of
 has-profile
 occupies

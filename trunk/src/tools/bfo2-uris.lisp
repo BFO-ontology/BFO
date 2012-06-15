@@ -54,7 +54,7 @@
  (o-part-of nil !obo:BFO_0000132)
  (o-has-part nil !obo:BFO_0000117)
  (t-part-of nil !obo:BFO_0000139)
- (t-has-part nil !obo:BFO_0000121)
+ (has-t-part nil !obo:BFO_0000121)
  (occupies nil !obo:BFO_0000066)  
  (occupied-by nil !obo:BFO_0000126)
  (has-profile nil !obo:BFO_0000119)
