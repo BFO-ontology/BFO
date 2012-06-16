@@ -20,6 +20,11 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000179">
+        <rdfs:label>bfo specification label</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
     
 
 
@@ -38,6 +43,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000052">
         <rdfs:label>inheres in at all times</rdfs:label>
+        <obo:BFO_0000179>inheres-in_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000070"/>
     </owl:ObjectProperty>
     
@@ -47,6 +53,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
         <rdfs:label>realized in</rdfs:label>
+        <obo:BFO_0000179>realized-in</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -55,6 +62,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000055">
         <rdfs:label>realizes</rdfs:label>
+        <obo:BFO_0000179>realizes</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
     </owl:ObjectProperty>
     
@@ -64,6 +72,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000056">
         <rdfs:label>participates in at some time</rdfs:label>
+        <obo:BFO_0000179>participates-in_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -72,6 +81,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000057">
         <rdfs:label>has participant at some time</rdfs:label>
+        <obo:BFO_0000179>has-participant_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000056"/>
     </owl:ObjectProperty>
     
@@ -81,6 +91,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000058">
         <rdfs:label>concretization of at some time</rdfs:label>
+        <obo:BFO_0000179>concretization-of_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -89,6 +100,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000059">
         <rdfs:label>concretizes at some time</rdfs:label>
+        <obo:BFO_0000179>concretizes_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000058"/>
     </owl:ObjectProperty>
     
@@ -98,6 +110,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000066">
         <rdfs:label>occupies</rdfs:label>
+        <obo:BFO_0000179>occupies</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000126"/>
     </owl:ObjectProperty>
     
@@ -107,6 +120,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000070">
         <rdfs:label>specifically depends on at all times</rdfs:label>
+        <obo:BFO_0000179>s-depends-on_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000169"/>
     </owl:ObjectProperty>
     
@@ -116,6 +130,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000079">
         <rdfs:label>function of at all times</rdfs:label>
+        <obo:BFO_0000179>f-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
     </owl:ObjectProperty>
     
@@ -125,6 +140,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000080">
         <rdfs:label>quality of at all times</rdfs:label>
+        <obo:BFO_0000179>q-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
     </owl:ObjectProperty>
     
@@ -134,6 +150,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000081">
         <rdfs:label>region of at all times</rdfs:label>
+        <obo:BFO_0000179>r-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
     </owl:ObjectProperty>
     
@@ -143,6 +160,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000082">
         <rdfs:label>located in at all times</rdfs:label>
+        <obo:BFO_0000179>located-in_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000171"/>
     </owl:ObjectProperty>
     
@@ -152,6 +170,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000083">
         <rdfs:label>located at region at some time</rdfs:label>
+        <obo:BFO_0000179>located-at-r_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000123"/>
     </owl:ObjectProperty>
     
@@ -161,6 +180,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000084">
         <rdfs:label>generically depends on at some time</rdfs:label>
+        <obo:BFO_0000179>g-depends-on_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000101"/>
     </owl:ObjectProperty>
     
@@ -170,6 +190,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000101">
         <rdfs:label>has g dependent at some time</rdfs:label>
+        <obo:BFO_0000179>has-g-dep_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -178,6 +199,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000107">
         <rdfs:label>disposition of at all times</rdfs:label>
+        <obo:BFO_0000179>d-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
     </owl:ObjectProperty>
     
@@ -187,6 +209,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000108">
         <rdfs:label>exists at</rdfs:label>
+        <obo:BFO_0000179>exists-at</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000157"/>
     </owl:ObjectProperty>
     
@@ -196,6 +219,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000110">
         <rdfs:label>continuant has part at all times</rdfs:label>
+        <obo:BFO_0000179>c-has-part_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000170"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
     </owl:ObjectProperty>
@@ -206,6 +230,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000111">
         <rdfs:label>continuant has proper part at all times</rdfs:label>
+        <obo:BFO_0000179>c-has-ppart_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000110"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000174"/>
     </owl:ObjectProperty>
@@ -216,6 +241,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000113">
         <rdfs:label>has material basis at all times</rdfs:label>
+        <obo:BFO_0000179>has-material-basis_at</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -224,6 +250,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000115">
         <rdfs:label>has member part at some time</rdfs:label>
+        <obo:BFO_0000179>has-member-part_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -232,6 +259,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000117">
         <rdfs:label>occurrent has part</rdfs:label>
+        <obo:BFO_0000179>o-has-part</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -240,6 +268,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000119">
         <rdfs:label>has profile</rdfs:label>
+        <obo:BFO_0000179>has-profile</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -248,6 +277,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000121">
         <rdfs:label>has temporal part</rdfs:label>
+        <obo:BFO_0000179>has-t-part</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000117"/>
     </owl:ObjectProperty>
     
@@ -257,6 +287,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000123">
         <rdfs:label>region location of at some time</rdfs:label>
+        <obo:BFO_0000179>r-location-of_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -265,6 +296,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000124">
         <rdfs:label>has location at some time</rdfs:label>
+        <obo:BFO_0000179>has-location_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -273,6 +305,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000125">
         <rdfs:label>has spatial dependent at some time</rdfs:label>
+        <obo:BFO_0000179>has-s-dep_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -281,6 +314,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000126">
         <rdfs:label>occupied by</rdfs:label>
+        <obo:BFO_0000179>occupied-by</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -289,6 +323,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000129">
         <rdfs:label>member part of at some time</rdfs:label>
+        <obo:BFO_0000179>member-part-of_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000115"/>
     </owl:ObjectProperty>
     
@@ -298,6 +333,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000132">
         <rdfs:label>occurrent part of</rdfs:label>
+        <obo:BFO_0000179>o-part-of</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000117"/>
     </owl:ObjectProperty>
     
@@ -307,6 +343,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000133">
         <rdfs:label>profile of</rdfs:label>
+        <obo:BFO_0000179>profile-of</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000119"/>
     </owl:ObjectProperty>
     
@@ -316,6 +353,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000137">
         <rdfs:label>continuant proper part of at all times</rdfs:label>
+        <obo:BFO_0000179>c-ppart-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000175"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
     </owl:ObjectProperty>
@@ -326,6 +364,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000139">
         <rdfs:label>temporal part of</rdfs:label>
+        <obo:BFO_0000179>t-part-of</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000121"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000132"/>
     </owl:ObjectProperty>
@@ -336,6 +375,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000151">
         <rdfs:label>spatiotemporal projects onto spatial at some time</rdfs:label>
+        <obo:BFO_0000179>st-projects-onto-s_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000152"/>
     </owl:ObjectProperty>
     
@@ -345,6 +385,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000152">
         <rdfs:label>spatial projection of spatiotemporal at some time</rdfs:label>
+        <obo:BFO_0000179>s-projection-of-st_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -353,6 +394,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000153">
         <rdfs:label>spatiotemporal projects onto time</rdfs:label>
+        <obo:BFO_0000179>st-projects-onto-t</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000154"/>
     </owl:ObjectProperty>
     
@@ -362,6 +404,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000154">
         <rdfs:label>temporal projection of spatiotemporal</rdfs:label>
+        <obo:BFO_0000179>t-projection-of-st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -370,6 +413,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000155">
         <rdfs:label>spans</rdfs:label>
+        <obo:BFO_0000179>spans</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000156"/>
     </owl:ObjectProperty>
     
@@ -379,6 +423,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000156">
         <rdfs:label>span of</rdfs:label>
+        <obo:BFO_0000179>span-of</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -387,6 +432,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000157">
         <rdfs:label>during which exists</rdfs:label>
+        <obo:BFO_0000179>during-which-exists</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -395,6 +441,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000158">
         <rdfs:label>bearer of at all times</rdfs:label>
+        <obo:BFO_0000179>bearer-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000168"/>
     </owl:ObjectProperty>
     
@@ -404,6 +451,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000159">
         <rdfs:label>has quality at all times</rdfs:label>
+        <obo:BFO_0000179>has-q_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000158"/>
     </owl:ObjectProperty>
     
@@ -413,6 +461,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000160">
         <rdfs:label>has function at all times</rdfs:label>
+        <obo:BFO_0000179>has-f_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000158"/>
     </owl:ObjectProperty>
     
@@ -422,6 +471,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000161">
         <rdfs:label>has region at all times</rdfs:label>
+        <obo:BFO_0000179>has-r_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000158"/>
     </owl:ObjectProperty>
     
@@ -431,6 +481,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000162">
         <rdfs:label>has disposition at all times</rdfs:label>
+        <obo:BFO_0000179>has-d_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000158"/>
     </owl:ObjectProperty>
     
@@ -440,6 +491,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000164">
         <rdfs:label>concretizes at all times</rdfs:label>
+        <obo:BFO_0000179>concretizes_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000059"/>
     </owl:ObjectProperty>
     
@@ -449,6 +501,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000165">
         <rdfs:label>concretization of at all times</rdfs:label>
+        <obo:BFO_0000179>concretization-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000058"/>
     </owl:ObjectProperty>
     
@@ -458,6 +511,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000166">
         <rdfs:label>participates in at all times</rdfs:label>
+        <obo:BFO_0000179>participates-in_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000056"/>
     </owl:ObjectProperty>
     
@@ -467,6 +521,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000167">
         <rdfs:label>has participant at all times</rdfs:label>
+        <obo:BFO_0000179>has-participant_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
     </owl:ObjectProperty>
     
@@ -476,6 +531,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000168">
         <rdfs:label>has spatial dependent at all times</rdfs:label>
+        <obo:BFO_0000179>has-s-dep_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000125"/>
     </owl:ObjectProperty>
     
@@ -485,6 +541,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000169">
         <rdfs:label>specifically depends on at some time</rdfs:label>
+        <obo:BFO_0000179>s-depends-on_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000125"/>
     </owl:ObjectProperty>
     
@@ -494,6 +551,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000170">
         <rdfs:label>has location at all times</rdfs:label>
+        <obo:BFO_0000179>has-location_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000124"/>
     </owl:ObjectProperty>
     
@@ -503,6 +561,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000171">
         <rdfs:label>located in at some time</rdfs:label>
+        <obo:BFO_0000179>located-in_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000124"/>
     </owl:ObjectProperty>
     
@@ -512,6 +571,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000172">
         <rdfs:label>has member part at all times</rdfs:label>
+        <obo:BFO_0000179>has-member-part_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000111"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000115"/>
     </owl:ObjectProperty>
@@ -522,6 +582,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000173">
         <rdfs:label>member part of at all times</rdfs:label>
+        <obo:BFO_0000179>member-part-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000129"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
     </owl:ObjectProperty>
@@ -532,6 +593,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000174">
         <rdfs:label>continuant has proper part at some time</rdfs:label>
+        <obo:BFO_0000179>c-has-ppart_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -540,6 +602,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000175">
         <rdfs:label>continuant proper part of at some time</rdfs:label>
+        <obo:BFO_0000179>c-ppart-of_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000174"/>
     </owl:ObjectProperty>
     
@@ -549,6 +612,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000176">
         <rdfs:label>continuant part of at some time</rdfs:label>
+        <obo:BFO_0000179>c-part-of_st</obo:BFO_0000179>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
     </owl:ObjectProperty>
     
@@ -558,6 +622,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000177">
         <rdfs:label>continuant part of at all times</rdfs:label>
+        <obo:BFO_0000179>c-part-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000082"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
     </owl:ObjectProperty>
@@ -568,6 +633,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000178">
         <rdfs:label>continuant has part at some time</rdfs:label>
+        <obo:BFO_0000179>c-has-part_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
 
@@ -587,6 +653,7 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000001">
         <rdfs:label>entity</rdfs:label>
+        <obo:BFO_0000179>entity</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -596,6 +663,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000002">
         <rdfs:label>continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+        <obo:BFO_0000179>continuant</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -605,6 +673,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000003">
         <rdfs:label>occurrent</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+        <obo:BFO_0000179>occurrent</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -614,6 +683,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000004">
         <rdfs:label>independent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:BFO_0000179>ic</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -623,6 +693,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000006">
         <rdfs:label>spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+        <obo:BFO_0000179>s-region</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -632,6 +703,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000008">
         <rdfs:label>temporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:BFO_0000179>t-region</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -639,8 +711,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000009 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000009">
-        <rdfs:label>2 dimensional spatial region</rdfs:label>
+        <rdfs:label>2-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:BFO_0000179>2d-s-region</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -650,6 +723,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000011">
         <rdfs:label>spatiotemporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:BFO_0000179>st-region</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -659,6 +733,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000015">
         <rdfs:label>process</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:BFO_0000179>process</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -668,6 +743,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000016">
         <rdfs:label>disposition</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+        <obo:BFO_0000179>disposition</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -677,6 +753,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000017">
         <rdfs:label>realizable</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <obo:BFO_0000179>realizable</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -684,8 +761,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000018 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000018">
-        <rdfs:label>0 dimensional spatial region</rdfs:label>
+        <rdfs:label>0-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:BFO_0000179>0d-s-region</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -695,6 +773,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000019">
         <rdfs:label>quality</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <obo:BFO_0000179>quality</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -704,6 +783,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000020">
         <rdfs:label>specifically dependent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:BFO_0000179>sdc</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -713,6 +793,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000023">
         <rdfs:label>role</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+        <obo:BFO_0000179>role</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -722,6 +803,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000024">
         <rdfs:label>fiat object</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <obo:BFO_0000179>fiat-object</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -729,8 +811,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000026 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000026">
-        <rdfs:label>1 dimensional spatial region</rdfs:label>
+        <rdfs:label>1-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:BFO_0000179>1d-s-region</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -740,6 +823,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000027">
         <rdfs:label>object aggregate</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <obo:BFO_0000179>object-aggregate</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -747,8 +831,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000028 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000028">
-        <rdfs:label>3 dimensional spatial region</rdfs:label>
+        <rdfs:label>3-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:BFO_0000179>3d-s-region</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -758,6 +843,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000029">
         <rdfs:label>site</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+        <obo:BFO_0000179>site</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -767,6 +853,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000030">
         <rdfs:label>object</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <obo:BFO_0000179>object</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -776,6 +863,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000031">
         <rdfs:label>generically dependent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:BFO_0000179>gdc</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -785,6 +873,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000034">
         <rdfs:label>function</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+        <obo:BFO_0000179>function</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -794,6 +883,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000035">
         <rdfs:label>process boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:BFO_0000179>p-boundary</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -801,8 +891,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000038 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000038">
-        <rdfs:label>1 dimensional temporal region</rdfs:label>
+        <rdfs:label>1-dimensional temporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <obo:BFO_0000179>1d-t-region</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -812,6 +903,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040">
         <rdfs:label>material</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+        <obo:BFO_0000179>material</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -821,6 +913,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000140">
         <rdfs:label>continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+        <obo:BFO_0000179>cf-boundary</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -830,6 +923,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000141">
         <rdfs:label>immaterial</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+        <obo:BFO_0000179>immaterial</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -837,8 +931,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000142 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000142">
-        <rdfs:label>1 dimensional continuant fiat boundary</rdfs:label>
+        <rdfs:label>1-dimensional continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000140"/>
+        <obo:BFO_0000179>1d-cf-boundary</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -848,6 +943,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000144">
         <rdfs:label>process profile</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+        <obo:BFO_0000179>process-profile</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -857,6 +953,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000145">
         <rdfs:label>relational quality</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+        <obo:BFO_0000179>r-quality</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -864,8 +961,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000146 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000146">
-        <rdfs:label>2 dimensional continuant fiat boundary</rdfs:label>
+        <rdfs:label>2-dimensional continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000140"/>
+        <obo:BFO_0000179>2d-cf-boundary</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -873,8 +971,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000147 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000147">
-        <rdfs:label>0 dimensional continuant fiat boundary</rdfs:label>
+        <rdfs:label>0-dimensional continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000140"/>
+        <obo:BFO_0000179>0d-cf-boundary</obo:BFO_0000179>
     </owl:Class>
     
 
@@ -882,9 +981,60 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000148 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000148">
-        <rdfs:label>0 dimensional temporal region</rdfs:label>
+        <rdfs:label>0-dimensional temporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <obo:BFO_0000179>0d-t-region</obo:BFO_0000179>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
+        <rdfs:label>editor preferred term</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000112">
+        <rdfs:label>example of usage</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
+        <rdfs:label>definition</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000119">
+        <rdfs:label>definition source</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000412">
+        <rdfs:label>imported from</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000117">
+        <rdfs:label>term editor</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000116">
+        <rdfs:label>editor note</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
+        <rdfs:label>alternative term</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000232">
+        <rdfs:label>curator note</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo.owl">
+        <rdfs:comment>This is an early version of BFO version 2 and has not yet been extensively reviewed by the project team members. Please see the project site http://code.google.com/p/bfo/ , the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel , the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://bfo.googlecode.com/svn/trunk/docs/bfo2-reference/BFO2-Reference.docx . This ontology is generated from a specification at http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-reference.lisp and http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-uris.lisp , with the code that generates the OWL version residing in the same directory.</rdfs:comment>
+    </rdf:Description>
 </rdf:RDF>
 
 
