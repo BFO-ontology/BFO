@@ -33,6 +33,7 @@
 	      ((:file "extract-reference-annotations")
 	       (:file "process-axioms")
 	       (:file "generate-bfo")
+	       (:file "generate-annotations")
 	       )))
     :depends-on (owl2))
 
