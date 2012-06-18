@@ -68,16 +68,17 @@
  (0d-cf-boundary :unary)
  (1d-cf-boundary :unary)
  (2d-cf-boundary :unary)
- ((exists-at during-which-exists)  :binary)
- ((o-part-of o-has-part) :binary :transitive)
- ((t-part-of has-t-part) :binary :transitive)
- ((occupies occupied-by)  :binary)
- ((profile-of has-profile) :binary)
- ((realizes realized-in) :binary)
+ ((exists-at during-which-exists)  :binary (-> entity t-region))
+ ((o-part-of o-has-part) :binary (:locally-reflexive occurrent) :transitive (-> (st-region st-region) (process process) (p-boundary process) (p-boundary p-boundary)))
+ ((o-ppart-of o-has-ppart) :binary :transitive (:locally-irreflexive occurrent) (-> (st-region st-region) (process process) (p-boundary process) (p-boundary p-boundary)))
+ ((t-part-of has-t-part) :binary :transitive (:locally-reflexive t-region) (-> (t-region t-region) (0d-t-region 0d-t-region) (1d-t-region 1d-t-region)))
+ ((occupies occupied-by)  :binary (:locally-reflexive st-region) (:locally-reflexive t-region))
+ ((profile-of has-profile) :binary (-> process-profile process))
+ ((realizes realized-in) :binary (-> process realizable))
 
  ((c-part-of c-has-part) :ternary (:issue 49)
   (:temporal (:all :some) (:all :some) "as Mathias suggests")
-  (:local-irreflexive continuant) :transitive-at-a-time)
+  (:local-reflexive continuant) :transitive-at-a-time)
  ((c-ppart-of c-has-ppart) :ternary (:issue 49)
   (:temporal (:all :some) (:all :some) "Mathias suggest not parallel to part of, seems not to alan")
   (:locally-irreflexive continuant) :transitive-at-a-time
@@ -178,8 +179,10 @@ entity(d)
 realizes
 realized-in
 o-part-of
+-o-ppart-of
 -t-part-of
 o-has-part
+-o-has-ppart
 -has-t-part
 profile-of
 has-profile
@@ -258,3 +261,76 @@ has-location_st
 
 ;; Note: Uris moved to bfo2-uris.lisp so less likely to confuse bfo2 editors into thinking they need to use URIs.
 ;; Note that that file also now has relations that were proposed but are not yet included in the spec, as well as deprecated relations.
+
+;; this section needs to be manged each time the spec is updated. It
+;; maps the string used as an annotation tag to the short handle used
+;; in the code. The function (known-in-reference) gives you the list
+;; of tags that are used in the reference document. If the tag is the
+;; same as the variable name, or there is only spaces or underscores
+;; that should be translated to dashes you don't have to repeat it.
+;; For ternary properties use the unsuffixed name and the code will dwim.
+
+(reference-annotation-tag-to-variable
+ ("entity")
+ ("exists-at")
+ ("occurrent-part-of" o-part-of)
+ ("proper-continuant-part-of" c-ppart-of)
+ ("proper-occurrent-part-of" o-ppart-of)
+ ("has-continuant-part" c-has-part)
+ ("has-occurrent-part" o-has-part)
+ ("continuant")
+ ("independent-continuant" ic)
+ ("object")
+ ("object-aggregate")
+ ("member-part-of" m-part-of)
+ ("fiat-object-part")
+ ("immaterial-entity" immaterial)
+ ("continuant-fiat-boundary" cf-boundary)
+ ("material-entity" material)
+ ("zero-dimensional-continuant-fiat-boundary" 0d-cf-boundary)
+ ("one-dimensional-continuant-fiat-boundary" 1d-cf-boundary)
+ ("two-dimensional-continuant-fiat-boundary" 2d-cf-boundary)
+ ("site")
+ ("spatial-region" s-region)
+ ("zero-dimensional-spatial-region" 0d-s-region)
+ ("one-dimensional-spatial-region" 1d-s-region)
+ ("two-dimensional-spatial-region" 2d-s-region)
+ ("three-dimensional-spatial-region" 3d-s-region)
+ ("located-at")
+ ("continuant-part-of" c-part-of)
+ ("located-in")
+ ("specifically-dependent-continuant" sdc)
+ ("inheres-in")
+ ("bearer-of")
+ ("s-depends-on")
+ ("quality")
+ ("quality-of" q-of)
+ ("relational-quality" r-quality)
+ ("realizable-entity" realizable)
+ ("realizes")
+ ("role")
+ ("disposition")
+ ("function")
+ ("role-of" r-of)
+ ("disposition-of" d-of)
+ ("function-of" f-of)
+ ("has-role" has-r)
+ ("has-disposition" has-d)
+ ("has-function" has-f)
+ ("has-material-basis")
+ ("g-depends-on")
+ ("generically-dependent-continuant" gdc)
+ ("concretizes")
+ ("projects-onto") ;; FIXME
+ ("occupies")
+ ("process")
+ ("process-boundary" p-boundary)
+ ("has-participant")
+ ("temporal-part-of" t-part-of)
+ ("process-profile-of" profile-of)
+ ("spatiotemporal-region" st-region)
+ ("occurrent")
+ ("temporal-region" t-region)
+ ("zero-dimensional-temporal-region" 0d-t-region)
+ ("one-dimensional-temporal-region" 1d-t-region)
+ )

@@ -24,7 +24,55 @@
         <rdfs:label>bfo specification label</rdfs:label>
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
     </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000601">
+        <rdfs:label>has associated axiom(nl)</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
+        <rdfs:label>definition</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000602">
+        <rdfs:label>has associated axiom(fol)</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000116">
+        <rdfs:label>editor note</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000412">
+        <rdfs:label>imported from</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000119">
+        <rdfs:label>definition source</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000232">
+        <rdfs:label>curator note</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000117">
+        <rdfs:label>term editor</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
+        <rdfs:label>alternative term</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000600">
+        <rdfs:label>elucidation</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
+        <rdfs:label>editor preferred term</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000112">
+        <rdfs:label>example of usage</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    </owl:AnnotationProperty>
     
 
 
@@ -62,7 +110,10 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000055">
         <rdfs:label>realizes</rdfs:label>
+        <obo:IAO_0000116>if a realizable entity a is realized in a process p, then p stands in the has_participant relation to the bearer of a. [106-002</obo:IAO_0000116>
         <obo:BFO_0000179>realizes</obo:BFO_0000179>
+        <obo:IAO_0000601>All realizable dependent continuants have material entities or sites as their bearers. [060-001</obo:IAO_0000601>
+        <obo:IAO_0000600>to say that a realizes b at t is to assert that there is some material entity c &amp;amp; a is a process in which has participant c at temporal interval t &amp;amp; b is a disposition or role of which c is bearer at t&amp;amp; the type instantiated by a is correlated with the type instantiated by b. [059-002</obo:IAO_0000600>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
     </owl:ObjectProperty>
     
@@ -110,7 +161,9 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000066">
         <rdfs:label>occupies</rdfs:label>
+        <obo:IAO_0000600>a occupies r. This is a primitive relation between an occurrent and a temporal or spatiotemporal region which it exactly occupies. [082-001</obo:IAO_0000600>
         <obo:BFO_0000179>occupies</obo:BFO_0000179>
+        <obo:IAO_0000116>BFO 2 Reference: The occupies relation is the counterpart, on the occurrent side, of the relation located_at.</obo:IAO_0000116>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000126"/>
     </owl:ObjectProperty>
     
@@ -210,6 +263,9 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000108">
         <rdfs:label>exists at</rdfs:label>
         <obo:BFO_0000179>exists-at</obo:BFO_0000179>
+        <obo:IAO_0000116>temporal region</obo:IAO_0000116>
+        <obo:IAO_0000116>entity</obo:IAO_0000116>
+        <obo:IAO_0000600>a exists_at t means: a  is an entity which exists at some temporal instant or a temporal interval t. [118-001</obo:IAO_0000600>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000157"/>
     </owl:ObjectProperty>
     
@@ -260,6 +316,17 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000117">
         <rdfs:label>occurrent has part</rdfs:label>
         <obo:BFO_0000179>o-has-part</obo:BFO_0000179>
+        <obo:IAO_0000115>a has_occurrent_part b = Def. b occurrent_part_of a. [007-001</obo:IAO_0000115>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000118 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000118">
+        <rdfs:label>occurrent has ppart</rdfs:label>
+        <obo:BFO_0000179>o-has-ppart</obo:BFO_0000179>
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000117"/>
     </owl:ObjectProperty>
     
 
@@ -333,7 +400,10 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000132">
         <rdfs:label>occurrent part of</rdfs:label>
+        <obo:IAO_0000112>Mary's 5th birthday occurrent_part_of Mary's life\; the first set of the tennis match occurrent_part_of the tennis match.</obo:IAO_0000112>
+        <obo:IAO_0000600>a occurrent_part_of b =Def. a is a part of b &amp;amp; a and b are occurrents. [003-002</obo:IAO_0000600>
         <obo:BFO_0000179>o-part-of</obo:BFO_0000179>
+        <obo:IAO_0000116>occurrent</obo:IAO_0000116>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000117"/>
     </owl:ObjectProperty>
     
@@ -344,6 +414,7 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000133">
         <rdfs:label>profile of</rdfs:label>
         <obo:BFO_0000179>profile-of</obo:BFO_0000179>
+        <obo:IAO_0000600>a process_profile_of b holds when a is  process profile&amp;amp; a is a proper continuant_part_of b&amp;amp; a and b occupy the same temporal region [094-002</obo:IAO_0000600>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000119"/>
     </owl:ObjectProperty>
     
@@ -360,11 +431,28 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/BFO_0000138 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000138">
+        <rdfs:label>occurrent proper part of</rdfs:label>
+        <obo:BFO_0000179>o-ppart-of</obo:BFO_0000179>
+        <obo:IAO_0000115>a proper_occurrent_part_of b =Def. a occurrent_part_of b &amp;amp; a and b are not identical. [005-001</obo:IAO_0000115>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000118"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000132"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/BFO_0000139 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000139">
         <rdfs:label>temporal part of</rdfs:label>
         <obo:BFO_0000179>t-part-of</obo:BFO_0000179>
+        <obo:IAO_0000601>if a proper_temporal_part_of b, then there is some c which is a proper_temporal_part_of b and which shares no parts with a. [117-001</obo:IAO_0000601>
+        <obo:IAO_0000112>The first quarter of a game of football is a temporal part of the whole game. The process of a footballer's heart beating once is an occurrent part, but not a temporal part, of the whole game. The process of your heart beating from 4pm to 5pm today is a temporal part of the entire process of your heart beating. The 4th year of your life is a temporal part of your life, as is the process boundary which separates the 3rd and 4th years of your life.</obo:IAO_0000112>
+        <obo:IAO_0000115>a proper_temporal_part_of b =Def. a temporal_part_of b &amp;amp; not (a = b). [116-001</obo:IAO_0000115>
+        <obo:IAO_0000112>your heart beating from 4pm to 5pm today is a temporal part of the process of your heart beating\; the 4th year of your life is a temporal part of your life\. The first quarter of a game of football is a temporal part of the whole game.</obo:IAO_0000112>
+        <obo:IAO_0000115>a temporal_part_of b =Def.a occurrent_part_of b &amp;amp; &amp;amp; for some temporal region r, a occupies r &amp;amp; for all occurrents c, r (if c occupies r  &amp;amp; r? occurrent_part_of r then (c occurrent_part_of a iff c occurrent_part_of b)). [078-001</obo:IAO_0000115>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000121"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000132"/>
     </owl:ObjectProperty>
@@ -653,7 +741,9 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000001">
         <rdfs:label>entity</rdfs:label>
+        <obo:IAO_0000600>An entity is anything that exists or has existed or will exist. [001-001</obo:IAO_0000600>
         <obo:BFO_0000179>entity</obo:BFO_0000179>
+        <obo:IAO_0000112>Julius Caesar\, the Second World War\, your body mass index\, Verdi's Requiem</obo:IAO_0000112>
     </owl:Class>
     
 
@@ -663,6 +753,10 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000002">
         <rdfs:label>continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+        <obo:IAO_0000600>A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity. [008-001</obo:IAO_0000600>
+        <obo:IAO_0000601>if a is a continuant and if, for some t, b is continuant_part of a at t, then b is a continuant. [009-002</obo:IAO_0000601>
+        <obo:IAO_0000601>if a is a continuant and if, for some t, b has continuant_part a at t, then b is a continuant. [126-001</obo:IAO_0000601>
+        <obo:IAO_0000601>if a is a continuant, then there is some temporal interval (referred to below as a one-dimensional temporal region) during which a exists. [011-001</obo:IAO_0000601>
         <obo:BFO_0000179>continuant</obo:BFO_0000179>
     </owl:Class>
     
@@ -673,6 +767,9 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000003">
         <rdfs:label>occurrent</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+        <obo:IAO_0000601>Every occurrent occupies some spatiotemporal region. [108-001</obo:IAO_0000601>
+        <obo:IAO_0000600>An occurrent is an entity that unfolds itself in time or it is the instantaneous boundary of such an entity (for example a beginning or an ending) or it is a temporal or spatiotemporal region which such an entity occupies. [077-001</obo:IAO_0000600>
+        <obo:IAO_0000601>a is an occurrent entity iff a is an entity that has temporal parts. [079-001</obo:IAO_0000601>
         <obo:BFO_0000179>occurrent</obo:BFO_0000179>
     </owl:Class>
     
@@ -683,7 +780,10 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000004">
         <rdfs:label>independent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:IAO_0000112>an atom\, a molecule\, an organism\, a heart\, a chair\, the bottom right portion of a human torso\, a leg\; the interior of your mouth\; a spatial region\; an orchestra.</obo:IAO_0000112>
+        <obo:IAO_0000601>For every independent continuant a and time t during the region of time spanned by its life, there are entities which s-depends on a during t. [018-002</obo:IAO_0000601>
         <obo:BFO_0000179>ic</obo:BFO_0000179>
+        <obo:IAO_0000115>a is an independent continuant = Def. a is a continuant which is such that there is no b and no t such that a s-depends on b at t. [017-002</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -694,6 +794,8 @@
         <rdfs:label>spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
         <obo:BFO_0000179>s-region</obo:BFO_0000179>
+        <obo:IAO_0000601>All continuant parts of spatial regions are spatial regions. [036-001</obo:IAO_0000601>
+        <obo:IAO_0000600>A spatial region is a continuant entity that is a continuant_part_of spaceR as defined relative to some frame R. [035-001</obo:IAO_0000600>
     </owl:Class>
     
 
@@ -703,7 +805,10 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000008">
         <rdfs:label>temporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:IAO_0000601>All parts of temporal regions are temporal regions. [101-001</obo:IAO_0000601>
+        <obo:IAO_0000600>A temporal region is an occurrent entity that is part of time as defined relative to some reference frame. [100-001</obo:IAO_0000600>
         <obo:BFO_0000179>t-region</obo:BFO_0000179>
+        <obo:IAO_0000601>Every temporal region r is such that r occupies r. [[119-001</obo:IAO_0000601>
     </owl:Class>
     
 
@@ -711,9 +816,11 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000009 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000009">
-        <rdfs:label>2-dimensional spatial region</rdfs:label>
+        <rdfs:label>two-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
         <obo:BFO_0000179>2d-s-region</obo:BFO_0000179>
+        <obo:IAO_0000112>the surface of a sphere-shaped part of space\, an infinitely thin plane in space.</obo:IAO_0000112>
+        <obo:IAO_0000600>A two-dimensional spatial region is a spatial region that is of two dimensions. [039-001</obo:IAO_0000600>
     </owl:Class>
     
 
@@ -723,7 +830,13 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000011">
         <rdfs:label>spatiotemporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:IAO_0000112>the spatiotemporal region occupied by a human life\, the spatiotemporal region occupied by the development of a cancer tumor\, the spatiotemporal region occupied by a process of cellular meiosis.</obo:IAO_0000112>
+        <obo:IAO_0000601>All parts of spatiotemporal regions are spatiotemporal regions. [096-001</obo:IAO_0000601>
+        <obo:IAO_0000601>Each spatiotemporal region projects_onto some temporal region. [098-001</obo:IAO_0000601>
+        <obo:IAO_0000600>A spatiotemporal region is an occurrent entity that is part of spacetime. [095-001</obo:IAO_0000600>
+        <obo:IAO_0000601>Each spatiotemporal region projects_onto some spatial region at t. [099-001</obo:IAO_0000601>
         <obo:BFO_0000179>st-region</obo:BFO_0000179>
+        <obo:IAO_0000601>Every spatiotemporal region r is such that r occupies r. [107-001</obo:IAO_0000601>
     </owl:Class>
     
 
@@ -733,6 +846,8 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000015">
         <rdfs:label>process</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:IAO_0000115>p is a process = Def. a is an occurrent that has temporal proper parts and for some time t, a s-depends on some  material entity at t. [083-002</obo:IAO_0000115>
+        <obo:IAO_0000112>the life of an organism\, a process of sleeping\, a process of cell-division, \ a beating of the heart\, a process of meiosis\, the course of a disease\, the flight of a bird\, your process of aging.</obo:IAO_0000112>
         <obo:BFO_0000179>process</obo:BFO_0000179>
     </owl:Class>
     
@@ -744,6 +859,9 @@
         <rdfs:label>disposition</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
         <obo:BFO_0000179>disposition</obo:BFO_0000179>
+        <obo:IAO_0000112>an atom of element X has the disposition to decay to an atom of element Y\the cell wall is disposed to filter chemicals in endocitosis and exocitosis\certain people have a predisposition to colon cancer\children are innately disposed to categorize objects in certain ways.</obo:IAO_0000112>
+        <obo:IAO_0000601>If a is a realizable entity then for all t at which a exists, a s-depends on some material entity at t. [063-002</obo:IAO_0000601>
+        <obo:IAO_0000600>a is a disposition means: a is a realizable entity &amp;amp; a is such that if it ceases to exist, then its bearer is physically changed, &amp;amp; a's realization occurs when and because this bearer is in some special physical circumstances, &amp;amp; this realization occurs in virtue of the bearer's physical make-up. [062-001</obo:IAO_0000600>
     </owl:Class>
     
 
@@ -753,6 +871,8 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000017">
         <rdfs:label>realizable</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <obo:IAO_0000112>the role of being a doctor, the function of your reproductive organs, the disposition of your blood to coagulate, the disposition of this piece of metal to conduct electricity.</obo:IAO_0000112>
+        <obo:IAO_0000600>To say that a is a realizable entity is to say that a is a specifically dependent continuant that inheres in some material entity and is of a type instances of which are realized in processes of a correlated type. [058-001</obo:IAO_0000600>
         <obo:BFO_0000179>realizable</obo:BFO_0000179>
     </owl:Class>
     
@@ -761,8 +881,9 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000018 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000018">
-        <rdfs:label>0-dimensional spatial region</rdfs:label>
+        <rdfs:label>zero-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:IAO_0000600>A zero-dimensional spatial region is a point in space. [037-001</obo:IAO_0000600>
         <obo:BFO_0000179>0d-s-region</obo:BFO_0000179>
     </owl:Class>
     
@@ -773,6 +894,9 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000019">
         <rdfs:label>quality</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <obo:IAO_0000601>If an entity is a quality at any time that it exists, then it is a quality at every time that it exists. [105-001</obo:IAO_0000601>
+        <obo:IAO_0000600>a quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized. [055-001</obo:IAO_0000600>
+        <obo:IAO_0000112>the color of a tomato, the ambient temperature of this portion of air, the length of the circumference of your waist, the shape of your nose, the mass of this piece of gold.</obo:IAO_0000112>
         <obo:BFO_0000179>quality</obo:BFO_0000179>
     </owl:Class>
     
@@ -783,6 +907,10 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000020">
         <rdfs:label>specifically dependent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:IAO_0000112>of reciprocal specifically dependent continuants: the function of this key to open this lock and the reciprocally dependent disposition of this lock: to be opened by this key\; the reciprocal dependence of the role predator and the role prey as played by two organisms in a given interaction\;  the reciprocal dependence of proton donors and acceptors in chemical reactions [79</obo:IAO_0000112>
+        <obo:IAO_0000112>of relational dependent continuants (multiple bearers): John's love for Mary, the ownership relation between John and this statue, the relation of authority between John and his subordinates.</obo:IAO_0000112>
+        <obo:IAO_0000112>of one-sided specifically dependent continuants: the mass of this tomato\, the color of this tomato\, the smell of this portion of mozzarella\, the disposition of this fish to decay\, the role of being a doctor\, the function of this heart: to pump blood\, the shape of this region of space.</obo:IAO_0000112>
+        <obo:IAO_0000115>a is a specifically dependent continuant = Def. a is a continuant &amp;amp; for every time t during the course of a's existence, there is some independent continuant b which is such that a s-depends on b at t. [050-002</obo:IAO_0000115>
         <obo:BFO_0000179>sdc</obo:BFO_0000179>
     </owl:Class>
     
@@ -794,6 +922,8 @@
         <rdfs:label>role</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
         <obo:BFO_0000179>role</obo:BFO_0000179>
+        <obo:IAO_0000112>the priest role \the student role\the role of subject in a clinical trial\the role of a stone in marking a boundary\the role of a building in serving as a military target</obo:IAO_0000112>
+        <obo:IAO_0000600>a is a role means: a is a realizable entity &amp;amp; a exists because there is some single bearer that is in some special physical, social, or institutional set of circumstances in which this bearer does not have to be&amp;amp; a is not such that, if it ceases to exist, then the physical make-up of the bearer is thereby changed. [061-001</obo:IAO_0000600>
     </owl:Class>
     
 
@@ -811,8 +941,10 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000026 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000026">
-        <rdfs:label>1-dimensional spatial region</rdfs:label>
+        <rdfs:label>one-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:IAO_0000112>an edge of a cube-shaped portion of space.</obo:IAO_0000112>
+        <obo:IAO_0000600>A one-dimensional spatial region is a line or aggregate of lines stretching from one point in space to another. [038-001</obo:IAO_0000600>
         <obo:BFO_0000179>1d-s-region</obo:BFO_0000179>
     </owl:Class>
     
@@ -824,6 +956,8 @@
         <rdfs:label>object aggregate</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <obo:BFO_0000179>object-aggregate</obo:BFO_0000179>
+        <obo:IAO_0000600>a is an object aggregate means: a is a material entity consisting exactly of a plurality of objects as member_parts. [025-002</obo:IAO_0000600>
+        <obo:IAO_0000112>a symphony orchestra\, the aggregate of bearings in a constant velocity axle joint\, the nitrogen atoms in the atmosphere\, a collection of cells in a blood biobank.</obo:IAO_0000112>
     </owl:Class>
     
 
@@ -831,9 +965,11 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000028 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000028">
-        <rdfs:label>3-dimensional spatial region</rdfs:label>
+        <rdfs:label>three-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
         <obo:BFO_0000179>3d-s-region</obo:BFO_0000179>
+        <obo:IAO_0000112>a cube-shaped region of space\, a sphere-shaped region of space,</obo:IAO_0000112>
+        <obo:IAO_0000600>A three-dimensional spatial region is  a spatial region that is of three dimensions. [040-001</obo:IAO_0000600>
     </owl:Class>
     
 
@@ -843,6 +979,8 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000029">
         <rdfs:label>site</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+        <obo:IAO_0000600>a is a site means: a is a three-dimensional immaterial entity that is (partially or wholly) bounded by a material entity or a three-dimensional immaterial part thereof. [034-001</obo:IAO_0000600>
+        <obo:IAO_0000112>a hole in the interior of a portion of cheese\, a rabbit hole\, the interior of your bedroom\, the Grand Canyon\, the Piazza San Marco\, an air traffic control region defined in the airspace above an airport\, the interior of a kangaroo pouch\, your left nostril (a fiat part \, the opening \, of your left nasal cavity) \, the lumen of your gut\, the hold of a ship\, the cockpit of an aircraft\, the interior of the trunk of your car\, the interior of your refrigerator\, the interior of your office\, Manhattan Canyon)</obo:IAO_0000112>
         <obo:BFO_0000179>site</obo:BFO_0000179>
     </owl:Class>
     
@@ -853,6 +991,11 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000030">
         <rdfs:label>object</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <obo:IAO_0000112>cells and organisms</obo:IAO_0000112>
+        <obo:IAO_0000112>solid portions of matter</obo:IAO_0000112>
+        <obo:IAO_0000116>BFO 2 Reference: Each object is such that there are entities of which we can assert unproblematically that they lie in its interior, and other entities of which we can assert unproblematically that they lie in its exterior. This may not be so for entities lying at or near the boundary between the interior and exterior. This means that two objects \, for example the two cells depicted in Figure 3 \, may be such that there are material entities crossing their boundaries which belong determinately to neither cell. Something similar obtains in certain cases of conjoined twins (see below).</obo:IAO_0000116>
+        <obo:IAO_0000112>engineered artifacts</obo:IAO_0000112>
+        <obo:IAO_0000600>a is an object means: a is a material entity which manifests causal unity of one or other of the types CUn listed above &amp;amp; is of a type (a material universal) instances of which are maximal relative to this criterion of causal unity. [024-001</obo:IAO_0000600>
         <obo:BFO_0000179>object</obo:BFO_0000179>
     </owl:Class>
     
@@ -863,7 +1006,9 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000031">
         <rdfs:label>generically dependent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:IAO_0000115>a is a generically dependent continuant = Def. a is a continuant that generically depends on one or more other entities. [074-001</obo:IAO_0000115>
         <obo:BFO_0000179>gdc</obo:BFO_0000179>
+        <obo:IAO_0000112>the pdf file on your laptop, the pdf file that is a copy thereof on my laptop\; the sequence of this protein molecule; the sequence that is a copy thereof in that protein molecule.</obo:IAO_0000112>
     </owl:Class>
     
 
@@ -873,7 +1018,9 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000034">
         <rdfs:label>function</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+        <obo:IAO_0000112>the function of amylase in saliva to break down starch into sugarthe function of a hammer to drive in nailsthe function of a heart pacemaker to regulate the beating of a heart through electricity</obo:IAO_0000112>
         <obo:BFO_0000179>function</obo:BFO_0000179>
+        <obo:IAO_0000600>A function is a disposition that exists in virtue of the bearer's physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. [064-001</obo:IAO_0000600>
     </owl:Class>
     
 
@@ -884,6 +1031,9 @@
         <rdfs:label>process boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <obo:BFO_0000179>p-boundary</obo:BFO_0000179>
+        <obo:IAO_0000601>Every process boundary occupies zero-dimensional temporal region. [085-001</obo:IAO_0000601>
+        <obo:IAO_0000115>p is a process boundary =Def. p is a temporal part of a process &amp;amp;  p has no proper temporal parts. [084-001</obo:IAO_0000115>
+        <obo:IAO_0000112>the boundary between the 2nd and 3rd year of your life.</obo:IAO_0000112>
     </owl:Class>
     
 
@@ -891,9 +1041,11 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000038 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000038">
-        <rdfs:label>1-dimensional temporal region</rdfs:label>
+        <rdfs:label>one-dimensional temporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
         <obo:BFO_0000179>1d-t-region</obo:BFO_0000179>
+        <obo:IAO_0000600>A one-dimensional temporal region is a temporal region that is extended. [103-001</obo:IAO_0000600>
+        <obo:IAO_0000112>the temporal region during which a process occurs.</obo:IAO_0000112>
     </owl:Class>
     
 
@@ -903,7 +1055,14 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040">
         <rdfs:label>material</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+        <obo:IAO_0000112>a photon, a human being, the undetached arm of a human being, an aggregate of human beings.</obo:IAO_0000112>
         <obo:BFO_0000179>material</obo:BFO_0000179>
+        <obo:IAO_0000600>A material entity is an independent continuant that has some portion of matter as proper or improper part. [019-001</obo:IAO_0000600>
+        <obo:IAO_0000601>Every entity which has a material entity as part is a material entity. [020-001</obo:IAO_0000601>
+        <obo:IAO_0000116>BFO 2 Reference: an object is a maximal causally unified material entity</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO 2 Reference: Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of  Material Entity. Users are invited to propose new subcategories of Material Entity.</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO 2 Reference: 'Matter' is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.</obo:IAO_0000116>
+        <obo:IAO_0000116>every entity of which a material entity is part is also a material entity. [021-001</obo:IAO_0000116>
     </owl:Class>
     
 
@@ -913,6 +1072,7 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000140">
         <rdfs:label>continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+        <obo:IAO_0000115>a is a continuant fiat boundary = Def. a is an immaterial entity that is of zero, one or two dimensions and does not include a spatial region as part. [029-001</obo:IAO_0000115>
         <obo:BFO_0000179>cf-boundary</obo:BFO_0000179>
     </owl:Class>
     
@@ -923,6 +1083,8 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000141">
         <rdfs:label>immaterial</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+        <obo:IAO_0000116>BFO 2 Reference: In BFO 1.1 the assumption was made that the external surface of a material entity such as a cell could be treated as if it were a boundary in the mathematical sense. The new document propounds the view that when we talk about external surfaces of material objects in this way then we are talking about something fiat. To be dealt with in a future version: fiat boundaries at different levels of granularity.More generally, the focus in discussion of boundaries in BFO 2.0 is now on fiat boundaries, which means: boundaries for which there is no assumption that they coincide with physical discontinuities. The ontology of boundaries becomes more closely allied with the ontology of regions.</obo:IAO_0000116>
+        <obo:IAO_0000115>a is an immaterial entity = Def. a is an independent continuant that has no material entities as parts. [028-001</obo:IAO_0000115>
         <obo:BFO_0000179>immaterial</obo:BFO_0000179>
     </owl:Class>
     
@@ -931,9 +1093,11 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000142 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000142">
-        <rdfs:label>1-dimensional continuant fiat boundary</rdfs:label>
+        <rdfs:label>one-dimensional continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000140"/>
         <obo:BFO_0000179>1d-cf-boundary</obo:BFO_0000179>
+        <obo:IAO_0000600>a one-dimensional continuant fiat boundary is a continuous fiat line whose location is defined in relation to some material entity. [032-001</obo:IAO_0000600>
+        <obo:IAO_0000112>The Equator\, all geopolitical boundaries\, all lines of latitude and longitude\, the median sulcus of your tongue\, the line separating the outer surface of the mucosa of the lower lip from the outer surface of the skin of the chin.</obo:IAO_0000112>
     </owl:Class>
     
 
@@ -953,6 +1117,8 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000145">
         <rdfs:label>relational quality</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+        <obo:IAO_0000112>a marriage bond, an instance of love, an obligation between one person and another.</obo:IAO_0000112>
+        <obo:IAO_0000115>a is a relational quality = Def. for some independent continuants b, c and for some time t: a quality_of b at t &amp;amp; a quality_of c at t. [057-001</obo:IAO_0000115>
         <obo:BFO_0000179>r-quality</obo:BFO_0000179>
     </owl:Class>
     
@@ -961,9 +1127,10 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000146 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000146">
-        <rdfs:label>2-dimensional continuant fiat boundary</rdfs:label>
+        <rdfs:label>two-dimensional continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000140"/>
         <obo:BFO_0000179>2d-cf-boundary</obo:BFO_0000179>
+        <obo:IAO_0000600>a two-dimensional continuant fiat boundary (surface) is a self-connected fiat surface whose location is defined in relation to some material entity. [033-001</obo:IAO_0000600>
     </owl:Class>
     
 
@@ -971,8 +1138,10 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000147 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000147">
-        <rdfs:label>0-dimensional continuant fiat boundary</rdfs:label>
+        <rdfs:label>zero-dimensional continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000140"/>
+        <obo:IAO_0000600>a zero-dimensional continuant fiat boundary is a fiat point whose location is defined in relation to some material entity. [031-001</obo:IAO_0000600>
+        <obo:IAO_0000112>the geographic North Pole\; the quadripoint where the boundaries of Colorado, Utah, New Mexico, and Arizona meet\, the point of origin of some spatial coordinate system.</obo:IAO_0000112>
         <obo:BFO_0000179>0d-cf-boundary</obo:BFO_0000179>
     </owl:Class>
     
@@ -981,9 +1150,12 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000148 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000148">
-        <rdfs:label>0-dimensional temporal region</rdfs:label>
+        <rdfs:label>zero-dimensional temporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
         <obo:BFO_0000179>0d-t-region</obo:BFO_0000179>
+        <obo:IAO_0000112>a temporal region that is occupied by a process boundary\; right now\; the moment at which a finger is detached in an industrial accident\; the moment at which a child is born\, the moment of death.</obo:IAO_0000112>
+        <obo:IAO_0000118>temporal instant.</obo:IAO_0000118>
+        <obo:IAO_0000600>A zero-dimensional temporal region is a temporal region that is without extent. [102-001</obo:IAO_0000600>
     </owl:Class>
     
 
@@ -996,41 +1168,9 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
-        <rdfs:label>editor preferred term</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000112">
-        <rdfs:label>example of usage</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
-        <rdfs:label>definition</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000119">
-        <rdfs:label>definition source</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000412">
-        <rdfs:label>imported from</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000117">
-        <rdfs:label>term editor</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000116">
-        <rdfs:label>editor note</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
-        <rdfs:label>alternative term</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000232">
-        <rdfs:label>curator note</rdfs:label>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000134">
+        <obo:IAO_0000600>To say that each spatiotemporal region r projects_onto some temporal region t is to say that t serves as the temporal extension of r. [080-001</obo:IAO_0000600>
+        <obo:IAO_0000600>To say that spatiotemporal region r projects_onto spatial region s at t is to say that s serves as the spatial extent of r at t. [081-001</obo:IAO_0000600>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo.owl">
         <rdfs:comment>This is an early version of BFO version 2 and has not yet been extensively reviewed by the project team members. Please see the project site http://code.google.com/p/bfo/ , the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel , the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://bfo.googlecode.com/svn/trunk/docs/bfo2-reference/BFO2-Reference.docx . This ontology is generated from a specification at http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-reference.lisp and http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-uris.lisp , with the code that generates the OWL version residing in the same directory.</rdfs:comment>

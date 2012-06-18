@@ -119,6 +119,8 @@
  (has-participant_at nil !obo:BFO_0000167)
  (exists-at nil !obo:BFO_0000108) 
  (during-which-exists nil !obo:BFO_0000157)  ; alan assigned
+ (o-has-ppart nil !obo:BFO_0000118)
+ (o-ppart-of nil !obo:BFO_0000138)
 
 ;; obsolete terms that were in BFO 1.1
 
@@ -178,8 +180,6 @@
  (inv-depends-on nil !obo:BFO_0000122 (:maybe schulz))
  (has-c-boundary nil !obo:BFO_0000109 (:maybe schulz))
  (has-o-boundary nil !obo:BFO_0000116 (:maybe schulz))
- (o-has-ppart nil !obo:BFO_0000118 (:maybe schulz))
- (o-ppart-of nil !obo:BFO_0000138 (:maybe schulz))
  (has-ppart nil !obo:BFO_0000120 :not (:issue 46))
  (ppart-of nil !obo:BFO_0000135 :not (:issue 46))
  (t-ppart-of nil !obo:BFO_0000136 (:maybe schulz) (:note "inverse was not defined"))
