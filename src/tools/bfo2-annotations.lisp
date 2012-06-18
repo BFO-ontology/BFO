@@ -22,6 +22,7 @@
       ("bfo-spec-label" !obo:BFO_0000179)
       ("axiom-nl" !obo:IAO_0000601)
       ("axiom-fol" !obo:IAO_0000602)
+      ("axiomid" !obo:IAO_0010000)
       )))
 
 (defparameter *bfo2-anntag-to-prop* 
@@ -122,15 +123,15 @@
 	 (setq text (#"replaceAll" (#"replaceAll" text "^\\s+" "") "\\s+$" ""))
        ;; as|at|a|axiom|domain|range|note|example
        (cond ((equalp annotation-type "note")
-	      (push (cons !editor-note (format nil "BFO 2 Reference: ~a" (clean-reference-annotation-text text)))
+	      (push (cons !editor-note (format nil "BFO 2 Reference: ~a" text))
 		    (gethash (uri-for-reference-doc-term term bfo2) table)))
 	     ((#"matches" annotation-type "(?i)example.*")
-	      (push (cons !example-of-usage  (clean-reference-annotation-text text))
+	      (push (cons !example-of-usage  text)
 		    (gethash (uri-for-reference-doc-term term bfo2) table)))
 	     ((member annotation-type '("as" "at" "a") :test 'equalp)
 	      (loop for (prop text) in (parse-as text)
 		 do 
-		   (push (cons prop (clean-reference-annotation-text text))
+		   (push (cons prop text)
 		       (gethash (uri-for-reference-doc-term term bfo2) table))))
 	     (t nil))
 	 finally (progn (setf (bfo-term2annotation bfo2) table) (return table)))))
@@ -154,25 +155,28 @@
   (parse-reference-annotations bfo2)
   (with-bfo-uris bfo2
     (maphash (lambda (term as)
-		 (loop for (ann . text) in as
-		    for prop = (second (assoc ann *bfo2-anntag-to-prop* :test 'equalp))
-		    for uri = (or (and (uri-p ann) ann)
-				  (second (assoc prop *bfo2-ontprops* :test 'equalp)))
-		    unless (not (boundp term))
-		    if  (equal prop "editor-note") do
-		    (push `(annotation-assertion ,uri ,(eval term) ,text) axs)
-		    else do
-		    (push `(annotation-assertion ,uri ,(eval term) ,text) axs)
-		      ))
-	       (bfo-term2annotation bfo2)))
+	       (loop for (ann . rawtext) in as
+		  for (text axiomid) = (multiple-value-list (clean-reference-annotation-text rawtext ann term))
+		  for prop = (second (assoc ann *bfo2-anntag-to-prop* :test 'equalp))
+		  for uri = (or (and (uri-p ann) ann)
+				(second (assoc prop *bfo2-ontprops* :test 'equalp)))
+		  when (not (boundp term))
+		    do (warn "wasted annotation ~a" term)
+		  unless(not (boundp term))
+		  if  (equal prop "editor-note") do
+		  (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,uri ,(eval term) ,(format nil "BFO2 Reference: ~a" text)) axs)
+		  else do
+		  (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid))) ,uri ,(eval term) ,text) axs)
+		  ))
+	     (bfo-term2annotation bfo2)))
   axs)
 
-(defun clean-reference-annotation-text (text)
-   (#"replaceAll" 
-    (#"replaceAll"
-     (#"replaceAll" (string-trim " " text)
-		    (string (code-char #o320))
-		    ",")
-     (concatenate 'string (string (code-char #o324)) "|" (string (code-char #o325))) "'")
-    (string (code-char #o312)) " "))
-    
+(defun clean-reference-annotation-text (text ann term)
+  (when (null text) (print-db ann term) (break))
+  (let ((clean (#"replaceAll" (string-trim " " text) "&amp;" "&")))
+    (let ((axiomid (caar (all-matches clean "\\[+(\\d+-\\d+)\\]*" 1))))
+      (if axiomid
+	  (progn
+	    (setq clean (#"replaceAll" clean "\\[+(\\d+-\\d+)\\]*" "(axiom label in BFO2 Reference: [$1])"))
+	    (values clean (make-uri nil (format nil "obo:bfo/axiom/~a" axiomid))))
+	  clean))))
