@@ -8,6 +8,7 @@
   2prop2subprop
   3prop2subprop
   terms-with-md-siblings
+  anntag2term
   term2annotation
   )
 
@@ -25,8 +26,10 @@
 	    (class-tree (read f))
 	    (2-prop-tree (read f))
 	    (3-prop-tree (read f))
+	    (tag2term (read f))
 	    (uris (eval-uri-reader-macro (read g))))
-	(let ((struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree :3-prop-tree 3-prop-tree :uris uris)))
+	(let ((struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree
+				:3-prop-tree 3-prop-tree :uris uris :anntag2term tag2term)))
 	  (parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
 	  (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
 	  (parse-bfo2-tree (second class-tree) #'(setf bfo-class2subclass) struct)
