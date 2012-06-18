@@ -283,7 +283,7 @@ has-location_st
  ("object")
  ("object-aggregate")
  ("member-part-of" m-part-of)
- ("fiat-object-part")
+ ("fiat-object-part" fiat-object)
  ("immaterial-entity" immaterial)
  ("continuant-fiat-boundary" cf-boundary)
  ("material-entity" material)
