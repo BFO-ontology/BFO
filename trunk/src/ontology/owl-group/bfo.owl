@@ -121,16 +121,16 @@
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedTarget>BFO2 Reference: if a realizable entity a is realized in a process p, then p stands in the has_participant relation to the bearer of a. (axiom label in BFO2 Reference: [106-002])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/106-002"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>All realizable dependent continuants have material entities or sites as their bearers. (axiom label in BFO2 Reference: [060-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/060-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: if a realizable entity a is realized in a process p, then p stands in the has_participant relation to the bearer of a. (axiom label in BFO2 Reference: [106-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/106-002"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget>to say that a realizes b at t is to assert that there is some material entity c &amp; a is a process in which has participant c at temporal interval t &amp; b is a disposition or role of which c is bearer at t&amp; the type instantiated by a is correlated with the type instantiated by b. (axiom label in BFO2 Reference: [059-002])</owl:annotatedTarget>
@@ -441,8 +441,9 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000132">
         <rdfs:label>occurrent part of</rdfs:label>
         <obo:IAO_0000116>BFO2 Reference: occurrent</obo:IAO_0000116>
-        <obo:IAO_0000112>Mary’s 5th birthday occurrent_part_of Mary’s life\; the first set of the tennis match occurrent_part_of the tennis match.</obo:IAO_0000112>
+        <obo:IAO_0000112>Mary’s 5th birthday occurrent_part_of Mary’s life</obo:IAO_0000112>
         <obo:BFO_0000179>o-part-of</obo:BFO_0000179>
+        <obo:IAO_0000112>the first set of the tennis match occurrent_part_of the tennis match.</obo:IAO_0000112>
         <obo:IAO_0000600>a occurrent_part_of b =Def. a is a part of b &amp; a and b are occurrents. (axiom label in BFO2 Reference: [003-002])</obo:IAO_0000600>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000117"/>
     </owl:ObjectProperty>
@@ -505,12 +506,13 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000139">
         <rdfs:label>temporal part of</rdfs:label>
+        <obo:IAO_0000112>the 4th year of your life is a temporal part of your life\. The first quarter of a game of football is a temporal part of the whole game.</obo:IAO_0000112>
         <obo:BFO_0000179>t-part-of</obo:BFO_0000179>
         <obo:IAO_0000115>a temporal_part_of b =Def.a occurrent_part_of b &amp; &amp; for some temporal region r, a occupies r &amp; for all occurrents c, r (if c occupies r  &amp; r occurrent_part_of r then (c occurrent_part_of a iff c occurrent_part_of b)). (axiom label in BFO2 Reference: [078-001])</obo:IAO_0000115>
         <obo:IAO_0000601>if a proper_temporal_part_of b, then there is some c which is a proper_temporal_part_of b and which shares no parts with a. (axiom label in BFO2 Reference: [117-001])</obo:IAO_0000601>
         <obo:IAO_0000112>The first quarter of a game of football is a temporal part of the whole game. The process of a footballer’s heart beating once is an occurrent part, but not a temporal part, of the whole game. The process of your heart beating from 4pm to 5pm today is a temporal part of the entire process of your heart beating. The 4th year of your life is a temporal part of your life, as is the process boundary which separates the 3rd and 4th years of your life.</obo:IAO_0000112>
-        <obo:IAO_0000112>your heart beating from 4pm to 5pm today is a temporal part of the process of your heart beating\; the 4th year of your life is a temporal part of your life\. The first quarter of a game of football is a temporal part of the whole game.</obo:IAO_0000112>
         <obo:IAO_0000115>a proper_temporal_part_of b =Def. a temporal_part_of b &amp; not (a = b). (axiom label in BFO2 Reference: [116-001])</obo:IAO_0000115>
+        <obo:IAO_0000112>your heart beating from 4pm to 5pm today is a temporal part of the process of your heart beating</obo:IAO_0000112>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000121"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000132"/>
     </owl:ObjectProperty>
@@ -817,9 +819,12 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000001">
         <rdfs:label>entity</rdfs:label>
+        <obo:IAO_0000112>Julius Caesar</obo:IAO_0000112>
         <obo:IAO_0000600>An entity is anything that exists or has existed or will exist. (axiom label in BFO2 Reference: [001-001])</obo:IAO_0000600>
         <obo:BFO_0000179>entity</obo:BFO_0000179>
-        <obo:IAO_0000112>Julius Caesar\, the Second World War\, your body mass index\, Verdi’s Requiem</obo:IAO_0000112>
+        <obo:IAO_0000112>Verdi’s Requiem</obo:IAO_0000112>
+        <obo:IAO_0000112>your body mass index</obo:IAO_0000112>
+        <obo:IAO_0000112>the Second World War</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>An entity is anything that exists or has existed or will exist. (axiom label in BFO2 Reference: [001-001])</owl:annotatedTarget>
@@ -848,6 +853,12 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/011-001"/>
     </owl:Axiom>
     <owl:Axiom>
+        <owl:annotatedTarget>A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity. (axiom label in BFO2 Reference: [008-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/008-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedTarget>if a is a continuant and if, for some t, b has continuant_part a at t, then b is a continuant. (axiom label in BFO2 Reference: [126-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
@@ -858,12 +869,6 @@
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/009-002"/>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedTarget>A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity. (axiom label in BFO2 Reference: [008-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/008-001"/>
     </owl:Axiom>
     
 
@@ -904,10 +909,19 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000004">
         <rdfs:label>independent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <obo:IAO_0000112>an atom\, a molecule\, an organism\, a heart\, a chair\, the bottom right portion of a human torso\, a leg\; the interior of your mouth\; a spatial region\; an orchestra.</obo:IAO_0000112>
+        <obo:IAO_0000112>a chair</obo:IAO_0000112>
+        <obo:IAO_0000112>a heart</obo:IAO_0000112>
+        <obo:IAO_0000115>a is an independent continuant = Def. a is a continuant which is such that there is no b and no t such that a s-depends on b at t. (axiom label in BFO2 Reference: [017-002])</obo:IAO_0000115>
+        <obo:IAO_0000112>a molecule</obo:IAO_0000112>
+        <obo:IAO_0000112>the bottom right portion of a human torso</obo:IAO_0000112>
+        <obo:IAO_0000112>a leg</obo:IAO_0000112>
+        <obo:IAO_0000112>an orchestra.</obo:IAO_0000112>
+        <obo:IAO_0000112>a spatial region</obo:IAO_0000112>
         <obo:IAO_0000601>For every independent continuant a and time t during the region of time spanned by its life, there are entities which s-depends on a during t. (axiom label in BFO2 Reference: [018-002])</obo:IAO_0000601>
         <obo:BFO_0000179>ic</obo:BFO_0000179>
-        <obo:IAO_0000115>a is an independent continuant = Def. a is a continuant which is such that there is no b and no t such that a s-depends on b at t. (axiom label in BFO2 Reference: [017-002])</obo:IAO_0000115>
+        <obo:IAO_0000112>an organism</obo:IAO_0000112>
+        <obo:IAO_0000112>the interior of your mouth</obo:IAO_0000112>
+        <obo:IAO_0000112>an atom</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>For every independent continuant a and time t during the region of time spanned by its life, there are entities which s-depends on a during t. (axiom label in BFO2 Reference: [018-002])</owl:annotatedTarget>
@@ -934,16 +948,16 @@
         <obo:IAO_0000600>A spatial region is a continuant entity that is a continuant_part_of spaceR as defined relative to some frame R. (axiom label in BFO2 Reference: [035-001])</obo:IAO_0000600>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedTarget>All continuant parts of spatial regions are spatial regions. (axiom label in BFO2 Reference: [036-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/036-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>A spatial region is a continuant entity that is a continuant_part_of spaceR as defined relative to some frame R. (axiom label in BFO2 Reference: [035-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/035-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>All continuant parts of spatial regions are spatial regions. (axiom label in BFO2 Reference: [036-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/036-001"/>
     </owl:Axiom>
     
 
@@ -959,6 +973,12 @@
         <obo:BFO_0000179>t-region</obo:BFO_0000179>
     </owl:Class>
     <owl:Axiom>
+        <owl:annotatedTarget>A temporal region is an occurrent entity that is part of time as defined relative to some reference frame. (axiom label in BFO2 Reference: [100-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/100-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
         <owl:annotatedTarget>Every temporal region r is such that r occupies r. (axiom label in BFO2 Reference: [119-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
@@ -970,12 +990,6 @@
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/101-001"/>
     </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedTarget>A temporal region is an occurrent entity that is part of time as defined relative to some reference frame. (axiom label in BFO2 Reference: [100-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/100-001"/>
-    </owl:Axiom>
     
 
 
@@ -984,9 +998,10 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000009">
         <rdfs:label>two-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:IAO_0000112>an infinitely thin plane in space.</obo:IAO_0000112>
         <obo:BFO_0000179>2d-s-region</obo:BFO_0000179>
         <obo:IAO_0000600>A two-dimensional spatial region is a spatial region that is of two dimensions. (axiom label in BFO2 Reference: [039-001])</obo:IAO_0000600>
-        <obo:IAO_0000112>the surface of a sphere-shaped part of space\, an infinitely thin plane in space.</obo:IAO_0000112>
+        <obo:IAO_0000112>the surface of a sphere-shaped part of space</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>A two-dimensional spatial region is a spatial region that is of two dimensions. (axiom label in BFO2 Reference: [039-001])</owl:annotatedTarget>
@@ -1002,20 +1017,16 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000011">
         <rdfs:label>spatiotemporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <obo:IAO_0000112>the spatiotemporal region occupied by a human life\, the spatiotemporal region occupied by the development of a cancer tumor\, the spatiotemporal region occupied by a process of cellular meiosis.</obo:IAO_0000112>
         <obo:IAO_0000601>Each spatiotemporal region projects_onto some temporal region. (axiom label in BFO2 Reference: [098-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>the spatiotemporal region occupied by a human life</obo:IAO_0000112>
+        <obo:IAO_0000601>Every spatiotemporal region r is such that r occupies r. (axiom label in BFO2 Reference: [107-001])</obo:IAO_0000601>
         <obo:IAO_0000601>All parts of spatiotemporal regions are spatiotemporal regions. (axiom label in BFO2 Reference: [096-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>the spatiotemporal region occupied by a process of cellular meiosis.</obo:IAO_0000112>
         <obo:IAO_0000601>Each spatiotemporal region projects_onto some spatial region at t. (axiom label in BFO2 Reference: [099-001])</obo:IAO_0000601>
         <obo:IAO_0000600>A spatiotemporal region is an occurrent entity that is part of spacetime. (axiom label in BFO2 Reference: [095-001])</obo:IAO_0000600>
-        <obo:IAO_0000601>Every spatiotemporal region r is such that r occupies r. (axiom label in BFO2 Reference: [107-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>the spatiotemporal region occupied by the development of a cancer tumor</obo:IAO_0000112>
         <obo:BFO_0000179>st-region</obo:BFO_0000179>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedTarget>Each spatiotemporal region projects_onto some spatial region at t. (axiom label in BFO2 Reference: [099-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/099-001"/>
-    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget>Every spatiotemporal region r is such that r occupies r. (axiom label in BFO2 Reference: [107-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
@@ -1023,10 +1034,10 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/107-001"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget>All parts of spatiotemporal regions are spatiotemporal regions. (axiom label in BFO2 Reference: [096-001])</owl:annotatedTarget>
+        <owl:annotatedTarget>Each spatiotemporal region projects_onto some spatial region at t. (axiom label in BFO2 Reference: [099-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/096-001"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/099-001"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget>Each spatiotemporal region projects_onto some temporal region. (axiom label in BFO2 Reference: [098-001])</owl:annotatedTarget>
@@ -1040,6 +1051,12 @@
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/095-001"/>
     </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>All parts of spatiotemporal regions are spatiotemporal regions. (axiom label in BFO2 Reference: [096-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/096-001"/>
+    </owl:Axiom>
     
 
 
@@ -1048,9 +1065,15 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000015">
         <rdfs:label>process</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <obo:IAO_0000115>p is a process = Def. a is an occurrent that has temporal proper parts and for some time t, a s-depends on some  material entity at t. (axiom label in BFO2 Reference: [083-002])</obo:IAO_0000115>
-        <obo:IAO_0000112>the life of an organism\, a process of sleeping\, a process of cell-division, \ a beating of the heart\, a process of meiosis\, the course of a disease\, the flight of a bird\, your process of aging.</obo:IAO_0000112>
+        <obo:IAO_0000112>the flight of a bird</obo:IAO_0000112>
+        <obo:IAO_0000112>a process of meiosis</obo:IAO_0000112>
+        <obo:IAO_0000112>a process of sleeping</obo:IAO_0000112>
+        <obo:IAO_0000112>the course of a disease</obo:IAO_0000112>
         <obo:BFO_0000179>process</obo:BFO_0000179>
+        <obo:IAO_0000115>p is a process = Def. a is an occurrent that has temporal proper parts and for some time t, a s-depends on some  material entity at t. (axiom label in BFO2 Reference: [083-002])</obo:IAO_0000115>
+        <obo:IAO_0000112>your process of aging.</obo:IAO_0000112>
+        <obo:IAO_0000112>a process of cell-division, \ a beating of the heart</obo:IAO_0000112>
+        <obo:IAO_0000112>the life of an organism</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>p is a process = Def. a is an occurrent that has temporal proper parts and for some time t, a s-depends on some  material entity at t. (axiom label in BFO2 Reference: [083-002])</owl:annotatedTarget>
@@ -1132,16 +1155,16 @@
         <obo:BFO_0000179>quality</obo:BFO_0000179>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedTarget>a quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized. (axiom label in BFO2 Reference: [055-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/055-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>If an entity is a quality at any time that it exists, then it is a quality at every time that it exists. (axiom label in BFO2 Reference: [105-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/105-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>a quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized. (axiom label in BFO2 Reference: [055-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/055-001"/>
     </owl:Axiom>
     
 
@@ -1151,11 +1174,19 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000020">
         <rdfs:label>specifically dependent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <obo:IAO_0000112>of reciprocal specifically dependent continuants: the function of this key to open this lock and the reciprocally dependent disposition of this lock: to be opened by this key\; the reciprocal dependence of the role predator and the role prey as played by two organisms in a given interaction\;  the reciprocal dependence of proton donors and acceptors in chemical reactions [79</obo:IAO_0000112>
         <obo:IAO_0000112>of relational dependent continuants (multiple bearers): John’s love for Mary, the ownership relation between John and this statue, the relation of authority between John and his subordinates.</obo:IAO_0000112>
         <obo:IAO_0000115>a is a specifically dependent continuant = Def. a is a continuant &amp; for every time t during the course of a’s existence, there is some independent continuant b which is such that a s-depends on b at t. (axiom label in BFO2 Reference: [050-002])</obo:IAO_0000115>
-        <obo:IAO_0000112>of one-sided specifically dependent continuants: the mass of this tomato\, the color of this tomato\, the smell of this portion of mozzarella\, the disposition of this fish to decay\, the role of being a doctor\, the function of this heart: to pump blood\, the shape of this region of space.</obo:IAO_0000112>
+        <obo:IAO_0000112>the color of this tomato</obo:IAO_0000112>
+        <obo:IAO_0000112>the smell of this portion of mozzarella</obo:IAO_0000112>
+        <obo:IAO_0000112>of reciprocal specifically dependent continuants: the function of this key to open this lock and the reciprocally dependent disposition of this lock: to be opened by this key</obo:IAO_0000112>
+        <obo:IAO_0000112>the reciprocal dependence of proton donors and acceptors in chemical reactions [79</obo:IAO_0000112>
+        <obo:IAO_0000112>the function of this heart: to pump blood</obo:IAO_0000112>
+        <obo:IAO_0000112>the role of being a doctor</obo:IAO_0000112>
+        <obo:IAO_0000112>the disposition of this fish to decay</obo:IAO_0000112>
+        <obo:IAO_0000112>the reciprocal dependence of the role predator and the role prey as played by two organisms in a given interaction</obo:IAO_0000112>
         <obo:BFO_0000179>sdc</obo:BFO_0000179>
+        <obo:IAO_0000112>of one-sided specifically dependent continuants: the mass of this tomato</obo:IAO_0000112>
+        <obo:IAO_0000112>the shape of this region of space.</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>a is a specifically dependent continuant = Def. a is a continuant &amp; for every time t during the course of a’s existence, there is some independent continuant b which is such that a s-depends on b at t. (axiom label in BFO2 Reference: [050-002])</owl:annotatedTarget>
@@ -1189,9 +1220,12 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000024">
         <rdfs:label>fiat object</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-        <obo:IAO_0000112>the upper and lower lobes of the left lung\, the dorsal and ventral surfaces of the body\, the Western hemisphere of the Earth\, the FMA:regional parts of an intact human body.</obo:IAO_0000112>
+        <obo:IAO_0000112>the dorsal and ventral surfaces of the body</obo:IAO_0000112>
+        <obo:IAO_0000112>the Western hemisphere of the Earth</obo:IAO_0000112>
         <obo:IAO_0000115>a is a fiat object part = Def. a is a material entity that is a proper continuant_part of an object and that is not itself an object. (axiom label in BFO2 Reference: [027-001])</obo:IAO_0000115>
+        <obo:IAO_0000112>the FMA:regional parts of an intact human body.</obo:IAO_0000112>
         <obo:BFO_0000179>fiat-object</obo:BFO_0000179>
+        <obo:IAO_0000112>the upper and lower lobes of the left lung</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>a is a fiat object part = Def. a is a material entity that is a proper continuant_part of an object and that is not itself an object. (axiom label in BFO2 Reference: [027-001])</owl:annotatedTarget>
@@ -1227,7 +1261,10 @@
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <obo:BFO_0000179>object-aggregate</obo:BFO_0000179>
         <obo:IAO_0000600>a is an object aggregate means: a is a material entity consisting exactly of a plurality of objects as member_parts. (axiom label in BFO2 Reference: [025-002])</obo:IAO_0000600>
-        <obo:IAO_0000112>a symphony orchestra\, the aggregate of bearings in a constant velocity axle joint\, the nitrogen atoms in the atmosphere\, a collection of cells in a blood biobank.</obo:IAO_0000112>
+        <obo:IAO_0000112>a collection of cells in a blood biobank.</obo:IAO_0000112>
+        <obo:IAO_0000112>a symphony orchestra</obo:IAO_0000112>
+        <obo:IAO_0000112>the nitrogen atoms in the atmosphere</obo:IAO_0000112>
+        <obo:IAO_0000112>the aggregate of bearings in a constant velocity axle joint</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>a is an object aggregate means: a is a material entity consisting exactly of a plurality of objects as member_parts. (axiom label in BFO2 Reference: [025-002])</owl:annotatedTarget>
@@ -1243,9 +1280,10 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000028">
         <rdfs:label>three-dimensional spatial region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <obo:IAO_0000112>a sphere-shaped region of space,</obo:IAO_0000112>
         <obo:IAO_0000600>A three-dimensional spatial region is  a spatial region that is of three dimensions. (axiom label in BFO2 Reference: [040-001])</obo:IAO_0000600>
         <obo:BFO_0000179>3d-s-region</obo:BFO_0000179>
-        <obo:IAO_0000112>a cube-shaped region of space\, a sphere-shaped region of space,</obo:IAO_0000112>
+        <obo:IAO_0000112>a cube-shaped region of space</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>A three-dimensional spatial region is  a spatial region that is of three dimensions. (axiom label in BFO2 Reference: [040-001])</owl:annotatedTarget>
@@ -1261,9 +1299,23 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000029">
         <rdfs:label>site</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
-        <obo:IAO_0000112>a hole in the interior of a portion of cheese\, a rabbit hole\, the interior of your bedroom\, the Grand Canyon\, the Piazza San Marco\, an air traffic control region defined in the airspace above an airport\, the interior of a kangaroo pouch\, your left nostril (a fiat part – the opening – of your left nasal cavity) \, the lumen of your gut\, the hold of a ship\, the cockpit of an aircraft\, the interior of the trunk of your car\, the interior of your refrigerator\, the interior of your office\, Manhattan Canyon)</obo:IAO_0000112>
+        <obo:IAO_0000112>the Grand Canyon</obo:IAO_0000112>
         <obo:IAO_0000600>a is a site means: a is a three-dimensional immaterial entity that is (partially or wholly) bounded by a material entity or a three-dimensional immaterial part thereof. (axiom label in BFO2 Reference: [034-001])</obo:IAO_0000600>
+        <obo:IAO_0000112>the cockpit of an aircraft</obo:IAO_0000112>
+        <obo:IAO_0000112>the interior of your refrigerator</obo:IAO_0000112>
+        <obo:IAO_0000112>Manhattan Canyon)</obo:IAO_0000112>
+        <obo:IAO_0000112>the interior of your bedroom</obo:IAO_0000112>
+        <obo:IAO_0000112>the Piazza San Marco</obo:IAO_0000112>
+        <obo:IAO_0000112>the lumen of your gut</obo:IAO_0000112>
+        <obo:IAO_0000112>the hold of a ship</obo:IAO_0000112>
+        <obo:IAO_0000112>a hole in the interior of a portion of cheese</obo:IAO_0000112>
+        <obo:IAO_0000112>the interior of a kangaroo pouch</obo:IAO_0000112>
+        <obo:IAO_0000112>a rabbit hole</obo:IAO_0000112>
+        <obo:IAO_0000112>an air traffic control region defined in the airspace above an airport</obo:IAO_0000112>
+        <obo:IAO_0000112>your left nostril (a fiat part – the opening – of your left nasal cavity)</obo:IAO_0000112>
+        <obo:IAO_0000112>the interior of your office</obo:IAO_0000112>
         <obo:BFO_0000179>site</obo:BFO_0000179>
+        <obo:IAO_0000112>the interior of the trunk of your car</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>a is a site means: a is a three-dimensional immaterial entity that is (partially or wholly) bounded by a material entity or a three-dimensional immaterial part thereof. (axiom label in BFO2 Reference: [034-001])</owl:annotatedTarget>
@@ -1301,8 +1353,9 @@
         <rdfs:label>generically dependent continuant</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <obo:IAO_0000115>a is a generically dependent continuant = Def. a is a continuant that generically depends on one or more other entities. (axiom label in BFO2 Reference: [074-001])</obo:IAO_0000115>
+        <obo:IAO_0000112>the sequence of this protein molecule; the sequence that is a copy thereof in that protein molecule.</obo:IAO_0000112>
         <obo:BFO_0000179>gdc</obo:BFO_0000179>
-        <obo:IAO_0000112>the pdf file on your laptop, the pdf file that is a copy thereof on my laptop\; the sequence of this protein molecule; the sequence that is a copy thereof in that protein molecule.</obo:IAO_0000112>
+        <obo:IAO_0000112>the pdf file on your laptop, the pdf file that is a copy thereof on my laptop</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>a is a generically dependent continuant = Def. a is a continuant that generically depends on one or more other entities. (axiom label in BFO2 Reference: [074-001])</owl:annotatedTarget>
@@ -1377,7 +1430,7 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040">
-        <rdfs:label>material</rdfs:label>
+        <rdfs:label>material entity</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
         <obo:IAO_0000112>a photon, a human being, the undetached arm of a human being, an aggregate of human beings.</obo:IAO_0000112>
         <obo:BFO_0000179>material</obo:BFO_0000179>
@@ -1395,16 +1448,16 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/020-001"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget>BFO2 Reference: every entity of which a material entity is part is also a material entity. (axiom label in BFO2 Reference: [021-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/021-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>A material entity is an independent continuant that has some portion of matter as proper or improper part. (axiom label in BFO2 Reference: [019-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/019-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: every entity of which a material entity is part is also a material entity. (axiom label in BFO2 Reference: [021-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/021-001"/>
     </owl:Axiom>
     
 
@@ -1429,7 +1482,7 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000141 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000141">
-        <rdfs:label>immaterial</rdfs:label>
+        <rdfs:label>immaterial entity</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
         <obo:IAO_0000115>a is an immaterial entity = Def. a is an independent continuant that has no material entities as parts. (axiom label in BFO2 Reference: [028-001])</obo:IAO_0000115>
         <obo:IAO_0000116>BFO 2 Reference: In BFO 1.1 the assumption was made that the external surface of a material entity such as a cell could be treated as if it were a boundary in the mathematical sense. The new document propounds the view that when we talk about external surfaces of material objects in this way then we are talking about something fiat. To be dealt with in a future version: fiat boundaries at different levels of granularity.More generally, the focus in discussion of boundaries in BFO 2.0 is now on fiat boundaries, which means: boundaries for which there is no assumption that they coincide with physical discontinuities. The ontology of boundaries becomes more closely allied with the ontology of regions.</obo:IAO_0000116>
@@ -1451,7 +1504,11 @@
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000140"/>
         <obo:IAO_0000600>a one-dimensional continuant fiat boundary is a continuous fiat line whose location is defined in relation to some material entity. (axiom label in BFO2 Reference: [032-001])</obo:IAO_0000600>
         <obo:BFO_0000179>1d-cf-boundary</obo:BFO_0000179>
-        <obo:IAO_0000112>The Equator\, all geopolitical boundaries\, all lines of latitude and longitude\, the median sulcus of your tongue\, the line separating the outer surface of the mucosa of the lower lip from the outer surface of the skin of the chin.</obo:IAO_0000112>
+        <obo:IAO_0000112>all geopolitical boundaries</obo:IAO_0000112>
+        <obo:IAO_0000112>The Equator</obo:IAO_0000112>
+        <obo:IAO_0000112>all lines of latitude and longitude</obo:IAO_0000112>
+        <obo:IAO_0000112>the line separating the outer surface of the mucosa of the lower lip from the outer surface of the skin of the chin.</obo:IAO_0000112>
+        <obo:IAO_0000112>the median sulcus of your tongue</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>a one-dimensional continuant fiat boundary is a continuous fiat line whose location is defined in relation to some material entity. (axiom label in BFO2 Reference: [032-001])</owl:annotatedTarget>
@@ -1513,8 +1570,10 @@
         <rdfs:label>zero-dimensional continuant fiat boundary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000140"/>
         <obo:IAO_0000600>a zero-dimensional continuant fiat boundary is a fiat point whose location is defined in relation to some material entity. (axiom label in BFO2 Reference: [031-001])</obo:IAO_0000600>
-        <obo:IAO_0000112>the geographic North Pole\; the quadripoint where the boundaries of Colorado, Utah, New Mexico, and Arizona meet\, the point of origin of some spatial coordinate system.</obo:IAO_0000112>
+        <obo:IAO_0000112>the geographic North Pole</obo:IAO_0000112>
+        <obo:IAO_0000112>the point of origin of some spatial coordinate system.</obo:IAO_0000112>
         <obo:BFO_0000179>0d-cf-boundary</obo:BFO_0000179>
+        <obo:IAO_0000112>the quadripoint where the boundaries of Colorado, Utah, New Mexico, and Arizona meet</obo:IAO_0000112>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedTarget>a zero-dimensional continuant fiat boundary is a fiat point whose location is defined in relation to some material entity. (axiom label in BFO2 Reference: [031-001])</owl:annotatedTarget>
@@ -1530,9 +1589,13 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000148">
         <rdfs:label>zero-dimensional temporal region</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <obo:IAO_0000112>the moment at which a finger is detached in an industrial accident</obo:IAO_0000112>
+        <obo:IAO_0000112>the moment of death.</obo:IAO_0000112>
         <obo:BFO_0000179>0d-t-region</obo:BFO_0000179>
-        <obo:IAO_0000112>a temporal region that is occupied by a process boundary\; right now\; the moment at which a finger is detached in an industrial accident\; the moment at which a child is born\, the moment of death.</obo:IAO_0000112>
+        <obo:IAO_0000112>right now</obo:IAO_0000112>
+        <obo:IAO_0000112>the moment at which a child is born</obo:IAO_0000112>
         <obo:IAO_0000600>A zero-dimensional temporal region is a temporal region that is without extent. (axiom label in BFO2 Reference: [102-001])</obo:IAO_0000600>
+        <obo:IAO_0000112>a temporal region that is occupied by a process boundary</obo:IAO_0000112>
         <obo:IAO_0000118>temporal instant.</obo:IAO_0000118>
     </owl:Class>
     <owl:Axiom>
@@ -1557,16 +1620,16 @@
         <obo:IAO_0000600>To say that spatiotemporal region r projects_onto spatial region s at t is to say that s serves as the spatial extent of r at t. (axiom label in BFO2 Reference: [081-001])</obo:IAO_0000600>
     </rdf:Description>
     <owl:Axiom>
-        <owl:annotatedTarget>To say that spatiotemporal region r projects_onto spatial region s at t is to say that s serves as the spatial extent of r at t. (axiom label in BFO2 Reference: [081-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000134"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/081-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>To say that each spatiotemporal region r projects_onto some temporal region t is to say that t serves as the temporal extension of r. (axiom label in BFO2 Reference: [080-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000134"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/080-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>To say that spatiotemporal region r projects_onto spatial region s at t is to say that s serves as the spatial extent of r at t. (axiom label in BFO2 Reference: [081-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000134"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/081-001"/>
     </owl:Axiom>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo.owl">
         <rdfs:comment>This is an early version of BFO version 2 and has not yet been extensively reviewed by the project team members. Please see the project site http://code.google.com/p/bfo/ , the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel , the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://bfo.googlecode.com/svn/trunk/docs/bfo2-reference/BFO2-Reference.docx . This ontology is generated from a specification at http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-reference.lisp and http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-uris.lisp , with the code that generates the OWL version residing in the same directory.</rdfs:comment>
