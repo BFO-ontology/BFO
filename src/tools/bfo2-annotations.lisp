@@ -89,6 +89,8 @@
 	 ("-t$" "-time")
 	 ("^(\\\w+\\b) has" "has $1")
 	 ("-" " ")
+	 ("^material$" "material entity")
+	 ("^immaterial$" "immaterial entity")
 	 ("\\." "-"))
        do
        (setq now (replace-all (#"replaceAll" now match replace) "^(\\d)-"
@@ -126,8 +128,9 @@
 	      (push (cons !editor-note (format nil "BFO 2 Reference: ~a" text))
 		    (gethash (uri-for-reference-doc-term term bfo2) table)))
 	     ((#"matches" annotation-type "(?i)example.*")
-	      (push (cons !example-of-usage  text)
-		    (gethash (uri-for-reference-doc-term term bfo2) table)))
+	      (loop for one in (split-at-regex text "\\s*(?<!\\\\),\\s*")
+		   do (push (cons !example-of-usage  one)
+			 (gethash (uri-for-reference-doc-term term bfo2) table))))
 	     ((member annotation-type '("as" "at" "a") :test 'equalp)
 	      (loop for (prop text) in (parse-as text)
 		 do 
@@ -165,8 +168,11 @@
 		  unless(not (boundp term))
 		  if  (equal prop "editor-note") do
 		  (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,uri ,(eval term) ,(format nil "BFO2 Reference: ~a" text)) axs)
-		  else do
-		  (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid))) ,uri ,(eval term) ,text) axs)
+		  else if (equal prop "example-of-usage")
+		    do (loop for one in (split-at-regex text "\\s*\\\\[;,]\\s*")
+			  do (push `(annotation-assertion ,uri ,(eval term) ,one) axs))
+		  else 
+		    do (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid))) ,uri ,(eval term) ,text) axs)
 		  ))
 	     (bfo-term2annotation bfo2)))
   axs)
