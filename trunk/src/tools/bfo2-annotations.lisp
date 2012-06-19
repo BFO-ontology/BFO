@@ -1,12 +1,3 @@
-;;;	     ("ready-for-release" !obo:IAO_0000122)
-;;;	     ("metadata-complete" !obo:IAO_0000120)
-;;;	     ("metadata-incomplete" !obo:IAO_0000123)
-;;;	     ("pending-final-vetting" !obo:IAO_0000125)
-;;;	     ("uncurated" !obo:IAO_0000124)
-;;;	     ("placeholder" !obo:IAO_0000121)
-;;;	     ("has-curation-status" !obo:IAO_0000114)
-;;;	     ("curation-status" !obo:IAO_0000078)
-
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defparameter *bfo2-ontprops* 
     '(("definition" !obo:IAO_0000115)
@@ -65,6 +56,7 @@
 	 ("^o-" "occurrent-")
 	 ("^t-" "temporal-")
 	 ("^p-" "process-")
+	 ("-s-dep" "-specifically-dep")
 	 ("-s(-|$)" "-spatial-")
 	 ("-t-" "-temporal-")
 	 ("\\bcf\\b" "continuant-fiat")
@@ -128,9 +120,8 @@
 	      (push (cons !editor-note (format nil "BFO 2 Reference: ~a" text))
 		    (gethash (uri-for-reference-doc-term term bfo2) table)))
 	     ((#"matches" annotation-type "(?i)example.*")
-	      (loop for one in (split-at-regex text "\\s*(?<!\\\\),\\s*")
-		   do (push (cons !example-of-usage  one)
-			 (gethash (uri-for-reference-doc-term term bfo2) table))))
+	      (push (cons !example-of-usage  text)
+		    (gethash (uri-for-reference-doc-term term bfo2) table)))
 	     ((member annotation-type '("as" "at" "a") :test 'equalp)
 	      (loop for (prop text) in (parse-as text)
 		 do 
@@ -152,7 +143,9 @@
 	  (progn (warn "No URI found for ~a ?" found-or-translated) nil)))))
 
 (defun parse-as (text)
-  (all-matches text "\\b(\\w+):(.*)" 1 2))
+  (let ((them (all-matches text "\\b(\\w+):(.*)" 1 2)))
+    (when (> (length them) 1) (print them))
+    them))
 
 (defun generate-reference-annotations (bfo2 &aux axs)
   (parse-reference-annotations bfo2)
@@ -164,7 +157,8 @@
 		  for uri = (or (and (uri-p ann) ann)
 				(second (assoc prop *bfo2-ontprops* :test 'equalp)))
 		  when (not (boundp term))
-		    do (warn "wasted annotation ~a" term)
+		    do (setq axs (append (maybe-generate-annotation-for-ternary-property bfo2 term text axiomid prop uri)
+				      axs))
 		  unless(not (boundp term))
 		  if  (equal prop "editor-note") do
 		  (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,uri ,(eval term) ,(format nil "BFO2 Reference: ~a" text)) axs)
@@ -186,3 +180,32 @@
 	    (setq clean (#"replaceAll" clean "\\[+(\\d+-\\d+)\\]*" "(axiom label in BFO2 Reference: [$1])"))
 	    (values clean (make-uri nil (format nil "obo:bfo/axiom/~a" axiomid))))
 	  clean))))
+
+(defun maybe-generate-annotation-for-ternary-property (bfo2 term text axiomid prop uri)
+  (let ((uris (cdr (bfo-uris bfo2)))
+	(axs nil))
+    (let* ((at (assoc (intern (concatenate 'string (string term) "_AT")) uris))
+	   (st (assoc (intern (concatenate 'string (string term) "_ST")) uris)))
+;      (print-db at st)
+      ;; lazy ass cut and paste. Factor out
+      (when st
+	(if  (equal prop "editor-note") 
+	     (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,uri ,(third st) ,(format nil "BFO2 Reference: ~a" text)) axs)
+	     (if (equal prop "example-of-usage")
+		 (loop for one in (split-at-regex text "\\s*\\\\[;,]\\s*")
+		    do (push `(annotation-assertion ,uri ,(third st) ,one) axs))
+		 (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))
+					      ,uri ,(third st) ,text) axs)))
+	(push `(annotation-assertion !editor-note ,(third st) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation '~a' is: exists t,  exists_at(x,t) & exists_at(y,t) & '~a'(x,y,t)" (a-better-lousy-label (car st)) (a-better-lousy-label term))) axs))
+      (when at
+	(if  (equal prop "editor-note") 
+	     (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,uri ,(third at) ,(format nil "BFO2 Reference: ~a" text)) axs)
+	     (if (equal prop "example-of-usage")
+		 (loop for one in (split-at-regex text "\\s*\\\\[;,]\\s*")
+		    do (push `(annotation-assertion ,uri ,(third at) ,one) axs))
+		 (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))
+					      ,uri ,(third at) ,text) axs)))
+	(push `(annotation-assertion !editor-note ,(third at) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation '~a' is: forall(t) exists_at(x,t) -> exists_at(y,t) and '~a(x,y,t)'" (a-better-lousy-label (car at)) (a-better-lousy-label term))) axs)
+	axs))))
+
+      
