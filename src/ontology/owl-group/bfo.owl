@@ -95,9 +95,19 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000052">
         <rdfs:label>inheres in at all times</rdfs:label>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;inheres in at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;inheres in(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000115>a inheres_in b at t =Def. a is a dependent continuant &amp; b is an independent continuant &amp; a s-depends on b at t. (axiom label in BFO2 Reference: [051-001])</obo:IAO_0000115>
+        <obo:IAO_0000116>BFO2 Reference: specifically dependent continuant</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: independent continuant</obo:IAO_0000116>
         <obo:BFO_0000179>inheres-in_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000070"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a inheres_in b at t =Def. a is a dependent continuant &amp; b is an independent continuant &amp; a s-depends on b at t. (axiom label in BFO2 Reference: [051-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/051-001"/>
+    </owl:Axiom>
     
 
 
@@ -127,16 +137,16 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/060-001"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget>BFO2 Reference: if a realizable entity a is realized in a process p, then p stands in the has_participant relation to the bearer of a. (axiom label in BFO2 Reference: [106-002])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/106-002"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>to say that a realizes b at t is to assert that there is some material entity c &amp; a is a process in which has participant c at temporal interval t &amp; b is a disposition or role of which c is bearer at t&amp; the type instantiated by a is correlated with the type instantiated by b. (axiom label in BFO2 Reference: [059-002])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/059-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: if a realizable entity a is realized in a process p, then p stands in the has_participant relation to the bearer of a. (axiom label in BFO2 Reference: [106-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/106-002"/>
     </owl:Axiom>
     
 
@@ -154,9 +164,54 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000057">
         <rdfs:label>has participant at some time</rdfs:label>
+        <obo:IAO_0000601>if a has_participant b at t &amp; b is a generically dependent continuant, then there is some material entity c, b g-depends on c at t &amp; a s-depends on c at t. (axiom label in BFO2 Reference: [091-002])</obo:IAO_0000601>
+        <obo:IAO_0000116>BFO2 Reference: process</obo:IAO_0000116>
+        <obo:IAO_0000601>if a has_participant b at t &amp; b is a specifically dependent continuant, then there is some material entity c, b s-depends on c at t &amp; a s-depends on c at t. (axiom label in BFO2 Reference: [090-002])</obo:IAO_0000601>
+        <obo:IAO_0000601>if a has_participant b at t then a is an occurrent. (axiom label in BFO2 Reference: [087-001])</obo:IAO_0000601>
+        <obo:IAO_0000600>has_participant is an instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the occurrent. (axiom label in BFO2 Reference: [086-002])</obo:IAO_0000600>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;has participant at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;has participant&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000601>if a has_participant b at t then b exists at t. (axiom label in BFO2 Reference: [089-001])</obo:IAO_0000601>
         <obo:BFO_0000179>has-participant_st</obo:BFO_0000179>
+        <obo:IAO_0000116>BFO2 Reference: independent continuant, specifically dependent continuant, generically dependent continuant</obo:IAO_0000116>
+        <obo:IAO_0000601>if a has_participant b at t then b is a continuant. (axiom label in BFO2 Reference: [088-001])</obo:IAO_0000601>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000056"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t &amp; b is a specifically dependent continuant, then there is some material entity c, b s-depends on c at t &amp; a s-depends on c at t. (axiom label in BFO2 Reference: [090-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/090-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t then b exists at t. (axiom label in BFO2 Reference: [089-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/089-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t &amp; b is a generically dependent continuant, then there is some material entity c, b g-depends on c at t &amp; a s-depends on c at t. (axiom label in BFO2 Reference: [091-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/091-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t then b is a continuant. (axiom label in BFO2 Reference: [088-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/088-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>has_participant is an instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the occurrent. (axiom label in BFO2 Reference: [086-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/086-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t then a is an occurrent. (axiom label in BFO2 Reference: [087-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/087-001"/>
+    </owl:Axiom>
     
 
 
@@ -174,8 +229,23 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000059">
         <rdfs:label>concretizes at some time</rdfs:label>
         <obo:BFO_0000179>concretizes_st</obo:BFO_0000179>
+        <obo:IAO_0000601>if a g-depends on b at some time t, then there is some c, such that c concretizes a at t and c s-depends on b at t. (axiom label in BFO2 Reference: [076-001])</obo:IAO_0000601>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;concretizes at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;concretizes&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000600>a concretizes b at t means: a is a specifically dependent continuant &amp; b is a generically dependent continuant &amp; for some material entity c, a s-depends on c at t and b g-depends on c at t, and if b migrates from bearer c to another bearer d than a copy of a will be created in d. (axiom label in BFO2 Reference: [075-001])</obo:IAO_0000600>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000058"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a g-depends on b at some time t, then there is some c, such that c concretizes a at t and c s-depends on b at t. (axiom label in BFO2 Reference: [076-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000059"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/076-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>a concretizes b at t means: a is a specifically dependent continuant &amp; b is a generically dependent continuant &amp; for some material entity c, a s-depends on c at t and b g-depends on c at t, and if b migrates from bearer c to another bearer d than a copy of a will be created in d. (axiom label in BFO2 Reference: [075-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000059"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/075-001"/>
+    </owl:Axiom>
     
 
 
@@ -201,9 +271,61 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000070">
         <rdfs:label>specifically depends on at all times</rdfs:label>
+        <obo:IAO_0000116>BFO2 Reference: dependent continuant\; process</obo:IAO_0000116>
+        <obo:IAO_0000112>one-sided s-dependence of a process on something: a process of cell death s-depends on a cell</obo:IAO_0000112>
+        <obo:IAO_0000116>BFO 2 Reference: the relation of s-depends on does not in every case require simultaneous existence of its relata. Note the difference between such cases and the cases of universals defined historically referred to above; the act of answering depends existentially on the prior act of questioning; the human being who was baptized or who answered a question does not depend existentially on the prior act of baptism or answering. He would still exist even if these acts had never taken place. A phosphorylated protein molecule might still exist even though it had never been phosphorylated.</obo:IAO_0000116>
+        <obo:IAO_0000112>the two-sided reciprocal s-dependence of the roles of husband and wife [20</obo:IAO_0000112>
+        <obo:IAO_0000112>a shape s-depends on on the shaped object</obo:IAO_0000112>
+        <obo:IAO_0000600>To say that a s-depends on b at t is to say that a and b do not share common parts &amp; a is of its nature such that it cannot exist unless b exists &amp; a is not a boundary of b and a is not a site of which b is the host [64</obo:IAO_0000600>
+        <obo:IAO_0000112>one-sided s-dependence of a dependent continuant on an independent continuant: an instance of headache s-depends on some head</obo:IAO_0000112>
+        <obo:IAO_0000112>one-sided s-dependence of one occurrent on multiple independent continuants: a relational process of paying cash to a merchant in exchange for a bag of figs</obo:IAO_0000112>
+        <obo:IAO_0000112>reciprocal s-dependence between occurrents: a process of increasing the volume of a portion of gas while temperature remains constant and the associated process of  decreasing the pressure exerted by the gas</obo:IAO_0000112>
+        <obo:IAO_0000116>BFO2 Reference: an entity does not s-depends on any of its parts or on anything it is part of. (axiom label in BFO2 Reference: [013-001])</obo:IAO_0000116>
+        <obo:IAO_0000112>one-sided s-dependence of a dependent continuant on an independent continuant: an instance of temperature s-depends on some organism</obo:IAO_0000112>
+        <obo:IAO_0000112>reciprocal s-dependence between occurrents: in a game of chess the process of playing with the white pieces is reciprocally dependent on the process of playing with the black pieces</obo:IAO_0000112>
+        <obo:IAO_0000601>If occurrent a s-depends on some independent continuant b at t, then a s-depends on some independent continuant at every time at which it exists. (axiom label in BFO2 Reference: [015-001])</obo:IAO_0000601>
         <obo:BFO_0000179>s-depends-on_at</obo:BFO_0000179>
+        <obo:IAO_0000112>one-sided s-dependence of a process on something: an instance of seeing (a relational process) s-depends on some organism and on some seen entity, which may be an occurrent or a continuant</obo:IAO_0000112>
+        <obo:IAO_0000112>a gait s-depends on the walking object.</obo:IAO_0000112>
+        <obo:IAO_0000112>one-sided s-dependence of one occurrent on another: a process of answering a question is dependent on a prior process of asking a question</obo:IAO_0000112>
+        <obo:IAO_0000601>if a s-depends on b at t &amp; b s-depends on c at t then a s-depends on c at t. (axiom label in BFO2 Reference: [054-002])</obo:IAO_0000601>
+        <obo:IAO_0000112>The pain s-depends on the organism that is experiencing the pain</obo:IAO_0000112>
+        <obo:IAO_0000112>one-sided s-dependence of one occurrent on multiple independent continuants: a relational process of hitting a ball with a cricket bat</obo:IAO_0000112>
+        <obo:IAO_0000112>the three-sided reciprocal s-dependence of the hue, saturation and brightness of a color [45</obo:IAO_0000112>
+        <obo:IAO_0000601>If a s-depends on something at some time, then a is not a material entity. (axiom label in BFO2 Reference: [052-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>reciprocal s-dependence between occurrents: a process of buying and the associated process of selling</obo:IAO_0000112>
+        <obo:IAO_0000112>the three-sided reciprocal s-dependence of the pitch, timbre and volume of a tone [45</obo:IAO_0000112>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;specifically depends on at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;specifically depends on(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO 2 Reference: An entity – for example an act of communication – can s-depends on more than one entity. Complex phenomena for example in the psychological and social realms (such as inferring, commanding and requesting) or in the realm of multi-organismal biological processes (such as infection and resistance), will involve multiple families of dependence relations, involving both continuants and occurrents [1, 4, 28</obo:IAO_0000116>
+        <obo:IAO_0000112>the one-sided dependence of an occurrent on an independent continuant: handwave on a hand</obo:IAO_0000112>
+        <obo:IAO_0000112>the one-sided dependence of an occurrent on an independent continuant: football match on the players, the ground, the ball</obo:IAO_0000112>
+        <obo:IAO_0000112>one-sided s-dependence of one occurrent on another: a process of obeying a command is dependent on a prior process of issuing a command</obo:IAO_0000112>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000169"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a s-depends on b at t &amp; b s-depends on c at t then a s-depends on c at t. (axiom label in BFO2 Reference: [054-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000070"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/054-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: an entity does not s-depends on any of its parts or on anything it is part of. (axiom label in BFO2 Reference: [013-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000070"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/013-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>If occurrent a s-depends on some independent continuant b at t, then a s-depends on some independent continuant at every time at which it exists. (axiom label in BFO2 Reference: [015-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000070"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/015-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>If a s-depends on something at some time, then a is not a material entity. (axiom label in BFO2 Reference: [052-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000070"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/052-001"/>
+    </owl:Axiom>
     
 
 
@@ -211,9 +333,17 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000079">
         <rdfs:label>function of at all times</rdfs:label>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;function of at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;function of(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000115>a function_of b at t =Def. a is a function and a inheres_in b at t. (axiom label in BFO2 Reference: [067-001])</obo:IAO_0000115>
         <obo:BFO_0000179>f-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a function_of b at t =Def. a is a function and a inheres_in b at t. (axiom label in BFO2 Reference: [067-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000079"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/067-001"/>
+    </owl:Axiom>
     
 
 
@@ -222,8 +352,16 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000080">
         <rdfs:label>quality of at all times</rdfs:label>
         <obo:BFO_0000179>q-of_at</obo:BFO_0000179>
+        <obo:IAO_0000115>a quality_of b at t = Def. a is a quality &amp; b is an independent continuant &amp; a s-depends_on b at t. (axiom label in BFO2 Reference: [056-001])</obo:IAO_0000115>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;quality of at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;quality of(x,y,t)&#39;</obo:IAO_0000116>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a quality_of b at t = Def. a is a quality &amp; b is an independent continuant &amp; a s-depends_on b at t. (axiom label in BFO2 Reference: [056-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000080"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/056-001"/>
+    </owl:Axiom>
     
 
 
@@ -231,9 +369,17 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000081">
         <rdfs:label>region of at all times</rdfs:label>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;region of at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;region of(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000115>a role_of b at t =Def. a is a role and a inheres_in b at t. (axiom label in BFO2 Reference: [065-001])</obo:IAO_0000115>
         <obo:BFO_0000179>r-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a role_of b at t =Def. a is a role and a inheres_in b at t. (axiom label in BFO2 Reference: [065-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000081"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/065-001"/>
+    </owl:Axiom>
     
 
 
@@ -242,8 +388,43 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000082">
         <rdfs:label>located in at all times</rdfs:label>
         <obo:BFO_0000179>located-in_at</obo:BFO_0000179>
+        <obo:IAO_0000601>for all independent continuants a, b, and c:  if a continuant_part_of b at t &amp; b located_in c at t, then a located_in c at t. (axiom label in BFO2 Reference: [048-001])</obo:IAO_0000601>
+        <obo:IAO_0000115>a located_in b at t = Def. a and b are independent continuants, and the region at which a is located at t is a (proper or improper) continuant_part_of the region at which b is located at t. (axiom label in BFO2 Reference: [045-001])</obo:IAO_0000115>
+        <obo:IAO_0000112>this portion of cocaine located_in this portion of blood</obo:IAO_0000112>
+        <obo:IAO_0000601>for all independent continuants a, b, and c:  if a located_in b at t &amp; b continuant_part_of c at t, then a located_in c at t. (axiom label in BFO2 Reference: [049-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>your arm located_in your body</obo:IAO_0000112>
+        <obo:IAO_0000112>Mary located_in Salzburg</obo:IAO_0000112>
+        <obo:IAO_0000116>BFO2 Reference: independent continuant</obo:IAO_0000116>
+        <obo:IAO_0000601>Located_in is transitive. (axiom label in BFO2 Reference: [046-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>the Empire State Building located_in New York.</obo:IAO_0000112>
+        <obo:IAO_0000112>this stem cell located_in this portion of bone marrow</obo:IAO_0000112>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;located in at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;located in(x,y,t)&#39;</obo:IAO_0000116>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000171"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a located_in b at t = Def. a and b are independent continuants, and the region at which a is located at t is a (proper or improper) continuant_part_of the region at which b is located at t. (axiom label in BFO2 Reference: [045-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000082"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/045-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>for all independent continuants a, b, and c:  if a located_in b at t &amp; b continuant_part_of c at t, then a located_in c at t. (axiom label in BFO2 Reference: [049-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000082"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/049-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>Located_in is transitive. (axiom label in BFO2 Reference: [046-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000082"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/046-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>for all independent continuants a, b, and c:  if a continuant_part_of b at t &amp; b located_in c at t, then a located_in c at t. (axiom label in BFO2 Reference: [048-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000082"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/048-001"/>
+    </owl:Axiom>
     
 
 
@@ -281,8 +462,16 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000107">
         <rdfs:label>disposition of at all times</rdfs:label>
         <obo:BFO_0000179>d-of_at</obo:BFO_0000179>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;disposition of at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;disposition of(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000115>a disposition_of b at t =Def. a is a disposition and a inheres_in b at t. (axiom label in BFO2 Reference: [066-001])</obo:IAO_0000115>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a disposition_of b at t =Def. a is a disposition and a inheres_in b at t. (axiom label in BFO2 Reference: [066-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000107"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/066-001"/>
+    </owl:Axiom>
     
 
 
@@ -310,9 +499,17 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000110">
         <rdfs:label>continuant has part at all times</rdfs:label>
         <obo:BFO_0000179>c-has-part_at</obo:BFO_0000179>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;continuant has part at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;continuant has part(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000115>a has_continuant_part b at t = Def. b continuant_part_of a at t. (axiom label in BFO2 Reference: [006-001])</obo:IAO_0000115>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000170"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_continuant_part b at t = Def. b continuant_part_of a at t. (axiom label in BFO2 Reference: [006-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000110"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/006-001"/>
+    </owl:Axiom>
     
 
 
@@ -331,8 +528,18 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000113">
         <rdfs:label>has material basis at all times</rdfs:label>
+        <obo:IAO_0000600>a has_material_basis b at t means: a is a disposition &amp; b is a material entity &amp; there is some c bearer_of a at t&amp; b continuant_part_of c at t&amp; c has_disposition d at t because b continuant_part_of c at t. (axiom label in BFO2 Reference: [071-001])</obo:IAO_0000600>
+        <obo:IAO_0000112>the material basis of John’s disposition to cough is the viral infection in John’s upper respiratory tract</obo:IAO_0000112>
         <obo:BFO_0000179>has-material-basis_at</obo:BFO_0000179>
+        <obo:IAO_0000112>the material basis of the disposition to wear unevenly of John’s tires is the worn suspension of his car.</obo:IAO_0000112>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;has material basis at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;has material basis(x,y,t)&#39;</obo:IAO_0000116>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_material_basis b at t means: a is a disposition &amp; b is a material entity &amp; there is some c bearer_of a at t&amp; b continuant_part_of c at t&amp; c has_disposition d at t because b continuant_part_of c at t. (axiom label in BFO2 Reference: [071-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000113"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/071-001"/>
+    </owl:Axiom>
     
 
 
@@ -411,7 +618,7 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000125 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000125">
-        <rdfs:label>has spatial dependent at some time</rdfs:label>
+        <rdfs:label>has specifically dependent at some time</rdfs:label>
         <obo:BFO_0000179>has-s-dep_st</obo:BFO_0000179>
     </owl:ObjectProperty>
     
@@ -430,9 +637,28 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000129">
         <rdfs:label>member part of at some time</rdfs:label>
+        <obo:IAO_0000112>trees in a forest</obo:IAO_0000112>
+        <obo:IAO_0000116>BFO2 Reference: aggregate of X</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: if a member_part_of b at t then a continuant_part_of b at t. (axiom label in BFO2 Reference: [104-001])</obo:IAO_0000116>
         <obo:BFO_0000179>member-part-of_st</obo:BFO_0000179>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;member part of at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;member part of&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: entity in category X</obo:IAO_0000116>
+        <obo:IAO_0000600>a member_part_of b at t =Def. there is a mutually exhaustive and pairwise disjoint partition of b into entities of category X: x1, …,xn with a = xi for some natural number i. (axiom label in BFO2 Reference: [026-002])</obo:IAO_0000600>
+        <obo:IAO_0000112>pieces in a chess set.</obo:IAO_0000112>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000115"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: if a member_part_of b at t then a continuant_part_of b at t. (axiom label in BFO2 Reference: [104-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000129"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/104-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>a member_part_of b at t =Def. there is a mutually exhaustive and pairwise disjoint partition of b into entities of category X: x1, …,xn with a = xi for some natural number i. (axiom label in BFO2 Reference: [026-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000129"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/026-002"/>
+    </owl:Axiom>
     
 
 
@@ -477,10 +703,18 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000137">
         <rdfs:label>continuant proper part of at all times</rdfs:label>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;continuant proper part of at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;continuant proper part of(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000115>a proper_continuant_part_of b at t =Def. a continuant_part_of b at t  &amp; a and b are not identical. (axiom label in BFO2 Reference: [004-001])</obo:IAO_0000115>
         <obo:BFO_0000179>c-ppart-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000175"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a proper_continuant_part_of b at t =Def. a continuant_part_of b at t  &amp; a and b are not identical. (axiom label in BFO2 Reference: [004-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000137"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/004-001"/>
+    </owl:Axiom>
     
 
 
@@ -523,16 +757,16 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/078-001"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget>a proper_temporal_part_of b =Def. a temporal_part_of b &amp; not (a = b). (axiom label in BFO2 Reference: [116-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000139"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/116-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>if a proper_temporal_part_of b, then there is some c which is a proper_temporal_part_of b and which shares no parts with a. (axiom label in BFO2 Reference: [117-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000139"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/117-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>a proper_temporal_part_of b =Def. a temporal_part_of b &amp; not (a = b). (axiom label in BFO2 Reference: [116-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000139"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/116-001"/>
     </owl:Axiom>
     
 
@@ -607,9 +841,19 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000158">
         <rdfs:label>bearer of at all times</rdfs:label>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;bearer of at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;bearer of(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: specifically dependent continuant</obo:IAO_0000116>
+        <obo:IAO_0000115>a bearer_of b at t =Def. b s-depends on a &amp; a is an independent continuant &amp; b exists at t. (axiom label in BFO2 Reference: [053-001])</obo:IAO_0000115>
+        <obo:IAO_0000116>BFO2 Reference: independent continuant</obo:IAO_0000116>
         <obo:BFO_0000179>bearer-of_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000168"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a bearer_of b at t =Def. b s-depends on a &amp; a is an independent continuant &amp; b exists at t. (axiom label in BFO2 Reference: [053-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000158"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/053-001"/>
+    </owl:Axiom>
     
 
 
@@ -628,8 +872,16 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000160">
         <rdfs:label>has function at all times</rdfs:label>
         <obo:BFO_0000179>has-f_at</obo:BFO_0000179>
+        <obo:IAO_0000115>a has_function b at t =Def. b function_of a at t. (axiom label in BFO2 Reference: [070-001])</obo:IAO_0000115>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;has function at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;has function(x,y,t)&#39;</obo:IAO_0000116>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000158"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_function b at t =Def. b function_of a at t. (axiom label in BFO2 Reference: [070-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000160"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/070-001"/>
+    </owl:Axiom>
     
 
 
@@ -638,8 +890,16 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000161">
         <rdfs:label>has region at all times</rdfs:label>
         <obo:BFO_0000179>has-r_at</obo:BFO_0000179>
+        <obo:IAO_0000115>a has_role b at t =Def. b role_of a at t. (axiom label in BFO2 Reference: [068-001])</obo:IAO_0000115>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;has region at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;has region(x,y,t)&#39;</obo:IAO_0000116>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000158"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_role b at t =Def. b role_of a at t. (axiom label in BFO2 Reference: [068-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000161"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/068-001"/>
+    </owl:Axiom>
     
 
 
@@ -647,9 +907,17 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000162">
         <rdfs:label>has disposition at all times</rdfs:label>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;has disposition at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;has disposition(x,y,t)&#39;</obo:IAO_0000116>
         <obo:BFO_0000179>has-d_at</obo:BFO_0000179>
+        <obo:IAO_0000115>a has_disposition b at t =Def. b disposition_of a at t. (axiom label in BFO2 Reference: [069-001])</obo:IAO_0000115>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000158"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_disposition b at t =Def. b disposition_of a at t. (axiom label in BFO2 Reference: [069-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000162"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/069-001"/>
+    </owl:Axiom>
     
 
 
@@ -657,9 +925,24 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000164">
         <rdfs:label>concretizes at all times</rdfs:label>
+        <obo:IAO_0000601>if a g-depends on b at some time t, then there is some c, such that c concretizes a at t and c s-depends on b at t. (axiom label in BFO2 Reference: [076-001])</obo:IAO_0000601>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;concretizes at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;concretizes(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000600>a concretizes b at t means: a is a specifically dependent continuant &amp; b is a generically dependent continuant &amp; for some material entity c, a s-depends on c at t and b g-depends on c at t, and if b migrates from bearer c to another bearer d than a copy of a will be created in d. (axiom label in BFO2 Reference: [075-001])</obo:IAO_0000600>
         <obo:BFO_0000179>concretizes_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000059"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a concretizes b at t means: a is a specifically dependent continuant &amp; b is a generically dependent continuant &amp; for some material entity c, a s-depends on c at t and b g-depends on c at t, and if b migrates from bearer c to another bearer d than a copy of a will be created in d. (axiom label in BFO2 Reference: [075-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000164"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/075-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a g-depends on b at some time t, then there is some c, such that c concretizes a at t and c s-depends on b at t. (axiom label in BFO2 Reference: [076-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000164"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/076-001"/>
+    </owl:Axiom>
     
 
 
@@ -687,16 +970,61 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000167">
         <rdfs:label>has participant at all times</rdfs:label>
+        <obo:IAO_0000116>BFO2 Reference: independent continuant, specifically dependent continuant, generically dependent continuant</obo:IAO_0000116>
+        <obo:IAO_0000601>if a has_participant b at t then b exists at t. (axiom label in BFO2 Reference: [089-001])</obo:IAO_0000601>
+        <obo:IAO_0000116>BFO2 Reference: process</obo:IAO_0000116>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;has participant at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;has participant(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000601>if a has_participant b at t then a is an occurrent. (axiom label in BFO2 Reference: [087-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>if a has_participant b at t then b is a continuant. (axiom label in BFO2 Reference: [088-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>if a has_participant b at t &amp; b is a generically dependent continuant, then there is some material entity c, b g-depends on c at t &amp; a s-depends on c at t. (axiom label in BFO2 Reference: [091-002])</obo:IAO_0000601>
+        <obo:IAO_0000600>has_participant is an instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the occurrent. (axiom label in BFO2 Reference: [086-002])</obo:IAO_0000600>
         <obo:BFO_0000179>has-participant_at</obo:BFO_0000179>
+        <obo:IAO_0000601>if a has_participant b at t &amp; b is a specifically dependent continuant, then there is some material entity c, b s-depends on c at t &amp; a s-depends on c at t. (axiom label in BFO2 Reference: [090-002])</obo:IAO_0000601>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t then b exists at t. (axiom label in BFO2 Reference: [089-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000167"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/089-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t then b is a continuant. (axiom label in BFO2 Reference: [088-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000167"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/088-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t then a is an occurrent. (axiom label in BFO2 Reference: [087-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000167"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/087-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t &amp; b is a generically dependent continuant, then there is some material entity c, b g-depends on c at t &amp; a s-depends on c at t. (axiom label in BFO2 Reference: [091-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000167"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/091-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>has_participant is an instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the occurrent. (axiom label in BFO2 Reference: [086-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000167"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/086-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a has_participant b at t &amp; b is a specifically dependent continuant, then there is some material entity c, b s-depends on c at t &amp; a s-depends on c at t. (axiom label in BFO2 Reference: [090-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000167"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/090-002"/>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000168 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000168">
-        <rdfs:label>has spatial dependent at all times</rdfs:label>
+        <rdfs:label>has specifically dependent at all times</rdfs:label>
         <obo:BFO_0000179>has-s-dep_at</obo:BFO_0000179>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000125"/>
     </owl:ObjectProperty>
@@ -707,9 +1035,61 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000169">
         <rdfs:label>specifically depends on at some time</rdfs:label>
+        <obo:IAO_0000112>the one-sided dependence of an occurrent on an independent continuant: football match on the players, the ground, the ball</obo:IAO_0000112>
         <obo:BFO_0000179>s-depends-on_st</obo:BFO_0000179>
+        <obo:IAO_0000112>one-sided s-dependence of one occurrent on another: a process of answering a question is dependent on a prior process of asking a question</obo:IAO_0000112>
+        <obo:IAO_0000112>reciprocal s-dependence between occurrents: in a game of chess the process of playing with the white pieces is reciprocally dependent on the process of playing with the black pieces</obo:IAO_0000112>
+        <obo:IAO_0000112>reciprocal s-dependence between occurrents: a process of buying and the associated process of selling</obo:IAO_0000112>
+        <obo:IAO_0000601>If a s-depends on something at some time, then a is not a material entity. (axiom label in BFO2 Reference: [052-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>the three-sided reciprocal s-dependence of the pitch, timbre and volume of a tone [45</obo:IAO_0000112>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;specifically depends on at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;specifically depends on&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: dependent continuant\; process</obo:IAO_0000116>
+        <obo:IAO_0000112>the two-sided reciprocal s-dependence of the roles of husband and wife [20</obo:IAO_0000112>
+        <obo:IAO_0000112>one-sided s-dependence of one occurrent on multiple independent continuants: a relational process of paying cash to a merchant in exchange for a bag of figs</obo:IAO_0000112>
+        <obo:IAO_0000116>BFO 2 Reference: the relation of s-depends on does not in every case require simultaneous existence of its relata. Note the difference between such cases and the cases of universals defined historically referred to above; the act of answering depends existentially on the prior act of questioning; the human being who was baptized or who answered a question does not depend existentially on the prior act of baptism or answering. He would still exist even if these acts had never taken place. A phosphorylated protein molecule might still exist even though it had never been phosphorylated.</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: an entity does not s-depends on any of its parts or on anything it is part of. (axiom label in BFO2 Reference: [013-001])</obo:IAO_0000116>
+        <obo:IAO_0000112>one-sided s-dependence of a dependent continuant on an independent continuant: an instance of temperature s-depends on some organism</obo:IAO_0000112>
+        <obo:IAO_0000116>BFO 2 Reference: An entity – for example an act of communication – can s-depends on more than one entity. Complex phenomena for example in the psychological and social realms (such as inferring, commanding and requesting) or in the realm of multi-organismal biological processes (such as infection and resistance), will involve multiple families of dependence relations, involving both continuants and occurrents [1, 4, 28</obo:IAO_0000116>
+        <obo:IAO_0000112>one-sided s-dependence of one occurrent on multiple independent continuants: a relational process of hitting a ball with a cricket bat</obo:IAO_0000112>
+        <obo:IAO_0000600>To say that a s-depends on b at t is to say that a and b do not share common parts &amp; a is of its nature such that it cannot exist unless b exists &amp; a is not a boundary of b and a is not a site of which b is the host [64</obo:IAO_0000600>
+        <obo:IAO_0000112>the one-sided dependence of an occurrent on an independent continuant: handwave on a hand</obo:IAO_0000112>
+        <obo:IAO_0000112>one-sided s-dependence of a process on something: an instance of seeing (a relational process) s-depends on some organism and on some seen entity, which may be an occurrent or a continuant</obo:IAO_0000112>
+        <obo:IAO_0000112>reciprocal s-dependence between occurrents: a process of increasing the volume of a portion of gas while temperature remains constant and the associated process of  decreasing the pressure exerted by the gas</obo:IAO_0000112>
+        <obo:IAO_0000112>a gait s-depends on the walking object.</obo:IAO_0000112>
+        <obo:IAO_0000112>a shape s-depends on on the shaped object</obo:IAO_0000112>
+        <obo:IAO_0000601>If occurrent a s-depends on some independent continuant b at t, then a s-depends on some independent continuant at every time at which it exists. (axiom label in BFO2 Reference: [015-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>one-sided s-dependence of a dependent continuant on an independent continuant: an instance of headache s-depends on some head</obo:IAO_0000112>
+        <obo:IAO_0000112>The pain s-depends on the organism that is experiencing the pain</obo:IAO_0000112>
+        <obo:IAO_0000112>one-sided s-dependence of a process on something: a process of cell death s-depends on a cell</obo:IAO_0000112>
+        <obo:IAO_0000112>the three-sided reciprocal s-dependence of the hue, saturation and brightness of a color [45</obo:IAO_0000112>
+        <obo:IAO_0000601>if a s-depends on b at t &amp; b s-depends on c at t then a s-depends on c at t. (axiom label in BFO2 Reference: [054-002])</obo:IAO_0000601>
+        <obo:IAO_0000112>one-sided s-dependence of one occurrent on another: a process of obeying a command is dependent on a prior process of issuing a command</obo:IAO_0000112>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000125"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: an entity does not s-depends on any of its parts or on anything it is part of. (axiom label in BFO2 Reference: [013-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000169"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/013-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>If occurrent a s-depends on some independent continuant b at t, then a s-depends on some independent continuant at every time at which it exists. (axiom label in BFO2 Reference: [015-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000169"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/015-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>If a s-depends on something at some time, then a is not a material entity. (axiom label in BFO2 Reference: [052-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000169"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/052-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a s-depends on b at t &amp; b s-depends on c at t then a s-depends on c at t. (axiom label in BFO2 Reference: [054-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000169"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/054-002"/>
+    </owl:Axiom>
     
 
 
@@ -727,9 +1107,44 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000171">
         <rdfs:label>located in at some time</rdfs:label>
+        <obo:IAO_0000112>the Empire State Building located_in New York.</obo:IAO_0000112>
+        <obo:IAO_0000112>Mary located_in Salzburg</obo:IAO_0000112>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;located in at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;located in&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000112>your arm located_in your body</obo:IAO_0000112>
+        <obo:IAO_0000116>BFO2 Reference: independent continuant</obo:IAO_0000116>
+        <obo:IAO_0000115>a located_in b at t = Def. a and b are independent continuants, and the region at which a is located at t is a (proper or improper) continuant_part_of the region at which b is located at t. (axiom label in BFO2 Reference: [045-001])</obo:IAO_0000115>
         <obo:BFO_0000179>located-in_st</obo:BFO_0000179>
+        <obo:IAO_0000601>Located_in is transitive. (axiom label in BFO2 Reference: [046-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>for all independent continuants a, b, and c:  if a located_in b at t &amp; b continuant_part_of c at t, then a located_in c at t. (axiom label in BFO2 Reference: [049-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>for all independent continuants a, b, and c:  if a continuant_part_of b at t &amp; b located_in c at t, then a located_in c at t. (axiom label in BFO2 Reference: [048-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>this portion of cocaine located_in this portion of blood</obo:IAO_0000112>
+        <obo:IAO_0000112>this stem cell located_in this portion of bone marrow</obo:IAO_0000112>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000124"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>Located_in is transitive. (axiom label in BFO2 Reference: [046-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000171"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/046-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>a located_in b at t = Def. a and b are independent continuants, and the region at which a is located at t is a (proper or improper) continuant_part_of the region at which b is located at t. (axiom label in BFO2 Reference: [045-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000171"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/045-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>for all independent continuants a, b, and c:  if a continuant_part_of b at t &amp; b located_in c at t, then a located_in c at t. (axiom label in BFO2 Reference: [048-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000171"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/048-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>for all independent continuants a, b, and c:  if a located_in b at t &amp; b continuant_part_of c at t, then a located_in c at t. (axiom label in BFO2 Reference: [049-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000171"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/049-001"/>
+    </owl:Axiom>
     
 
 
@@ -748,10 +1163,29 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000173">
         <rdfs:label>member part of at all times</rdfs:label>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;member part of at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;member part of(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: if a member_part_of b at t then a continuant_part_of b at t. (axiom label in BFO2 Reference: [104-001])</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: aggregate of X</obo:IAO_0000116>
+        <obo:IAO_0000112>trees in a forest</obo:IAO_0000112>
         <obo:BFO_0000179>member-part-of_at</obo:BFO_0000179>
+        <obo:IAO_0000116>BFO2 Reference: entity in category X</obo:IAO_0000116>
+        <obo:IAO_0000600>a member_part_of b at t =Def. there is a mutually exhaustive and pairwise disjoint partition of b into entities of category X: x1, …,xn with a = xi for some natural number i. (axiom label in BFO2 Reference: [026-002])</obo:IAO_0000600>
+        <obo:IAO_0000112>pieces in a chess set.</obo:IAO_0000112>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000129"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a member_part_of b at t =Def. there is a mutually exhaustive and pairwise disjoint partition of b into entities of category X: x1, …,xn with a = xi for some natural number i. (axiom label in BFO2 Reference: [026-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000173"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/026-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: if a member_part_of b at t then a continuant_part_of b at t. (axiom label in BFO2 Reference: [104-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000173"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/104-001"/>
+    </owl:Axiom>
     
 
 
@@ -769,8 +1203,16 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000175">
         <rdfs:label>continuant proper part of at some time</rdfs:label>
         <obo:BFO_0000179>c-ppart-of_st</obo:BFO_0000179>
+        <obo:IAO_0000115>a proper_continuant_part_of b at t =Def. a continuant_part_of b at t  &amp; a and b are not identical. (axiom label in BFO2 Reference: [004-001])</obo:IAO_0000115>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;continuant proper part of at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;continuant proper part of&#39;(x,y,t)</obo:IAO_0000116>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000174"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a proper_continuant_part_of b at t =Def. a continuant_part_of b at t  &amp; a and b are not identical. (axiom label in BFO2 Reference: [004-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000175"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/004-001"/>
+    </owl:Axiom>
     
 
 
@@ -778,9 +1220,77 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000176">
         <rdfs:label>continuant part of at some time</rdfs:label>
+        <obo:IAO_0000116>BFO2 Reference: continuant</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: continuantThe range for ‘t’ in this and in all later cases is: temporal region.</obo:IAO_0000116>
+        <obo:IAO_0000601>occurrent_part_of is transitive. (axiom label in BFO2 Reference: [112-001])</obo:IAO_0000601>
+        <obo:IAO_0000600>a continuant_part_of b at t =Def. a is a part of b at t &amp; t is a time &amp; a and b are continuants. (axiom label in BFO2 Reference: [002-001])</obo:IAO_0000600>
+        <obo:IAO_0000112>Mary’s arm continuant_part_of Mary in the time of her life prior to her operation</obo:IAO_0000112>
+        <obo:IAO_0000601>continuant_part_of satisfies weak supplementation. (axiom label in BFO2 Reference: [121-001])</obo:IAO_0000601>
+        <obo:IAO_0000112>the Northern hemisphere of the planet Earth is a part of the planet Earth at all times at which the planet Earth exists.</obo:IAO_0000112>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;continuant part of at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;continuant part of&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000601>if a continuant_part_of b at t, then a is located_in b at t. (axiom label in BFO2 Reference: [047-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>continuant_part_of is transitive. (axiom label in BFO2 Reference: [110-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>continuant_part_of is antisymmetric. (axiom label in BFO2 Reference: [120-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>occurrent_part_of is antisymmetric. (axiom label in BFO2 Reference: [123-001])</obo:IAO_0000601>
+        <obo:IAO_0000116>BFO2 Reference: continuant_part_of is reflexive (every continuant entity is a continuant_part_of itself). (axiom label in BFO2 Reference: [111-002])</obo:IAO_0000116>
         <obo:BFO_0000179>c-part-of_st</obo:BFO_0000179>
+        <obo:IAO_0000601>occurrent_part_of satisfies weak supplementation. (axiom label in BFO2 Reference: [124-001])</obo:IAO_0000601>
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>occurrent_part_of is transitive. (axiom label in BFO2 Reference: [112-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/112-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>occurrent_part_of is antisymmetric. (axiom label in BFO2 Reference: [123-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/123-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a continuant_part_of b at t, then a is located_in b at t. (axiom label in BFO2 Reference: [047-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/047-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: continuant_part_of is reflexive (every continuant entity is a continuant_part_of itself). (axiom label in BFO2 Reference: [111-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/111-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>continuant_part_of is antisymmetric. (axiom label in BFO2 Reference: [120-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/120-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>continuant_part_of is transitive. (axiom label in BFO2 Reference: [110-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/110-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>continuant_part_of satisfies weak supplementation. (axiom label in BFO2 Reference: [121-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/121-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>a continuant_part_of b at t =Def. a is a part of b at t &amp; t is a time &amp; a and b are continuants. (axiom label in BFO2 Reference: [002-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/002-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>occurrent_part_of satisfies weak supplementation. (axiom label in BFO2 Reference: [124-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/124-001"/>
+    </owl:Axiom>
     
 
 
@@ -788,10 +1298,78 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000177">
         <rdfs:label>continuant part of at all times</rdfs:label>
+        <obo:IAO_0000116>BFO2 Reference: continuant</obo:IAO_0000116>
+        <obo:IAO_0000112>Mary’s arm continuant_part_of Mary in the time of her life prior to her operation</obo:IAO_0000112>
+        <obo:IAO_0000112>the Northern hemisphere of the planet Earth is a part of the planet Earth at all times at which the planet Earth exists.</obo:IAO_0000112>
+        <obo:IAO_0000600>a continuant_part_of b at t =Def. a is a part of b at t &amp; t is a time &amp; a and b are continuants. (axiom label in BFO2 Reference: [002-001])</obo:IAO_0000600>
+        <obo:IAO_0000601>occurrent_part_of satisfies weak supplementation. (axiom label in BFO2 Reference: [124-001])</obo:IAO_0000601>
         <obo:BFO_0000179>c-part-of_at</obo:BFO_0000179>
+        <obo:IAO_0000601>occurrent_part_of is antisymmetric. (axiom label in BFO2 Reference: [123-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>if a continuant_part_of b at t, then a is located_in b at t. (axiom label in BFO2 Reference: [047-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>continuant_part_of is transitive. (axiom label in BFO2 Reference: [110-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>occurrent_part_of is transitive. (axiom label in BFO2 Reference: [112-001])</obo:IAO_0000601>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation &#39;continuant part of at all times&#39; is: forall(t) exists_at(x,t) -&gt; exists_at(y,t) and &#39;continuant part of(x,y,t)&#39;</obo:IAO_0000116>
+        <obo:IAO_0000601>continuant_part_of is antisymmetric. (axiom label in BFO2 Reference: [120-001])</obo:IAO_0000601>
+        <obo:IAO_0000601>continuant_part_of satisfies weak supplementation. (axiom label in BFO2 Reference: [121-001])</obo:IAO_0000601>
+        <obo:IAO_0000116>BFO2 Reference: continuant_part_of is reflexive (every continuant entity is a continuant_part_of itself). (axiom label in BFO2 Reference: [111-002])</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: continuantThe range for ‘t’ in this and in all later cases is: temporal region.</obo:IAO_0000116>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000082"/>
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>continuant_part_of is antisymmetric. (axiom label in BFO2 Reference: [120-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/120-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>BFO2 Reference: continuant_part_of is reflexive (every continuant entity is a continuant_part_of itself). (axiom label in BFO2 Reference: [111-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000116"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/111-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a continuant_part_of b at t, then a is located_in b at t. (axiom label in BFO2 Reference: [047-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/047-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>continuant_part_of satisfies weak supplementation. (axiom label in BFO2 Reference: [121-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/121-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>occurrent_part_of is transitive. (axiom label in BFO2 Reference: [112-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/112-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>occurrent_part_of is antisymmetric. (axiom label in BFO2 Reference: [123-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/123-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>continuant_part_of is transitive. (axiom label in BFO2 Reference: [110-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/110-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>occurrent_part_of satisfies weak supplementation. (axiom label in BFO2 Reference: [124-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/124-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>a continuant_part_of b at t =Def. a is a part of b at t &amp; t is a time &amp; a and b are continuants. (axiom label in BFO2 Reference: [002-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000177"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/002-001"/>
+    </owl:Axiom>
     
 
 
@@ -800,7 +1378,15 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000178">
         <rdfs:label>continuant has part at some time</rdfs:label>
         <obo:BFO_0000179>c-has-part_st</obo:BFO_0000179>
+        <obo:IAO_0000115>a has_continuant_part b at t = Def. b continuant_part_of a at t. (axiom label in BFO2 Reference: [006-001])</obo:IAO_0000115>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;continuant has part at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;continuant has part&#39;(x,y,t)</obo:IAO_0000116>
     </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_continuant_part b at t = Def. b continuant_part_of a at t. (axiom label in BFO2 Reference: [006-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/006-001"/>
+    </owl:Axiom>
     
 
 
@@ -847,18 +1433,6 @@
         <obo:BFO_0000179>continuant</obo:BFO_0000179>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedTarget>if a is a continuant, then there is some temporal interval (referred to below as a one-dimensional temporal region) during which a exists. (axiom label in BFO2 Reference: [011-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/011-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedTarget>A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity. (axiom label in BFO2 Reference: [008-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/008-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>if a is a continuant and if, for some t, b has continuant_part a at t, then b is a continuant. (axiom label in BFO2 Reference: [126-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
@@ -869,6 +1443,18 @@
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/009-002"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity. (axiom label in BFO2 Reference: [008-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/008-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>if a is a continuant, then there is some temporal interval (referred to below as a one-dimensional temporal region) during which a exists. (axiom label in BFO2 Reference: [011-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/011-001"/>
     </owl:Axiom>
     
 
@@ -884,12 +1470,6 @@
         <obo:IAO_0000600>An occurrent is an entity that unfolds itself in time or it is the instantaneous boundary of such an entity (for example a beginning or an ending) or it is a temporal or spatiotemporal region which such an entity occupies. (axiom label in BFO2 Reference: [077-001])</obo:IAO_0000600>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedTarget>a is an occurrent entity iff a is an entity that has temporal parts. (axiom label in BFO2 Reference: [079-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/079-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>An occurrent is an entity that unfolds itself in time or it is the instantaneous boundary of such an entity (for example a beginning or an ending) or it is a temporal or spatiotemporal region which such an entity occupies. (axiom label in BFO2 Reference: [077-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
@@ -900,6 +1480,12 @@
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/108-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>a is an occurrent entity iff a is an entity that has temporal parts. (axiom label in BFO2 Reference: [079-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/079-001"/>
     </owl:Axiom>
     
 
@@ -948,16 +1534,16 @@
         <obo:IAO_0000600>A spatial region is a continuant entity that is a continuant_part_of spaceR as defined relative to some frame R. (axiom label in BFO2 Reference: [035-001])</obo:IAO_0000600>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedTarget>A spatial region is a continuant entity that is a continuant_part_of spaceR as defined relative to some frame R. (axiom label in BFO2 Reference: [035-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/035-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>All continuant parts of spatial regions are spatial regions. (axiom label in BFO2 Reference: [036-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/036-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>A spatial region is a continuant entity that is a continuant_part_of spaceR as defined relative to some frame R. (axiom label in BFO2 Reference: [035-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000006"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/035-001"/>
     </owl:Axiom>
     
 
@@ -1046,16 +1632,16 @@
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/098-001"/>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedTarget>A spatiotemporal region is an occurrent entity that is part of spacetime. (axiom label in BFO2 Reference: [095-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/095-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>All parts of spatiotemporal regions are spatiotemporal regions. (axiom label in BFO2 Reference: [096-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/096-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>A spatiotemporal region is an occurrent entity that is part of spacetime. (axiom label in BFO2 Reference: [095-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000011"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/095-001"/>
     </owl:Axiom>
     
 
@@ -1095,16 +1681,16 @@
         <obo:IAO_0000600>a is a disposition means: a is a realizable entity &amp; a is such that if it ceases to exist, then its bearer is physically changed, &amp; a’s realization occurs when and because this bearer is in some special physical circumstances, &amp; this realization occurs in virtue of the bearer’s physical make-up. (axiom label in BFO2 Reference: [062-001])</obo:IAO_0000600>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedTarget>If a is a realizable entity then for all t at which a exists, a s-depends on some material entity at t. (axiom label in BFO2 Reference: [063-002])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/063-002"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>a is a disposition means: a is a realizable entity &amp; a is such that if it ceases to exist, then its bearer is physically changed, &amp; a’s realization occurs when and because this bearer is in some special physical circumstances, &amp; this realization occurs in virtue of the bearer’s physical make-up. (axiom label in BFO2 Reference: [062-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/062-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>If a is a realizable entity then for all t at which a exists, a s-depends on some material entity at t. (axiom label in BFO2 Reference: [063-002])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/063-002"/>
     </owl:Axiom>
     
 
@@ -1442,16 +2028,16 @@
         <obo:IAO_0000116>BFO 2 Reference: ‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.</obo:IAO_0000116>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedTarget>Every entity which has a material entity as part is a material entity. (axiom label in BFO2 Reference: [020-001])</owl:annotatedTarget>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
-        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/020-001"/>
-    </owl:Axiom>
-    <owl:Axiom>
         <owl:annotatedTarget>A material entity is an independent continuant that has some portion of matter as proper or improper part. (axiom label in BFO2 Reference: [019-001])</owl:annotatedTarget>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/019-001"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedTarget>Every entity which has a material entity as part is a material entity. (axiom label in BFO2 Reference: [020-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000601"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/020-001"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedTarget>BFO2 Reference: every entity of which a material entity is part is also a material entity. (axiom label in BFO2 Reference: [021-001])</owl:annotatedTarget>
@@ -1615,6 +2201,28 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000053">
+        <obo:IAO_0000116>BFO2 Reference: specifically dependent continuant</obo:IAO_0000116>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;bearer of at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;bearer of&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO2 Reference: independent continuant</obo:IAO_0000116>
+        <obo:IAO_0000115>a bearer_of b at t =Def. b s-depends on a &amp; a is an independent continuant &amp; b exists at t. (axiom label in BFO2 Reference: [053-001])</obo:IAO_0000115>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedTarget>a bearer_of b at t =Def. b s-depends on a &amp; a is an independent continuant &amp; b exists at t. (axiom label in BFO2 Reference: [053-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/053-001"/>
+    </owl:Axiom>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000085">
+        <obo:IAO_0000115>a has_function b at t =Def. b function_of a at t. (axiom label in BFO2 Reference: [070-001])</obo:IAO_0000115>
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;has function at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;has function&#39;(x,y,t)</obo:IAO_0000116>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_function b at t =Def. b function_of a at t. (axiom label in BFO2 Reference: [070-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000085"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/070-001"/>
+    </owl:Axiom>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000134">
         <obo:IAO_0000600>To say that each spatiotemporal region r projects_onto some temporal region t is to say that t serves as the temporal extension of r. (axiom label in BFO2 Reference: [080-001])</obo:IAO_0000600>
         <obo:IAO_0000600>To say that spatiotemporal region r projects_onto spatial region s at t is to say that s serves as the spatial extent of r at t. (axiom label in BFO2 Reference: [081-001])</obo:IAO_0000600>
@@ -1631,9 +2239,29 @@
         <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000600"/>
         <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/081-001"/>
     </owl:Axiom>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000087">
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;has region at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;has region&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000115>a has_role b at t =Def. b role_of a at t. (axiom label in BFO2 Reference: [068-001])</obo:IAO_0000115>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_role b at t =Def. b role_of a at t. (axiom label in BFO2 Reference: [068-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000087"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/068-001"/>
+    </owl:Axiom>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo.owl">
         <rdfs:comment>This is an early version of BFO version 2 and has not yet been extensively reviewed by the project team members. Please see the project site http://code.google.com/p/bfo/ , the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel , the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://bfo.googlecode.com/svn/trunk/docs/bfo2-reference/BFO2-Reference.docx . This ontology is generated from a specification at http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-reference.lisp and http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-uris.lisp , with the code that generates the OWL version residing in the same directory.</rdfs:comment>
     </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000112">
+        <obo:IAO_0000116>Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation &#39;has disposition at some time&#39; is: exists t,  exists_at(x,t) &amp; exists_at(y,t) &amp; &#39;has disposition&#39;(x,y,t)</obo:IAO_0000116>
+        <obo:IAO_0000115>a has_disposition b at t =Def. b disposition_of a at t. (axiom label in BFO2 Reference: [069-001])</obo:IAO_0000115>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedTarget>a has_disposition b at t =Def. b disposition_of a at t. (axiom label in BFO2 Reference: [069-001])</owl:annotatedTarget>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000112"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/069-001"/>
+    </owl:Axiom>
 </rdf:RDF>
 
 
