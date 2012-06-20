@@ -20,8 +20,8 @@
 	  (* 2 (count-if 'consp (cdr (bfo-terms bfo)) :key 'car))))
 
 (defun read-bfo2-reference-spec ()
-  (with-open-file (f "bfo:src;tools;bfo2-reference.lisp")
-    (with-open-file (g "bfo:src;tools;bfo2-uris.lisp")
+  (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo2-reference.lisp")
+    (with-open-file (g "bfo:src;ontology;owl-group;specification;bfo2-uris.lisp")
       (let ((terms (read f))
 	    (class-tree (read f))
 	    (2-prop-tree (read f))
