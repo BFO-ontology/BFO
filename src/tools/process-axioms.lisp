@@ -11,8 +11,8 @@
   
 (defun filter-schulz-axioms ()
   (let ((in-use (active-iris *bfo2*)))
-    (with-open-file (i "bfo:src;tools;raw-schulz-axioms.lisp")
-      (with-open-file (o "bfo:src;tools;filtered-schulz-axioms.lisp" :direction :output :if-does-not-exist :create :if-exists :supersede)
+    (with-open-file (i "bfo:src;ontology;owl-group;build-artifacts;raw-schulz-axioms.lisp")
+      (with-open-file (o "bfo:src;ontology;owl-group;build-artifacts;filtered-schulz-axioms.lisp" :direction :output :if-does-not-exist :create :if-exists :supersede)
 	(loop with auto
 	   for ax = (eval-uri-reader-macro (read i nil :eof))
 	   until (eq ax :eof)

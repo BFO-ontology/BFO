@@ -204,3 +204,31 @@
 	axs)))
 
       
+(defun gather-non-reference-annotations (bfo2)
+  (with-bfo-uris bfo2
+      (with-open-file (f "bfo:src;ontology;owl-group;specification;non-reference-annotations.lisp")
+	(loop for entry = (read f nil :eof)
+	   until (eq entry :eof)
+	   for (axiom . plist) = entry
+	   for axiom-substituted = (eval-bfo-uris axiom bfo2)
+	   for id = (getf plist :id)
+	   for completed = `(,(car axiom-substituted)
+			      (annotation ,!axiomid ,(make-uri nil (format nil "obo:bfo/axiom/~7,'0d" id)))
+			      ,@(if (getf plist :seealso)
+				    (list (list 'annotation !rdfs:seeAlso (getf plist :seealso))))
+			      ,@(if (getf plist :note)
+				    (list (list 'annotation !rdfs:comment (getf plist :note))))
+			      ,@(cdr axiom-substituted))
+	   collect completed))))
+
+(defun eval-bfo-uris (el bfo2)
+  (with-bfo-uris bfo2
+      (cond ((and (symbolp el) (boundp el))
+	     (symbol-value el))
+	    ((atom el) el)
+	    (t (mapcar (lambda(e) (eval-bfo-uris e bfo2)) el)))))
+
+
+
+			    
+	 
