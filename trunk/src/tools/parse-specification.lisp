@@ -10,6 +10,7 @@
   terms-with-md-siblings
   anntag2term
   term2annotation
+  fol-expressions
   )
 
 
@@ -27,9 +28,10 @@
 	    (2-prop-tree (read f))
 	    (3-prop-tree (read f))
 	    (tag2term (read f))
-	    (uris (eval-uri-reader-macro (read g))))
+	    (uris (eval-uri-reader-macro (read g)))
+	    (fol (read-fol-clif)))
 	(let ((struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree
-				:3-prop-tree 3-prop-tree :uris uris :anntag2term tag2term)))
+				:3-prop-tree 3-prop-tree :uris uris :anntag2term tag2term :fol-expressions fol)))
 	  (parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
 	  (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
 	  (parse-bfo2-tree (second class-tree) #'(setf bfo-class2subclass) struct)
@@ -94,3 +96,47 @@
   bfo-struct)
   
 (defvar *bfo2* (load-time-value (read-bfo2-reference-spec)))
+
+(defun read-fol-clif ()
+  (with-open-file (f "bfo:src;ontology;fol-ressler;BFO-FOL-alpha-2012-05-21.clif")
+    (let ((*readtable* (let ((r (copy-readtable *readtable*))) (setf (readtable-case r) :preserve) r))
+	  (table (make-hash-table :test 'equal)))
+      (loop for (precomment expression postcomment) in (read-bfo-clif-pieces f)
+	 until (null expression)
+	 for id = (or (and precomment (caar (last (all-matches precomment "\\[(\\d{3}-\\d{3})\\]" 1))))
+		      (and postcomment (caar (all-matches postcomment"\\[(\\d{3}-\\d{3})\\]" 1))))
+	 when id do (setf id (make-uri nil (format nil "obo:bfo/axiom/~a" id)))
+	 do (setf (gethash id table) expression))
+      table)))
+
+(defun read-bfo-clif-pieces (stream)
+  (loop with pre-peek 
+     for nextchar = (or pre-peek  (peek-char t stream nil :eof))
+     until (eq nextchar :eof) 
+     for comment = (if (char= nextchar #\/)
+		       (progn
+			 (if pre-peek (setq pre-peek nil)
+			     (read-char stream))
+			 (if (char= (peek-char nil stream) #\*)
+			     (read-slash-*-comment stream)
+			     (error "Trouble parsing /* clif position: ~a before: ~s" (file-position stream)
+				    (read-line stream))))
+		       )
+     for form = (read stream nil :eof)
+     for trailing = (and (equal (peek-char t stream nil :eof) #\/)
+			 (read-char stream)
+			 (if  (equal (peek-char nil stream nil :eof) #\/)
+			      (progn (read-char stream) (read-line stream nil :eof))
+			      (progn (setq pre-peek #\/) nil)
+			      ))
+     when (and form (neq form :eof)) collecting (list comment form trailing)))
+	 
+
+(defun read-slash-*-comment (stream)
+  (with-output-to-string (s)
+    (loop for char =  (read-char stream) do (write-char char s) until (and (equal char #\*) (equal (peek-char nil stream nil :eof) #\/)))
+    (read-char stream nil nil)
+    ))
+
+
+    
