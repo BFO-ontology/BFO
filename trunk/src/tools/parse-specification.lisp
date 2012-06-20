@@ -105,8 +105,7 @@
 	 until (null expression)
 	 for id = (or (and precomment (caar (last (all-matches precomment "\\[(\\d{3}-\\d{3})\\]" 1))))
 		      (and postcomment (caar (all-matches postcomment"\\[(\\d{3}-\\d{3})\\]" 1))))
-	 when id do (setf id (make-uri nil (format nil "obo:bfo/axiom/~a" id)))
-	 do (setf (gethash id table) expression))
+	 do (setf (gethash (make-uri nil (format nil "obo:bfo/axiom/~a" id)) table) (format nil "~a // axiom label in BFO2 CLIF: [~a] " expression id)))
       table)))
 
 (defun read-bfo-clif-pieces (stream)
