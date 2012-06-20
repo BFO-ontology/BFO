@@ -179,7 +179,7 @@
 
 (defun generate-annotations-for-one-entry (bfo2 prop axiomid annotation-property-uri subject text &aux axs)
   (when (and axiomid (gethash axiomid (bfo-fol-expressions bfo2)))
-    (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,!axiom-fol ,subject ,(format nil "~a (axiom label in CLIF [~a])"  (gethash axiomid (bfo-fol-expressions bfo2)) axiomid)) axs))
+    (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,!axiom-fol ,subject ,(gethash axiomid (bfo-fol-expressions bfo2))) axs))
   (if  (equal prop "editor-note") 
        (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,annotation-property-uri ,subject ,(format nil "BFO2 Reference: ~a" text)) axs)
        (if (equal prop "example-of-usage")
