@@ -22,7 +22,7 @@
 	      :pathname ""
 	      :components
 	      ((:jar-directory "lib")))
-     (:module spec :pathname ""
+     (:module spec :pathname "specifications"
 	      :components
 	      ((:static-file "bfo2-reference.lisp")
 	       (:static-file "bfo2-uris")))
