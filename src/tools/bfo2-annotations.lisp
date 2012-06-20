@@ -163,7 +163,7 @@
 		  do (setq axs (append (maybe-generate-annotation-for-ternary-property bfo2 term text axiomid prop uri)
 				       axs))
 		  unless(not (boundp term))
-		  do (setq axs (setq axs (append axs (generate-annotations-for-one-entry prop axiomid uri (eval term) text))))))
+		  do (setq axs (setq axs (append axs (generate-annotations-for-one-entry bfo2 prop axiomid uri (eval term) text))))))
 	       (bfo-term2annotation bfo2)))
     axs)
 
@@ -177,7 +177,9 @@
 	    (values clean (make-uri nil (format nil "obo:bfo/axiom/~a" axiomid))))
 	  clean))))
 
-(defun generate-annotations-for-one-entry (prop axiomid annotation-property-uri subject text &aux axs)
+(defun generate-annotations-for-one-entry (bfo2 prop axiomid annotation-property-uri subject text &aux axs)
+  (when (and axiomid (gethash axiomid (bfo-fol-expressions bfo2)))
+    (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,!axiom-fol ,subject ,(format nil "~a (axiom label in CLIF [~a])"  (gethash axiomid (bfo-fol-expressions bfo2)) axiomid)) axs))
   (if  (equal prop "editor-note") 
        (push `(annotation-assertion ,@(and axiomid (list (list 'annotation !axiomid axiomid)))  ,annotation-property-uri ,subject ,(format nil "BFO2 Reference: ~a" text)) axs)
        (if (equal prop "example-of-usage")
@@ -196,10 +198,10 @@
 ;      (print-db at st)
       ;; lazy ass cut and paste. Factor out
       (when st
-	(setq axs (append axs (generate-annotations-for-one-entry prop axiomid uri (third st) text)))
+	(setq axs (append axs (generate-annotations-for-one-entry bfo2 prop axiomid uri (third st) text)))
 	(push `(annotation-assertion !editor-note ,(third st) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation '~a' is: exists t,  exists_at(x,t) & exists_at(y,t) & '~a'(x,y,t)" (a-better-lousy-label (car st)) (a-better-lousy-label term))) axs))
       (when at 	
-	(setq axs (append axs (generate-annotations-for-one-entry prop axiomid uri (third at) text)))
+	(setq axs (append axs (generate-annotations-for-one-entry bfo2 prop axiomid uri (third at) text)))
 	(push `(annotation-assertion !editor-note ,(third at) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation '~a' is: forall(t) exists_at(x,t) -> exists_at(y,t) and '~a(x,y,t)'" (a-better-lousy-label (car at)) (a-better-lousy-label term))) axs))
 	axs)))
 
@@ -221,12 +223,12 @@
 			      ,@(cdr axiom-substituted))
 	   collect completed))))
 
-(defun eval-bfo-uris (el bfo2)
+(defun eval-bfo-uris (form bfo2)
   (with-bfo-uris bfo2
-      (cond ((and (symbolp el) (boundp el))
-	     (symbol-value el))
-	    ((atom el) el)
-	    (t (mapcar (lambda(e) (eval-bfo-uris e bfo2)) el)))))
+      (cond ((and (symbolp form) (boundp form))
+	     (symbol-value form))
+	    ((atom form) form)
+	    (t (mapcar (lambda(el) (eval-bfo-uris el bfo2)) form)))))
 
 
 

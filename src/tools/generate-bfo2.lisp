@@ -8,6 +8,8 @@
 	 (as (generate-hierarchy bfo2))
 	 (as (generate-property-inverses bfo2))
 	 (as (generate-reference-annotations bfo2))
+	 (as (generate-reference-annotations bfo2))
+	 (as (gather-non-reference-annotations bfo2))
 	 ;(as (parse-annotations bfo2))
 	 ;(as (add-annotations bfo2))
 	 )
