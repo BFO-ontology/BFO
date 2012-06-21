@@ -10,14 +10,11 @@
 	 (as (generate-reference-annotations bfo2))
 	 (as (generate-reference-annotations bfo2))
 	 (as (gather-non-reference-annotations bfo2))
+	 (as (read-bfo-specific-annotation-properties bfo2))
 	 ;(as (parse-annotations bfo2))
 	 ;(as (add-annotations bfo2))
 	 )
       (write-rdfxml bfo2-ont "bfo:src;ontology;owl-group;bfo.owl"))))
-
-(defmacro with-bfo-uris (spec &body body)
-  `(progv (mapcar 'first (cdr (bfo-uris ,spec))) (mapcar 'third (cdr (bfo-uris ,spec)))
-     ,@body))
 
 (defun generate-declarations (bfo2)
   (let ((seen (make-hash-table))

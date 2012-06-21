@@ -9,6 +9,7 @@
   3prop2subprop
   terms-with-md-siblings
   anntag2term
+  term2clif
   term2annotation
   fol-expressions
   )
@@ -28,24 +29,42 @@
 	    (2-prop-tree (read f))
 	    (3-prop-tree (read f))
 	    (tag2term (read f))
+	    (clif-term-exceptions (read f))
 	    (uris (eval-uri-reader-macro (read g)))
 	    (fol (read-fol-clif)))
-	(let ((struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree
-				:3-prop-tree 3-prop-tree :uris uris :anntag2term tag2term :fol-expressions fol)))
-	  (parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
-	  (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
-	  (parse-bfo2-tree (second class-tree) #'(setf bfo-class2subclass) struct)
-	  struct
-	  )))))
+	(let* ((tag2term-filled
+		(loop for (ann term) in (cdr tag2term)
+		   collect (list (intern (string-upcase (#"replaceAll" ann "[ _]" "-")))
+				 (or term (intern (string-upcase (#"replaceAll" ann "[ _]" "-")))))))
+	       (struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree
+				   :3-prop-tree 3-prop-tree :uris uris :anntag2term tag2term-filled :fol-expressions fol))
+	       (term2clif (loop for (tag term) in tag2term-filled
+			     for exception = (second (assoc tag (cdr clif-term-exceptions) :test 'equalp))
+			     collect (list term (or exception
+						    (let ((tentative (apply 'concatenate 'string 
+									    (mapcar 'string-capitalize
+										    (split-at-char (string tag) #\-) ))))
+						      (if (eq :unary (bfo-term-arity term struct))
+							  tentative
+							  (progn
+							    (setf (char tentative  0) (char-downcase (char tentative 0)))
+							    tentative)
+							  )))))))
+	    (setf (bfo-term2clif struct) term2clif)
+	    (parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
+	    (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
+	    (parse-bfo2-tree (second class-tree) #'(setf bfo-class2subclass) struct)
+	    struct
+	    )))))
 
 
-(defun active-iris ()
+(defun active-iris (bfo2)
   (let ((names
-	  (loop for (name) in (cdr (bfo-terms *bfo2*))
+	  (loop for (name) in (cdr (bfo-terms bfo2))
 	     when (symbolp name) collect name
 	     when (consp name) collect (first name) and collect (second name))))
     (loop for name in names 
-       for found = (assoc name (cdr (bfo-uris *bfo2*)))
+       for found = (assoc name (cdr (bfo-uris bfo2)))
        collect (list (or (third found)
 			 `(hey! ,name))
 		     (first found)
@@ -95,7 +114,7 @@
       (funcall result-setter parent2child bfo-struct)))
   bfo-struct)
   
-(defvar *bfo2* (load-time-value (read-bfo2-reference-spec)))
+;(defvar *bfo2* (load-time-value (read-bfo2-reference-spec)))
 
 (defun read-fol-clif ()
   (with-open-file (f "bfo:src;ontology;fol-ressler;BFO-FOL-alpha-2012-05-21.clif")
@@ -137,5 +156,16 @@
     (read-char stream nil nil)
     ))
 
+(defun bfo-term-arity (symbol bfo2)
+  (let ((entry (find symbol (cdr (bfo-terms bfo2))
+		     :test (lambda(a el)
+			     (if (atom (car el)) (eq a (car el)) 
+				 (member a (car el)))))))
+    (cond ((member :unary entry) :unary)
+	  ((member :binary entry) :binary)
+	  ((member :ternary entry) :ternary))))
 
-    
+(defmacro with-bfo-uris (spec &body body)
+  `(progv (mapcar 'first (cdr (bfo-uris ,spec))) (mapcar 'third (cdr (bfo-uris ,spec)))
+     ,@body))
+
