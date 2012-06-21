@@ -68,21 +68,20 @@
  (0d-cf-boundary :unary)
  (1d-cf-boundary :unary)
  (2d-cf-boundary :unary)
- ((exists-at during-which-exists)  :binary (-> entity t-region))
- ((o-part-of o-has-part) :binary (:locally-reflexive occurrent) :transitive (-> (st-region st-region) (process process) (p-boundary process) (p-boundary p-boundary)))
- ((o-ppart-of o-has-ppart) :binary :transitive (:locally-irreflexive occurrent) (-> (st-region st-region) (process process) (p-boundary process) (p-boundary p-boundary)))
- ((t-part-of has-t-part) :binary :transitive (:locally-reflexive t-region) (-> (t-region t-region) (0d-t-region 0d-t-region) (1d-t-region 1d-t-region)))
- ((occupies occupied-by)  :binary (:locally-reflexive st-region) (:locally-reflexive t-region))
- ((profile-of has-profile) :binary (-> process-profile process))
- ((realizes realized-in) :binary (-> process realizable))
+ ((exists-at during-which-exists) :binary)
+ ((o-part-of o-has-part) :binary )
+ ((o-ppart-of o-has-ppart) :binary)
+ ((t-part-of has-t-part) :binary )
+ ((t-ppart-of has-t-ppart) :binary)
+ ((occupies occupied-by)  :binary)
+ ((profile-of has-profile) :binary )
+ ((realizes realized-in) :binary )
 
  ((c-part-of c-has-part) :ternary (:issue 49)
-  (:temporal (:all :some) (:all :some) "as Mathias suggests")
-  (:local-reflexive continuant) :transitive-at-a-time)
+  (:temporal (:all :some) (:all :some) "as Mathias suggests"))
+
  ((c-ppart-of c-has-ppart) :ternary (:issue 49)
-  (:temporal (:all :some) (:all :some) "Mathias suggest not parallel to part of, seems not to alan")
-  (:locally-irreflexive continuant) :transitive-at-a-time
-  )
+  (:temporal (:all :some) (:all :some) "Mathias suggest not parallel to part of, seems not to alan"))
 
  ((member-part-of has-member-part) :ternary (:issue 49)
   (:temporal (:all :some) (:all :some) "Seems to be similar enough to part of (parts aren't permanent or defining except at an instant, so offer full set")
@@ -90,12 +89,10 @@
  
  ((located-in has-location) :ternary  (:issue 49)
   (:temporal (:some :all) (:some :all))
-  :transitive-at-a-time (:locally-reflexive continuant)
   )
 
  ((located-at-r r-location-of) :ternary  (:issue 49)
   (:temporal (:some) (:some) "Include some some for now, but note that the all versions can be used to define frames")
-  (:locally-reflexive s-region)
   )
 
  ((inheres-in bearer-of) :ternary (:issue 49)
@@ -181,9 +178,11 @@ realized-in
 o-part-of
 -o-ppart-of
 -t-part-of
+--t-ppart-of
 o-has-part
 -o-has-ppart
 -has-t-part
+--has-t-ppart
 profile-of
 has-profile
 occupies
@@ -327,10 +326,26 @@ has-location_st
  ("process-boundary" p-boundary)
  ("has-participant")
  ("temporal-part-of" t-part-of)
+ ("proper-temporal-part-of" t-ppart-of)
  ("process-profile-of" profile-of)
  ("spatiotemporal-region" st-region)
  ("occurrent")
  ("temporal-region" t-region)
  ("zero-dimensional-temporal-region" 0d-t-region)
  ("one-dimensional-temporal-region" 1d-t-region)
+ )
+
+;; this section needs to be manged each time the spec is updated. It
+;; maps the string (only exceptions) used as an annotation tag to the
+;; short handle used in the CLIF spec. The function
+;; (known-in-reference) gives you the list of tags that are used in
+;; the reference document. If the tag is the same as the variable
+;; name, or there is only spaces or underscores that should be
+;; translated to camel case you don't have to repeat it.  For ternary
+;; properties use the unsuffixed name and the code will dwim.
+
+(reference-annotation-tag-to-clif
+ (located-at "locatedAt")
+ (s-depends-on "specificallyDependsOn")
+ (g-depends-on "genericallyDependsOn")
  )
