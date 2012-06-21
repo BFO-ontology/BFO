@@ -236,13 +236,14 @@
 	    (t (mapcar (lambda(el) (eval-bfo-uris el bfo2)) form)))))
 
 
+;; FIXME!!- for the life of me I can't figure out why I need the (car ...)
 (defun read-bfo-specific-annotation-properties (bfo2)
   (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo-specific-annotation-properties.lisp")
     (with-bfo-uris bfo2
       (with-obo-metadata-uris 
-	(eval-uri-reader-macro
+	(car (eval-uri-reader-macro
 		(loop for form = (read f nil :eof)
 			  until (eq form :eof)
-			  collect form))))))
+			  collect form)))))))
 
 			      
