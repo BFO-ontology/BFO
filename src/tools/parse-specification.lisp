@@ -48,8 +48,10 @@
 							  tentative
 							  (progn
 							    (setf (char tentative  0) (char-downcase (char tentative 0)))
-							    tentative)
-							  )))))))
+							    (if (eq :unary (bfo-term-arity term struct))
+								(concatenate 'string tentative "At")
+								tentative
+							  )))))))))
 	    (setf (bfo-term2clif struct) term2clif)
 	    (parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
 	    (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)

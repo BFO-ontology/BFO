@@ -34,7 +34,7 @@
      ))
 
 (defun generate-ontology-properties (bfo2)
-  `((annotation !rdfs:comment "This is an early version of BFO version 2 and has not yet been extensively reviewed by the project team members. Please see the project site http://code.google.com/p/bfo/ , the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel , the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://bfo.googlecode.com/svn/trunk/docs/bfo2-reference/BFO2-Reference.docx . This ontology is generated from a specification at http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-reference.lisp and http://bfo.googlecode.com/svn/trunk/src/tools/bfo2-uris.lisp , with the code that generates the OWL version residing in the same directory.")))
+  `((annotation !rdfs:comment "This is an early version of BFO version 2 and has not yet been extensively reviewed by the project team members. Please see the project site http://code.google.com/p/bfo/ , the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel , the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://purl.obolibrary.org/obo/bfo/dev/bfo2-reference.docx . This ontology is generated from a specification at http://bfo.googlecode.com/svn/trunk/src/ontology/owl-group/specification/ and with the code that generates the OWL version in http://bfo.googlecode.com/svn/trunk/src/tools/. A very early version of BFO version 2 in CLIF is at http://purl.obolibrary.org/obo/bfo/dev/bfo.clif")))
 
 (defun generate-ontology-annotation-property-defs (bfo2)
   (let ((om (load-ontology "https://information-artifact-ontology.googlecode.com/svn/trunk/src/ontology/ontology-metadata.owl")))
@@ -104,7 +104,10 @@
 				 axs)
 			   (push `(annotation-assertion !bfo-owl-spec-label ,(eval el) ,(string-downcase (string el)))
 				 axs)
-			   (let ((clifterm (second (assoc el (bfo-term2clif bfo2)))))
+			   (let ((clifterm (or (second (assoc el (bfo-term2clif bfo2)))
+					       (second (assoc (intern (#"replaceAll" (string el) "_(S|A)T$" ""))
+							      (bfo-term2clif bfo2))
+						       ))))
 			     (when clifterm 
 			       (push `(annotation-assertion !bfo-fol-spec-label ,(eval el) ,clifterm)
 				 axs)))
