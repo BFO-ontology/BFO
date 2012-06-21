@@ -55,6 +55,8 @@
  (o-has-part nil !obo:BFO_0000117)
  (t-part-of nil !obo:BFO_0000139)
  (has-t-part nil !obo:BFO_0000121)
+ (t-ppart-of nil !obo:BFO_0000136)
+ (has-t-ppart nil !obo:BFO_0000181) ;alanr assigned
  (occupies nil !obo:BFO_0000066)  
  (occupied-by nil !obo:BFO_0000126)
  (has-profile nil !obo:BFO_0000119)
@@ -182,7 +184,6 @@
  (has-o-boundary nil !obo:BFO_0000116 (:maybe schulz))
  (has-ppart nil !obo:BFO_0000120 :not (:issue 46))
  (ppart-of nil !obo:BFO_0000135 :not (:issue 46))
- (t-ppart-of nil !obo:BFO_0000136 (:maybe schulz) (:note "inverse was not defined"))
  (has-material-part nil !obo:BFO_0000114 (:maybe schulz) (:issue 33))
  (material-part-of nil !obo:BFO_0000128 (:maybe schulz) (:issue 33))
  (b-depends-on nil !obo:BFO_0000102 (:maybe schulz))
