@@ -10,7 +10,8 @@
       ("imported-from" !obo:IAO_0000412)
       ("editor-note" !obo:IAO_0000116)
       ("curator-note" !obo:IAO_0000232)
-      ("bfo-spec-label" !obo:BFO_0000179)
+      ("bfo-owl-spec-label" !obo:BFO_0000179)
+      ("bfo-fol-spec-label" !obo:BFO_0000180)
       ("axiom-nl" !obo:IAO_0000601)
       ("axiom-fol" !obo:IAO_0000602)
       ("axiomid" !obo:IAO_0010000)
@@ -29,7 +30,7 @@
 
 (defmacro with-obo-metadata-uris (&body body)
   `(let-uri ,*bfo2-ontprops*
-     ,@body
+     (list ,@body)
      ))
 
 (defun generate-ontology-properties (bfo2)
@@ -39,12 +40,8 @@
   (let ((om (load-ontology "https://information-artifact-ontology.googlecode.com/svn/trunk/src/ontology/ontology-metadata.owl")))
     (list*
      `(declaration (annotation-property ,!rdfs:isDefinedBy))
-     `(declaration (annotation-property ,!bfo-spec-label))
-     `(annotation-assertion !rdfs:label ,!bfo-spec-label "bfo specification label")
-     `(annotation-assertion !definition ,!bfo-spec-label "Relates an entity in the ontology to the name of the variable that is used to represent it in the code that generates the BFO OWL file from the lispy specification.")
-     `(annotation-assertion !definition-source ,!bfo-spec-label "Person:Alan Ruttenberg")
-     `(annotation-assertion !curator-note ,!bfo-spec-label "Really of interest to developers only")
-     `(sub-annotation-property-of ,!bfo-spec-label ,!rdfs:label)
+     `(declaration (annotation-property ,!bfo-owl-spec-label))
+     `(declaration (annotation-property ,!bfo-fol-spec-label))
      (loop for (here-label prop) in (eval-uri-reader-macro *bfo2-ontprops*)
 	for label = (entity-label prop om)
 	collect `(declaration (annotation-property ,prop))
@@ -105,8 +102,12 @@
 			 (unless (gethash el seen)
 			   (push `(annotation-assertion !rdfs:label ,(eval el) ,(a-better-lousy-label el))
 				 axs)
-			   (push `(annotation-assertion !bfo-spec-label ,(eval el) ,(string-downcase (string el)))
+			   (push `(annotation-assertion !bfo-owl-spec-label ,(eval el) ,(string-downcase (string el)))
 				 axs)
+			   (let ((clifterm (second (assoc el (bfo-term2clif bfo2)))))
+			     (when clifterm 
+			       (push `(annotation-assertion !bfo-fol-spec-label ,(eval el) ,clifterm)
+				 axs)))
 			   (setf (gethash el seen) t))))
 		    (funcall table bfo2)))
       axs)))
@@ -134,8 +135,8 @@
 	 finally (progn (setf (bfo-term2annotation bfo2) table) (return table)))))
 
 (defun uri-for-reference-doc-term (tag bfo2)
-  (let ((found (or (assoc tag (cdr (bfo-anntag2term bfo2)) :test 'equalp)
-		   (assoc (#"replaceAll" tag "[ _]" "-") (cdr (bfo-anntag2term bfo2)) :test 'equalp))))
+  (let ((found (or (assoc (intern (string-upcase tag)) (bfo-anntag2term bfo2) :test 'equalp)
+		   (assoc (intern (string-upcase (#"replaceAll" tag "[ _]" "-"))) (bfo-anntag2term bfo2) :test 'equalp))))
     (unless found
       (error "What's this tag: ~a ?" tag))
     (let* ((found-or-translated
@@ -143,7 +144,8 @@
 		(intern (string-upcase (#"replaceAll" tag "[ _]" "-")))))
 	   (uri (third (assoc found-or-translated (cdr (bfo-uris bfo2)) :test 'equalp))))
       (or found-or-translated
-	  (progn (warn "No URI found for ~a ?" found-or-translated) nil)))))
+	  (progn (warn "No URI found for ~a ?" found-or-translated) nil))
+      )))
 
 (defun parse-as (text)
   (let ((them (all-matches text "\\b(\\w+):(.*)" 1 2)))
@@ -231,6 +233,12 @@
 	    (t (mapcar (lambda(el) (eval-bfo-uris el bfo2)) form)))))
 
 
-
-			    
-	 
+(defun read-bfo-specific-annotation-properties (bfo2)
+  (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo-specific-annotation-properties.lisp")
+    (with-bfo-uris bfo2
+      (with-obo-metadata-uris 
+	(eval-uri-reader-macro
+		(loop for form = (read f nil :eof)
+			  until (eq form :eof)
+			  collect form))))))))
+			      
