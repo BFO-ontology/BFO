@@ -29,13 +29,17 @@
      (:module parse :pathname "" :depends-on (spec)
 	      :components
 	      ((:file "parse-specification")))
+     (:module metadata :pathname "" 
+	      :components
+	      ((:file "obo-metadata")))
      (:module process :pathname ""
 	      :components
 	      ((:file "extract-reference-annotations")
 	       (:file "process-axioms")
-	       (:file "generate-bfo2")
+	       (:file "generate-bfo2" )
 	       (:file "bfo2-annotations")
-	       )))
+	       )
+	      :depends-on (metadata)))
     :depends-on (owl2))
 
 ;;;; eof
