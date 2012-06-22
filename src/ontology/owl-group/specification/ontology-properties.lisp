@@ -3,7 +3,7 @@
  :id 100)
 
 (annotation !foaf:homepage !<http://code.google.com/p/bfo/>)
-(annotation !foaf:homepage !<http://ifomis.org/bfo>/)
+(annotation !foaf:homepage !<http://ifomis.org/bfo>)
 (annotation !rdfs:seeAlso !<http://groups.google.com/group/bfo-owl-devel>)
 (annotation !rdfs:seeAlso !<http://groups.google.com/group/bfo-devel>)
 (annotation !rdfs:seeAlso !<http://groups.google.com/group/bfo-discuss>)

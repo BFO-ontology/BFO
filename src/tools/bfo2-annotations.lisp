@@ -219,12 +219,13 @@
 
 ;; FIXME!!- for the life of me I can't figure out why I need the (car ...)
 (defun read-bfo-specific-annotation-properties (bfo2)
-  (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo-specific-annotation-properties.lisp")
-    (with-bfo-uris bfo2
-      (with-obo-metadata-uris 
-	(car (eval-uri-reader-macro
-		(loop for form = (read f nil :eof)
-			  until (eq form :eof)
-			  collect form)))))))
+  (car
+   (eval-uri-reader-macro
+    (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo-specific-annotation-properties.lisp")
+      (with-bfo-uris bfo2
+	(with-obo-metadata-uris 
+	  (loop for form = (read f nil :eof)
+	     until (eq form :eof)
+	     collect form)))))))
 
 			      
