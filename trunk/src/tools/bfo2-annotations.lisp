@@ -1,22 +1,3 @@
-(eval-when (:compile-toplevel :load-toplevel :execute)
-  (defparameter *bfo2-ontprops* 
-    '(("definition" !obo:IAO_0000115)
-      ("elucidation" !obo:IAO_0000600)
-      ("definition-source" !obo:IAO_0000119)
-      ("term-editor" !obo:IAO_0000117)
-      ("preferred-term" !obo:IAO_0000111)
-      ("alternative-term" !obo:IAO_0000118)
-      ("example-of-usage" !obo:IAO_0000112)
-      ("imported-from" !obo:IAO_0000412)
-      ("editor-note" !obo:IAO_0000116)
-      ("curator-note" !obo:IAO_0000232)
-      ("bfo-owl-spec-label" !obo:BFO_0000179)
-      ("bfo-fol-spec-label" !obo:BFO_0000180)
-      ("axiom-nl" !obo:IAO_0000601)
-      ("axiom-fol" !obo:IAO_0000602)
-      ("axiomid" !obo:IAO_0010000)
-      )))
-
 (defparameter *bfo2-anntag-to-prop* 
   '(("Synonym" "alternative-term")
     ("Example" "example-of-usage")
@@ -28,18 +9,18 @@
     ("Elucidation" "elucidation")
     ("Axiom" "axiom-nl")))
 
-(defmacro with-obo-metadata-uris (&body body)
-  `(let-uri ,*bfo2-ontprops*
-     (list ,@body)
-     ))
-
 (defun generate-ontology-properties (bfo2)
-  `((annotation !rdfs:comment "This is an early version of BFO version 2 and has not yet been extensively reviewed by the project team members. Please see the project site http://code.google.com/p/bfo/ , the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel , the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://purl.obolibrary.org/obo/bfo/dev/bfo2-reference.docx . This ontology is generated from a specification at http://bfo.googlecode.com/svn/trunk/src/ontology/owl-group/specification/ and with the code that generates the OWL version in http://bfo.googlecode.com/svn/trunk/src/tools/. A very early version of BFO version 2 in CLIF is at http://purl.obolibrary.org/obo/bfo/dev/bfo.clif")))
+  (with-open-file (f "bfo:src;ontology;owl-group;specification;ontology-properties.lisp")
+    (loop for entry = (read f nil :eof)
+	 until (eq entry :eof)
+	 if (consp (car entry)) collect (car entry) else collect entry)))
 
 (defun generate-ontology-annotation-property-defs (bfo2)
   (let ((om (load-ontology "https://information-artifact-ontology.googlecode.com/svn/trunk/src/ontology/ontology-metadata.owl")))
     (list*
      `(declaration (annotation-property ,!rdfs:isDefinedBy))
+     `(declaration (annotation-property ,!rdfs:seeAlso))
+     `(declaration (annotation-property ,!foaf:homepage))
      `(declaration (annotation-property ,!bfo-owl-spec-label))
      `(declaration (annotation-property ,!bfo-fol-spec-label))
      (loop for (here-label prop) in (eval-uri-reader-macro *bfo2-ontprops*)

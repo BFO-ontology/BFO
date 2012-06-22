@@ -48,7 +48,7 @@
 							  tentative
 							  (progn
 							    (setf (char tentative  0) (char-downcase (char tentative 0)))
-							    (if (eq :unary (bfo-term-arity term struct))
+							    (if (eq :ternary (bfo-term-arity term struct))
 								(concatenate 'string tentative "At")
 								tentative
 							  )))))))))
