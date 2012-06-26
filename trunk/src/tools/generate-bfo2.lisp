@@ -12,6 +12,8 @@
 	 (as (gather-non-reference-annotations bfo2))
 	 (as (read-bfo-specific-annotation-properties bfo2))
 	 (as (generate-disjoints bfo2))
+	 (as(read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;binary-relation-axioms.lisp"))
+;	 (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp"))
 	 ;(as (parse-annotations bfo2))
 	 ;(as (add-annotations bfo2))
 	 )
