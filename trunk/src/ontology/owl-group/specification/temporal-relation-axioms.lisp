@@ -51,7 +51,8 @@
   (issue 49)
   (temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (domain sdc :id 517)
-  (range ic :id 518))
+;  (range ic :id 518)
+  )
 
  
  (object-property :temporal
@@ -76,11 +77,12 @@
   (domain role :id 523)
   (range ic :id 524))
 
- (object-property (d-of has-d)
-   (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
-  (issue 49)
-  (domain disposition :id 525)
-  (range ic :id 526))
+ (object-property :temporal
+   (d-of has-d) 
+   (temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+   (issue 49)
+   (domain disposition :id 525)
+   (range ic :id 526))
 
  (object-property :temporal
    (s-depends-on has-s-dep)
@@ -130,9 +132,5 @@
   (range continuant :id 538)
   )
  
-(object-property :temporal
-  (spans span-of)
-  (domain occurrent :id 539)
-  (range t-region :id 540)
- )
+
 
