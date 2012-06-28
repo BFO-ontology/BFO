@@ -193,7 +193,7 @@
 	(push `(annotation-assertion !editor-note ,(third st) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation '~a' is: exists t,  exists_at(x,t) & exists_at(y,t) & '~a'(x,y,t)" (a-better-lousy-label (car st)) (a-better-lousy-label term))) axs))
       (when at 	
 	(setq axs (append axs (generate-annotations-for-one-entry bfo2 prop axiomid uri (third at) text)))
-	(push `(annotation-assertion !editor-note ,(third at) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation '~a' is: forall(t) exists_at(x,t) -> exists_at(y,t) and '~a(x,y,t)'" (a-better-lousy-label (car at)) (a-better-lousy-label term))) axs))
+	(push `(annotation-assertion !editor-note ,(third at) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation '~a' is: forall(t) exists_at(x,t) -> exists_at(y,t) and '~a(x,y,t)'." (a-better-lousy-label (car at)) (a-better-lousy-label term))) axs))
 	axs)))
 
       

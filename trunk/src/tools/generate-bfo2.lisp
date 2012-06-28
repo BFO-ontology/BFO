@@ -56,7 +56,7 @@
 ;       do (print-db name keys)
        when (and (consp name) (member :binary keys))
        collect `(inverse-object-properties ,(eval (first name)) ,(eval (second name)))
-       when (and (consp name) (member :temporal keys))
+       when (and (consp name) (member :ternary keys))
 	 if (and (assoc (st-term (first name )) uris)
 		 (assoc (st-term (second name )) uris))
 	 collect `(inverse-object-properties ,(eval (st-term (first name))) ,(eval (st-term (second name))))
