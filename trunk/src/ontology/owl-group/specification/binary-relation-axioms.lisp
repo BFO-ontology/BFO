@@ -85,8 +85,8 @@
 (object-property  :binary
    (realizes realized-in)
    (inverses :id 155)
-   (domain realizable :id 156)
-   (range process :id 157))
+   (domain process :id 156)
+   (range realizable :id 157))
 
 (object-property :binary
   (st-projects-onto-t t-projection-of-st) 

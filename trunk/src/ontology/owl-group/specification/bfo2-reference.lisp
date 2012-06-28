@@ -314,6 +314,7 @@ has-location_st
  ("relational-quality" r-quality)
  ("realizable-entity" realizable)
  ("realizes")
+ ("realized-in")
  ("role")
  ("disposition")
  ("function")
