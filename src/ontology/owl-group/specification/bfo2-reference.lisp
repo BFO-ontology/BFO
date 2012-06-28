@@ -9,7 +9,7 @@
 ;;; 1) terms: This gives a symbol (syn:handle) for each term, as well
 ;;; as information about whether the term is a unary predicate (a
 ;;; class), a binary precitate (non-time-dependent relation) or
-;;; ternary predicate (time-dependent relation)
+;;; temporal predicate (time-dependent relation)
 
 ;;; 2) class-hierarchy: Picture of the hierarchy of classes. Process
 ;;; to generate subclass relations.
@@ -17,7 +17,7 @@
 ;;; 3) binary-relation-hierarchy: Picture of the hierarchy of binary properties. Process
 ;;; to generate subproperty assertions
 
-;;; 4) ternary-relation-hierarchy: Picture of the hierarchy of ternary properties. Process
+;;; 4) temporal-relation-hierarchy: Picture of the hierarchy of temporal properties. Process
 ;;; to generate subproperty assertions 
 
 ;;; 5) URI allocations, mapping, other metadata. specify URIs that
@@ -30,8 +30,8 @@
 ;; elsewhere
 ;; syntax: 
 ;;   '(' class-symbol :unary props* ')' |
-;;   '(' relation-symbol (:binary|:ternary) props*  ')'
-;;   '(' relation-symbol inverse-symbol ')' ( :binary | :ternary ) props* ')' 
+;;   '(' relation-symbol (:binary|:temporal) props*  ')'
+;;   '(' relation-symbol inverse-symbol ')' ( :binary | :temporal ) props* ')' 
 
 (terms
  (entity :unary)
@@ -195,16 +195,16 @@ exists-at
 during-which-exists
 ")
 
-;; define the ternary property hierarchy. You can't have a ternary
+;; define the temporal property hierarchy. You can't have a temporal
 ;; property be a sub of a binary or vice versa. Of course we can't
-;; really have ternary property in owl, so if we agree on the
+;; really have temporal property in owl, so if we agree on the
 ;; at-some-times, at-all-times thing then at-all-time is subprop of
 ;; at-some-time in each self case, whereas the at-all-times
 ;; superproperties are segregated from the at-some-times
 ;; superproperties (i.e. q-of at some time /-> inheres-in at all times)
 ;; Also consider: "during" variants of the properties, if we get histories.
 
-(ternary-property-hierarchy "
+(temporal-property-hierarchy "
 located-at-r_st 
 r-location-of_st
 s-depends-on_st
@@ -215,6 +215,11 @@ s-depends-on_st
 ---r-of_at 
 ---d-of_at 
 has-s-dep_st
+-has-q_st
+-has-r_st
+-has-d_st
+-has-f_st
+-bearer-of_st
 -has-s-dep_at
 --bearer-of_at
 ---has-q_at
@@ -228,6 +233,8 @@ participates-in_st
 has-participant_st
 -has-participant_at
 has-material-basis_at
+material-basis-of_st
+-material-basis-of_at
 concretizes_st 
 -concretizes_at 
 concretization-of_st
@@ -267,7 +274,7 @@ has-location_st
 ;; of tags that are used in the reference document. If the tag is the
 ;; same as the variable name, or there is only spaces or underscores
 ;; that should be translated to dashes you don't have to repeat it.
-;; For ternary properties use the unsuffixed name and the code will dwim.
+;; For temporal properties use the unsuffixed name and the code will dwim.
 
 (reference-annotation-tag-to-variable
  ("entity")
@@ -341,7 +348,7 @@ has-location_st
 ;; (known-in-reference) gives you the list of tags that are used in
 ;; the reference document. If the tag is the same as the variable
 ;; name, or there is only spaces or underscores that should be
-;; translated to camel case you don't have to repeat it.  For ternary
+;; translated to camel case you don't have to repeat it.  For temporal
 ;; properties use the unsuffixed name and the code will dwim.
 
 (reference-annotation-tag-to-clif

@@ -39,7 +39,7 @@
 	       (:file "generate-bfo2" )
 	       (:file "bfo2-annotations")
 	       )
-	      :depends-on (metadata)))
+	      :depends-on (metadata parse)))
     :depends-on (owl2))
 
 ;;;; eof

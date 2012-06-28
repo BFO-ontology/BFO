@@ -17,7 +17,7 @@
 
 
 (defun print-bfo (bfo stream level)
-  (format t "#<bfo ~a classes, ~a properties>"
+  (format stream "#<bfo ~a classes, ~a properties>"
 	  (count-if 'symbolp (cdr (bfo-terms bfo)) :key 'car)
 	  (* 2 (count-if 'consp (cdr (bfo-terms bfo)) :key 'car))))
 
