@@ -3,11 +3,11 @@
     ("Example" "example-of-usage")
     ("Range" "editor-note")
     ("Domain" "editor-note")
-    ("Theorem" "editor-note")
     ("Definition" "definition")
     ("EXAMPLES" "example-of-usage")
     ("Elucidation" "elucidation")
-    ("Axiom" "axiom-nl")))
+    ("Axiom" "axiom-nl")
+    ("Theorem" "axiom-nl")))
 
 (defun generate-ontology-properties (bfo2)
   (with-open-file (f "bfo:src;ontology;owl-group;specification;ontology-properties.lisp")
@@ -184,8 +184,8 @@
 (defun maybe-generate-annotation-for-temporal-property (bfo2 term text axiomid prop uri)
   (let ((uris (cdr (bfo-uris bfo2)))
 	(axs nil))
-    (let* ((at (assoc (intern (concatenate 'string (string term) "_AT")) uris))
-	   (st (assoc (intern (concatenate 'string (string term) "_ST")) uris)))
+    (let* ((at (assoc (at-term term) uris))
+	   (st (assoc (st-term term) uris)))
 ;      (print-db at st)
       ;; lazy ass cut and paste. Factor out
       (when st
@@ -202,6 +202,8 @@
       (with-open-file (f "bfo:src;ontology;owl-group;specification;non-reference-annotations.lisp")
 	(loop for entry = (read f nil :eof)
 	   until (eq entry :eof)
+	     collect (generate-from-lispy-axiom bfo2 entry)))))
+
 	   for (axiom . plist) = entry
 	   for axiom-substituted = (eval-bfo-uris axiom bfo2)
 	   for id = (getf plist :id)
