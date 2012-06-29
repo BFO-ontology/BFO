@@ -50,7 +50,6 @@
 	     ("^st-" "spatiotemporal-")
 	     ("\\bst\\b" "spatiotemporal")
 	     ("^s-" "spatial-")
-	     ("-ppart" "-proper part")
 	     ("-dep-" "-dependent-")
 	     ("([0-3])d-" "$1.dimensional ") ;; I don't know why a "-" in the replacement works here. So change to "." and use another rule to replace with "-"
 	     ("-f-" "-function-")
@@ -64,12 +63,8 @@
 	     ("\\bg\\f" "generic")
 	     ("-t$" "-time")
 	     ("-" " ")
-	     ("^(\\\w+\\b) has part" "has $1 part")
-	     ("^(\\\w+\\b) part of" "part of $1")
 	     ("^material$" "material entity")
 	     ("^immaterial$" "immaterial entity")
-	     ("\\b(\\w+)\\sproper" "proper $1")
-					;	 ("\\b(continuant)\\s((proper ){0,1})}has" "has $1 $2")
 	     ("\\." "-"))
 	   do
 	   (setq now (replace-all (#"replaceAll" now match replace) "^(\\d)-"
@@ -91,14 +86,14 @@
 		   o-part-of "part of occurrent"
 		   c-part-of "part of continuant"
 		   t-part-of "temporal part of"
-		   m-part-of "member of"
+		   member-part-of "member of"
 		   o-ppart-of "proper part of occurrent"
 		   c-ppart-of "proper part of continuant"
 		   t-ppart-of "proper temporal part of"
 		   o-has-part "has occurrent part"
 		   c-has-part "has continuant part"
 		   t-has-part "has temporal part"
-		   m-has-part "has member"
+		   has-member-part "has member"
 		   o-has-ppart "has proper occurrent part"
 		   c-has-ppart "has proper continuant part"
 		   t-has-ppart "has proper temporal part")
@@ -107,7 +102,7 @@
 	   (concatenate 
 	    'string  matched
 	    (if temporal
-		(if (equal temporal "a") " at all times" " at some times")
+		(if (equal temporal "A") " at all times" " at some time")
 		""))))))
 
 (defun generate-label-annotations (bfo2)
@@ -233,11 +228,12 @@
 
       
 (defun gather-non-reference-annotations (bfo2)
-  (with-bfo-uris bfo2
+  (with-obo-metadata-uris
+    (with-bfo-uris bfo2
       (with-open-file (f "bfo:src;ontology;owl-group;specification;non-reference-annotations.lisp")
-	(loop for entry = (read f nil :eof)
+	(loop for entry = (eval-uri-reader-macro (read f nil :eof))
 	   until (eq entry :eof)
-	     collect (generate-from-lispy-axiom bfo2 entry)))))
+	   append (generate-from-lispy-axiom bfo2 entry))))))
 
 (defun eval-bfo-uris (form bfo2)
   (with-bfo-uris bfo2
@@ -249,13 +245,33 @@
 
 ;; FIXME!!- for the life of me I can't figure out why I need the (car ...)
 (defun read-bfo-specific-annotation-properties (bfo2)
-  (car
    (eval-uri-reader-macro
     (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo-specific-annotation-properties.lisp")
       (with-bfo-uris bfo2
 	(with-obo-metadata-uris 
 	  (loop for form = (read f nil :eof)
 	     until (eq form :eof)
-	     collect form)))))))
+	     collect form))))))
 
 			      
+(defun generate-inverse-annotations-duplicates (bfo2 partial-bfo)
+  (with-obo-metadata-uris
+    (let ((ont (if (v3kb-p partial-bfo) partial-bfo (load-ontology (namestring (truename partial-bfo))))))
+      (loop for (fromprop toprop annprop value) in
+	   (sparql '(:select (?p ?pi ?a ?v) (:distinct t) 
+		     (?a !rdf:type !owl:AnnotationProperty)
+		     (:union
+		      ((?p !rdf:type !owl:ObjectProperty) 
+		       (?pi !owl:inverseOf ?p))
+		      ((?p !rdf:type !owl:ObjectProperty) 
+		       (?p !owl:inverseOf ?pi)))
+		     (?p ?a ?v)
+		     (:filter (or (equal ?a !editor-note) (equal ?a !elucidation) (equal ?a !example-of-usage) (equal ?a !definition))
+		      ))
+		   :kb b :use-reasoner :none :use-reasoner :pellet)
+	   ;do (print-db fromprop toprop annprop value (format nil "(from inverse property - ~a) ~a" (car (rdfs-label fromprop ont)) value))
+	   collect
+	   `(annotation-assertion ,annprop ,toprop ,(format nil "(from inverse property - ~a) ~a"
+							    (car (rdfs-label fromprop ont)) value))
+	   ))))
+							

@@ -70,18 +70,18 @@
 	       do (if (or at> st> at< st<)
 		      (progn
 			(when (or at> at<)
-			  (setq axs (append (process-one-object-property-expression bfo2 form expression at> at< inverses?) axs)))
+			  (setq axs (append (process-one-object-property-expression bfo2 form expression at> at< inverses? 'a) axs)))
 			(when (or st> st<)
-			  (setq axs (append (process-one-object-property-expression bfo2 form expression st> st< nil) axs))))
-		      (setq axs (append (process-one-object-property-expression bfo2 form expression (eval prop>) (eval prop<) inverses?) axs)))
+			  (setq axs (append (process-one-object-property-expression bfo2 form expression st> st< nil 's) axs))))
+		      (setq axs (append (process-one-object-property-expression bfo2 form expression (eval prop>) (eval prop<) inverses? nil) axs)))
 	       finally (return axs)))))))
 
-(defun process-one-object-property-expression (bfo2 form expression prop> prop< inverses? &aux axs keys)
+(defun process-one-object-property-expression (bfo2 form expression prop> prop< inverses? a-or-s &aux axs keys)
   (with-bfo-uris bfo2
     (unless (eq (first expression) 'temporal)
       (if (eq (first expression) '<)
 	  (loop for expr in (rest expression)
-	     do (setq axs (append (process-one-object-property-expression bfo2 form expr prop< prop> inverses?)
+	     do (setq axs (append (process-one-object-property-expression bfo2 form expr prop< prop> inverses? a-or-s)
 				  axs)))
 	  (cond ((member (second expression) '(<- -> <-> +>))
 		 (destructuring-bind (from operator to &rest keys) expression
@@ -117,7 +117,7 @@
 			   ((eq feature 'range)
 			    (and prop> (push `(object-property-range ,@(maybe-object-property-annotations (cddr expression)) ,prop> ,classex) axs))
 			    (and prop< (push `(object-property-domain ,@(maybe-object-property-annotations (cddr expression)) ,prop< ,classex) axs)))
-			   ((eq feature 'transitive)
+			   ((or (eq feature 'transitive) (and (eq a-or-s 's) (eq feature 'transitive-at-a-time)))
 			    (and prop> (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
 			    (and prop< (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
 			   ((eq feature 'functional)

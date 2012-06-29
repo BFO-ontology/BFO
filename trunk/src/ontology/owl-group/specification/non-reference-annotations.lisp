@@ -38,6 +38,36 @@
  :source "Alan Ruttenberg"
  :id 8)
 
+((annotation-assertion !editor-note site "A site can move through spatial regions.  Consider the hold of a ship (site).  As it sails, the hold is moving through space, and changing its spatial region continuously.  Ditto for the captain's quarters, passenger rooms, etc. Spatial regions don't pass through one another.")
+ :source "Reference"
+ :id 9)
+
+((annotation-assertion !editor-note object "Causal Unity:
+
+To say that a is causally unified means: a is a material entity which is such that its material parts are tied together in such a way that, in environments typical for entities of the type in question, if a continuant part of x in the interior of x at t, is larger than a certain threshold size (which will be determined differently from case to case, depending on factors such as porosity of external cover) and is moved in space to be at t′ at a location on the exterior of the spatial region that had been occupied by x at t, then either x's other parts will be moved in coordinated fashion or a will be damaged (be affected, for example, by breakage or tearing) in the interval between t and t'.
+
+Causal changes in one part of a can have consequences for other parts of a without the mediation of any entity that lies on the exterior of a. 
+
+Material entities with no proper material parts would satisfy these conditions trivially. Candidate examples of types of causal unity for material entities of more complex sorts are as follows (this is not intended to be an exhaustive list):
+
+CU1: Causal unity via physical covering
+
+Here the parts in the interior of the unified entity are combined together causally through a common membrane or other physical covering – what the FMA refers to as a ‘bona fide anatomical surface’ [44]. The latter points outwards toward and may serve a protective function in relation to what lies on the exterior of the entity [13, 47].
+Note that the physical covering may have holes (for example pores in your skin, shafts penetrating the planet’s outer crust, sockets where conduits to other entities are connected allowing transport of electric current or of liquids or gases). The physical covering is nonetheless connected in the sense that (a) between every two points on its surface a continuous path can be traced which does not leave this surface, and also (b) the covering serves as a barrier preventing entities above a certain size threshold from entering from the outside or escaping from the inside [105, 77].
+Some organs in the interior of complex organisms manifest a causal unity of this type. Organs can survive detachment from their surroundings, for example in the case of transplant, with their membranes intact. The FMA [44] defines ‘organ’ as follows: 
+An anatomical structure which has as its direct parts portions of two or more types of tissue or two or more types of cardinal organ part which constitute a maximally connected anatomical structure demarcated predominantly by a bona fide anatomical surface. Examples: femur, biceps, liver, heart, skin, tracheobronchial tree, ovary.
+
+CU2: Causal unity via internal physical forces 
+
+Here the material parts of a material entity are combined together causally by sufficiently strong physical forces, for example, by fundamental forces of strong and weak interaction, by covalent or ionic bonds, by metallic bonding, or more generally by forces of a type which makes the overall sum of forces strong enough to act in such a way as to hold the object together relative to the strength of attractive or destructive forces in its ordinary environmental neighborhood. (Few solid portions of matter in our everyday environment would survive very long on the face of a neutron star, but luckily that is not our everyday environment.) In the case of larger portions of matter the constituent atoms are tightly bound to each other in a geometric lattice, either regularly (as in the case of portions of metal) or irregularly (as in an amorphous solid such as a portion of glass). Examples: atoms, molecules, grains of sand, lumps of iron.
+
+CU3: Causal unity via engineered assembly of components
+
+Here the material parts of a material entity are combined together via mechanical assemblies joined for example through screws or other fasteners. The assemblies often involve parts which are reciprocally engineered to fit together, as in the case of dovetail joints, balls and bearings, nuts and bolts. A causal unity of this sort can be interrupted for a time, as when a watch is disassembled for repair, and then recreated in its original state. The parts of an automobile, including the moving parts, constitute an object because of their relative rigidity: while these parts may move with respect to each other, a given gear cannot move e.g., 10 ft., while the other parts do not.")
+ :source "Reference"
+ :id 10)
+
+
 
 
 

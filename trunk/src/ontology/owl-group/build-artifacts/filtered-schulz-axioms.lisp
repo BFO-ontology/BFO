@@ -133,18 +133,15 @@
 
 (sub-object-property-of (object-property-chain bearer-of realized-in) participates-in) 
 
+
+;;
 (equivalent-classes (object-some-values-from has-s-dep disposition) (object-some-values-from has-d disposition)) 
-
 (equivalent-classes (object-some-values-from has-r role) (object-some-values-from bearer-of role)) 
-
 (equivalent-classes (object-some-values-from has-f function) (object-some-values-from bearer-of function)) 
-
 (equivalent-classes (object-some-values-from has-s-dep quality) (object-some-values-from has-q quality)) 
-
 (equivalent-classes (object-some-values-from has-d disposition) (object-some-values-from bearer-of disposition)) 
-
 (equivalent-classes (object-some-values-from has-s-dep function) (object-some-values-from has-f function)) 
-
+;;
 (sub-object-property-of (object-property-chain located-at-r c-part-of r-location-of) located-in) 
 
 

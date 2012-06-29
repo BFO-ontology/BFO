@@ -186,11 +186,11 @@ o-has-part
 profile-of
 has-profile
 occupies
+-spans
 occupied-by
+-span-of
 st-projects-onto-t 
 t-projection-of-st
-spans
-span-of
 exists-at
 during-which-exists
 ")
