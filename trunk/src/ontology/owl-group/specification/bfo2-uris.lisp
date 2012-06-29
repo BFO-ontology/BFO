@@ -57,7 +57,7 @@
  (has-t-part nil !obo:BFO_0000121)
  (t-ppart-of nil !obo:BFO_0000136)
  (has-t-ppart nil !obo:BFO_0000181) ;alanr assigned
- (occupies nil !obo:BFO_0000066)  
+ (occupies nil !obo:BFO_0000130)  
  (occupied-by nil !obo:BFO_0000126)
  (has-profile nil !obo:BFO_0000119)
  (profile-of nil !obo:BFO_0000133)
@@ -192,5 +192,7 @@
  (contained-in nil !obo:BFO_0000103 :obsolete)
  (1d-t-region-dup nil !obo:BFO_0000143 (:duplicate !obo:BFO_0000038))
  (projects-onto nil !obo:BFO_0000134 :not (:issue 41))
- (occupies-dup nil !obo:BFO_0000130 (:duplicate !obo:BFO_0000066))
+
+;; (occurs-in nil !obo:BFO_0000066 (:maybe ro))
+
 )
