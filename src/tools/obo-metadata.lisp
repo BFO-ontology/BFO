@@ -18,5 +18,5 @@
 
 (defmacro with-obo-metadata-uris (&body body)
   `(let-uri ,*bfo2-ontprops*
-     (list ,@body)
+     ,@body
      ))
