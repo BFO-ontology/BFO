@@ -83,7 +83,7 @@
 	  (loop for expr in (rest expression)
 	     do (setq axs (append (process-one-object-property-expression bfo2 form expr prop< prop> inverses?)
 				  axs)))
-	  (cond ((member (second expression) '(<- -> <->))
+	  (cond ((member (second expression) '(<- -> <-> +>))
 		 (destructuring-bind (from operator to &rest keys) expression
 		   (let ((from (class-expressionize from))
 			 (to (class-expressionize to)))
@@ -93,6 +93,8 @@
 			   (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-has-self ,prop>)) axs))
 			 (cond ((eq operator '->)
 				(push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-all-values-from ,prop> ,to)) axs))
+			       ((eq operator '+>)
+				(push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-some-values-from ,prop> ,to)) axs))
 			       ((eq operator '<-)
 				(push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop> ,from)) axs))
 			       ((eq operator '<->)

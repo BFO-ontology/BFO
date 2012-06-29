@@ -30,50 +30,85 @@
 	when label collect `(annotation-assertion !rdfs:isDefinedBy ,prop ,!obo:iao.owl)))))
 
 (defun a-better-lousy-label (handle)
-  (loop with now = (string-downcase (string handle)) for (match replace) in
-       '(("_at$" "-at-all-times")
-	 ("_st$" "-at-some-time")
-	 ("^c-" "continuant-")
-	 ("^o-" "occurrent-")
-	 ("^t-" "temporal-")
-	 ("^p-" "process-")
-	 ("-s-dep" "-specifically-dep")
-	 ("-s(-|$)" "-spatial-")
-	 ("-t-" "-temporal-")
-	 ("\\bcf\\b" "continuant-fiat")
-	 ("^s-d" "specifically-d")
-	 ("^g-" "generically-")
-	 ("^ic" "independent continuant")
-	 ("^sdc" "specifically-dependent-continuant")
-	 ("^gdc" "generically-dependent-continuant")
-	 ("^st-" "spatiotemporal-")
-	 ("\\bst\\b" "spatiotemporal")
-	 ("^s-" "spatial-")
-	 ("-ppart" "-proper part")
-	 ("-dep-" "-dependent-")
-	 ("([0-3])d-" "$1.dimensional ");; I don't know why a "-" in the replacement works here. So change to "." and use another rule to replace with "-"
-	 ("-f-" "-function-")
-	 ("^r-q" "relational-q")
-	 ("\\br-l" "l")
-	 ("at-r" "at")
-	 ("\\br\\b" "role")
-	 ("\\bq\\b" "quality")
-	 ("\\bf\\b" "function")
-	 ("\\bd\\b" "disposition")
-	 ("\\bg\\f" "generic")
-	 ("-t$" "-time")
-	 ("-" " ")
-	 ("^(\\\w+\\b) has part" "has $1 part")
-	 ("^(\\\w+\\b) part of" "part of $1")
-	 ("^material$" "material entity")
-	 ("^immaterial$" "immaterial entity")
-	 ("\\b(\\w+)\\sproper" "proper $1")
-;	 ("\\b(continuant)\\s((proper ){0,1})}has" "has $1 $2")
-	 ("\\." "-"))
-       do
-       (setq now (replace-all (#"replaceAll" now match replace) "^(\\d)-"
-			      (lambda(s) (format nil "~r-" (parse-integer s))) 1))
-     finally (return now)))
+  (or (a-handcrafted-label handle)
+      (loop with now = (string-downcase (string handle)) for (match replace) in
+	   '(("_at$" "-at-all-times")
+	     ("_st$" "-at-some-time")
+	     ("^c-" "continuant-")
+	     ("^o-" "occurrent-")
+	     ("^t-" "temporal-")
+	     ("^p-" "process-")
+	     ("-s-dep" "-specifically-dep")
+	     ("-s(-|$)" "-spatial-")
+	     ("-t-" "-temporal-")
+	     ("\\bcf\\b" "continuant-fiat")
+	     ("^s-d" "specifically-d")
+	     ("^g-" "generically-")
+	     ("^ic" "independent continuant")
+	     ("^sdc" "specifically-dependent-continuant")
+	     ("^gdc" "generically-dependent-continuant")
+	     ("^st-" "spatiotemporal-")
+	     ("\\bst\\b" "spatiotemporal")
+	     ("^s-" "spatial-")
+	     ("-ppart" "-proper part")
+	     ("-dep-" "-dependent-")
+	     ("([0-3])d-" "$1.dimensional ") ;; I don't know why a "-" in the replacement works here. So change to "." and use another rule to replace with "-"
+	     ("-f-" "-function-")
+	     ("^r-q" "relational-q")
+	     ("\\br-l" "l")
+	     ("at-r" "at")
+	     ("\\br\\b" "role")
+	     ("\\bq\\b" "quality")
+	     ("\\bf\\b" "function")
+	     ("\\bd\\b" "disposition")
+	     ("\\bg\\f" "generic")
+	     ("-t$" "-time")
+	     ("-" " ")
+	     ("^(\\\w+\\b) has part" "has $1 part")
+	     ("^(\\\w+\\b) part of" "part of $1")
+	     ("^material$" "material entity")
+	     ("^immaterial$" "immaterial entity")
+	     ("\\b(\\w+)\\sproper" "proper $1")
+					;	 ("\\b(continuant)\\s((proper ){0,1})}has" "has $1 $2")
+	     ("\\." "-"))
+	   do
+	   (setq now (replace-all (#"replaceAll" now match replace) "^(\\d)-"
+				  (lambda(s) (format nil "~r-" (parse-integer s))) 1))
+	   finally (return now))))
+
+(defun a-handcrafted-label (handle)
+  (let ((temporal (caar (all-matches (string handle) "_([AS])T$" 1))))
+    (when temporal (setq handle (intern (#"replaceAll" (string handle) "_.T$" ""))))
+    (let ((matched 
+	   (getf '(st-projects-onto-s "projects onto spatial region"
+		   st-projects-onto-t "projects onto temporal region"
+		   s-projection-of-st "spatial projection of"
+		   t-projection-of-st "temporal projection of"
+		   s-depends-on "specifically depends on"
+		   has-s-dep "has specific dependent"
+		   g-depends-on "generically depends on"
+		   has-g-dep "has generic dependent"
+		   o-part-of "part of occurrent"
+		   c-part-of "part of continuant"
+		   t-part-of "temporal part of"
+		   m-part-of "member of"
+		   o-ppart-of "proper part of occurrent"
+		   c-ppart-of "proper part of continuant"
+		   t-ppart-of "proper temporal part of"
+		   o-has-part "has occurrent part"
+		   c-has-part "has continuant part"
+		   t-has-part "has temporal part"
+		   m-has-part "has member"
+		   o-has-ppart "has proper occurrent part"
+		   c-has-ppart "has proper continuant part"
+		   t-has-ppart "has proper temporal part")
+		 handle)))
+      (and matched
+	   (concatenate 
+	    'string  matched
+	    (if temporal
+		(if (equal temporal "a") " at all times" " at some times")
+		""))))))
 
 (defun generate-label-annotations (bfo2)
   (let ((seen (make-hash-table))
@@ -203,18 +238,6 @@
 	(loop for entry = (read f nil :eof)
 	   until (eq entry :eof)
 	     collect (generate-from-lispy-axiom bfo2 entry)))))
-
-	   for (axiom . plist) = entry
-	   for axiom-substituted = (eval-bfo-uris axiom bfo2)
-	   for id = (getf plist :id)
-	   for completed = `(,(car axiom-substituted)
-			      (annotation ,!axiomid ,(make-uri nil (format nil "obo:bfo/axiom/~7,'0d" id)))
-			      ,@(if (getf plist :seealso)
-				    (list (list 'annotation !rdfs:seeAlso (getf plist :seealso))))
-			      ,@(if (getf plist :note)
-				    (list (list 'annotation !rdfs:comment (getf plist :note))))
-			      ,@(cdr axiom-substituted))
-	   collect completed))))
 
 (defun eval-bfo-uris (form bfo2)
   (with-bfo-uris bfo2

@@ -43,7 +43,6 @@
   (domain continuant :id 512)
   (range continuant :id 513)
   (cf-boundary -> (or 0d-s-region 1d-s-region 2d-s-region) :id 029-001)
-  (m
   )
 
 (object-property :temporal
@@ -54,7 +53,7 @@
   (reflexive s-region :id 042-001)
   (domain ic :id 041-002)
   (range s-region :id 516)
-  (ic +> s-region)
+  (ic +> s-region :id 539) ; translates to located-as_ST. We want there to be one at all times but this is the best we can do I think.
   )
 
 (object-property :temporal
