@@ -117,7 +117,7 @@
 			   ((eq feature 'range)
 			    (and prop> (push `(object-property-range ,@(maybe-object-property-annotations (cddr expression)) ,prop> ,classex) axs))
 			    (and prop< (push `(object-property-domain ,@(maybe-object-property-annotations (cddr expression)) ,prop< ,classex) axs)))
-			   ((or (eq feature 'transitive) (and (eq a-or-s 's) (eq feature 'transitive-at-a-time)))
+			   ((or (eq feature 'transitive) (and (eq a-or-s 'a) (eq feature 'transitive-at-a-time)))
 			    (and prop> (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
 			    (and prop< (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
 			   ((eq feature 'functional)
