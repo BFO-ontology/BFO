@@ -19,11 +19,13 @@
 	     )
 	  (write-rdfxml bfo2-ont-pass1 "bfo:src;ontology;owl-group;bfo.owl")
 	  bfo2-ont-pass1)
+      (setq axioms (eval-uri-reader-macro axioms))
       (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/dev/bfo.owl :base !obo: :collecting t
 					     :ontology-properties (generate-ontology-properties bfo2)
-					     :also-return-axioms t)
+					     )
 	  ((as axioms)
-	   (as (generate-inverse-annotations-duplicates bfo2 ont)))
+	   (as (generate-inverse-annotations-duplicates bfo2 ont))
+	   )
 	(write-rdfxml bfo2-ont "bfo:src;ontology;owl-group;bfo1.owl")
 	))))
 
