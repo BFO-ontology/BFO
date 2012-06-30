@@ -95,11 +95,11 @@
 		   t-ppart-of "proper temporal part of"
 		   o-has-part "has occurrent part"
 		   c-has-part "has continuant part"
-		   t-has-part "has temporal part"
+		   has-t-part "has temporal part"
 		   has-member-part "has member"
 		   o-has-ppart "has proper occurrent part"
 		   c-has-ppart "has proper continuant part"
-		   t-has-ppart "has proper temporal part")
+		   has-t-ppart "has proper temporal part")
 		 handle)))
       (and matched
 	   (concatenate 
@@ -274,7 +274,7 @@
 		   :kb b :use-reasoner :none :use-reasoner :pellet)
 	   ;do (print-db fromprop toprop annprop value (format nil "(from inverse property - ~a) ~a" (car (rdfs-label fromprop ont)) value))
 	   collect
-	   `(annotation-assertion ,annprop ,toprop ,(format nil "(from inverse property - ~a) ~a"
+	   `(annotation-assertion ,annprop ,toprop ,(format nil "[copied from inverse property '~a'] ~a"
 							    (car (rdfs-label fromprop ont)) value))
 	   ))))
 							
