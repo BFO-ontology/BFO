@@ -10,7 +10,6 @@
 	     (as (generate-hierarchy bfo2))
 	     (as (generate-property-inverses bfo2))
 	     (as (generate-reference-annotations bfo2))
-	     (as (generate-reference-annotations bfo2))
 	     (as (gather-non-reference-annotations bfo2))
 	     (as (read-bfo-specific-annotation-properties bfo2))
 	     (as (generate-disjoints bfo2))
