@@ -109,6 +109,7 @@
 	 finally (setf (bfo-term2annotation bfo2) table))))
 
 
+
     
 
 
