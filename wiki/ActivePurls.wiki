@@ -1,0 +1,13 @@
+#summary list of purls for bfo2
+
+= The PURLs =
+
+  * http://purl.obolibrary.org/obo/bfo - The google code home page
+  * http://purl.obolibrary.org/obo/bfo/dev/bfo.owl - BFO2 development version 
+  * http://purl.obolibrary.org/obo/bfo/wiki  - This wiki
+  * http://purl.obolibrary.org/obo/bfo/repository - The google code subversion repository
+  * http://purl.obolibrary.org/obo/bfo/browse - View using the Manchester OWL Browser
+  * http://purl.obolibrary.org/obo/bfo/tracker - Goes to the issues list
+
+  
+  
