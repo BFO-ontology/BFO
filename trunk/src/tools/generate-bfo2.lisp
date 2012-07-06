@@ -11,12 +11,12 @@
 	     (as (generate-property-inverses bfo2))
 	     (as (generate-reference-annotations bfo2))
 	     (as (gather-non-reference-annotations bfo2))
+	     (as (gather-extra-references-annotations bfo2))
 	     (as (read-bfo-specific-annotation-properties bfo2))
 	     (as (generate-disjoints bfo2))
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;binary-relation-axioms.lisp"))
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp"))
 	     )
-	  (write-rdfxml bfo2-ont-pass1 "bfo:src;ontology;owl-group;bfo.owl")
 	  bfo2-ont-pass1)
       (setq axioms (eval-uri-reader-macro axioms))
       (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/dev/bfo.owl :base !obo: :collecting t
@@ -26,6 +26,7 @@
 	   (as (generate-inverse-annotations-duplicates bfo2 ont))
 	   )
 	(write-rdfxml bfo2-ont "bfo:src;ontology;owl-group;bfo1.owl")
+	(comment-obo-ids-in-owl-file "bfo:src;ontology;owl-group;bfo1.owl" "bfo:src;ontology;owl-group;bfo.owl")
 	))))
 
 (defun generate-declarations (bfo2)
