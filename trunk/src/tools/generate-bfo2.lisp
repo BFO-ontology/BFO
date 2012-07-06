@@ -17,7 +17,10 @@
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;binary-relation-axioms.lisp"))
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp"))
 	     )
-	  bfo2-ont-pass1)
+	  (assert (check-ontology bfo2-ont-pass1 :classify t))
+	  (assert (null (unsatisfiable-classes bfo2-ont-pass1)))
+	  bfo2-ont-pass1
+	  )
       (setq axioms (eval-uri-reader-macro axioms))
       (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/dev/bfo.owl :base !obo: :collecting t
 					     :ontology-properties (generate-ontology-properties bfo2)
