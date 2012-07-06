@@ -67,7 +67,9 @@ Here the material parts of a material entity are combined together via mechanica
  :source "Reference"
  :id 10)
 
-
+((annotation-assertion !editor-note object-aggregate "An entity a is an object aggregate if and only if there is a mutually exhaustive and pairwise disjoint partition of a into objects ")
+ :source "Melanie Courtot"
+ :id 11)
 
 
 

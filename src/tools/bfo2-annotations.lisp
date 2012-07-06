@@ -238,6 +238,14 @@
 	   until (eq entry :eof)
 	   append (generate-from-lispy-axiom bfo2 entry))))))
 
+(defun gather-extra-references-annotations (bfo2)
+  (with-obo-metadata-uris
+    (with-bfo-uris bfo2
+      (with-open-file (f "bfo:src;ontology;owl-group;specification;extra-references-annotations.lisp")
+	(loop for entry = (eval-uri-reader-macro (read f nil :eof))
+	   until (eq entry :eof)
+	   append (generate-from-lispy-axiom bfo2 entry))))))
+
 (defun eval-bfo-uris (form bfo2)
   (with-bfo-uris bfo2
       (cond ((and (symbolp form) (boundp form))
@@ -246,7 +254,6 @@
 	    (t (mapcar (lambda(el) (eval-bfo-uris el bfo2)) form)))))
 
 
-;; FIXME!!- for the life of me I can't figure out why I need the (car ...)
 (defun read-bfo-specific-annotation-properties (bfo2)
    (eval-uri-reader-macro
     (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo-specific-annotation-properties.lisp")
@@ -271,7 +278,7 @@
 		     (?p ?a ?v)
 		     (:filter (or (equal ?a !editor-note) (equal ?a !elucidation) (equal ?a !example-of-usage) (equal ?a !definition))
 		      ))
-		   :kb b :use-reasoner :none :use-reasoner :pellet)
+		   :kb ont :use-reasoner :none :use-reasoner :pellet)
 	   ;do (print-db fromprop toprop annprop value (format nil "(from inverse property - ~a) ~a" (car (rdfs-label fromprop ont)) value))
 	   collect
 	   `(annotation-assertion ,annprop ,toprop ,(format nil "[copied from inverse property '~a'] ~a"

@@ -38,6 +38,7 @@
 	       (:file "process-axioms")
 	       (:file "generate-bfo2" )
 	       (:file "bfo2-annotations")
+	       (:file "comment-ids-in-owl-file")
 	       )
 	      :depends-on (metadata parse)))
     :depends-on (owl2))
