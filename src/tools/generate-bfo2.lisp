@@ -17,8 +17,11 @@
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;binary-relation-axioms.lisp"))
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp"))
 	     )
+	  (setq @ bfo2-ont-pass1)
 	  (assert (check-ontology bfo2-ont-pass1 :classify t))
-	  (assert (null (unsatisfiable-classes bfo2-ont-pass1)))
+	  '(assert (null (unsatisfiable-classes bfo2-ont-pass1)) () "Unsatisfiable classes: ~{~a~^, ~}"
+		  (mapcar (lambda(e) (rdfs-label e bfo2-ont-pass1))
+			  (unsatisfiable-classes bfo2-ont-pass1)))
 	  bfo2-ont-pass1
 	  )
       (setq axioms (eval-uri-reader-macro axioms))
