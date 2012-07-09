@@ -73,10 +73,10 @@
 	    (loop for expression in (cdddr form)
 	       do (if (or at> st> at< st<)
 		      (progn
-			(when (or at> at<)
-			  (setq axs (append (process-one-object-property-expression bfo2 form expression at> at< inverses? 'a nil) axs)))
 			(when (or st> st<)
-			  (setq axs (append (process-one-object-property-expression bfo2 form expression st> st< nil 's nil) axs))))
+			  (setq axs (append (process-one-object-property-expression bfo2 form expression st> st< nil 's nil) axs)))
+			(when (or (and at> (not st>)) (and at< (not st<) ))
+			  (setq axs (append (process-one-object-property-expression bfo2 form expression at> at< inverses? 'a nil) axs))))
 		      (setq axs (append (process-one-object-property-expression bfo2 form expression (eval prop>) (eval prop<) inverses? nil nil) axs)))
 	       finally (return axs)))))))
 
@@ -92,7 +92,8 @@
 		(loop for expr in (rest expression)
 		   do (setq axs (append (process-one-object-property-expression bfo2 form expr prop> prop< inverses? a-or-s reversed)
 					axs))))
-	      (cond ((member (second expression) '(<- -> <-> +>))
+	      (cond ((member :cant expression) t)
+		    ((member (second expression) '(<- -> <-> +>))
 		     (destructuring-bind (from operator to &rest keys) expression
 		       (let ((from (class-expressionize from))
 			     (to (class-expressionize to)))
@@ -106,22 +107,25 @@
 				   ((eq operator '+>)
 				    (and prop>
 					 (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-some-values-from ,prop> ,to)) axs)))
+				   ((eq operator '-+>)
+				    (setq axs
+					  (append
+					   (process-one-object-property-expression bfo2 form `(,from -> ,to ,@keys) prop> prop< inverses? a-or-s reversed)
+					   (process-one-object-property-expression bfo2 form `(,from +> ,to ,@keys) prop> prop< inverses? a-or-s reversed)
+					   axs)))
 				   ((eq operator '<-)
-				    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop> ,from)) axs))
+				    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop< ,from)) axs))
 				   ((eq operator '<->)
 				    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-all-values-from ,prop> ,to)) axs)
-				    (unless (eq from to)
-				      (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop> ,from)) axs)))
+				    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop< ,from)) axs))
 				   )))))
-		    ((member :cant expression) t)
 		    ((eq (first expression) 'o)
-		     (push `(sub-object-property-of (object-property-chain ,@(maybe-object-property-annotations keys)
-									   ,@(loop for (class . rest) on (cdr expression) while
-										  (not (keywordp class)) 
-										  collect (eval class) into chain
-										  finally (setq keys rest) (return chain)))
-						    ,prop>) axs))
-
+		     (let ((chain (loop for (class . rest) on (cdr expression) while
+				       (not (keywordp class)) 
+				       collect (eval class) into chain
+				       finally (setq keys (cons class rest)) (return chain))))
+		       (push `(sub-object-property-of ,@(maybe-object-property-annotations keys) (object-property-chain ,@chain)
+						      ,prop>) axs)))
 		    ((eq (first expression) 'domain-narrowed)
 		     (unless reversed
 		       (setq axs (append (process-one-object-property-expression bfo2 form expression prop< prop> inverses? a-or-s t) axs)))
@@ -184,8 +188,8 @@
   
 ; for debugging
 (defmacro object-property ( &whole form &rest all)
-  (with-bfo-uris b
-      (eval-uri-reader-macro (translate-object-property-axioms b form))))
+  (with-bfo-uris (read-bfo2-reference-spec)
+    (eval-uri-reader-macro (translate-object-property-axioms b form))))
 
 
 (defun generate-from-lispy-axiom (bfo2 form)

@@ -107,8 +107,8 @@
  (material-basis-of_at nil !obo:BFO_0000163) ; alanr assigned
  (concretizes_st nil !obo:BFO_0000059)
  (concretizes_at nil !obo:BFO_0000164) ; alanr assignd
- (concretization-of_st nil !obo:BFO_0000058 )
- (concretization-of_at nil !obo:BFO_0000165) ; alanr assigned
+ (concretized-by_st nil !obo:BFO_0000058 )
+ (concretized-by_at nil !obo:BFO_0000165) ; alanr assigned
  (st-projects-onto-s_st nil !obo:BFO_0000151 (:issue 41)) ; in version end of may, alan assigned
  (s-projection-of-st_st nil !obo:BFO_0000152 (:issue 41)) ; alan assigned
  (st-projects-onto-t nil !obo:BFO_0000153 (:issue 41)) ; alan assigned
