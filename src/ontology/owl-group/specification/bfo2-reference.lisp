@@ -186,13 +186,13 @@ o-has-part
 profile-of
 has-profile
 occupies
-spans
 occupied-by
-span-of
-st-projects-onto-t 
-t-projection-of-st
 exists-at
+-spans
+-st-projects-onto-t 
 during-which-exists
+-span-of
+-t-projection-of-st
 ")
 
 ;; define the temporal property hierarchy. You can't have a temporal
