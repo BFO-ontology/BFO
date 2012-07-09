@@ -116,7 +116,7 @@
 
  ((has-material-basis material-basis-of) :ternary (:temporal (:all) (:some :all) "Follow Mathias as at all times for the forward relation, both for the reverse relation") (:issue 49))
  
- ((concretizes concretization-of) :ternary (:temporal (:some :all) (:some :all)) (:issue 49) "Unsure of this one - Alan. Include both for now")
+ ((concretizes concretized-by) :ternary (:temporal (:some :all) (:some :all)) (:issue 49) "Unsure of this one - Alan. Include both for now")
  
  ((st-projects-onto-s s-projection-of-st) :ternary (:temporal (:some) (:some) "Things tend to move and change shape in time, so at some times in both directions") (:issue 49))
  
@@ -186,9 +186,9 @@ o-has-part
 profile-of
 has-profile
 occupies
--spans
+spans
 occupied-by
--span-of
+span-of
 st-projects-onto-t 
 t-projection-of-st
 exists-at
@@ -237,28 +237,34 @@ material-basis-of_st
 -material-basis-of_at
 concretizes_st 
 -concretizes_at 
-concretization-of_st
--concretization-of_at
+concretized-by_st
+-concretized-by_at
 st-projects-onto-s_st 
 s-projection-of-st_st
 c-part-of_st
 -c-part-of_at
-c-ppart-of_st
--c-ppart-of_at
-member-part-of_st
--member-part-of_at
+-c-ppart-of_st
+--c-ppart-of_at
+---member-part-of_at
+--member-part-of_st
+---member-part-of_at
 located-in_st 
+-c-part-of_st 
+--c-ppart-of_st 
+--member-part-of_st
 -located-in_at
 --c-part-of_at 
 ---c-ppart-of_at 
 ---member-part-of_at
 c-has-part_st 
+-c-has-ppart_st
+--c-has-ppart_at
 -c-has-part_at 
-c-has-ppart_st
--c-has-ppart_at
-has-member-part_st
--has-member-part_at
+--has-member-part_at
+-has-member-part_st
+--has-member-part_at
 has-location_st
+-c-has-part_st 
 -has-location_at
 --c-has-part_at 
 ---c-has-ppart_at
@@ -305,6 +311,8 @@ has-location_st
  ("located-at" located-at-r)
  ("continuant-part-of" c-part-of)
  ("located-in")
+ ("spans")
+ ("span of")
  ("specifically-dependent-continuant" sdc)
  ("inheres-in")
  ("bearer-of")
@@ -333,6 +341,7 @@ has-location_st
  ("process")
  ("process-boundary" p-boundary)
  ("has-participant")
+ ("participates-in")
  ("temporal-part-of" t-part-of)
  ("proper-temporal-part-of" t-ppart-of)
  ("process-profile-of" profile-of)
