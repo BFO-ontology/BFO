@@ -4,6 +4,9 @@
   (exists-at during-which-exists)
   (inverses :id 100)
   (domain entity :id 101)
+;  (functional :id 169)
+  (entity +> t-region :id 170)
+  (p-boundary -> 0d-t-region :id 171)
   (range t-region :id 102))
 
 (object-property :binary
