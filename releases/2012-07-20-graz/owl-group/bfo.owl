@@ -627,7 +627,7 @@
         <!-- BFO CLIF specification label --><obo:BFO_0000180>occursIn</obo:BFO_0000180>
         <!-- definition --><obo:IAO_0000115 xml:lang="en">b occurs_in c =def b is a process and c is a material entity or immaterial entity&amp; there exists a spatiotemporal region r and b occupies_spatiotemporal_region r.&amp; forall(t) if b exists_at t then c exists_at t &amp; there exist spatial regions s and s’ where &amp; b spatially_projects_onto s at t&amp; c is occupies_spatial_region s’ at t&amp; s is a proper_continuant_part_of s’ at t [XXX-001</obo:IAO_0000115>
         <!-- BFO OWL specification label --><obo:BFO_0000179>occurs-in</obo:BFO_0000179>
-        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000183"/><!-- contains process -->
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000067"/><!-- contains process -->
         <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
         <rdfs:range>
             <owl:Class>
@@ -3559,9 +3559,9 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/BFO_0000183 -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000067 -->
 
-    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000183"><!-- contains process -->
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000067"><!-- contains process -->
         <rdfs:label xml:lang="en">contains process</rdfs:label>
         <!-- BFO OWL specification label --><obo:BFO_0000179>contains-process</obo:BFO_0000179>
         <!-- BFO CLIF specification label --><obo:BFO_0000180>containsProcess</obo:BFO_0000180>
@@ -3585,7 +3585,7 @@
         </rdfs:domain>
     </owl:ObjectProperty>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000183"/><!-- contains process -->
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000067"/><!-- contains process -->
         <!-- has axiom label --><obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/178"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
         <owl:annotatedTarget>
@@ -3598,7 +3598,7 @@
         </owl:annotatedTarget>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000183"/><!-- contains process -->
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/BFO_0000067"/><!-- contains process -->
         <!-- has axiom label --><obo:IAO_0010000 rdf:resource="http://purl.obolibrary.org/obo/bfo/axiom/180"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#domain"/>
         <owl:annotatedTarget>
@@ -3670,7 +3670,7 @@
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/><!-- process -->
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/><!-- material entity -->
         <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000166"/><!-- participates in at all times -->
-        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000183"/><!-- contains process -->
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000067"/><!-- contains process -->
         <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
     </owl:ObjectProperty>
     <owl:Axiom>
