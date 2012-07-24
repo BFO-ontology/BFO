@@ -8,8 +8,10 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo.owl">
-        <dc:contributor>Alan Ruttenberg</dc:contributor>
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo.owl"> 
+       <dc:contributor>Alan Ruttenberg</dc:contributor>
+       <dc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"></dc:license>
+       <dc:publisher>Alan Ruttenberg</dc:publisher>
         <dc:contributor>Bill Duncan</dc:contributor>
         <dc:contributor>Stefan Schulz</dc:contributor>
         <dc:contributor>Melanie Courtot</dc:contributor>
