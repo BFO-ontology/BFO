@@ -1,7 +1,12 @@
+;; to get rid of the nothing say ic disjointfrom (specifically-depends-on some thing).
+;; has process profile -> has proper occurrent part
+;; Check that t-ppartof annotations are on it ratehr than t-partof
+
+
 (defun generate-bfo2 (bfo2)
   (with-obo-metadata-uris
     (multiple-value-bind (ont axioms)
-	(with-ontology bfo2-ont-pass1 (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/dev/bfo.owl :base !obo: :collecting t
+	(with-ontology bfo2-ont-pass1 (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2012-07-20/bfo.owl :base !obo: :collecting t
 						     :ontology-properties (generate-ontology-properties bfo2)
 						     :also-return-axioms t)
 	    ((as (generate-ontology-annotation-property-defs bfo2))
@@ -18,13 +23,13 @@
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp"))
 	     )
 	  (setq @ bfo2-ont-pass1)
-	  (assert (check-ontology bfo2-ont-pass1 :classify t))
+	  (ignore-errors (assert (check-ontology bfo2-ont-pass1 :classify t)))
 	  (when  (unsatisfiable-classes bfo2-ont-pass1)
 	    (warn "Unsatisfiable classes: ~{~a~^, ~}" (mapcar (lambda(e) (rdfs-label e bfo2-ont-pass1)) (unsatisfiable-classes bfo2-ont-pass1))))
 	  bfo2-ont-pass1
 	  )
       (setq axioms (eval-uri-reader-macro axioms))
-      (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/dev/bfo.owl :base !obo: :collecting t
+      (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2010-07-20//bfo.owl :base !obo: :collecting t
 					     :ontology-properties (generate-ontology-properties bfo2)
 					     )
 	  ((as axioms)

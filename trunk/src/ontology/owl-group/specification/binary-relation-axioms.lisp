@@ -16,6 +16,9 @@
   (range occurrent :id 105)
   (transitive :id 106)
   (reflexive occurrent :id 107)
+  (history -> (not process-profile :id _))
+  (process-profile +> process :id _)
+  (process-profile -> process :id _)
   (st-region <-> st-region :id 108) ;; x o-part-of y and x :a st-region -> y :a st-region, x o-part-of y and y :a st-region -> x :a st-region
   (t-region <-> t-region :id 109) ;; x o-part-of y and x :a t-region -> y :a t-region
   (process -> process :id 110)  ;; x o-part-of y and x :a process -> y :a process    
@@ -87,7 +90,7 @@
    (inverses :id 152)
    (domain process-profile :id 153)
    (range process :id 154)
-   (process-profile +> process)
+   (= (process-profile +> process :id 165))
    )
 
 (object-property  :binary
@@ -113,3 +116,21 @@
   (< (t-region -> self :id 164))
   (o occupies st-projects-onto-t :id 168 :cant "conflicts with the self properties. Recast the self properties using new relations to get around this")
  )
+
+(object-property :binary
+  (has-history history-of)
+  (domain material :id 172)
+  (range process :id 173)
+  (inverses :id  174)
+  (functional :id 175)
+  (< (history +> continuant :is 176))
+  (< (functional :id 177)))
+
+(object-property :binary
+  (occurs-in contains-process)
+  (domain (or process p-boundary) :id 178)
+  (range (or material site) :id 180)
+  (inverses :id  181)
+  )
+
+  

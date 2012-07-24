@@ -59,111 +59,150 @@
 	       (prop< (when (consp prop>) (prog1 (second prop>) (setq prop> (first prop>)))))
 	       (inverses? (second (assoc 'inverses (cdddr form))))
 	       (axs nil))
-					;      (print-db prop< prop>)
+	  ;;; get the potential time-dependent relations. Many of the relations are expressed 
 	  (let* ((uris (cdr (bfo-uris bfo2)))
 		 (at> (third (assoc (at-term prop>) uris)))
 		 (st> (third (assoc (st-term prop>) uris)))
 		 (at< (third (assoc (at-term prop<) uris)))
-		 (st< (third (assoc (st-term prop<) uris)))
-		 )
+		 (st< (third (assoc (st-term prop<) uris))))
 	    (when (eq arity :temporal)
-	      (setq axs (append axs (maybe-transitive-at-a-time-chain bfo2 form st> at>)))
-	      (setq axs (append axs (maybe-transitive-at-a-time-chain bfo2 form st< at<))))
-					;	(print-db prop> prop< at> st> at< st<)
+	      (setq axs (append axs (maybe-transitive-at-a-time bfo2 form st> at>)))
+	      (setq axs (append axs (maybe-transitive-at-a-time bfo2 form st< at<)))
+	      )
+	    ;; now we decide which properties we're actually going to assert on.
 	    (loop for expression in (cdddr form)
-	       do (if (or at> st> at< st<)
+	       do (if (or at> st> at< st<) ;; If we've actually got some temporalized properties
 		      (progn
-			(when (or st> st<)
-			  (setq axs (append (process-one-object-property-expression bfo2 form expression st> st< nil 's nil) axs)))
+			(when (or st> st<) ;; if we've got at least one -at-some-time property then call the generators using those
+			  (setq axs (append (process-one-object-property-expression bfo2 form expression st> st< nil 's nil nil) axs)))
+
+			;; this is wrong. We need instead to know which axioms inherit downward,
+			;; and for those, suppress at-all-times assertions when there is the
+			;; at-some-times property.
 			(when (or (and at> (not st>)) (and at< (not st<) ))
-			  (setq axs (append (process-one-object-property-expression bfo2 form expression at> at< inverses? 'a nil) axs))))
-		      (setq axs (append (process-one-object-property-expression bfo2 form expression (eval prop>) (eval prop<) inverses? nil nil) axs)))
+			  (setq axs (append (process-one-object-property-expression bfo2 form expression at> at< inverses? 'a nil nil) axs)))
+
+			)
+		      (setq axs (append (process-one-object-property-expression bfo2 form expression (eval prop>) (eval prop<) inverses? nil nil nil) axs)))
 	       finally (return axs)))))))
 
-(defun process-one-object-property-expression (bfo2 form expression prop> prop< inverses? a-or-s reversed &aux axs keys)
+(defun process-one-object-property-expression (bfo2 form expression prop> prop< inverses? a-or-s reversed =def &aux axs keys)
   (with-bfo-uris bfo2
     (unless (eq (first expression) 'temporal)
-      (if (eq (first expression) '<)
-	  (loop for expr in (rest expression)
-	     do (setq axs (append (process-one-object-property-expression bfo2 form expr prop< prop> inverses? a-or-s t)
-				  axs)))
-	  (if (member (first expression) '(a s))
-	      (when (eq a-or-s (first expression))
-		(loop for expr in (rest expression)
-		   do (setq axs (append (process-one-object-property-expression bfo2 form expr prop> prop< inverses? a-or-s reversed)
-					axs))))
-	      (cond ((member :cant expression) t)
-		    ((member (second expression) '(<- -> <-> +>))
-		     (destructuring-bind (from operator to &rest keys) expression
-		       (let ((from (class-expressionize from))
-			     (to (class-expressionize to)))
-;			 (print-db from to (second expression) prop> prop< a-or-s)
-			 (if (eq to 'self)
-			     (progn
-			       (assert (eq operator '->) () "-> self supported, else not: ~a" expression)
-			       (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-has-self ,prop>)) axs))
-			     (cond ((eq operator '->)
-				    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-all-values-from ,prop> ,to)) axs))
-				   ((eq operator '+>)
-				    (and prop>
-					 (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-some-values-from ,prop> ,to)) axs)))
-				   ((eq operator '-+>)
-				    (setq axs
-					  (append
-					   (process-one-object-property-expression bfo2 form `(,from -> ,to ,@keys) prop> prop< inverses? a-or-s reversed)
-					   (process-one-object-property-expression bfo2 form `(,from +> ,to ,@keys) prop> prop< inverses? a-or-s reversed)
-					   axs)))
-				   ((eq operator '<-)
-				    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop< ,from)) axs))
-				   ((eq operator '<->)
-				    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-all-values-from ,prop> ,to)) axs)
-				    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop< ,from)) axs))
-				   )))))
-		    ((eq (first expression) 'o)
-		     (let ((chain (loop for (class . rest) on (cdr expression) while
-				       (not (keywordp class)) 
-				       collect (eval class) into chain
-				       finally (setq keys (cons class rest)) (return chain))))
-		       (push `(sub-object-property-of ,@(maybe-object-property-annotations keys) (object-property-chain ,@chain)
-						      ,prop>) axs)))
-		    ((eq (first expression) 'domain-narrowed)
-		     (unless reversed
-		       (setq axs (append (process-one-object-property-expression bfo2 form expression prop< prop> inverses? a-or-s t) axs)))
-		     (let ((domain (second (find-if (lambda(e) (and (consp e) (eq (car e) 'domain))) form))) 
-			   (keys (cddr expression)))
-		       (let* ((general-rel (if reversed (second (second expression)) (first (second expression))))
-			      (general-rel-t (if (eq a-or-s 'a) (at-term general-rel) (if (eq a-or-s 's) (st-term general-rel)))))
-			 (if (and a-or-s (boundp general-rel-t) prop>)
-			     (push `(equivalent-classes ,@(maybe-object-property-annotations keys) (object-some-values-from ,(eval general-rel-t) ,(eval domain))
-							(object-some-values-from ,prop> ,(eval domain))) axs)
-			     (when (and (not a-or-s) (boundp general-rel) prop>)
-			       (push `(equivalent-classes ,@(maybe-object-property-annotations keys) (object-some-values-from ,(eval general-rel) ,(eval domain))
-							  (object-some-values-from ,prop> ,(eval domain))) axs))))))
-		    (t (let ((feature (first expression))
-			     (classex (class-expressionize (second expression))))
-			 (cond ((eq feature 'domain)
-				(and prop> (push `(object-property-domain ,@(maybe-object-property-annotations (cddr expression)) ,prop> ,classex) axs))
-				(and prop< (push `(object-property-range ,@(maybe-object-property-annotations (cddr expression)) ,prop< ,classex) axs)))
-			       ((eq feature 'range)
-				(and prop> (push `(object-property-range ,@(maybe-object-property-annotations (cddr expression)) ,prop> ,classex) axs))
-				(and prop< (push `(object-property-domain ,@(maybe-object-property-annotations (cddr expression)) ,prop< ,classex) axs)))
-			       ((or (eq feature 'transitive) (and (eq a-or-s 'a) (eq feature 'transitive-at-a-time)))
-				(and prop> (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
-				(and prop< (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
-			       ((eq feature 'functional)
-				(and prop> (push `(functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
-				(and prop< (push `(inverse-functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
-			       ((eq feature 'inverse-functional)
-				(and prop> (push `(inverse-functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
-				(and prop< (push `(functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
-			       ((eq feature 'symmetric)
-				(and prop> (push `(symmetric-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
-				(and prop< (push `(symmetric-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop< ) axs)))
-			       ((and (eq feature 'irreflexive) (not classex))
-				(and prop> (push `(irreflexive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
-				(and prop< (push `(irreflexive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop< ) axs)))
-			       ))))))
-      axs)))
+      (if (eq (first expression) '=)
+	  (progn
+	    (print-db form (second expression) prop< prop> inverses? a-or-s t t)
+	    (setq axs (append (process-one-object-property-expression bfo2 form (second expression) prop< prop> inverses? a-or-s t t)
+			   axs)))
+	 (if (eq (first expression) '<)
+	     (loop for expr in (rest expression)
+		do (setq axs (append (process-one-object-property-expression bfo2 form expr prop< prop> inverses? a-or-s t =def)
+				     axs)))
+	     (if (member (first expression) '(a s))
+		 (when (eq a-or-s (first expression))
+		   (loop for expr in (rest expression)
+		      do (setq axs (append (process-one-object-property-expression bfo2 form expr prop> prop< inverses? a-or-s reversed =def)
+					   axs))))
+		 (cond ((member :cant expression) t)
+		       ((member (second expression) '(<- -> <-> -+> +>))
+			(setq axs (append 
+				   (process-arrow-expression bfo2 form expression prop> prop< inverses? a-or-s reversed =def)
+				   axs)))
+		       ((eq (first expression) 'o)
+			(let ((chain (loop for (class . rest) on (cdr expression) while
+					  (not (keywordp class)) 
+					  collect (eval class) into chain
+					  finally (setq keys (cons class rest)) (return chain))))
+			  (push `(sub-object-property-of ,@(maybe-object-property-annotations keys) (object-property-chain ,@chain)
+							 ,prop>) axs)))
+		       ((eq (first expression) 'domain-narrowed)
+			(setq axs (append 
+				   (process-domain-narrowed-expression bfo2 form expression prop> prop< inverses? a-or-s reversed =def))))
+		       (t 
+			(setq axs (append
+				   (process-property-property-expression bfo2 form expression prop> prop< inverses? a-or-s reversed )
+				   axs)))
+		       ))))))
+  axs)
+
+(defun process-arrow-expression (bfo2 form expression prop> prop< inverses? a-or-s reversed =def &aux axs)
+  (destructuring-bind (from operator to &rest keys) expression
+    (let ((from (class-expressionize from))
+	  (to (class-expressionize to)))
+					;			 (print-db from to (second expression) prop> prop< a-or-s)
+      (if (eq to 'self)
+	  (progn
+	    (assert (eq operator '->) () "-> self supported, else not: ~a" expression)
+	    (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-has-self ,prop>)) axs))
+	  (cond ((eq operator '->)
+		 (push `(,(if =def 'equivalent-classes 'sub-class-of) ,@(maybe-object-property-annotations keys) ,from (object-all-values-from ,prop> ,to)) axs))
+		((eq operator '+>)
+		 (and prop>
+		      (push `(,(if =def 'equivalent-classes 'sub-class-of) ,@(maybe-object-property-annotations keys) ,from (object-some-values-from ,prop> ,to)) axs)))
+		((eq operator '-+>)
+		 (setq axs
+		       (append
+			(process-one-object-property-expression bfo2 form `(,from -> ,to ,@keys) prop> prop< inverses? a-or-s reversed =def)
+			(process-one-object-property-expression bfo2 form `(,from +> ,to ,@keys) prop> prop< inverses? a-or-s reversed =def)
+			axs)))
+		((eq operator '<-)
+		 (push `(,(if =def 'equivalent-classes 'sub-class-of) ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop< ,from)) axs))
+		((eq operator '<->)
+		 (warn "=def not processed on <-> operator ~a in ~a" operator expression)
+		 (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-all-values-from ,prop> ,to)) axs)
+		 (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop< ,from)) axs))
+		))))
+
+  axs)
+
+(defun process-domain-narrowed-expression (bfo2 form expression prop> prop< inverses? a-or-s =def reversed &aux axs)
+  (unless reversed
+    (setq axs (append (process-one-object-property-expression bfo2 form expression prop< prop> inverses? a-or-s t =def) axs)))
+  (let ((domain (second (find-if (lambda(e) (and (consp e) (eq (car e) 'domain))) form))) 
+	(keys (cddr expression)))
+    (let* ((general-rel (if reversed (second (second expression)) (first (second expression))))
+	   (general-rel-t (if (eq a-or-s 'a) (at-term general-rel) (if (eq a-or-s 's) (st-term general-rel)))))
+      ;; inherits downward
+      (if (and a-or-s (boundp general-rel-t) prop>)
+	  (push `(equivalent-classes ,@(maybe-object-property-annotations keys) (object-some-values-from ,(eval general-rel-t) ,(eval domain))
+				     (object-some-values-from ,prop> ,(eval domain))) axs)
+	  (when (and (not a-or-s) (boundp general-rel) prop>)
+	    (push `(equivalent-classes ,@(maybe-object-property-annotations keys) (object-some-values-from ,(eval general-rel) ,(eval domain))
+				       (object-some-values-from ,prop> ,(eval domain))) axs)))))
+  axs)
+
+(defun process-property-property-expression (bfo2 form expression prop> prop< inverses? a-or-s reversed &aux axs)
+  (let ((feature (first expression))
+	(classex (class-expressionize (second expression))))
+    (cond ((eq feature 'domain) ; if domain assert domain on > and range on < , inherits downward
+	   (and prop> (push `(object-property-domain ,@(maybe-object-property-annotations (cddr expression)) ,prop> ,classex) axs))
+	   (and prop< (push `(object-property-range ,@(maybe-object-property-annotations (cddr expression)) ,prop< ,classex) axs)))
+
+	  ((eq feature 'range) ; if range assert range on > and domain on < , inherits downward
+	   (and prop> (push `(object-property-range ,@(maybe-object-property-annotations (cddr expression)) ,prop> ,classex) axs))
+	   (and prop< (push `(object-property-domain ,@(maybe-object-property-annotations (cddr expression)) ,prop< ,classex) axs)))
+
+	  ((or (eq feature 'transitive) (and (eq a-or-s 'a) (eq feature 'transitive-at-a-time))) ; if transitive assert on both, doesn't inherit
+	   (and prop> (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
+	   (and prop< (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
+
+	  ((eq feature 'functional) ; if functional assert functional on > and inverse-functional on <, doesn't inherit
+	   (and prop> (push `(functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
+	   (and prop< (push `(inverse-functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
+
+	  ((eq feature 'inverse-functional) ; if inverse-functional assert functional on > and inverse-functional on <, doesn't inherit
+	   (and prop> (push `(inverse-functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
+	   (and prop< (push `(functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
+
+	  ((eq feature 'symmetric) ; symmetric assert symmetric on > and <, doesn't inherit
+	   (and prop> (push `(symmetric-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
+	   (and prop< (push `(symmetric-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop< ) axs)))
+
+	  ((and (eq feature 'irreflexive) (not classex)) ; if irreflexive assert irreflexive on > and  <, doesn't inherit
+	   (and prop> (push `(irreflexive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
+	   (and prop< (push `(irreflexive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop< ) axs)))
+	  ))
+  axs)
 
 (defun maybe-object-property-annotations (keys)
   (when (getf keys :id)
@@ -208,6 +247,11 @@
   (when (and (find 'transitive-at-a-time form :key (lambda(el) (and (consp el) (car el))))
 	     (and stprop atprop))
     `((sub-object-property-of (object-property-chain ,(eval stprop) ,(eval atprop)) ,(eval stprop)))))
+
+(defun maybe-transitive-at-a-time (bfo2 form stprop atprop)
+  (when (and (find 'transitive-at-a-time form :key (lambda(el) (and (consp el) (car el))))
+	     (and stprop atprop))
+    `((transitive-object-property ,(eval atprop)))))
 
 ;(defun maybe-locally-reflexive (bfo2 form prop stprop atprop)
 ;  (let ((sprop 

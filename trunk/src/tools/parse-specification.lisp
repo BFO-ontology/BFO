@@ -12,6 +12,7 @@
   term2clif
   term2annotation
   fol-expressions
+  ontology-annotations
   )
 
 
@@ -119,7 +120,7 @@
 ;(defvar *bfo2* (load-time-value (read-bfo2-reference-spec)))
 
 (defun read-fol-clif ()
-  (with-open-file (f "bfo:src;ontology;fol-ressler;BFO-FOL-alpha-2012-05-21.clif")
+  (with-open-file (f "bfo:src;ontology;fol-ressler;2012-07-20;BFO-FOL-alpha-2012-07-20.clif")
     (let ((*readtable* (let ((r (copy-readtable *readtable*))) (setf (readtable-case r) :preserve) r))
 	  (table (make-hash-table :test 'equal)))
       (loop for (precomment expression postcomment) in (read-bfo-clif-pieces f)

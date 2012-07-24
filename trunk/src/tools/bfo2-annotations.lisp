@@ -5,28 +5,35 @@
     ("Domain" "editor-note")
     ("Definition" "definition")
     ("EXAMPLES" "example-of-usage")
+    ("EXAMPLE" "example-of-usage")
     ("Elucidation" "elucidation")
     ("Axiom" "axiom-nl")
     ("Theorem" "axiom-nl")))
 
 (defun generate-ontology-properties (bfo2)
-  (with-open-file (f "bfo:src;ontology;owl-group;specification;ontology-properties.lisp")
-    (loop for entry = (read f nil :eof)
-	 until (eq entry :eof)
-	 if (consp (car entry)) collect (car entry) else collect entry)))
+  (append (bfo-ontology-annotations bfo2) 
+	  (with-open-file (f "bfo:src;ontology;owl-group;specification;ontology-properties.lisp")
+	    (loop for entry = (read f nil :eof)
+	       until (eq entry :eof)
+	       if (consp (car entry)) collect (car entry) else collect entry))))
 
 (defun generate-ontology-annotation-property-defs (bfo2)
-  (let ((om (load-ontology "https://information-artifact-ontology.googlecode.com/svn/trunk/src/ontology/ontology-metadata.owl")))
+  (let ((om (or (load-ontology "/Users/alanr/repos/information-artifact-ontology/trunk/src/ontology/ontology-metadata.owl")
+		(ignore-errors
+		  (load-ontology "https://information-artifact-ontology.googlecode.com/svn/trunk/src/ontology/ontology-metadata.owl")))
+		  ))
     (list*
      `(declaration (annotation-property ,!rdfs:isDefinedBy))
      `(declaration (annotation-property ,!rdfs:seeAlso))
+     `(declaration (annotation-property ,!dc:contributor))
+     `(declaration (annotation-property ,!dc:member))
      `(declaration (annotation-property ,!foaf:homepage))
      `(declaration (annotation-property ,!bfo-owl-spec-label))
      `(declaration (annotation-property ,!bfo-fol-spec-label))
      (loop for (here-label prop) in (eval-uri-reader-macro *bfo2-ontprops*)
 	for label = (entity-label prop om)
 	collect `(declaration (annotation-property ,prop))
-	when label collect `(annotation-assertion !rdfs:label ,prop ,label)
+	when label collect `(annotation-assertion !rdfs:label ,prop ,(concatenate 'string label "@en"))
 	when label collect `(annotation-assertion !rdfs:isDefinedBy ,prop ,!obo:iao.owl)))))
 
 (defun a-better-lousy-label (handle)
@@ -58,6 +65,7 @@
 	      ("^r-q" "relational-q")
 	      ("\\br-l" "l")
 	      ("at-r" "at")
+	      ("profile-of" "process-profile-of")
 	      ("\\br\\b" "role")
 	      ("\\bq\\b" "quality")
 	      ("\\bf\\b" "function")
@@ -75,38 +83,51 @@
    "@en"))
 
 (defun a-handcrafted-label (handle)
-  (let ((temporal (caar (all-matches (string handle) "_([AS])T$" 1))))
-    (when temporal (setq handle (intern (#"replaceAll" (string handle) "_.T$" ""))))
-    (let ((matched 
-	   (getf '(st-projects-onto-s "projects onto spatial region"
-		   st-projects-onto-t "projects onto temporal region"
-		   s-projection-of-st "spatial projection of"
-		   t-projection-of-st "temporal projection of"
-		   s-depends-on "specifically depends on"
-		   has-s-dep "has specific dependent"
-		   g-depends-on "generically depends on"
-		   has-g-dep "has generic dependent"
-		   o-part-of "part of occurrent"
-		   c-part-of "part of continuant"
-		   t-part-of "temporal part of"
-		   member-part-of "member of"
-		   o-ppart-of "proper part of occurrent"
-		   c-ppart-of "proper part of continuant"
-		   t-ppart-of "proper temporal part of"
-		   o-has-part "has occurrent part"
-		   c-has-part "has continuant part"
-		   has-t-part "has temporal part"
-		   has-member-part "has member"
-		   o-has-ppart "has proper occurrent part"
-		   c-has-ppart "has proper continuant part"
-		   has-t-ppart "has proper temporal part")
-		 handle)))
-      (and matched
-	   (concatenate 
-	    'string  matched
-	    (if temporal
-		(if (equal temporal "A") " at all times" " at some time")
-		""))))))
+  (if (eq handle 'c-part-of-object_at)
+      "part of continuant at all times that whole exists" 
+      (if (eq handle 'c-has-part-object_at)
+	  "has continuant part at all times that part exists" 
+	  (let ((temporal (caar (all-matches (string handle) "_([AS])T$" 1))))
+	    (when temporal (setq handle (intern (#"replaceAll" (string handle) "_.T$" ""))))
+	    (print-db handle)
+	    (let ((matched 
+		   (getf '(st-projects-onto-s "projects onto spatial region"
+			   st-projects-onto-t "projects onto temporal region"
+			   s-projection-of_st "spatial projection of"
+			   t-projection-of_st "temporal projection of"
+			   s-depends-on "specifically depends on"
+			   has-s-dep "has specific dependent"
+			   g-depends-on "generically depends on"
+			   has-g-dep "has generic dependent"
+			   o-part-of "part of occurrent"
+			   c-part-of "part of continuant"
+			   t-part-of "temporal part of"
+			   member-part-of "member part of"
+			   o-ppart-of "proper part of occurrent"
+			   c-ppart-of "proper part of continuant"
+			   t-ppart-of "proper temporal part of"
+			   o-has-part "has occurrent part"
+			   c-has-part "has continuant part"
+			   has-t-part "has temporal part"
+			   has-member-part "has member part"
+			   o-has-ppart "has proper occurrent part"
+			   c-has-ppart "has proper continuant part"
+			   has-t-ppart "has proper temporal part"
+			   realizable "realizable entity"
+			   located-at-r "occupies spatial region"
+			   r-location-of "has spatial occupant"
+			   occupies "occupies spatiotemporal region"
+			   occupied-by "has spatiotemporal occupant"
+			   spans "occupies temporal region"
+			   span-of "has temporal occupant" 
+			   )
+			 handle)))
+	      (and matched
+		   (concatenate 
+		    'string  matched
+		    (if temporal
+			(if (equal temporal "A") " at all times" " at some time")
+			""))))))))
 
 (defun generate-label-annotations (bfo2)
   (let ((seen (make-hash-table))
@@ -141,13 +162,18 @@
        for (annotation-type term text) in rawa
        do
 	 (setq text (#"replaceAll" (#"replaceAll" text "^\\s+" "") "\\s+$" ""))
+	 (setq text (#"replaceAll" text "\\s*/\\*.*?\\*/\\s*" " ")) ; remove in line comments
        ;; as|at|a|axiom|domain|range|note|example
        (cond ((equalp annotation-type "note")
-	      (push (cons !editor-note (format nil "BFO 2 Reference: ~a" text))
-		    (gethash (uri-for-reference-doc-term term bfo2) table)))
+	      (if (equalp term "ontology") 
+		  (push `(annotation !editor-note ,(format nil "BFO 2 Reference: ~a" text))
+			(bfo-ontology-annotations bfo2))
+		  (push (cons !editor-note (format nil "BFO 2 Reference: ~a" text))
+			(gethash (uri-for-reference-doc-term term bfo2) table))))
 	     ((#"matches" annotation-type "(?i)example.*")
-	      (push (cons !example-of-usage  text)
-		    (gethash (uri-for-reference-doc-term term bfo2) table)))
+	      (loop for one in (split-at-regex text "\\s*\\\\[,;.]\\s*")
+		   do (push (cons !example-of-usage  one)
+			 (gethash (uri-for-reference-doc-term term bfo2) table))))
 	     ((member annotation-type '("as" "at" "a") :test 'equalp)
 	      (loop for (prop text) in (parse-as text)
 		 do 
@@ -157,6 +183,7 @@
 	 finally (progn (setf (bfo-term2annotation bfo2) table) (return table)))))
 
 (defun uri-for-reference-doc-term (tag bfo2)
+  (print-db tag)
   (let ((found (or (assoc (intern (string-upcase tag)) (bfo-anntag2term bfo2) :test 'equalp)
 		   (assoc (intern (string-upcase (#"replaceAll" tag "[ _]" "-"))) (bfo-anntag2term bfo2) :test 'equalp))))
     (unless found
