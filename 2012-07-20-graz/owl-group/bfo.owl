@@ -42,9 +42,9 @@
         <rdfs:seeAlso rdf:resource="http://groups.google.com/group/bfo-discuss"/>
         <rdfs:seeAlso rdf:resource="http://groups.google.com/group/bfo-owl-devel"/>
         <foaf:homepage rdf:resource="http://ifomis.org/bfo"/>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/2010-07-20/Reference"/>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/2010-07-20/ReleaseNotes"/>
-        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/bfo/2010-07-20//bfo.owl"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/2012-07-20/Reference"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/2012-07-20/ReleaseNotes"/>
+        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/bfo/2012-07-20//bfo.owl"/>
         <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/dev/bfo.clif"/>
     </owl:Ontology>
     
