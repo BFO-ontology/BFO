@@ -29,7 +29,7 @@
 	  bfo2-ont-pass1
 	  )
       (setq axioms (eval-uri-reader-macro axioms))
-      (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2010-07-20//bfo.owl :base !obo: :collecting t
+      (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2012-07-20/bfo.owl :base !obo: :collecting t
 					     :ontology-properties (generate-ontology-properties bfo2)
 					     )
 	  ((as axioms)
