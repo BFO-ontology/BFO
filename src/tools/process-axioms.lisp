@@ -91,8 +91,8 @@
     (unless (eq (first expression) 'temporal)
       (if (eq (first expression) '=)
 	  (progn
-	    (print-db form (second expression) prop< prop> inverses? a-or-s t t)
-	    (setq axs (append (process-one-object-property-expression bfo2 form (second expression) prop< prop> inverses? a-or-s t t)
+;	    (print-db form (second expression) prop< prop> inverses? a-or-s t t)
+	    (setq axs (append (process-one-object-property-expression bfo2 form (second expression) prop> prop< inverses? a-or-s nil t)
 			   axs)))
 	 (if (eq (first expression) '<)
 	     (loop for expr in (rest expression)

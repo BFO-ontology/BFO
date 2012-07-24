@@ -195,7 +195,7 @@
  (projects-onto nil !obo:BFO_0000134 :not (:issue 41))
 
  (occurs-in nil !obo:BFO_0000066)
- (contains-process nil !obo:BFO_0000183)
+ (contains-process nil !obo:BFO_0000067)
  (history-of nil !obo:BFO_0000184)
  (has-history nil !obo:BFO_0000185)
  (c-part-of-object_at nil !obo:BFO_0000186)

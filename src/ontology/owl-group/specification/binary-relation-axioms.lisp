@@ -18,7 +18,6 @@
   (reflexive occurrent :id 107)
   (history -> (not process-profile :id _))
   (process-profile +> process :id _)
-  (process-profile -> process :id _)
   (st-region <-> st-region :id 108) ;; x o-part-of y and x :a st-region -> y :a st-region, x o-part-of y and y :a st-region -> x :a st-region
   (t-region <-> t-region :id 109) ;; x o-part-of y and x :a t-region -> y :a t-region
   (process -> process :id 110)  ;; x o-part-of y and x :a process -> y :a process    
