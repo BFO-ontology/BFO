@@ -41,6 +41,7 @@
  (sdc :unary)
  (gdc :unary)
  (process :unary)
+ (history :unary)
  (p-boundary :unary)
  (t-region :unary)
  (st-region :unary)
@@ -74,6 +75,7 @@
  ((t-part-of has-t-part) :binary )
  ((t-ppart-of has-t-ppart) :binary)
  ((occupies occupied-by)  :binary)
+ ((occurs-in contains-process)  :binary)
  ((profile-of has-profile) :binary )
  ((realizes realized-in) :binary )
 
@@ -82,6 +84,9 @@
 
  ((c-ppart-of c-has-ppart) :ternary (:issue 49)
   (:temporal (:all :some) (:all :some) "Mathias suggest not parallel to part of, seems not to alan"))
+
+ ((c-part-of-object c-has-part-object) :ternary 
+  (:temporal (:all ) (:all)))
 
  ((member-part-of has-member-part) :ternary (:issue 49)
   (:temporal (:all :some) (:all :some) "Seems to be similar enough to part of (parts aren't permanent or defining except at an instant, so offer full set")
@@ -124,6 +129,7 @@
  
  ((has-participant participates-in) :ternary (:temporal (:some :all) (:some :all) "at some times is parallels the class-class definition. At all times is permanent participation, requested by Stefan") (:issue 49))
  
+ ((history-of has-history) :binary)
  ((spans span-of) :binary)
  
  )
@@ -161,8 +167,9 @@ entity(d)
 ----role
 --gdc
 -occurrent(d)
---process
+--process(d)
 ---process-profile
+---history
 --p-boundary
 --st-region
 --t-region(d)
@@ -177,10 +184,12 @@ realizes
 realized-in
 o-part-of
 -o-ppart-of
+--t-ppart-of
 -t-part-of
 --t-ppart-of
 o-has-part
 -o-has-ppart
+--has-t-ppart
 -has-t-part
 --has-t-ppart
 profile-of
@@ -193,6 +202,10 @@ exists-at
 during-which-exists
 -span-of
 -t-projection-of-st
+contains-process
+-has-history
+occurs-in
+-history-of
 ")
 
 ;; define the temporal property hierarchy. You can't have a temporal
@@ -208,19 +221,25 @@ during-which-exists
 located-at-r_st 
 r-location-of_st
 s-depends-on_st
+-has-participant_st
 -s-depends-on_at
+--has-participant_at
+--history-of
 --inheres-in_at
 ---q-of_at 
 ---f-of_at 
 ---r-of_at 
 ---d-of_at 
 has-s-dep_st
--has-q_st
--has-r_st
--has-d_st
--has-f_st
+-participates-in_st
 -bearer-of_st
+--has-q_st
+--has-r_st
+--has-d_st
+--has-f_st
 -has-s-dep_at
+--participates-in_at
+---has-history
 --bearer-of_at
 ---has-q_at
 ---has-f_at
@@ -228,10 +247,6 @@ has-s-dep_st
 ---has-d_at
 g-depends-on_st
 has-g-dep_st
-participates-in_st
--participates-in_at
-has-participant_st
--has-participant_at
 has-material-basis_at
 material-basis-of_st
 -material-basis-of_at
@@ -241,7 +256,10 @@ concretized-by_st
 -concretized-by_at
 st-projects-onto-s_st 
 s-projection-of-st_st
+c-part-of-object_at &&&
+c-has-part-object_at &&&
 c-part-of_st
+-c-part-of-object_at
 -c-part-of_at
 -c-ppart-of_st
 --c-ppart-of_at
@@ -257,6 +275,7 @@ located-in_st
 ---c-ppart-of_at 
 ---member-part-of_at
 c-has-part_st 
+-c-has-part-object_at
 -c-has-ppart_st
 --c-has-ppart_at
 -c-has-part_at 
@@ -290,6 +309,8 @@ has-location_st
  ("proper-occurrent-part-of" o-ppart-of)
  ("has-continuant-part" c-has-part)
  ("has-occurrent-part" o-has-part)
+ ("has-proper-continuant-part" c-has-ppart)
+ ("has-proper-occurrent-part" o-has-ppart)
  ("continuant")
  ("independent-continuant" ic)
  ("object")
@@ -308,17 +329,19 @@ has-location_st
  ("one-dimensional-spatial-region" 1d-s-region)
  ("two-dimensional-spatial-region" 2d-s-region)
  ("three-dimensional-spatial-region" 3d-s-region)
- ("located-at" located-at-r)
+ ("occupies-spatial-region" located-at-r)
  ("continuant-part-of" c-part-of)
  ("located-in")
- ("spans")
+ ("occupies-temporal-region" spans)
  ("span of")
  ("specifically-dependent-continuant" sdc)
  ("inheres-in")
  ("bearer-of")
  ("s-depends-on")
+ ("specifically depends on" s-depends-on)
  ("quality")
  ("quality-of" q-of)
+ ("object-aggregate" object-aggregate)
  ("relational-quality" r-quality)
  ("realizable-entity" realizable)
  ("realizes")
@@ -337,8 +360,12 @@ has-location_st
  ("generically-dependent-continuant" gdc)
  ("concretizes")
  ("projects-onto") ;; FIXME
- ("occupies")
+ ("occupies-spatiotemporal-region" occupies)
+ ("occurs-in")
+ ("contains_process")
  ("process")
+ ("process-profile")
+ ("history")
  ("process-boundary" p-boundary)
  ("has-participant")
  ("participates-in")
@@ -350,6 +377,8 @@ has-location_st
  ("temporal-region" t-region)
  ("zero-dimensional-temporal-region" 0d-t-region)
  ("one-dimensional-temporal-region" 1d-t-region)
+ ("history-of" history-of)
+ ("has-history" has-history)
  )
 
 ;; this section needs to be manged each time the spec is updated. It

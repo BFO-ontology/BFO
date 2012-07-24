@@ -21,6 +21,7 @@
  (sdc !snap:SpecificallyDependentContinuant !obo:BFO_0000020) 
  (gdc !snap:GenericallyDependentContinuant !obo:BFO_0000031) 
  (process !span:ProcessualEntity !obo:BFO_0000015) 
+ (history nil !obo:BFO_0000182) ; alan allocated
  (p-boundary !span:ProcessBoundary !obo:BFO_0000035) 
  (t-region !span:TemporalRegion !obo:BFO_0000008)
  (st-region !span:SpatioTemporalRegion !obo:BFO_0000011)
@@ -193,6 +194,11 @@
  (1d-t-region-dup nil !obo:BFO_0000143 (:duplicate !obo:BFO_0000038))
  (projects-onto nil !obo:BFO_0000134 :not (:issue 41))
 
-;; (occurs-in nil !obo:BFO_0000066 (:maybe ro))
+ (occurs-in nil !obo:BFO_0000066)
+ (contains-process nil !obo:BFO_0000183)
+ (history-of nil !obo:BFO_0000184)
+ (has-history nil !obo:BFO_0000185)
+ (c-part-of-object_at nil !obo:BFO_0000186)
+ (c-has-part-object_at nil !obo:BFO_0000187)
 
 )

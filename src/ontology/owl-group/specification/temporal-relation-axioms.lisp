@@ -8,7 +8,8 @@
    (transitive-at-a-time :id 501)
    (domain continuant :id 502)
    (range continuant :id 503)
-   (material -> material :id _)
+   (material -> material :id 595)
+   (< (material -> (or material immaterial) :id 596))
    (quality -> (not realizable) :id 577)
    (realizable -> (not quality) :id 578)
    (disposition -> (not role) :id 579)
@@ -27,6 +28,51 @@
    (< (immaterial -> (not material) :id 028-001))
    (cf-boundary -> (not s-region) :id 029-001)
    )
+
+;; This is for GO
+(object-property :temporal
+   (c-part-of-object c-has-part-object)
+   (temporal (:all) (:all))
+   (transitive-at-a-time :id 501)
+   (domain continuant :id 502)
+   (range continuant :id 503)
+   (material -> material :id )
+   (< (material -> (or material immaterial) :id 597))
+   (quality -> (not realizable) :id 577)
+   (realizable -> (not quality) :id 578)
+   (disposition -> (not role) :id 579)
+   (role -> (not disposition) :id 580)
+   (immaterial <- immaterial :id 581)
+   (< (0d-cf-boundary -> (not (or 1d-cf-boundary 2d-cf-boundary)) :id 591))
+   (< (1d-cf-boundary -> (not (or 2d-cf-boundary)) :id 582))
+   (< (0d-s-region -> (not (or 1d-s-region 2d-s-region 3d-s-region)) :id 583))
+   (< (1d-s-region -> (not (or 2d-s-region 3d-s-region)) :id 584))
+   (< (2d-s-region -> (not 3d-s-region) :id 592))
+   (s-region <-> s-region :id 585)
+   (< (cf-boundary -> cf-boundary :id 586))
+   (sdc -> (not (or ic gdc)) :id 587)
+   (gdc -> (not (or ic sdc)) :id 588)
+   (ic -> (not (or sdc gdc)) :id 589)
+   (< (immaterial -> (not material) :id 028-001))
+   (cf-boundary -> (not s-region) :id 029-001)
+   )
+
+((annotation-assertion !definition c-part-of-object_at
+		       "forall(t) exists_at(y,t) -> exists_at(x,t) and 'part of continuant'(x,y,t)")
+ :id 598)
+
+((annotation-assertion !editor-note c-part-of-object_at "This is a binary version of a ternary time-indexed, instance level, relation. Unlike the rest of the temporalized relations which temporally quantify over existence of the subject of the relation, this relation temporally quantifies over the existence of the object of the relation. The relation is provided tentatively, to assess whether the GO needs such a relation. It is inverse of 'has continuant part at all times'")
+ :id 599)
+
+((annotation-assertion !definition c-has-part-object_at
+		       "forall(t) exists_at(y,t) -> exists_at(x,t) and 'has continuant part'(x,y,t)")
+ :id 599)
+
+((annotation-assertion !editor-note c-has-part-object_at "This is a binary version of a ternary time-indexed, instance level, relation. Unlike the rest of the temporalized relations which temporally quantify over existence of the subject of the relation, this relation temporally quantifies over the existence of the object of the relation. The relation is provided tentatively, to assess whether the GO needs such a relation. It is inverse of 'part of continuant at all times'")
+ :id 600)
+
+((inverse-object-properties c-has-part-object_at c-part-of_at) :id 601)
+((inverse-object-properties c-part-of-object_at c-has-part_at) :id 602)
 
  (object-property :temporal
    (c-ppart-of c-has-ppart)
@@ -69,6 +115,7 @@
    (range s-region :id 516)
    (ic +> s-region :id 539) ; translates to located-at. We want there to be one at all times but this is the best we can do I think.
    (s-region -> self :id 575)
+   (s (material -> 3d-s-region))
    (< (s-region -> self :id 576))
    (cf-boundary -> (or 0d-s-region 1d-s-region 2d-s-region) :id 029-001) ; check if two points can make a cf-boundary.
    )
@@ -177,9 +224,9 @@
   (a (o has-participant_at inheres-in_at :id 560)) ; if p has-participant sdc and sdc inheres-in m then p has-participant m 
   (s (o has-participant_st inheres-in_at :id 561 :cant "There is a cyclic dependency involving property has-participant_st"))
   (a (o bearer-of_at participates-in_at :id 562 :cant "There is a cyclic dependency involving property has-participant_at"))
-  (< (s (o bearer-of_st participates-in_at :id 563)))  ; if m bearer-of sdc and sdc participates-in p then m participates-in p
+;  (< (s (o bearer-of_st participates-in_at :id 563)))  ; if m bearer-of sdc and sdc participates-in p then m participates-in p
   (< (a (o has-g-dep_at participates-in_at :id 571 :cant "There is a cyclic dependency involving property has-participant_at")))
-  (< (s (o has-g-dep_st participates-in_at :id 572)))  
+;  (< (s (o has-g-dep_st participates-in_at :id 572)))  
   )
 
 ((sub-object-property-of (object-property-chain realizes inheres-in_at) has-participant_st)
