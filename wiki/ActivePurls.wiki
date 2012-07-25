@@ -2,7 +2,7 @@
 
 = The PURLs =
 
-== Reference PURLs ==
+ == Reference PURLs ==
   * http://purl.obolibrary.org/obo/bfo - The google code home page
   * http://purl.obolibrary.org/obo/bfo/dev/bfo.owl - BFO2 development version 
   * http://purl.obolibrary.org/obo/bfo/wiki  - This wiki
