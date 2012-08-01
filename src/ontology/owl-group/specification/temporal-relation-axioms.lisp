@@ -90,8 +90,8 @@
    (issue 49)
    (inverse-at-a-time :id 543)
    (temporal (:all :some) (:all :some) "Seems to be similar enough to part of (parts aren't permanent or defining except at an instant, so offer full set")
-   (domain continuant :id 508)
-   (range continuant :id 509)
+   (domain object :id 508)
+   (range object-aggregate :id 509)
    )
 
  (object-property :temporal
@@ -137,6 +137,7 @@
     (issue 49)
     (domain-narrowed (inheres-in bearer-of) :id 564)
     (domain quality :id 519)
+    (range (and ic (not s-region)) :id _)
     )
 
  (object-property :temporal
@@ -145,6 +146,7 @@
    (temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
    (issue 49)
    (domain function :id 521)
+   (range (and ic (not s-region)) :id _)
    (domain-narrowed (inheres-in bearer-of) :id 565))
 
 (object-property :temporal
@@ -153,6 +155,7 @@
   (temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (issue 49)
   (domain-narrowed (inheres-in bearer-of) :id 566)
+  (range (and ic (not s-region)) :id _)
   (domain role :id 523))
 
  (object-property :temporal
@@ -161,6 +164,7 @@
    (temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
    (issue 49)
    (domain disposition :id 525)
+   (range (and ic (not s-region)) :id _)
    (domain-narrowed (inheres-in bearer-of) :id 567))
 
  (object-property :temporal
@@ -224,9 +228,9 @@
   (a (o has-participant_at inheres-in_at :id 560)) ; if p has-participant sdc and sdc inheres-in m then p has-participant m 
   (s (o has-participant_st inheres-in_at :id 561 :cant "There is a cyclic dependency involving property has-participant_st"))
   (a (o bearer-of_at participates-in_at :id 562 :cant "There is a cyclic dependency involving property has-participant_at"))
-;  (< (s (o bearer-of_st participates-in_at :id 563)))  ; if m bearer-of sdc and sdc participates-in p then m participates-in p
+  (< (s (o bearer-of_st participates-in_at :id 563)))  ; if m bearer-of sdc and sdc participates-in p then m participates-in p
   (< (a (o has-g-dep_at participates-in_at :id 571 :cant "There is a cyclic dependency involving property has-participant_at")))
-;  (< (s (o has-g-dep_st participates-in_at :id 572)))  
+  (< (s (o has-g-dep_st participates-in_at :id 572 :cant "The given property hierarchy is not regular. There is a cyclic dependency involving property 'participates in at some time'")))  
   )
 
 ((sub-object-property-of (object-property-chain realizes inheres-in_at) has-participant_st)
