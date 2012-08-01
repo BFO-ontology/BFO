@@ -256,8 +256,8 @@ concretized-by_st
 -concretized-by_at
 st-projects-onto-s_st 
 s-projection-of-st_st
-c-part-of-object_at &&&
-c-has-part-object_at &&&
+c-part-of-object_at 
+c-has-part-object_at 
 c-part-of_st
 -c-part-of-object_at
 -c-part-of_at
@@ -266,28 +266,24 @@ c-part-of_st
 ---member-part-of_at
 --member-part-of_st
 ---member-part-of_at
-located-in_st 
--c-part-of_st 
---c-ppart-of_st 
---member-part-of_st
--located-in_at
---c-part-of_at 
----c-ppart-of_at 
----member-part-of_at
-c-has-part_st 
+c-part-of_at
+-c-ppart-of_at
+--member-part-of_at
+c-has-part_st
 -c-has-part-object_at
+-c-has-part_at
 -c-has-ppart_st
 --c-has-ppart_at
--c-has-part_at 
+---has-member-part_at
+--has-member-part_st
+---has-member-part_at
+c-has-part_at
+-c-has-ppart_at
 --has-member-part_at
--has-member-part_st
---has-member-part_at
+located-in_st 
+-located-in_at
 has-location_st
--c-has-part_st 
 -has-location_at
---c-has-part_at 
----c-has-ppart_at
-----has-member-part_at
 ")
 
 ;; Note: Uris moved to bfo2-uris.lisp so less likely to confuse bfo2 editors into thinking they need to use URIs.
