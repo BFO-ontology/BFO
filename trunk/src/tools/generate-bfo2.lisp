@@ -3,9 +3,9 @@
 ;; Check that t-ppartof annotations are on it ratehr than t-partof
 
 
-(defun generate-bfo2 (bfo2)
+(defun generate-bfo2 (bfo2 &aux can-reason? axioms violations)
   (with-obo-metadata-uris
-    (multiple-value-bind (ont axioms)
+    (multiple-value-bind (ont can-reason? axioms)
 	(with-ontology bfo2-ont-pass1 (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2012-07-20/bfo.owl :base !obo: :collecting t
 						     :ontology-properties (generate-ontology-properties bfo2)
 						     :also-return-axioms t)
@@ -23,12 +23,26 @@
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp"))
 	     )
 	  (setq @ bfo2-ont-pass1)
-	  (ignore-errors (assert (check-ontology bfo2-ont-pass1 :classify t)))
-	  (when  (unsatisfiable-classes bfo2-ont-pass1)
-	    (warn "Unsatisfiable classes: ~{~a~^, ~}" (mapcar (lambda(e) (rdfs-label e bfo2-ont-pass1)) (unsatisfiable-classes bfo2-ont-pass1))))
-	  bfo2-ont-pass1
-	  )
-      (setq axioms (eval-uri-reader-macro axioms))
+	  (multiple-value-setq (violations cant-reason?) (check-profile bfo2-ont-pass1))
+	  (loop for violation in violations do (warn (#"toString" violation)))
+	  (if cant-reason?
+	      (warn "Can't reason because of some profile violation (usually global restriction). Saving anyways")
+	      (multiple-value-bind (result error) (ignore-errors (check-ontology bfo2-ont-pass1 :classify t))
+		(if error
+		    (if (typep error 'java::java-exception )
+			(warn "Can't reason, so saving without checking.~%~a"
+			      (replace-uris-with-labels-in-report bfo2-ont-pass1 (#"toString" (java::java-exception-cause error))))
+			(warn error))
+		    (if (not result)
+			(warn "inconsistent")
+			(progn
+			  (if (unsatisfiable-classes bfo2-ont-pass1)
+			    (warn "Unsatisfiable classes: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-classes bfo2-ont-pass1))))
+			  (if (unsatisfiable-properties bfo2-ont-pass1)
+			    (warn "Unsatisfiable properties: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-properties bfo2-ont-pass1)))))))))
+	  (setq axioms (eval-uri-reader-macro axioms))
+	  (values bfo2-ont-pass1 can-reason?))
+;      (print-db ont can-reason? axioms)
       (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2012-07-20/bfo.owl :base !obo: :collecting t
 					     :ontology-properties (generate-ontology-properties bfo2)
 					     )
@@ -37,6 +51,7 @@
 	   )
 	(write-rdfxml bfo2-ont "bfo:src;ontology;owl-group;bfo1.owl")
 	(comment-obo-ids-in-owl-file "bfo:src;ontology;owl-group;bfo1.owl" "bfo:src;ontology;owl-group;bfo.owl")
+	bfo2-ont
 	))))
 
 (defun generate-declarations (bfo2)
