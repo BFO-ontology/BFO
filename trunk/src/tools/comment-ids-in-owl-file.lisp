@@ -1,8 +1,8 @@
 (defun comment-obo-ids-in-owl-file (in-path out-path)
   (let ((kb (load-ontology in-path)))
     (let ((labels (rdfs-labels kb)))
-      (with-open-file (in in-path)
-	(with-open-file (out out-path :direction :output :if-does-not-exist :create :if-exists :supersede)
+      (with-open-file (in in-path :external-format :utf-8)
+	(with-open-file (out out-path :direction :output :if-does-not-exist :create :if-exists :supersede :external-format :utf-8)
 	  (loop for line = (read-line in nil :eof)
 	     until (eq line :eof)
 	     for prop-replaced = (replace-all line  "<obo:(\\w+_\\d+)"
