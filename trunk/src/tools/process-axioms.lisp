@@ -155,20 +155,25 @@
 
   axs)
 
+;;; this is buggy - hand edited in the file for now
 (defun process-domain-narrowed-expression (bfo2 form expression prop> prop< inverses? a-or-s =def reversed &aux axs)
-  (unless reversed
+  '(unless reversed
     (setq axs (append (process-one-object-property-expression bfo2 form expression prop< prop> inverses? a-or-s t =def) axs)))
-  (let ((domain (second (find-if (lambda(e) (and (consp e) (eq (car e) 'domain))) form))) 
+  (let ((domain (second (find-if (lambda(e) (and (consp e) (eq (car e) (if reversed 'range 'domain)))) form))) 
 	(keys (cddr expression)))
-    (let* ((general-rel (if reversed (second (second expression)) (first (second expression))))
+    (let* ((general-rel (if reversed (first (second expression)) (second (second expression))))
 	   (general-rel-t (if (eq a-or-s 'a) (at-term general-rel) (if (eq a-or-s 's) (st-term general-rel)))))
-      ;; inherits downward
-      (if (and a-or-s (boundp general-rel-t) prop>)
-	  (push `(equivalent-classes ,@(maybe-object-property-annotations keys) (object-some-values-from ,(eval general-rel-t) ,(eval domain))
-				     (object-some-values-from ,prop> ,(eval domain))) axs)
-	  (when (and (not a-or-s) (boundp general-rel) prop>)
-	    (push `(equivalent-classes ,@(maybe-object-property-annotations keys) (object-some-values-from ,(eval general-rel) ,(eval domain))
-				       (object-some-values-from ,prop> ,(eval domain))) axs)))))
+;      (print-db a-or-s prop> prop< domain general-rel general-rel-t reversed)
+      (and domain
+	   (let ((domain-expression (class-expressionize domain)))
+	     ;; inherits downward
+	     (if (and a-or-s (boundp general-rel-t) prop> )
+		 (push `(equivalent-classes ,@(maybe-object-property-annotations keys) (object-some-values-from ,(eval general-rel-t) ,domain-expression)
+					    (object-some-values-from ,prop> ,domain-expression)) axs)
+		 '(when (and (not a-or-s) (boundp general-rel) (if reversed prop< prop>))
+		   (push `(equivalent-classes ,@(maybe-object-property-annotations keys) (object-some-values-from ,(eval general-rel) ,domain-expression)
+			   (object-some-values-from ,(if reversed prop< prop>) ,domain-expression)) axs)))))))
+;  (print-db axs)
   axs)
 
 (defun process-property-property-expression (bfo2 form expression prop> prop< inverses? a-or-s reversed &aux axs)
