@@ -24,10 +24,12 @@
 		  ))
     (list*
      `(declaration (annotation-property ,!rdfs:isDefinedBy))
+     `(declaration (annotation-property ,!dc:license))
      `(declaration (annotation-property ,!rdfs:seeAlso))
      `(declaration (annotation-property ,!dc:contributor))
      `(declaration (annotation-property ,!dc:member))
      `(declaration (annotation-property ,!foaf:homepage))
+     `(declaration (annotation-property ,!foaf:mbox))
      `(declaration (annotation-property ,!bfo-owl-spec-label))
      `(declaration (annotation-property ,!bfo-fol-spec-label))
      (loop for (here-label prop) in (eval-uri-reader-macro *bfo2-ontprops*)
@@ -36,7 +38,7 @@
 	when label collect `(annotation-assertion !rdfs:label ,prop ,(concatenate 'string label "@en"))
 	when label collect `(annotation-assertion !rdfs:isDefinedBy ,prop ,!obo:iao.owl)))))
 
-(defun a-better-lousy-label (handle)
+(defun a-better-lousy-label (handle &optional (langtag t))
   (concatenate
    'string 
    (or (a-handcrafted-label handle)
@@ -89,7 +91,7 @@
 	  "has continuant part at all times that part exists" 
 	  (let ((temporal (caar (all-matches (string handle) "_([AS])T$" 1))))
 	    (when temporal (setq handle (intern (#"replaceAll" (string handle) "_.T$" ""))))
-	    (print-db handle)
+;	    (print-db handle)
 	    (let ((matched 
 		   (getf '(st-projects-onto-s "projects onto spatial region"
 			   st-projects-onto-t "projects onto temporal region"
@@ -183,7 +185,7 @@
 	 finally (progn (setf (bfo-term2annotation bfo2) table) (return table)))))
 
 (defun uri-for-reference-doc-term (tag bfo2)
-  (print-db tag)
+;  (print-db tag)
   (let ((found (or (assoc (intern (string-upcase tag)) (bfo-anntag2term bfo2) :test 'equalp)
 		   (assoc (intern (string-upcase (#"replaceAll" tag "[ _]" "-"))) (bfo-anntag2term bfo2) :test 'equalp))))
     (unless found
@@ -250,10 +252,10 @@
       ;; lazy ass cut and paste. Factor out
       (when st
 	(setq axs (append axs (generate-annotations-for-one-entry bfo2 prop axiomid uri (third st) text)))
-	(push `(annotation-assertion !editor-note ,(third st) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation '~a' is: exists t,  exists_at(x,t) & exists_at(y,t) & '~a'(x,y,t)" (a-better-lousy-label (car st)) (a-better-lousy-label term))) axs))
+	(push `(annotation-assertion !editor-note ,(third st) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance level, relation. The BFO reading of the binary relation '~a' is: exists(t) exists_at(x,t) & exists_at(y,t) & '~a'(x,y,t)"  (a-better-lousy-label (car st) nil) (a-better-lousy-label term nil))) axs))
       (when at 	
 	(setq axs (append axs (generate-annotations-for-one-entry bfo2 prop axiomid uri (third at) text)))
-	(push `(annotation-assertion !editor-note ,(third at) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation '~a' is: forall(t) exists_at(x,t) -> exists_at(y,t) and '~a(x,y,t)'." (a-better-lousy-label (car at)) (a-better-lousy-label term))) axs))
+	(push `(annotation-assertion !editor-note ,(third at) ,(format nil "Alan Ruttenberg: This is a binary version of a ternary time-indexed, instance-level, relation. The BFO reading of the binary relation '~a' is: forall(t) exists_at(x,t) -> exists_at(y,t) and '~a(x,y,t)'." (a-better-lousy-label (car at) nil) (a-better-lousy-label term nil))) axs))
 	axs)))
 
       
