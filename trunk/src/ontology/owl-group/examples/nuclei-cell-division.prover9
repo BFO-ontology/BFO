@@ -1,0 +1,94 @@
+% -- // --
+
+% See discussion at https://groups.google.com/d/topic/bfo-owl-devel/ToFi7JazGQc/discussion
+
+% Author: Chris Mungall
+% Date: 2012-08-16
+
+% As a cell is dividing the nucleus disintegrates and two nuclei are
+% formed. Depending on how you draw the spatial and temporal lines,
+% these 2 nuclei belong to the parent cell, then they get passed on to
+% the two new daughter cells (there's a valid debate to be had about
+% timings here, but this is a nice simple example so let's just accept
+% this model).
+
+
+formulas(sos).
+
+% FACTS
+
+% start point - a nucleus in a cell
+part_of(N1,C1,T1).
+
+% nuclei have divided but still a single cell membrane
+part_of(N2,C1,T2).
+part_of(N3,C1,T2).
+
+% symmetric division complete: two new nuclei, two new cells
+part_of(N2,C2,T3).
+part_of(N3,C3,T3).
+
+% there's probably a smarter way of 'closing the world' here
+% but I got frustrated with prover9 trying to do this
+-part_of(N2,C1,T3).
+-part_of(N2,C2,T1).
+-part_of(N2,C2,T2).
+-part_of(N2,C3,T1).
+-part_of(N2,C3,T2).
+-part_of(N2,C3,T3).
+
+all c all t
+    (part_of(N2,c,t) ->
+        (( c=C1 & t=T1 |
+           c=C1 & t=T2 |
+           c=C2 & t=T3))).
+
+instance_of(N1,Nucleus,T1).
+instance_of(N2,Nucleus,T2).
+instance_of(N2,Nucleus,T3).
+instance_of(N3,Nucleus,T2).
+instance_of(N3,Nucleus,T3).
+
+instance_of(C1,Cell,T1).
+instance_of(C1,Cell,T2).
+instance_of(C2,Cell,T3).
+instance_of(C3,Cell,T3).
+
+% ternary bfo instance_of to binary owl class assertion
+% assume rigidity
+all i all c all t (instance_of(i,c,t) -> type(i,c)).
+
+% Exists_at
+all i all c all t (instance_of(i,c,t) -> exists_at(i,t)).
+
+% temporally qualified part of
+all p all w
+ (part_of_at_all_times(p,w) ->
+   (all t (exists_at(p,t) -> part_of(p,w,t)))).
+
+% RO 2005 relation
+all pc all wc
+  part_of_t(pc,wc) ->
+   ( exists p exists t instance_of(p,pc,t) ->
+      exists w instance_of(w,wc,t) & part_of(p,w,t)).
+
+end_of_list.
+
+formulas(goals).
+
+% test case:
+%  we want to see if saying
+%   "Nucleus SubClassOf part_of some Cell"
+%  would introduce contradictions
+% (probably a smarter way of doing this)
+
+-(all p all t
+   (type(p,Nucleus) ->
+     ( exists w (type(w,Cell) & part_of_at_all_times(p,w))))).
+
+% uncomment this and comment out the above
+% to test if the facts pose problems for RO-2005
+% (they don't seem to)
+%-(part_of_t(Nucleus,Cell)).
+
+end_of_list.
