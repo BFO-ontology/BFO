@@ -1,0 +1,367 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 7665 was started by mcourtot on bioinfomac2.bccrc.ca,
+Mon Aug 20 09:36:11 2012
+The command was "./prover9 -f /Users/mcourtot/Desktop/nuclei-cell-division.prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file /Users/mcourtot/Desktop/nuclei-cell-division.prover9
+
+
+formulas(sos).
+part_of(N1,C1,T1).
+part_of(N2,C1,T2).
+part_of(N3,C1,T2).
+part_of(N2,C2,T3).
+part_of(N3,C3,T3).
+-part_of(N2,C1,T3).
+-part_of(N2,C2,T1).
+-part_of(N2,C2,T2).
+-part_of(N2,C3,T1).
+-part_of(N2,C3,T2).
+-part_of(N2,C3,T3).
+(all c all t (part_of(N2,c,t) -> c = C1 & t = T1 | c = C1 & t = T2 | c = C2 & t = T3)).
+instance_of(N1,Nucleus,T1).
+instance_of(N2,Nucleus,T2).
+instance_of(N2,Nucleus,T3).
+instance_of(N3,Nucleus,T2).
+instance_of(N3,Nucleus,T3).
+instance_of(C1,Cell,T1).
+instance_of(C1,Cell,T2).
+instance_of(C2,Cell,T3).
+instance_of(C3,Cell,T3).
+(all i all c all t (instance_of(i,c,t) -> type(i,c))).
+(all i all c all t (instance_of(i,c,t) -> exists_at(i,t))).
+(all p all w (part_of_at_all_times(p,w) -> (all t (exists_at(p,t) -> part_of(p,w,t))))).
+(all pc all wc part_of_t(pc,wc)) -> ((exists p exists t instance_of(p,pc,t)) -> (exists w instance_of(w,wc,t)) & part_of(p,w,t)).
+end_of_list.
+
+formulas(goals).
+-(all p all t (type(p,Nucleus) -> (exists w (type(w,Cell) & part_of_at_all_times(p,w))))).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all c all t (part_of(N2,c,t) -> c = C1 & t = T1 | c = C1 & t = T2 | c = C2 & t = T3)) # label(non_clause).  [assumption].
+2 (all i all c all t (instance_of(i,c,t) -> type(i,c))) # label(non_clause).  [assumption].
+3 (all i all c all t (instance_of(i,c,t) -> exists_at(i,t))) # label(non_clause).  [assumption].
+4 (all p all w (part_of_at_all_times(p,w) -> (all t (exists_at(p,t) -> part_of(p,w,t))))) # label(non_clause).  [assumption].
+5 (all pc all wc part_of_t(pc,wc)) -> ((exists p exists t instance_of(p,pc,t)) -> (exists w instance_of(w,wc,t)) & part_of(p,w,t)) # label(non_clause).  [assumption].
+6 -(all p all t (type(p,Nucleus) -> (exists w (type(w,Cell) & part_of_at_all_times(p,w))))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+part_of(N1,C1,T1).  [assumption].
+part_of(N2,C1,T2).  [assumption].
+part_of(N3,C1,T2).  [assumption].
+part_of(N2,C2,T3).  [assumption].
+part_of(N3,C3,T3).  [assumption].
+-part_of(N2,C1,T3).  [assumption].
+-part_of(N2,C2,T1).  [assumption].
+-part_of(N2,C2,T2).  [assumption].
+-part_of(N2,C3,T1).  [assumption].
+-part_of(N2,C3,T2).  [assumption].
+-part_of(N2,C3,T3).  [assumption].
+-part_of(N2,x,y) | x = C1 | x = C2.  [clausify(1)].
+-part_of(N2,x,y) | x = C1 | y = T3.  [clausify(1)].
+-part_of(N2,x,y) | y = T1 | y = T2 | x = C2.  [clausify(1)].
+-part_of(N2,x,y) | y = T1 | y = T2 | y = T3.  [clausify(1)].
+instance_of(N1,Nucleus,T1).  [assumption].
+instance_of(N2,Nucleus,T2).  [assumption].
+instance_of(N2,Nucleus,T3).  [assumption].
+instance_of(N3,Nucleus,T2).  [assumption].
+instance_of(N3,Nucleus,T3).  [assumption].
+instance_of(C1,Cell,T1).  [assumption].
+instance_of(C1,Cell,T2).  [assumption].
+instance_of(C2,Cell,T3).  [assumption].
+instance_of(C3,Cell,T3).  [assumption].
+-instance_of(x,y,z) | type(x,y).  [clausify(2)].
+-instance_of(x,y,z) | exists_at(x,z).  [clausify(3)].
+-part_of_at_all_times(x,y) | -exists_at(x,z) | part_of(x,y,z).  [clausify(4)].
+-part_of_t(f1(x,y),f2(x,y)) | -instance_of(z,pc,u) | instance_of(f3(x,y),x,t).  [clausify(5)].
+-part_of_t(f1(x,y),f2(x,y)) | -instance_of(z,pc,u) | part_of(p,y,t).  [clausify(5)].
+-type(x,Nucleus) | type(f4(x,y),Cell).  [deny(6)].
+-type(x,Nucleus) | part_of_at_all_times(x,f4(x,y)).  [deny(6)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating exists_at/2
+7 -part_of_at_all_times(x,y) | -exists_at(x,z) | part_of(x,y,z).  [clausify(4)].
+8 -instance_of(x,y,z) | exists_at(x,z).  [clausify(3)].
+Derived: -part_of_at_all_times(x,y) | part_of(x,y,z) | -instance_of(x,u,z).  [resolve(7,b,8,b)].
+
+Eliminating part_of_at_all_times/2
+9 -part_of_at_all_times(x,y) | part_of(x,y,z) | -instance_of(x,u,z).  [resolve(7,b,8,b)].
+10 -type(x,Nucleus) | part_of_at_all_times(x,f4(x,y)).  [deny(6)].
+Derived: part_of(x,f4(x,y),z) | -instance_of(x,u,z) | -type(x,Nucleus).  [resolve(9,a,10,b)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, type, part_of_t, instance_of, part_of ]).
+Function symbol precedence:  function_order([ N2, T3, C1, Nucleus, T2, Cell, T1, C2, N3, C3, N1, pc, t, p, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      11 part_of(N1,C1,T1).  [assumption].
+kept:      12 part_of(N2,C1,T2).  [assumption].
+kept:      13 part_of(N3,C1,T2).  [assumption].
+kept:      14 part_of(N2,C2,T3).  [assumption].
+kept:      15 part_of(N3,C3,T3).  [assumption].
+kept:      16 -part_of(N2,C1,T3).  [assumption].
+kept:      17 -part_of(N2,C2,T1).  [assumption].
+kept:      18 -part_of(N2,C2,T2).  [assumption].
+kept:      19 -part_of(N2,C3,T1).  [assumption].
+kept:      20 -part_of(N2,C3,T2).  [assumption].
+kept:      21 -part_of(N2,C3,T3).  [assumption].
+           22 -part_of(N2,x,y) | x = C1 | x = C2.  [clausify(1)].
+kept:      23 -part_of(N2,x,y) | C1 = x | C2 = x.  [copy(22),flip(b),flip(c)].
+           24 -part_of(N2,x,y) | x = C1 | y = T3.  [clausify(1)].
+kept:      25 -part_of(N2,x,y) | C1 = x | T3 = y.  [copy(24),flip(b),flip(c)].
+           26 -part_of(N2,x,y) | y = T1 | y = T2 | x = C2.  [clausify(1)].
+kept:      27 -part_of(N2,x,y) | T1 = y | T2 = y | C2 = x.  [copy(26),flip(b),flip(c),flip(d)].
+           28 -part_of(N2,x,y) | y = T1 | y = T2 | y = T3.  [clausify(1)].
+kept:      29 -part_of(N2,x,y) | T1 = y | T2 = y | T3 = y.  [copy(28),flip(b),flip(c),flip(d)].
+kept:      30 instance_of(N1,Nucleus,T1).  [assumption].
+kept:      31 instance_of(N2,Nucleus,T2).  [assumption].
+kept:      32 instance_of(N2,Nucleus,T3).  [assumption].
+kept:      33 instance_of(N3,Nucleus,T2).  [assumption].
+kept:      34 instance_of(N3,Nucleus,T3).  [assumption].
+kept:      35 instance_of(C1,Cell,T1).  [assumption].
+kept:      36 instance_of(C1,Cell,T2).  [assumption].
+kept:      37 instance_of(C2,Cell,T3).  [assumption].
+kept:      38 instance_of(C3,Cell,T3).  [assumption].
+kept:      39 -instance_of(x,y,z) | type(x,y).  [clausify(2)].
+kept:      40 -part_of_t(f1(x,y),f2(x,y)) | -instance_of(z,pc,u) | instance_of(f3(x,y),x,t).  [clausify(5)].
+kept:      41 -part_of_t(f1(x,y),f2(x,y)) | -instance_of(z,pc,u) | part_of(p,y,t).  [clausify(5)].
+kept:      42 -type(x,Nucleus) | type(f4(x,y),Cell).  [deny(6)].
+kept:      43 part_of(x,f4(x,y),z) | -instance_of(x,u,z) | -type(x,Nucleus).  [resolve(9,a,10,b)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+11 part_of(N1,C1,T1).  [assumption].
+12 part_of(N2,C1,T2).  [assumption].
+13 part_of(N3,C1,T2).  [assumption].
+14 part_of(N2,C2,T3).  [assumption].
+15 part_of(N3,C3,T3).  [assumption].
+16 -part_of(N2,C1,T3).  [assumption].
+17 -part_of(N2,C2,T1).  [assumption].
+18 -part_of(N2,C2,T2).  [assumption].
+19 -part_of(N2,C3,T1).  [assumption].
+20 -part_of(N2,C3,T2).  [assumption].
+21 -part_of(N2,C3,T3).  [assumption].
+23 -part_of(N2,x,y) | C1 = x | C2 = x.  [copy(22),flip(b),flip(c)].
+25 -part_of(N2,x,y) | C1 = x | T3 = y.  [copy(24),flip(b),flip(c)].
+27 -part_of(N2,x,y) | T1 = y | T2 = y | C2 = x.  [copy(26),flip(b),flip(c),flip(d)].
+29 -part_of(N2,x,y) | T1 = y | T2 = y | T3 = y.  [copy(28),flip(b),flip(c),flip(d)].
+30 instance_of(N1,Nucleus,T1).  [assumption].
+31 instance_of(N2,Nucleus,T2).  [assumption].
+32 instance_of(N2,Nucleus,T3).  [assumption].
+33 instance_of(N3,Nucleus,T2).  [assumption].
+34 instance_of(N3,Nucleus,T3).  [assumption].
+35 instance_of(C1,Cell,T1).  [assumption].
+36 instance_of(C1,Cell,T2).  [assumption].
+37 instance_of(C2,Cell,T3).  [assumption].
+38 instance_of(C3,Cell,T3).  [assumption].
+39 -instance_of(x,y,z) | type(x,y).  [clausify(2)].
+40 -part_of_t(f1(x,y),f2(x,y)) | -instance_of(z,pc,u) | instance_of(f3(x,y),x,t).  [clausify(5)].
+41 -part_of_t(f1(x,y),f2(x,y)) | -instance_of(z,pc,u) | part_of(p,y,t).  [clausify(5)].
+42 -type(x,Nucleus) | type(f4(x,y),Cell).  [deny(6)].
+43 part_of(x,f4(x,y),z) | -instance_of(x,u,z) | -type(x,Nucleus).  [resolve(9,a,10,b)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=4): 11 part_of(N1,C1,T1).  [assumption].
+
+given #2 (I,wt=4): 12 part_of(N2,C1,T2).  [assumption].
+
+given #3 (I,wt=4): 13 part_of(N3,C1,T2).  [assumption].
+
+given #4 (I,wt=4): 14 part_of(N2,C2,T3).  [assumption].
+
+given #5 (I,wt=4): 15 part_of(N3,C3,T3).  [assumption].
+
+given #6 (I,wt=4): 16 -part_of(N2,C1,T3).  [assumption].
+
+given #7 (I,wt=4): 17 -part_of(N2,C2,T1).  [assumption].
+
+given #8 (I,wt=4): 18 -part_of(N2,C2,T2).  [assumption].
+
+given #9 (I,wt=4): 19 -part_of(N2,C3,T1).  [assumption].
+
+given #10 (I,wt=4): 20 -part_of(N2,C3,T2).  [assumption].
+
+given #11 (I,wt=4): 21 -part_of(N2,C3,T3).  [assumption].
+
+given #12 (I,wt=10): 23 -part_of(N2,x,y) | C1 = x | C2 = x.  [copy(22),flip(b),flip(c)].
+
+given #13 (I,wt=10): 25 -part_of(N2,x,y) | C1 = x | T3 = y.  [copy(24),flip(b),flip(c)].
+
+given #14 (I,wt=13): 27 -part_of(N2,x,y) | T1 = y | T2 = y | C2 = x.  [copy(26),flip(b),flip(c),flip(d)].
+
+given #15 (I,wt=13): 29 -part_of(N2,x,y) | T1 = y | T2 = y | T3 = y.  [copy(28),flip(b),flip(c),flip(d)].
+
+given #16 (I,wt=4): 30 instance_of(N1,Nucleus,T1).  [assumption].
+
+given #17 (I,wt=4): 31 instance_of(N2,Nucleus,T2).  [assumption].
+
+given #18 (I,wt=4): 32 instance_of(N2,Nucleus,T3).  [assumption].
+
+given #19 (I,wt=4): 33 instance_of(N3,Nucleus,T2).  [assumption].
+
+given #20 (I,wt=4): 34 instance_of(N3,Nucleus,T3).  [assumption].
+
+given #21 (I,wt=4): 35 instance_of(C1,Cell,T1).  [assumption].
+
+given #22 (I,wt=4): 36 instance_of(C1,Cell,T2).  [assumption].
+
+given #23 (I,wt=4): 37 instance_of(C2,Cell,T3).  [assumption].
+
+given #24 (I,wt=4): 38 instance_of(C3,Cell,T3).  [assumption].
+
+given #25 (I,wt=7): 39 -instance_of(x,y,z) | type(x,y).  [clausify(2)].
+
+given #26 (I,wt=17): 40 -part_of_t(f1(x,y),f2(x,y)) | -instance_of(z,pc,u) | instance_of(f3(x,y),x,t).  [clausify(5)].
+
+given #27 (I,wt=15): 41 -part_of_t(f1(x,y),f2(x,y)) | -instance_of(z,pc,u) | part_of(p,y,t).  [clausify(5)].
+
+given #28 (I,wt=8): 42 -type(x,Nucleus) | type(f4(x,y),Cell).  [deny(6)].
+
+given #29 (I,wt=13): 43 part_of(x,f4(x,y),z) | -instance_of(x,u,z) | -type(x,Nucleus).  [resolve(9,a,10,b)].
+
+given #30 (A,wt=3): 44 type(C3,Cell).  [resolve(39,a,38,a)].
+
+given #31 (T,wt=3): 45 type(C2,Cell).  [resolve(39,a,37,a)].
+
+given #32 (T,wt=3): 46 type(C1,Cell).  [resolve(39,a,36,a)].
+
+given #33 (T,wt=3): 47 type(N3,Nucleus).  [resolve(39,a,34,a)].
+
+given #34 (T,wt=3): 48 type(N2,Nucleus).  [resolve(39,a,32,a)].
+
+given #35 (A,wt=3): 49 type(N1,Nucleus).  [resolve(39,a,30,a)].
+
+given #36 (T,wt=5): 59 type(f4(N3,x),Cell).  [resolve(47,a,42,a)].
+
+given #37 (T,wt=5): 60 type(f4(N2,x),Cell).  [resolve(48,a,42,a)].
+
+given #38 (T,wt=5): 61 type(f4(N1,x),Cell).  [resolve(49,a,42,a)].
+
+given #39 (T,wt=6): 54 part_of(N3,f4(N3,x),T3).  [resolve(43,b,34,a),unit_del(b,47)].
+
+given #40 (A,wt=9): 50 part_of(C3,f4(C3,x),T3) | -type(C3,Nucleus).  [resolve(43,b,38,a)].
+
+given #41 (T,wt=6): 55 part_of(N3,f4(N3,x),T2).  [resolve(43,b,33,a),unit_del(b,47)].
+
+given #42 (T,wt=6): 56 part_of(N2,f4(N2,x),T3).  [resolve(43,b,32,a),unit_del(b,48)].
+
+given #43 (T,wt=6): 57 part_of(N2,f4(N2,x),T2).  [resolve(43,b,31,a),unit_del(b,48)].
+
+given #44 (T,wt=6): 58 part_of(N1,f4(N1,x),T1).  [resolve(43,b,30,a),unit_del(b,49)].
+
+given #45 (A,wt=9): 51 part_of(C2,f4(C2,x),T3) | -type(C2,Nucleus).  [resolve(43,b,37,a)].
+
+given #46 (T,wt=8): 64 f4(N2,x) = C1 | T2 = T3.  [resolve(57,a,25,a),flip(a),flip(b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 24.
+% Level of proof is 7.
+% Maximum clause weight is 13.000.
+% Given clauses 46.
+
+1 (all c all t (part_of(N2,c,t) -> c = C1 & t = T1 | c = C1 & t = T2 | c = C2 & t = T3)) # label(non_clause).  [assumption].
+2 (all i all c all t (instance_of(i,c,t) -> type(i,c))) # label(non_clause).  [assumption].
+3 (all i all c all t (instance_of(i,c,t) -> exists_at(i,t))) # label(non_clause).  [assumption].
+4 (all p all w (part_of_at_all_times(p,w) -> (all t (exists_at(p,t) -> part_of(p,w,t))))) # label(non_clause).  [assumption].
+6 -(all p all t (type(p,Nucleus) -> (exists w (type(w,Cell) & part_of_at_all_times(p,w))))) # label(non_clause) # label(goal).  [goal].
+7 -part_of_at_all_times(x,y) | -exists_at(x,z) | part_of(x,y,z).  [clausify(4)].
+8 -instance_of(x,y,z) | exists_at(x,z).  [clausify(3)].
+9 -part_of_at_all_times(x,y) | part_of(x,y,z) | -instance_of(x,u,z).  [resolve(7,b,8,b)].
+10 -type(x,Nucleus) | part_of_at_all_times(x,f4(x,y)).  [deny(6)].
+14 part_of(N2,C2,T3).  [assumption].
+16 -part_of(N2,C1,T3).  [assumption].
+18 -part_of(N2,C2,T2).  [assumption].
+24 -part_of(N2,x,y) | x = C1 | y = T3.  [clausify(1)].
+25 -part_of(N2,x,y) | C1 = x | T3 = y.  [copy(24),flip(b),flip(c)].
+31 instance_of(N2,Nucleus,T2).  [assumption].
+32 instance_of(N2,Nucleus,T3).  [assumption].
+39 -instance_of(x,y,z) | type(x,y).  [clausify(2)].
+43 part_of(x,f4(x,y),z) | -instance_of(x,u,z) | -type(x,Nucleus).  [resolve(9,a,10,b)].
+48 type(N2,Nucleus).  [resolve(39,a,32,a)].
+56 part_of(N2,f4(N2,x),T3).  [resolve(43,b,32,a),unit_del(b,48)].
+57 part_of(N2,f4(N2,x),T2).  [resolve(43,b,31,a),unit_del(b,48)].
+64 f4(N2,x) = C1 | T2 = T3.  [resolve(57,a,25,a),flip(a),flip(b)].
+65 T2 = T3.  [para(64(a,1),56(a,2)),unit_del(b,16)].
+69 $F.  [back_rewrite(18),rewrite([65(3)]),unit_del(a,14)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=46. Generated=80. Kept=54. proofs=1.
+Usable=36. Sos=2. Demods=1. Limbo=4, Disabled=45. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=25. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=1 (0 lex), Back_demodulated=10. Back_unit_deleted=0.
+Demod_attempts=84. Demod_rewrites=14.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=2. Nonunit_bsub_feature_tests=19.
+Megabytes=0.15.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 7665 exit (max_proofs) Mon Aug 20 09:36:11 2012
