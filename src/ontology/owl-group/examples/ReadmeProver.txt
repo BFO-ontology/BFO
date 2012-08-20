@@ -28,6 +28,8 @@ Hhere "theorem proved" means that prover9 found a proof supporting the formula s
 
 Note the negation in front of the goal: this means prover found a case in which there exists a Nucleus which is *not* part of a Cell at all times.
 
+The output file is available at http://code.google.com/p/bfo/source/browse/trunk/src/ontology/owl-group/examples/nuclei-cell-division.out.
+
 
 
 
