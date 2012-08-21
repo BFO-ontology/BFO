@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/example/generic-part.owl#"
+     xml:base="http://purl.obolibrary.org/obo/example/generic-part.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/example/generic-part.owl">
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+    </owl:Ontology>
+    
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0000001 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000001">
+        <rdfs:label xml:lang="en">nucleus</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000002"/>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0000002 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000002">
+        <rdfs:label xml:lang="en">cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000003"/>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0000003 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000003">
+        <rdfs:label xml:lang="en">tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0000005 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000005">
+      <rdfs:label xml:lang="en">part of a cell at some time</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000002"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0000006 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000006">
+      <rdfs:label xml:lang="en">part of a tissue at some time</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000003"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0000004 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000004">
+      <rdfs:label xml:lang="en">probe instance of nucleus</rdfs:label>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000001"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000003"/>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+        <owl:allValuesFrom>
+            <owl:Class>
+                <owl:complementOf rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000002"/>
+            </owl:Class>
+        </owl:allValuesFrom>
+    </owl:Restriction>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000001"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000002"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000003"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
