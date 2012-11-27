@@ -1,0 +1,1361 @@
+\documentclass{article}
+
+\usepackage[tbtags]{amsmath}
+
+\usepackage{authblk}
+\usepackage{bookmark}
+
+\newcommand{\DF}{\ensuremath{=_{df}}}
+
+ \begin{document}
+
+\title{BFO-FOL: A First-Order Logic Formalization of Basic Formal Ontology 2.0}
+
+ \author[A]{Thomas Bittner}
+ \author[B]{Mathias Brochhausen}
+ \author[A]{Randall R. Dipert}
+ \author[C]{Pierre Grenon}
+ \author[B]{Bill Hogan}
+ \author[D]{Leonard Jacuzzo}
+ \author[E]{Chris Mungall}
+ \author[F,G]{Fabian Neuhaus}
+ \author[A]{Mark Ressler}
+ \author[A]{Alan Ruttenberg}
+ \affil[A]{The University at Buffalo, Buffalo, NY, USA}
+ \affil[B]{University of Arkansas for Medical Sciences, Little Rock, AR, USA}
+ \affil[C]{European Bioinformatics Institute, Hinxton, UK}
+ \affil[D]{CTG, Buffalo, NY, USA}
+ \affil[E]{Lawrence Berkeley National Laboratory, Berkeley, CA, USA}
+ \affil[F]{National Institute of Standards and Technology, Gaithersburg, MD, USA}
+ \affil[G]{University of Maryland Baltimore County, MD, USA}
+ 
+ \date{July 20, 2012}
+
+\maketitle
+
+\begin{abstract}
+This article presents a first-order logic formalization of the revised 2.0 version of Basic Formal Ontology (BFO).
+\end{abstract}
+
+
+
+BFO-FOL is a formal system specifying the axioms and definitions for expressing Basic Formal Ontology version 2.0 in classical first-order formal logic.
+
+Basic Formal Ontology (BFO) is an upper level ontology initially developed by Barry Smith and Pierre Grenon.  The BFO specification is currently undergoing a major revision to version 2.0, which will be supported by a number of formal implementations, including implementations using OWL and CLIF, among others.  The first-order logic formalization in BFO-FOL will serve as a foundation for all such implementations.
+
+The BFO 2.0 specification is currently under development, so the formalization presented here represents the state of the specification at the time of writing.  The bracketed references of the form [\emph{nnn-nnn}] are to the correspondingly identified definitions, elucidations, axioms, and theorems in the BFO 2.0 specification document \cite{BFO2}.
+
+
+\section{Formalization}
+
+BFO-FOL is an extension of classical first-order formal logic with identity. It can be represented using any standard axiomatization of the logical calculus.  The formalization presented here uses the following symbols for negation, conjunction, disjunction, material implication, biconditional implication, universal and particular quantification, respectively: ${\neg,}\ {\wedge,}\ {\vee,}\ {\supset,}\ {\equiv,}\ {\forall,}\ {\exists}$.
+
+
+
+\section{Predicates}
+
+The predicates of BFO-FOL are divided into categorial predicates, which are intended to represent categories or universals, and relational predicates, which are intended to represent relations that hold between individuals within those categories.  
+
+According to the meta-theory of BFO, categorial predicates are interpreted as expressing the instantiation of the universal indicated by the categorial predicate name.  For example, $Object(a)$ signifies the instantiation of the universal $Object$ by the particular $a$.
+
+Where feasible, predicates have been defined in terms of more primitive predicates.  While it is preferable to minimize the number of primitive predicates, some predicates that would seem to be definable needed to be taken as primitive.  One reason is that the likely definitions for these predicates would rely on more primitive predicates that are not asserted as categories or relations in BFO.  For example, given the primitive category SpatialRegion, it would seem that the category OneDimensionalSpatialRegion should be definable in terms of that primitive category.  However, such a definition would need to rely on dimensions, and Dimension is not asserted as a category of BFO.
+
+
+
+\subsection{Primitive Categorial Predicates}
+
+The following categorial predicates are taken as primitive:
+
+\begin{description}
+
+\item[Entity(a)] --- Intended interpretation: ``$a$ is an entity''. [001-001]
+
+\item[Continuant(a)] --- ``$a$ is a continuant''. [008-002]
+
+\item[MaterialEntity(a)] --- ``$a$ is a material entity''. [019-002]
+
+\item[Object(a)] --- ``$a$ is an object''. [024-001]
+
+\item[ObjectAggregate(a)] --- ``$a$ is an object aggregate''. [025-004]
+
+\item[FiatObjectPart(a)] --- ``$a$ is a fiat object part''. [027-004]
+
+\item[Site(a)] --- ``$a$ is a site''. [034-002]
+
+\item[SpatialRegion(a)] -- ``$a$ is a spatial region''. [035-001]
+
+\item[ZeroDimensionalSpatialRegion(a)] -- ``$a$ is a zero-dimensional spatial region''. [037-001]
+
+\item[OneDimensionalSpatialRegion(a)] -- ``$a$ is a one-dimensional spatial region''. [038-001]
+
+\item[TwoDimensionalSpatialRegion(a)] -- ``$a$ is a two-dimensional spatial region''. [039-001]
+
+\item[ThreeDimensionalSpatialRegion(a)] -- ``$a$ is a three-dimensional spatial region''. [040-001]
+
+\item[Quality(a)] --- ``$a$ is a quality''. [055-001]
+
+\item[RealizableEntity(a)] --- ``$a$ is a realizable entity''. [058-002]
+
+\item[Role(a)] --- ``$a$ is a role''. [061-001]
+
+\item[Disposition(a)] --- ``$a$ is a disposition''. [062-002]
+
+\item[Function(a)] --- ``$a$ is a function''. [064-001]
+
+\item[Occurrent(a)] --- ``$a$ is an occurrent''. [077-002]
+
+\item[History(a)] --- ``$a$ is a history''.  [138-001]
+
+\item[SpatioTemporalRegion(a)] --- ``$a$ is a spatio-temporal region''. [095-001]
+
+\item[TemporalRegion(a)] --- ``$a$ is a temporal region''. [100-001]
+
+\item[ZeroDimensionalTemporalRegion(a)] --- ``$a$ is a zero-dimensional temporal region''. [102-001]
+
+\item[OneDimensionalTemporalRegion(a)] --- ``$a$ is a one-dimensional temporal region''. [103-001]
+
+\end{description}
+
+
+
+% NOTE: CLIF does not seem to have specific support for defined predicates, so
+%       for the defined predicates below, '\equiv' should be replaced by the 
+%       defined '\DF' command for the final LaTeX compilation, but only in the
+%       defined predicates sections. Further, the letter arguments should be
+%       replaced by their Greek equivalents, e.g. 'a' replaced by '$\alpha$'
+%       to make clear that these arguments are used in definitional schemata, 
+%       not as individual names in the system.
+
+
+\subsection{Defined Categorial Predicates}
+
+The following categorial predicates are defined as indicated:
+
+\begin{description}
+
+\item[IndependentContinuant(a)] --- ``$a$ is an independent continuant''.  [017-002]
+
+\begin{equation}
+\begin{split}
+IndependentContinuant(a) \DF \\
+(Continuant(a) \wedge {\neg}{\exists}(b, t)specificallyDependsOnAt(a, b, t))
+\end{split}
+\end{equation}
+
+\item[ImmaterialEntity(a)] --- ``$a$ is an immaterial entity''. [028-001]
+
+\begin{equation}
+\begin{split}
+ImmaterialEntity(a) \DF \\
+(IndependentContinuant(a) \wedge {\neg}{\exists}(b, t)(MaterialEntity(b) \wedge \\
+continuantPartOfAt(b, a, t)))
+\end{split}
+\end{equation}
+
+\item[ContinuantFiatBoundary(a)] --- ``$a$ is a continuant fiat boundary''. [029-001]
+
+\begin{equation}
+\begin{split}
+ContinuantFiatBoundary(a) \DF (ImmaterialEntity(a) \wedge \\
+{\exists}(b)((ZeroDimensionalSpatialRegion(b) \vee \\
+OneDimensionalSpatialRegion(b) \vee \\
+TwoDimensionalSpatialRegion(b)) \wedge \\
+{\forall}(t)locatedInAt(a, b, t)) \wedge \\
+{\neg}{\exists}(c, t)(SpatialRegion(c) \wedge continuantPartOfAt(c, a, t)))
+\end{split}
+\end{equation}
+
+\item[ZeroDimensionalContinuantFiatBoundary(a)] --- ``$a$ is a zero-dimensional continuant fiat boundary''. [031-001]
+
+\begin{equation}
+\begin{split}
+ZeroDimensionalContinuantFiatBoundary(a) \DF \\
+(ContinuantFiatBoundary(a) \wedge \\
+{\exists}(b)(ZeroDimensionalSpatialRegion(b) \wedge \\
+{\forall}(t)locatedInAt(a, b, t)))
+\end{split}
+\end{equation}
+
+\item[OneDimensionalContinuantFiatBoundary(a)] --- ``$a$ is a one-dimensional continuant fiat boundary''. [032-001]
+
+\begin{equation}
+\begin{split}
+OneDimensionalContinuantFiatBoundary(a) \DF \\
+(ContinuantFiatBoundary(a) \wedge \\
+{\exists}(b)(OneDimensionalSpatialRegion(b) \wedge \\
+{\forall}(t)locatedInAt(a, b, t)))
+\end{split}
+\end{equation}
+
+\item[TwoDimensionalContinuantFiatBoundary(a)] --- ``$a$ is a two-dimensional continuant fiat boundary''. [033-001]
+
+\begin{equation}
+\begin{split}
+TwoDimensionalContinuantFiatBoundary(a) \DF \\
+(ContinuantFiatBoundary(a) \wedge \\
+{\exists}(b)(TwoDimensionalSpatialRegion(b) \wedge \\
+{\forall}(t)locatedInAt(a, b, t)))
+\end{split}
+\end{equation}
+
+\item[SpecificallyDependentContinuant(a)] --- ``$a$ is a specifically dependent continuant''. [050-003]
+
+\begin{equation}
+\begin{split}
+SpecificallyDependentContinuant(a) \DF (Continuant(a) \wedge \\
+{\forall}(t)(existsAt(a, t) \supset {\exists}(b)(IndependentContinuant(b) \wedge \\
+{\neg}SpatialRegion(b) \wedge specificallyDependsOnAt(a, b, t))))
+\end{split}
+\end{equation}
+
+\item[RelationalSpecificallyDependentContinuant(a)] --- ``$a$ is a relational specifically dependent continuant''. [131-004]
+
+\begin{equation}
+\begin{split}
+RelationalSpecificallyDependentContinuant(a) \DF \\
+(SpecificallyDependentContinuant(a) \wedge \\
+{\forall}(t){\exists}(b, c)({\neg}SpatialRegion(b) \wedge {\neg}SpatialRegion(c) \wedge {\neg}(b = c) \wedge \\
+{\neg}{\exists}(d)(continuantPartOfAt(d, b, t) \wedge continuantPartOfAt(d, c, t)) \\
+\wedge specificallyDependsOnAt(a, b, t) \wedge \\
+specificallyDependsOnAt(a, c, t)))
+\end{split}
+\end{equation}
+
+\item[RelationalQuality(a)] --- ``$a$ is a relational quality''. [057-001]
+
+\begin{equation}
+\begin{split}
+RelationalQuality(a) \DF {\exists}(b, c, t)(IndependentContinuant(b) \wedge \\
+IndependentContinuant(c) \wedge \\
+qualityOfAt(a, b, t) \wedge qualityOfAt(a, c, t))
+\end{split}
+\end{equation}
+
+\item[GenericallyDependentContinuant(a)] --- ``$a$ is a generically dependent continuant''. [074-001]
+
+\begin{equation}
+\begin{split}
+GenericallyDependentContinuant(a) \DF \\
+(Continuant(a) \wedge {\exists}(b, t)genericallyDependsOnAt(a, b, t))
+\end{split}
+\end{equation}
+
+\item[Process(a)] --- ``$a$ is a process''. [083-003]
+
+\begin{equation}
+\begin{split}
+Process(a) \DF (Occurrent(a) \wedge \\
+{\exists}(b)properTemporalPartOf(b, a) \wedge \\
+{\exists}(c, t)(MaterialEntity(c) \wedge specificallyDependsOnAt(a, c, t)))
+\end{split}
+\end{equation}
+
+\item[ProcessBoundary(a)] --- ``$a$ is a process boundary''. [084-001]
+
+\begin{equation}
+\begin{split}
+ProcessBoundary(a) \DF {\exists}(p)(Process(p) \wedge \\
+temporalPartOf(a, p) \wedge {\neg}{\exists}(b)properTemporalPartOf(b, a))
+\end{split}
+\end{equation}
+
+\item[ProcessProfile(a)] --- ``$a$ is a process profile''. [093-002]
+
+\begin{equation}
+\begin{split}
+ProcessProfile(a) \DF \\
+{\exists}(b)(Process(b) \wedge processProfileOf(a, b))
+\end{split}
+\end{equation}
+
+\end{description}
+
+
+
+
+
+
+
+
+\subsection{Primitive Relational Predicates}
+
+The following relational predicates are taken as primitive:
+
+\begin{description}
+
+\item[existsAt(a, t)] --- ``$a$ exists at temporal region $t$''. [118-002]
+
+\item[continuantPartOfAt(a, b, t)] --- ``$a$ is a part of $b$ at temporal region $t$'', where $a$ and $b$ are continuants. [002-001]
+
+\item[occurrentPartOf(a, b)] --- ``$a$ is a part of $b$'', where $a$ and $b$ are occurrents. [003-002]
+
+\item[specificallyDependsOnAt(a, b, t)] --- ``$a$ specifically depends on $b$ at temporal region $t$''. [012-002]
+
+\item[memberPartOfAt(a, b, t)] --- ``$a$ is a member of $b$ at temporal region $t$''. [026-004]
+
+\item[occupiesSpatialRegionAt(a, r, t)] --- ``$a$ occupies spatial region $r$ at temporal region $t$''. [041-002]
+
+\item[realizesAt(a, b, t)] --- ``$a$ realizes $b$ at temporal region $t$''. [059-003]
+
+\item[hasMaterialBasisAt(a, b, t)] --- ``$a$ has the material basis $b$ at temporal region $t$''. [071-002]
+
+\item[genericallyDependsOnAt(a, b, t)] --- ``$a$ generically depends on $b$ at temporal region $t$''. [072-002]
+
+\item[concretizesAt(a, b, t)] --- ``$a$ concretizes $b$ at temporal region $t$'' where $a$ is a specifically dependent continuant and $b$ is a generically dependent continuant. [075-002]
+
+\item[temporallyProjectsOnto(a, b)] --- ``$a$ projects onto $b$'', where $a$ is a spatiotemporal region, and $b$ is a temporal region. [080-003]
+
+\item[spatiallyProjectsOntoAt(a, b, t)] --- ``$a$ projects onto $b$ at temporal region $t$'', where $a$ is a spatiotemporal region and $b$ is a spatial region. [081-003]
+
+\item[occupiesSpatioTemporalRegion(a, r)] --- ``$a$ occupies spatio-temporal region $r$'', where $a$ is an occurrent, and $r$ is a spatiotemporal region. [082-003]
+
+\item[occupiesTemporalRegion(a, t)] --- ``$a$ occupies temporal region $t$'', where $a$ is an occurrent, and $t$ is a temporal region. [132-001]
+
+\item[hasParticipantAt(a, b, t)] --- ``$a$ has participant $b$ at temporal region $t$''. [086-003]
+
+\item[processProfileOf(a, b)] --- ``$a$ is a process profile of $b$''. [094-005]
+
+\item[historyOf(a, b)] --- ``$a$ is the history of $b$'', where $a$ is a history and $b$ is a material entity. [XXX-001]
+
+\end{description}
+
+
+
+
+
+
+\subsection{Defined Relational Predicates}
+
+The following relational predicates are defined as indicated:
+
+\begin{description}
+
+\item[properContinuantPartOfAt(a, b, t)] --- ``$a$ is a proper part of $b$ at temporal region $t$'', where $a$ and $b$ are continuants. [004-001]
+
+\begin{equation}
+\begin{split}
+properContinuantPartOfAt(a, b, t) \DF \\
+(continuantPartOfAt(a, b, t) \wedge {\neg}(a = b))
+\end{split}
+\end{equation}
+
+\item[properOccurrentPartOf(a, b)] --- ``$a$ is a proper part of $b$'', where $a$ and $b$ are occurrents. [005-001]
+
+\begin{equation}
+\begin{split}
+properOccurrentPartOf(a, b) \DF \\
+(occurrentPartOf(a, b) \wedge {\neg}(a = b))
+\end{split}
+\end{equation}
+
+\item[hasContinuantPartAt(a, b, t)] -- ``$a$ has $b$ as a part at temporal region $t$'', where $a$ and $b$ are continuants. [006-001]
+
+\begin{equation}
+\begin{split}
+hasContinuantPartAt(a, b, t) \DF continuantPartOfAt(b, a, t)
+\end{split}
+\end{equation}
+
+\item[hasProperContinuantPartAt(a, b, t)] --- ``$a$ has $b$ as a proper part at temporal region $t$'', where $a$ and $b$ are continuants. [XXX-001]
+
+\begin{equation}
+\begin{split}
+hasProperContinuantPartAt(a, b, t) \DF \\
+properContinuantPartOfAt(b, a, t)
+\end{split}
+\end{equation}
+
+\item[hasOccurrentPart(a, b)] --- ``$a$ has $b$ as a part'', where $a$ and $b$ are occurrents. [007-001]
+
+\begin{equation}
+\begin{split}
+hasOccurrentPart(a, b) \DF occurrentPartOf(b, a)
+\end{split}
+\end{equation}
+
+\item[hasProperOccurrentPart(a, b)] --- ``$a$ as $b$ as a proper part'', where $a$ and $b$ are occurrents. [XXX-001]
+
+\begin{equation}
+\begin{split}
+hasProperOccurrentPart(a, b) \DF properOccurrentPartOf(b, a)
+\end{split}
+\end{equation}
+
+\item[locatedInAt(a, b, t)] --- ``$a$ is located in $b$ at temporal region $t$''. [045-001]
+
+\begin{equation}
+\begin{split}
+locatedInAt(a, b, t) \DF \\
+(IndependentContinuant(a) \wedge IndependentContinuant(b) \wedge \\
+{\exists}(r_1, r_2)(occupiesSpatialRegionAt(a, r_1, t) \wedge \\
+occupiesSpatialRegionAt(b, r_2, t) \wedge \\
+continuantPartOfAt(r_1, r_2, t)))
+\end{split}
+\end{equation}
+
+\item[inheresInAt(a, b, t)] --- ``$a$ inheres in $b$ at temporal region $t$''. [051-002]
+
+\begin{equation}
+\begin{split}
+inheresInAt(a, b, t) \DF \\
+(DependentContinuant(a) \wedge IndependentContinuant(b) \wedge \\
+{\neg}SpatialRegion(b) \wedge specificallyDependsOnAt(a, b, t))
+\end{split}
+\end{equation}
+
+\item[bearerOfAt(a, b, t)] --- ``$a$ is the bearer of $b$ at temporal region $t$''. [053-004]
+
+\begin{equation}
+\begin{split}
+bearerOfAt(a, b, t) \DF (specificallyDependsOnAt(b, a, t) \wedge \\
+IndependentContinuant(a) \wedge {\neg}SpatialRegion(a) \wedge existsAt(b, t))
+\end{split}
+\end{equation}
+
+\item[qualityOfAt(a, b, t)] --- ``$a$ is a quality of $b$ at temporal region $t$''. [056-002]
+
+\begin{equation}
+\begin{split}
+qualityOfAt(a, b, t) \DF \\
+(Quality(a) \wedge IndependentContinuant(b) \wedge \\
+{\neg}SpatialRegion(b) \wedge specificallyDependsOnAt(a, b, t))
+\end{split}
+\end{equation}
+
+\item[roleOfAt(a, b, t)] --- ``$a$ is a role of $b$ at temporal region $t$''. [065-001]
+
+\begin{equation}
+\begin{split}
+roleOfAt(a, b, t) \DF (Role(a) \wedge inheresInAt(a, b, t))
+\end{split}
+\end{equation}
+
+\item[dispositionOf(a, b, t)] --- ``$a$ is a disposition of $b$ at temporal region $t$''. [066-001]
+
+\begin{equation}
+\begin{split}
+dispositionOf(a, b, t) \DF (Disposition(a) \wedge inheresInAt(a, b, t))
+\end{split}
+\end{equation}
+
+\item[functionOf(a, b, t)] --- ``$a$ is a function of $b$ at temporal region $t$''. [067-001]
+
+\begin{equation}
+\begin{split}
+functionOf(a, b, t) \DF (Function(a) \wedge inheresInAt(a, b, t))
+\end{split}
+\end{equation}
+
+\item[hasRoleAt(a, b, t)] --- ``$a$ has the role $b$ at temporal region $t$''. [068-001]
+
+\begin{equation}
+\begin{split}
+hasRoleAt(a, b, t) \DF roleOfAt(b, a, t)
+\end{split}
+\end{equation}
+
+\item[hasDispositionAt(a, b, t)] --- ``$a$ has the disposition $b$ at temporal region $t$''. [069-001]
+
+\begin{equation}
+\begin{split}
+hasDispositionAt(a, b, t) \DF dispositionOf(b, a, t)
+\end{split}
+\end{equation}
+
+\item[hasFunctionAt(a, b, t)] --- ``$a$ has the function $b$ at temporal region $t$''. [070-001]
+
+\begin{equation}
+\begin{split}
+hasFunctionAt(a, b, t) \DF functionOf(b, a, t)
+\end{split}
+\end{equation}
+
+\item[temporalPartOf(a, b)] --- ``$a$ is a temporal part of $b$'', where $a$ and $b$ are occurrents. [078-003]
+
+\begin{equation}
+\begin{split}
+temporalPartOf(a, b) \DF (occurrentPartOf(a, b) \wedge \\
+{\exists}(t)(TemporalRegion(t) \wedge occupiesSpatioTemporalRegion(a, t)) \wedge \\
+{\forall}(c, t_1)((Occurrent(c) \wedge occupiesSpatioTemporalRegion(c, t_1) \wedge \\
+occurrentPartOf(t_1, r)) \supset \\
+(occurrentPartOf(c, a) \equiv occurrentPartOf(c, b))))
+\end{split}
+\end{equation}
+
+\item[properTemporalPartOf(a, b)] --- ``$a$ is a proper temporal part of $b$''. [116-001]
+
+\begin{equation}
+\begin{split}
+properTemporalPartOf(a, b) \DF \\
+(temporalPartOf(a, b) \wedge {\neg}(a = b))
+\end{split}
+\end{equation}
+
+\item[occursIn(a, b] --- ``$a$ occurs in $b$'', where $a$ is a process and $b$ is a material or immaterial entity. [XXX-001]
+
+\begin{equation}
+\begin{split}
+occursIn(a, b) \DF (Process(a) \wedge \\
+(MaterialEntity(b) \vee ImmaterialEntity(b)) \wedge \\
+{\exists}(r)(SpatioTemporalRegion(r) \wedge \\
+occupiesSpatioTemporalRegion(a, r)) \wedge \\
+{\forall}(t)(TemporalRegion(t) \supset ((existsAt(a, t) \supset existsAt(b, t)) \wedge \\
+{\exists}(s, s_1)(SpatialRegion(s) \wedge SpatialRegion(s_1) \wedge \\
+spatiallyProjectsOntoAt(a, s, t) \wedge \\
+occupiesSpatialRegionAt(b, s_1, t) \wedge \\
+properContinuantPartOfAt(s, s_1, t)))))
+\end{split}
+\end{equation}
+
+
+\item[hasHistory(a, b)] --- ``$a$ has $b$ as its history''. [XXX-001]
+
+\begin{equation}
+\begin{split}
+hasHistory(a, b) \DF historyOf(b, a)
+\end{split}
+\end{equation}
+
+\end{description}
+
+
+
+
+
+\section{Axioms}
+
+The following formulas are asserted as axioms in the system:
+
+\begin{flushright}
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((continuantPartOfAt(x, y, t) \wedge \\
+continuantPartOfAt(y, x, t)) \supset (x = y))
+\end{split}
+\end{equation}
+
+[120-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, z, t)((continuantPartOfAt(x, y, t) \wedge \\
+continuantPartOfAt(y, z, t)) \supset continuantPartOfAt(x, z, t))
+\end{split}
+\end{equation}
+
+[110-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((continuantPartOfAt(x, y, t) \wedge {\neg}(x = y)) \supset \\
+{\exists}(z)(continuantPartOfAt(z, y, t) \wedge \\
+{\neg}{\exists}(w)(continuantPartOfAt(w, x, t) \wedge continuantPartOfAt(w, z, t))))
+\end{split}
+\end{equation}
+
+[121-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)({\exists}(v)(continuantPartOfAt(v, x, t) \wedge \\
+continuantPartOfAt(v, y, t)) \supset \\
+{\exists}(z){\forall}(u, w)((continuantPartOfAt(w, u, t) \equiv \\
+(continuantPartOfAt(w, x, t) \wedge continuantPartOfAt(w, y, t))) \equiv \\
+(z = u)))
+\end{split}
+\end{equation}
+
+[122-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((occurrentPartOf(x, y, t) \wedge occurrentPartOf(y, x, t)) \supset \\
+(x = y))
+\end{split}
+\end{equation}
+
+[123-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, z)((occurrentPartOf(x, y) \wedge occurrentPartOf(y, z)) \supset \\
+occurrentPartOf(x, z))
+\end{split}
+\end{equation}
+
+[112-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((occurrentPartOf(x, y, t) \wedge {\neg}(x = y)) \supset \\
+{\exists}(z)(occurrentPartOf(z, y, t) \wedge \\
+{\neg}{\exists}(w)(occurrentPartOf(w, x, t) \wedge occurrentPartOf(w, z, t))))
+\end{split}
+\end{equation}
+
+[124-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)({\exists}(v)(occurrentPartOf(v, x, t) \wedge occurrentPartOf(v, y, t)) \supset \\
+{\exists}(z){\forall}(u, w)((occurrentPartOf(w, u, t) \equiv \\
+(occurrentPartOf(w, x, t) \wedge occurrentPartOf(w, y, t))) \equiv \\
+(z = u)))
+\end{split}
+\end{equation}
+
+[125-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Continuant(x) \supset Entity(x))
+\end{split}
+\end{equation}
+
+[008-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(specificallyDependsOnAt(x, y, t) \supset \\
+{\neg}{\exists}(z)(continuantPartOfAt(z, x, t) \wedge continuantPartOfAt(z, y, t)))
+\end{split}
+\end{equation}
+
+[012-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y)((Continuant(x) \wedge {\exists}(t)continuantPartOfAt(y, x, t)) \supset \\
+Continuant(y))
+\end{split}
+\end{equation}
+
+[009-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y)((Continuant(x) \wedge {\exists}(t)hasContinuantPartOfAt(y, x, t)) \supset \\
+Continuant(y))
+\end{split}
+\end{equation}
+
+[126-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Material(Entity, x) \supset {\exists}(t)(TemporalRegion(t) \wedge existsAt(x, t)))
+\end{split}
+\end{equation}
+
+[011-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((Occurrent(x) \wedge IndependentContinuant(y) \wedge \\
+specificallyDependsOnAt(x, y, t)) \supset \\
+{\forall}(t_1)(existsAt(x, t_1) \supset specificallyDependsOnAt(x, y, t_1)))
+\end{split}
+\end{equation}
+
+[015-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((Continuant(x) \wedge specificallyDependsOnAt(x, y, t)) \supset \\
+{\forall}(t_1)(existsAt(x, t_1) \supset specificallyDependsOnAt(x, y, t_1)))
+\end{split}
+\end{equation}
+
+[016-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((Continuant(x) \wedge specificallyDependsOnAt(x, y, t)) \supset \\
+existsAt(x, t))
+\end{split}
+\end{equation}
+
+[127-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((Continuant(x) \wedge specificallyDependsOnAt(x, y, t)) \supset \\
+existsAt(y, t))
+\end{split}
+\end{equation}
+
+[128-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((Occurrent(x) \wedge Continuant(y) \wedge \\
+specificallyDependsOnAt(x, y, t)) \supset \\
+{\forall}(t_1)(existsAt(y, t_1) \supset existsAt(x, t_1)))
+\end{split}
+\end{equation}
+
+[129-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((Occurrent(x) \wedge Occurrent(y) \wedge \\
+specificallyDependsOnAt(x, y, t)) \supset \\
+existsAt(y, t))
+\end{split}
+\end{equation}
+
+[130-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)((IndependentContinuant(x) \wedge existsAt(x, t)) \supset \\
+{\exists}(y)(Entity(y) \wedge specificallyDependsOnAt(y, x, t)))
+\end{split}
+\end{equation}
+
+[018-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(MaterialEntity(x) \supset IndependentContinuant(x))
+\end{split}
+\end{equation}
+
+[019-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)((Entity(x) \wedge \\
+{\exists}(y, t)(MaterialEntity(y) \wedge continuantPartOfAt(y, x, t))) \supset \\
+MaterialEntity(x))
+\end{split}
+\end{equation}
+
+[020-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(ObjectAggregate(x) \supset \\
+(MaterialEntity(x) \wedge {\forall}(t)(existsAt(x, t) \supset \\
+{\exists}(y, z)(Object(y) \wedge Object(z) \wedge \\
+memberPartOfAt(y, x, t) \wedge memberPartOfAt(z, x, t) \wedge {\neg}(y = z))) \wedge \\
+{\neg}{\exists}(w, t_1)(memberPartOfAt(w, x, t_1) \wedge {\neg}Object(w))))
+\end{split}
+\end{equation}
+
+[025-004] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(FiatObjectPart(x) \supset (MaterialEntity(x) \wedge {\forall}(t)(existsAt(x, t) \supset \\
+{\exists}(y)(Object(y) \wedge properContinuantPartOfAt(x, y, t)))))
+\end{split}
+\end{equation}
+
+[027-004] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)((ContinuantFiatBoundary(x) \wedge existsAt(x, t)) \supset \\
+{\exists}(y)(SpatialRegion(y) \wedge occupiesSpatialRegionAt(x, y, t)))
+\end{split}
+\end{equation}
+
+[XXX-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Site(x) \supset ImmaterialEntity(x))
+\end{split}
+\end{equation}
+
+[034-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)((Site(x) \wedge existsAt(x, t)) \supset \\
+{\exists}(y)(ThreeDimensionalSpatialRegion(y) \wedge \\
+occupiesSpatialRegionAt(x, y, t)))
+\end{split}
+\end{equation}
+
+[153-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(SpatialRegion(x) \supset Continuant(x))
+\end{split}
+\end{equation}
+
+[035-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((SpatialRegion(x) \wedge continuantPartOfAt(y, x, t)) \supset \\
+SpatialRegion(y))
+\end{split}
+\end{equation}
+
+[036-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)((MaterialEntity(x) \wedge existsAt(x, t)) \supset \\
+{\exists}(y)(ThreeDimensionalSpatialRegion(y) \wedge \\
+occupiesSpatialRegionAt(x, y, t)))
+\end{split}
+\end{equation}
+
+[XXX-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(ZeroDimensionalSpatialRegion(x) \supset SpatialRegion(x))
+\end{split}
+\end{equation}
+
+[037-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(OneDimensionalSpatialRegion(x) \supset SpatialRegion(x))
+\end{split}
+\end{equation}
+
+[038-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(TwoDimensionalSpatialRegion(x) \supset SpatialRegion(x))
+\end{split}
+\end{equation}
+
+[039-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(ThreeDimensionalSpatialRegion(x) \supset SpatialRegion(x))
+\end{split}
+\end{equation}
+
+[040-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, r, t)(occupiesSpatialRegionAt(x, r, t) \supset \\
+(SpatialRegion(r) \wedge IndependentContinuant(x)))
+\end{split}
+\end{equation}
+
+[041-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(r, t)(Region(r) \supset occupiesSpatialRegionAt(r, r, t))
+\end{split}
+\end{equation}
+
+[042-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, r_1, t)((occupiesSpatialRegionAt(x, r_1, t) \wedge \\
+continuantPartOfAt(y, x, t)) \supset \\
+{\exists}(r_2)(continuantPartOfAt(r_2, r_1, t) \wedge \\
+occupiesSpatialRegionAt(y, r_2, t)))
+\end{split}
+\end{equation}
+
+[043-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, z, t)((locatedInAt(x, y, t) \wedge locatedInAt(y, z, t)) \supset \\
+locatedInAt(x, z, t))
+\end{split}
+\end{equation}
+
+[046-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)(IndependentContinuant(x) \supset \\
+{\exists}(r)(SpatialRegion(r) \wedge locatedInAt(x, r, t)))
+\end{split}
+\end{equation}
+
+[134-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, r, t)((IndependentContinuant(x) \wedge locatedInAt(x, r, t)) \supset \\
+{\exists}(r_1)(continuantPartOfAt(r_1, r, t) \wedge \\
+occupiesSpatialRegionAt(x, r_1, t)))
+\end{split}
+\end{equation}
+
+[135-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((continuantPartOfAt(x, y, t) \wedge \\
+IndependentContinuant(x)) \supset locatedInAt(x, y, t))
+\end{split}
+\end{equation}
+
+[047-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, z, t)((IndependentContinuant(x) \wedge IndependentContinuant(y) \wedge \\
+IndependentContinuant(z) \wedge continuantPartOfAt(x, y, t) \wedge \\
+ locatedInAt(y, z, t)) \supset locatedInAt(x, z, t))
+\end{split}
+\end{equation}
+
+[048-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, z, t)((IndependentContinuant(x) \wedge IndependentContinuant(y) \wedge \\
+IndependentContinuant(z) \wedge locatedInAt(x, y, t) \wedge \\
+continuantPartOfAt(y, z, t)) \supset locatedInAt(x, z, t))
+\end{split}
+\end{equation}
+
+[049-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)({\exists}(y, t)specificallyDependsOnAt(x, y, t) \supset {\neg}MaterialEntity(x))
+\end{split}
+\end{equation}
+
+[052-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, z, t)((specificallyDependsOnAt(x, y, t) \wedge \\
+specificallyDependsOnAt(y, z, t)) \supset \\
+specificallyDependsOnAt(x, z, t))
+\end{split}
+\end{equation}
+
+[054-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Quality(x) \supset SpecificallyDependentContinuant(x))
+\end{split}
+\end{equation}
+
+[055-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)({\exists}(t)(existsAt(x, t) \wedge Quality(x)) \supset \\
+{\forall}(t_1)(existsAt(x, t_1) \supset Quality(x)))
+\end{split}
+\end{equation}
+
+[105-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(RealizableEntity(x) \supset \\
+SpecificallyDependentContinuant(x) \wedge \\
+{\exists}(y)(IndependentContinuant(y) \wedge {\neg}SpatialRegion(y) \wedge \\
+inheresIn(x, y))))
+\end{split}
+\end{equation}
+
+[058-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(realizesAt(x, y, t) \supset \\
+(Process(x) \wedge (Disposition(y) \vee Role(y)) \wedge \\
+{\exists}(z)(MaterialEntity(z) \wedge hasParticipantAt(x, z, t) \wedge \\
+bearerOfAt(z, y, t))))
+\end{split}
+\end{equation}
+
+[059-003] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)(RealizableEntity(x) \supset {\exists}(y)(IndependentContinuant(y) \wedge \\
+{\neg}SpatialRegion(y) \wedge bearerOfAt(y, x, t)))
+\end{split}
+\end{equation}
+
+[060-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Role(x) \supset RealizableEntity(x))
+\end{split}
+\end{equation}
+
+[061-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Disposition(x) \supset (RealizableEntity(x) \wedge \\
+{\exists}(y)(MaterialEntity(y) \wedge bearerOfAt(x, y, t))))
+\end{split}
+\end{equation}
+
+[062-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)((RealizableEntity(x) \wedge existsAt(x, t)) \supset \\
+{\exists}(y)(MaterialEntity(y) \wedge specificallyDepends(x, y, t)))
+\end{split}
+\end{equation}
+
+[063-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Function(x) \supset Disposition(x))
+\end{split}
+\end{equation}
+
+[064-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(hasMaterialBasisAt(x, y, t) \supset \\
+(Disposition(x) \wedge MaterialEntity(y) \wedge \\
+{\exists}(z)(bearerOfAt(z, x, t) \wedge continuantPartOfAt(y, z, t) \wedge \\
+{\exists}(w)(Disposition(w) \wedge (hasDisposition(z, w) \supset \\
+continuantPartOfAt(y, z, t))))))
+\end{split}
+\end{equation}
+
+[071-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y)({\exists}(t)genericallyDependsOnAt(x, y, t) \supset \\
+{\forall}(t_1)(existsAt(x, t_1) \supset {\exists}(z)genericallyDependsOnAt(x, z, t_1)))
+\end{split}
+\end{equation}
+
+[073-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(concretizesAt(x, y, t) \supset \\
+(SpecificallyDependentContinuant(x) \wedge \\
+GenericallyDependentContinuant(y) \wedge \\
+{\exists}(z)(IndependentContinuant(z) \wedge specificallyDependsOnAt(x, z, t) \wedge \\
+genericallyDependsOnAt(y, z, t))))
+\end{split}
+\end{equation}
+
+[075-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(genericallyDependsOnAt(x, y, t) \supset \\
+{\exists}(z)(concretizesAt(z, x, t) \wedge specificallyDependsOnAt(z, y, t)))
+\end{split}
+\end{equation}
+
+[076-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Occurrent(x) \equiv (Entity(x) \wedge {\exists}(y)temporalPartOf(y, x)))
+\end{split}
+\end{equation}
+
+[079-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(TemporalRegion(x) \supset occupiesTemporalRegion(x, x))
+\end{split}
+\end{equation}
+
+[137-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(ProcessBoundary(x) \supset \\
+{\exists}(y)(ZeroDimensionalTemporalRegion(y) \wedge \\
+occupiesTemporalRegion(x, y)))
+\end{split}
+\end{equation}
+
+[085-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(hasParticipantAt(x, y, t) \supset Occurrent(x))
+\end{split}
+\end{equation}
+
+[087-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(hasParticipantAt(x, y, t) \supset Continuant(y))
+\end{split}
+\end{equation}
+
+[088-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(hasParticipantAt(x, y, t) \supset existsAt(y, t))
+\end{split}
+\end{equation}
+
+[089-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((hasParticipantAt(x, y, t) \wedge \\
+SpecificallyDependentContinuant(y)) \supset \\
+{\exists}(z)(IndependentContinuant(z) \wedge {\neg}SpatialRegion(z) \wedge \\
+specificallyDependsOnAt(x, z, t) \wedge specificallyDependsOnAt(y, z, t)))
+\end{split}
+\end{equation}
+
+[090-003] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((hasParticipantAt(x, y, t) \wedge \\
+GenericallyDependentContinuant(y)) \supset \\
+{\exists}(z)(IndependentContinuant(z) \wedge {\neg}SpatialRegion(z) \wedge \\
+genericallyDependsOn(y, z, t) \wedge specificallyDependsOnAt(x, z, t)))
+\end{split}
+\end{equation}
+
+[091-003] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y)(processProfileOf(x, y) \supset (properContinuantPartOf(x, y) \wedge \\
+{\exists}(z, t)(properOccurrentPartOf(z, y) \wedge TemporalRegion(t) \wedge \\
+occupiesSpatioTemporalRegion(x, t) \wedge \\
+occupiesSpatioTemporalRegion(y, t) \wedge \\
+occupiesSpatioTemporalRegion(z, t) \wedge \\
+{\neg}{\exists}(w)(occurrentPartOf(w, x) \wedge occurrentPartOf(w, z)))))
+\end{split}
+\end{equation}
+
+[094-005] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(SpatioTemporalRegion(x) \supset Occurrent(x))
+\end{split}
+\end{equation}
+
+[095-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y)((SpatioTemporalRegion(x) \wedge occurrentPartOf(y, x)) \supset \\
+SpatioTemporalRegion(y))
+\end{split}
+\end{equation}
+
+[096-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(SpatioTemporalRegion(x) \supset \\
+{\exists}(y)(TemporalRegion(y) \wedge temporallyProjectsOnto(x, y)))
+\end{split}
+\end{equation}
+
+[098-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)(SpatioTemporalRegion(x) \supset \\
+{\exists}(y)(SpatialRegion(y) \wedge spatiallyProjectsOntoAt(x, y, t)))
+\end{split}
+\end{equation}
+
+[099-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(r)(SpatioTemporalRegion(r) \supset \\
+occupiesSpatioTemporalRegion(r, r))
+\end{split}
+\end{equation}
+
+[107-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Occurrent(x) \supset {\exists}(r)(SpatioTemporalRegion(r) \wedge \\
+occupiesSpatioTemporalRegion(x, r)))
+\end{split}
+\end{equation}
+
+[108-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(TemporalRegion(x) \supset Occurrent(x))
+\end{split}
+\end{equation}
+
+[100-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(r)(TemporalRegion(r) \supset occupiesTemporalRegion(r, r))
+\end{split}
+\end{equation}
+
+[119-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y)((TemporalRegion(x) \wedge occurrentPartOf(y, x)) \supset \\
+TemporalRegion(y))
+\end{split}
+\end{equation}
+
+[101-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(ZeroDimensionalTemporalRegion(x) \supset TemporalRegion(x))
+\end{split}
+\end{equation}
+
+[102-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(OneDimensionalTemporalRegion(x) \supset TemporalRegion(x))
+\end{split}
+\end{equation}
+
+[103-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, z)((historyOf(x, y) \wedge historyOf(x, z)) \supset (y = z))
+\end{split}
+\end{equation}
+
+[XXX-001] 
+
+
+\end{flushright}
+
+
+
+
+
+\section{Theorems}
+
+The following formulas are noted as theorems in the \emph{BFO 2.0 Draft Specification and User's Guide} and are derivable from the definitions and axioms of the system.  Of course, these explicitly noted theorems are only a small subset of what is derivable within BFO-FOL.
+
+\begin{flushright}
+
+\begin{equation}
+\begin{split}
+{\forall}(x, t)(Continuant(x) \supset continuantPartOfAt(x, x, t))
+\end{split}
+\end{equation}
+
+[111-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)(Occurrent(x) \supset occurrentPartOf(x, x))
+\end{split}
+\end{equation}
+
+[113-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)((Entity(x) \wedge \\
+(continuantPartOfAt(y, x, t) \vee continuantPartOfAt(x, y, t) \vee \\
+occurrentPartOf(x, y) \vee occurrentPartOf(y, x))) \supset \\
+{\neg}specificallyDependsOnAt(x, y, t))
+\end{split}
+\end{equation}
+
+[013-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x)((Entity(x) \wedge \\
+{\exists}(y, t)(MaterialEntity(y) \wedge continuantPartOfAt(x, y, t))) \supset \\
+MaterialEntity(x))
+\end{split}
+\end{equation}
+
+[021-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(memberPartOfAt(x, y, t) \supset continuantPartOfAt(x, y, t))
+\end{split}
+\end{equation}
+
+[104-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, t)(specificallyDependsOnAt(x, y, t) \supset \\
+{\exists}(z)(IndependentContinuant(z) \wedge {\neg}SpatialRegion(z) \wedge \\
+specificallyDependsOnAt(x, z, t)))
+\end{split}
+\end{equation}
+
+[136-001] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y)(properTemporalPartOf(x, y) \supset \\
+{\exists}(z)(properTemporalPartOf(z, y) \wedge \\
+{\neg}{\exists}(w)(temporalPartOf(w, x) \wedge temporalPartOf(w, z))))
+\end{split}
+\end{equation}
+
+[117-002] 
+
+\begin{equation}
+\begin{split}
+{\forall}(x, y, z, t)((RealizableEntity(x) \wedge Process(y) \wedge \\
+realizesAt(y, x, t) \wedge bearerOfAt(z, x, t)) \supset \\
+hasParticipantAt(y, z, t))
+\end{split}
+\end{equation}
+
+[106-002] 
+
+
+\end{flushright}
+
+\section{Conclusion}
+
+As noted above, the BFO 2.0 specification is currently under development, and thus the axiomatization of the specification in BFO-FOL is accordingly subject to modification and refinement.  Of particular interest is the question of what consequences can be derived from these definitions and axioms, both with regard to the formal consistency of BFO-FOL and with regard to whether these consequences would run counter to the basic principles and intentions of BFO.  Since BFO-FOL contains a large number of definitions and axioms, the working group is investigating formal tools capable of automating the investigation into these consequences.
+
+\begin{thebibliography}{99}
+
+\bibitem{BFO2}
+Barry Smith, et al. \emph{Basic Formal Ontology 2.0: Draft Specification and User's Guide}.  Manuscript.
+\end{thebibliography}
+
+
+
+\end{document}
