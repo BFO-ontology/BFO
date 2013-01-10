@@ -3,6 +3,6 @@
 At some point I went over previous email and packaged relevant material into three threads. In the interest of expedience I'm going to keep it so-formatted.
 
 
-  * First_thread_about_temporal_issues
-  * Second_thread_about_temporal_issues
-  * Third_thread_about_temporal_issues
+  * [First_thread_about_temporal_issues]
+  * [Second_thread_about_temporal_issues]
+  * [Third_thread_about_temporal_issues]
