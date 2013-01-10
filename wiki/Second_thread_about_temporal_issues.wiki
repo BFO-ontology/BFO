@@ -1,0 +1,120 @@
+part of Three_threads_about_temporal_issues
+
+== Who's on first ==
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Tue, Feb 7, 2012 at 1:48 PM
+To: Barry Smith <phismith@buffalo.edu>
+Cc: Stefan Schulz <stefan.schulz@medunigraz.at>, Werner Ceusters <ceusters@buffalo.edu>, Mark Ressler <mark@markressler.com>
+
+In the next OWL prototype I check in this is the universal 'human that lives until fetus' that is_a human
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Tue, Feb 7, 2012 at 2:00 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+Cc: Stefan Schulz <stefan.schulz@medunigraz.at>, Werner Ceusters <ceusters@buffalo.edu>, Mark Ressler <mark@markressler.com>
+
+Even better
+BS
+
+
+----------
+
+From: Barry Smith <phismith@buffalo.edu>
+Date: Tue, Feb 7, 2012 at 8:44 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+1. x instance of fetus
+
+is neither true nor false without specification of 'at t' because fetus is a non-rigid universal
+
+2. x instance of human that lives until fetus
+
+1. implies x weighs less than 1 kg
+2. not
+
+BS
+
+This will massively confuse our biological customers
+ 
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Wed, Feb 8, 2012 at 12:15 AM
+To: Barry Smith <phismith@buffalo.edu>
+
+
+Feels a little like "who's on first". x instance of fetus at t is not something you can say directly in OWL. Therefore I did not say it. This is the BFOreference assertion, I agree it needs the "at t" and my message said that *my assertion* (2. immediately below) did not need the "at t" and below you have removed it, which is good, since that's what I intended. 
+not. All that should be inferred (in intended BFO translation) is that the history of x has as part at least a temporal part of the adult stage. Given the open world assumption it may or may not be the case that x lives (or lived) to be an adult. If it does/did, the 1. would not be true.
+No offense intended, but I am taking my instruction on whether this will help or hurt our biologist customers from Chris Mungall. I'm happy to see how it flies with other biologists. The documentation about is intended to be understandable by an ontologist and in particular by people who care about BFO, and that requires a certain precision.
+
+I doubt that in a tutorial aimed at biologists I would explain things this way.  You wouldn't present first order logic axioms to that crowd either. Rather I would simply say that if you want to make an assertion about an egg, make an assertion about "organism as egg". Or perhaps we will just call "organism as egg", "egg". The aim will be to make it most likely that they are able to make correct assertions. Currently they don't (since they can't) in OWL.
+
+Chris says that unless we have something that makes egg look like a continuant it isn't going to be acceptable. Otherwise I would have stopped at approximately what you proposed - that in OWL we assert on the occurrents sometimes and the continuants sometimes. This was vetoed by Chris, so I kept working.
+
+Since we can't express (directly, in the OWL) instantiating egg at t, we are only left with being able to make statements about the history segment. That doesn't look like a continuant. We both agree that Chris' attempt to make it look like a continuant (by creating a class that is a union of (rigid) continuant and history segment) is ... less that tasteful. Since he is currently feeling positive about this new approach, I am also optimistic since I think this approach is more tasteful, seems likely to yield useful inference, and is considerably more in the spirit of BFO that previous stuff Chris has put out (like binary part_of relations).
+
+Oh, and I did review Rod Rudnicki's proposal. He is currently digesting the results. I will send you the comments so you can enjoy them too.
+
+-Alan
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Wed, Feb 8, 2012 at 5:04 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+I'm working several hours each week with the Plant Ontology community,
+who want to do everything right. I know very well what they can take
+and what they cannot take.
+Actually I might
+This is qua-object theory; it has been tried in various guises (once
+it was called guise theory) and is generally thought not to work.
+Is the organism as egg as egg identical to the organism as egg?
+BS
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Wed, Feb 8, 2012 at 6:39 PM
+To: Barry Smith <phismith@buffalo.edu>
+
+
+
+There is no class 'organism as egg as egg'. 'as egg' is not an operator, and organisms during stage are qualifications of only organisms so far, and organism during stage is not subclass of organism. 
+
+The name is chosen to be evocative. There is no "egg' in the BFO sense of non-rigid universal, because we have no way to instantiate it, since it necessarily needs a ternary instance_of, which we don't have. Mom says if you don't have something nice to say don't say anything. 
+
+There is a related question of nesting of stages, i.e. what is expected when we have in one place the developmental stages of egg and in another the developmental stages of moth-organism that has egg as a stage. So the question is, what if any is the relation between the organism as egg, and the egg as yolk (first stage of egg development). On the occurrent side it is easy as these are just part relationships between occurrents. I need to think through the issues using that example. 
+
+It may be the case that calling my 'organism as egg' simply 'egg' evokes a response with the biologists that they land up ontology building and annotating correctly - that's what we're aiming for. Remember I'm doing all this because Chris says only having stages as occurrents isn't acceptable. 
+
+Pointers to representative literature on quasi-object theory/ guise theory would be helpful. 
+
+-Alan
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Fri, Feb 10, 2012 at 10:51 AM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+what is it then
+the issue is: what sort of logic are you committing to with this 'as X'?
+The yolk stage is occurrent part of the egg stage
+
+I think stages are occurrents, thus I am fine with this
+The yolk stage is not a part of the yolk continuant
+The problem with your approach is that it is not clear what 'egg as
+yolk' is supposed to be
+But can't you get him to compromise for OWL's sake, and have the
+stages as continuants (better: non-rigid continuant universals like
+egg) saved up for the CLIF land of the future?
+This is probably a good survey of what is sometimes called entology
+('Ente' is the German for duck)
+http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&ved=0CFMQFjAE&url=http%3A%2F%2Fciteseerx.ist.psu.edu%2Fviewdoc%2Fdownload%3Bjsessionid%3D0BDAD804004673A8B4DEF4F2E5174F61%3Fdoi%3D10.1.1.117.4429%26rep%3Drep1%26type%3Dpdf&ei=hzw1T_6zHMn00gGpycjCAg&usg=AFQjCNGPjfDs2lt6wk_hvb_53syo5c4dwA&sig2=zVONCg4bAZyceZ84jwCtOg
+
+
+
