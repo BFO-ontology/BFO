@@ -1,4 +1,4 @@
-part of Three_threads_about_temporal_issues
+part of [Three_threads_about_temporal_issues]
 
 == Who's on first ==
 From: Alan Ruttenberg <alanruttenberg@gmail.com>
@@ -115,6 +115,4 @@ egg) saved up for the CLIF land of the future?
 This is probably a good survey of what is sometimes called entology
 ('Ente' is the German for duck)
 http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&ved=0CFMQFjAE&url=http%3A%2F%2Fciteseerx.ist.psu.edu%2Fviewdoc%2Fdownload%3Bjsessionid%3D0BDAD804004673A8B4DEF4F2E5174F61%3Fdoi%3D10.1.1.117.4429%26rep%3Drep1%26type%3Dpdf&ei=hzw1T_6zHMn00gGpycjCAg&usg=AFQjCNGPjfDs2lt6wk_hvb_53syo5c4dwA&sig2=zVONCg4bAZyceZ84jwCtOg
-
-
 
