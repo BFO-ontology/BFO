@@ -1,4 +1,4 @@
-part of Three_threads_about_temporal_issues
+part of [Three_threads_about_temporal_issues]
 
 == a prototype ==
 From: Alan Ruttenberg <alanruttenberg@gmail.com>
