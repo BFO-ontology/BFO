@@ -17,10 +17,12 @@ https://bfo.googlecode.com/svn/trunk/src/ontology/owl-ruttenberg/exploratory/tem
 The key inference is
 
 Poplar Hawk-moth that has reached adulthood
+
 subclassOf
+
 has part moth wing at some time
 
-Screenshot attached with explanation
+https://dl.dropbox.com/u/4905123/temporal-prototype-inference.png
 
 To do:
 
