@@ -1,4 +1,4 @@
-part of Three_threads_about_temporal_issues
+part of [Three_threads_about_temporal_issues]
 
 == Subject: the right way to do stages ==
 ------------------------
@@ -97,4 +97,3 @@ To: Barry Smith <phismith@buffalo.edu>
 
 There is no "at t" in my assertion. As far as I know, in the world we live in, either both are true or neither. 
 "we are doing ontology not epistemology"
-
