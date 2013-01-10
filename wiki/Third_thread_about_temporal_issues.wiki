@@ -1,0 +1,659 @@
+== a prototype ==
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Tue, Feb 7, 2012 at 2:26 AM
+Subject: checked in progress
+To: Ron Rudnicki <rudnicki@cubrc.org>, Stefan Schulz <steschu@gmail.com>, Chris Mungall <cjmungall@lbl.gov>, David Sutherland <djs93@gen.cam.ac.uk>
+
+
+https://bfo.googlecode.com/svn/trunk/src/ontology/owl-ruttenberg/exploratory/temporalized-relations.owl
+https://bfo.googlecode.com/svn/trunk/src/ontology/owl-ruttenberg/exploratory/organism-temporal-test.owl
+<- load this one
+
+Source:
+https://bfo.googlecode.com/svn/trunk/src/ontology/owl-ruttenberg/exploratory/temporalized-relations.owl
+
+The key inference is
+
+Poplar Hawk-moth that has reached adulthood
+subclassOf
+has part moth wing at some time
+
+Screenshot attached with explanation
+
+To do:
+
+Connect stages to segments of courses of things they are stages of
+
+-Alan
+
+
+== why adult moth stage not subtype of moth organism (maybe) ==
+------------------------
+
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Tue, Feb 7, 2012 at 2:31 AM
+To: Barry Smith <phismith@buffalo.edu>
+Cc: Chris Mungall <cjmungall@lbl.gov>
+
+
+Every moth organism goes through some young stage.
+
+Take a property true of the youngest stage, for example that the
+organism, when young, has a part that is the nucleus of an oocyte.
+That means that every moth organism has part, at some time, an oocyte nucleus.
+
+If an adult moth is_a moth organism, then we would infer (by
+inheritance) that it has part at some time an oocyte nucleus.
+
+But this is not true.
+
+-Alan
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Tue, Feb 7, 2012 at 2:43 AM
+To: Barry Smith <phismith@buffalo.edu>
+Cc: Chris Mungall <cjmungall@lbl.gov>
+
+
+The distinction (and confusion) is between:
+
+adult stage
+and
+organism that has reached adult stage
+
+An adult stage is not an organism. Predications on adult stage can
+only be made *when the organism is an adult*.
+An *organism that has reached adult stage* can have properties that
+are time indexed from the beginning of existence of the organism until
+the organism is in the adult stage. So an *organism that has reached
+adult stage* is_a organism.
+But an adult stage is not an organism.
+
+I will adjust the example I sent out tomorrow.
+
+-Alan
+
+
+----------
+From: Chris Mungall <cjmungall@lbl.gov>
+Date: Tue, Feb 7, 2012 at 7:42 AM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+
+I quite like your example how it is; ie
+
+       'organism stage (sensu Alan)' = organism and 'is stage (sensu Alan) of' some organism
+
+This of course entails that 'organism' is a union of both stages and the 'whole thing'
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Tue, Feb 7, 2012 at 8:27 AM
+To: Chris Mungall <cjmungall@lbl.gov>
+
+
+Thanks for the comments here and in the previous email!
+Yes. Though this is a bit tricky, at least.
+
+Strictly speaking, I don't know that anything depends on organism
+stage being an organism. I'd have to check.  The story of the stages,
+from a BFO point of view, is that they are a kind of representational
+trick - they don't represent additional entities. They are, strictly
+speaking, computational artifacts present in order to be able to
+quantify over a temporal interval.
+
+Story 1: All the information about the PW Moth organism can be had by
+examining the assertions about the "whole thing" and the stages.
+Story 2: All interesting assertions land up on the 'whole thing'. If
+the rules and relations are set up properly then at the end you can
+erase the stages and you can still query for the essentials (albeit
+not using the stages). On this interpretation nothing about the
+placement of stages in the hierarchy matters, except to the extent
+that a) It supports the reasoning that needs to be done and b) it
+supports the biologists being able to think about this in a way they
+like.
+
+Story 2 is what I'm designing for as it encourages productive thinking
+about inferences that should be made.
+
+I'm absorbing your previous email. I agree that terminology matters
+and was actually start creating a second set of labels just so I could
+flip between the labels that I use to make sure that I am clear enough
+about what is what, and labels that are more appealing while not being
+damaging. So for instance I was considering having all the labels of
+the self properties being 'ignore me' :)
+
+I'll find a different name for stage. Barry calls courses 'histories'
+in the current BFO document so I'll use that, though I don't like the
+association that histories are usually recording (of the 'past' -
+perhaps that or 'passed' are better words).
+
+Up too late or too early?
+
+-Alan
+
+
+----------
+From: Chris Mungall <cjmungall@lbl.gov>
+Date: Tue, Feb 7, 2012 at 9:15 AM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+Yep.
+
+I think it mainly comes down to usability. If 'human with Parkinsons' is not a subclass of human then we have a lot of explaining to do
+
+of course, if we make the primary term 'human' formally
+
+       human = human (non-stagey) OR human (stagey)
+
+(where we typically don't bother to name the subtypes) is open to arguments of impurity
+I see, I understand better now. So you favour hiding the stagey things.
+
+How would this work where people really want to name stagey things like phosphorylated protein and human-with-PD?
+
+I suppose you could have 'protein that is phosphorylated at some time in its existence'. I sense awkwardness but I'll give it some thought.
+:-)
+
+I find ignoring easier than mentally relabeling.
+
+I think an ignore me annotation plus associated rendering in P4 would be a good feature request
+agreed about history.
+
+there is also "state", but BFO may be going a different way with states.
+Just back from UK, so too late by my body clock and too early by my local clock. I think that cancels out...
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Tue, Feb 7, 2012 at 1:12 PM
+To: Chris Mungall <cjmungall@lbl.gov>
+
+
+
+
+Fighting this is that not everything true of humans is true when the human has parkinson - example provided earlier. Will think further. 
+A couple of things to worry about here: 1) performance. If there are disjunctions used absolutely everywhere performance will suck (exponential growth of number of models). 2) what people will assert about these classes and whether it is likely that they will be correct, versus asserting on the non-stagey or correct stagey. Maybe (have to see if this works)
+
+human organism (= stage_of some human, with locally reflexive stage-of), maybe no more assertions other than the subclasses below
+ human 
+ as adult human (participates_in_at_all_times some adult_stage),  (participates_in_at_some_time only adult stage)
+ as child human  (participates_in_at_all_times some child_stage),  (participates_in_at_some_time only child stage)
+
+disjoint-classes 'as adult human', 'as child human', human
+
+segment of course of human (= temporal_part_of some course_of some human) 
+  course of human (has_participant_at_all_times some human)
+  human child stage  (has_participant_at_all_times some 'as child human')
+  human adult stage  (has_participant_at_all_times some 'as adult human')
+
+disjoint-classes 'course of human', 'human child stage', 'human adult stage' 
+
+Plus need to check for consistency then document that the extension of (organism and has_stage 'adult stage') are all those organisms that have lived long enough to (start) be(ing) an adult.
+
+Axiomitized in part with stuff like (not checked yet)
+
+has_course o has_temporal_part o  is_course_of_stage => has_stage
+
+I don't mean that all of these necessarily need to be named. First design the longhand version then trim as can be trimmed.
+Actually I favor having my cake and eating it too. I want to hide these ontologically - so that the ontology as a whole can be interpreted in a way consistent with BFO, which I think is on the money on insisting that these are not separate entities. But I want the artifact to be useful. So we can leave them in and use them, so long as all the loose ends are tied and it is coherent ontologically. Best of both worlds if it can be pulled off. The pervasive idea to *lose* is that there must be a 1:1 mapping between owl individuals and bfo particulars.
+There was some start of work on hiding things that Tim did. I haven't had a chance to pursue it. If you have a java person somewhere with some spare cycles they could have a look and see whether they can make progress. I have another student starting in March and I might have him take a look. The intent with that request was to be able to have BFO be part of the ontology, but not displayed in the class hierarchy, though visible in axioms. However selectively hiding some other things would of course be useful. I may try to put all the extra for reasoning only stuff in a separate import so at least you could have protege view only the active ontology to narrow focus.
+I'm still against "states" being in BFO. There are too many different meanings, and I'm currently kind of attached to the physics sense of state, state space, and degrees of freedom. 
+Hope so. If it decides to reinforce rather than cancel you'll be out of luck :)
+
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Tue, Feb 7, 2012 at 9:01 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+
+
+
+
+We can infer this
+
+x is an adult moth organism
+x is identical to some young moth organism
+x is identical to something which had an oocyte nucleus as part
+therefore x had an oocyte nucleus as part
+
+you are an adult human and you had a milk tooth as part
+BS
+
+ 
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Tue, Feb 7, 2012 at 11:29 PM
+To: Barry Smith <phismith@buffalo.edu>
+
+
+
+Agree on all of the above. The issue to attend to is what the interpretation of adult moth is. In another email I made the distinction between mothorganism that lives until adult stage, and what I call above 'adult moth', and which I now call 'Poplar Hawk-moth as adult'
+
+'Poplar Hawk-moth as adult'  is an instance of the class (being careful with words here) 'organism during stage', with documentation "An owl individual defined for computational reasons but which does not correspond to an extra BFO particular. Assertions that involve such individuals are understood as pertaining to the organism the individual is asserted to be a temporal qualification of, only during the temporal interval that a certain stage occupies."
+
+Note that in order to make room for stage to be a process, i renamed the relations has_stage to be has_temporal_qualification and stage_of to temporal_qualification_of. The class stage is now called temporally qualified continuant. def: "An owl individual defined for computational reasons but which does not correspond to an extra BFO particular. Assertions that involve such individuals are understood as pertaining to the continuant the individual is asserted to be a temporal qualification of, only during the temporal interval that a certain segment of its history occupies." 
+'phase sortal' is an alternative term.
+
+'Poplar Hawk-moth as adult'  is a subclass of 'temporally qualified individual'. (alternate naming suggestions welcome)
+
+The relations has_part_at_some_time, and has_part_at_all_times are temporally quantified according to subject. As the subject can (by definition) only be temporally quantified during those times that the 'Poplar Hawk-moth' is participating in it's adult stage, there is no way to index a part_of relation that happens prior to the adult stage, which 'had an x part' does. 
+
+In the OWL, at least, we need this artifact in order to be able to make assertions that are true only for adults. 
+
+In a the sentence above you wrote: "if an adult moth is_a moth organism" what you mean by the term adult moth is what I call a  'Poplar Hawk-moth that has lives until adult'. We mean different things by 'adult moth'. We both agree that your sense of 'adult moth' (my moth-that-lives-until-adult) is_a moth. The sense of 'adult moth' as I used it -  'moth as adult' owl representation artifact, is not a subtype of organism because asserting so yields incorrect results in the BFO reading of the OWL (see below).
+
+The story of the temporal qualifications is, from a BFO point of view, is that they are a kind of representational trick - they don't represent additional entities. They are, strictly speaking, computational artifacts present in order to be able to quantify over a temporal interval.
+
+The intention is that all interesting assertions land up on the 'whole thing'. If the rules and relations are set up properly then at the end you can erase the temporal qualifications and you can still query for the essentials (albeit not referring now to the temporal qualifications). Everything should come out if you  later query for continuants and segments of histories.
+
+On this interpretation nothing about the placement of temporal qualifications) in the hierarchy matters  except to the extent that  a) It supports (and doesn't contradict) the reasoning that needs to be done and b) it supports the biologists being able to think about this in a way they like. 
+
+I think that this is having our cake and eating it too. The temporal qualifications get hidden ontologically - so that the ontology as a whole can be interpreted in a way consistent with BFO, which I think is on the money on insisting that these are not separate particulars.  But I want the artifact to be useful. So we can leave them in and use them, so long as all the  loose ends are tied and it is coherent ontologically. Best of both worlds if it can be pulled off.  The pervasive idea to *lose* is that there must be a 1:1 mapping between owl individuals and bfo particulars.
+
+This sort of manipulation is not unprecedented. When I create a self-looping property in OWL I  don't mean it to be interpreted as a real relation. It is more like a piece of syntax used to ensure an inference gets made.
+
+Last summer or before, IIRC, when we discussed the possibility of having multiple OWL individuals ("manifestations" was one word we tossed around) we didn't have this idea of simply having the individuals be invisible, ontologically. So I think this new idea is an advance. It satisfies a goal that I had set - that each statement in the OWL representation have a specified reading that is consistent with BFO. Remember that this principle has not been achieved ever before for BFO OWL because of the uninterpretable use of binary relations to represent ternary time-indexed relations in previous versions.
+
+In most of the OWL implementation an OWL individual is read as a BFO particular. However in this case the OWL individual is not, and assertions on the individual are read as temporally qualified assertions on another individual: the one and only organism particular which can be read off the OWL by following the temporal_qualification_of link.
+ 
+I hope this is understandable. I'm working up a version with adequate documentation to circulate to the rest of the group and in particular to Fabian so I can get additional feedback. But I am optimistic. I've been trying to nail this for well over a year now and this is the first time I've not found a fatal flaw. Chris seems to approve, but he has overlooked what I consider to be fatal flaws in the past. I suppose that I'll feel secure when some subset of you, Fabian, and Tom have grokked this and don't find any logical flaws. Hopefully the improper subset.
+
+-Alan
+
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Wed, Feb 8, 2012 at 4:56 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+This is a bit like 'Tuberculosis diagnosed on a Wednesday' -- it is
+the sort of thing in ICD you love to hate
+
+organism as adult is not an extra entity
+
+any more than
+
+organism in room
+
+or
+
+organism in Canada
+
+is an extra entity.
+It is just an organism, but you are taking part of a sentence about
+the organism and gluing it to the expression referring to the
+organism.
+Can't you call it 'an owl expression'? -- then I would be happy
+last three words don't quite make sense
+you mean: the assertion is made to hold of the organism during a
+specific stage in its life or something
+(even this is still cryptic; I am sure we can do better in formulating
+what is going on)
+'qualification' is not the best word
+This is slightly better
+But again, a temporally qualified continuant is just the plain vanilla
+continuant but as target of expressions of certain sorts
+
+Compare always: 'person geographically in Buffalo' as a spatially
+qualified individual
+BS
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Thu, Feb 9, 2012 at 1:29 AM
+To: Barry Smith <phismith@buffalo.edu>
+
+
+
+
+
+Yahoo! Perhaps we are getting closer. Did you notice in the documentation of the term that I say exactly that?
+Complete agreement.
+I hadn't thought about it that way, but reading slowly through your description I think it is a fair assessment.
+
+The part of the sentence is something like `<?quantifier>` t where t is a part of the temporal region `<stage>` occupies, `<organism>` `<?relation>` `<?entity>`, where in this notation `<?xxxx>` isn't part of the sentence but is part of what is added to the sentence by predication on this thing. `<stage>` and `<organism>` are placeholders for the specifics of the term.
+`<?quantifier>` is taken from relation: e.g. part_of_at_(all)_times or part_of_at_(some)_time.
+`<?relation>` is the relation with the quantifier stripped and time index added- e.g. part_of(_,_,t)
+`<?entity>` is the thing related.
+
+All together the sentence corresponding predicated instance, has  syntax of the form `<tq>` `<p>` `<o>`.
+On the surface this looks like `<tq>` is an entity standing in relation `<p>` to `<o>`.
+The current documentation denies that `<tq>` is an entity and says, in fewer words, and less precisely, what I say above, namely that this piece of syntax (as well as any OWL entailments that have the same form) means, in terms we define in BFO, a statement about `<organism>`
+
+The "glue to the expression referring to the organism" is the relation temporal_qualification_of `<organism>`
+The link to the `<stage>` (part of history) is in the version I will check in next (another relation of the same flavor as has_history)
+Well, it wouldn't be an OWL expression. It would be a `<thing>` that represents part of a sentence, and which when predicated with in OWL is understood as documented above. We can't call it an an OWL expression because that is already defined as an element of OWL syntax. 
+The last three words are the current name of the relation connecting the owl individual to the organism. So for an instance "moth-organism as pupa" there is an OWL property called temporal_qualification_of whose object is "moth organism". In the version prior I called this relation "stage of" but had to change it as "stage" refers to occurrents in GO land, and in your writing. I'd be happy with a less ugly name.
+I am certainly not wedded to it. 
+Not quite. It is another sort of thing - I consider it syntax - that when used as part of an expression/statement is interpreted to mean a different sentence (one now with temporal quantification and a time-indexed form of the relation used) involving the plain vanilla continuant. It isn't the plain vanilla continuant because statements that are true of the plain vanilla continuant would become mangled and possibly untrue in the process of rewriting in terms of the plain vanilla continuant. 
+
+So if we had: every moth-organism has_part_at_some_time some yolk (a true statement about the plain vanilla continuant)
+and 
+"moth-organism as caterpillar" subclass of moth-organism
+
+inheritance would yield:
+
+every "moth-organism as caterpillar" has_part_at_some_time some yolk.
+
+That in turn gets translated into
+
+for some t part of the temporal region that the caterpillar stage of moth-organism occupies, moth-organism has_part some yolk.
+
+And *that* isn't true.
+
+So I don't assert  "moth-organism as caterpillar" subclassof moth-organism.
+
+And so I don't agree that temporally qualified continuant is just the plain vanilla continuant.
+
+But we *do* agree that the only entity that is *really* referred to here is the plain vanilla continuant.
+Right, so consider Alan.
+
+Alan, at some time, stands on the longfellow bridge (between Cambridge and Boston).
+
+But the sentence: 
+
+At some time, for some region located in buffalo, Alan located_at region and Alan stands on the longfellow bridge.
+
+which is the sort of sentence one gets after following the rule for interpreting sentences involving spatially qualified individuals, is false.
+
+Note that in the case of the "spatially qualified individual" too there is no entity other than Alan. 
+
+I did some reading on qua-objects and while there are surface resemblances to what I am doing here the difference is that the theory of qua-objects raises the question of whether qua-objects exist, an ontological question of whether there are extra entities. That sort of question simply doesn't come up here, as the OWL individual is part of syntax - it is a RU that unlike the other RUs for other OWL individuals that are taken to refer 1:1  to particulars, is instead is a part of a sentence that refers to a particular - the plain vanilla occurrent.
+
+BTW, I couldn't find a version of Kit Fine's "Acts, events and things" which is allegedly the source of the qua-object idea. I believe you have a copy as you've put up http://ontology.buffalo.edu/smith/articles/Moments_of_Truth.pdf from the same proceedings. Would it be possible to scan and send me the Kit Fine paper?
+
+-Alan
+
+
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Fri, Feb 10, 2012 at 4:21 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+
+
+
+Why not go straight to the history, and say temporal_qualification_of`<organism>` is a stage which is part of history_of(organism)?
+No -- for me a stage is a part of the history, so an occurrent
+The GO people are right (but the fly people -- DOS et al -- were earlier confused)
+B: "moth-organism as caterpillar" subclass of moth-organism
+
+inheritance would yield:
+
+C: every "moth-organism as caterpillar" has_part_at_some_time some yolk.
+
+I would translate as follows 
+
+A*: every moth organism  has part at some time some yolk
+ 
+B*: moth organism in caterpillar stage subclass of moth organism
+
+One strategy to block the inference is to say that non-rigid universals do not stand in a (plain vanilla) is_a relation to rigid universals
+(In this respect they are like role universals: professor subclass of human, but not professor is_a human)
+
+Another strategy is to say that your translation of C
+ goes too far.
+Consider the analogous professor inference
+
+From 
+
+Every professor is a human
+And every human once had milk teeth
+We can infer
+Every professor once had milk teeth
+without any problem
+
+But we cannot infer
+Every professor had milk teeth during the time when he is professor.
+BS
+why not?
+BS
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Fri, Feb 10, 2012 at 7:44 PM
+To: Barry Smith <phismith@buffalo.edu>
+
+
+
+
+
+Because you can't then make expressions with them such as you do with continuants, which is the natural way to do so, e.g. has_quality x, has_part y, etc. Even if you wanted to make expressions on the occurrent versions, it is not straightforward. The case of has_part is straightforward - say the parts's history is a spatial_part_of the the stage of the organism. What if the part moves - being a part of one thing now and another thing later? What of the quality? Currently we only have courses of material entities because if we also had qualities that occupied the same space we couldn't make our 1:1 history:continuant link. To express the quality it has over this duration do you posit a process_profile??
+Misparse of the sentence :) I know that in your writing the stage is part of the history and that's what I was attempting to say.
+These are the same as my A and B, no? 
+If not, how not?
+professor isn't a role universal here, as that wouldn't be a subclass of human. 
+In any case the inheritance relationship for subclass are the same as for is_a, so there is no blocking inference going on.
+The analogy to role universals would be that professor_role and human are in different places in the ontology, neither related by subclass or is_a 
+
+professor as you write it here as subclass has the same problems as butterfly in the OWL representation. If you mean by professor, a human who at some time had a professor role (or realized a professor role), then you are fine - that is analogous to the organism that lives until it is a moth.
+
+But if you want to assert relations that hold for professor (human qua professor ;-) ) only when the role is borne (or realized), then you will get incorrect inferences in the OWL, as you don't have the direct way to temporally qualify. The FOL version doesn't have this problem because you can never get away with saying something that isn't time indexed.  Compare: Doctor and has_liability some malpractice_liability to: 
+
+(forall (t) (forall (h) (has_role h doctor_role t) => (has_liability h malpractice_liability t). 
+
+Or: 
+
+(forall(t) (forall (h) (has_role h doctor_role t) => (doctor h t)))
+
+(forall(t) (forall (h) (doctor h t) => (has_liability h malpractice_liability t))
+
+But in OWL the best you can do is:
+
+doctor equivalentTo human and has_role doctor_role
+doctor subclassOf has_liability some malpractice_liability
+
+The FOL allows for the possibility (exists (h) (exists(t,t1) (and (human h t) (doctor h t1) (not (has_liability h malpractice_liability t1)))))
+
+The OWL does not because there isn't two times to work with. At least not without some trick. Like mine.
+
+The implication is that in OWL, if we are to be able to make statements about doctors when they are doctors we will have to have a similar approach as I outline: "human as doctor" fake individual for making statements about the one and only human. "human as doctor" not a subclass of human.
+
+The only thing I can think of to make this slightly better is to allow the subclass statement to be made when authoring, but have it removed before reasoning. Compared to the solution I propose, I don't like it because if for some reason those subclass statements aren't removed you will get inconsistencies, whereas in my proposal you won't.
+How will you be able to make statements about moth-organism when it is in moth stage, then? 
+When you can't, here's one version of what happens:
+
+http://www.emouseatlas.org/emap/ema/theiler_stages/StageDefinition/stagecriteria.html
+
+There's separate ontology for each anatomical stage. Talk about multiplicative.
+
+The other versions of what happens is that they either make ontologies that don't include logical assertions because they lead to inconsistencies, or they ontologies with incorrect logical assertions and don't bother running a reasoner to check what they've written.
+We certainly can not. Which is why we can't a) make professor mean human when he is a professor, and b) make professor subclassOf human in OWL. If we do, then we will get the undesired inference. 
+
+Now we could choose, given the choices, that we will have b) but not a). But then we will not be able to make any statements about that human when he is professor. Unfortunately, this is exactly what people are asking to do. e.g. being able to make assertions that are true of organisms only when they are eggs, like what parts they have when the organisms are in that stage.
+[when in caterpillar stage] temporally quantifies over the temporal region the stage occupies. At no time in that temporal region does the organism have a yolk as part. i.e. caterpillars don't have yolks as part at any time (that they are caterpillars). 
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Sat, Feb 11, 2012 at 3:24 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+Can I see some examples?
+yes -- something like this is in the new version (which I hope is next to do) 
+
+They are the same 
+professor(x,t) = human(x,t) & x has_role at t professor role
+
+Chris Mungall convinced me that 'professor' names a perfectly good universal, just one that won't sit in the same asserted is-a hierarchy with 'human'
+yes 
+that is exactly what I mean
+No it isn't! Here you're going back to something I thought you had dropped
+A professor is not a human who lives to be a professor -- as you yourself just admitted in yellow above
+A moth is not an organism who lives to be a moth
+These look alright to me, and do not seem to be affected by the pink error
+Your trick should not commit you to making false assertions such as
+
+x is a moth = x is an organism that lives until it is a moth 
+Can you restate the proposal, either without any pink, or in such a way that the role of the pink is clear and consistent (thus you are never allowed to say anything like what is in blue above
+Perhaps the idea of restricting subclass to asserted subclass relations is what is needed after all -- rather like an evidence code, which filters out bad inferences  
+but surely on the pink and non-pink readings that is exactly what you are doing
+BS
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Sat, Feb 11, 2012 at 5:21 PM
+To: Barry Smith <phismith@buffalo.edu>
+
+
+
+
+They are in the OWL file. I demonstrate how to say that moths have wings during the whole of the time they are moths by asserting:
+every 'moth as organism' has_part_at_all_times some wing and then show that the query (as probe class) 'has_part_at_some_time wing'  returnings 'moth-organism' (it is classified as a subclass of has_part_at_some_time wing).
+
+I don't really care about asserted is-a, I care about what it means, which means what happens when the sanctioned inferences happen. If professor remains in a disjoint hierarchy from human then you will have the same situation as I do - extra owl instances. If he interprets them as I do, then we're fine. Otherwise you have multiplicative entities for a single professor and human.
+I do not understand you. Please, again, tell me how this is wrong. Is is not the case that for any t such that x instantiates moth at t,  there is a part of the x's history whose last-time-point meets t and that extends continuously back in time to the point that x first existed?  'organism that lives until it is amoth' is exactly: organism st. exists (t) organism instanceOf moth, and the "lives until" is just bringing the correct inference about the history into the label.
+But they are not alright, as the next two sentences explain. 
+Again, I DO NOT HAVE A CLASS CALLED MOTH. You just can't have that class in OWL because there is no way to instantiate it.
+I have 'organism as moth' and I could, if I wanted, have 'organism that lives until it is a moth'. 
+Sigh. Which part of the proposal? I'm feeling a bit broken telephone here and can't figure out where there is a problem. I already don't have the part in pink because I don't have the class 'moth'.
+I don't know what that means. If you assert something you commit to the consequent inferences. 
+No I am not. I can create a class called 'human as professor' that (almost) means (a) but I don't assert (or infer) that is a subclass of human and  use individuals of this class to make assertions that are interpreted in the BFO reading as assertions on human in the way I have explained - those individuals are not BFO particulars - they disappear in the BFO interpretation. I am not making the pink statement because I don't define moth (or professor) at all in the sense BFO would because there is no way to do time-dependent instantiation in OWL directly. I do not make the blue statement because it would lead to incorrect inferences.
+
+-Alan
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Sun, Feb 12, 2012 at 10:15 AM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+
+
+
+For any name 'John', 'John' is equivalent to 'Creature which is both identical to John and such that 2+2 = 4'
+Both this does not mean that 'John' and that phrase are equivalent, and that the phrase should be recommended for use instead of John 
+If the former does not mean the latter then please drop discussion of the latter and just use the former
+
+Let me see if I have got this straight:
+
+there is no term 'professor'
+there is just 'human as professor'
+human as professor is not a subclass of human
+How do I say:
+human once was fetus?
+Can I say:
+human as professor once was fetus
+BS
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Sun, Feb 12, 2012 at 11:14 AM
+To: Barry Smith <phismith@buffalo.edu>
+
+
+
+
+
+The term organism that lives until it is a moth is not the same as organism. The former is an attributive collection - it is a subclass of moth-organism because not all moth-organisms have lives that include moth stage - many die before that happens.
+Similarly, human that lives to professor is an attributive class, subclass of human, because not all humans ever gain professor role.
+Professor has an extension (whether attributive class or universal) that varies in time. At a time if you look at the extension of professor, it is the case that each is a human that has a live that has part that is a professor stage. The term professor, used in this sense, has exactly the same extension at every time that 'human that that has lived until professor stage. Because the use of the term 'professor', in the context of this discussion about OWL, can easily be confused with 'human as professor', I use the longer name because it has a clear mapping in OWL (human with history that has_part professor stage). Because the name gives information that actionable wrt to OWL, it is appropriate to use, when necessary, and the analogy to human and 2+2=4 does not hold up. I'll remind you that I am neutral as to whether a given ontology decides to use the term or not. My job is to make it clear what they are doing when they write something.
+
+I don't think this is a very interesting issue and I propose we move on.
+If 'organism as moth' is what you mean by 'the former', then I can assure you that the focus is that. The latter, however, has proved useful to clarify the meaning of the former as in OWL they can both be expressed and we can follow the separate consequences as they manifest in the BFO model. (former - predication in a restricted time interval on moth-organism, predication on an attributive class subclass of moth-organism). I will use it again where it has pedagogical use, or where an application ontology needs to assert something in OWL that can only be asserted on the attributive subclass.
+
+There is such a term in BFO. It is a universal (if I understand you correctly). We do not have this term, in the sense used in BFO FOL because we can't instantiate it correctly in OWL. Whether there is benefit to using 'professor' as an alternative alternative term in some application ontology is a matter for the ontology developers, and would be considered to be positive iff the use of the alternative term helps the developers and consumers of that ontology make more correct assertions than if they used some other term. 
+This is a tentative name for a term in the OWL ontology, whose individuals do not appear as particulars in the BFO reading, and assertions on which appear as temporally indexed assertions on human in the BFO reading. It was chosen to, first and foremost, not be 'human', because of the aforementioned confusion about the meaning of 'human' in the OWL representation I am proposing.
+Correct. Because if it was, any assertion that was true for all human would be inherited and inferred to be true for all humans at times when they instantiated professor. I have demonstrated that this would lead to errors. I'm not so happy about this, because I think that it is natural to write this, and I am trying to come up with some formulation that would allow it. For now there would be two parallel hierarchies below material entity, tentatively named organism, organism in stage.
+The usual logical interpretation is that every human, at some time, instantiates fetus.
+
+This is an incorrect statement, as there are humans (by our definition of human) that do not, having ceased to exist when they were zygotes or embryos. But if you wanted to say so you could either say, assuming every human was once zygote (which I believe is your position).
+
+'history of human' has_part some 'fetus stage'
+or
+'human as zyogote' transforms_into some 'human as fetus'
+or 
+'human' is_temporally_qualified_by some 'human as fetus'.
+
+The BFO reading of transforms_into (domain, human as x, human as y) would differ from the usual translation, as it needs to say something that isn't temporally qualified in the usual way. This is my interpretation of transforms_into in FOL. Feel free to fix if you think I have it wrong.
+
+forall x,x is_a human, exists t1,t2 , (zygote x t1) , (fetus x t2) and t1<t2
+
+I special case transformation in the BFO reading because before now we haven't been able to say anything like it in the OWL, and it is a desirable thing to say, if there is a way to do it, which there, according to my proposal.
+('history of human' that has_part some 'professor stage') has_part some 'fetus stage' 
+or
+'human as professor' transformation_of some 'human as fetus'
+
+(transformation is transitive according to RO)
+
+-Alan
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Sun, Feb 12, 2012 at 12:12 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+
+You have 3 terms here
+
+1. organism
+2. organism that lives until it is a moth
+3. moth-organism
+
+can you explain their relations?
+And explain how they relate to 'human-as-professor' that you refer to below
+Again: Chris convinced me that for such general terms as 'professor' there is no reason to call them attributive classes; they are universals just like any other; but professor does not stand in an asserted_is_a relation to human
+The subclass relation is inferred
+
+ 
+Professor has an extension (whether attributive class or universal) that varies in time. At a time t if you look at the extension of professor, it is the case that each is a human that has a live that has part that is a professor stage.
+
+Yes. And t is part of the time occuped by all the corresponding professor stages (occurrent parts of the lives of all the professors)
+No it doesn't. The extension of professor does not include all the retired professors.
+I want to understand it. And if you can't bring me to understand it, you will fail with others, too.
+
+
+
+----------
+From: Alan Ruttenberg <alanruttenberg@gmail.com>
+Date: Sun, Feb 12, 2012 at 1:38 PM
+To: Barry Smith <phismith@buffalo.edu>
+
+
+
+
+moth-organism is synonym for the subtype of organism. It's a little less unwieldy than Laothoe Populi,
+organism that lives until it is a moth is an attributive class subclass of organism-moth, whose members are (atemporally) any Laothoe Populi that doesn't die before it transforms to a moth (equivalent: has part of a moth stage as part of its history). One can look at a larva and not know yet whether it is a member of this class, but later on if it becomes a moth you can know that it was.
+Once again, if an individual can be professor at one time and not at another then it can't be in the OWL, as subclass or not. Chris is wrong and this conversation obviously predates our current work. I don't need to know whether it is a universal or attributive class. All I need to know  is that it is non-rigid to make the assessment that you will have trouble in OWL. 
+Yes.
+My bad in phrasing. I meant: at any time that x instantiates professor, it also instantiates human that has lived until professor stage.
+OK. I tried again.
+I am not claiming that human that has lived to be professor has the same extension at all times as professor. I've already said I can't represent non-rigid professor in OWL and explained the two things I *can* represent. Because neither is the same as professor, but either could be confused as such I defined them both, will try to make clear that neither is 'professor' sensu BFO, and explain that instances of one are used to predicate over time intervals, but aren't particulars, and that the other is subclass of human. 
+I think that's the best that can be done.
+-Alan
+
+
+
+----------
+From: Barry Smith <phismith@buffalo.edu>
+Date: Sun, Feb 12, 2012 at 2:20 PM
+To: Alan Ruttenberg <alanruttenberg@gmail.com>
+
+
+If you are going to use      
+moth-organism that has lived until butterfly stage
+then you need to use these on every occasion, and never yield to the temptation to abbreviate them e.g. as moth-as-butterfly
+
+Can you do something analogous in a future pointing way: human that has lived since (and including) his entering the professor stage?
