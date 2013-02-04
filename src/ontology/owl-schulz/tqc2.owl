@@ -1,0 +1,496 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime">
+        <rdfs:comment>Relates a temporally nonqualified instance of a continuant to its temporarily qualified &quot;stages&quot;
+
+Example:
+
+John atSomeTime John_at_20120112 
+John_at_20120112  hasTemporalContext 20120112 
+
+John atSomeTime John_at_20130101
+John_at_20130101 hasTemporalContext 20130101
+
+John_at_20120112  hasPart Heart1
+
+John_at_20130101 hasPart Heart2
+ 
+
+Notes:
+- John, John_20120112, John_20130101 are the same individuals
+- Heart 1 and Heart 2 are different individuals
+- Every continuant can be an instance of temporally qualified continuant</rdfs:comment>
+        <rdfs:domain rdf:resource="&obo;Continuant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment>HasPart as an important example of a transitive relation between 
+
+1 .continuants and continuants
+2. occurrents and occurrnets 
+
+This relation can only be asserted between temporally qualified continuant instances, i.e. which are time-stamped. Whenever the relation is asserted between continuants they are classified as temporally qualified continuants, i.e. the instances need to have a timestamp. 
+What OWL cannot assure, however, is that both relata refer to the same time instant. 
+
+
+</rdfs:comment>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTimestamp -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTimestamp">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment>relates a temporally qualified continuant with its the point in time at which a temporally relevant assertion is made</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/Continuant -->
+
+    <owl:Class rdf:about="&obo;Continuant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Entity"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+        <rdfs:comment>Continuant according to BFO 2
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#A -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#A">
+        <rdfs:subClassOf rdf:resource="&obo;Continuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#B"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#B -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#B">
+        <rdfs:subClassOf rdf:resource="&obo;Continuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C">
+        <rdfs:subClassOf rdf:resource="&obo;Continuant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#D -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#D">
+        <rdfs:subClassOf rdf:resource="&obo;Continuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#E"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#E -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#E">
+        <rdfs:subClassOf rdf:resource="&obo;Continuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#F"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Entity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Entity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;Continuant"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#F -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#F">
+        <rdfs:subClassOf rdf:resource="&obo;Continuant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_CONTINUANT_PART_AT_SOME_TIME_F -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_CONTINUANT_PART_AT_SOME_TIME_F">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#F"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_CONTINUANT_PART_SOME_C -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_CONTINUANT_PART_SOME_C">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_OCCURRENT_PART_SOME_Z -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_OCCURRENT_PART_SOME_Z">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Z"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Occurrent according to BFO2
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;Continuant"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTimestamp"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporallyQualifiedContinuant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="&obo;Continuant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Temporally qualified continuant = Time stamped continuant.  
+
+The rationale of this class is to mitigate the problem of non-temporalized (binary) relations in OWL.   
+
+&quot;Temporally qualified continuant&quot; is NOT an ontologically relevant category. 
+
+In TBox reasoning it is irrelevant. But it matters when it comes to represent individuals, because it requires that a timestamp be added to the each instance. 
+
+The idea is the following:
+
+ Rel (a, b, t) 
+
+cannot be expressed in OWL. 
+
+But we could state the same by 
+
+ Rel (a@t, b@t)
+
+with a@t , b@t being temporally qualified continuants. 
+
+The current ontology assures that wherever a relation is asserted between two continuants the relata are classified as temporally qualified continuants. 
+
+LIMITATION:
+
+OWL cannot avoid invalid statements such as 
+   
+ Rel (a@t, b@u)   with t =/= u
+
+
+
+
+
+
+
+
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#X -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#X">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Y"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Y -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Y">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Z"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Z -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Z">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#a1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#a1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#A"/>
+        <hasPart rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#b1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#b1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#b1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#B"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#c1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#c1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C"/>
+        <hasPart rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#c1"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1912) http://owlapi.sourceforge.net -->
+
