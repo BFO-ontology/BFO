@@ -1,6 +1,8 @@
 The 3 OWL files in this directory illustrate issues with error
 checking in BFO2. Each OWL file has a corresponding screenshot.
 
+See: http://code.google.com/p/bfo/issues/detail?id=156
+
 They should be viewed in the following order:
 
 
