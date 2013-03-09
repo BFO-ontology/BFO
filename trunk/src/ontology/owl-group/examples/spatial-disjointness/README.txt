@@ -1,3 +1,8 @@
+The 3 OWL files in this directory illustrate issues with error
+checking in BFO2. Each OWL file has a corresponding screenshot.
+
+They should be viewed in the following order:
+
 
 sd-atemporal.owl
 ----------------
@@ -117,3 +122,6 @@ to write 4 axioms instead of 1 to achieve the same "level of
 defense". There may be other problems lurking when we compose
 relations together.
 
+This result should not be surprising. We can expect consequences like
+this when we embed complex FOL into object properties, where the FOL
+is opaque to OWL reasoners.
