@@ -17,7 +17,7 @@ See:
 In this case we make nucleus and mitochondrion spatially disjoint
 using the following GCI:
 
-   [1]  (part_of some mitochondrion) DisjointWith (part_ofsome nucleus)
+   [1]  (part_of some mitochondrion) DisjointWith (part_of some nucleus)
 
 For a temporal reading, we can assume that the above axiom holds for
 any snapshot / instant of time t. Although uncommitted to a temporal
