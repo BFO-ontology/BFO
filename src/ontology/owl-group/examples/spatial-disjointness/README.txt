@@ -75,7 +75,7 @@ sd-bfo2-fail contains the same modeling error translated to BFO2:
 
 We also include an axiom:
 
-  every mitochondrion has-part-at-all-times some nucleus
+  every mitochondrion has-part-at-all-times some chromosome
 
 As an ontology editor, I would like mt to be flagged as unsatisfiable,
 as in the atemporal example. However, axiom [2] is too weak for
