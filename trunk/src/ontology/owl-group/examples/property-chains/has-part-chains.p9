@@ -1,0 +1,42 @@
+
+% Author: Chris Mungall
+% IN-PROGRESS - I CAN'T GET THIS TO WORK
+
+formulas(sos).
+
+% TRANSITIVITY
+all x all y all z all t ((has_part(x,y,t) & has_part(y,z,t)) -> has_part(x,z,t)).
+
+% ALL-TIMES
+%all p all w
+% (has_part_at_all_times(w,p) <->
+%   (all t (exists_at(w,t) -> has_part(w,p,t)))).
+
+all p all w
+ (has_part_at_all_times_for_which_part_exists(w,p) <->
+   (all t (exists_at(p,t) -> has_part(w,p,t)))).
+
+
+% SOME-TIMES
+all p all w
+ (has_part_at_some_times(w,p) <->
+   (exists t has_part(w,p,t))).
+
+%all p all w (has_part_at_all_times(w,p) -> exists t exists_at(p,t)).
+%all p all w (has_part_at_all_times(w,p) -> exists t exists_at(w,t)).
+%all p all w (has_part_at_all_times_for_which_part_exists(w,p) -> exists t exists_at(p,t)).
+%all p all w (has_part_at_all_times_for_which_part_exists(w,p) -> exists t exists_at(w,t)).
+all p all w all t (has_part(w,p,t) -> exists_at(w,t)).
+all p all w all t (has_part(w,p,t) -> exists_at(p,t)).
+
+
+
+
+end_of_list.
+
+formulas(goals).
+
+% LOOPS INDEFINITELY
+all x all y all z ((has_part_at_all_times_for_which_part_exists(x,y) & has_part_at_some_times(y,z)) -> has_part_at_all_times_for_which_part_exists(x,z)).
+
+end_of_list.                  
