@@ -1,0 +1,23 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://purl.obolibrary.org/obo/test.owl>
+Import(<http://purl.obolibrary.org/obo/bfo.owl>)
+
+Declaration(Class(<http://purl.obolibrary.org/obo/TEST_0000015>))
+AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/TEST_0000015> "QUERY"@en)
+EquivalentClasses(<http://purl.obolibrary.org/obo/TEST_0000015> ObjectHasValue(<http://purl.obolibrary.org/obo/BFO_0000178> <http://purl.obolibrary.org/obo/TEST_0000014>))
+Declaration(NamedIndividual(<http://purl.obolibrary.org/obo/TEST_0000012>))
+AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/TEST_0000012> "x"@en)
+ObjectPropertyAssertion(<http://purl.obolibrary.org/obo/BFO_0000187> <http://purl.obolibrary.org/obo/TEST_0000012> <http://purl.obolibrary.org/obo/TEST_0000013>)
+Declaration(NamedIndividual(<http://purl.obolibrary.org/obo/TEST_0000013>))
+AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/TEST_0000013> "y"@en)
+ObjectPropertyAssertion(<http://purl.obolibrary.org/obo/BFO_0000178> <http://purl.obolibrary.org/obo/TEST_0000013> <http://purl.obolibrary.org/obo/TEST_0000014>)
+Declaration(NamedIndividual(<http://purl.obolibrary.org/obo/TEST_0000014>))
+AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/TEST_0000014> "z"@en)
+SubObjectPropertyOf(ObjectPropertyChain(<http://purl.obolibrary.org/obo/BFO_0000187> <http://purl.obolibrary.org/obo/BFO_0000178>) <http://purl.obolibrary.org/obo/BFO_0000178>)
+)
