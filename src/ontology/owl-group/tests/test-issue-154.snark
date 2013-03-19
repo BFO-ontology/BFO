@@ -64,8 +64,11 @@ ________________________________________________________________
 	  :whoops
 	  :seems-ok))
 
+;; Fabian says that he wasn't clear enough which is why this fails.
 (defun test-stronger-documented-some-time-relation ()
   (initialize)
+  (use-hyperresolution t) ; doesn't terminate with resolution only
+  (print-term-memory-when-finished nil)
   ;;  x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
   (assert '
    (forall (?x ?y)
@@ -88,6 +91,50 @@ ________________________________________________________________
 		     (and (not (= ?q ?x))
 			  (rel-at-some-time ?x ?q)))))))
 
-	  :whoops
+	  :whoopsn
 	  :seems-ok))
+
+
+;; Fabian says:
+
+;; The reason why you weren't able to duplicate my comment is because I
+;; formulated sloppily. I should have written: Something that does not
+;; exists at some time is part-at-some-time of everything else that
+;; exists at that time.
+
+;; all x (all y
+;; (relationAtSomeTime(x, y) <-> ( exists z 
+;;     (existsAt(x,z) -> 
+;;        existsAt(y,z) & rel(x,y,z)  
+;;     )
+;; ))). 
+
+;; -existsAt(fabian, year2100). 
+;; existsAt(foo, year2100). 
+
+;; entails
+
+;; relationAtSomeTime(fabian, foo).  
+
+
+(defun test-stronger-documented-some-time-relation-2 ()
+  (initialize)
+  (use-resolution t)
+  ;;  x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
+  (assert '(forall (?x ?y)
+	    (iff
+	     (rel-at-some-time ?x ?y)
+	     (exists (?t)
+	      (implies
+	       (exists_at ?x ?t)
+	       (and (exists_at ?y ?t)
+		    (rel ?x ?y ?t)))))))
+
+  (assert '(and (not (exists_at fabian t1))
+	    (exists_at foo t1)))
+
+  (if (eq :proof-found
+	  (prove '(rel-at-some-time fabian foo)))
+      :whoops
+      :seems-ok))
 
