@@ -1,0 +1,1660 @@
+
+
+
+// CLIF axioms for OWL primitives   
+// Author: Fabian Neuhaus 
+// Version 0.1  
+//
+// 
+// Thanks to Evan Wallace for patiently answering my questions about OWL!  
+//
+// 
+//
+// The goal of this ontology is to axiomatize the logical vocabulary of OWL
+// in CLIF. (With logical vocabulary I mean terms like "SubClassOf" or "SymmetricObjectProperty").
+// The semantics of the logical vocabulary of OWL is defined is defined in 
+// the OWL 2 Web Ontology Language Direct Semantics document.  
+// (I used the version of 27 October 2009 it is available at http://www.w3.org/TR/2009/REC-owl2-direct-semantics-20091027/ )    
+// This document consists mainly of several tables which assigns to each OWL expression an interpretation or truth condition. 
+// Since my job was in many cases a straight forward translation of an interpretation or truth condition into an axiom 
+// I follow the structure of OWLS. This way it is easy to link the axioms for a given expression to its OWL semantics.    
+//
+// Following RDF, the OWL semantics has two disjoint universe of discourses: objects (elements of the interpretation of owl:Thing) 
+// and data values (elements of the interpretation of rdfs:Literal). Data values are distinguished from their lexical form.    
+// For example the integer 0203 and the hexadecimal value 0203 are are two different data values, 
+// but they share their lexical form "0203". (To avoid ambiguity the OWL specification documents 
+// refers to data values with compound expression of lexical form and datatype; for example, "0203"^^xsd:integer and "0203"^^xsd:hexBinary)  
+// Both, objects and data values are within the universe of discourse of this ontology. 
+// In addition, this ontology contains additional ontological cartegories that were  
+// needed to capture the intended semantics with CL axioms. 
+//
+// This includes the following ontology categories:
+// Class, OWLObjectProperty, DataType, DataRange, OWLDataProperty, Facet   
+// These are all abstact entities that are instantiated by (tuples of) objects and data values. 
+// A class is a unary relation on objects (thus, a property in FOL-terms), 
+// a datatype is a unary relation on data values,      
+// a datarange is an n-ary relation between data values (a datatype is a datarange),         
+// an objectproperty is a binary relation between objects,   
+// a dataproperty is a binary relation between objects and data values. 
+// a facet is a unary binary function that assigns to a data value and a data type a subset of the value space of the datatype   
+//  
+// There is a certain ambiguity about the usage of terms like "class" in the OWL world. 
+// For example, in OWLS the term "class" is used to refer to elements of the vocabulary. In this sense,  
+// the word "human" might be class of a given OWL vocabulary. However, when people talk about Bill Clinton 
+// being a member of the class Human, what is meant by "class" is obviously not a linguistic entity that is part of 
+// a vocabulary, but rather the collection (set, type, universal, ... choose your favorite) that is denoted by the vocabulary item 
+// "human" in the English dictionary. The instances of Class in this ontology are the collections (sets, types, universals, ...)
+// and NOT the linguistic entities. Thus, the ontological categories above are not identical with the syntactic categories in OWLS. 
+// For this reason, the syntactical distinction between classes and class expressions in OWLS and similar syntactic distinctions is not reflected  
+// in this ontology; classes-in-the-syntactical-sense and class expressions alike denote classes.       
+// 
+// Note that the lexical forms of data values are currently not mentioned above. This is because so far the axioms did not require it.  
+// However, this might have to change to capture datatype maps more appropriately. 
+//
+
+
+
+ 
+	
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Interpretations (from section 2.2 of OWLS)    
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// %%%% What there is ... %%%%
+
+(Disjoint owl:Thing rdfs:Literal Class OWLObjectProperty DataRange OWLDataProperty Facet)
+
+
+// Probably it would be sufficient to require disjointness of owl:Thing rdfs:Literal.
+// To avoid potential unintended consequences, I opted for this stronger version.   
+// It would be interesting to study the alternatives.
+// For example, what would be the consequences if Class would be a subset of owl:Thing? 
+ 
+
+// %%%% Class %%%%
+
+(forall( x C) 
+	(if 
+		(and 
+			(Class C)
+			(C x)
+		)
+		(owl:Thing x) 
+	))    
+
+// A Class is a subset of owl:Thing
+
+
+(forall (C x y ...s )
+	(if 
+		(Class C)
+		(and
+			(not (C x y ...s))
+			(not (C)) 
+		)))	 
+
+// Classes are unary 
+ 
+// %%%% OWLObjectProperty %%%%
+
+(forall (x y R) 
+	(if 
+		(and 
+			(OWLObjectProperty R)
+			(R x y)
+		)
+		(and 
+			(owl:Thing x)
+			(owl:Thing y)
+		) 
+	))      
+
+ (forall (R x y z ...s )
+	(if 
+		(OWLObjectProperty R)
+		(and
+			(not (R))
+			(not (R x))
+			(not (R x y z ...s))			 
+		)))	 
+
+// An OWLObjectProperty is a binary relation on owl:Thing.
+
+
+// %%%% DataRanges %%%%
+
+ 
+(forall (DR v ...s) 
+	(if 
+		(and 
+			(DataRange DR)
+			(DR v ...s)
+		)
+		(DataValueList v ...s)
+	))	  
+
+// DataRanges are n-ary relations between data values. 
+
+
+(forall (DR) 
+	(if 
+		(DataRange DR)
+		(FixedArity DR)
+	))	  
+
+// DataRanges have a fixed arity. "FixedArity" is axiomatized in the section "Auxiliary axioms" below.   
+
+
+// %%%% DataTypes %%%%
+(forall (DT x y ...s )
+	(iff 
+		(DataType DT)
+		(and
+			(DataRange DT) 
+			(not (DT x y ...s))
+			(not (DT)) 
+		)))	 
+
+// All datatypes are interpreted as subsets of the set of literals.
+// Thus, they are unary data ranges. 
+
+
+ 
+// %%%% OWLDataProperty %%%%
+
+(forall (x y R) 
+	(if 
+		(and 
+			(OWLDataProperty R)
+			(R x y)
+		)
+		(and 
+			(owl:Thing x)
+			(rdfs:Literal y)
+		) 
+	))      
+
+ (forall (R x y z ...s )
+	(if 
+		(OWLDataProperty R)
+		(and
+			(not (R))
+			(not (R x))
+			(not (R x y z ...s))			 
+		)))	 
+
+// An OWLObjectProperty is a binary relation: owl:Thing x rdfs:Literal 
+
+// %%%% Facet  %%%%
+(forall (f x DT y)
+	(if 
+		((f x DT) y)
+		(and
+			(Facet f) 
+			(DataType DT)  
+			(rdfs:Literal x)
+			(rdfs:Literal y)
+			(DT y) 			
+		)))	 
+
+// A facet is a binary function assigns to a datatype DT and a data value x a set of data values that is a subset of    
+// the value space of DT 
+
+// %%%% owl:Nothing %%%%
+(Class owl:Nothing) 
+
+(forall (x) (not (owl:Nothing x)))
+
+// %%%% owl:Thing %%%%
+
+(Class owl:Thing) 
+
+// Theorem: 
+(forall (C)
+	(if 
+		(Class C) 
+		(SubClassOf C owl:Thing) 
+ 	))
+
+
+// %%%% owl:topObjectProperty %%%%
+
+(OWLObjectProperty owl:topObjectProperty)
+
+(forall (x y) 
+	(if 
+		(and 
+			(owl:Thing x)
+			(owl:Thing y)
+		)
+		(owl:topObjectProperty x y)
+	))
+	 
+
+// %%%% owl:bottomObjectProperty %%%%
+
+(OWLObjectProperty owl:bottomObjectProperty)
+(forall (x y) (not (owl:bottomObjectProperty  x y)))
+
+
+
+// %%%% owl:topDataProperty%%%%
+
+ (OWLDataProperty owl:topDataProperty)
+
+(forall (x y) 
+	(if 
+		(and 
+			(owl:Thing x)
+			(rdfs:Literal y)
+		)
+		(owl:topDataProperty x y)
+	))
+	 
+
+// %%%% owl:bottomDataProperty %%%%
+
+(OWLDataProperty owl:bottomDataProperty)
+(forall (x y) (not (owl:bottomDataProperty  x y)))
+
+
+	
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Object Property Expressions (section 2.2.1 of OWLS)  
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+// %%%% ObjectInverseOf (OP)%%%% 
+ 
+(forall (R)
+	(iff
+		(OWLObjectProperty R) 
+	 	(OWLObjectProperty (ObjectInverseOf R))
+	 ))
+ 
+(forall (R y z) 
+ 	(iff
+ 		((ObjectInverseOf R) y z)
+ 		(R z y)		 
+ 	))
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Data Ranges (section 2.2.2 of OWLS)    
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// In this document I follow the order of OWLS, thus the axioms for DataRanges 
+// and for DataTypes appear before the axioms for class expressions. Since the axioms
+// for class expressions are structurally similar but easier to understand (mainly because 
+// classes are unary and not n-ary as data ranges), it might be easier to skip this section 
+// and read the axioms for classes first.  
+
+// %%%% DataIntersectionOf %%%% 
+ 
+(forall (X Y ...s)
+	(iff 
+		((DataIntersectionOf X Y) ...s)
+		(and
+			(DataRange X)
+			(DataRange Y)
+			(X ...s)
+			(Y ...s) 
+		))) 	
+
+
+(forall (X Y Z ...s1 ...s2)
+	(iff 
+		((DataIntersectionOf X Y Z ...s1) ...s2)
+		((DataIntersectionOf (DataIntersectionOf X Y) Z ...s1) ...s2)
+	)) 	
+
+(forall (X Y ...s)
+	(iff 
+		(DataRange(DataIntersectionOf X Y  ...s))
+		(DataRangeList X Y  ...s)
+	)) 	
+
+(forall (X Y ...s)
+	(iff 
+		(DataType(DataIntersectionOf X Y  ...s))
+		(DataTypeList X Y  ...s)
+	)) 	
+
+
+
+// %%%% DataUnionOf %%%%
+ 
+(forall (X Y ...s)
+	(iff 
+		((DataUnionOf X Y) ...s)
+		(and
+		(DataRange X)
+		(DataRange Y)
+ 			(or
+				(X z)
+				(Y z) 
+			)))) 	
+
+
+(forall (X Y Z ...s1 ...s2)
+	(iff 
+		((ObjectUnionOf X Y Z ...s1) ...s2)
+		((ObjectUnionOf (ObjectUnionOf X Y) Z ...s1) ...s2)
+	)) 	
+
+ 
+
+(forall (X Y ...s)
+	(iff 
+		(DataType(DataUnionOf X Y  ...s))
+		(DataTypeList X Y  ...s)
+	)) 	
+
+// The corresponding axiom does not hold for arbitrary collections of DataRanges, because they might be of different arity.   
+
+
+
+// %%%% DataComplementOf %%%%  
+(forall (X z)
+	(iff 
+		((DataComplementOf X) z)
+		(and
+ 			(DataType X)
+ 			(rdfs:Literal z)
+			(not (X z)) 
+		))) 	
+
+
+(forall (X)
+	(iff 
+		(DataType (DataComplementOf X))
+		(DataType X)
+	)) 	
+
+
+// DataComplementOf is straight forward for DataTypes because the arity of
+// DataTypes is fixed to 1. It is not trivial to generalize this to DataRanges of any arity.
+// The problem is that the complement of a DataRange is defined as 
+// the set of complementary tuples OF THE SAME ARITY. Arity (as syntactic notion) does not exist in CLIF
+// In the axiom below I tried to capture the this constraint for DataRanges with arity >1
+// with the existential condition at the end of the definition. 
+// However, that obviously does not work if such y2 z2 ...s2 do not exist. 
+  
+(forall (X y1 z1 ...s1)
+	(iff 
+		((DataComplementOf X) y1 z1 ...s1)
+		(and
+ 			(DataRange X)
+ 			(DataValueList y1 z1 ...s1)
+			(not (X y1 z1 ...s1))
+			(exists (y2 z2 ...s2)
+				(and 
+					(X y2 z2 ...s2)
+					(SameLength (list ...s1) (list ...s2))
+				))))) 	
+
+
+(forall (X)
+	(iff 
+		(DataRange(DataComplementOf X))
+		(DataRange X)
+	)) 	
+
+
+// %%%% DataOneOf %%%%
+(forall (y z  ...s)
+	(iff 
+		((DataOneOf y ...s) z)
+		(and 
+			(rdfs:Literal y) 
+			(or
+				(= y z) 
+				((DataOneOf ...s) z)
+			)))) 	
+
+ 
+ (forall (x)
+ 	(not 
+ 		((DataOneOf) x)
+ 	)) 
+
+(forall (y ...s)
+	(iff 
+		(DataType (DataOneOf y ...s))
+		(DataValueList y ...s)
+	)) 	
+
+
+// %%%% DatatypeRestriction %%%%
+(forall (DT f x y)
+	(iff 
+		((DatatypeRestriction  DT f x) y)
+		(and
+			(DataType DT)
+			(Facet f)
+			(rdfs:Literal x)
+			((f x DT) y)
+			(DT y)
+		))) 	
+
+
+(forall (DT f x)
+	(iff 
+		(DataType (DatatypeRestriction  DT f x))
+		(and 
+			(DataType DT)
+			(Facet f)
+			(rdfs:Literal x)
+		))) 	
+
+
+
+(forall (DT f1 x1 f2 x2 ...s y)
+	(iff 
+		((DatatypeRestriction  DT f1 x1 f2 x2 ...s) y)
+		(DatatypeRestriction (DatatypeRestriction  DT f1 x1) f2 x2 ...s)
+	))	 
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Class Expressions (section 2.2.3 of OWLS)  
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+ 
+// %%%% ObjectIntersectionOf %%%% 
+(forall (X Y z)
+	(iff 
+		((ObjectIntersectionOf X Y) z)
+		(and
+			(Class X)
+			(Class Y)
+			(X z)
+			(Y z) 
+		))) 	
+
+
+(forall (X Y Z ...s z)
+	(iff 
+		((ObjectIntersectionOf X Y Z ...s) z)
+		((ObjectIntersectionOf (ObjectIntersectionOf X Y) Z ...s) z)
+	)) 	
+
+
+(forall (X Y)
+	(iff 
+		(Class (ObjectIntersectionOf X Y))
+		(and 
+			(Class X)
+			(Class Y)
+		))) 	
+
+ 
+// %%%% ObjectUnionOf %%%%
+ 
+(forall (X Y z)
+	(iff 
+		((ObjectUnionOf X Y) z)
+		(and
+		(Class X)
+		(Class Y)
+ 			(or
+				(X z)
+				(Y z) 
+			)))) 	
+
+(forall (X Y)
+	(iff 
+		(Class (ObjectUnionOf X Y))
+		(and 
+			(Class X)
+			(Class Y)
+		)))
+
+(forall (X Y Z ...s z)
+	(iff 
+		((ObjectUnionOf X Y Z ...s) z)
+		((ObjectUnionOf (ObjectUnionOf X Y) Z ...s) z)
+	)) 	
+
+
+
+// %%%% ObjectComplementOf %%%%  
+(forall (X z)
+	(iff 
+		((ObjectComplementOf X) z)
+		(and
+ 			(Class X)
+ 			(owl:Thing z)
+			(not (X z)) 
+		))) 	
+
+(forall (X )
+	(iff 
+		(Class (ObjectComplementOf  X))
+		(Class X)		
+	))
+
+
+// %%%% ObjectOneOf %%%%
+(forall (y z  ...s)
+	(iff 
+		((ObjectOneOf y ...s) z)
+		(and
+			(owl:Thing y)
+			(or
+				(= y z) 
+				((ObjectOneOf ...s) z)
+			)))) 	
+
+ 
+ (forall (x)
+ 	(not 
+ 		((ObjectOneOf) x)
+ 	)) 
+
+ 
+(forall (x  ...s)
+	(iff 
+		 (Class (ObjectOneOf x ...s))
+		 (ThingList x  ...s)
+	))
+
+  
+// %%%% ObjectSomeValuesFrom %%%% 
+(forall (R C x)
+	(iff 
+		((ObjectSomeValuesFrom R C) x)
+		(and
+			(Class C)
+			(OWLObjectProperty R) 
+			(exists (y) 
+				(and 
+					(C y) 
+					(R x y)
+				))))) 	
+
+(forall (C R)
+	(iff 
+		(Class (ObjectSomeValuesFrom R C))
+		(and 
+			(Class C)
+			(ObjectSomeValuesFrom  R)
+		)))
+
+
+// %%%% ObjectAllValuesFrom %%%% 
+(forall (R C x)
+	(iff 
+		((ObjectAllValuesFrom R C) x)
+		(and
+			(Class C)
+			(OWLObjectProperty R) 
+			(forall (y) 
+				(if 
+					(R x y)
+					(C y)
+				)))))	 
+	
+(forall (C R)
+	(iff 
+		(Class (ObjectAllValuesFrom  R C))
+		(and 
+			(Class C)
+			(OWLObjectProperty R)
+		)))
+
+
+// %%%% ObjectHasValue %%%% 
+(forall (R x y)
+	(iff 
+		((ObjectHasValue R y) x)
+		(and
+			(OWLObjectProperty R) 
+			(R x y)
+		)))	 
+
+  
+(forall (R y)
+	(iff 
+		(Class (ObjectHasValue R y))
+		(and 
+			(OWLObjectProperty R)
+	 		(owl:Thing y) 
+		)))
+
+	
+// %%%% ObjectHasSelf %%%% 
+(forall (R x)
+	(iff 
+		((ObjectHasSelf R) x)
+		(and
+			(OWLObjectProperty R) 
+			(R x x)
+		)))	 
+
+(forall ( R)
+	(iff 
+		(Class (ObjectHasSelf R))
+		(OWLObjectProperty R)
+	))
+
+
+
+// %%%%  ObjectMinCardinality (n OPE) %%%%   
+// There is no straight forward way to axiomatize ObjectMinCardinality in CLIF, at least not without using an axiom schema, because     
+// for each natural number n one would have to write a different axiom. 
+// Of course, one could axiomatize a significant chunk of math to define "cardinality", however in my opionion that would be overkill.
+// Interestingly, ObjectMinCardinality can be axiomatized in IKL:   
+
+(forall (R x)
+	(iff 
+		((ObjectMinCardinality n R) x)
+		(and
+			(OWLObjectProperty R) 
+			(exists n (y) (R x y)) 
+		))) 	
+  
+(forall ( R)
+	(iff 
+		(Class (ObjectMinCardinality R))
+		(OWLObjectProperty R)
+	))
+ 
+	
+// %%%%  ObjectMaxCardinality (n OPE) %%%% 
+// See comment above about ObjectMinCardinality.  
+//  ObjectMaxCardinality cannot be axiomatized in IKL either, because IKL does not contain arithmetic functions.
+// A pseudo-IKL axiom for ObjectMaxCardinality would be:    
+
+(forall (R x)
+	(iff 
+		((ObjectMaxCardinality n R) x)
+		(and
+			(OWLObjectProperty R) 
+			(not 
+				(exists n+1 (y)
+					(R x y)
+				))))) 	
+
+
+ 
+(forall (R)
+	(iff 
+		(Class (ObjectMaxCardinality R))
+		(OWLObjectProperty R)
+	))
+	
+// %%%% ObjectExactCardinality (n OPE) %%%% 
+// See comment above about ObjectMinCardinality.  
+//  ObjectMaxCardinality cannot be axiomatized in IKL either, because IKL does not contain arithmetic functions.
+// A pseudo-IKL axiom for ObjectExactCardinality would be:    
+
+(forall (R x)
+	(iff 
+		((ObjectExactCardinality n R) x)
+		(and
+			(OWLObjectProperty R) 
+			(exists n (y) (R x y))
+			(not (exists n+1 (y) (R x y))) 
+		))) 	
+
+   
+(forall (R)
+	(iff 
+		(Class (ObjectExactCardinality n R))
+		(OWLObjectProperty R)
+	))
+
+	
+// %%%% ObjectMinCardinality (n OPE CE)%%%%
+// See comment above about ObjectMinCardinality (the other, unrestricted version).     
+// ObjectMinCardinality can be axiomatized in IKL.  
+
+(forall (R C x)
+	(iff 
+		((ObjectMinCardinality  n R C) x)
+		(and
+			(Class C) 
+			(OWLObjectProperty R) 
+			(exists n (y) 
+				(and 
+					(R x y)
+					(C y) 
+				))))) 	
+  
+    
+(forall (C R)
+	(iff 
+		(Class (ObjectMinCardinality n R C))
+		(and 
+			(OWLObjectProperty R)
+			(Class C)
+		)))
+  
+  
+	
+// %%%%  ObjectMaxCardinality (n OPE CE) %%%%  
+// See comment above about ObjectMinCardinality.  
+//  ObjectMaxCardinality cannot be axiomatized in IKL either, because IKL does not contain arithmetic functions.
+// A pseudo-IKL axiom for ObjectMaxCardinality would be:    
+
+(forall (R C x)
+	(iff 
+		((ObjectMaxCardinality  n R C) x)
+		(and
+			(Class C) 
+			(OWLObjectProperty R) 
+			(not 
+				(exists n+1 (y) 
+					(and 
+						(R x y)
+						(C y) 
+					)))))) 	
+
+ 
+(forall (C R)
+	(iff 
+		(Class (ObjectMaxCardinality  n R C))
+		(and 
+			(OWLObjectProperty R)
+			(Class C)
+		)))
+
+  
+ 	
+// %%%% ObjectExactCardinality (n OPE CE) %%%% 
+// See comment above about ObjectMinCardinality.  
+// ObjectMaxCardinality cannot be axiomatized in IKL either, because IKL does not contain arithmetic functions.
+// A pseudo-IKL axiom for ObjectExactCardinality would be:    
+   
+ 
+(forall (R C x)
+	(iff 
+		((ObjectExactCardinality n R C) x)
+		(and
+			(Class C) 
+			(OWLObjectProperty R) 
+			(exists n (y) 
+				(and 
+					(R x y)
+					(C y) 
+				))
+			(not 
+				(exists n+1 (z) 
+					(and 
+						(R x z)
+						(C z) 
+					)))))) 	
+
+
+
+
+(forall (C R)
+	(iff 
+		(Class (ObjectExactCardinality  n R C))
+		(and 
+			(OWLObjectProperty R)
+			(Class C)
+		)))
+
+
+// %%%% DataSomeValuesFrom (DPE1 ... DPEn DR) %%%% 
+
+// The definition is not trivial because the DataSomeValuesFrom  links an object via n DataProperties DP1 ... DPn 
+// to n data values that are in the relation expressed by the data range DR.
+// First we need to recursively introduce the relation RelatesViaSomeDataPropertiesTo that 
+// -- given an object x -- links a list of DataProperties to a list
+// of data values. The function term "list" does not contribute anything in these axioms, the axioms would work without them; 
+// it just makes it easier to read the axioms.  
+
+(forall (x R y)
+	(iff 
+		(RelatesViaDataPropertiesTo x (list R) (list y))
+		(and 
+			(OWLDataProperty R)
+			(R x y)
+		)))
+		
+(forall (x  R1 R2 ...DP y1 y2 ...s)
+	(iff 
+		(RelatesViaDataPropertiesTo x (list R1 R2 ...DP) (list y1 y2  ...s))
+		(and
+			(RelatesViaDataPropertiesTo x (list R2 ...DP) (list y2 ...s))
+			(OWLDataProperty R1)
+			(R1 x y1)
+		)))	
+
+
+
+(forall (x R ...DP DR)
+	(iff 
+		((DataSomeValuesFrom R ...DP DR) x)
+		(and
+			(owl:Thing x) 
+			(OWLDataProperty R)
+			(OWLDataPropertyList ...DP)
+			(DataRange DR) 
+			(exists (y ...s)
+				(and 
+					(RelatesViaDataPropertiesTo x (list R ...DP) (list y ...s))
+					(DR y ...s) 
+				))))) 	
+
+
+
+
+(forall (R ...DP DR)
+	(iff 
+		(Class (DataSomeValuesFrom R ...DP DR))
+		(and 
+			(OWLDataProperty R)
+			(OWLDataPropertyList ...DP)
+			(DataRange DR) 
+		)))
+
+
+	
+// %%%% DataAllValuesFrom (DPE1 ... DPEn DR) %%%% 
+// See comments on DataSomeValuesFrom  
+
+
+(forall (x R ...DP DR)
+	(iff 
+		((DataAllValuesFrom R ...DP DR) x)
+		(and
+			(owl:Thing x) 
+			(OWLDataProperty R)
+			(OWLDataPropertyList ...DP)
+			(DataRange DR) 
+			(forall (y ...s)
+				(if 
+					(RelatesViaDataPropertiesTo x (list R ...DP) (list y ...s))
+					(DR y ...s) 
+				))))) 	
+
+(forall (R ...DP  )
+	(iff 
+		(Class (DataAllValuesFrom R ...DP DR))
+		(and 
+			(OWLDataProperty R)
+			(OWLDataPropertyList ...DP)
+			(DataRange DR) 
+		)))
+
+
+
+// %%%% DataHasValue (DPE lt) %%%% 
+
+(forall (R x y)
+	(iff 
+		((DataHasValue R y) x)
+		(and
+			(OWLDataProperty R)
+			(rdfs:Literal y)  
+			(R x y)
+		)))	 
+
+(forall (R y)
+	(iff 
+		(Class (DataHasValue R y))
+		(and 
+			(OWLDataProperty R)
+	 		(rdfs:Literal y) 
+		)))
+
+
+
+	
+// %%%% DataMinCardinality (n DPE) %%%%   
+// See comment above about ObjectMinCardinality.  
+//  DataMinCardinality can be axiomatized in IKL    
+
+
+(forall (R x)
+	(iff 
+		((DataMinCardinality n R) x)
+		(and
+			(OWLDataProperty R) 
+			(exists n (y) (R x y)) 
+		))) 	
+  
+(forall ( R)
+	(iff 
+		(Class (DataMinCardinality n R))
+		(OWLDataProperty R)
+	))
+ 
+	 
+    
+	
+// %%%% DataMaxCardinality (n DPE) %%%% 
+// there is no adequate  axiomatization in CL or IKL; see comment on ObjectMaxCardinality
+
+(forall ( R)
+	(iff 
+		(Class (DataMaxCardinality n R))
+		(OWLDataProperty R)
+	))
+  
+	
+// %%%% DataExactCardinality (n DPE) %%%% 
+// there is no adequate  axiomatization in CL or IKL; see comment on ObjectExactCardinality
+
+(forall ( R)
+	(iff 
+		(Class (DataExactCardinality n R))
+		(OWLDataProperty R)
+	))
+	
+// %%%% DataMinCardinality (n DPE DR)%%%%   
+  
+(forall (R DR x)
+	(iff 
+		((DataMinCardinality  n R DR) x)
+		(and
+			(DataRange DR) 
+			(OWLDataProperty R) 
+			(exists n (y) 
+				(and 
+					(R x y)
+					(DR y) 
+				))))) 	
+  
+    
+(forall (C R DR)
+	(iff 
+		(Class (ObjectMinCardinality n R DR))
+		(and 
+			(OWLDataProperty R)
+			(DataRange DR)
+		)))
+  
+  
+	
+// %%%%  DataMaxCardinality (n DPE DR) %%%%  
+// there is no adequate axiomatization in CL or IKL; see comment on ObjectMaxCardinality
+  
+   
+(forall (C R DR)
+	(iff 
+		(Class (ObjectMaxCardinality n R DR))
+		(and 
+			(OWLDataProperty R)
+			(DataRange DR)
+		)))
+  
+	
+// %%%% DataExactCardinality (n DPE DR) %%%% 
+  // there is no adequate  axiomatization in CL or IKL; see comment on ObjectExactCardinality
+
+   
+(forall (C R DR)
+	(iff 
+		(Class (DataExactCardinality n R DR))
+		(and 
+			(OWLDataProperty R)
+			(DataRange DR)
+		)))
+  
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// 2.3.1 Class Expression Axioms  
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ 
+
+// %%%% SubClassOf (CE1 CE2) %%%% 
+(forall (X Y) 
+ 	(iff 
+ 		(SubClassOf X Y)
+ 		(and
+ 			(Class X)
+ 			(Class Y)
+ 			(forall (z) 
+ 				(if (X z) (Y z))
+ 			))))
+ 		
+// %%%% EquivalentClasses (CE1 ... CEn) %%%% 		
+(forall (X Y) 
+ 	(iff 
+ 		(EquivalentClasses X Y)
+ 		(and
+ 			(Class X)
+ 			(Class Y)
+ 			(forall (z) 
+	 			(iff (X z) (Y z))
+ 			))))
+
+
+(forall (X Y Z ...s) 
+ 	(iff 
+ 		(EquivalentClasses X Y Z ...s)
+ 		(and
+			(EquivalentClasses X Y) 
+			(EquivalentClasses Y Z ...s)
+ 		)))
+
+ 
+// %%%% DisjointClasses (CE1 ... CEn) %%%% 
+(forall (X Y) 
+ 	(iff 
+ 		(DisjointClasses X Y)
+ 		(and
+ 			(Class X)
+ 			(Class Y)
+ 			(Disjoint X Y)
+ 		)))
+
+(forall (X Y Z ...s) 
+ 	(iff 
+ 		(DisjointClasses X Y Z ...s)
+ 		(and
+			(DisjointClasses X Y) 
+			(DisjointClasses X Z ...s)
+			(DisjointClasses Y Z ...s)
+ 		)))
+
+// %%%% DisjointUnion (C CE1 ... CEn) %%%% 
+
+(forall (X Y Z ...s) 
+ 	(iff 
+ 		(DisjointUnion X Y Z ...s)
+ 		(and
+ 			(DisjointClasses Y Z ...s)
+ 			(forall (z) 
+ 				(iff 
+ 					(X z)
+ 					((UnionOf Y Z ...s) z)
+ 				))))) 
+ 					  
+(forall (X Y z)
+	(iff 
+		((UnionOf X Y) z)
+		(or
+			(X z)
+			(Y z) 
+		))) 	
+
+
+(forall (X Y Z ...s z)
+	(iff 
+		((UnionOf X Y Z ...s) z)
+		((UnionOf (UnionOf X Y) Z ...s) z)
+	)) 	 
+ 		
+
+(forall (X Y) 
+ 	(iff 
+ 		(DisjointUnion X Y)
+ 		(EquivalentClasses X Y)
+ 	))
+
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Object Property Expressions Axioms (section 2.3.2 OWLS)   
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   
+// %%%% SubObjectPropertyOf (OPE1 OPE2) %%%%  
+(forall (R1 R2) 
+ 	(iff 
+ 		(SubObjectPropertyOf R1 R2)
+ 		(and
+ 			(OWLObjectProperty R1)
+ 			(OWLObjectProperty R2)
+ 			(forall (x y) 
+ 				(if (R1 x y) (R2 x y))
+ 			))))
+ 
+ 
+// %%%% SubObjectPropertyOf (ObjectPropertyChain (OPE1 ... OPEn) OPE) %%%% 
+
+(forall (R1 R2)
+	(iff 
+ 		(OWLObjectProperty (ObjectPropertyChain R1 R2))  
+ 	 	(and
+ 	 		(OWLObjectProperty R1)
+ 	 		(OWLObjectProperty R2)	  	 		 	 	
+ 	 	)))
+
+		 
+(forall (R1 R2 x y z)
+	(iff 
+ 		((ObjectPropertyChain R1 R2) x z)  
+ 	 	(and
+ 	 		(OWLObjectProperty R1)
+ 	 		(OWLObjectProperty R2)	 
+ 	 		(R1 x y)
+ 	 		(R2 y z) 	 	
+ 	 	)))
+	
+(forall (R1 R2 R3 ...s x y)
+	(iff 
+ 		((ObjectPropertyChain R1 R2 R3 ...s) x y)  
+ 	 	((ObjectPropertyChain R1 (ObjectPropertyChain R2 R3 ...s)) x y) 	 	
+ 	 ))
+
+// The following is a theorem 
+(forall (R R1 R2 ...s) 
+ 	(iff 
+ 		(SubObjectPropertyOf (ObjectPropertyChain R1 R2 ...s ) R)
+ 		(and
+ 			(OWLObjectProperty (ObjectPropertyChain R1 R2 ...s ))
+ 			(OWLObjectProperty R) 
+ 			(forall (x y) 
+ 				(if 
+ 					((ObjectPropertyChain R1 R2 ...s) x y)
+ 					(R x y) 
+ 				)))))	 
+ 	 
+ 	 
+// %%%% EquivalentObjectProperties (OPE1 ... OPEn) %%%%  
+
+(forall (R1 R2) 
+ 	(iff 
+ 		(EquivalentObjectProperties R1 R2)
+		(and 
+ 			(OWLObjectProperty R1)
+ 			(OWLObjectProperty R2)
+ 			(forall (x y) 
+ 				(iff 
+ 					(R1 x y)
+ 					(R2 x y)
+ 				))))) 
+ 			
+(forall (R1 R2 R3 ...s) 
+ 	(iff 
+ 		(EquivalentObjectProperties R1 R2 R3 ...s)
+ 		(and
+ 			(EquivalentObjectProperties R1 R2)
+ 			(EquivalentObjectProperties R2 R3 ...s)
+ 		)))
+  
+ 			
+// %%%% DisjointObjectProperties (OPE1 ... OPEn) %%%% 
+
+(forall (R1 R2 ...s) 
+ 	(iff 
+ 		(DisjointObjectProperties R1 R2 ...s)
+ 		(and
+ 			(Disjoint R1 R2 ...s)
+ 			(OWLObjectPropertyList R1 R2 ...s)
+ 		))) 
+ 
+ 
+// %%%% ObjectPropertyDomain (OPE CE) %%%%  
+ 
+(forall (R C) 
+ 	(iff 
+ 		(ObjectPropertyDomain R C)
+ 		(and
+ 			(OWLObjectProperty R)
+ 			(Class C)
+ 			(forall (x y) 
+ 				(if 
+ 					(R x y)
+ 					(C x)  	
+ 				))))) 
+ 
+ 
+// %%%% ObjectPropertyRange (OPE CE) 		  
+
+(forall (R C) 
+ 	(iff 
+ 		(ObjectPropertyRange  R C)
+ 		(and
+ 			(OWLObjectProperty R)
+ 			(Class C)
+ 			(forall (x y) 
+ 				(if 
+ 					(R x y)
+ 					(C y)  	
+ 				))))) 
+
+// %%%% InverseObjectProperties (OPE1 OPE2) %%%% 
+ 
+ (forall (R1 R2)
+ 	(iff 
+		(InverseObjectProperties R1 R2)
+		(and 
+			(OWLObjectProperty R1)
+			(OWLObjectProperty R2)
+			(forall (x y) 
+				(iff 
+					(R1 x y) 
+					(R2 y x)
+				)))))
+ 
+// %%%% FunctionalObjectProperty (OPE)%%%% 
+ 
+ (forall (R)
+ 	(iff 
+		(FunctionalObjectProperty R)
+		(and 
+			(OWLObjectProperty R)
+			(forall (x y1 y2) 
+				(if 
+					(and 
+						(R x y1) 
+						(R x y2)
+					)
+					(= y1 y2)
+				))))) 
+				
+ 
+// %%%% InverseFunctionalObjectProperty (OPE)%%%% 
+ 
+ (forall (R)
+ 	(iff 
+		(FunctionalObjectProperty R)
+		(and 
+			(OWLObjectProperty R)
+			(forall (x1 x2 y) 
+				(if 
+					(and 
+						(R x1 y) 
+						(R x2 y)
+					)
+					(= x1 x2)
+				))))) 
+				
+// %%%% ReflexiveObjectProperty (OPE) %%%% 
+ 
+ (forall (R)
+ 	(iff 
+		(ReflexiveObjectProperty  R)
+		(and 
+			(OWLObjectProperty R)
+			(forall (x) (R x x))   
+		)))			
+			
+// %%%% IrreflexiveObjectProperty (OPE) %%%% 
+ 
+ (forall (R)
+ 	(iff 
+		(IrreflexiveObjectProperty R)
+		(and 
+			(OWLObjectProperty R)
+			(forall (x) (not (R x x)))   
+		)))			
+			
+				 
+// %%%% SymmetricObjectProperty (OPE) %%%% 
+ 
+ (forall (R)
+ 	(iff 
+		(SymmetricObjectProperty R)
+		(and 
+			(OWLObjectProperty R)
+			(forall (x y)
+				(if 
+					(R x y)
+					(R y x)
+				))))) 
+				
+			
+// %%%% AsymmetricObjectProperty (OPE) %%%% 
+ 
+ (forall (R)
+ 	(iff 
+		(AsymmetricObjectProperty R)
+		(and 
+			(OWLObjectProperty R)
+			(forall (x y)
+				(if 
+					(R x y)
+					(not (R y x))
+				))))) 
+			   
+
+// %%%% TransitiveObjectProperty (OPE)%%%% 
+ 
+ (forall (R)
+ 	(iff 
+		(TransitiveObjectProperty R)
+		(and 
+			(OWLObjectProperty R)
+			(forall (x y z)
+				(if 
+					(and 
+						(R x y) 
+						(R y z) 
+					)
+					(R x z)
+				))))) 
+					
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Data Property Expressions Axioms (section 2.3.3 OWLS)
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+// %%%% SubDataPropertyOf (DPE1 DPE2) %%%%
+
+(forall (R1 R2) 
+ 	(iff 
+ 		(SubDataPropertyOf R1 R2)
+ 		(and
+ 			(OWLDataProperty R1)
+ 			(OWLDataProperty R2)
+ 			(forall (x y) 
+ 				(if (R1 x y) (R2 x y))
+ 			))))
+
+
+
+// %%%% EquivalentDataProperties(DPE1 ... DPEn) %%%%
+
+(forall (R1 R2) 
+ 	(iff 
+ 		(EquivalentDataProperties R1 R2)
+		(and 
+ 			(OWLDataProperty R1)
+ 			(OWLDataProperty R2)
+ 			(forall (x y) 
+ 				(iff 
+ 					(R1 x y)
+ 					(R2 x y)
+ 				))))) 
+ 			
+(forall (R1 R2 R3 ...s) 
+ 	(iff 
+ 		(EquivalentDataProperties R1 R2 R3 ...s)
+ 		(and
+ 			(EquivalentDataProperties R1 R2)
+ 			(EquivalentDataProperties R2 R3 ...s)
+ 		)))
+
+
+// %%%% DisjointDataProperties(DPE1 ... DPEn) %%%%
+
+(forall (R1 R2 ...s) 
+ 	(iff 
+ 		(DisjointDataProperties R1 R2 ...s)
+ 		(and
+ 			(Disjoint R1 R2 ...s)
+ 			(OWLDataPropertyList R1 R2 ...s)
+ 		))) 
+
+
+// %%%% DataPropertyDomain (DPE CE) %%%%
+
+(forall (R C) 
+ 	(iff 
+ 		(DataPropertyDomain R C)
+ 		(and
+ 			(OWLDataProperty R)
+ 			(Class C)
+ 			(forall (x y) 
+ 				(if 
+ 					(R x y)
+ 					(C x)  	
+ 				))))) 
+
+
+
+// %%%% DataPropertyRange (DPE DR) %%%%
+
+(forall (R DR) 
+ 	(iff 
+ 		(DataPropertyRange R DR)
+ 		(and
+ 			(OWLDataProperty R)
+ 			(DataRange DR)
+ 			(forall (x y) 
+ 				(if 
+ 					(R x y)
+ 					(DR y)  	
+ 				))))) 
+
+
+// %%%% FunctionalDataProperty (DPE) %%%%
+ 
+ (forall (R)
+ 	(iff 
+		(FunctionalDataProperty R)
+		(and 
+			(OWLDataProperty R)
+			(forall (x y1 y2) 
+				(if 
+					(and 
+						(R x y1) 
+						(R x y2)
+					)
+					(= y1 y2)
+				))))) 
+				
+			
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Datatype Definitions (section 2.3.4 OWLS)
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+// %%%% DatatypeDefinition (DT DR) %%%%
+(forall (DT DR)
+	(iff 
+		(DatatypeDefinition DT DR) 
+		(and
+			(DataType DT) 
+			(DataRange DR) 
+			(forall x 
+				(iff 
+					(DT x) 
+					(DR x) 
+				))))) 
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Keys(section 2.3.5 OWLS)
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// TODO
+// %%%% HasKey (CE (OPE1 ... OPEm) (DPE1 ... DPEn)) %%%%
+
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Assertions (section 2.3.6 OWLS)
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+// %%%% SameIndividual %%%%  
+ 
+(forall (x y) 
+ 	(iff
+ 		(SameIndividual x y)
+ 		(and 
+ 			(= x y)
+ 			(owl:Thing x)
+ 		)))
+  
+(forall (x y z ...s) 
+ 	(iff
+ 		(SameIndividual x y z ...s)
+ 		(and 
+ 			(= x y)
+ 			(owl:Thing x)
+ 			(SameIndividual y z ...s)		 
+ 		)))
+
+
+// %%%% DifferentIndividuals %%%%  
+
+(forall (x1 x2)
+	(iff
+		(DifferentIndividuals x1 x2)
+		(and 
+ 			(not (= x1 x2))
+ 			(owl:Thing x1)
+ 			(owl:Thing x2)		 
+ 		)))
+				
+				
+(forall (x1 x2 x3 ...s)
+	(iff 
+		(DifferentIndividuals x1 x2 x3 ...s ) 
+		(and 
+			(not (= x1 x2))
+			(owl:Thing x1)
+ 			(owl:Thing x2)		 
+			(DifferentIndividuals x1 x3 ...s)
+			(DifferentIndividuals x2 x3 ...s)
+		)))
+
+
+
+
+// %%%%  ClassAssertion (CE a) %%%%  
+(forall (C x)
+	(iff 
+		(ClassAssertion C x) 
+		(and 
+			(C x)
+			(Class C)
+			(owl:Thing x)
+		)))
+
+
+// %%%% ObjectPropertyAssertion(OPE a1 a2) %%%%   
+(forall (R x y)
+	(iff 
+		(ObjectPropertyAssertion R x y) 
+		(and 
+			(R x y)
+			(OWLObjectProperty R)
+			(owl:Thing x)
+			(owl:Thing y)
+		)))
+
+
+// %%%%  NegativeObjectPropertyAssertion(OPE a1 a2) %%%%   
+
+(forall (R x y)
+	(iff 
+		(NegativeObjectPropertyAssertion R x y) 
+		(and 
+			(not (R x y))
+			(OWLObjectProperty R)
+			(owl:Thing x)
+			(owl:Thing y)
+		)))
+
+
+
+   
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Auxiliary axioms   
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+ 
+// %%%% Disjoint %%%%   
+ (forall (X Y) 
+ 	(iff 
+ 		(Disjoint X Y)
+ 		(forall (x ...s) 
+	 		(not 
+ 				(and 
+ 					(X x ...s) 
+ 					(Y ...s)
+ 				)))))
+ 				
+(forall (X Y Z ...s) 
+ 	(iff 
+ 		(Disjoint X Y Z ...s)
+ 		(and
+			(Disjoint X Y) 
+			(Disjoint X Z ...s)
+			(Disjoint Y Z ...s)
+ 		)))
+
+
+// %%%% ListOfType %%%% 
+
+
+(forall (X) 
+	(ListOfType (list ) X)
+)
+
+// The empty list is of any type. 	
+	
+(forall (X y ...s) 
+ 	(iff 
+ 		(ListOfType (list  y ...s) X)
+ 		(and
+			(ListOfType (list ...s) X)
+			(X y)
+ 		)))
+
+// recursive adding to the list of a given type. 	
+	
+
+// %%%% ThingList, DataValueList, ...  %%%%
+
+(forall (x ...s) 
+ 	(iff 
+ 		(ThingList ...s)
+ 		(ListOfType (list ...s) owl:Thing)
+	))
+
+
+(forall (x ...s) 
+ 	(iff 
+ 		(DataValueList  ...s)
+ 		(ListOfType (list ...s) rdfs:Literal)
+	))
+
+
+(forall (x ...s) 
+ 	(iff 
+ 		(OWLObjectPropertyList  ...s)
+ 		(ListOfType (list ...s) OWLObjectProperty)
+	))
+
+(forall (x ...s) 
+ 	(iff 
+ 		(OWLDataPropertyList  ...s)
+ 		(ListOfType (list ...s) OWLDataProperty)
+	))
+
+(forall (x ...s) 
+ 	(iff 
+ 		(DataTypeList  ...s)
+ 		(ListOfType (list ...s) DataType)
+	))
+
+(forall (x ...s) 
+ 	(iff 
+ 		(DataRangeList  ...s)
+ 		(ListOfType (list ...s) DataRange)
+	))
+
+
+
+
+// %%%% SameLength %%%%
+
+(SameLength (list ) (list )) 
+
+
+(forall (x1 x2 ...s1 ...s2) 
+	(iff 
+		(SameLength (list ...s1) (list ...s2))
+		(SameLength (list x ...s1) (list y ...s2))
+	))
+
+// These axioms define recursively lists of the same length. 
+
+
+// %%%% FixedArity %%%%
+(forall (R) 
+	(iff 
+		(FixedArity R)
+		(forall (...s1 ...s2)
+			(if  
+				(and 
+					(R ...s1) 
+					(R ...s2) 
+				)
+				(SameLength (list ...s1) (list ...s2))
+			))))
+// FixedArity is used in the definition of DataRange
+
+
