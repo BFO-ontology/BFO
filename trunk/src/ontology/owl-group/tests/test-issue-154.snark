@@ -1,0 +1,93 @@
+(in-package :snark-user)
+
+(defun restart ()
+  (setq snark::*snark-is-running* nil snark-lisp::*running-clocks* nil)
+  (initialize)
+  (print-summary-when-finished nil)
+  (print-term-memory-when-finished nil)
+  )
+
+(restart)
+
+________________________________________________________________
+
+x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
+
+
+Chris and I have been discussing the temporal relations in the BFO 2 OWL release notes. 
+It says that you are using the following definition pattern
+
+  x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
+
+It seems to me not to capture what you want. First of all it is not a definition (since it is an "if ... then" not an "if and only if"), but even if I read it as definition, it has odd consequences. E.g., something that does not exist at all times is part-at-some-time of everything else. .
+
+Are you sure you don't mean (using prefix notation and parenthesis for clarity): 
+
+     (iff 
+          (rel-at-some-time x y) 
+          (exists (t)
+                (and 
+                     (exists_at x t) 
+                     (exists_at y t)
+                     (rel x y t) 
+                    ))))
+
+Or in English: 
+x is part at some time of y  is defined as there is a time when both exist and at that time x is part of y. 
+
+________________________________________________________________
+
+(defun test-weaker-documented-some-time-relation ()
+  (initialize)
+  ;;  x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
+  (assert '
+   (forall (?x ?y)
+	   (implies 
+	    (rel-at-some-time ?x ?y)
+	    (exists (?t)
+		    (implies
+		     (exists_at ?x ?t)
+		     (and (exists_at ?y ?t)
+			  (rel ?x ?y ?t))))))
+   :name :temporal-some-binary-definition)
+
+  ;; fabian's bug assertion: something that does not exist at all times is part-at-some-time of everything else. .
+  (if (eq :proof-found
+	  (prove '(forall (?x)
+		   (implies 
+		    (exists (?t)
+		     (not (exists_at ?x ?t)))
+		    (forall (?q)
+		     (and (not (= ?x ?q))
+			  (exists (?t1)
+				  (rel ?x ?q ?t1))))))))
+	  :whoops
+	  :seems-ok))
+
+(defun test-stronger-documented-some-time-relation ()
+  (initialize)
+  ;;  x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
+  (assert '
+   (forall (?x ?y)
+	   (iff
+	    (rel-at-some-time ?x ?y)
+	    (exists (?t)
+		    (implies
+		     (exists_at ?x ?t)
+		     (and (exists_at ?y ?t)
+			  (rel ?x ?y ?t))))))
+   :name :temporal-some-binary-definition)
+
+  ;; fabian's bug assertion: something that does not exist at all times is part-at-some-time of everything else. .
+  (if (eq :proof-found
+	  (prove '(forall (?x)
+		   (implies 
+		    (exists (?t)
+		     (not (exists_at ?x ?t)))
+		    (forall (?q)
+		     (and (not (= ?q ?x))
+			  (rel-at-some-time ?x ?q)))))))
+
+	  :whoops
+	  :seems-ok))
+
