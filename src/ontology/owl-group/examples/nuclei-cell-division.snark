@@ -1,0 +1,299 @@
+% -- // --
+;; reformulation and augmentation of original trunk/src/ontology/owl-group/examples/nuclei-cell-division.prover9 
+;; for indentation (progn (defmacro forall (a &body b)) (defmacro exists (a &body b)) (defmacro implies (a &body b)))
+
+;;formulas(sos).
+
+;; FACTS
+
+;; start point - a nucleus in a cell
+
+(setq cell-division-example
+
+      '(and (part-of N1 C1 T1).
+
+	;; nuclei have divided but still a single cell membrane
+	(part-of N2 C1 T2).
+	(part-of N3 C1 T2).
+
+	;; symmetric division complete: two new nuclei  two new cells
+	(part-of N2 C2 T3).
+	(part-of N3 C3 T3).
+
+	;; there's probably a smarter way of 'closing the world' here
+	;; but I got frustrated with prover9 trying to do this
+
+	(not (part-of N2 C1 T3))
+	(not (part-of N2 C2 T1))
+	(not (part-of N2 C2 T2))
+	(not (part-of N2 C3 T1))
+	(not (part-of N2 C3 T2))
+	(not (part-of N2 C3 T3))
+
+	(not (part-of N3 C1 T3))
+	(not (part-of N3 C2 T1))
+	(not (part-of N3 C2 T2))
+	(not (part-of N3 C3 T1))
+	(not (part-of N3 C3 T2))
+	(not (part-of N3 C2 T3))
+
+	(forall (?c)
+	 (forall (?t) 
+	  (implies
+	   (part-of N2 ?c ?t)
+	   (or
+	    (and (= ?c C1) (= t T1))
+	    (and (= ?c C2) (= t T2))
+	    (and (= ?c C2) (= t T3)))))))
+
+      (instance-of N1 Nucleus T1)
+      (instance-of N2 Nucleus T2)
+      (instance-of N2 Nucleus T3)
+      (instance-of N3 Nucleus T2)
+      (instance-of N3 Nucleus T3)
+
+      (instance-of C1 Cell T1)
+      (instance-of C1 Cell T2)
+      (instance-of C2 Cell T3)
+      (instance-of C3 Cell T3)
+      )
+
+;; ternary bfo instance-of to binary owl class assertion
+;; assume rigidity
+;; (forall (?i)
+;;   (forall (?c)
+;;     (forall (?t)
+;;       (implies (instance-of i ?c ?t) (rdftype i c)))))
+
+;; Alan: I would do it as
+(setq tr-class-assertion-def
+      '(forall (?i)
+	(forall (?c)
+	 (iff (class-assertion ?c ?i)
+	  (forall (?t)
+		  (implies (exists-at ?i ?t)
+			   (instance-of ?i ?c ?t)))))))
+
+
+(setq tr-exists-at-axiom ;; exists-at
+      '(forall (?i)
+	(forall (?c)
+	 (forall (?t)
+	  (implies
+	   (instance-of ?i ?c ?t)
+	   (exists-at ?i ?t))))))
+
+;; temporally qualified part of relations
+
+;; Graz at-all-times time relation 
+
+(setq tr-rel-defs 
+      '(and
+	(forall (?x ?y)
+	 (iff
+	  (rel-at-all-times ?x ?y)
+	  (forall (?t)
+		  (implies
+		   (exists-at ?x ?t)
+		   (and
+		    (exists-at ?y ?t)
+		    (rel ?x ?y ?t))))))
+
+	;;Graz at-some-time relation (fixed per fabian)
+	(forall (?x ?y)
+	 (iff
+	  (rel-at-some-time ?x ?y)
+	  (exists (?t)
+		  (and
+		   (exists-at ?x ?t)
+		   (exists-at ?y ?t)
+		   (rel ?x ?y ?t)))))
+
+	;; Graz at-all-times time inverse relation (different t quantification)
+	(forall (?x ?y)
+	 (iff
+	  (inv-rel-at-all-times ?x ?y)
+	  (forall (?t)
+		  (implies
+		   (exists-at ?y ?t)
+		   (and
+		    (exists-at ?x ?t)
+		    (inv-rel ?x ?y ?t))))))
+
+	;; Graz at-some-time-inverse-relation (same t quantification)
+	(forall (?x ?y)
+	 (iff
+	  (inv-rel-at-some-time ?x ?y)
+	  (exists (?t)
+		  (and
+		   (exists-at ?x ?t)
+		   (exists-at ?y ?t)
+		   (inv-rel ?x ?y ?t)))))
+
+	(forall (?x ?y ?t) (iff (rel ?x ?y ?t) (inv-rel ?y ?x ?t)))))
+
+(defun at-all-times (rel)
+  (intern (concatenate 'string (string rel) "-AT-ALL-TIMES")))
+
+(defun at-some-time (rel)
+  (intern (concatenate 'string (string rel) "-AT-SOME-TIME"))) 
+
+(defun at-all-times-whole (rel)
+  (intern (concatenate 'string (string rel) "-AT-ALL-TIMES-WHOLE-EXISTS")))
+
+(defun tr-rel-defs (rel inv-rel)
+    `(and
+
+      ;; at all times relation
+      (forall (?x ?y)
+	      (iff
+	       (,(at-all-times rel) ?x ?y)
+	       (forall (?t)
+		       (implies
+			(exists-at ?x ?t)
+			(and
+			 (exists-at ?y ?t)
+			 (,rel ?x ?y ?t))))))
+
+      ;; at-all-times relation (different t quantification)
+      (forall (?x ?y)
+	      (iff
+	       (,(at-all-times-whole rel) ?x ?y)
+	       (forall (?t)
+		       (implies
+			(exists-at ?y ?t)
+			(and
+			 (exists-at ?x ?t)
+			 (,rel ?x ?y ?t))))))
+
+      ;;Graz at-some-time relation (fixed per fabian)
+      (forall (?x ?y)
+	      (iff
+	       (,(at-some-time rel) ?x ?y)
+	       (exists (?t)
+		       (and
+			(exists-at ?x ?t)
+			(exists-at ?y ?t)
+			(,rel ?x ?y ?t)))))
+
+      ;; Graz at-all-times time inverse relation (different t quantification)
+      (forall (?x ?y)
+	      (iff
+	       (,(at-all-times inv-rel) ?x ?y)
+	       (forall (?t)
+		       (implies
+			(exists-at ?y ?t)
+			(and
+			 (exists-at ?x ?t)
+			 (,inv-rel ?x ?y ?t))))))
+
+      ;; Graz at-all-times time all-some inverse relation (same t quantification)
+      (forall (?x ?y)
+	      (iff
+	       (,(at-all-times-whole inv-rel) ?x ?y)
+	       (forall (?t)
+		       (implies
+			(exists-at ?x ?t)
+			(and
+			 (exists-at ?y ?t)
+			 (,inv-rel ?x ?y ?t))))))
+
+
+      ;; Graz at-some-time-inverse-relation (same t quantification)
+      (forall (?x ?y)
+	      (iff
+	       (,(at-some-time inv-rel) ?x ?y)
+	       (exists (?t)
+		       (and
+			(exists-at ?x ?t)
+			(exists-at ?y ?t)
+			(,inv-rel ?x ?y ?t)))))
+
+      (forall (?x ?y ?t) (iff (,rel ?x ?y ?t) (,inv-rel ?y ?x ?t))))))
+
+
+(defun test-tr-part-inverses ()
+  (initialized)
+  (format t "Assertions:~%") (pprint (tr-rel-defs 'part-of 'has-part))
+  (assert (tr-rel-defs 'part-of 'has-part))
+  (let* ((some-test `(forall (?x ?y) (iff (,(at-some-time 'part-of) ?x ?y) (,(at-some-time 'has-part) ?y ?x))))
+	 (all-test  `(forall (?x ?y) (iff (,(at-all-times 'part-of) ?x ?y) (,(at-all-times-whole 'has-part) ?y ?x))))
+	 (some-test-result (prove some-test))
+	 (all-test-result (prove all-test)))
+    (format t "Attempted to prove ~a~%") (pprint some-test) (print (prove some-test))))
+
+;; RO 2005 relation FOL
+(forall (?pc)
+	(forall (?wc)  
+		(implies (part-of-t ?pc ?wc) 
+			 (exists(?p)
+				(exists(?t) 
+				       (implies
+					(instance-of ?p ?pc ?t)
+					(exists(?w)
+					       (and
+						(instance-of ?w ?wc ?t)
+						(part-of ?p ?w ?t)))))))))
+
+;; what we want to show is that any definition of binary part-of and
+;; type leads to either failure of transitivity or non-concordance
+;; with what is stated. So old owl advocate needs to define
+;; predicates: class-assertion , atemporal-part-of 
+
+;; FILL IN THE DEFINITIONS HERE
+
+;; ________________
+;; Given the definitions, we want to prove certain things.
+
+;; to prove: transitivity
+;; for atemporal bfo owl - should succeed
+(prove
+ '(forall (?x ?y ?z)
+   (implies 
+       (and (atemporal-part-of ?x ?y) (atemporal-part-of ?y ?z))
+     (atemporal-part-of ?x ?z))))
+
+;; for part-of-at-some-time - should fail
+
+(prove
+ '(forall (?x ?y ?z)
+   (implies 
+       (and (part-of-at-some-time ?x ?y) (part-of-at-some-time ?y ?z))
+     (part-of-at-some-time ?x ?z))))
+
+;; for part-of-at-all-times - should succeed
+
+(prove
+ '(forall (?x ?y ?z)
+   (implies 
+       (and (part-of-at-all-times ?x ?y) (part-of-at-all-times ?y ?z))
+     (part-of-at-all-times ?x ?z))))
+
+;; test case:
+;;  we want to see if saying
+;;   "Nucleus SubClassOf part-of some Cell"
+;;  would introduce contradictions
+;; (probably a smarter way of doing this)
+
+;;-(all p all t 
+;;  ((type p Nucleus) ->
+;;    (exists w ((type w Cell) & part-of-at-all-times(p w))))).
+
+;; uncomment this and comment out the above
+;; to test if the facts pose problems for RO-2005
+;; (they don't seem to)
+
+;; -(part-of-t(Nucleus Cell)).
+
+(prove '(not (part-of-t Nucleus Cell)))
+
+;;  we want to see what happens using some time
+(not
+ (forall (?p)
+   (forall (?t) 
+     (implies (class-assertion Nucleus ?p) 
+       (exists(w) 
+	 (and (class-assertion Nucleus ?p) (part-of-at-some-times ?p ?w)))))))
+
+
+
