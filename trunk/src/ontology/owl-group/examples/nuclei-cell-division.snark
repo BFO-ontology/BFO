@@ -1,3 +1,4 @@
+(in-package :snark-user)
 ;; reformulation and augmentation of original trunk/src/ontology/owl-group/examples/nuclei-cell-division.prover9 
 ;; for indentation (progn (defmacro forall (a &body b)) (defmacro exists (a &body b)) (defmacro implies (a &body b)))
 
@@ -43,19 +44,19 @@
 	   (or
 	    (and (= ?c C1) (= t T1))
 	    (and (= ?c C2) (= t T2))
-	    (and (= ?c C2) (= t T3)))))))
+	    (and (= ?c C2) (= t T3))))))
 
-      (instance-of N1 Nucleus T1)
-      (instance-of N2 Nucleus T2)
-      (instance-of N2 Nucleus T3)
-      (instance-of N3 Nucleus T2)
-      (instance-of N3 Nucleus T3)
+	(instance-of N1 Nucleus T1)
+	(instance-of N2 Nucleus T2)
+	(instance-of N2 Nucleus T3)
+	(instance-of N3 Nucleus T2)
+	(instance-of N3 Nucleus T3)
 
-      (instance-of C1 Cell T1)
-      (instance-of C1 Cell T2)
-      (instance-of C2 Cell T3)
-      (instance-of C3 Cell T3)
-      )
+	(instance-of C1 Cell T1)
+	(instance-of C1 Cell T2)
+	(instance-of C2 Cell T3)
+	(instance-of C3 Cell T3)
+	))
 
 ;; ternary bfo instance-of to binary owl class assertion
 ;; assume rigidity
@@ -225,7 +226,7 @@
       (format t "~%Attempted to prove ~%~a~% Result: ~a~%" all-test  all-test-result)))
 
 ;; RO 2005 relation FOL
-(forall (?pc)
+'(forall (?pc)
 	(forall (?wc)  
 		(implies (part-of-t ?pc ?wc) 
 			 (exists(?p)
@@ -249,7 +250,7 @@
 
 ;; to prove: transitivity
 ;; for atemporal bfo owl - should succeed
-(prove
+'(prove
  '(forall (?x ?y ?z)
    (implies 
        (and (atemporal-part-of ?x ?y) (atemporal-part-of ?y ?z))
@@ -257,7 +258,7 @@
 
 ;; for part-of-at-some-time - should fail
 
-(prove
+'(prove
  '(forall (?x ?y ?z)
    (implies 
        (and (part-of-at-some-time ?x ?y) (part-of-at-some-time ?y ?z))
@@ -265,7 +266,7 @@
 
 ;; for part-of-at-all-times - should succeed
 
-(prove
+'(prove
  '(forall (?x ?y ?z)
    (implies 
        (and (part-of-at-all-times ?x ?y) (part-of-at-all-times ?y ?z))
@@ -287,10 +288,10 @@
 
 ;; -(part-of-t(Nucleus Cell)).
 
-(prove '(not (part-of-t Nucleus Cell)))
+'(prove '(not (part-of-t Nucleus Cell)))
 
 ;;  we want to see what happens using some time
-(not
+'(not
  (forall (?p)
    (forall (?t) 
      (implies (class-assertion Nucleus ?p) 
