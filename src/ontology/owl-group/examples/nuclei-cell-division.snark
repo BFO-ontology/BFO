@@ -8,17 +8,17 @@
 
 ;; start point - a nucleus in a cell
 
-(setq cell-division-example
+(defparameter cell-division-example
 
-      '(and (part-of N1 C1 T1).
+      '(and (part-of N1 C1 T1)
 
 	;; nuclei have divided but still a single cell membrane
-	(part-of N2 C1 T2).
-	(part-of N3 C1 T2).
+	(part-of N2 C1 T2)
+	(part-of N3 C1 T2)
 
 	;; symmetric division complete: two new nuclei  two new cells
-	(part-of N2 C2 T3).
-	(part-of N3 C3 T3).
+	(part-of N2 C2 T3)
+	(part-of N3 C3 T3)
 
 	;; there's probably a smarter way of 'closing the world' here
 	;; but I got frustrated with prover9 trying to do this
@@ -66,7 +66,7 @@
 ;;       (implies (instance-of i ?c ?t) (rdftype i c)))))
 
 ;; Alan: I would do it as
-(setq tr-class-assertion-def
+(defparameter tr-class-assertion-def
       '(forall (?i)
 	(forall (?c)
 	 (iff (class-assertion ?c ?i)
@@ -75,7 +75,7 @@
 			   (instance-of ?i ?c ?t)))))))
 
 
-(setq tr-exists-at-axiom ;; exists-at
+(defparameter tr-exists-at-axiom ;; exists-at
       '(forall (?i)
 	(forall (?c)
 	 (forall (?t)
@@ -87,7 +87,7 @@
 
 ;; Graz at-all-times time relation 
 
-(setq tr-rel-defs 
+(defparameter tr-rel-defs 
       '(and
 	(forall (?x ?y)
 	 (iff
@@ -182,9 +182,9 @@
 	       (,(at-all-times inv-rel) ?x ?y)
 	       (forall (?t)
 		       (implies
-			(exists-at ?y ?t)
+			(exists-at ?x ?t)
 			(and
-			 (exists-at ?x ?t)
+			 (exists-at ?y ?t)
 			 (,inv-rel ?x ?y ?t))))))
 
       ;; Graz at-all-times time all-some inverse relation (same t quantification)
@@ -193,9 +193,9 @@
 	       (,(at-all-times-whole inv-rel) ?x ?y)
 	       (forall (?t)
 		       (implies
-			(exists-at ?x ?t)
+			(exists-at ?y ?t)
 			(and
-			 (exists-at ?y ?t)
+			 (exists-at ?x ?t)
 			 (,inv-rel ?x ?y ?t))))))
 
 
@@ -214,16 +214,33 @@
 
 (defun test-tr-part-inverses ()
   (initialize)
-  (use-hyperresolution t)
+;  (use-resolution t)
+;  (use-hyperresolution t)
+  (use-negative-hyperresolution t)
+;  (use-paramodulation t)
+  (print-options-when-starting nil)
+  (print-term-memory-when-finished nil)
+  (print-rows-when-derived nil)
+  (print-rows-when-given nil)
+  (print-final-rows nil)
+  (print-time-used t)
+  (print-summary-when-finished t)
+
   (assert (tr-rel-defs 'part-of 'has-part))
   (let* ((some-test `(forall (?x ?y) (iff (,(at-some-time 'part-of) ?x ?y) (,(at-some-time 'has-part) ?y ?x))))
 	 (all-test  `(forall (?x ?y) (iff (,(at-all-times 'part-of) ?x ?y) (,(at-all-times-whole 'has-part) ?y ?x))))
+	 (wrong-all-test  `(forall (?x ?y) (iff (,(at-all-times 'part-of) ?x ?y) (,(at-all-times 'has-part) ?y ?x))))
 	 (some-test-result (prove some-test))
-	 (all-test-result (prove all-test)))
-    (let ((*print-pretty* t))
-      (format t "~%Assertions:~%~a" (tr-rel-defs 'part-of 'has-part))
-      (format t "~%Attempted to prove ~%~a~% Result: ~a~%" some-test some-test-result))
-      (format t "~%Attempted to prove ~%~a~% Result: ~a~%" all-test  all-test-result)))
+	 (all-test-result (prove all-test))
+	 (wrong-all-test-result (prove wrong-all-test))
+	 )
+    (let ((*print-pretty* t)
+	  (*print-case* :downcase))
+      (format t "~%Assertions:~%~a~%" (tr-rel-defs 'part-of 'has-part))
+      (format t "~%Attempted to prove ~%~a~%~%Result: ~a~%" some-test some-test-result)
+      (format t "~%Attempted to prove ~%~a~%~%Result: ~a~%" all-test  all-test-result)
+      (format t "~%Attempted to prove ~%~a~%~%Result: ~a~%" wrong-all-test  wrong-all-test-result)
+      )))
 
 ;; RO 2005 relation FOL
 '(forall (?pc)
@@ -300,3 +317,4 @@
 
 
 
+;(loop until (peek-char nil t) do (print ".") (force-output)(sleep .1))
