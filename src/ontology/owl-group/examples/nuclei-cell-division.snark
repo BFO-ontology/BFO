@@ -1,4 +1,3 @@
-% -- // --
 ;; reformulation and augmentation of original trunk/src/ontology/owl-group/examples/nuclei-cell-division.prover9 
 ;; for indentation (progn (defmacro forall (a &body b)) (defmacro exists (a &body b)) (defmacro implies (a &body b)))
 
@@ -213,14 +212,16 @@
 
 
 (defun test-tr-part-inverses ()
-  (initialized)
-  (format t "Assertions:~%") (pprint (tr-rel-defs 'part-of 'has-part))
+  (initialize)
   (assert (tr-rel-defs 'part-of 'has-part))
   (let* ((some-test `(forall (?x ?y) (iff (,(at-some-time 'part-of) ?x ?y) (,(at-some-time 'has-part) ?y ?x))))
 	 (all-test  `(forall (?x ?y) (iff (,(at-all-times 'part-of) ?x ?y) (,(at-all-times-whole 'has-part) ?y ?x))))
 	 (some-test-result (prove some-test))
 	 (all-test-result (prove all-test)))
-    (format t "Attempted to prove ~a~%") (pprint some-test) (print (prove some-test))))
+    (let ((*print-pretty* t))
+      (format t "~%Assertions:~%~a" (tr-rel-defs 'part-of 'has-part))
+      (format t "~%Attempted to prove ~%~a~% Result: ~a~%" some-test some-test-result))
+      (format t "~%Attempted to prove ~%~a~% Result: ~a~%" all-test  all-test-result)))))
 
 ;; RO 2005 relation FOL
 (forall (?pc)
