@@ -9,33 +9,38 @@
 
 (restart)
 
-________________________________________________________________
+;; From issue 154 http://code.google.com/p/bfo/issues/detail?id=154
+;; ________________________________________________________________
 
-x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
+;; x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
 
 
-Chris and I have been discussing the temporal relations in the BFO 2 OWL release notes. 
-It says that you are using the following definition pattern
+;; Chris and I have been discussing the temporal relations in the BFO 2 OWL release notes. 
+;; It says that you are using the following definition pattern
 
-  x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
+;;   x rel-at-some-time y -> exists(t) exists_at(x,t) -> exists_at(y,t) and rel(x,y,t)
 
-It seems to me not to capture what you want. First of all it is not a definition (since it is an "if ... then" not an "if and only if"), but even if I read it as definition, it has odd consequences. E.g., something that does not exist at all times is part-at-some-time of everything else. .
+;; It seems to me not to capture what you want. First of all it is not
+;; a definition (since it is an "if ... then" not an "if and only
+;; if"), but even if I read it as definition, it has odd
+;; consequences. E.g., something that does not exist at all times is
+;; part-at-some-time of everything else. .
 
-Are you sure you don't mean (using prefix notation and parenthesis for clarity): 
+;; Are you sure you don't mean (using prefix notation and parenthesis for clarity): 
 
-     (iff 
-          (rel-at-some-time x y) 
-          (exists (t)
-                (and 
-                     (exists_at x t) 
-                     (exists_at y t)
-                     (rel x y t) 
-                    ))))
+;;      (iff 
+;;           (rel-at-some-time x y) 
+;;           (exists (t)
+;;                 (and 
+;;                      (exists_at x t) 
+;;                      (exists_at y t)
+;;                      (rel x y t) 
+;;                     ))))
 
-Or in English: 
-x is part at some time of y  is defined as there is a time when both exist and at that time x is part of y. 
+;; Or in English: 
+;; x is part at some time of y  is defined as there is a time when both exist and at that time x is part of y. 
 
-________________________________________________________________
+;; ________________________________________________________________
 
 (defun test-weaker-documented-some-time-relation ()
   (initialize)
@@ -94,7 +99,6 @@ ________________________________________________________________
 	  :whoopsn
 	  :seems-ok))
 
-
 ;; Fabian says:
 
 ;; The reason why you weren't able to duplicate my comment is because I
@@ -129,6 +133,27 @@ ________________________________________________________________
 	       (exists_at ?x ?t)
 	       (and (exists_at ?y ?t)
 		    (rel ?x ?y ?t)))))))
+
+  (assert '(and (not (exists_at fabian t1))
+	    (exists_at foo t1)))
+
+  (if (eq :proof-found
+	  (prove '(rel-at-some-time fabian foo)))
+      :whoops
+      :seems-ok))
+
+(defun test-alternative-to-documented-some-time-relation ()
+  (initialize)
+  (use-hyperresolution t)
+  ;;  x rel-at-some-time y -> exists(t) exists_at(x,t) and exists_at(y,t) and rel(x,y,t)
+  (assert '(forall (?x ?y)
+	    (iff
+	     (rel-at-some-time ?x ?y)
+	     (exists (?t)
+	      (and
+	       (exists_at ?x ?t)
+	       (exists_at ?y ?t)
+	       (rel ?x ?y ?t))))))
 
   (assert '(and (not (exists_at fabian t1))
 	    (exists_at foo t1)))
