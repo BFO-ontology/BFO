@@ -208,11 +208,12 @@
 			(exists-at ?y ?t)
 			(,inv-rel ?x ?y ?t)))))
 
-      (forall (?x ?y ?t) (iff (,rel ?x ?y ?t) (,inv-rel ?y ?x ?t))))))
+      (forall (?x ?y ?t) (iff (,rel ?x ?y ?t) (,inv-rel ?y ?x ?t)))))
 
 
 (defun test-tr-part-inverses ()
   (initialize)
+  (use-hyperresolution t)
   (assert (tr-rel-defs 'part-of 'has-part))
   (let* ((some-test `(forall (?x ?y) (iff (,(at-some-time 'part-of) ?x ?y) (,(at-some-time 'has-part) ?y ?x))))
 	 (all-test  `(forall (?x ?y) (iff (,(at-all-times 'part-of) ?x ?y) (,(at-all-times-whole 'has-part) ?y ?x))))
@@ -221,7 +222,7 @@
     (let ((*print-pretty* t))
       (format t "~%Assertions:~%~a" (tr-rel-defs 'part-of 'has-part))
       (format t "~%Attempted to prove ~%~a~% Result: ~a~%" some-test some-test-result))
-      (format t "~%Attempted to prove ~%~a~% Result: ~a~%" all-test  all-test-result)))))
+      (format t "~%Attempted to prove ~%~a~% Result: ~a~%" all-test  all-test-result)))
 
 ;; RO 2005 relation FOL
 (forall (?pc)
