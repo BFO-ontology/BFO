@@ -141,11 +141,12 @@
 (defun at-all-times-whole (rel)
   (intern (concatenate 'string (string rel) "-AT-ALL-TIMES-WHOLE-EXISTS")))
 
-(defun tr-rel-defs (rel inv-rel)
+(defun tr-rel-defs (rel inv-rel &key (include-some t) (include-all t))
     `(and
 
+    ,@(and include-all (list 
       ;; at all times relation
-      (forall (?x ?y)
+      `(forall (?x ?y)
 	      (iff
 	       (,(at-all-times rel) ?x ?y)
 	       (forall (?t)
@@ -153,10 +154,11 @@
 			(exists-at ?x ?t)
 			(and
 			 (exists-at ?y ?t)
-			 (,rel ?x ?y ?t))))))
+			 (,rel ?x ?y ?t))))))))
 
+    ,@(and include-all (list 
       ;; at-all-times relation (different t quantification)
-      (forall (?x ?y)
+      `(forall (?x ?y)
 	      (iff
 	       (,(at-all-times-whole rel) ?x ?y)
 	       (forall (?t)
@@ -164,20 +166,22 @@
 			(exists-at ?y ?t)
 			(and
 			 (exists-at ?x ?t)
-			 (,rel ?x ?y ?t))))))
+			 (,rel ?x ?y ?t))))))))
 
       ;;Graz at-some-time relation (fixed per fabian)
-      (forall (?x ?y)
+    ,@(and include-some (list 
+      `(forall (?x ?y)
 	      (iff
 	       (,(at-some-time rel) ?x ?y)
 	       (exists (?t)
 		       (and
 			(exists-at ?x ?t)
 			(exists-at ?y ?t)
-			(,rel ?x ?y ?t)))))
+			(,rel ?x ?y ?t)))))))
 
+    ,@(and include-all (list 
       ;; Graz at-all-times time inverse relation (different t quantification)
-      (forall (?x ?y)
+      `(forall (?x ?y)
 	      (iff
 	       (,(at-all-times inv-rel) ?x ?y)
 	       (forall (?t)
@@ -185,10 +189,11 @@
 			(exists-at ?x ?t)
 			(and
 			 (exists-at ?y ?t)
-			 (,inv-rel ?x ?y ?t))))))
+			 (,inv-rel ?x ?y ?t))))))))
 
       ;; Graz at-all-times time all-some inverse relation (same t quantification)
-      (forall (?x ?y)
+    ,@(and include-all (list 
+      `(forall (?x ?y)
 	      (iff
 	       (,(at-all-times-whole inv-rel) ?x ?y)
 	       (forall (?t)
@@ -196,23 +201,24 @@
 			(exists-at ?y ?t)
 			(and
 			 (exists-at ?x ?t)
-			 (,inv-rel ?x ?y ?t))))))
+			 (,inv-rel ?x ?y ?t))))))))
 
 
       ;; Graz at-some-time-inverse-relation (same t quantification)
-      (forall (?x ?y)
+    ,@(and include-some (list 
+      `(forall (?x ?y)
 	      (iff
 	       (,(at-some-time inv-rel) ?x ?y)
 	       (exists (?t)
 		       (and
 			(exists-at ?x ?t)
 			(exists-at ?y ?t)
-			(,inv-rel ?x ?y ?t)))))
+			(,inv-rel ?x ?y ?t)))))))
 
       (forall (?x ?y ?t) (iff (,rel ?x ?y ?t) (,inv-rel ?y ?x ?t)))))
 
 
-(defun test-tr-part-inverses ()
+(defun test-tr-part-inverses (&key (include-all t) (include-some t))
   (initialize)
 ;  (use-resolution t)
 ;  (use-hyperresolution t)
@@ -226,7 +232,7 @@
   (print-time-used t)
   (print-summary-when-finished t)
 
-  (assert (tr-rel-defs 'part-of 'has-part))
+  (assert (tr-rel-defs 'part-of 'has-part :include-some include-some :include-all include-all))
   (let* ((some-test `(forall (?x ?y) (iff (,(at-some-time 'part-of) ?x ?y) (,(at-some-time 'has-part) ?y ?x))))
 	 (all-test  `(forall (?x ?y) (iff (,(at-all-times 'part-of) ?x ?y) (,(at-all-times-whole 'has-part) ?y ?x))))
 	 (wrong-all-test  `(forall (?x ?y) (iff (,(at-all-times 'part-of) ?x ?y) (,(at-all-times 'has-part) ?y ?x))))
@@ -236,8 +242,8 @@
 	 )
     (let ((*print-pretty* t)
 	  (*print-case* :downcase))
-      (format t "~%Assertions:~%~a~%" (tr-rel-defs 'part-of 'has-part))
-      (format t "~%Attempted to prove ~%~a~%~%Result: ~a~%" some-test some-test-result)
+      (format t "~%Assertions:~%~a~%" (tr-rel-defs 'part-of 'has-part :include-all include-all :include-some include-some))
+;      (format t "~%Attempted to prove ~%~a~%~%Result: ~a~%" some-test some-test-result)
       (format t "~%Attempted to prove ~%~a~%~%Result: ~a~%" all-test  all-test-result)
       (format t "~%Attempted to prove ~%~a~%~%Result: ~a~%" wrong-all-test  wrong-all-test-result)
       )))
