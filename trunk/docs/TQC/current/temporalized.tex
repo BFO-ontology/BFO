@@ -1,0 +1,1094 @@
+%% vim: spelllang=en
+\documentclass{ao2e}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+%\usepackage[british]{babel}
+\usepackage[usename,dvipsnames]{xcolor}
+%\usepackage[]{hyperref}
+%\usepackage{varioref}
+%\hypersetup{colorlinks=true,urlcolor=black, linkcolor=black,
+%citecolor=black,pdftitle=Expressing time-dependent relations through temporal qualifications,pdfauthor=Niels Grewe et al,unicode=true}
+%\PrerenderUnicode{ï}
+\usepackage[babel]{csquotes}
+%\bibliographystyle{plainnat}
+\usepackage{pgf,tikz}
+\usepackage{todonotes}
+\usepackage{bussproofs}
+\usepackage{listings}
+\usetikzlibrary{positioning,shapes,shadows,arrows,backgrounds}
+\usepackage{covington,booktabs}
+%\usepackage{multirow}
+
+%\usepackage[hyperref=true]{biblatex}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{enumerate}
+%\bibliography{relations}
+\MakeOuterQuote{"}
+\MakeAutoQuote{„}{“}
+\usepackage{listings}
+
+\firstpage{0}
+\lastpage{0}
+\volume{0}
+\pubyear{0000}
+
+% Shorthands for
+%  Instance level relations:
+\newcommand{\mirel}[1]{\ensuremath{\mathrm{\mathbf{#1}}}}
+%  Class expressions:
+\newcommand{\mclass}[1]{\ensuremath{\mathit{#1}}}
+%  arity-indexed relations:
+\newcommand{\mrel}[2]{\mirel{#1^#2}}
+%  binary relations:
+\newcommand{\mrelb}[1]{\mrel{#1}{2}}
+%  ternary relations:
+\newcommand{\mrelt}[1]{\mrel{#1}{3}}
+%  DL interpretation function
+\newcommand{\dlint}[1]{\ensuremath{#1^{\mathcal{I}}}}
+%  ordered pairs:
+\newcommand{\pair}[2]{\ensuremath{\langle #1,#2\rangle}}
+% TQCs:
+\newcommand{\TQC}[1]{\ensuremath{TQC_{\mclass{#1}}}}
+% temporary relatedness
+\newcommand{\mreltemp}[1]{\mrel{#1}{{Temp}}}
+\newcommand{\mrelpg}[1]{\mrel{#1}{{PG}}}
+\begin{document}
+\lstset{
+language=SQL,                             % Code langugage
+basicstyle=\ttfamily,
+columns=flexible,
+deletekeywords = { some },
+morekeywords = { BEGIN, END, GROUPS, CLASS, OBJECTPROPERTY},
+sensitive = true
+}
+\begin{frontmatter}
+
+
+
+\title{Expressing time-dependent relations through temporal qualifications}
+\runningtitle{Expressing time-dependent relations through temporal qualifications}
+\maketitle
+\author[HRO]{\fnms{Niels} \snm{Grewe}%
+\thanks{Corresponding author: Niels Grewe, Institute of Philosophy, University
+of Rostock, 18051 Rostock, Germany.}},
+\author[GV]{\fnms{Janna} \snm{Hastings}},
+\author[HRO]{\fnms{Ludger} \snm{Jansen}},
+\author[XXX]{\fnms{Fabian} \snm{Neuhaus}},
+\author[SUNY]{\fnms{Alan} \snm{Ruttenberg}},
+\author[LBL]{\fnms{Chris} \snm{Mungall}},
+\author[GRZ,FB]{\fnms{Stefan} \snm{Schulz}}
+\address[GRZ]{Institute for Medical Informatics,
+Statistics and Documentation, Medical University of Graz, Austria}
+\address[FB]{Institute of Medical Biometry and Medical Informatics, University Medical Center Freiburg, Germany}
+\address[HRO]{Institute of Philosophy, University of Rostock, Germany}
+\address[GV]{Institute of Philosophy, University of Geneva, Switzerland}
+\address[LBL]{Genomics Division, Lawrence Berkeley National Laboratory, Berkeley, CA, USA}
+\address[SUNY]{State University of New York, Buffalo,
+NY, USA}
+\address[XXX]{XXX}
+
+\runningauthor{N. Grewe et al.}
+\begin{abstract}
+We discuss the difficulties of representing different forms of temporal
+relatedness in OWL 2, given its limitation to binary relationships. Based on the
+fact that temporary relatedness is important for modelling domains that are
+characterised by dynamic phenomena, we propose a reification scheme to express
+temporary and permanent relatedness that combines semantic accuracy, ease of use
+and ontological rigour. Central to this scheme is the notion of temporal
+qualification that provides a means to abstract from parts of the history of a
+continuant.
+\end{abstract}
+
+\begin{keyword}
+relation\sep time\sep stage\sep phase\sep top-level ontology\sep BFO\sep
+reification\sep ternary relation\sep OWL 2
+\end{keyword}
+\end{frontmatter}
+\section{Introduction}
+
+This paper addresses an ontological puzzle that has arisen in the
+Open Biomedical Ontologies (OBO) community and in the current BFO 2 redesign
+project.  However, it seems to be of general interest, as it addresses a
+weakness of all OWL ontologies that link continuant entities by binary relations
+(OWL object properties) . Just as most application ontologies, most OBO
+ontologies embrace
+three-dimensionalism as their ontological framework, introducing a top level
+distinction between continuants and occurrents, or endurants vs. perdurants,
+which is present in top-level ontologies such as BFO (\cite{BFO1:ref}), DOLCE
+(\cite{DOLCE:ref}) and GFO (\cite{GFO:ref}),
+although not all of them use the same terminology to express this
+distinction.
+
+But not only do entities need to be differentiated based on their temporal mode
+of existence, temporal aspects also have to be taken into account when
+specifying the relationships between those entities. One particular problem
+arises when the topic domain in question includes not only static, but also
+dynamic aspects of reality. This is the case for most of the life sciences,
+where continuants not only persist, but also continuously change over time. The
+shape and the constitution of biological organisms are in continuous flux. They
+continuously gain and lose parts, qualities, and dispositions. Consequently, any
+relational expression which makes reference to a particular continuant can have
+different truth values at different times and would therefore be ambiguous if
+time were not made explicit in the statement. For example, each of the following
+pairs of statements may be true together. The ternary instantiation relation
+\mirel{inst^3} relates an individual to a type at a time. 
+
+\pagebreak
+\vspace{1\baselineskip}
+\noindent\emph{A ripening apple:}
+\nopagebreak
+\begin{equation}
+\begin{split}
+\exists a, g, r, t_0,t_1&:\, \mirel{inst^3}(\mclass{Apple}, a, t_0) \wedge
+\mirel{inst^3}(\mclass{Green},g,t_0) \\
+&\quad \wedge
+\mirel{inst^3}(\mclass{Apple},a,t_1) \wedge
+\mirel{inst^3}(\mclass{Red},r,t_1) \\
+&\quad\wedge
+\mirel{bearerOf}(a,g,t_0) \wedge \neg\mirel{bearerOf}(a,r,t_0) \\
+&\quad\wedge \neg\mirel{bearerOf}(a,g,t_1) \wedge \mirel{bearerOf}(a,r,t_1)
+\end{split}
+\end{equation}
+\noindent\emph{Situation before and after a heart transplant}
+
+\begin{equation}
+\begin{split}
+\exists a, b, t_0, t_1&:\, \mirel{inst^3}(\mclass{Heart},a,t_0)
+\wedge \mirel{inst^3}(\mclass(Body,b,t_0)
+\wedge \mirel{inst^3}(\mclass{Heart},a,t_1) \\
+&\quad \wedge \mirel{partOf}(a,b,t_0)
+\wedge \neg\mirel{partOf}(a,b,t_1)
+\end{split}
+\end{equation}
+
+In these examples continuants of different kinds are related at different time
+instants. But time-indexed relations are also relevant when connecting
+continuants with processes: 
+
+\vspace{1\baselineskip}
+\noindent\emph{The soprano Mary participating in a performance of Beethoven’s
+9th symphony, during the 4th movement only:}
+
+\begin{equation}
+\begin{split}
+\neg&(\mirel{participatesIn}(\text{Mary},
+\text{Beethoven\_9th\_Symphony\_Performance\_1234},
+\text{2012-01-01:20:05})) \\
+&\wedge\mirel{participatesIn}(\text{Mary},
+\text{Beethoven\_9th\_Symphony\_Performance\_1234}, \text{2012-01-01:20:55}) 
+\end{split}
+\end{equation}
+As we see, a time index is necessary for many statements asserting a relation
+that changes through time, and this includes many statements involving an
+independent continuant, such as in the above examples involving apple\_123, Joe
+or Mary etc; though there are some relations where the temporal order is
+implicitly clear (for example, in the relation \mirel{derivesFrom}, where it is
+clear that the first relatum came into existence before the second relatum).
+
+Top-level ontologies thus need to take into account temporality in order to
+provide an accurate model for the interrelations of continuants. Unfortunately,
+if one strives to promote the use of top-level ontologies in application
+contexts because of their benefits for ontology re-use, data integration or
+overall accuracy, complying with this need can become quite complex. This is
+because ontological accuracy, alone, is often not the sole guiding principle in
+ontology design. Instead, at least two additional issues need to be taken into
+account:
+
+\begin{enumerate}
+\item The effort required on part of the ontology engineers: In many cases
+they are domain experts not trained in formal logic and will have difficulties
+if the modelling is not intuitive. This a major reason why four-dimensionalism,
+regardless of its philosophical merits, is not the ontological approach of
+choice (as long as the topic domain is not fraught with problems of relativity):
+Most of us do not normally think of Mary or apple \#123 as
+four-dimensional space-time worms, but rather as three-dimensional things. 
+\item The representation formalisms available, together with the tools (editors,
+reasoners) that support them: These formalisms need to compromise between
+expressiveness and computational complexity. Currently, OWL 2 ($\mathcal{SROIQ}$) is the
+most expressive formalism that is standardized, and for which
+authoring tools and reasoners are widely available. OWL 2 is also the favourite
+formalism embraced by the OBO community. 
+\end{enumerate}
+
+OWL 2 allows only binary relations between individuals, called
+\emph{object properties}. But while there has been work on expressive description
+logics that try to transcend this limitation (\cite{Calvanese:1997}) and also on description logics
+that explicitly account for temporality (e.g. \cite{Wolter:2001}) , there is no strong push
+towards standardisation of those formalisms, and tools suitable for end users
+are not readily available. It has thus been acknowledged that there is a need
+for solutions that work within the confines of present technologies
+(\cite{Welty:2006}).
+Time-indexed relationships have been introduced as instance-level relations into
+the OBO Relation ontology (\cite{OBO:RO}). In the current work on a new release of the Basic
+Formal Ontology, BFO 2, ternary (time-indexed) instance-level relations have
+been formulated for the first order logic variant of the ontology, though they
+do not carry over into the OWL version yet.
+
+The question we address in this paper is whether the favoured
+compatibilist approach that emphasises the validity of the three-dimensionalist
+view of reality is reconcilable with the requirements of
+representing knowledge about changing relationships between entities. We will
+analyse the consequences of this for the creation of a compatible OWL version of
+BFO 2. The paper is organized as follows: we specify the assumptions we make
+about the three-dimensional framework that is used as a basis to represent
+change over time. This is done in first order logic. We then extend that
+framework by introducing temporally qualified continuants, and show how binary
+relations between temporally qualified continuants can be defined based on the
+underlying relationships between continuants as vehicle to express change in
+OWL. In a first glance, these entities might look like four-dimensional entities
+in sheep's-clothing. However, we will show that these temporally qualified
+continuants are just introduced as \emph{façon de parler}, and thus are
+ontologically innocuous or can at least be contained in a special fragment of the ontology.
+\section{Basic notions}
+Throughout the paper, we will use „\mirel{rel}“ as an example and general placeholder
+for any relation that developers might want to use in an ontology. If this
+relation is originally a ternary relation $\mrelt{rel}(a, b, t)$ with explicit time
+index, the ontology engineer faces the problem how to express it due to the
+limitations of OWL, using a binary object property \mrelb{rel}. Ignoring this problem,
+ambiguous interpretations arise, as exemplified in the following class
+expression (formulated in Manchester Syntax, \cite{Man:Syntax}):
+\begin{equation}
+\mclass{A}\; \mathtt{subClassOf}\; \mrelb{rel}\; \mathtt{some}\; \mclass{B}
+\end{equation}
+
+Different interpretations of this expression are possible, based on the temporal
+strength of the relational term „\mirel{rel}“, for which we will now suggest a
+rendering in FOL. For this purpose, we use the time-indexed instantiation
+relation \mrelt{inst} that holds between an individual and a class at some time
+$t$ if
+and only if the individual instantiates the class at $t$. In addition, we use the
+relation of temporal inclusion \mirel{within}. Temporal inclusion holds between
+temporal instants if and only if they are the same instant; temporal inclusion
+for temporal regions is as expected.
+
+
+We here define three temporal strengths, viz. temporary relatedness, permanent
+generic relatedness and permanent specific relatedness:
+
+\begin{equation}
+\begin{split}
+\mclass{TemporarilyRelated}(\mclass{A},\mclass{B}) =_{def}&\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow
+\exists b, t^\prime:\;(\mrelt{inst}(\mclass{B},b,t^\prime) \wedge
+\mrelt{rel}(a,b,t^\prime) \wedge \mirel{within}(t^\prime,t))
+\end{split}
+\label{eq:temporarily}
+\end{equation}
+
+
+Informally: for all a instances of \mclass{A} there is some time $t$ and some instance $b$ of
+\mclass{B} such that $a$ is related to $b$ at $t$. Examples: 
+\begin{enumerate}[(a)]
+\item for all apple seeds there is
+some apple such that the seed is part of the apple at some time. 
+\item for all
+trees there is some leaf such that the leaf is part of the tree at some time.
+\end{enumerate}
+
+\begin{equation}
+\begin{split}
+\mclass{PermanentlyGenericallyRelated}(\mclass{A},\mclass{B}) =_{def}&\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow
+\exists b:\;(\mrelt{inst}(\mclass{B},b,t) \wedge
+\mrelt{rel}(a,b,t))
+\end{split}
+\label{eq:generically}
+\end{equation}
+
+Informally: for all instances $a$ of \mclass{A} there is, at all times $t$ that
+$a$ exists,
+some instance $b$ of \mclass{B} such that a is related to $b$ at $t$, but not necessarily
+always the same $b$ at all times $t$. Examples:
+\begin{enumerate}[(a)]
+\item all cells have a water molecule as
+part at all times, but not always the same water molecule.
+\item every bacteria colony has some bacteria as parts at all times, but not
+always the same bacteria.
+\end{enumerate}
+
+
+\begin{equation}
+\begin{split}
+\mclass{Permanently}&\mclass{SpecificallyRelated}(\mclass{A},\mclass{B}) =_{def}\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow 
+\exists b:\;\big(\mrelt{inst}(\mclass{B},b,t) \wedge 
+\mrelt{rel}(a,b,t))
+\\
+&\quad\quad \wedge \forall t^\prime: (\mrelt{inst}(\mclass{A},a,t^\prime)
+\rightarrow (\mrelt{rel}(a,b,t^\prime) \wedge
+\mrelt{inst}(\mclass{B},b,t^\prime))\big)
+\end{split}
+\label{eq:specifically}
+\end{equation}
+
+Informally, for all instances $a$ of \mclass{A} there is, at all times $t$ that $a$ exists, an
+instance $b$ of \mclass{B} such that a is related to $b$ at $t$; in this case it is always the
+same $b$ at all times $t$. Examples:
+\begin{enumerate}[(a)]
+\item a human being has a brain as part at all times, and it is necessarily the same brain.
+\item a radioactively marked molecule of DNA has the radioactive isotope as part
+at all times, and it is necessarily the same atom.
+\end{enumerate} 
+
+
+Our working hypothesis will be that interpretations, „\emph{temporary
+relatedness}“ (\ref{eq:temporarily}) and „\emph{permanent relatedness}“
+(\ref{eq:generically}--\ref{eq:specifically}) are relevant in the context of
+application ontologies. %It is still subject to debate to what extent the
+%distinction between specific and generic relatedness matters.
+ In what follows,
+we will attempt to sketch solutions for expressing these interpretations in OWL
+2. Our primary point of reference will be the BFO top-level ontology, the
+second, largely extended release being under current development, with a first
+preview release available at \todo{URL}.  Nevertheless
+the proposal sketched here could potentially be implemented in other top-level
+ontologies that are sufficiently similar to BFO.
+
+\section{Related work}
+\subsection{Connection to the SNAP/SPAN distinction in BFO 1}
+
+
+BFO has traditionally maintained a strong distinction between 3D and 4D accounts
+of reality (\cite{BFO1:ref}). According to BFO, a 3D description of reality exposes certain
+truths about spatial and spatio-temporal phenomena, e.g. between ordinary
+objects that persist through time and the processes in which these objects are
+involved, while a four-dimensionalist view coalesces both into a single
+spatiotemporal account where, for example, processes involving objects are
+understood as something like „space-time worms“.  But despite making this
+distinction, BFO maintains that these are not two incompatible descriptions of
+reality but instead that the continuant and the occurrent views represent
+complementary perspectives. Consequently, the ontological account of BFO is
+partitioned into two kinds of constituent ontologies. On the one hand, there are
+a series of 3D ontologies, which can basically be thought of as „snapshots“ of
+reality at a given point in time and are hence called SNAP ontologies. On the
+other hand, the overarching four-dimensional picture is provided by a so-called
+SPAN ontology, to which all entities from SNAP ontologies are related by way of
+trans-ontological relations.
+
+
+This highlights a significant mismatch between the theoretical framework of BFO
+and the constraints of OWL 2: the BFO solution is to use time-indexed SNAP
+ontologies for which a certain relational assertion holds. A similar mechanism
+is not specified for OWL 2 ontologies (though one can distinguish versions of an
+ontology) nor can the BFO approach be adopted as an informal convention if the
+ontologies are supposed to support automated reasoning. This is because of the
+following issue: assume that there are two SNAP ontologies, $O_0$ and $O_1$, each
+describing whether the relation \mirel{rel} holds between two objects $a$ and $b$ at
+different points in time. Now, if in $O_0$ „$\mirel{rel}(a, b)$“ is true, and in
+$O_1$, „$\mirel{rel}(a, b)$“ is false, we derive a contradiction once we construct a SPAN ontology
+$O_s$ that references both $O_0$ and $O_1$, due to the fact that the object property
+corresponding to \mirel{rel} shares the same namespace in all three ontologies.
+Consequently, if one chooses to produce a single ontology in which both SNAP and
+SPAN ontologies co-exist, there is room for only a single snapshot in that
+ontology.
+
+
+This problem could be mitigated by introducing explicitly namespaced object
+properties, but this is highly impractical because it results in an extreme
+proliferation of relations, one for each point in time. Additionally, it is not
+ontologically sound to interpret these object properties as relationship
+universals, because they make claims about universals which are only applicable
+at one single point in time, which would be a very strange thing to claim about
+an universal unless it holds only derivatively.
+We thus need to look for alternative solutions to this problem that still
+capture the intended meaning of the SNAP/SPAN distinction, but are manageable
+for ontology engineers using OWL 2 or other languages from the description logic
+family.
+\subsection{Histories in BFO 2}
+
+In BFO 2, work is under way to sketch out a more detailed theory of the
+relationship between SNAP objects and SPAN processes they participate in.
+Specifically, BFO 2 make the assumption that for each material object there
+exists a special process, the \emph{history} of the object, which encompasses 
+„the totality of processes taking place in the spatiotemporal region occupied by
+the entity.“ (\cite{BFO2:ref}) This means that there is a one to one correspondence
+between objects (on the SNAP side) and certain processes, which effectively
+provides a „bridge“ between the 3D and the 4D perspective. No complete formal theory
+of histories, which have previously been described in \cite{cornucopia}, is available as of yet.
+\subsection{Conventional Modellers’ Strategy for Temporalised Relations in OWL 2}
+
+As explicit semantics for modelling temporal dynamics are not available in OWL
+2, modellers tend to implicitly treat object properties as committing to a 
+„for all times“ interpretation in order to avoid obvious problems with the
+entailed models. For instance, in an anatomy ontology like the FMA, the object
+property \mirel{hasPart} is transitive, and used in axioms such as
+„$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$“
+and „$\mclass{LobeOfLung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{BonchiopulmonarySegment}$“
+
+If the underlying interpretation were „for some time“, transitivity of the
+binary \mirel{hasPart} could no longer be taken for granted, as two
+\mirel{hasPart} assertions to be chained could belong to two different SNAP
+ontologies.
+
+There is thus good reason to subscribe to interpretation (\ref{eq:generically}),
+as this is the only available interpretation that has a possibility of being
+consistent with the semantics. But ontology builders are usually not aware of
+the fact that they have implicitly substituted the interpretation function
+(which maps syntactic constructs of OWL 2 to intended models) with a
+temporalised variant, regardless of whether they would have intended the
+permanent or temporary parthood variant if they had been aware thereof.
+
+Obviously, the interpretation must be equivalent to the OWL 2 direct semantics
+(\cite{OWL2:direct}) in as far as it preserves syntactical structure and inferences and does not
+lead to additional expressivity. But it has – to our knowledge – never been made
+explicit what this substitution might consist of.  This is even more significant
+as this does not constitute at all a side issue or an idiosyncrasy of biomedical
+ontologies. On the contrary, virtually all OWL ontologies contain axioms on
+classes of continuants using binary object properties and leave the exact
+interpretation unexplained. 
+
+To address this mismatch and try to understand it better we sketch here a
+possible elucidation  which consists in a modification of the interpretation
+function. The general strategy of this interpretation is to augment the
+interpretations of class members and object properties in the OWL model with an
+additional time index $t$ which specifies that the entity in question exists
+(object property holds) at $t$. Class instances then become pairs and object
+property instances triples. In order to keep the surface grammar and overall
+semantics intact, the interpretations of all OWL axioms will be prepended with a
+conditionalized universal quantification over $t$  hat specifies that the axiom
+should hold at all times that the entity in question exists.  Time instants are
+hereby external to the domain. For example, the interpretation of a class
+assertion axiom that asserts that $a$ is an instance of class \mclass{C}, as long
+as $a$ exists, would then read (domain~$\Delta$, interpretation~$\cdot^\mathcal{I}$):
+
+\begin{equation}
+\forall t:\;\pair{\dlint{a}}{t}\in \dlint{\Delta} \rightarrow
+\pair{\dlint{a}}{t} \in \dlint{\mclass{C}}
+\end{equation}
+
+We implicitly assume that $\Delta$ contains individual/time-point pairs only for
+those times at which an individual exists. Notably, this is only sufficient to express rigid instantiation: Whenever an individual exists at
+all, it is also a member of the class it instantiates. The interpretation of
+temporality-sensitive relations will become clear when we spell out the semantic
+rules of existential quantification and value restriction, both of which assert
+permanent generic relatedness because they apply existential quantification over the
+object property range so that at each point in time a different individual of
+class \mclass{B} can serve as a relatum. We will use the canonical structural syntax
+(\cite{OWL2:structural})
+to ease comparison with the specified semantics (\cite{OWL2:direct}).
+
+\begin{description}
+\item[Existential quantification ($\mrelb{rel}\;\mathtt{some}\;\mclass{B}$)]
+\begin{equation}
+\begin{split}
+\dlint{\text{ObjectSomeValuesFrom}&(\mrelb{rel},\mclass{B})} =_{def}\\ &\quad
+\{\pair{\dlint{a}}{t}\in \dlint{\Delta}\,|\; \exists b:\;\langle\dlint{a},b,t\rangle
+\in \dlint{\mrelt{rel}} \wedge \pair{b}{t} \in \dlint{\mclass{B}}\}
+\end{split}
+\end{equation} 
+\item[Value restriction ($\mrelb{rel}\;\mathtt{only}\;\mclass{B}$)]
+\begin{equation}
+\begin{split}
+\dlint{\text{ObjectAllValuesFrom}&(\mrelb{rel},\mclass{B})} =_{def}\\ &\quad
+\{\pair{\dlint{a}}{t}\in \dlint{\Delta}\,|\; \forall b:\;\langle\dlint{a},b,t\rangle
+\in \dlint{\mrelt{rel}} \rightarrow \pair{b}{t} \in \dlint{\mclass{B}}\}
+\end{split}
+\end{equation}
+\end{description}
+
+In OWL object property assertions the time index is bound through universal
+quantification again:
+
+\begin{equation}
+\text{ObjectPropertyAssertion}(\mrelb{rel},a,b) =_{def}\;\forall
+t:\;\pair{\dlint{a}}{t} \in \dlint{\Delta} \rightarrow \langle
+\dlint{a},\dlint{b},t\rangle \in \dlint{\mrelt{rel}}
+\end{equation}
+
+Hence, object property assertions specify permanent relatedness. Interpreting
+OWL 2 this way does justice to the semantics of class level
+relations intended by the relations ontology (RO, \cite{OBO:RO}) and allows us to think of
+the syntactical forms represented in table \ref{tab:syntaces} as equivalent.
+\begin{table}
+\caption{Syntactical representations of (permanent) relatedness expressions}
+\label{tab:syntaces}
+{
+\begin{tabular}{p{10.9em}cp{10.5em}}
+\toprule
+\parskip=0cm
+\parbox{10.9em}{\centering OBO Syntax} & OWL (Manchester Syntax) & \parbox{10.5em}{\centering First Order Logic} \\
+\midrule
+\texttt{$[$Term$]$}\par
+\texttt{id:} \mclass{A}\par
+\texttt{relationship:} \mrelb{rel} \mclass{B} &
+
+\parbox[t][1.5em][c]{11.2em}{\centering $\mclass{A}\;\mathtt{subClassOf}\;\mrelb{rel}\mathtt{some}\mclass{B}$} &
+
+$\forall a,t:\;\mrelt{inst}(A,a,t)\rightarrow$\par
+$\quad \big(\exists b:\;\mrelt{inst}(B,b,t)\;\wedge$\par
+$\qquad\;\mrelt{rel}(a,b,t)\big)$\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+This approach  also retains standard transitivity semantics of OWL 2 object
+properties, so that quantification over time maintains transitivity of the
+relation in question.
+This can be shown, e.g. for the transitive relation \mirel{hasPart}: if an organism has
+some heart at any time, and if this heart has some heart valve at any time, then
+the organism has some heart valve at any time:
+
+\begin{prooftree}
+\AxiomC{$\mclass{A}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{B}$}
+\AxiomC{$\mclass{B}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{C}$}
+\BinaryInfC{$\mclass{A}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{C}$}
+\end{prooftree}
+And while there is nothing to be gained by actually modifying OWL 2 to use this
+interpretation, it is very important that ontology engineers are aware of the
+implications of their modelling decisions with regard to relations that are
+sensitive to the issue of temporal strength. However, this approach
+still has the consequence that „\emph{temporary relatedness}“ cannot be
+expressed directly in an OWL 2 ontology, so we need to look for more involved
+solutions to the problem.\todo[inline]{Removed the following text, which was contradictory and
+dead wrong (since the instance level assertion \emph{is} the property assertion): \begin{quote}Furthermore, an OWL instance level assertion
+using \mrelb{rel} would be problematic, as the OWL expression
+$$a\;\mrelb{rel}\;b$$
+would also have to be interpreted in FOL terms as 
+$$\exists a, b, t:\; \mrelt{rel}(a, b, t)$$
+which is the weakest possible statement on two individuals $a$ and $b$ with regard
+to the relation rel and time. This contrasts with the above formalized object
+property assertion.\end{quote}}
+
+\subsection{Proposed 4D-ist solutions}
+\subsubsection{Reification}
+
+A common strategy to work around the limitations of description logics is to
+represent ternary relations through reification. Reification involves the
+introduction of a class $\mclass{C_\mrelt{rel}}$ for each ternary relation
+\mrelt{rel}. The relata of \mrelt{rel}
+are then connected to instances of $\mclass{C_\mrelt{rel}}$ by three new binary
+relations \mrelb{R_1}, \mrelb{R_2},
+\mrelb{R_3}. The instance-level assertion
+$$
+\mrelt{rel}(a,b,t)
+$$
+
+would then be transformed into the following statement:\todo{Changed from list of statements to proper axiom}
+\begin{equation}
+\exists x: \mclass{C_\mrelt{rel}}(x) \wedge
+\mrelb{R_1}(x,a) \wedge
+\mrelb{R_2}(x,b) \wedge
+\mrelb{R_3}(x,t) 
+\end{equation}
+
+Such proposals have, with a varying degree of sophistication, seen quite a bit
+of dissemination in the ontology engineering community (\cite{ODP:nary}), but they suffer
+from unavoidable drawbacks. Most obviously, they are rather complex. This bears
+the risk of errors in the ontology engineering process and decreases reasoning
+efficiency (\cite{Grewe:2010}). To address the complexity problem, it has been suggested to
+select reification classes based on what seems ontologically „fitting“ for the
+domain of an ontology (\cite{Fiadeiro:2010}).
+
+In fact, what seems to be artificial reification from one perspective could even
+be perceived as ontologically sound representation from a different viewpoint.
+We might, for example, compare the ternary relational statement
+\begin{equation}
+\exists x,y,z:\;\mrelb{inst}(\mclass{Aconitase},x) \wedge
+\mrelb{inst}(\mclass{Citrate},y) \wedge \mrelb{inst}(\mclass{Isocitrate},z)
+\wedge  \mrelt{transforms}(x,y,z)
+\end{equation}
+
+with the expression
+\begin{equation}
+\begin{split}\mclass{Trans}&\mclass{formationProcess}\;\mathtt{and}\\ 
+            &\mrelb{hasParticipant}\;\mathtt{some}\;\mclass{Aconitase}
+\;\mathtt{and} \\
+            &\mrelb{hasInput}\;\mathtt{some}\;\mclass{Citrate}\;\mathtt{and}\\\ 
+            &\mrelb{hasOutcome}\;\mathtt{some}\;\mclass{Isocitrate}
+\end{split}
+\end{equation}
+
+and judge upon superficial inspection that the later is a reification of the
+former (where „\mrelt{transforms}“ is represented by the class „\mclass{Trans\-format\-ion\-Process}“). But if one commits to the position that it is useful and
+ontologically sound to accept the category of processes into an ontology, the
+„reified“ translation might actually be the proper representation of the
+ontological fact, i.e. that there is a transformation process going on whenever
+aconitase transforms citrate to isocitrate. The relational expression is true
+only in virtue of the existence of the process.
+
+It is thus only natural that four-dimensionalism aligns nicely with reification
+strategies that try to mitigate the existence of an extra time index for a
+relation. Even though we do no share the underlying ontological commitment 
+\emph{solely} to four-dimensional entities (for reasons outlined earlier in
+this paper and
+otherwise, \cite{BFO1:ref}), we still acknowledge that four-dimensionalist
+approaches have enormous merits when it comes to tackling this problem.
+
+\subsubsection{Welty/Fikes: Fluents}
+The prototypical approach for dealing with temporally changing information in
+OWL within a four-dimensionalist framework was provided by 
+\cite{Welty:2006}. And while they agree that the 4D  approach is „clearly 
+not something that immediately appeals to common sense“, they also claim
+that it „gives us another tool to use when solving a practical problem.“ To this
+end, they present an ontology that models fluents, i.e. „relations that hold
+within certain time interval but not in others.“ This works by considering all
+entities as four dimensional entities that have temporal parts (time slices),
+such that the material object property assertions hold (synchronously) between
+time slices. For example, temporary relatedness could be expressed as in
+(\ref{eq:fifteen}).
+
+\begin{equation}
+\mclass{Leaf}\;\mathtt{subClassOf}\;\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{some}\;
+            \mrelb{hasPart}\;\mathtt{some}\;\mrelb{timeSliceOf}\;\mathtt{some}\;\mclass{Tree}
+\label{eq:fifteen}
+\end{equation}
+
+This is by far one of the most straightforward translations of the
+four-dimensionalist commitment, but it suffers from a certain verbosity. This
+increases even more if permanent relatedness is concerned. In this case, the
+above expression would have to be amended to include a
+„$\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{only}$“ clause to ensure that
+all time slices of the entity are appropriately related to a time slice of the
+other entity.
+
+\subsubsection{Zamborlini/Guizzardi: Moments, Relators and Qua-Individuals}
+The commitment that some relational expressions are in fact better accounted for
+as proper entities is also prominent in Zamborlini and Guizzardi treatment of 
+contingent properties \cite{Zamborlini:Guizzardi}. For them, certain „material
+relations“ only hold by virtue of a separate truthmaker, the so called
+\emph{relator}, which is formed by combining the „qua individuals“ that
+partake in the relation. Qua individuals abstract away certain aspects of an
+individual so that only that information remains which is relevant for the
+individuals participation in the relation. 
+
+Both kinds of entities are examples of „moments“ in their
+nomenclature, which are said to inhere in individual entities and can thus be
+compared to dependent continuants or occurrents (respectively) in BFO
+parlance. But while relators might often be appropriately represented by BFO
+processes, the admissibility of qua individuals into BFO might be questionable
+since they can hardly be aligned with BFO's realist commitment (where sheer
+abstractions could only be regarded as artifacts of a persons though process). 
+
+Underneath the level of qua individuals (e.g. „$\mclass{LeafQuaPartOfTree}$“)
+and relators, there is the assumption of an ontology of time slices not unlike
+the one in \cite{Welty:2006}, such that
+temporal overlap between the qua individuals related by the relator can be
+enforced.
+
+Zamborlini and Guizzardi cite as an advantage for this approach that it is capable
+of representing the persistence of a relationship across multiple time slices
+without mentioning each explicitly (because the relator is associated with the
+qua-individual and not its time slice). This is part of a set of requirements
+suggested for modelling temporally changing information:
+
+\begin{enumerate}
+\item Avoid duplication of the other time slices if one entity partaking in the
+relation changes.
+\item Provide a consistent ontological interpretation of contingent (non-rigid)
+instantiation.
+\item Avoid repeating persisting properties for each time slice
+\item Ensure that immutable properties of an entity cannot be overridden by a
+time slice.
+\end{enumerate}
+
+We believe these points to be a good starting point for the evaluation of
+any proposal to address the problem of time-dependent relation and should be
+used to supplement our initial requirements.
+
+\subsubsection{Gangemi: Descriptions and Situations}
+Aldo Gangemi's DnS pattern (\cite{Gangemi:DnS}) deserves mention because it treats
+time-dependence of relations as a special case of perspectivity which can be
+accounted for by the very heavy-duty reification mechanism of descriptions and
+situations. In this case, the suggestion is to use the situation pattern in
+order to associate the relata and their temporal context with a common
+situation, which is effectively a reified assertion (a proposition). Again, such
+entities are figments of the mind and can only be admitted into a realist
+ontology such as BFO as such -- rather than being a general way to refer to
+arbitrary facts. 
+
+Notably, though, Gangemi reminds us of the fact that OWL 2's $\mathtt{hasKey}$
+axiom can be used circumvent the problem of possible duplication of instances
+for the same relational $n$-tuple: If a situation $\mclass{S}$ were to use the properties
+$\mrelb{hasTimeStamp}$, $\mrelb{hasSubject}$, and $\mrelb{hasObject}$, the axiom
+\begin{equation}
+\mclass{S}\;\mathtt{hasKey}(\mrelb{hasTimeStamp}, \mrelb{hasSubject},
+\mrelb{hasObject})
+\end{equation}
+would ensure that duplicate entities would be coalesced in the model.
+
+\subsubsection{GFO: Presentials}
+
+The GFO top-level ontology provides yet another way to account for
+time-dependent relatedness, which can at least be called „4D inspired“:
+Instead of continuants that are present as a whole at every point in time
+of their existence, in GFO there are „presentials“ which are present as a whole at
+exactly one point in time, thus being analogous to instantaneous time slices
+. The diachronic
+identity that is a key characteristic of a continuant is then obtained by
+postulating that for every individual continuant (in non-GFO parlance) a certain
+universal (a „persistant“) exists that is instantiated only by a temporally
+contiguous set of presentials, one for every point in time (\cite{GFO:ref}). In our eyes,
+this approach is not very attractive for two reasons: it is at odds with the
+strong intuition that individual continuants such as human beings exist, and,
+second, it requires multiple levels of universals to account for conventional
+class level assertions, something that might only be acceptable to a very
+limited degree, if at all.\footnote{\cite{Armstrong:USR}, for example, believes that
+higher order universals are only justified if they pertain to formal
+characteristics of an universal.}
+Regarding relations of different temporal strength, GFO has adopted an approach
+where relations are reified as „relators“ which serve as contexts that aggregate
+the relata as „players“ of certain „relational roles“ (\cite{Loebe:2007}). Additionally, GFO
+accounts for different temporal modes of relatedness precisely by distinguishing
+between presentials and persistants. Unfortunately, GFO only provides a first
+order theory of this framework.
+
+\subsubsection{Bittner/Donnelly: Stages}
+\cite{Bittner:Donnelly} suggest an ontologically fitting form of reification of
+temporally indexed parthood relations that allows distinguishing between
+time-dependent and time-independent parthood relations without referring
+explicitly to time. For this purpose, they introduce the
+concept of „stages“, understood as instantaneous parts of a occurent that are
+collocated with a continuant that endures over a multitude of such stages.
+Therefore a relation
+between a stage and whatsoever other entity is never ambiguous with regard to
+time, because it only exists at the moment the stage exists. Stages allow for
+the distinction between temporary and permanent relatedness, though the scope of
+the proposal was restricted to the analysis of mereological relations between
+entities or their stages respectively:
+\begin{equation}
+\begin{split}
+\mrelb{temporaryPartOf}&(x,y) \equiv \\ &\exists x_s,y_s:\; (\mrelb{stageOf}(x_s,x)
+  \wedge \mrelb{stageOf}(y_s,y) \wedge
+ \mrelb{partOf}(x_s, y_s))
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\mrelb{permanentPartOf}&(x,y) \equiv\; (\exists x_s\; \mrelb{stageOf}(x_s, x)
+  \wedge \\
+ &\forall x_{s'}\exists y_s:\;(\mrelb{stageOf}(x_{s'},x) \wedge
+\mrelb{stageOf}(y_s,y)   \wedge
+ \mrelb{partOf}(x_{s'},y_s)))
+\end{split}
+\end{equation}
+
+
+However, there is no reason not to extend this approach to all ternary relations
+that involve continuants and are sensitive to ambiguities because of different
+temporal strengths: stages allow for the distinction between temporary and
+permanent relatedness for a wide variety of relations, but this explicitly
+excludes binary relations between continuants or their stages that carry
+implicit reference to time and do not need this kind of treatment. For example 
+\begin{equation}
+\mclass{AppleTree}\;\mathtt{subClassOf}\;\mrelb{derivesFrom}\;\mathtt{some}\;
+\mclass{AppleSeed}
+\end{equation}
+is not in need of a temporalised re-interpretation because \mrelb{derivesFrom} should,
+in its definition, already specify the temporal order of the relata. The derived
+entity, that is, needs to temporally succeed the entity from which it is
+derived. Another example is the relation between dependent continuants and
+independent ones as they always span across the whole existence of the further:
+the redness of a given apple is the redness of this apple at all times (as long
+as there is redness at all). 
+
+The problem with this approach is, as with the other, the interpretation of a
+stage: If they are to be interpreted as „[spatial] regions of minimal temporal
+extend“, (i.e., three-dimensional entities) how can they at the same time be
+„instantaneous parts of perdurants“?
+This seems to confound whether we are talking about four- or three-dimensional
+entities. In the end, since material relations between continuants, such as
+\mirel{partOf}, are reduced to relations between stages (hence occurrents), this
+seems to be a reductive proposal that does not fit our initial requirements.
+
+\section{Temporally Qualified Continuants}
+\subsection{Process Profiles and Temporal Qualification}
+Put this way, any proposal that wants to take seriously the commitment to
+three-dimensional entities and still account accurately and succinctly for
+temporally changing information about these entities in a restricted language
+such as OWL 2, is at a disadvantage when compared to 4D-ist proposals which fit
+such a language more naturally. 
+
+But not all is lost: Incidentally, BFO 2 contains the notion of a
+\mclass{ProcessProfile} as a solution to a completely
+unrelated problem that can serve as a blueprint for approaching temporalised
+relations. In BFO 2, process profiles are used to express what other ontologies
+would call properties or qualities of processes. The underlying issue is that
+BFO 2 regards processes as dependent entities that do not have qualities
+over and above those of the entities they depend on (for example, there is nothing about
+the process of running that makes a certain running process „fast“, it is rather
+a quality of the runner that induces the fastness). 
+
+Still, BFO 2 can support such informal „process qualities“ talk by translating
+it into talk about process profiles. Such process profiles allow us to „focus on some one
+structural dimension and ignore, or strip away in a process of selective
+abstraction, all other dimensions within the whole process“ (\cite{BFO2:ref}), thus only 
+leaving, for example, the components of the running process that indicate its speed
+characteristics. 
+
+In a similar vein, we can can apply this idea to the temporally changing
+properties of a continuant, and define the \emph{temporal qualification} of a
+continuant as the result of regarding the continuant in as far as it exists only
+within a certain portion of time.
+
+A temporally qualified continuant (TQC) is thus a way of referring to a continuant
+during a portion of time. Formally, we can describe it as a tuple \pair{a}{t}
+where $a$ is an instance
+of a continuant and $t$ is a portion of time. 
+
+There are several axioms needed to link TQCs to the continuants that they are
+temporal qualifications of and to ensure that TQC portions of time do not exceed the
+allowed portion of time that the corresponding continuant instance spans over
+(most of these are similar to the proposals presented above).
+Instantiation of a TQC is thus not time-indexed, while normal instantiation of
+continuants is time indexed as in the examples above. 
+
+
+We will use the notation \TQC{A} to denote the class of temporally qualified
+continuants which range over continuants of type \mclass{A}.
+
+\begin{equation}
+\forall x:\; (\mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t_0,t_1:\;(
+\mrelt{inst}(\mclass{A},a,t_0) \wedge \mirel{equals}(x,a,t_1) \wedge
+\mirel{within}(t_1,t_0)))
+\end{equation}
+The intended meaning of the predicate \mirel{equals} is identity.  
+We further introduce a relation \mirel{continuantOf} to link a TQC to the continuant
+that it is a TQC of. That is, 
+\begin{equation}
+\forall x\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t:\;(
+\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{continuationOf}(a,x))
+\end{equation}
+
+In the next sections, we will discuss the representation of the three different
+temporal strengths, linking from the standard representation in BFO FOL through
+the introduction of temporally qualified continuants to the standard
+representation in OWL, showing how these different temporal strengths can be
+implemented through this method in a binary relationship framework such as OWL,
+though this representation will require relations that refer to ternary
+predicates in the FOL model, such as \mrelb{continuantOf}, to remain primitive.
+\subsection{Temporary Relatedness}
+
+We rephrase the definition (\ref{eq:temporarily}) given above by inserting
+emporally qualified continuants and derive the form that the relationship takes
+for temporally qualified continuants and a binary relationship. This is a fairly
+transparent translation:
+\begin{equation}
+\begin{split}
+\mclass{TemporarilyRelated}(\mclass{A},\mclass{B})& =_{def}\;
+\forall a, t:\; \mrelb{inst}(\mclass{A}, \pair{a}{t}) \\
+&\ \rightarrow
+\exists b, t_1:\;(\mrelb{inst}(\mclass{B}\pair{b}{t_1}) \wedge
+\mrelb{rel}(\pair{a}{t_1},\pair{b}{t_1}) \wedge \mirel{within}(t_1,t))
+\end{split}
+\end{equation}
+
+We then use the \mrelb{continuantOf} relation and the TQC notation to eliminate
+the tuples:
+\begin{equation}
+\begin{split}
+\mclass{Temporarily}&\mclass{Related}(\mclass{A},\mclass{B}) =_{def}\;
+\forall x:\; \mrelb{inst}(\TQC{A}, x)
+ \rightarrow
+\exists a,y,z,t_1:\;(\mrelb{inst}(\TQC{A},y) \wedge \\ & \mrelb{inst}(\TQC{B},z) 
+ \wedge \mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(a,y) \wedge
+\mrelb{rel}(y,z) 
+\end{split}
+\label{eq:usesSame}
+\end{equation}
+
+This means that the logical form of the expression of temporary relatedness is that
+at least one temporal qualification of \mclass{A} is related to some temporally
+qualified \mclass{B} instance.
+However, we need another axiom to constrain \mrelb{rel} in the above to ensure that the
+portions of time are appropriately overlapping, since \mrelt{rel} holds at one time
+only:
+\begin{equation}
+\begin{split}
+\forall x,y:\;& \mrelb{rel}(x,y) \rightarrow \exists a,b,t,t_1:\;
+(\mirel{equals}(x,\pair{a}{t})\wedge \mirel{equals}(y,\pair{b}{t_1})\\ 
+& \wedge \mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(b,y) \wedge
+\mrelt{rel}(a,b,t_1) \wedge \mirel{within}(t_1,t))
+\end{split}
+\end{equation}
+
+Now we have derived a binary expression \mrelb{rel} we are free to use this in OWL
+axioms. We introduce the relation \mrelb{hasSameContinuant} between temporally qualified
+continuants to express that they are TQCs of the same continuant,
+expressed in the above axiom (\ref{eq:usesSame}) as $(\mrelb{continuantOf}(a,x)
+\wedge \mrelb{continuantOf}(a,y))$, which allows us to express temporary relatedness in OWL as follows:
+
+\begin{equation}
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some
+(}\mrelb{rel}\;\mathtt{some}\;\TQC{B}) 
+\label{eq:tqc:temp}
+\end{equation}
+
+Additionally, we ensure that sharing a temporal qualification amounts to being
+the same continuant:\footnote{Implementers should note that OWL 2 only mandates
+this for \emph{named} individuals.}
+
+\begin{equation}
+\mclass{A}\;\mathtt{hasKey}(\mrelb{continuantOf})
+\end{equation}
+
+\subsection{Usability and simplification}
+Since the above axiom (\ref{eq:tqc:temp}) makes a claim about the class \TQC{A},
+it is less ideal from a usability perspective. We would rather like to say
+something about the target continuant classes \mclass{A} and \mclass{B} in our OWL version, for
+ease of use by the end user. Thus, we introduce a new relationship,
+\mreltemp{rel}, which obtains between continuants, and should be interpreted as follows:
+
+
+\begin{equation}
+\begin{split}
+\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\rightarrow\\
+&\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some}\;(\mrelb{rel}\;\mathtt{some}\;
+\TQC{B}) 
+\end{split}
+\end{equation}
+
+Unfortunately, the above statement cannot be formulated in OWL 2 due to its
+strict constraints on object properties. Neither can it be implemented in a
+rule language, since it would induce the generation of new individuals in its
+consequent, which violated DL safety. Still there is an avenue for hiding the
+complexity by using a macro processing engine, such as OPPL (\cite{OPPL}), in
+which processing instructions such as these could be employed:
+
+\begin{lstlisting}
+?x:CLASS[subClassOf Continuant],
+?y:OBJECTPROPERTY?MATCH("temporarily_(.*)"),
+?z:CLASS[subClassOf Continuant]
+SELECT ?x subClassOf ?y some ?z
+BEGIN
+  ADD ?x subClassOf continuantOf some ?y.GROUPS(1) 
+    some hasContinuant ?z
+END;
+\end{lstlisting}
+This can easily be adopted or parameterised for other axiom types or types of temporal
+sensitivity (e.g. permanent generic relatedness) Additional measures that alleviate the burden of this approach would be making
+\mrelb{rel} a sub-object-property of \mreltemp{rel}, which quite natural and
+obvious: If something is related at all times to some entity, it is related to
+that entity at some time.
+\subsection{Permanent Generic Relatedness}
+Permanent generic relatedness is considered by some to be the most common
+interpretation of temporally unspecified relations in biology. We have
+previously defined it in (\ref{eq:generically}), which can
+now rephrased using the TCQ approach as follows:
+\begin{equation}
+\forall x:\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists y :\;
+\mrelb{inst}(\TQC{B}, y) \wedge \mrelb{rel}(x,y)
+\label{eq:tqc:pg}
+\end{equation}
+
+Informally, this means that, whatever temporal qualification of an instance of
+\mclass{A} we choose, it will alway be \mirel{rel}-related to some temporal
+qualification of type \mclass{B}, but we neither care nor enforce which one.
+
+This is the easiest and most elegant translation case from the FOL perspective.
+Moving to OWL, the above axiom (\ref{eq:tqc:pg}) appears as: 
+
+\begin{equation}
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{rel}\;\mathtt{some}\;\TQC{B}  
+\end{equation}
+
+Again, we need to introduce a new relationship to make this case explicit and
+make use of a translation rule or macro expansion to bridge back to the
+underlying relationship. We introduce \mrelpg{rel}:
+
+\begin{equation}
+\mclass{A};\mathtt{subClassOf}\;\mrelpg{rel}\;\mathtt{some}\;\mclass{B} \rightarrow  \TQC{A}
+\mathtt{subClassOf}\;\mrelb{rel}\;\mathtt{some}\;\TQC{B}
+\end{equation}
+
+The availability of permanent generic relatedness is actually noteworthy because
+it would not be possible in OWL 2 in absence of temporally qualified
+continuants (not only instantiation of classes, but also of object property
+tuples is rigid). 
+
+\subsection{Permanent Specific Relatedness}
+Finally, we consider the case of permanent specific relatedness
+(\ref{eq:specifically}). This is
+actually the most difficult to express in FOL and then translate via the above
+mechanism to statements about temporally qualified continuants that can be
+expressed in OWL 2, since it requires the additional axiom to ensure that it is
+always the same instance that is related. Unfortunately, we cannot provide an
+accurate translation of this kind of relatedness into OWL 2, though we can
+achieve the following first order translation in TQC-talk:
+\begin{equation}
+\begin{split}
+\forall x:\; \mrelb{inst}&(\TQC{A},x) \rightarrow \\
+ \exists y:&\;\mrelb{inst}(\TQC{B},y) \wedge \mrelb{rel}(x,y)\wedge\\
+ & \forall x_1,a:\; ((\mrelb{inst}(\TQC{A},x_1) \wedge 
+\mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(a,x_1))\wedge\\
+&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \mrelb{continuantOf}(b,y)  
+\wedge \mrelb{continuantOf}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
+\end{split}
+\end{equation}
+This axiom unfortunately does require more than two variables to be bound at a
+time and can thus not represented in OWL 2.\todo{I got a counter model for the
+OWL 2 formulation if anyone's interested.}
+\section{Conclusion}
+We have shown that when expressing relationships between continuants, ontology
+engineers cannot safely ignore the dynamic nature of reality without introducing
+unnecessary ambiguity or even factual errors into ontologies. Since we
+acknowledge the importance of temporary relatedness, we cannot simply accept an
+informal reinterpretation that all OWL 2 relations imply permanent relatedness. 
+We acknowledge that four-dimensionalist ontology is well suited for
+dealing with this kind of problem. 
+
+Still, we do not think that limitations of a certain formalism should force us
+to adopt a four-dimensionalist world view. We agree that there are in fact
+arguments in favour of four-dimensionalism that are worth discussing, but this is not one of them. 
+Instead, we provide a formalisation that relies on making assertions about
+temporally qualified continuants, representing continuants as they are viewed
+within a restricted temporal context. This allows us to steer clear of the strong
+commitment to exclusive four-dimensionalism, though of course the
+four-dimensionalist is free to interpret TQCs as mere time slices.
+
+We believe that the temporal qualification approach allows us to operate within
+the confines of the ontological framework of BFO, where both occurrents and
+continuants are useful and irreducible entities, thus providing a compelling
+framework for existing users of this top-level ontology. One has, however, to
+question the admissibility of temporal qualifications into a
+realist top-level ontology, since they are obviously abstracted away from the
+entire, changing, continuant. 
+
+Regarding this problem, we believe the analogy with BFO 2 process profiles to be
+clear and think that it should make this approach at least sufferable from the
+ontological perspective. Still, we admit that we have some reservations due to
+an apparent multiplication of entities: At any given moment, the space occupied
+by an operating table is not only occupied by the table itself, but also by it's
+temporal qualification at that moment, and while one observes the table over a
+period of time, those qualifications perish and come
+into being incessantly, even if there is no apparent change in the table.  
+
+If those reservations should prove to be overwhelming, we would remind ourselves
+that the entire TQC scheme is strictly speaking a workaround for the reduced
+expressivity of the language. If so, TQCs  need to be regarded as
+unavoidable, technical artefacts, but they could be relegated to a specific
+subtree of the ontology without disturbing the overall structure as much as a
+outright transition to a four-dimensional solution.
+
+As we have argued, special care has to be taken so that the procedures suggested
+here are still manageable for the average ontology engineer. We
+believe that the availability of macro expansion engines for ontology
+development is key to this. While they do not add any additional expressivity, they
+provide the ontology developer with succinct ways to express often used
+concepts. In this case, there is virtually no onus on downstream users of the
+ontology, since it is BFO policy to keep a fixed set of relations that is deemed
+sufficient to express all ontological facts (where usually, the so called
+"material" relations are written as class expressions because the correspond to
+proper entities). 
+
+There are thus two avenues for furthering this research: On the one hand, the
+usability characteristics deserve detailed scrutiny, on the other hand, the
+TQC approach have obvious connections to the (incomplete) theory of lives and
+histories in BFO.
+In the present paper, we have presented the crucial
+relation \mrelb{continuantOf} as primitive and only given very little informal
+explanation of its meaning. It would be desirable to give a more specific account of it in the
+future, by using histories and projection relations between them and the
+entities they are histories of.
+\section*{Acknowledgements}
+The research by NG, LJ and StS for this paper has been supported by the German
+Science Foundation (DFG) , grant
+JA1904/2-1, SCHU 2515/1-1 as part of the research project "Good Ontology Design".
+\bibliographystyle{natbib}
+\bibliography{temporalized}
+\end{document}
