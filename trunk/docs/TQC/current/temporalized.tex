@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{times}
 \usepackage[T1]{fontenc}
-%\usepackage[british]{babel}
+\usepackage[british]{babel}
 \usepackage[usename,dvipsnames]{xcolor}
 %\usepackage[]{hyperref}
 %\usepackage{varioref}
@@ -19,12 +19,12 @@
 \usetikzlibrary{positioning,shapes,shadows,arrows,backgrounds}
 \usepackage{covington,booktabs}
 %\usepackage{multirow}
-
+\usepackage[style=numeric,citestyle=numeric-comp,backref=false,hyperref=false]{biblatex} 
 %\usepackage[hyperref=true]{biblatex}
-\usepackage{natbib}
+%\usepackage{natbib}
 \usepackage{amsmath}
 \usepackage{enumerate}
-%\bibliography{relations}
+\bibliography{temporalized}
 \MakeOuterQuote{"}
 \MakeAutoQuote{„}{“}
 \usepackage{listings}
@@ -54,6 +54,7 @@
 % temporary relatedness
 \newcommand{\mreltemp}[1]{\mrel{#1}{{Temp}}}
 \newcommand{\mrelpg}[1]{\mrel{#1}{{PG}}}
+\newcommand{\mrelps}[1]{\mrel{#1}{{PS}}}
 \begin{document}
 \lstset{
 language=SQL,                             % Code langugage
@@ -344,8 +345,8 @@ application ontologies. %It is still subject to debate to what extent the
  In what follows,
 we will attempt to sketch solutions for expressing these interpretations in OWL
 2. Our primary point of reference will be the BFO top-level ontology, the
-second, largely extended release being under current development, with a first
-preview release available at \todo{URL}.  Nevertheless
+second, largely extended release being under current development, with a
+preview release available at \cite{BFO2:Graz}.  Nevertheless
 the proposal sketched here could potentially be implemented in other top-level
 ontologies that are sufficiently similar to BFO.
 
@@ -418,7 +419,7 @@ As explicit semantics for modelling temporal dynamics are not available in OWL
 entailed models. For instance, in an anatomy ontology like the FMA, the object
 property \mirel{hasPart} is transitive, and used in axioms such as
 „$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$“
-and „$\mclass{LobeOfLung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{BonchiopulmonarySegment}$“
+and „$\mclass{LobeOfLung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{BronchiopulmonarySegment}$“
 
 If the underlying interpretation were „for some time“, transitivity of the
 binary \mirel{hasPart} could no longer be taken for granted, as two
@@ -500,8 +501,10 @@ t:\;\pair{\dlint{a}}{t} \in \dlint{\Delta} \rightarrow \langle
 \dlint{a},\dlint{b},t\rangle \in \dlint{\mrelt{rel}}
 \end{equation}
 
-Hence, object property assertions specify permanent relatedness. Interpreting
-OWL 2 this way does justice to the semantics of class level
+Hence, object property assertions specify permanent relatedness. Disregarding
+the difference between specific and generic permanent relatedness for the time
+being, this interpretation of 
+OWL 2 at least successfully mimics the semantics of class level
 relations intended by the relations ontology (RO, \cite{OBO:RO}) and allows us to think of
 the syntactical forms represented in table \ref{tab:syntaces} as equivalent.
 \begin{table}
@@ -545,15 +548,7 @@ implications of their modelling decisions with regard to relations that are
 sensitive to the issue of temporal strength. However, this approach
 still has the consequence that „\emph{temporary relatedness}“ cannot be
 expressed directly in an OWL 2 ontology, so we need to look for more involved
-solutions to the problem.\todo[inline]{Removed the following text, which was contradictory and
-dead wrong (since the instance level assertion \emph{is} the property assertion): \begin{quote}Furthermore, an OWL instance level assertion
-using \mrelb{rel} would be problematic, as the OWL expression
-$$a\;\mrelb{rel}\;b$$
-would also have to be interpreted in FOL terms as 
-$$\exists a, b, t:\; \mrelt{rel}(a, b, t)$$
-which is the weakest possible statement on two individuals $a$ and $b$ with regard
-to the relation rel and time. This contrasts with the above formalized object
-property assertion.\end{quote}}
+solutions to the problem.
 
 \subsection{Proposed 4D-ist solutions}
 \subsubsection{Reification}
@@ -743,7 +738,7 @@ order theory of this framework.
 temporally indexed parthood relations that allows distinguishing between
 time-dependent and time-independent parthood relations without referring
 explicitly to time. For this purpose, they introduce the
-concept of „stages“, understood as instantaneous parts of a occurent that are
+concept of „stages“, understood as instantaneous parts of an occurrent that are
 collocated with a continuant that endures over a multitude of such stages.
 Therefore a relation
 between a stage and whatsoever other entity is never ambiguous with regard to
@@ -789,7 +784,7 @@ as there is redness at all).
 
 The problem with this approach is, as with the other, the interpretation of a
 stage: If they are to be interpreted as „[spatial] regions of minimal temporal
-extend“, (i.e., three-dimensional entities) how can they at the same time be
+extent“, (i.e., three-dimensional entities) how can they at the same time be
 „instantaneous parts of perdurants“?
 This seems to confound whether we are talking about four- or three-dimensional
 entities. In the end, since material relations between continuants, such as
@@ -824,7 +819,12 @@ characteristics.
 In a similar vein, we can can apply this idea to the temporally changing
 properties of a continuant, and define the \emph{temporal qualification} of a
 continuant as the result of regarding the continuant in as far as it exists only
-within a certain portion of time.
+within a certain portion of time. Thus, where a process profile is characterised
+by its temporal co-extension with its process, a temporal qualification is
+characterised by its spatial co-extension with its continuant over the time
+period that it qualifies. They differ, however in that a process profile is a
+part of the process, while a temporal qualification cannot be a part of its
+continuant.
 
 A temporally qualified continuant (TQC) is thus a way of referring to a continuant
 during a portion of time. Formally, we can describe it as a tuple \pair{a}{t}
@@ -937,7 +937,7 @@ ease of use by the end user. Thus, we introduce a new relationship,
 
 \begin{equation}
 \begin{split}
-\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\rightarrow\\
+\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\mclass{B}\;\rightarrow\\
 &\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some}\;(\mrelb{rel}\;\mathtt{some}\;
 \TQC{B}) 
 \end{split}
@@ -957,7 +957,8 @@ which processing instructions such as these could be employed:
 SELECT ?x subClassOf ?y some ?z
 BEGIN
   ADD ?x subClassOf continuantOf some ?y.GROUPS(1) 
-    some hasContinuant ?z
+    some hasContinuant ?z,
+  REMOVE ?x subClassOf ?y some ?z
 END;
 \end{lstlisting}
 This can easily be adopted or parameterised for other axiom types or types of temporal
@@ -984,33 +985,74 @@ This is the easiest and most elegant translation case from the FOL perspective.
 Moving to OWL, the above axiom (\ref{eq:tqc:pg}) appears as: 
 
 \begin{equation}
-\TQC{A}\;\mathtt{subClassOf}\;\mrelb{rel}\;\mathtt{some}\;\TQC{B}  
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{rel}\;\mathtt{some}\;\TQC{B}
+\label{eq:tqc:pg:owl}
 \end{equation}
 
-Again, we need to introduce a new relationship to make this case explicit and
-make use of a translation rule or macro expansion to bridge back to the
-underlying relationship. We introduce \mrelpg{rel}:
-
+Again, we can use a kind of macro expansion to bridge a shorthand for this type
+of relatedness (e.g. \mrelpg{rel}) back to the
+underlying relationship. Thus we would use (\ref{eq:tqc:pg:owl}) to replace
+every occurrence of axioms such as the following:
 \begin{equation}
-\mclass{A};\mathtt{subClassOf}\;\mrelpg{rel}\;\mathtt{some}\;\mclass{B} \rightarrow  \TQC{A}
-\mathtt{subClassOf}\;\mrelb{rel}\;\mathtt{some}\;\TQC{B}
+\mclass{A}\;\mathtt{subClassOf}\;\mrelpg{rel}\;\mathtt{some}\;\mclass{B}  
+\label{eq:tqc:pg:shorthand}
 \end{equation}
 
-The availability of permanent generic relatedness is actually noteworthy because
+By replacing, we mean to imply that we advise against using \mrelpg{rel} as an
+object property, which would not be harmful in itself, but at least
+counter-intuitive. Instances of \mclass{A} satisfying
+(\ref{eq:tqc:pg:shorthand} would require a pair of instances \pair{a}{b}, where
+$a$ is said to be permanently generically related to $b$, which is (a)
+meaningless since generic relatedness pertains to a type, not an instance and
+(b) misleading since it is not enforced by the model.
+
+Still, the availability of permanent generic relatedness is noteworthy because
 it would not be possible in OWL 2 in absence of temporally qualified
 continuants (not only instantiation of classes, but also of object property
-tuples is rigid). 
+tuples is rigid). This is afforded by the fact that we do not introduce an
+explicit object property for generic permanent relatedness. 
 
+Since permanent generic relatedness matches the presumed default interpretation
+of \mrelb{rel} in most existing biomedical ontologies, upgrade paths for these
+ontologies need to be considered. We believe that, from a user perspective, the
+most convenient way would be to relegate all relations that require
+temporalisation into a specific branch (say,
+\mrelb{temporallySensitivelyRelated}) and employ something like the following 
+preprocessing instruction:
+\begin{lstlisting}
+?x:CLASS[subClassOf Continuant],
+?y:OBJECTPROPERTY?[subPropertyOf temporallySensitivelyRelated],
+?z:CLASS[subClassOf Continuant] 
+SELECT ?x subClassOf ?y some ?z WHERE 
+  FAIL ?x subClassOf hasContinuant some Continuant,
+  ?y MATCH("^(.(?<!temporarily_))*$")
+  FAIL ?z subClassOf hasContinuant some Continuant,
+BEGIN
+  ADD hasContinuant some ?x ?y.GROUPS(1) 
+    hasContinuant some ?x subClassOf ?y some continuantOf ?z,
+  REMOVE ?x subClassOf ?y some ?z
+END;
+\end{lstlisting}
+This allows users to do away with \mrelpg{rel} and have expressions about
+continuants converted into expressions about temporal qualifications transformed
+seamlessly. There are two downsides to this. Firstly, this approach moves
+ontology engineering even more towards procedures that are familiar to
+software engineers but not to scientists from the field of application.
+Secondly, the above expression requires a reasoner to work, which might be
+costly to do after every edit.
+
+On the other hand, it is subject to debate whether adopting an edit-compile-test
+approach in ontology engineering could in fact be useful for improving ontology quality.
 \subsection{Permanent Specific Relatedness}
-Finally, we consider the case of permanent specific relatedness
-(\ref{eq:specifically}). This is
-actually the most difficult to express in FOL and then translate via the above
-mechanism to statements about temporally qualified continuants that can be
-expressed in OWL 2, since it requires the additional axiom to ensure that it is
-always the same instance that is related. Unfortunately, we cannot provide an
+If we do introduce an explicit object property, could we hope to arrive at
+implementing something like permanent specific relatedness
+(\ref{eq:specifically})? Unfortunately, this assumption proves to be too naïve.
+
+It would require an additional axiom to ensure that only TQCs of the same instance are involved
+for the second relatum. Unfortunately, we cannot provide an
 accurate translation of this kind of relatedness into OWL 2, though we can
 achieve the following first order translation in TQC-talk:
-\begin{equation}
+ \begin{equation}
 \begin{split}
 \forall x:\; \mrelb{inst}&(\TQC{A},x) \rightarrow \\
  \exists y:&\;\mrelb{inst}(\TQC{B},y) \wedge \mrelb{rel}(x,y)\wedge\\
@@ -1020,9 +1062,10 @@ achieve the following first order translation in TQC-talk:
 \wedge \mrelb{continuantOf}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
 \end{split}
 \end{equation}
-This axiom unfortunately does require more than two variables to be bound at a
-time and can thus not represented in OWL 2.\todo{I got a counter model for the
-OWL 2 formulation if anyone's interested.}
+This would require three variables ($x$,~$y$,~$y_1$) to be bound at the same
+time, which is incompatible with any OWL translation.
+
+
 \section{Conclusion}
 We have shown that when expressing relationships between continuants, ontology
 engineers cannot safely ignore the dynamic nature of reality without introducing
@@ -1049,8 +1092,8 @@ question the admissibility of temporal qualifications into a
 realist top-level ontology, since they are obviously abstracted away from the
 entire, changing, continuant. 
 
-Regarding this problem, we believe the analogy with BFO 2 process profiles to be
-clear and think that it should make this approach at least sufferable from the
+Regarding this problem, we believe the analogy with BFO 2 process profiles could 
+make this approach at least sufferable from the
 ontological perspective. Still, we admit that we have some reservations due to
 an apparent multiplication of entities: At any given moment, the space occupied
 by an operating table is not only occupied by the table itself, but also by it's
@@ -1089,6 +1132,6 @@ entities they are histories of.
 The research by NG, LJ and StS for this paper has been supported by the German
 Science Foundation (DFG) , grant
 JA1904/2-1, SCHU 2515/1-1 as part of the research project "Good Ontology Design".
-\bibliographystyle{natbib}
-\bibliography{temporalized}
+%\bibliographystyle{natbib}
+\printbibliography
 \end{document}

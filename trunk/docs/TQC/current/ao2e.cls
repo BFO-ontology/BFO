@@ -612,8 +612,8 @@
 %
 % *********** MATH
 %
-\def\tfrac#1#2{{\textstyle\frac{#1}{#2}}}
-\def\dfrac#1#2{{\displaystyle\frac{#1}{#2}}}
+%\def\tfrac#1#2{{\textstyle\frac{#1}{#2}}}
+%\def\dfrac#1#2{{\displaystyle\frac{#1}{#2}}}
 %
 \if@secthm
  \@addtoreset{thm}{section}
@@ -778,7 +778,7 @@
 \def\frontmatter{%
   \ifx\@artty\@AI \make@AI\fi
   \let\@corresp@note\relax
-  \global\t@glob@notes={}\global\c@author\z@
+  \global\t@glob@notes={}%\global\c@author\z@
   \global\c@address\z@
   \sv@mathsurround\mathsurround \m@th
   \global\n@author=0\n@author@\relax
@@ -1131,7 +1131,7 @@
 
 % Block preparation of contents:
 \def\addcontentsline#1#2#3{}
-\long\def\addtocontents#1#2{}
+%\long\def\addtocontents#1#2{}
 %
 \newcommand\today{}
 \edef\today{\ifcase\month\or
