@@ -7,7 +7,7 @@ In today's (Tuesday April 23, 2013) BFO2 OWL Development meeting the following p
 == Proposal ==
 We release the current draft BFO2, updated with some items from the trackers, tbd. One or more variants, specified by those who don't some or all the temporalized relations, will be specified, omitting some relations, and this will be created as part of release process. Release notes will be written that document the current state of our release, including the controversy, and the existence of the variant.
 
-[the text of the proposal was edited slightly by Alan Ruttenberg, for clarity and grammar]
+_the text of the proposal was edited slightly by Alan Ruttenberg, for clarity and grammar_
 
 == Vote at the meeting ==
 Those present on the call when the vote was taken were: myself, Jie Zheng, Chris Mungall, Bjoern Peters, Stefan Schulz, James Overton, Ludger Jansen and Niels Grewe.
