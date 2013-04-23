@@ -1,8 +1,34 @@
 #summary Recording the vote
 
-= Introduction =
+== Background ==
 
-Add your content here.
+In today's (Tuesday April 23, 2013) BFO2 OWL Development meeting the following proposal was made. 
 
+== Proposal ==
+We release the current draft BFO2, updated with some items from the trackers, tbd. One or more variants, specified by those who don't some or all the temporalized relations, will be specified, omitting some relations, and this will be created as part of release process. Release notes will be written that document the current state of our release, including the controversy, and the existence of the variant.
 
-= Votes =
+[the text of the proposal was edited slightly by Alan Ruttenberg, for clarity and grammar]
+
+== Vote at the meeting ==
+Those present on the call when the vote was taken were: myself, Jie Zheng, Chris Mungall, Bjoern Peters, Stefan Schulz, James Overton, Ludger Jansen and Niels Grewe.
+
+All voted in favor of the proposal.
+
+== Request for BFO developer feedback == 
+If you have been participating in the BFO 2 development process, and object to this proposal, please make your views known within 2 weeks (by Tuesday May 7, 2013) ,by responding to one of mailing lists this email is addressed to, or by commenting on this page. You can also add your vote to this page (please indicate the date with your vote).
+
+== Mechanism for indicating tracker items that should be resolved before release ==
+To track those tracker items which people would like to have resolved before the release - understanding that these should be feasible to accomplish in the next month or two - please add a comment, which will reveal the labels associated with the issue, and add the label Milestone-BFO2-Release. If you wish, or think it necessary, have the body of the comment include a proposal for resolution and justification of why you think it needs to be resolved before release.
+
+== Voting in support ==
+
+*Alan Ruttenberg*, April 23, 2013, during meeting<br>
+*Jie Zheng*, April 23, 2013, during meeting<br>
+*Chris Mungall*, April 23, 2013, during meeting<br>
+*Bjoern Peters*, April 23, 2013, during meeting<br>
+*Stefan Schulz*, April 23, 2013, during meeting<br>
+*James Overton*, April 23, 2013, during meeting<br>
+*Ludger Jansen*, April 23, 2013, during meeting<br>
+*Niels Grewe*, April 23, 2013, during meeting<br>
+
+== Voting against ==
