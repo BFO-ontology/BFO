@@ -30,5 +30,6 @@ To track those tracker items which people would like to have resolved before the
 *James Overton*, April 23, 2013, during meeting<br>
 *Ludger Jansen*, April 23, 2013, during meeting<br>
 *Niels Grewe*, April 23, 2013, during meeting<br>
+*Oliver He*, April 23, 2013
 
 == Voting against ==
