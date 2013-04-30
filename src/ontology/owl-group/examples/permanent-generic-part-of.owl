@@ -1,23 +1,38 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://purl.obolibrary.org/obo/example/alanr/untitled-ontology-116#"
      xml:base="http://purl.obolibrary.org/obo/example/alanr/untitled-ontology-116"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/example/permanent-generic-part-of.owl">
-      <dc:contributor>Alan Ruttenberg</dc:contributor>
-      <dc:contributor>Chris Mungall</dc:contributor>
-        <rdfs:seeAlso rdf:resource="https://groups.google.com/d/msg/bfo-owl-devel/jbU2sPTexK4/gPcL4UMRXssJ"/>
+        <dc:contributor>Alan Ruttenberg</dc:contributor>
+        <dc:contributor>Chris Mungall</dc:contributor>
         <rdfs:comment>Thread at https://groups.google.com/d/msg/bfo-owl-devel/jbU2sPTexK4/gPcL4UMRXssJ
 
 After running the reasoner, check out the inferred subsumption of the probe classes and see how they mirror the structure of the GCI that would express that nucleus permanent-generic-part-of tissue. The asserted GCIs assert that nucleus permanent-generic-part-of cell and cell permanent-generic-part-of tissue.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="https://groups.google.com/d/msg/bfo-owl-devel/jbU2sPTexK4/gPcL4UMRXssJ"/>
     </owl:Ontology>
     
 
 
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/contributor -->
+
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    
+
 
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -71,10 +86,6 @@ After running the reasoner, check out the inferred subsumption of the probe clas
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000004"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000003"/>
-        </owl:propertyChainAxiom>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000003"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0000005"/>
         </owl:propertyChainAxiom>
     </owl:ObjectProperty>
     
@@ -156,7 +167,7 @@ After running the reasoner, check out the inferred subsumption of the probe clas
         <rdfs:label xml:lang="en">probe-overlaps-some-temporal-part-of-some-history-of-some-tissue</rdfs:label>
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000005"/>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000004"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000002"/>
@@ -226,7 +237,7 @@ After running the reasoner, check out the inferred subsumption of the probe clas
                         <owl:someValuesFrom>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000006"/>
-                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000007"/>
+                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000001"/>
                             </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
@@ -237,7 +248,7 @@ After running the reasoner, check out the inferred subsumption of the probe clas
         <owl:someValuesFrom>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000006"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000001"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000000"/>
             </owl:Restriction>
         </owl:someValuesFrom>
     </owl:Restriction>
@@ -251,7 +262,7 @@ After running the reasoner, check out the inferred subsumption of the probe clas
                         <owl:someValuesFrom>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000006"/>
-                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000001"/>
+                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000007"/>
                             </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
@@ -262,7 +273,7 @@ After running the reasoner, check out the inferred subsumption of the probe clas
         <owl:someValuesFrom>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000006"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000000"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0000001"/>
             </owl:Restriction>
         </owl:someValuesFrom>
     </owl:Restriction>
