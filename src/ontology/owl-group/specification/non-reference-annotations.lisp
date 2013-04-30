@@ -46,3 +46,21 @@
  :source "Peter Simons. Parts: A Study in Ontology (Kindle Locations 1540-1544). Kindle Edition."
  :id 12)
 
+((annotation-assertion !editor-note c-has-part_at
+		      "c1 has part at all times c2 means forall(t) if exists(c1,t) then exists(c2,t) and part_of(c2,c1,t). This is known as permanent specific parthood in that the had part is the same particular throughout. This property is transitive."
+		      :source "Alan Ruttenberg"))
+
+((annotation-assertion !editor-note c-has-part_st
+		       "c1 has part at some time c2 means there exists some t such that exists(c1,t) and exists(c2,t) and part_of(c2,c1,t). This is sometimes known as temporary parthood. This property is not transitive, since given the assertions 1) c1 continuant-has-part-at-some-time c2 and 2) c2 continuant-has-part-at-some-time c3 we don't know that there is a time at which both (1) and (2) hold"
+		       :source "Alan Ruttenberg"))
+
+((annotation-assertion !editor-note c-part-of_at
+		       "c1 part of at all times c2 means forall(t) if exists(c1,t) then exists(c2,t) and part_of(c1,c2,t). This is known as permanent specific parthood in that the subject is part of the same particular throughout. This property is transitive."
+		      :source "Alan Ruttenberg"))
+
+((annotation-assertion !editor-note c-part-of_st
+		       "c1 part of at some time c2 means there exists(t) such that exists(c1,t) and exists(c2,t) and part_of(c1,c2,t). This is sometimes known as temporary parthood. This property is not transitive, since given the assertions 1) c1 continuant-part-of-at-some-time c2 and 2) c2 continuant-part-of-at-some-time c3 we don't know that there is a time at which both (1) and (2) hold"
+		      :source "Alan Ruttenberg"))
+
+
+
