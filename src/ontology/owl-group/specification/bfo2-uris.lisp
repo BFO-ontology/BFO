@@ -196,8 +196,11 @@
 
  (occurs-in nil !obo:BFO_0000066)
  (contains-process nil !obo:BFO_0000067)
- (history-of nil !obo:BFO_0000184)
- (has-history nil !obo:BFO_0000185)
+; (history-of nil !obo:BFO_0000184 (:issue 43))
+; (has-history nil !obo:BFO_0000185 (:issue 43))
+(history-of nil !obo:BFO_0000064 (:issue 43))
+(has-history nil !obo:BFO_0000065 (:issue 43))
+
  (c-part-of-object_at nil !obo:BFO_0000186)
  (c-has-part-object_at nil !obo:BFO_0000187)
 
