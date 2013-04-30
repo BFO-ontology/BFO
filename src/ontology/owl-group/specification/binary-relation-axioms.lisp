@@ -119,10 +119,10 @@
 (object-property :binary
   (has-history history-of)
   (domain material :id 172)
-  (range process :id 173)
+  (range history :id 173)
   (inverses :id  174)
   (functional :id 175)
-  (< (history +> continuant :is 176))
+  (< (history +> material :is 176))
   (< (functional :id 177)))
 
 (object-property :binary
