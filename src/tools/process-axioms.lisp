@@ -7,38 +7,7 @@
   (cond ((atom tree)
 	 (funcall replacement-fn tree))
 	(t (mapcar (lambda(el) (tree-replace el replacement-fn)) tree))))
-
   
-(defun filter-schulz-axioms ()
-  (let ((in-use (active-iris *bfo2*)))
-    (with-open-file (i "bfo:src;ontology;owl-group;build-artifacts;raw-schulz-axioms.lisp")
-      (with-open-file (o "bfo:src;ontology;owl-group;build-artifacts;filtered-schulz-axioms.lisp" :direction :output :if-does-not-exist :create :if-exists :supersede)
-	(loop with auto
-	   for ax = (eval-uri-reader-macro (read i nil :eof))
-	   until (eq ax :eof)
-	   if (tree-every ax (lambda(el) (or (not (uri-p el)) (assoc el in-use) (eq el !owl:Thing))))
-	   collect (tree-replace ax (lambda(el) (or (second (assoc el in-use)) el)))
-	   into ok
-	   else collect (tree-replace ax (lambda (el) (or (car (find el (cdr (bfo-uris *bfo2*)) :key 'third)) el)))
-	   into notok
-	   finally
-	   (let ((*print-case* :downcase))
-	     (loop for ax in ok
-		if (or (and (eq (first ax) 'sub-class-of) (symbolp (second ax)) (symbolp (third ax)))
-		       (and (eq (first ax) 'sub-object-property-of) (symbolp (second ax)) (symbolp (third ax)))
-		       (and (eq (first ax) 'inverse-object-properties) (symbolp (second ax)) (symbolp (third ax)))
-		       (and (eq (first ax) 'disjoint-classes))
-		       (and (eq (first ax) 'equivalent-classes) (symbolp (second ax)) (consp (third ax)) (eq (first (third ax)) 'object-union-of)))
-		do (push ax auto)
-		else do
-		  (print ax o) (terpri o))
-	     (terpri o) (terpri o)
-	     (format o ";; The following axioms are generated directly from structures in bfo2-reference.lisp~%~%")
-	     (loop for ax in auto do (format o ";;~a~%~%" ax))
-	     (format o ";; The following axioms use URIs not in the current spec~%~%")
-	     (loop for ax in notok do (format o ";;~a~%~%" ax)))
-	   (return (list ok notok)))))))
-
 (defun read-and-process-axioms (bfo2 path)
   (with-open-file (f path )
     (loop with axs
@@ -155,14 +124,43 @@
 
   axs)
 
-;;; this is buggy - hand edited in the file for now
+
 (defun process-domain-narrowed-expression (bfo2 form expression prop> prop< inverses? a-or-s =def reversed &aux axs)
-  '(unless reversed
-    (setq axs (append (process-one-object-property-expression bfo2 form expression prop< prop> inverses? a-or-s t =def) axs)))
-  (let ((domain (second (find-if (lambda(e) (and (consp e) (eq (car e) (if reversed 'range 'domain)))) form))) 
+
+  "A domain narrowed rule on an object property r1, expressed
+   (domain-narrowed (r2 inv-r2)) says that
+   if x r2 y and x a C1, then x r1 y, where r1 subproperty r2.
+   We translate this first into a GCI. (C1 and r2 some (range r1) equivalentTo (r1 some (range r1))). 
+
+   e.g. q inheres-in c -> q quality-of c 
+   => (equivalent-classes (object-intersection-of q (object-some-values-from inheres-in c))
+                          (object-some-values-from quality-of c))
+
+   We can also add a dl-safe rule
+   (rule (!continuant !?x) (!inheres-in !?x !?y) -> (!quality-of !?x !?y))
+"
+  (let ((range (class-expressionize (or (second (find-if (lambda(e) (and (consp e) (eq (car e) 'range))) form)) !owl:Thing)))
+	(domain (class-expressionize (or (second (find-if (lambda(e) (and (consp e) (eq (car e) 'domain))) form)) !owl:Thing)))
 	(keys (cddr expression)))
-    (let* ((general-rel (if reversed (first (second expression)) (second (second expression))))
+    (let* ((general-rel (first (second expression)))
 	   (general-rel-t (if (eq a-or-s 'a) (at-term general-rel) (if (eq a-or-s 's) (st-term general-rel)))))
+      (with-bfo-uris bfo2
+	(and range
+	     ;; inherits downward
+	     (if (and a-or-s (boundp general-rel-t) prop>)
+		 (push `(equivalent-classes ,@(maybe-object-property-annotations keys)
+					    (object-intersection-of ,domain (object-some-values-from ,(eval general-rel-t) ,range))
+					    (object-some-values-from ,prop> ,range))
+		       axs))))))
+  axs)
+
+(defun process-range-narrowed-expression (bfo2 form expression prop> prop< inverses? a-or-s =def reversed &aux axs)
+  (let ((domain (second (find-if (lambda(e) (and (consp e) (eq (car e) 'domain))) form)))
+	(range (second (find-if (lambda(e) (and (consp e) (eq (car e) 'range))) form)))
+	(keys (cddr expression)))
+    (let* ((general-rel (second (second expression)))
+	   (general-rel-t (if (eq a-or-s 'a) (at-term general-rel) (if (eq a-or-s 's) (st-term general-rel)))))
+
 ;      (print-db a-or-s prop> prop< domain general-rel general-rel-t reversed)
       (and domain
 	   (let ((domain-expression (class-expressionize domain)))
@@ -260,3 +258,11 @@
 
 ;(defun maybe-locally-reflexive (bfo2 form prop stprop atprop)
 ;  (let ((sprop 
+
+(defun gather-extra-gcis (bfo2)
+  (with-obo-metadata-uris
+    (with-bfo-uris bfo2
+      (with-open-file (f "bfo:src;ontology;owl-group;specification;gcis-with-no-other-home.lisp")
+	(loop for entry = (eval-uri-reader-macro (read f nil :eof))
+	   until (eq entry :eof)
+	   append (generate-from-lispy-axiom bfo2 entry))))))

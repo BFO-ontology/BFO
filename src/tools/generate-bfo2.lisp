@@ -17,6 +17,7 @@
 	     (as (generate-reference-annotations bfo2))
 	     (as (gather-non-reference-annotations bfo2))
 	     (as (gather-extra-references-annotations bfo2))
+	     (as (gather-extra-gcis bfo2))
 	     (as (read-bfo-specific-annotation-properties bfo2))
 	     (as (generate-disjoints bfo2))
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;binary-relation-axioms.lisp"))
@@ -129,10 +130,6 @@
 		       (gethash (uri-for-reference-doc-term term) table))))
 	     (t nil))
 	 finally (setf (bfo-term2annotation bfo2) table))))
-
-
-
-    
 
 
 	    
