@@ -61,7 +61,7 @@ language=SQL,                             % Code langugage
 basicstyle=\ttfamily,
 columns=flexible,
 deletekeywords = { some },
-morekeywords = { BEGIN, END, GROUPS, CLASS, OBJECTPROPERTY},
+morekeywords = { BEGIN, END, GROUPS, CLASS, OBJECTPROPERTY, FAIL, REMOVE},
 sensitive = true
 }
 \begin{frontmatter}
@@ -852,7 +852,7 @@ We further introduce a relation \mirel{continuantOf} to link a TQC to the contin
 that it is a TQC of. That is, 
 \begin{equation}
 \forall x\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t:\;(
-\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{continuationOf}(a,x))
+\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{continuantOf}(a,x))
 \end{equation}
 
 In the next sections, we will discuss the representation of the three different
@@ -865,7 +865,7 @@ predicates in the FOL model, such as \mrelb{continuantOf}, to remain primitive.
 \subsection{Temporary Relatedness}
 
 We rephrase the definition (\ref{eq:temporarily}) given above by inserting
-emporally qualified continuants and derive the form that the relationship takes
+temporally qualified continuants and derive the form that the relationship takes
 for temporally qualified continuants and a binary relationship. This is a fairly
 transparent translation:
 \begin{equation}
@@ -937,7 +937,7 @@ ease of use by the end user. Thus, we introduce a new relationship,
 
 \begin{equation}
 \begin{split}
-\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\mclass{B}\;\rightarrow\\
+\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\mathtt{some}\mclass{B}\;\rightarrow\\
 &\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some}\;(\mrelb{rel}\;\mathtt{some}\;
 \TQC{B}) 
 \end{split}
@@ -1028,8 +1028,7 @@ SELECT ?x subClassOf ?y some ?z WHERE
   ?y MATCH("^(.(?<!temporarily_))*$")
   FAIL ?z subClassOf hasContinuant some Continuant,
 BEGIN
-  ADD hasContinuant some ?x ?y.GROUPS(1) 
-    hasContinuant some ?x subClassOf ?y some continuantOf ?z,
+  ADD hasContinuant some ?x subClassOf ?y some continuantOf some ?z,
   REMOVE ?x subClassOf ?y some ?z
 END;
 \end{lstlisting}
