@@ -34,4 +34,7 @@ To track those tracker items which people would like to have resolved before the
 
 == Voting against ==
 
-*Melanie Courtot*, April 24th. See https://groups.google.com/d/msg/bfo-owl-devel/i9qOUDcS2Vk/4-Vuhi7SsCcJ. I vote to release without variants.
+
+== Abstaining ==
+
+*Melanie Courtot*, April 24th. See https://groups.google.com/d/msg/bfo-owl-devel/i9qOUDcS2Vk/4-Vuhi7SsCcJ. I would prefer to release without variants.
