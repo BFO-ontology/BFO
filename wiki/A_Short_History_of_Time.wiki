@@ -132,3 +132,4 @@ TODO:
  * Include reference to Mungall Critiques, and my email response assessing that many of the issues relate to permanent generic parthood.
  * Include email regarding representation of permanent generic part hood
  * History of Grewe et al paper drafts
+ * Dig out more discussion of temporal relations and needs from mailing lists
