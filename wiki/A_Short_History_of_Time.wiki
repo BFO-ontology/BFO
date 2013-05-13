@@ -67,7 +67,7 @@ relations in OWL ontologies (think development specific anatomy).
 
 == April 2009 email to OBO-relations and BFO-discuss mailing lists ==
 
-This [https://groups.google.com/d/msg/obo-relations/X3yeI71uGck/Uddi3v8_4EgJ email] starts with an early, explicit, notice by [Marijke Keet], someone outside the direct group of OBO relations developers, noting discomfort with the treatment of time in the then current RO instantiation by her and others in the community.<br>
+This [https://groups.google.com/d/msg/obo-relations/X3yeI71uGck/Uddi3v8_4EgJ email] starts with an early, explicit, notice by [Marijke Keet], someone outside the direct group of OBO relations developers, noting discomfort with the treatment of time in the then current RO instantiation by her and others in the community. The thread extends for more than 50 posts, and is a wide-ranging discussion.<br>
 
 *a modest proposal for transformation_of*<br>
 
@@ -76,3 +76,23 @@ I, and so I've heard some other people, are not quite happy with the
 limitations that one can't really represent temporal stuff, yet some
 of the RO relations do allude to temporal things.<BR>
 
+== November 2011 Basic Formal Ontology Editorial Meeting ==
+
+This [http://www.bioontology.org/wiki/index.php/BFO_2011 meeting] launched the most recent BFO2 development effort. It's goals are expressed as:
+
+ _To define a strategy for the future maintenance of Basic Formal Ontology. 
+ To create a BFO Reference, designed as an authoritative documentation of the 
+ BFO ontology, including an updated version of the BFO 1.0 taxonomy together 
+ with the top level relations of the Relation Ontology. To define a strategy to 
+ create BFO OWL, including a treatment of temporal relations, based on BFO Reference._
+
+During that meeting, [http://bfo.googlecode.com/svn/trunk/docs/Mungall_RO_2012.pptx Chris Mungall presented] an idea we came up with for simplifying the authorship of ontologies, called shortcut relations - essentially a macro system in which an original OWL file with [http://bfo.googlecode.com/svn/trunk/docs/npre20115292-2.pdf "shortcut" relations] is preprocessed to generate a new OWL file with the shortcut relations expanded into longer, more complicated, expressions necessary for better interoperation with the suite of OBO ontologies. The idea originates from work with the [http://www.incf.org/programs/pons/activities/multi-task-force-meeting/at_download/event_pdf INCF] in which a deep dive into what desired relations between neurons would be, and noting the verbosity of their use in OWL, for which short-cut relations were offered as a solution. Short cut relations are present in RO, and code that preprocessed them is part of the [http://code.google.com/p/owltools/wiki/OortIntro OORT] tool. 
+
+Of note, that presentation mentioned what is now called [http://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-bfo.owl ruttenberg-bfo] but was originally placed at http://purl.obolibrary.org/obo/bfo.owl. In that presentation I note (slide 5)
+
+ *bfo.owl is a prototype – more of a model than an candidate. It isn't
+ yet aligned with BFO reference and that is the eventual intention. It 
+ doesn't have definitions, it is subject to change, though classes and
+ relations that are present in the final version will retain the same URIs*
+
+Alan Ruttenberg moved ruttenberg-bfo to its current PURL in preparation for the BFO2 development group's release of a version of BFO2 for discussion.  
