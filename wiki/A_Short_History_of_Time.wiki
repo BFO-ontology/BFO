@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This page is compiled initially by [http://alan.ruttenbergs.com/ Alan Ruttenberg] in order to capture pointers to discussions and writings in the archive that relate to temporalizing relations in BFO OWL. It aims to provide a more easily accessible way to review the trail of activity on the subject and to hopefully provide background for discussion of the current (2013) controversy about adoption of temporalized relations in BFO 2. From the record presented below, it should be clear that temporal relations have been part of the theory of relation ontology for at least 8 years, and there have been concerns about this issue in the user community, on the record and for the most part unmet for 5 years, with work on trying to address the problem in practical application of ontology for somewhere between 5 and 8 years.
+This page is compiled initially by [http://alan.ruttenbergs.com/ Alan Ruttenberg] in order to capture pointers to early discussions and writings in the archive that relate to temporalizing relations in BFO OWL. It aims to provide a more easily accessible way to review the trail of activity on the subject and to hopefully provide background for discussion of the current (2013) controversy about adoption of temporalized relations in BFO 2. From the record presented below, it should be clear that temporal relations have been part of the theory of relation ontology for at least 8 years, and there have been concerns about this issue in the user community, on the record and for the most part unmet for 5 years, with work on trying to address the problem in practical application of ontology for somewhere between 5 and 8 years.
 
 Note that the Relation Ontology was first instantiated as an OBO format ontology and only later as an OWL ontology. As best as I can tell, the OBO version predates 2004 (based on reading [http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2447432/pdf/CFG-05-509.pdf this paper], while an OWL version first appears in 2006 (based on the date recorded in this [http://obo.cvs.sourceforge.net/viewvc/obo/obo/website/htdocs/ro/ro.owl?revision=1.1&view=markup  first version of RO in the sourceforge CVS repository]
 
@@ -23,6 +23,7 @@ This meeting brought together [http://www.bioontology.org/wiki/index.php/Ontolog
  * Presentations [http://www.bioontology.org/wiki/images/a/a1/Relations_for_representing_developmental_anatomy.ppt 1] [http://www.bioontology.org/wiki/images/f/f3/Fabian_developmental_relations.pdf 2] by Fabian Neuhaus and David Osumi-Sutherland offering proposals to address some of the temporal relation needs. 
  * The difference between class-level and instance relations
  * Noting that OWL has limited native facilities for representing classes, in Alan Ruttenberg's [http://www.bioontology.org/wiki/images/d/dd/Ruttenberg-ro.pdf slides]
+ * Some discussion of the transformation_of relation, which was inexpressible in OWL
 
 A series of action items is recorded in the [http://www.bioontology.org/wiki/index.php/OntologyRelationsMeetingNotesCompiled meeting notes]. I note a couple of these here as they are pertinent to the current discussion:
 
@@ -62,3 +63,16 @@ always_part_of(x,y) = for all t: part_of (x, y, t)
 
 Otherwise we lose all ability to have time specific instance level
 relations in OWL ontologies (think development specific anatomy).
+
+
+== April 2009 email to OBO-relations and BFO-discuss mailing lists ==
+
+This [https://groups.google.com/d/msg/obo-relations/X3yeI71uGck/Uddi3v8_4EgJ email] starts with an early, explicit, notice by [Marijke Keet], someone outside the direct group of OBO relations developers, noting discomfort with the treatment of time in the then current RO instantiation by her and others in the community.<br>
+
+*a modest proposal for transformation_of*<br>
+
+Dear all,<br>
+I, and so I've heard some other people, are not quite happy with the
+limitations that one can't really represent temporal stuff, yet some
+of the RO relations do allude to temporal things.<BR>
+
