@@ -1,0 +1,32 @@
+#summary Include reference to discussions related to temporal relations documented from meeting and mailing lists
+= CURRENTLY BEING DRAFTED =
+
+= Introduction =
+
+This page is compiled initially by [http://alan.ruttenbergs.com/ Alan Ruttenberg] in order to capture pointers to discussions and writings in the archive that relate to temporalizing relations in BFO OWL. It aims to provide a more easily accessible way to review the trail of activity on the subject and to hopefully provide background for discussion of the current (2013) controversy about adoption of temporalized relations in BFO 2. 
+
+= History =
+
+== April 2005 Relations in Biomedical Ontologies ==
+
+This [http://genomebiology.com/2005/6/5/R46 paper] provided a formal theory of the relationship between class and instance level relationships, creating a more solid basis for the Relation Ontology. In it the distinction between continuants and processes is made, and throughout the paper relations are defined in these terms. Most relations involving at least one continuant are 3-place relations with the third argument being time, whereas most process-process relationships are 2 place relations at the instance level. The class level relations are defined by quantifying over time in their definitions. Different quantifications are used. In many cases the class relations obtain when the instance relation is satisfied at all times. In some cases (e.g. has_participant) the class level relation is obtained when instance level relation is satisfied at some time.
+
+== May 2008 Workshop on the Relationship Ontology ==
+
+This two-day [http://www.bioontology.org/wiki/index.php/OntologyRelations NCBO workshop]  focused on the relationship between classes in ontologies, as well as relationships among instances of those classes.
+
+This meeting brought together [http://www.bioontology.org/wiki/index.php/OntologyRelations#Attended_.28alphabetically.29 many stakeholders] and developers of the relations ontology. Among other things, a number of issues that are central to understanding the motivation of the current temporal relation proposal are raised there.
+
+ * The issue of the difference between class-level and instance relations
+ * A review of the role of time in relations. Time at the instance level is discussed at several points.
+ * A [http://www.bioontology.org/wiki/images/f/f3/Fabian_developmental_relations.pdf proposal] by Fabian Neuhaus and David Osumi-Sutherland to address some of the temporal relation needs. 
+ 
+A series of action items is recorded
+
+Summary of action items:
+
+3. Define instance level relations as well. Clarity is
+important. Relations need to be clarified whether they be used for
+type_type/type_instance/instance_instance.
+
+4. RO should have a commitment to an upper ontology and it shall be BFO.
