@@ -1,5 +1,7 @@
 #summary Include reference to discussions related to temporal relations documented from meeting and mailing lists
-= CURRENTLY BEING DRAFTED =
+= UNDER CONSTRUCTION =
+
+See status notes and TODO list at bottom
 
 = Introduction =
 
@@ -90,9 +92,43 @@ During that meeting, [http://bfo.googlecode.com/svn/trunk/docs/Mungall_RO_2012.p
 
 Of note, that presentation mentioned what is now called [http://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-bfo.owl ruttenberg-bfo] but was originally placed at http://purl.obolibrary.org/obo/bfo.owl. In that presentation I note (slide 5)
 
- *bfo.owl is a prototype – more of a model than an candidate. It isn't
+<b>
+ bfo.owl is a prototype – more of a model than an candidate. It isn't
  yet aligned with BFO reference and that is the eventual intention. It 
  doesn't have definitions, it is subject to change, though classes and
  relations that are present in the final version will retain the same URIs*
+</b>
 
-Alan Ruttenberg moved ruttenberg-bfo to its current PURL in preparation for the BFO2 development group's release of a version of BFO2 for discussion.  
+Alan Ruttenberg [http://code.google.com/p/bfo/source/browse/releases/owl-ruttenberg-2010-05-25/README moved ruttenberg-bfo] to its current PURL in preparation for the BFO2 development group's release of a version of BFO2 for discussion.  
+
+== May 2012 Policy on coordination of BFO OWL with the BFO Reference ==
+
+[http://code.google.com/p/bfo/wiki/Proposal_for_how_we_manage_OWL_Reference_coordination This page] records a policy for how we will develop BFO OWL, the first principle of which establishes that the OWL version of BFO should have a clear understanding in terms of the BFO2 reference. It should be noted that Chris Mungall, who is listed as supporting these principles, has stated (personal communication) that he no longer supports this aspect of the development policy.
+
+== July 2012 release of a the first version of BFO2 developed by the working group ==
+
+In preparation for [ICBO 2012] the group release, on July 7, 2012, a [http://purl.obolibrary.org/obo/bfo/2012-07-20/bfo.owl version of BFO2] intended for a wider community to review and for which they solicited feedback, accompanied by these [http://purl.obolibrary.org/obo/bfo/2012-07-20/ReleaseNotes release notes]
+
+== January 2013 proposal for a release of "BFO 1.2" ==
+
+In January 2013, [http://groups.google.com/forum/?fromgroups=#!topic/bfo-discuss/iKBlfDPv5GM James Overton sent] a proposal to the bfo-discuss mailing list that a version of BFO version 1.2 be release, based, with little modification, on ruttenberg-bfo. Several things are worthy of note. Overton comments he has done little previous work on BFO.  While the proposal involves some members of the BFO2 OWL working group, no work on this version has happened on the fora for that group. The proposal is not in line with the agree upon development policy of the BFO2 OWL group. The proposal is made to the BFO-discuss group, whereas development of BFO2 has thus far occurred on the BFO-owl-devel mailing list.
+
+In addition, some interesting implications are made:
+ * That ruttenberg-bfo2 was a released version of BFO2
+ * That "all of the relations published in the 2005 Relation Ontology paper" are included 
+ * That the work "reflects current OBO best-practices"
+ 
+*Proposal for an Official BFO 1.2 Release*<br>
+
+On the last BFO OWL developers' call (2012-11-26), several developers raised concerns about the fragmentation of BFO versions (i.e. 1.1, ruttenberg-bfo2, Graz) currently used by OBO projects, which is causing problems with interoperability. It was suggested that a transitional release of BFO could consolidate improvements already in place and facilitate the transition to BFO 2. We have prepared a proposal for an official BFO 1.2 release that addresses these points (see [1] below). 
+...
+
+= Status =
+
+Doing this kind of digital archeology is time consuming. At this stage the rough outlines of the history are present. So this list is by no means complete, and I intend to do further work to fill out the essential history.
+
+TODO:
+ * Find and include emails discussing or announcing release of new RO, and choice to base OBO to OWL translation on ruttenberg-bfo.
+ * Include reference to Mungall Critiques, and my email response assessing that many of the issues relate to permanent generic parthood.
+ * Include email regarding representation of permanent generic part hood
+ * History of Grewe et al paper drafts
