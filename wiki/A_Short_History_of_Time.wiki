@@ -17,13 +17,12 @@ This two-day [http://www.bioontology.org/wiki/index.php/OntologyRelations NCBO w
 
 This meeting brought together [http://www.bioontology.org/wiki/index.php/OntologyRelations#Attended_.28alphabetically.29 many stakeholders] and developers of the relations ontology. Among other things, a number of issues that are central to understanding the motivation of the current temporal relation proposal are raised there.
 
- * The issue of the difference between class-level and instance relations
  * A review of the role of time in relations. Time at the instance level is discussed at several points.
- * A [http://www.bioontology.org/wiki/images/f/f3/Fabian_developmental_relations.pdf proposal] by Fabian Neuhaus and David Osumi-Sutherland to address some of the temporal relation needs. 
- 
-A series of action items is recorded
+ * Presentations [http://www.bioontology.org/wiki/images/a/a1/Relations_for_representing_developmental_anatomy.ppt 1] [http://www.bioontology.org/wiki/images/f/f3/Fabian_developmental_relations.pdf 2] by Fabian Neuhaus and David Osumi-Sutherland offering proposals to address some of the temporal relation needs. 
+  * The difference between class-level and instance relations
+  * Noting that OWL has limited native facilities for representing classes [http://www.bioontology.org/wiki/images/d/dd/Ruttenberg-ro.pdf]
 
-Summary of action items:
+A series of action items is recorded in the [http://www.bioontology.org/wiki/index.php/OntologyRelationsMeetingNotesCompiled meeting notes]. I note a couple of these here as they are pertinent to the current discussion:
 
 3. Define instance level relations as well. Clarity is
 important. Relations need to be clarified whether they be used for
