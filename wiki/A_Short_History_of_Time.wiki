@@ -21,22 +21,23 @@ This meeting brought together [http://www.bioontology.org/wiki/index.php/Ontolog
 
  * A review of the role of time in relations. Time at the instance level is discussed at several points.
  * Presentations [http://www.bioontology.org/wiki/images/a/a1/Relations_for_representing_developmental_anatomy.ppt 1] [http://www.bioontology.org/wiki/images/f/f3/Fabian_developmental_relations.pdf 2] by Fabian Neuhaus and David Osumi-Sutherland offering proposals to address some of the temporal relation needs. 
-  * The difference between class-level and instance relations
-  * Noting that OWL has limited native facilities for representing classes, in Alan Ruttenberg's [http://www.bioontology.org/wiki/images/d/dd/Ruttenberg-ro.pdf slides]
+ * The difference between class-level and instance relations
+ * Noting that OWL has limited native facilities for representing classes, in Alan Ruttenberg's [http://www.bioontology.org/wiki/images/d/dd/Ruttenberg-ro.pdf slides]
 
 A series of action items is recorded in the [http://www.bioontology.org/wiki/index.php/OntologyRelationsMeetingNotesCompiled meeting notes]. I note a couple of these here as they are pertinent to the current discussion:
 
 {{{
-3. Define instance level relations as well. Clarity is important. Relations need to be clarified whether they be used for type_type/type_instance/instance_instance.
+3. Define instance level relations as well. Clarity is important. Relations need to be clarified whether they be used
+for type_type/type_instance/instance_instance.
 
 4. RO should have a commitment to an upper ontology and it shall be BFO.
 }}}
 
 == October 2008 email to OBO-relations email list ==
 
-[https://groups.google.com/d/msg/obo-relations/u9gEGYNq7xA/YBQ4TCikds8J Bill Hogan writes] raising issues about problems with the inverses of relations as recorded in the [http://obo.cvs.sourceforge.net/viewvc/obo/obo/website/htdocs/ro/ro.owl?view=log then-RO]. As will be the case, a long discussion ensues.
+[https://groups.google.com/d/msg/obo-relations/u9gEGYNq7xA/YBQ4TCikds8J Bill Hogan writes] raising issues about problems with the inverses of relations as recorded in the [http://obo.cvs.sourceforge.net/viewvc/obo/obo/website/htdocs/ro/ro.owl?view=log then-RO]. As will be the case, a long discussion ensues.<br>
 
-*Class vs. instance level relations and inverse relations*
+*Class vs. instance level relations and inverse relations*<br><br>
  
 Presently in the Relation Ontology, it appears that all the relations are assumed to be class-class (or type-type) relations.  If so, then there are errors in the asserted properties of relations.
 
@@ -44,9 +45,9 @@ part_of and has_part are stated to be inverses of one another, which is not univ
 
 == November 2008 email in OBO-relations == 
  
-[https://groups.google.com/d/msg/obo-relations/pNabO2LhXoI/vM4qcCfErFoJ Alan Ruttenberg writes] a response to a message in this thread noting the lack of specification for how temporality at instance level is represented in OWL, and having the first (informal) proposal of the current form the temporalized relations take in the BFO 2 draft] 
+[https://groups.google.com/d/msg/obo-relations/pNabO2LhXoI/vM4qcCfErFoJ Alan Ruttenberg writes] a response to a message in this thread noting the lack of specification for how temporality at instance level is represented in OWL, and having the first (informal) proposal of the current form the temporalized relations take in the BFO 2 draft <br><br>
  
-* Re: [Obo-relations] original_part_of is not transitive* 
+*Re: [Obo-relations] original_part_of is not transitive* <br>
 
 OK. Here is where the disconnect is. I didn't (and don't) read the
 instance level part_of as true for all time. In  RO the abstraction
