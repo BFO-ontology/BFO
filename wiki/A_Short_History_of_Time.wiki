@@ -1,7 +1,7 @@
 #summary Include reference to discussions related to temporal relations documented from meeting and mailing lists
 = UNDER CONSTRUCTION =
 
-See status notes and TODO list at bottom
+See status notes and TODO list at bottom. For the moment I would appreciate that this page not be edited directly, or, if necessary, to have comments by other to be added to the bottom of the page below the status section, with the author noted.
 
 = Introduction =
 
@@ -133,3 +133,4 @@ TODO:
  * Include email regarding representation of permanent generic part hood
  * History of Grewe et al paper drafts
  * Dig out more discussion of temporal relations and needs from mailing lists
+ * Track down info about the CL meeting in which several of us - IIRC Chris, Robert Stevens, David O-S, Barry, discussed various options.
