@@ -1,0 +1,1101 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment>the relation atSomeTime relates a temporally qualified continuant to each of its temporal siblings.
+
+ </rdfs:comment>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasMax"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#maxOf"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasMax -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasMax">
+        <rdfs:comment>maxOf (inverse: hasMax) relates the maximal temporalization of a continuant to each of its temporalizations</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment>HasPart as an important example of a transitive relation between 
+
+1 .continuants and continuants
+2. occurrents and occurrnets 
+
+This relation can only be asserted between temporally qualified continuant instances, i.e. which are time-stamped. Whenever the relation is asserted between continuants they are classified as temporally qualified continuants, i.e. the instances need to have a timestamp. 
+What OWL cannot assure, however, is that both relata refer to the same time instant. 
+
+
+</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPartAtSomeTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPartAtSomeTime">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasParticipant">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Process"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTime">
+        <rdfs:comment>relates a temporally qualified continuant with its the point in time at which a temporally relevant assertion is made</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#maxOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#maxOf">
+        <rdfs:comment>maxOf (inverse: hasMax) relates the maximal temproalization of a continuant to each of its temporalizations</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasMax"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#participatesIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#participatesIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Process"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#timeOfCont -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#timeOfCont"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#A -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#A">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TestContinuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#B"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#B -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#B">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TestContinuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#BiologicalEntity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#BiologicalEntity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TestContinuant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CITY_IN_URSS_1950 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CITY_IN_URSS_1950">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                        <owl:hasValue rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#URSS_1950"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Cell -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Cell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#BiologicalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CellNucleolus -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CellNucleolus">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#BiologicalEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CellNucleus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CellNucleus -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CellNucleus">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#BiologicalEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Cell"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CityGate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CityGate">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#StoneWall"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CityGateDoor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CityGateDoor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CityGate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTime"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Temporally qualified continuant = Time stamped continuant.  
+
+The rationale of this class is to mitigate the problem of non-temporalized (binary) relations in OWL.   
+
+&quot;Temporally qualified continuant&quot; is NOT an ontologically relevant category. 
+
+In TBox reasoning it is irrelevant. But it matters when it comes to represent individuals, because it requires that a timestamp be added to the each instance. 
+
+The idea is the following:
+
+ Rel (a, b, t) 
+
+cannot be expressed in OWL. 
+
+But we could state the same by 
+
+ Rel (a@t, b@t)
+
+with a@t , b@t being temporally qualified continuants. 
+
+The current ontology assures that wherever a relation is asserted between two continuants the relata are classified as temporally qualified continuants. 
+
+LIMITATION:
+
+OWL cannot avoid invalid statements such as 
+   
+ Rel (a@t, b@u)   with t =/= u
+
+
+
+
+
+
+
+
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#D -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#D">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TestContinuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#E"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#E -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#E">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TestContinuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#F"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Entity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Entity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#F -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#F">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TestContinuant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GEOGRAPHIC_ENTITY_IN_1950 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GEOGRAPHIC_ENTITY_IN_1950">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTime"/>
+                        <owl:hasValue rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1950"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_CONTINUANT_PART_AT_SOME_TIME_F -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_CONTINUANT_PART_AT_SOME_TIME_F">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#F"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_CONTINUANT_PART_SOME_C -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_CONTINUANT_PART_SOME_C">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_OCCURRENT_PART_SOME_Z -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#HAS_OCCURRENT_PART_SOME_Z">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Z"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Human -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Human">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#BiologicalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#MedievalCity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#MedievalCity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Occurrent according to BFO2
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#PART_OF_BOTH_UKRAINE_AND_URSS -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#PART_OF_BOTH_UKRAINE_AND_URSS">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                        <owl:someValuesFrom>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                                <owl:hasValue rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#URSS"/>
+                            </owl:Restriction>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                        <owl:someValuesFrom>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                                <owl:hasValue rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine"/>
+                            </owl:Restriction>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Process -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#QUERY"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Settlement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Settlement">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#SovietRepublic -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#SovietRepublic">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Stone -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Stone">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#StoneWall -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#StoneWall">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Stone"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Student -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Student">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Human"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#atSomeTime"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Student"/>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TestContinuant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TestContinuant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#War -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#War">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Process"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#X -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#X">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Y"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Y -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Y">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Z"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Z -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Z">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Occurrent"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Austria -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Austria">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Austria_1900 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Austria_1900">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Austria"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1900"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv_1900 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv_1900">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <partOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Austria_1900"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1900"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv_1925 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv_1925">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv"/>
+        <partOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Poland_1925"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1925"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv_1950 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv_1950">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv"/>
+        <partOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine_1950"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1950"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv_2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv_2000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Lviv"/>
+        <partOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine_2000"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year2000"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Poland -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Poland">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Poland_1925 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Poland_1925">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Poland"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1925"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#URSS -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#URSS">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#URSS_1950 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#URSS_1950">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#URSS"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1950"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#GeographicEntity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine_1950 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine_1950">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#SovietRepublic"/>
+        <partOf rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#URSS_1950"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1900"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine_2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine_2000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+        <hasMax rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Ukraine"/>
+        <hasTime rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year2000"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1900 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1900">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1925 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1925">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1950 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year1950">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Year2000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#TemporalRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#a1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#a1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#A"/>
+        <hasPart rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#b1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#b1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#b1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#B"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#c1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#c1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#C"/>
+        <hasPart rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#c1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#City"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CityGate"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#CityGateDoor"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Country"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Settlement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#SovietRepublic"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#Stone"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#StoneWall"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="urn:swrl#x">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#y">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#t1">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#t2">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;BuiltinAtom"/>
+                        <swrl:builtin rdf:resource="&swrlb;equal"/>
+                        <swrl:arguments rdf:parseType="Collection">
+                            <rdf:Description rdf:about="urn:swrl#t1"/>
+                            <rdf:Description rdf:about="urn:swrl#t2"/>
+                        </swrl:arguments>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTime"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl#t1"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#hasTime"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#t2"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#y"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#partOf"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                                        <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ontologies/2012/4/Ontology1336055550512.owl#ContinuantTQ"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
