@@ -56,14 +56,14 @@ range: BFO:0000002
 
 [Typedef]
 id: BFO:0000058
-name: concretization of
+name: is concretized as
 namespace: BFO
 
 [Typedef]
 id: BFO:0000059
 name: concretizes
 namespace: BFO
-inverse_of: BFO:0000058  ! concretization of
+inverse_of: BFO:0000058  ! is concretized as
 domain: BFO:0000031 
 range: BFO:0000020 
 
