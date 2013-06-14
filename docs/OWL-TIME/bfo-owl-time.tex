@@ -358,14 +358,16 @@ OWL syntax and semantics (mapping to FOL) for: classes (which roughly correspond
 
 How relationships between classes are actually interpreted as relationships between individuals
 
-Reasoning tasks: consistency, satisfiability etc. 
+Property chains
+
+Reasoning tasks: consistency, satisfiability etc. as will be used in the evaluation
 
 
 \subsection*{Use Cases and Competency Questions}
 
 In which we set out our important and super relevant use cases. Straight from the biology. 
 
-We make the distinction between different temporal strengths. 
+We make the distinction between different temporal strengths of relatedness. 
 
 
 Informally: for all a instances of \mclass{A} there is some time $t$ and some instance $b$ of
@@ -484,7 +486,7 @@ On the default reinterpretation of the OWL direct semantics to preserve the RO
 generic relatedness default reading. 
 
 Obviously, the interpretation must be equivalent to the OWL 2 direct semantics
-(\cite{OWL2:direct}) in as far as it preserves syntactical structure and inferences and does not
+\cite{OWL2:direct} in as far as it preserves syntactical structure and inferences and does not
 lead to additional expressivity. But it has – to our knowledge – never been made
 explicit what this substitution might consist of.  This is even more significant
 as this does not constitute at all a side issue or an idiosyncrasy of biomedical
@@ -519,8 +521,8 @@ rules of existential quantification and value restriction, both of which assert
 permanent generic relatedness because they apply existential quantification over the
 object property range so that at each point in time a different individual of
 class \mclass{B} can serve as a relatum. We will use the canonical structural syntax
-(\cite{OWL2:structural})
-to ease comparison with the specified semantics (\cite{OWL2:direct}).
+\cite{OWL2:structural}
+to ease comparison with the specified semantics \cite{OWL2:direct}.
 
 \begin{description}
 \item[Existential quantification ($\mrelb{rel}\;\mathtt{some}\;\mclass{B}$)]
@@ -621,12 +623,12 @@ would then be transformed into the following statement:\todo{Changed from list o
 \end{equation}
 
 Such proposals have, with a varying degree of sophistication, seen quite a bit
-of dissemination in the ontology engineering community (\cite{ODP:nary}), but they suffer
+of dissemination in the ontology engineering community \cite{ODP:nary}, but they suffer
 from unavoidable drawbacks. Most obviously, they are rather complex. This bears
 the risk of errors in the ontology engineering process and decreases reasoning
-efficiency (\cite{Grewe:2010}). To address the complexity problem, it has been suggested to
+efficiency \cite{Grewe:2010}. To address the complexity problem, it has been suggested to
 select reification classes based on what seems ontologically „fitting“ for the
-domain of an ontology (\cite{Fiadeiro:2010}).
+domain of an ontology \cite{Fiadeiro:2010}.
 
 \subsection*{Welty/Fikes: Fluents}
 The prototypical approach for dealing with temporally changing information in
@@ -700,7 +702,7 @@ any proposal to address the problem of time-dependent relation and should be
 used to supplement our initial requirements.
 
 \subsection*{Gangemi: Descriptions and Situations}
-Aldo Gangemi's DnS pattern (\cite{Gangemi:DnS}) deserves mention because it treats
+Aldo Gangemi's DnS pattern \cite{Gangemi:DnS} deserves mention because it treats
 time-dependence of relations as a special case of perspectivity which can be
 accounted for by the very heavy-duty reification mechanism of descriptions and
 situations. In this case, the suggestion is to use the situation pattern in
@@ -996,7 +998,7 @@ All the boring stuff goes here
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Author's contributions}
-    Text for this section \ldots
+Every author made very important contributions to everything. 
 
     
 
@@ -1004,7 +1006,7 @@ All the boring stuff goes here
 \section*{Acknowledgements}
   \ifthenelse{\boolean{publ}}{\small}{}
 The research by NG, LJ and SS for this paper has been supported by the German
-Science Foundation (DFG), grant JA1904/2-1, SCHU 2515/1-1 as part of the research project ``Good Ontology Design".
+Science Foundation (DFG), grant JA1904/2-1, SCHU 2515/1-1 as part of the research project ``Good Ontology Design''.
 JH is supported by the European Union under EU-OPENSCREEN. The authors would like to thank Barry Smith, 
 Melissa Haendel, David Osumi-Sutherland, Colin Batchelor and \ldots for helpful discussions.
 
@@ -1086,7 +1088,7 @@ Melissa Haendel, David Osumi-Sutherland, Colin Batchelor and \ldots for helpful 
     \par
     \mbox{
       \begin{tabular}{|c|c|c|}
-        \hline \multicolumn{3}{|c|}{My Table}\\ \hline
+        \hline \multicolumn{3}{|c|}{BFO Relations}\\ \hline
         A1 & B2  & C3 \\ \hline
         A2 & ... & .. \\ \hline
         A3 & ..  & .  \\ \hline
@@ -1101,14 +1103,14 @@ Melissa Haendel, David Osumi-Sutherland, Colin Batchelor and \ldots for helpful 
 %%                               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Additional Files}
-  \subsection*{Additional file 1 --- Sample additional file title}
-    Additional file descriptions text (including details of how to
-    view the file, if it is in a non-standard format or the file extension).  This might
-    refer to a multi-page table or a figure.
+%\section*{Additional Files}
+%  \subsection*{Additional file 1 --- Sample additional file title}
+%    Additional file descriptions text (including details of how to
+%    view the file, if it is in a non-standard format or the file extension).  This might
+%    refer to a multi-page table or a figure.
 
-  \subsection*{Additional file 2 --- Sample additional file title}
-    Additional file descriptions text.
+%  \subsection*{Additional file 2 --- Sample additional file title}
+%    Additional file descriptions text.
 
 
 \end{bmcformat}
