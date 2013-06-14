@@ -1,0 +1,1121 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to 
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%         <14 August 2007>            %%
+%%                                     %%
+%%                                     %%
+%% Uses:                               %%
+%% cite.sty, url.sty, bmc_article.cls  %%
+%% ifthen.sty. multicol.sty		   %%
+%%				      	   %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%	
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.pdf and the instructions for    %%
+%% authors page on the biomed central website                      %%
+%% http://www.biomedcentral.com/info/authors/                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% http://www.miktex.org                                           %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% vim: spelllang=en
+\documentclass[10pt]{bmc_article}    
+
+% Load packages
+\usepackage{cite} % Make references as [1-4], not [1,2,3,4]
+\usepackage{url}  % Formatting web addresses  
+\usepackage{ifthen}  % Conditional 
+\usepackage{multicol}   %Columns
+\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+\urlstyle{rm}
+
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+%\usepackage[usename,dvipsnames]{xcolor}
+%\usepackage[]{hyperref}
+%\usepackage{varioref}
+%\hypersetup{colorlinks=true,urlcolor=black, linkcolor=black,
+%citecolor=black,pdftitle=Expressing time-dependent relations through temporal qualifications,pdfauthor=Niels Grewe et al,unicode=true}
+%\PrerenderUnicode{ï}
+\usepackage[babel]{csquotes}
+%\bibliographystyle{plainnat}
+\usepackage{pgf,tikz}
+\usepackage{todonotes}
+\usepackage{bussproofs}
+\usepackage{listings}
+\usetikzlibrary{positioning,shapes,shadows,arrows,backgrounds}
+\usepackage{covington,booktabs}
+\usepackage{multirow}
+%\usepackage[style=numeric,citestyle=numeric-comp,backref=false,hyperref=false]{biblatex} 
+%\usepackage[hyperref=true]{biblatex}
+%\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{enumerate}
+%
+%\MakeOuterQuote{"}
+%\MakeAutoQuote{„}{“}
+%\usepackage{listings}
+
+%\firstpage{0}
+%\lastpage{0}
+%\volume{0}
+%\pubyear{0000}
+
+% Shorthands for
+%  Instance level relations:
+\newcommand{\mirel}[1]{\ensuremath{\mathrm{\mathbf{#1}}}}
+%  Class expressions:
+\newcommand{\mclass}[1]{\ensuremath{\mathit{#1}}}
+%  arity-indexed relations:
+\newcommand{\mrel}[2]{\mirel{#1^#2}}
+%  binary relations:
+\newcommand{\mrelb}[1]{\mrel{#1}{2}}
+%  ternary relations:
+\newcommand{\mrelt}[1]{\mrel{#1}{3}}
+%  DL interpretation function
+\newcommand{\dlint}[1]{\ensuremath{#1^{\mathcal{I}}}}
+%  ordered pairs:
+\newcommand{\pair}[2]{\ensuremath{\langle #1,#2\rangle}}
+% TQCs:
+\newcommand{\TQC}[1]{\ensuremath{TQC_{\mclass{#1}}}}
+% temporary relatedness
+\newcommand{\mreltemp}[1]{\mrel{#1}{{Temp}}}
+\newcommand{\mrelpg}[1]{\mrel{#1}{{PG}}}
+\newcommand{\mrelps}[1]{\mrel{#1}{{PS}}}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%   
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %% 
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %% 
+%%  submitted article.                         %% 
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
+
+
+\def\includegraphic{}
+\def\includegraphics{}
+
+
+
+\setlength{\topmargin}{0.0cm}
+\setlength{\textheight}{21.5cm}
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\textwidth}{16.5cm}
+\setlength{\columnsep}{0.6cm}
+
+\newboolean{publ}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                              %%
+%% You may change the following style settings  %%
+%% Should you wish to format your article       %%
+%% in a publication style for printing out and  %%
+%% sharing with colleagues, but ensure that     %%
+%% before submitting to BMC that the style is   %%
+%% returned to the Review style setting.        %%
+%%                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+%Review style settings
+%\newenvironment{bmcformat}{\begin{raggedright}\baselineskip20pt\sloppy\setboolean{publ}{false}}{\end{raggedright}\baselineskip20pt\sloppy}
+
+%Publication style settings
+%\newenvironment{bmcformat}{\fussy\setboolean{publ}{true}}{\fussy}
+
+%New style setting
+\newenvironment{bmcformat}{\baselineskip20pt\sloppy\setboolean{publ}{false}}{\baselineskip20pt\sloppy}
+
+% Begin ...
+\begin{document}
+\begin{bmcformat}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstset{
+language=SQL,                             % Code langugage
+basicstyle=\ttfamily,
+columns=flexible,
+deletekeywords = { some },
+morekeywords = { BEGIN, END, GROUPS, CLASS, OBJECTPROPERTY, FAIL, REMOVE},
+sensitive = true
+}
+
+\title{Patterns for representing time-dependent information in OWL~2 ontologies}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Ensure \and is entered between all but   %%
+%% the last two authors. This will be       %%
+%% replaced by a comma in the final article %%
+%%                                          %%
+%% Ensure there are no trailing spaces at   %% 
+%% the ends of the lines                    %%     	
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Alan Ruttenberg\correspondingauthor$^1$,%
+  \email{Alan Ruttenberg\correspondingauthor - alan.ruttenberg@gmail.com}
+  Janna Hastings$^{2,3}$,%
+  \email{Janna hastings - hastings@ebi.ac.uk}
+  Niels Grewe$^{4}$,%
+  \email{Niels Grewe - niels.grewe@uni-rostock.de}
+  Fabian Neuhaus$^{5}$,%
+  \email{Fabian Neuhaus - fabian.neuhaus@nist.gov}
+  Chris Mungall$^{6}$,%
+  \email{Chris Mungall - cjmungall@lbl.gov} \\
+  Ludger Jansen$^{4}$%
+  \email{Ludger Jansen - ludger.jansen@uni-rostock.de} and
+  Stefan Schulz$^{7,8}$%
+  \email{Stefan Schulz - stefan.schulz@medunigraz.at}
+}
+   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors' addresses here        %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\address{%
+    \iid(1)Department of X, State University of New York, Buffalo, NY, USA\\
+    \iid(2)Cheminformatics and Metabolism, European Bioinformatics Insitute (EMBL-EBI), Cambridge, UK\\
+    \iid(3)Department of Philosophy, University of Geneva, Switzerland\\
+    \iid(4)Institute of Philosophy, University of Rostock, Germany\\
+    \iid(5)National Institute of Standards and Technology\\
+    \iid(6)Genomics Division, Lawrence Berkeley National Laboratory, Berkeley, CA, USA\\
+    \iid(7)Institute for Medical Informatics,
+Statistics and Documentation, Medical University of Graz, Austria\\
+    \iid(8)Institute of Medical Biometry and Medical Informatics, University Medical Center Freiburg, Germany
+}%
+
+\maketitle
+
+
+
+\begin{abstract}
+\textbf{Background:}
+OWL 2 is a popular ontology development language which is supported by a wide range of tools
+such as editors and reasoners. It is increasingly being adopted by large scale biomedical
+ontologies such as the Gene Ontology and ChEBI. A limitation of OWL is that it only allows
+for the expression of binary relationships (object properties). In the biomedical domain,
+much of the knowledge that is represented in ontologies is linked to time in some fashion. 
+For example, different developmental stages of an organism have different anatomical properties. 
+Representing this information accurately often requires the use of ternary relations (i.e. with an 
+additional parameter), not supported in OWL 2. 
+
+\textbf{Results:}
+In this paper we present several design patterns for working around this limitation. Firstly, we 
+describe the use cases motivating the need for an explicit representation of temporality in the context of
+OWL and biomedical ontologies. Secondly, we propose and discuss different design patterns and 
+evaluate them against the given use cases in the context of their completeness, user friendliness, and
+performance profile for common reasoning tasks. 
+
+\textbf{Conclusions:}
+In conclusion, we present our recommendations. 
+
+\textbf{Keywords: }biomedical ontology, time, temporal reasoning, OWL, BFO
+
+\end{abstract}
+
+\ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Main Body begins here                %%
+%%                                          %%
+%% Please refer to the instructions for     %%
+%% authors on:                              %%
+%% http://www.biomedcentral.com/info/authors%%
+%% and include the section headings         %%
+%% accordingly for your article type.       %% 
+%%                                          %%
+%% See the Results and Discussion section   %%
+%% for details on how to create sub-sections%%
+%%                                          %%
+%% use \cite{...} to cite references        %%
+%%  \cite{koon} and                         %%
+%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
+%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section*{Background}
+
+% Introduction to this paper, what is the point, what is the scope, what are the limitations
+
+The Web Ontology Language (OWL), version 2 \cite{grau2008} is a popular ontology 
+development language which is supported by a wide range of tools
+such as editors and reasoners. OWL is based on Description Logics, a family of 
+knowledge representation formalisms designed to efficiently encode large-scale
+terminological knowledge \cite{baader2003dlhandbook}. 
+It is increasingly being adopted by large scale biomedical
+ontologies such as the Gene Ontology \cite{go2000} and ChEBI \cite{chebinar2013}. 
+
+NEEDS IMPROVEMENT
+
+A limitation of most DL-based languages, including OWL, is that it is only possible to 
+express binary relationships between individuals. However, in the biomedical domain,
+much of the knowledge that is represented in ontologies is linked to time in some fashion. 
+For example, different developmental stages of an organism have different anatomical properties. 
+Representing this information accurately often requires the use of ternary relations (i.e. with an 
+additional parameter), not supported in OWL 2. 
+
+OWL 2 allows only binary relations between individuals, called
+\emph{object properties}. But while there has been work on expressive description
+logics that try to transcend this limitation (\cite{Calvanese:1997}) and also on description logics
+that explicitly account for temporality (e.g. \cite{Wolter:2001}) , there is no strong push
+towards standardisation of those formalisms, and tools suitable for end users
+are not readily available. It has thus been acknowledged that there is a need
+for solutions that work within the confines of present technologies
+(\cite{Welty:2006}).
+Time-indexed relationships have been introduced as instance-level relations into
+the OBO Relation ontology (\cite{OBO:RO}). 
+
+Our primary point of reference will be the BFO top-level ontology \cite{BFO2:Graz}. 
+In the current work on a new release of the Basic
+Formal Ontology, BFO 2, ternary (time-indexed) instance-level relations have
+been formulated for the first order logic variant of the ontology, though they
+do not carry over into the OWL version yet.
+
+ However,
+the proposal sketched here could potentially be implemented in other top-level
+ontologies that are sufficiently similar to BFO, including DOLCE \cite{DOLCE:ref} and \cite{GFO:ref}.
+
+In this paper we will present design patterns for working around this limitation. It is organised as follows.
+In the remainder of this Background, we give an overview of the OWL language and BFO ontology into which our proposal will be embedded, and outline our use cases and competency questions. 
+Thereafter, in our Results we survey the existing approaches to the representation of time-dependent information in 
+we propose and discuss different design patterns and evaluate them against the given use cases in the context of their completeness, user friendliness, and performance profile for common reasoning tasks.
+The concluding section presents our recommendations for the community.
+
+\subsection*{BFO}
+
+Basic Formal Ontology (BFO) is an upper level ontology designed to serve as a foundation from which domain ontologies can be built \cite{BFO2:Graz}. 
+
+Use of a shared upper level ontology and shared relationships mitigates problems that arise when several ontologies are used together in a research pipeline. For example, the root structure of two ontologies might paritally overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similar sounding relationships without clarifying whether the relationships are intended to mean the same thing (e.g. `part\_of', `included\_in', ). They may further reimplement or redefine classes that are defined differently elsewhere.
+
+BFO offers a small set of foundational classes together with definitions, and a set of relationships intended to be used in multiple ontologies. Thus, domain-specific relationships such as `is\_tautomer\_of' (a chemical relationship used in ChEBI) are out of scope for BFO. 
+
+In the class hierarchy in BFO, the core distinction reflects temporal mode of existence: between \textit{continuant}, an entity that (1) exists in full at any time that it exists at all, and (2) continues to exist self-identically for as long as it exists; and \textit{occurrent}, an entity that unfolds over a period of time and thus has temporal parts.  For example, you are a continuant, while your life is an occurrent.  A cell is a continuant, while the process of cell division is an occurrent.  
+
+TYPES AND INSTANCES
+
+Table~1 gives a selection of core BFO classes and their definitions.
+
+BFO offers an extensive set of relations, including `part\_of', `participates\_in' and `inheres\_in'. 
+Table~2 details these and others together with their definitions.
+
+\subsection*{Web Ontology Language (OWL)}
+
+In which we give a very brief overview of those aspects of OWL that will be important in what follows.
+
+OWL syntax and semantics (mapping to FOL) for: classes (which roughly correspond to BFO types), individuals (which roughly correspond to BFO instances), instantiation, subclasses, object properties, quantification
+
+How relationships between classes are actually interpreted as relationships between individuals
+
+Reasoning tasks: consistency, satisfiability etc. 
+
+
+\subsection*{Use Cases and Competency Questions}
+
+In which we set out our important and super relevant use cases. Straight from the biology. 
+
+We make the distinction between different temporal strengths. 
+
+
+Informally: for all a instances of \mclass{A} there is some time $t$ and some instance $b$ of
+\mclass{B} such that $a$ is related to $b$ at $t$. Examples: 
+\begin{enumerate}[(a)]
+\item for all apple seeds there is
+some apple such that the seed is part of the apple at some time. 
+\item for all
+trees there is some leaf such that the leaf is part of the tree at some time.
+\end{enumerate}
+
+\begin{equation}
+\begin{split}
+\mclass{TemporarilyRelated}(\mclass{A},\mclass{B}) =_{def}&\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow
+\exists b, t^\prime:\;(\mrelt{inst}(\mclass{B},b,t^\prime) \wedge
+\mrelt{rel}(a,b,t^\prime) \wedge \mirel{within}(t^\prime,t))
+\end{split}
+\label{eq:temporarily}
+\end{equation}
+
+Informally: for all instances $a$ of \mclass{A} there is, at all times $t$ that
+$a$ exists,
+some instance $b$ of \mclass{B} such that a is related to $b$ at $t$, but not necessarily
+always the same $b$ at all times $t$. Examples:
+\begin{enumerate}[(a)]
+\item all cells have a water molecule as
+part at all times, but not always the same water molecule.
+\item every bacteria colony has some bacteria as parts at all times, but not
+always the same bacteria.
+\end{enumerate}
+
+
+\begin{equation}
+\begin{split}
+\mclass{PermanentlyGenericallyRelated}(\mclass{A},\mclass{B}) =_{def}&\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow
+\exists b:\;(\mrelt{inst}(\mclass{B},b,t) \wedge
+\mrelt{rel}(a,b,t))
+\end{split}
+\label{eq:generically}
+\end{equation}
+
+Informally, for all instances $a$ of \mclass{A} there is, at all times $t$ that $a$ exists, an
+instance $b$ of \mclass{B} such that a is related to $b$ at $t$; in this case it is always the
+same $b$ at all times $t$. Examples:
+\begin{enumerate}[(a)]
+\item a human being has a brain as part at all times, and it is necessarily the same brain.
+\item a radioactively marked molecule of DNA has the radioactive isotope as part
+at all times, and it is necessarily the same atom.
+\end{enumerate} 
+
+\begin{equation}
+\begin{split}
+\mclass{Permanently}&\mclass{SpecificallyRelated}(\mclass{A},\mclass{B}) =_{def}\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow 
+\exists b:\;\big(\mrelt{inst}(\mclass{B},b,t) \wedge 
+\mrelt{rel}(a,b,t))
+\\
+&\quad\quad \wedge \forall t^\prime: (\mrelt{inst}(\mclass{A},a,t^\prime)
+\rightarrow (\mrelt{rel}(a,b,t^\prime) \wedge
+\mrelt{inst}(\mclass{B},b,t^\prime))\big)
+\end{split}
+\label{eq:specifically}
+\end{equation}
+
+
+We furthermore describe the points we are going to evaluate against. 
+\begin{enumerate}
+	\item completeness, 
+	\item user friendliness, and 
+	\item performance profile
+\end{enumerate}
+The details of how we conducted the evaluation are described in our Methods section at the end. 
+
+
+\section*{Results}
+
+\subsection*{Survey of existing approaches}
+
+\subsubsection*{Histories in BFO 2}
+
+In BFO 2, work is under way to sketch out a more detailed theory of the
+relationship between SNAP objects and SPAN processes they participate in.
+Specifically, BFO 2 make the assumption that for each material object there
+exists a special process, the \emph{history} of the object, which encompasses 
+„the totality of processes taking place in the spatiotemporal region occupied by
+the entity.“ (\cite{BFO2:ref}) This means that there is a one to one correspondence
+between objects (on the SNAP side) and certain processes, which effectively
+provides a „bridge“ between the 3D and the 4D perspective. No complete formal theory
+of histories, which have previously been described in \cite{cornucopia}, is available as of yet.
+\subsection{Conventional Modellers’ Strategy for Temporalised Relations in OWL 2}
+
+As explicit semantics for modelling temporal dynamics are not available in OWL
+2, modellers tend to implicitly treat object properties as committing to a 
+„for all times“ interpretation in order to avoid obvious problems with the
+entailed models. For instance, in an anatomy ontology like the FMA, the object
+property \mirel{hasPart} is transitive, and used in axioms such as
+„$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$“
+and „$\mclass{LobeOfLung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{BronchiopulmonarySegment}$“
+
+If the underlying interpretation were „for some time“, transitivity of the
+binary \mirel{hasPart} could no longer be taken for granted, as two
+\mirel{hasPart} assertions to be chained could belong to two different SNAP
+ontologies.
+
+\subsection*{Strategies Advanced in Related Work}
+Existing Design Patterns
+
+\subsubsection*{Default Reinterpretation}
+
+On the default reinterpretation of the OWL direct semantics to preserve the RO 
+generic relatedness default reading. 
+
+Obviously, the interpretation must be equivalent to the OWL 2 direct semantics
+(\cite{OWL2:direct}) in as far as it preserves syntactical structure and inferences and does not
+lead to additional expressivity. But it has – to our knowledge – never been made
+explicit what this substitution might consist of.  This is even more significant
+as this does not constitute at all a side issue or an idiosyncrasy of biomedical
+ontologies. On the contrary, virtually all OWL ontologies contain axioms on
+classes of continuants using binary object properties and leave the exact
+interpretation unexplained. 
+
+To address this mismatch and try to understand it better we sketch here a
+possible elucidation  which consists in a modification of the interpretation
+function. The general strategy of this interpretation is to augment the
+interpretations of class members and object properties in the OWL model with an
+additional time index $t$ which specifies that the entity in question exists
+(object property holds) at $t$. Class instances then become pairs and object
+property instances triples. In order to keep the surface grammar and overall
+semantics intact, the interpretations of all OWL axioms will be prepended with a
+conditionalized universal quantification over $t$  hat specifies that the axiom
+should hold at all times that the entity in question exists.  Time instants are
+hereby external to the domain. For example, the interpretation of a class
+assertion axiom that asserts that $a$ is an instance of class \mclass{C}, as long
+as $a$ exists, would then read (domain~$\Delta$, interpretation~$\cdot^\mathcal{I}$):
+
+\begin{equation}
+\forall t:\;\pair{\dlint{a}}{t}\in \dlint{\Delta} \rightarrow
+\pair{\dlint{a}}{t} \in \dlint{\mclass{C}}
+\end{equation}
+
+We implicitly assume that $\Delta$ contains individual/time-point pairs only for
+those times at which an individual exists. Notably, this is only sufficient to express rigid instantiation: Whenever an individual exists at
+all, it is also a member of the class it instantiates. The interpretation of
+temporality-sensitive relations will become clear when we spell out the semantic
+rules of existential quantification and value restriction, both of which assert
+permanent generic relatedness because they apply existential quantification over the
+object property range so that at each point in time a different individual of
+class \mclass{B} can serve as a relatum. We will use the canonical structural syntax
+(\cite{OWL2:structural})
+to ease comparison with the specified semantics (\cite{OWL2:direct}).
+
+\begin{description}
+\item[Existential quantification ($\mrelb{rel}\;\mathtt{some}\;\mclass{B}$)]
+\begin{equation}
+\begin{split}
+\dlint{\text{ObjectSomeValuesFrom}&(\mrelb{rel},\mclass{B})} =_{def}\\ &\quad
+\{\pair{\dlint{a}}{t}\in \dlint{\Delta}\,|\; \exists b:\;\langle\dlint{a},b,t\rangle
+\in \dlint{\mrelt{rel}} \wedge \pair{b}{t} \in \dlint{\mclass{B}}\}
+\end{split}
+\end{equation} 
+\item[Value restriction ($\mrelb{rel}\;\mathtt{only}\;\mclass{B}$)]
+\begin{equation}
+\begin{split}
+\dlint{\text{ObjectAllValuesFrom}&(\mrelb{rel},\mclass{B})} =_{def}\\ &\quad
+\{\pair{\dlint{a}}{t}\in \dlint{\Delta}\,|\; \forall b:\;\langle\dlint{a},b,t\rangle
+\in \dlint{\mrelt{rel}} \rightarrow \pair{b}{t} \in \dlint{\mclass{B}}\}
+\end{split}
+\end{equation}
+\end{description}
+
+In OWL object property assertions the time index is bound through universal
+quantification again:
+
+\begin{equation}
+\text{ObjectPropertyAssertion}(\mrelb{rel},a,b) =_{def}\;\forall
+t:\;\pair{\dlint{a}}{t} \in \dlint{\Delta} \rightarrow \langle
+\dlint{a},\dlint{b},t\rangle \in \dlint{\mrelt{rel}}
+\end{equation}
+
+Hence, object property assertions specify permanent relatedness. Disregarding
+the difference between specific and generic permanent relatedness for the time
+being, this interpretation of 
+OWL 2 at least successfully mimics the semantics of class level
+relations intended by the relations ontology (RO, \cite{OBO:RO}) and allows us to think of
+the syntactical forms represented in table \ref{tab:syntaces} as equivalent.
+\begin{table}
+\caption{Syntactical representations of (permanent) relatedness expressions}
+\label{tab:syntaces}
+{
+\begin{tabular}{p{10.9em}cp{10.5em}}
+\toprule
+\parskip=0cm
+\parbox{10.9em}{\centering OBO Syntax} & OWL (Manchester Syntax) & \parbox{10.5em}{\centering First Order Logic} \\
+\midrule
+\texttt{$[$Term$]$}\par
+\texttt{id:} \mclass{A}\par
+\texttt{relationship:} \mrelb{rel} \mclass{B} &
+
+\parbox[t][1.5em][c]{11.2em}{\centering $\mclass{A}\;\mathtt{subClassOf}\;\mrelb{rel}\mathtt{some}\mclass{B}$} &
+
+$\forall a,t:\;\mrelt{inst}(A,a,t)\rightarrow$\par
+$\quad \big(\exists b:\;\mrelt{inst}(B,b,t)\;\wedge$\par
+$\qquad\;\mrelt{rel}(a,b,t)\big)$\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+This approach  also retains standard transitivity semantics of OWL 2 object
+properties, so that quantification over time maintains transitivity of the
+relation in question.
+This can be shown, e.g. for the transitive relation \mirel{hasPart}: if an organism has
+some heart at any time, and if this heart has some heart valve at any time, then
+the organism has some heart valve at any time:
+
+\begin{prooftree}
+\AxiomC{$\mclass{A}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{B}$}
+\AxiomC{$\mclass{B}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{C}$}
+\BinaryInfC{$\mclass{A}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{C}$}
+\end{prooftree}
+And while there is nothing to be gained by actually modifying OWL 2 to use this
+interpretation, it is very important that ontology engineers are aware of the
+implications of their modelling decisions with regard to relations that are
+sensitive to the issue of temporal strength. However, this approach
+still has the consequence that „\emph{temporary relatedness}“ cannot be
+expressed directly in an OWL 2 ontology, so we need to look for more involved
+solutions to the problem.
+
+\subsection*{Reification}
+
+A common strategy to work around the limitations of description logics is to
+represent ternary relations through reification. Reification involves the
+introduction of a class $\mclass{C_\mrelt{rel}}$ for each ternary relation
+\mrelt{rel}. The relata of \mrelt{rel}
+are then connected to instances of $\mclass{C_\mrelt{rel}}$ by three new binary
+relations \mrelb{R_1}, \mrelb{R_2},
+\mrelb{R_3}. The instance-level assertion
+$$
+\mrelt{rel}(a,b,t)
+$$
+
+would then be transformed into the following statement:\todo{Changed from list of statements to proper axiom}
+\begin{equation}
+\exists x: \mclass{C_\mrelt{rel}}(x) \wedge
+\mrelb{R_1}(x,a) \wedge
+\mrelb{R_2}(x,b) \wedge
+\mrelb{R_3}(x,t) 
+\end{equation}
+
+Such proposals have, with a varying degree of sophistication, seen quite a bit
+of dissemination in the ontology engineering community (\cite{ODP:nary}), but they suffer
+from unavoidable drawbacks. Most obviously, they are rather complex. This bears
+the risk of errors in the ontology engineering process and decreases reasoning
+efficiency (\cite{Grewe:2010}). To address the complexity problem, it has been suggested to
+select reification classes based on what seems ontologically „fitting“ for the
+domain of an ontology (\cite{Fiadeiro:2010}).
+
+\subsection*{Welty/Fikes: Fluents}
+The prototypical approach for dealing with temporally changing information in
+OWL within a four-dimensionalist framework was provided by 
+\cite{Welty:2006}. And while they agree that the 4D  approach is „clearly 
+not something that immediately appeals to common sense“, they also claim
+that it „gives us another tool to use when solving a practical problem.“ To this
+end, they present an ontology that models fluents, i.e. „relations that hold
+within certain time interval but not in others.“ This works by considering all
+entities as four dimensional entities that have temporal parts (time slices),
+such that the material object property assertions hold (synchronously) between
+time slices. For example, temporary relatedness could be expressed as in
+(\ref{eq:fifteen}).
+
+\begin{equation}
+\mclass{Leaf}\;\mathtt{subClassOf}\;\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{some}\;
+            \mrelb{hasPart}\;\mathtt{some}\;\mrelb{timeSliceOf}\;\mathtt{some}\;\mclass{Tree}
+\label{eq:fifteen}
+\end{equation}
+
+This is by far one of the most straightforward translations of the
+four-dimensionalist commitment, but it suffers from a certain verbosity. This
+increases even more if permanent relatedness is concerned. In this case, the
+above expression would have to be amended to include a
+„$\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{only}$“ clause to ensure that
+all time slices of the entity are appropriately related to a time slice of the
+other entity.
+
+\subsection*{Zamborlini/Guizzardi: Moments, Relators and Qua-Individuals}
+The commitment that some relational expressions are in fact better accounted for
+as proper entities is also prominent in Zamborlini and Guizzardi treatment of 
+contingent properties \cite{Zamborlini:Guizzardi}. For them, certain „material
+relations“ only hold by virtue of a separate truthmaker, the so called
+\emph{relator}, which is formed by combining the „qua individuals“ that
+partake in the relation. Qua individuals abstract away certain aspects of an
+individual so that only that information remains which is relevant for the
+individuals participation in the relation. 
+
+Both kinds of entities are examples of „moments“ in their
+nomenclature, which are said to inhere in individual entities and can thus be
+compared to dependent continuants or occurrents (respectively) in BFO
+parlance. But while relators might often be appropriately represented by BFO
+processes, the admissibility of qua individuals into BFO might be questionable
+since they can hardly be aligned with BFO's realist commitment (where sheer
+abstractions could only be regarded as artifacts of a persons though process). 
+
+Underneath the level of qua individuals (e.g. „$\mclass{LeafQuaPartOfTree}$“)
+and relators, there is the assumption of an ontology of time slices not unlike
+the one in \cite{Welty:2006}, such that
+temporal overlap between the qua individuals related by the relator can be
+enforced.
+
+Zamborlini and Guizzardi cite as an advantage for this approach that it is capable
+of representing the persistence of a relationship across multiple time slices
+without mentioning each explicitly (because the relator is associated with the
+qua-individual and not its time slice). This is part of a set of requirements
+suggested for modelling temporally changing information:
+
+\begin{enumerate}
+\item Avoid duplication of the other time slices if one entity partaking in the
+relation changes.
+\item Provide a consistent ontological interpretation of contingent (non-rigid)
+instantiation.
+\item Avoid repeating persisting properties for each time slice
+\item Ensure that immutable properties of an entity cannot be overridden by a
+time slice.
+\end{enumerate}
+
+We believe these points to be a good starting point for the evaluation of
+any proposal to address the problem of time-dependent relation and should be
+used to supplement our initial requirements.
+
+\subsection*{Gangemi: Descriptions and Situations}
+Aldo Gangemi's DnS pattern (\cite{Gangemi:DnS}) deserves mention because it treats
+time-dependence of relations as a special case of perspectivity which can be
+accounted for by the very heavy-duty reification mechanism of descriptions and
+situations. In this case, the suggestion is to use the situation pattern in
+order to associate the relata and their temporal context with a common
+situation, which is effectively a reified assertion (a proposition). Again, such
+entities are figments of the mind and can only be admitted into a realist
+ontology such as BFO as such -- rather than being a general way to refer to
+arbitrary facts. 
+
+Notably, though, Gangemi reminds us of the fact that OWL 2's $\mathtt{hasKey}$
+axiom can be used circumvent the problem of possible duplication of instances
+for the same relational $n$-tuple: If a situation $\mclass{S}$ were to use the properties
+$\mrelb{hasTimeStamp}$, $\mrelb{hasSubject}$, and $\mrelb{hasObject}$, the axiom
+\begin{equation}
+\mclass{S}\;\mathtt{hasKey}(\mrelb{hasTimeStamp}, \mrelb{hasSubject},
+\mrelb{hasObject})
+\end{equation}
+would ensure that duplicate entities would be coalesced in the model.
+
+
+\subsection*{Proposed Design Patterns}
+
+\section*{Temporalized Relations}
+
+In which we describe Alan's approach and the BFO 2 Graz release in quite some detail and thereafter evaluate it. 
+
+
+\section*{Temporally Qualified Continuants}
+
+We can define a \emph{temporal qualification} of a
+continuant as the result of regarding the continuant in as far as it exists only
+within a certain portion of time. A temporal qualification is 
+characterised by its spatial co-extension with its continuant over the time
+period that it qualifies.
+
+A temporally qualified continuant (TQC) is thus a way of referring to a continuant
+during a portion of time. Formally, we can describe it as a tuple \pair{a}{t}
+where $a$ is an instance
+of a continuant and $t$ is a portion of time. 
+
+There are several axioms needed to link TQCs to the continuants that they are
+temporal qualifications of and to ensure that TQC portions of time do not exceed the
+allowed portion of time that the corresponding continuant instance spans over
+(most of these are similar to the proposals presented above).
+Instantiation of a TQC is thus not time-indexed, while normal instantiation of
+continuants is time indexed as in the examples above. 
+
+
+We will use the notation \TQC{A} to denote the class of temporally qualified
+continuants which range over continuants of type \mclass{A}.
+
+\begin{equation}
+\forall x:\; (\mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t_0,t_1:\;(
+\mrelt{inst}(\mclass{A},a,t_0) \wedge \mirel{equals}(x,a,t_1) \wedge
+\mirel{within}(t_1,t_0)))
+\end{equation}
+The intended meaning of the predicate \mirel{equals} is identity.  
+We further introduce a relation \mirel{continuantOf} to link a TQC to the continuant
+that it is a TQC of. That is, 
+\begin{equation}
+\forall x\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t:\;(
+\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{continuantOf}(a,x))
+\end{equation}
+
+In the next sections, we will discuss the representation of the three different
+temporal strengths, linking from the standard representation in BFO FOL through
+the introduction of temporally qualified continuants to the standard
+representation in OWL, showing how these different temporal strengths can be
+implemented through this method in a binary relationship framework such as OWL,
+though this representation will require relations that refer to ternary
+predicates in the FOL model, such as \mrelb{continuantOf}, to remain primitive.
+
+\subsection*{Temporary Relatedness}
+
+We rephrase the definition (\ref{eq:temporarily}) given above by inserting
+temporally qualified continuants and derive the form that the relationship takes
+for temporally qualified continuants and a binary relationship. This is a fairly
+transparent translation:
+\begin{equation}
+\begin{split}
+\mclass{TemporarilyRelated}(\mclass{A},\mclass{B})& =_{def}\;
+\forall a, t:\; \mrelb{inst}(\mclass{A}, \pair{a}{t}) \\
+&\ \rightarrow
+\exists b, t_1:\;(\mrelb{inst}(\mclass{B}\pair{b}{t_1}) \wedge
+\mrelb{rel}(\pair{a}{t_1},\pair{b}{t_1}) \wedge \mirel{within}(t_1,t))
+\end{split}
+\end{equation}
+
+We then use the \mrelb{continuantOf} relation and the TQC notation to eliminate
+the tuples:
+\begin{equation}
+\begin{split}
+\mclass{Temporarily}&\mclass{Related}(\mclass{A},\mclass{B}) =_{def}\;
+\forall x:\; \mrelb{inst}(\TQC{A}, x)
+ \rightarrow
+\exists a,y,z,t_1:\;(\mrelb{inst}(\TQC{A},y) \wedge \\ & \mrelb{inst}(\TQC{B},z) 
+ \wedge \mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(a,y) \wedge
+\mrelb{rel}(y,z) 
+\end{split}
+\label{eq:usesSame}
+\end{equation}
+
+This means that the logical form of the expression of temporary relatedness is that
+at least one temporal qualification of \mclass{A} is related to some temporally
+qualified \mclass{B} instance.
+However, we need another axiom to constrain \mrelb{rel} in the above to ensure that the
+portions of time are appropriately overlapping, since \mrelt{rel} holds at one time
+only:
+\begin{equation}
+\begin{split}
+\forall x,y:\;& \mrelb{rel}(x,y) \rightarrow \exists a,b,t,t_1:\;
+(\mirel{equals}(x,\pair{a}{t})\wedge \mirel{equals}(y,\pair{b}{t_1})\\ 
+& \wedge \mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(b,y) \wedge
+\mrelt{rel}(a,b,t_1) \wedge \mirel{within}(t_1,t))
+\end{split}
+\end{equation}
+
+Now we have derived a binary expression \mrelb{rel} we are free to use this in OWL
+axioms. We introduce the relation \mrelb{hasSameContinuant} between temporally qualified
+continuants to express that they are TQCs of the same continuant,
+expressed in the above axiom (\ref{eq:usesSame}) as $(\mrelb{continuantOf}(a,x)
+\wedge \mrelb{continuantOf}(a,y))$, which allows us to express temporary relatedness in OWL as follows:
+
+\begin{equation}
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some
+(}\mrelb{rel}\;\mathtt{some}\;\TQC{B}) 
+\label{eq:tqc:temp}
+\end{equation}
+
+Additionally, we ensure that sharing a temporal qualification amounts to being
+the same continuant:\footnote{Implementers should note that OWL 2 only mandates
+this for \emph{named} individuals.}
+
+\begin{equation}
+\mclass{A}\;\mathtt{hasKey}(\mrelb{continuantOf})
+\end{equation}
+
+\subsection*{Usability and simplification}
+Since the above axiom (\ref{eq:tqc:temp}) makes a claim about the class \TQC{A},
+it is less ideal from a usability perspective. We would rather like to say
+something about the target continuant classes \mclass{A} and \mclass{B} in our OWL version, for
+ease of use by the end user. Thus, we introduce a new relationship,
+\mreltemp{rel}, which obtains between continuants, and should be interpreted as follows:
+
+
+\begin{equation}
+\begin{split}
+\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\mathtt{some}\mclass{B}\;\rightarrow\\
+&\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some}\;(\mrelb{rel}\;\mathtt{some}\;
+\TQC{B}) 
+\end{split}
+\end{equation}
+
+Unfortunately, the above statement cannot be formulated in OWL 2 due to its
+strict constraints on object properties. Neither can it be implemented in a
+rule language, since it would induce the generation of new individuals in its
+consequent, which violated DL safety. Still there is an avenue for hiding the
+complexity by using a macro processing engine, such as OPPL (\cite{OPPL}), in
+which processing instructions such as these could be employed:
+
+\begin{lstlisting}
+?x:CLASS[subClassOf Continuant],
+?y:OBJECTPROPERTY?MATCH("temporarily_(.*)"),
+?z:CLASS[subClassOf Continuant]
+SELECT ?x subClassOf ?y some ?z
+BEGIN
+  ADD ?x subClassOf continuantOf some ?y.GROUPS(1) 
+    some hasContinuant ?z,
+  REMOVE ?x subClassOf ?y some ?z
+END;
+\end{lstlisting}
+This can easily be adopted or parameterised for other axiom types or types of temporal
+sensitivity (e.g. permanent generic relatedness) Additional measures that alleviate the burden of this approach would be making
+\mrelb{rel} a sub-object-property of \mreltemp{rel}, which quite natural and
+obvious: If something is related at all times to some entity, it is related to
+that entity at some time.
+
+
+\subsection*{Permanent Generic Relatedness}
+Permanent generic relatedness is considered by some to be the most common
+interpretation of temporally unspecified relations in biology. We have
+previously defined it in (\ref{eq:generically}), which can
+now rephrased using the TCQ approach as follows:
+\begin{equation}
+\forall x:\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists y :\;
+\mrelb{inst}(\TQC{B}, y) \wedge \mrelb{rel}(x,y)
+\label{eq:tqc:pg}
+\end{equation}
+
+Informally, this means that, whatever temporal qualification of an instance of
+\mclass{A} we choose, it will alway be \mirel{rel}-related to some temporal
+qualification of type \mclass{B}, but we neither care nor enforce which one.
+
+This is the easiest and most elegant translation case from the FOL perspective.
+Moving to OWL, the above axiom (\ref{eq:tqc:pg}) appears as: 
+
+\begin{equation}
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{rel}\;\mathtt{some}\;\TQC{B}
+\label{eq:tqc:pg:owl}
+\end{equation}
+
+Again, we can use a kind of macro expansion to bridge a shorthand for this type
+of relatedness (e.g. \mrelpg{rel}) back to the
+underlying relationship. Thus we would use (\ref{eq:tqc:pg:owl}) to replace
+every occurrence of axioms such as the following:
+\begin{equation}
+\mclass{A}\;\mathtt{subClassOf}\;\mrelpg{rel}\;\mathtt{some}\;\mclass{B}  
+\label{eq:tqc:pg:shorthand}
+\end{equation}
+
+By replacing, we mean to imply that we advise against using \mrelpg{rel} as an
+object property, which would not be harmful in itself, but at least
+counter-intuitive. Instances of \mclass{A} satisfying
+(\ref{eq:tqc:pg:shorthand} would require a pair of instances \pair{a}{b}, where
+$a$ is said to be permanently generically related to $b$, which is (a)
+meaningless since generic relatedness pertains to a type, not an instance and
+(b) misleading since it is not enforced by the model.
+
+Still, the availability of permanent generic relatedness is noteworthy because
+it would not be possible in OWL 2 in absence of temporally qualified
+continuants (not only instantiation of classes, but also of object property
+tuples is rigid). This is afforded by the fact that we do not introduce an
+explicit object property for generic permanent relatedness. 
+
+Since permanent generic relatedness matches the presumed default interpretation
+of \mrelb{rel} in most existing biomedical ontologies, upgrade paths for these
+ontologies need to be considered. We believe that, from a user perspective, the
+most convenient way would be to relegate all relations that require
+temporalisation into a specific branch (say,
+\mrelb{temporallySensitivelyRelated}) and employ something like the following 
+preprocessing instruction:
+\begin{lstlisting}
+?x:CLASS[subClassOf Continuant],
+?y:OBJECTPROPERTY?[subPropertyOf temporallySensitivelyRelated],
+?z:CLASS[subClassOf Continuant] 
+SELECT ?x subClassOf ?y some ?z WHERE 
+  FAIL ?x subClassOf hasContinuant some Continuant,
+  ?y MATCH("^(.(?<!temporarily_))*\$")
+  FAIL ?z subClassOf hasContinuant some Continuant,
+BEGIN
+  ADD hasContinuant some ?x subClassOf ?y some continuantOf some ?z,
+  REMOVE ?x subClassOf ?y some ?z
+END;
+\end{lstlisting}
+This allows users to do away with \mrelpg{rel} and have expressions about
+continuants converted into expressions about temporal qualifications transformed
+seamlessly. There are two downsides to this. Firstly, this approach moves
+ontology engineering even more towards procedures that are familiar to
+software engineers but not to scientists from the field of application.
+Secondly, the above expression requires a reasoner to work, which might be
+costly to do after every edit.
+
+On the other hand, it is subject to debate whether adopting an edit-compile-test
+approach in ontology engineering could in fact be useful for improving ontology quality.
+
+\subsection*{Permanent Specific Relatedness}
+If we do introduce an explicit object property, could we hope to arrive at
+implementing something like permanent specific relatedness
+(\ref{eq:specifically})? Unfortunately, this assumption proves to be too na\"ive.
+
+It would require an additional axiom to ensure that only TQCs of the same instance are involved
+for the second relatum. Unfortunately, we cannot provide an
+accurate translation of this kind of relatedness into OWL 2, though we can
+achieve the following first order translation in TQC-talk:
+ \begin{equation}
+\begin{split}
+\forall x:\; \mrelb{inst}&(\TQC{A},x) \rightarrow \\
+ \exists y:&\;\mrelb{inst}(\TQC{B},y) \wedge \mrelb{rel}(x,y)\wedge\\
+ & \forall x_1,a:\; ((\mrelb{inst}(\TQC{A},x_1) \wedge 
+\mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(a,x_1))\wedge\\
+&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \mrelb{continuantOf}(b,y)  
+\wedge \mrelb{continuantOf}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
+\end{split}
+\end{equation}
+This would require three variables ($x$,~$y$,~$y_1$) to be bound at the same
+time, which is incompatible with any OWL translation.
+
+
+Nice and good evaluation of the different approaches goes here
+
+\section*{Conclusions}
+
+Summary
+
+Recommendations of which approach to follow under which circumstances
+
+
+\section*{Methods}
+
+All the boring stuff goes here
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Author's contributions}
+    Text for this section \ldots
+
+    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgements}
+  \ifthenelse{\boolean{publ}}{\small}{}
+The research by NG, LJ and SS for this paper has been supported by the German
+Science Foundation (DFG), grant JA1904/2-1, SCHU 2515/1-1 as part of the research project ``Good Ontology Design".
+JH is supported by the European Union under EU-OPENSCREEN. The authors would like to thank Barry Smith, 
+Melissa Haendel, David Osumi-Sutherland, Colin Batchelor and \ldots for helpful discussions.
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%              
+%%  Bmc_article.bst  will be used to                       %%
+%%  create a .BBL file for submission, which includes      %%
+%%  XML structured for BMC.                                %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %% 
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %% 
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+{\ifthenelse{\boolean{publ}}{\footnotesize}{\small}
+ \bibliographystyle{bmc_article}  % Style BST file
+ \bibliography{bfo-owl-time} }     % Bibliography file (usually '*.bib' ) 
+
+%%%%%%%%%%%
+
+\ifthenelse{\boolean{publ}}{\end{multicols}}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+\section*{Figures}
+  \subsection*{Figure 1 - Sample figure title}
+      A short description of the figure content
+      should go here.
+
+  \subsection*{Figure 2 - Sample figure title}
+      Figure legend text.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Tables                        %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use of \listoftables is discouraged.
+%%
+\section*{Tables}
+  \subsection*{Table 1 - BFO Classes}
+    In this table we present the core BFO classes with their definitions.  \par \mbox{}
+    \par
+    \mbox{
+      \begin{tabular}{|c|c|}
+        \hline \multicolumn{2}{|c|}{BFO Classes}\\ \hline
+        A1 & B2  \\ \hline
+        A2 & ... \\ \hline
+        A3 & ..  \\ \hline
+      \end{tabular}
+      }
+
+  \subsection*{Table 2 - BFO Relations}
+    In this table we present a selection of BFO relations together with their definitions. 
+     \par \mbox{}
+    \par
+    \mbox{
+      \begin{tabular}{|c|c|c|}
+        \hline \multicolumn{3}{|c|}{My Table}\\ \hline
+        A1 & B2  & C3 \\ \hline
+        A2 & ... & .. \\ \hline
+        A3 & ..  & .  \\ \hline
+      \end{tabular}
+      }      
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Additional Files              %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Additional Files}
+  \subsection*{Additional file 1 --- Sample additional file title}
+    Additional file descriptions text (including details of how to
+    view the file, if it is in a non-standard format or the file extension).  This might
+    refer to a multi-page table or a figure.
+
+  \subsection*{Additional file 2 --- Sample additional file title}
+    Additional file descriptions text.
+
+
+\end{bmcformat}
+\end{document}
+
+
+
+
+
+
