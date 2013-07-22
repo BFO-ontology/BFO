@@ -352,15 +352,12 @@ Most work on OBO Foundry ontologies has been commited to this definition, which 
 the intuitive class-to-class relations with a clear semantics rooted in FOL. 
 
 
-
 Our primary point of reference will be the BFO top-level ontology \cite{BFO2:Graz}. 
 In the current work on a new release of the Basic
 Formal Ontology, BFO 2, ternary (time-indexed) instance-level relations have
 been formulated for the first order logic variant of the ontology, though they
 do not carry over into the OWL version yet.
-
- However,
-the proposal sketched here could potentially be implemented in other top-level
+However, the proposal sketched here could potentially be implemented in other top-level
 ontologies that are sufficiently similar to BFO, including DOLCE \cite{DOLCE:ref} and \cite{GFO:ref}.
 
 In this paper we will present design patterns for working around this limitation. It is organised as follows.
@@ -372,32 +369,73 @@ The concluding section presents our recommendations for the community.
 \subsection*{BFO}
 
 Basic Formal Ontology (BFO) is an upper level ontology designed to serve as a foundation from which domain ontologies can be built \cite{BFO2:Graz}. 
+Use of a shared upper level ontology and shared relationships mitigates problems that arise when several ontologies are used together in a research pipeline. For example, the root structure of two ontologies might paritally overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similar sounding relationships without clarifying whether the relationships are intended to mean the same thing (e.g. $\mirel{partOf}$, $\mirel{includedIn}$,... ). They may further reimplement or redefine classes that are defined differently elsewhere.
 
-Use of a shared upper level ontology and shared relationships mitigates problems that arise when several ontologies are used together in a research pipeline. For example, the root structure of two ontologies might paritally overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similar sounding relationships without clarifying whether the relationships are intended to mean the same thing (e.g. `part\_of', `included\_in', ). They may further reimplement or redefine classes that are defined differently elsewhere.
 
-BFO offers a small set of foundational classes together with definitions, and a set of relationships intended to be used in multiple ontologies. Thus, domain-specific relationships such as `is\_tautomer\_of' (a chemical relationship used in ChEBI) are out of scope for BFO. 
+BFO offers a small set of foundational classes together with definitions, and a set of relationships intended to be used in multiple ontologies. Both classes and relationships are domain-independent, albeit it is clearly stated that BFO's focus is on the representation of science. 
+Thus, domain-specific relationships such as $\mirel{isTautomerOf}$ (a chemical relationship used in ChEBI) are out of scope for BFO. 
 
-In the class hierarchy in BFO, the core distinction reflects temporal mode of existence: between \textit{continuant}, an entity that (1) exists in full at any time that it exists at all, and (2) continues to exist self-identically for as long as it exists; and \textit{occurrent}, an entity that unfolds over a period of time and thus has temporal parts.  For example, you are a continuant, while your life is an occurrent.  A cell is a continuant, while the process of cell division is an occurrent.  
+BFO is a three-dimensionalist ontology. Therefore, in its class hierarchy, the core distinction reflects temporal mode of existence: between \textit{continuant}, an entity that (1) exists in full at any time that it exists at all, and (2) continues to exist self-identically for as long as it exists; and \textit{occurrent}, an entity that unfolds over a period of time and thus has temporal parts.  For example, you are a continuant, while your life is an occurrent.  A cell is a continuant, while the process of cell division is an occurrent.  
 
 TYPES AND INSTANCES
 
 Table~1 gives a selection of core BFO classes and their definitions.
 
-BFO offers an extensive set of relations, including `part\_of', `participates\_in' and `inheres\_in'. 
+BFO offers an extensive set of relations, including $\mirel{partOf}$, $\mirel{participatesIn}$, and $\mirel{inheresIn}$. 
 Table~2 details these and others together with their definitions.
 
 \subsection*{Web Ontology Language (OWL)}
 
 In which we give a very brief overview of those aspects of OWL that will be important in what follows.
 
-OWL syntax and semantics (mapping to FOL) for: classes (which roughly correspond to BFO types), individuals (which roughly correspond to BFO instances), instantiation, subclasses, object properties, quantification
+OWL syntax and semantics (mapping to FOL) for: classes (which 
+%roughly correspond to 
+are the extensions of BFO types or correspond to logical expressions formed by the extensions of BFO types, so-called defined classes)
+BFO types), individuals (the concrete entities that instantiate BFO types and / or are members of BFO classes). 
+The semantics of OWL follows the principles of set theory. 
+OWL object properties are binary predicates between OWL individuals. They can optionally be connected by so-called property chains. 
+Well-formed Class-level expression therefore 
+require quantifiers when including object properties, such as $\mathtt{owl:allValuesFrom}$ ($\mathtt{only}$) or $\mathtt{owl:allValuesFrom}$ ($\mathtt{only}$).
 
-How relationships between classes are actually interpreted as relationships between individuals
+%% „$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$“
 
-Property chains
 
-Reasoning tasks: consistency, satisfiability etc. as will be used in the evaluation
+For instance, the class expression $\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}$ contains all entities that are part of at least one member of the class $\mclass{Cell}$ . 
+Main constructors of OWL ontologies are $\mathtt{rdfs:subClassOf}$ (class subsumption), $\mathtt{owl:equivalentClass}$ (class equivalence), 
+and $\mathtt{rdf:Type}$  (class membership) statements. 
+For example $\mclass{CellMembrane}\;\mathtt{subClassOf}\;\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}$ means that every member of the class $\mclass{CellMembrane}$ is 
+part of at least one member of the class $\mclass{Cell}$. 
+The big advantage of OWL ontologies is their formal rigor, their well-studied computational behaviour, their rather intuitive syntax (compared to FOL), the presence of editining tools like Protégé, and their support by DL reasoners like HermiT and Fact++, which perform reasoning tasks like consistency and satisfiability checking. 
+%, which 
+%will be used in the evaluation. 
+%, instantiation, subclasses, object properties, quantification
+% How relationships between classes are actually interpreted as relationships between individuals
 
+
+
+However, in comparison to the OBO axiom 
+$\mclass{CellMembrane}\;\mirel{partOf}\;\mclass{Cell}$, to which the previous OWL axioms is commonly considered equivalent to, the latter is undefined with regard to time. This is not a side aspect, because it makes a difference whether a cell membrane is always part of some cell or only at some time during its existence. The temporal indefinition of OWL statements is especially insatisfactory when it comes to transitive properties like $\mirel{partOf}$ or $\mirel{locatedIn}$, where the suppression of the temporal factor can produce plainly wrong entailments, especially at the level of individuals like in the following example: 
+
+\begin{equation}
+\begin{split}
+\mirel{locatedIn} (\mirel{Thrombus1234}, \mirel{Heart1234}  \\
+\mirel{locatedIn} (\mirel{Heart1234}, \mirel{Patient5678} 
+\end{split}
+\label{eq:trans}
+\end{equation}
+
+Assuming that the thrombos was no longer in the heart when it was transplanted to Patient5678, then the entailment
+
+\begin{equation}
+\begin{split}
+\mirel{locatedIn} (\mirel{Thrombus1234}, \mirel{Patient5678} 
+\end{split}
+\label{eq:transEntailment}
+\end{equation}
+
+which follows from the transitivity property of the relation $\mirel{locatedIn}$ is obviously wrong. 
+What follows from this is far-reaching, althought it has rarely ever been accounted for in practical OWL engineering: 
+The inability of OWL of expressing temporal contexts of the domain entities to be represented, produces ambiguous statements that may entail unintended reasoning consequences. 
 
 \subsection*{Use Cases and Competency Questions}
 
