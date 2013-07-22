@@ -200,7 +200,7 @@ sensitive = true
 \author{Alan Ruttenberg\correspondingauthor$^1$,%
   \email{Alan Ruttenberg\correspondingauthor - alan.ruttenberg@gmail.com}
   Janna Hastings$^{2,3}$,%
-  \email{Janna hastings - hastings@ebi.ac.uk}
+  \email{Janna Hastings - hastings@ebi.ac.uk}
   Niels Grewe$^{4}$,%
   \email{Niels Grewe - niels.grewe@uni-rostock.de}
   Fabian Neuhaus$^{5}$,%
@@ -289,33 +289,69 @@ In conclusion, we present our recommendations.
 
 % Introduction to this paper, what is the point, what is the scope, what are the limitations
 
-The Web Ontology Language (OWL), version 2 \cite{grau2008} is a popular ontology 
-development language which is supported by a wide range of tools
-such as editors and reasoners. OWL is based on Description Logics, a family of 
-knowledge representation formalisms designed to efficiently encode large-scale
-terminological knowledge \cite{baader2003dlhandbook}. 
-It is increasingly being adopted by large scale biomedical
+The Web Ontology Language (OWL), currently available as version 2 \cite{grau2008} is a popular ontology 
+development language which is supported by a wide range of tools 
+such as editors and reasoners. OWL is based on Description Logics (DL), a family of 
+knowledge representation formalisms designed to build
+% large-scale
+%terminological knowledge 
+large scale ontologies
+\cite{baader2007dlhandbook}, consisting of class and relation hierarchies, defining and 
+constraining axioms (TBox) on the one hand and, optionally, assertions about 
+individuals (ABox). There is a broad range of DL dialects all of which are 
+decidable subsets of first-order logics (FOL). 
+
+OWL, and particularly its language profile OWL-DL it is increasingly being adopted by large scale biomedical
 ontologies such as the Gene Ontology \cite{go2000} and ChEBI \cite{chebinar2013}. 
 
 NEEDS IMPROVEMENT
 
-A limitation of most DL-based languages, including OWL, is that it is only possible to 
-express binary relationships between individuals. However, in the biomedical domain,
-much of the knowledge that is represented in ontologies is linked to time in some fashion. 
+A limitation of most DL-based languages, including all OWL profiles, is that it is only possible to 
+express binary relationships between individuals. However, in 
+nearly all scintific domains
+% the biomedical domain,
+%much of the knowledge that is 
+numerous statements that are supposed to be expressed in 
+in ontologies are linked to time in some fashion. 
 For example, different developmental stages of an organism have different anatomical properties. 
-Representing this information accurately often requires the use of ternary relations (i.e. with an 
-additional parameter), not supported in OWL 2. 
+Material objects are located at different places at different times, 
+atoms constitute different molecules at different times. 
+
+Representing this information accurately often requires the use of ternary relations.  
+
 
 OWL 2 allows only binary relations between individuals, called
 \emph{object properties}. But while there has been work on expressive description
 logics that try to transcend this limitation (\cite{Calvanese:1997}) and also on description logics
-that explicitly account for temporality (e.g. \cite{Wolter:2001}) , there is no strong push
+that explicitly account for temporality (e.g. \cite{Wolter:2001}), there is no strong push
 towards standardisation of those formalisms, and tools suitable for end users
 are not readily available. It has thus been acknowledged that there is a need
 for solutions that work within the confines of present technologies
-(\cite{Welty:2006}).
-Time-indexed relationships have been introduced as instance-level relations into
-the OBO Relation ontology (\cite{OBO:RO}). 
+by (\cite{Welty:2006}), who juxtaposes a reification approach, in which ternary relations are 
+expressed as OWL classes to a four-dimensionalist approach, which allows continuants to have 
+temporal parts.
+
+Whereas OWL-DL object properties are limited to the level of individuals (which 
+requires the use of quantifiers in whatsoever class-level statement that includes
+object properties, there are other, graph-based approaches which encapsulate quantification
+and time reference into class-to-class relations. The most prominent one is 
+the OBO syntax (\cite{OBO:RO}), in which such relations are defined as follows:
+
+\begin{equation}
+\begin{split}
+\mclass{Rel}(\mclass{A},\mclass{B}) =_{def}&\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow
+\exists b:\;(\mrelt{inst}(\mclass{B},b,t) \wedge
+\mrelt{rel}(a,b,t))
+\end{split}
+\label{eq:obo}
+\end{equation}
+ 
+Most work on OBO Foundry ontologies has been commited to this definition, which provided 
+the intuitive class-to-class relations with a clear semantics rooted in FOL. 
+
+
 
 Our primary point of reference will be the BFO top-level ontology \cite{BFO2:Graz}. 
 In the current work on a new release of the Basic
