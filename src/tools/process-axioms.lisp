@@ -238,6 +238,7 @@
   (destructuring-bind (axiom . plist) form
     (let ((axiom-substituted (eval-bfo-uris axiom bfo2))
 	  (id (getf plist :id)))
+      (assert id (form) "Hey! you didn't assign an axiom id here: ~a" form)
       `((,(car axiom-substituted)
 	 (annotation ,!axiomid ,(make-uri nil (format nil "obo:bfo/axiom/~7,'0d" id)))
 	 ,@(if (getf plist :seealso)
