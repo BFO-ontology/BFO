@@ -50,8 +50,8 @@
 	  ((as axioms)
 	   (as (generate-inverse-annotations-duplicates bfo2 ont))
 	   )
-	(write-rdfxml bfo2-ont "bfo:src;ontology;owl-group;bfo1.owl")
-	(comment-obo-ids-in-owl-file "bfo:src;ontology;owl-group;bfo1.owl" "bfo:src;ontology;owl-group;bfo.owl")
+	(write-rdfxml bfo2-ont "bfo:src;ontology;owl-group;bfo-generated-1.owl")
+	(comment-obo-ids-in-owl-file "bfo:src;ontology;owl-group;bfo-generated-1.owl" "bfo:src;ontology;owl-group;bfo-generated-2.owl")
 	bfo2-ont
 	))))
 
