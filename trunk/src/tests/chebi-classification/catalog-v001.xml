@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://purl.obolibrary.org/obo/bfo/tests/chebi.owl" uri="chebi.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1368510182910" name="ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.owl" uri="chebi.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1368510182910" name="http://purl.obolibrary.org/obo/chebi-in-bfo.owl" uri="classify-chebi-bfo2.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1368510182910" name="shadowed:ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.owl" uri="as-submitted/chebi.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1368510182910" name="shadowed:http://purl.obolibrary.org/obo/chebi-in-bfo.owl" uri="as-submitted/chebi-in-bfo-broken.owl"/>
+    </group>
+</catalog>

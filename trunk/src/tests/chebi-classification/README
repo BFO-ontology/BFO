@@ -1,0 +1,5 @@
+This is CHEBI mapped to BFO2, initially reported to be a problem
+related to slow classification. The ontology had a number of errors
+leading to unsatisfiable classes. The repaired versions are
+here. Email to list with further details at 
+https://groups.google.com/d/msg/bfo-owl-devel/dPMytbT-r70/zO9adGwhy7wJ
