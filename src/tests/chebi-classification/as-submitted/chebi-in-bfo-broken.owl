@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY snap "http://www.ifomis.org/bfo/1.1/snap#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="&obo;chebi-in-bfo.owl#"
+     xml:base="&obo;chebi-in-bfo.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:snap="http://www.ifomis.org/bfo/1.1/snap#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi-in-bfo-broken.owl">
+        <dc:creator>The ChEBI team, email: chebi-help@ebi.ac.uk</dc:creator>
+        <rdfs:comment>Last edited by: Janna Hastings</rdfs:comment>
+        <rdfs:comment>Not to be used. This is just a test for Alan. </rdfs:comment>
+        <owl:imports rdf:resource="ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.owl"/>
+        <owl:imports rdf:resource="&obo;bfo.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo#has_part -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo#has_part">
+        <owl:equivalentProperty rdf:resource="&obo;BFO_0000110"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo#has_role -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo#has_role">
+        <owl:equivalentProperty rdf:resource="&obo;BFO_0000158"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000110 -->
+
+    <rdf:Description rdf:about="&obo;BFO_0000110"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000158 -->
+
+    <rdf:Description rdf:about="&obo;BFO_0000158"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_23367 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_23367">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000030"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_24431 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_24431">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_24432 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_24432">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000034"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_24433 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_24433">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000024"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_33232 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_33232">
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_50906"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_33250 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_33250">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_36342 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_36342">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_50906 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_50906">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000017"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_51086 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_51086">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CHEBI_59999 -->
+
+    <rdf:Description rdf:about="&obo;CHEBI_59999">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000030"/>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
