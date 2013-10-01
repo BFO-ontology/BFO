@@ -7,6 +7,7 @@
 %%It must be present to enable the BMC Submission system to 
 %%recognise this template!!
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                     %%
 %%  LaTeX template for BioMed Central  %%
@@ -63,7 +64,7 @@
 %\usepackage{varioref}
 %\hypersetup{colorlinks=true,urlcolor=black, linkcolor=black,
 %citecolor=black,pdftitle=Expressing time-dependent relations through temporal qualifications,pdfauthor=Niels Grewe et al,unicode=true}
-%\PrerenderUnicode{ï}
+%\PrerenderUnicode{Ã¯}
 \usepackage[babel]{csquotes}
 %\bibliographystyle{plainnat}
 \usepackage{pgf,tikz}
@@ -80,7 +81,7 @@
 \usepackage{enumerate}
 %
 %\MakeOuterQuote{"}
-%\MakeAutoQuote{„}{“}
+%\MakeAutoQuote{Â„}{Â“}
 %\usepackage{listings}
 
 %\firstpage{0}
@@ -410,7 +411,7 @@ OWL object properties are binary predicates between OWL individuals. They can op
 Well-formed class-level expression therefore 
 require quantifiers when including object properties, such as $\mathtt{owl:allValuesFrom}$ ($\mathtt{only}$) or $\mathtt{owl:allValuesFrom}$ ($\mathtt{only}$).
 
-%% „$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$“
+%% Â„$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$Â“
 
 For instance, the class expression $\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}$ contains all individual things
 that are part of at least one member of the class $\mclass{Cell}$ . 
@@ -422,7 +423,7 @@ means that every member of the class $\mclass{CellMembrane}$ is
 part of at least one member of the class $\mclass{Cell}$. 
 The big advantage of OWL ontologies is their formal rigor, 
 their well-studied computational behaviour, their rather 
-intuitive syntax (compared to FOL), the presence of editing tools like Protégé, 
+intuitive syntax (compared to FOL), the presence of editing tools like ProtÃ©gÃ©, 
 and their support by DL reasoners like HermiT and Fact++, which perform 
 reasoning tasks like consistency and satisfiability checking. 
 %, which 
@@ -583,26 +584,26 @@ relationship between continuants (SNAP objects) and occurrents (SPAN objects) th
 \todo{Should we keep SNAP and SPAN. Or better continuant and occurrents?}
 Specifically, BFO 2 make the assumption that for each material object there
 exists a special process, the \emph{history} of the object, which encompasses 
-„the totality of processes taking place in the spatiotemporal region occupied by
-the entity.“ (\cite{BFO2:ref}) This means that there is a one to one correspondence
+Â„the totality of processes taking place in the spatiotemporal region occupied by
+the entity.Â“ (\cite{BFO2:ref}) This means that there is a one to one correspondence
 between continuants 
 %(on the SNAP side) 
 and certain processes, which effectively
-provides a „bridge“ between the 3D and the 4D perspective. No complete formal theory
+provides a Â„bridgeÂ“ between the 3D and the 4D perspective. No complete formal theory
 of histories, which have previously been described in \cite{cornucopia}, is available as of yet.
 
-\subsection{Conventional Modellers’ Strategy for Temporalised Relations in OWL 2}
+\subsection{Conventional ModellersÂ’ Strategy for Temporalised Relations in OWL 2}
 
 
 As explicit semantics for modelling temporal dynamics are not available in OWL
 2, modellers tend to implicitly treat object properties as committing to a 
-„for all times“ interpretation in order to avoid obvious problems with the
+Â„for all timesÂ“ interpretation in order to avoid obvious problems with the
 entailed models. For instance, in an anatomy ontology like the FMA, the object
 property \mirel{hasPart} is transitive, and used in axioms such as
-„$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$“
-and „$\mclass{LobeOfLung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{BronchiopulmonarySegment}$“
+Â„$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$Â“
+and Â„$\mclass{LobeOfLung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{BronchiopulmonarySegment}$Â“
 
-If the underlying interpretation were „for some time“, transitivity of the
+If the underlying interpretation were Â„for some timeÂ“, transitivity of the
 binary \mirel{hasPart} could no longer be taken for granted, as two
 \mirel{hasPart} assertions to be chained could belong to two different SNAP
 ontologies.
@@ -618,7 +619,7 @@ generic relatedness default reading.
 
 Obviously, the interpretation must be equivalent to the OWL 2 direct semantics
 \cite{OWL2:direct} in as far as it preserves syntactical structure and inferences and does not
-lead to additional expressivity. But it has – to our knowledge – never been made
+lead to additional expressivity. But it has Â– to our knowledge Â– never been made
 explicit what this substitution might consist of.  This is even more significant
 as this does not constitute at all a side issue or an idiosyncrasy of biomedical
 ontologies. On the contrary, virtually all OWL ontologies contain axioms on
@@ -728,7 +729,7 @@ And while there is nothing to be gained by actually modifying OWL 2 to use this
 interpretation, it is very important that ontology engineers are aware of the
 implications of their modelling decisions with regard to relations that are
 sensitive to the issue of temporal strength. However, this approach
-still has the consequence that „\emph{temporary relatedness}“ cannot be
+still has the consequence that Â„\emph{temporary relatedness}Â“ cannot be
 expressed directly in an OWL 2 ontology, so we need to look for more involved
 solutions to the problem.
 
@@ -758,17 +759,17 @@ of dissemination in the ontology engineering community \cite{ODP:nary}, but they
 from unavoidable drawbacks. Most obviously, they are rather complex. This bears
 the risk of errors in the ontology engineering process and decreases reasoning
 efficiency \cite{Grewe:2010}. To address the complexity problem, it has been suggested to
-select reification classes based on what seems ontologically „fitting“ for the
+select reification classes based on what seems ontologically Â„fittingÂ“ for the
 domain of an ontology \cite{Fiadeiro:2010}.
 
 \subsection*{Welty/Fikes: Fluents}
 The prototypical approach for dealing with temporally changing information in
 OWL within a four-dimensionalist framework was provided by 
-\cite{Welty:2006}. And while they agree that the 4D  approach is „clearly 
-not something that immediately appeals to common sense“, they also claim
-that it „gives us another tool to use when solving a practical problem.“ To this
-end, they present an ontology that models fluents, i.e. „relations that hold
-within certain time interval but not in others.“ This works by considering all
+\cite{Welty:2006}. And while they agree that the 4D  approach is Â„clearly 
+not something that immediately appeals to common senseÂ“, they also claim
+that it Â„gives us another tool to use when solving a practical problem.Â“ To this
+end, they present an ontology that models fluents, i.e. Â„relations that hold
+within certain time interval but not in others.Â“ This works by considering all
 entities as four dimensional entities that have temporal parts (time slices),
 such that the material object property assertions hold (synchronously) between
 time slices. For example, temporary relatedness could be expressed as in
@@ -784,21 +785,21 @@ This is by far one of the most straightforward translations of the
 four-dimensionalist commitment, but it suffers from a certain verbosity. This
 increases even more if permanent relatedness is concerned. In this case, the
 above expression would have to be amended to include a
-„$\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{only}$“ clause to ensure that
+Â„$\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{only}$Â“ clause to ensure that
 all time slices of the entity are appropriately related to a time slice of the
 other entity.
 
 \subsection*{Zamborlini/Guizzardi: Moments, Relators and Qua-Individuals}
 The commitment that some relational expressions are in fact better accounted for
 as proper entities is also prominent in Zamborlini and Guizzardi treatment of 
-contingent properties \cite{Zamborlini:Guizzardi}. For them, certain „material
-relations“ only hold by virtue of a separate truthmaker, the so called
-\emph{relator}, which is formed by combining the „qua individuals“ that
+contingent properties \cite{Zamborlini:Guizzardi}. For them, certain Â„material
+relationsÂ“ only hold by virtue of a separate truthmaker, the so called
+\emph{relator}, which is formed by combining the Â„qua individualsÂ“ that
 partake in the relation. Qua individuals abstract away certain aspects of an
 individual so that only that information remains which is relevant for the
 individuals participation in the relation. 
 
-Both kinds of entities are examples of „moments“ in their
+Both kinds of entities are examples of Â„momentsÂ“ in their
 nomenclature, which are said to inhere in individual entities and can thus be
 compared to dependent continuants or occurrents (respectively) in BFO
 parlance. But while relators might often be appropriately represented by BFO
@@ -806,7 +807,7 @@ processes, the admissibility of qua individuals into BFO might be questionable
 since they can hardly be aligned with BFO's realist commitment (where sheer
 abstractions could only be regarded as artifacts of a persons though process). 
 
-Underneath the level of qua individuals (e.g. „$\mclass{LeafQuaPartOfTree}$“)
+Underneath the level of qua individuals (e.g. Â„$\mclass{LeafQuaPartOfTree}$Â“)
 and relators, there is the assumption of an ontology of time slices not unlike
 the one in \cite{Welty:2006}, such that
 temporal overlap between the qua individuals related by the relator can be
