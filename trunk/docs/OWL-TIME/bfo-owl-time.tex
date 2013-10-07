@@ -223,7 +223,7 @@ sensitive = true
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \address{%
     \iid(1)Institute for Health Informatics, State University of New York, Buffalo, NY, USA\\
-    \iid(2)Cheminformatics and Metabolism, European Bioinformatics Insitute (EMBL-EBI), Cambridge, UK\\
+    \iid(2)Cheminformatics and Metabolism, European Bioinformatics Institute (EMBL-EBI), Cambridge, UK\\
     \iid(3)Department of Philosophy, University of Geneva, Switzerland\\
     \iid(4)Institute of Philosophy, University of Rostock, Germany\\
     \iid(5)National Institute of Standards and Technology\\
@@ -317,7 +317,7 @@ The concluding section presents our recommendations for the community.
 \subsection*{BFO}
 
 Basic Formal Ontology (BFO) is an upper level ontology designed to serve as a foundation from which domain ontologies can be built \cite{BFO2:Graz}. 
-Use of a shared upper level ontology and shared relationships mitigates problems that arise when several ontologies are used together in a research pipeline. For example, the root structure of two ontologies might paritally overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similar sounding relationships without clarifying whether the relationships are intended to mean the same thing (e.g. $\mirel{partOf}$, $\mirel{includedIn}$,... ). They may further reimplement or redefine classes that are defined differently elsewhere.
+Use of a shared upper level ontology and shared relationships mitigates problems that arise when several ontologies are used together in a research pipeline. For example, the root structure of two ontologies might partially overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similar sounding relationships without clarifying whether the relationships are intended to mean the same thing (e.g. $\mirel{partOf}$, $\mirel{includedIn}$,... ). They may further re-implement or redefine classes that are defined differently elsewhere.
 
 BFO offers a small set of foundational classes together with definitions, and a set of relationships intended to be used in multiple ontologies. Both classes and relationships are domain-independent, albeit it is clearly stated that BFO's focus is on the representation of science. 
 Thus, domain-specific relationships such as $\mirel{isTautomerOf}$ (a chemical relationship used in ChEBI) or $\mirel{isAbout}$ (a relation in the information artifact ontology) are out of scope for BFO. 
@@ -398,7 +398,7 @@ the OBO syntax (\cite{OBO:RO}), in which such relations are defined as follows:
 \label{eq:obo}
 \end{equation}
  
-Most work on OBO Foundry ontologies has been commited to this definition, which provided 
+Most work on OBO Foundry ontologies has been committed to this definition, which provided 
 the intuitive class-to-class relations with a clear semantics rooted in FOL. 
 
 
@@ -423,7 +423,7 @@ means that every member of the class $\mclass{CellMembrane}$ is
 part of at least one member of the class $\mclass{Cell}$. 
 The big advantage of OWL ontologies is their formal rigor, 
 their well-studied computational behaviour, their rather 
-intuitive syntax (compared to FOL), the presence of editing tools like ProtÃ©gÃ©, 
+intuitive syntax (compared to FOL), the presence of editing tools like Protégé, 
 and their support by DL reasoners like HermiT and Fact++, which perform 
 reasoning tasks like consistency and satisfiability checking. 
 %, which 
@@ -434,33 +434,33 @@ reasoning tasks like consistency and satisfiability checking.
 \subsection*{The representation of time in DL axioms}
 
 In comparison to the OBO axiom 
-%
+
 \begin{equation}
 \begin{split}
 \mclass{CellMembrane}\;\mirel{partOf}\;\mclass{Cell}
 \end{split}
 \label{eq:cellobo}
 \end{equation}  
-%
+
 to which the   
 OWL axiom
-%
+
 \begin{equation}
 \begin{split}
 \mclass{CellMembrane}\;\mathtt{subClassOf}\;\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}
 \end{split}
 \label{eq:celldl}
 \end{equation}  
-% 
+
 is commonly considered equivalent to, the latter is 
 undefined with regard to time. This is not a side aspect, because it makes a 
 difference whether, e.g., a cell membrane is always part of some cell or 
 only at some time. 
-The temporal indefinition of OWL statements is especially insatisfactory 
+The lack of temporal definition of OWL statements is especially insatisfactory 
 when it comes to transitive properties like $\mirel{partOf}$ or $\mirel{locatedIn}$, 
 where the suppression of the temporal factor can produce plainly wrong entailments, 
 especially at the level of individuals like in the following example: 
-%
+
 \begin{equation}
 \begin{split}
 \mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Heart\#431234})  \\
@@ -468,18 +468,18 @@ especially at the level of individuals like in the following example:
 \end{split}
 \label{eq:trans}
 \end{equation}
-%
+
 Assuming that the thrombus was no longer in the heart when it was transplanted to Patient\#115678, then the entailment
-%
+
 \begin{equation}
 \begin{split}
 \mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Patient\#115678} 
 \end{split}
 \label{eq:transEntailment}
 \end{equation}
-%
+
 which follows from the transitivity property of the relation $\mirel{locatedIn}$ is obviously wrong. 
-What follows from this is far-reaching, althought it has rarely ever been accounted for in practical OWL engineering: 
+What follows from this is far-reaching, although it has rarely ever been accounted for in practical OWL engineering: 
 The inability of OWL of expressing temporal contexts of the domain 
 entities to be represented, produces ambiguous statements that may entail unintended reasoning consequences. 
 
@@ -534,7 +534,6 @@ always the same bacteria.
 \end{split}
 \label{eq:generically:cls}
 \end{equation}
-
 
 
 \subsubsection{Permanent Specific Relatedness (PSR)}
@@ -642,7 +641,7 @@ On the default reinterpretation of the OWL direct semantics to preserve the RO
 generic relatedness default reading. 
 
 Obviously, the interpretation must be equivalent to the OWL 2 direct semantics
-\cite{OWL2:direct} in as far as it preserves syntactical structure and inferences and does not
+\cite{OWL2:direct} in as far as it preserves the syntactical structure and inferences and does not
 lead to additional expressivity. But it has – to our knowledge – never been made
 explicit what this substitution might consist of.  This is even more significant
 as this does not constitute at all a side issue or an idiosyncrasy of biomedical
@@ -658,7 +657,7 @@ additional time index $t$ which specifies that the entity in question exists
 (object property holds) at $t$. Class instances then become pairs and object
 property instances triples. In order to keep the surface grammar and overall
 semantics intact, the interpretations of all OWL axioms will be prepended with a
-conditionalized universal quantification over $t$  hat specifies that the axiom
+conditionalised universal quantification over $t$  hat specifies that the axiom
 should hold at all times that the entity in question exists.  Time instants are
 hereby external to the domain. For example, the interpretation of a class
 assertion axiom that asserts that $a$ is an instance of class \mclass{C}, as long
@@ -829,7 +828,7 @@ compared to dependent continuants or occurrents (respectively) in BFO
 parlance. But while relators might often be appropriately represented by BFO
 processes, the admissibility of qua individuals into BFO might be questionable
 since they can hardly be aligned with BFO's realist commitment (where sheer
-abstractions could only be regarded as artifacts of a persons though process). 
+abstractions could only be regarded as artefacts of a persons though process). 
 
 Underneath the level of qua individuals (e.g. „$\mclass{LeafQuaPartOfTree}$“)
 and relators, there is the assumption of an ontology of time slices not unlike
@@ -883,42 +882,44 @@ would ensure that duplicate entities would be coalesced in the model.
 
 \subsection*{Temporalized Relations}
 
-In which we describe Alan's approach and the BFO 2 Graz release in quite some detail and thereafter evaluate it. 
 
-Of the three patterns \emph{temporary relatedness} (TR), \emph{permanent generic relatedness} (PGR), and \emph{permanent specific relatedness} (PSR), TR and PSR have in common that they can bea asserted between individuals: a token $a$ can be temporarily related to a token $b$, such as a specific leaf is temporarily part of a specific plant, or a specific human, e.g. Barack Obama, is temporarily located at a specific place, e.g. in his plane Air Force One. 
+\todo{This section describes describe Alan's approach and the BFO 2 Graz release}
+ 
+
+Of the three patterns \emph{temporary relatedness} (TR), \emph{permanent generic relatedness} (PGR), and \emph{permanent specific relatedness} (PSR), TR and PSR have in common that they can be asserted between individuals: a token $a$ can be temporarily related to a token $b$, such as a specific leaf is temporarily part of a specific plant, or a specific human, e.g. Barack Obama, is temporarily located at a specific place, e.g. in his plane Air Force One. 
 
 In a similar way, two individuals can be permanently related, such as, e.g., my body mass is permanently inherent in my body, or the planet Earth is permanently part of our solar system.
 
 This allows, in both cases to hide the time argument within a so-called temporalized relation. 
 The TR pattern is introduced as follows:  
-%
+
 \begin{equation}
 \begin{split}
 \mrelb{rel\_at\_some\_time} (a,b) =_{def}&\; \exists t: \mrelt{rel}(a,b,t)  
 \end{split}
 \label{eq:temporarily:ind}
 \end{equation}
-%
+
 This relation can be used in description logics axioms like the a-box axiom
-%
+
 \begin{equation}
 \begin{split}
 \mrelb{locatedIn\_at\_some\_time} \;(\mathrm{Obama}, \mathrm{Air\_Force\_One})  
 \end{split}
 \label{eq:personlocated}
 \end{equation}
-%
+
 or in the t-box axiom
-% 
+
 \begin{equation}
 \begin{split}
 \mclass{Leaf}\;\mathtt{subClassOf}\;\mrelb{partOf\_at\_some\_time}\;\mathtt{some}\;\mclass{Plant} 
 \end{split}
-\label{eq:trtbox}
+\label{eq:Leaf}
 \end{equation}    
-%
+
 The PSR pattern is introduced as follows:  
-%
+
 \begin{equation}
 \begin{split}
 \mrelb{rel\_at\_all\_times} (a,b) =_{def}&\; 
@@ -926,14 +927,14 @@ The PSR pattern is introduced as follows:
 \end{split}
 \label{eq:permanently:ind}
 \end{equation}
-%
+
 This relation can be used in description logics axioms like the a-box axiom
-%
+
 \begin{equation}
 \begin{split}
 \mrelb{locatedIn\_at\_all\_times} \;(\mathrm{Earth}, \mathrm{Solar\_System})  
 \end{split}
-\label{eq:personlocated}
+\label{eq:earth}
 \end{equation}
 %
 or in the t-box axiom
@@ -942,37 +943,37 @@ or in the t-box axiom
 \begin{split}
 \mclass{Vertebrate}\;\mathtt{subClassOf}\;\mrelb{hasPart\_at\_some\_time}\;\mathtt{some}\;\mclass{Spine} 
 \end{split}
-\label{eq:trtbox}
+\label{eq:Spine}
 \end{equation}    
-%
+
 There are several properties that have to be considered for the practical use of temporalized relations. In case a ternary relation is transitive, e.g.  
-% 
+
 \begin{equation}
 \begin{split}
 \mrelt{rel}(a,b,t) \; \wedge \; \mrelt{rel}(b,c,t) \rightarrow \; \mrelt{rel}(a,c,t)   
 \end{split}
 \label{eq:trtrans}
 \end{equation}    
-%
+
 the derived binary TR relation is not, because the implied time argument (cf. \ref{eq:temporarily:ind}) is not the same for the conjoints in a transitive chain. If Obama is in Air Force One at some time, and Air Force One is in Oklahoma City Air Logistics Center at some time this does not imply that Obama was that Center t any time. 
 There is no problem with inverse TR relations, yet.   
-% 
+ 
 \begin{equation}
 \begin{split}
 \mrelt{rel}(a,b,t) \; = \; \mrelt{inv\_rel}(b,a,t)  
 \end{split}
 \label{eq:trinv}
 \end{equation}    
-%
+
 trivially entails
-% 
+
 \begin{equation}
 \begin{split}
 \mrelb{rel}(a,b) \; = \; \mrelb{inv\_rel}(b,a)  
 \end{split}
-\label{eq:trinv}
+\label{eq:trinv2}
 \end{equation}    
-%
+
 If Obama is contained in Air Force One at some time, them Air Force One is the container of Obama at some time. 
 
 It is quite different with PSR. Here, it can be shown that transitivity is maintained: As the relation holds, according to formula \ref{eq:permanently:ind} for all times in which the first argument exists, this is also the case for the second argument which becomes the first one in a transitivity chain. 
@@ -983,69 +984,69 @@ This means that the inverse of $\mrelb{hasPart\_at\_some\_time}$ is not $\mrelb{
 
 We have not considered, so far the PGR case. Not that this has been introduced as the standard interpretation of class-to-class relations in OBO, which means that it has influenced the development of biomedical ontologies over nearly a decade. On a closer scrutiny there is some evidence that many instance of OBO relation assertions would rather correspond to TR, such as in the foundational model of anatomy under real-world conditions: every human brain was part of some human organism, but after the death of the organism it may still have a limited existence. Every human may have had teeth, but toothless humans are still humans. In other cases PGR may be interpreted as PSR, especially in the case of dependent continuants: the redness of a red blood cell always inheres in it. Or the surface of my body cannot jump to a different body. Nevertheless there are enough cases in which PGR is the only acceptable interpretation, especially if we consider PSR as a specialization of PGR. 
 
-A major drawback here is the fact that PGR cannot be expressed by a relation between indivdual entities. For instance, the statement ``every cell nucleus is part of some cell at any time" does not mean that a certain cell nucleus part of a certain cell. It can becom part of a different cell if the original cell fuses with another one and becomes a different individual. It is therefore counterintuitive to assert PGR at the level of individuals. Therefore, the OBO ``standard case'' cannot be expressed via temproalized relations. 
+A major drawback here is the fact that PGR cannot be expressed by a relation between individual entities. For instance, the statement ``every cell nucleus is part of some cell at any time" does not mean that a certain cell nucleus part of a certain cell. It may become part of a different cell if the original cell fuses with another one and thus becomes a different individual. It is therefore counterintuitive to assert PGR at the level of individuals. Therefore, the OBO ``standard case'' cannot be expressed via temporalized relations. 
 
 Yet there is a way to use temporalized relations to represent at least an important portion of the knowledge for which PGR would be the most correct one. 
 
-The reasoning is the following: If we want to express that the classes $A$ and $B$ are related by a permanent generic relationship, such as $A$ $\mclass{obo:hasPart}$ $B$, we may resort to \emph{histories}, which are occurrents and can therefore be related by binary relations. Histories can be related by inclusion relations, such as the history of a cell is part of the history of an organism, as long as the cell came into and wnet out of being in the same organism. 
+The reasoning is the following: If we want to express that the classes $A$ and $B$ are related by a permanent generic relationship, such as $A$ $\mclass{obo:hasPart}$ $B$, we may resort to \emph{histories}, which are occurrents and can therefore be related by binary relations. A history of a continuant $c$ corresponds to four-dimentional spacetime ``worm'' with a temporal extension that equals the timespan $t$ during which $c$ exists and a threedimensional spatial extention indexed by each point $t_i \in t$.
 
-If we want to express that all instance of the class $A$ are always located in some instance of the class $B$ we can express it, in OWL in the following way:
-%
+
+Histories can be related by occurrent parthood relations, such as every phase (temporal part) of the history of a cell nucleus is part of the history of some cell (not necessarily of the same cell).  
+
+
+If we want to express that all instances of the class $A$ are always located in some instance of the class $B$ we can express it, in OWL in the following way:
+
+
 \begin{equation}
 \begin{split}
-(\mirel{historyOf}\;\mathtt{some}\;\mclass{A}) \;\mathtt{subClassOf}\;\mirel{partOf}\;\mathtt{some}\; 
-(\mirel{historyOf}\;\mathtt{some}\;\mclass{B})
+\mirel{temporalPartOf}\;\mathtt{some}\;(\mirel{historyOf}\;\mathtt{some}\;\mclass{A}) \;\mathtt{subClassOf}\ \; \; \\
+\; \; \mirel{occurrentPartOf}\;\mathtt{some}\;(\mirel{temporalPartOf}\;\mathtt{some}\; 
+\;(\mirel{historyOf}\;\mathtt{some}\;\mclass{B}))
 \end{split}
-\label{eq:historydl}
+\label{eq:history:PartOf}
 \end{equation}    
-%
-However, the inclusion of two histories does not allow a distinction between location and parthood \cite{Jansen&Schulz Mereology}, so that the relation between a pregnant organism and an embryo or fetus would not be distinguished between the relation between an organism and its brain.
+
+In a similar way, the converse case can be expressed:
+
+\begin{equation}
+\begin{split}
+\mirel{temporalPartOf}\;\mathtt{some}\;(\mirel{historyOf}\;\mathtt{some}\;\mclass{C}) \;\mathtt{subClassOf}\ \; \; \\
+\; \; \mirel{hasOccurrentPart}\;\mathtt{some}\;(\mirel{temporalPartOf}\;\mathtt{some}\; 
+(\mirel{historyOf}\;\mathtt{some}\;\mclass{D}))
+\end{split}
+\label{eq:history:hasPart}
+\end{equation}    
+
+In the case of cell nuclei and cells their generic parthood could be formalized as follows: 
+
+\begin{equation}
+\begin{split}
+\mirel{temporalPartOf}\;\mathtt{some}\;(\mirel{historyOf}\;\mathtt{some}\;\mclass{CellNucleus}) \;\mathtt{subClassOf}\ \; \; \\
+\; \; \mirel{occurrentPartOf}\;\mathtt{some}\;(\mirel{temporalPartOf}\;\mathtt{some}\; 
+\;(\mirel{historyOf}\;\mathtt{some}\;\mclass{Cell}))
+\end{split}
+\label{eq:historyCell}
+\end{equation}    
+
+Transitivity would be maintained, e.g. every nucleolus is part of some cell because every nucleulus is part of some cell nucleolus  
+
+\begin{equation}
+\begin{split}
+\mirel{temporalPartOf}\;\mathtt{some}\;(\mirel{historyOf}\;\mathtt{some}\;\mclass{Nucleous}) \;\mathtt{subClassOf}\ \; \; \\
+\; \; \mirel{occurrentPartOf}\;\mathtt{some}\;(\mirel{temporalPartOf}\;\mathtt{some}\; 
+\;(\mirel{historyOf}\;\mathtt{some}\;\mclass{CellNucleus}))
+\end{split}
+\label{eq:historyCellNucleus}
+\end{equation}    
+
+as it can be trivially shown. 
 
 
-\todo{This section should be revised by Alan}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+However, the inclusion of history phases does not allow a distinction between location and parthood \cite{Jansen&Schulz Mereology}, so that the relation between a pregnant organism and an embryo or foetus would not be distinguished between the relation between an organism and its brain.
 
 
 
-
-
-
-
+\todo{This section should be revised by Alan. Especially the follwing issues should be discussed: (i) PGR for continuant - continuant relations which are not mereological, such as inherence, concretization, (ii) application to participants}
 
 
 \subsection*{Temporally Qualified Continuants}
