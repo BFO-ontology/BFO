@@ -105,7 +105,7 @@
 %  ordered pairs:
 \newcommand{\pair}[2]{\ensuremath{\langle #1,#2\rangle}}
 % TQCs:
-\newcommand{\TQC}[1]{\ensuremath{TQC_{\mclass{#1}}}}
+\newcommand{\TQC}[1]{\ensuremath{\mclass{#1}^{TQ}}}
 % temporary relatedness
 \newcommand{\mreltemp}[1]{\mrel{#1}{{Temp}}}
 \newcommand{\mrelpg}[1]{\mrel{#1}{{PG}}}
@@ -199,23 +199,24 @@ sensitive = true
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author{Alan Ruttenberg\correspondingauthor$^1$,%
-  \email{Alan Ruttenberg\correspondingauthor - alan.ruttenberg@gmail.com}
-  Janna Hastings$^{2,3}$,%
-  \email{Janna Hastings - hastings@ebi.ac.uk}
+\author{Alan Ruttenberg$^{1}$,%
+  \email{Alan Ruttenberg - alan.ruttenberg@gmail.com}
+  Janna Hastings\correspondingauthor$^{2,3}$,%
+  \email{Janna Hastings\correspondingauthor  - hastings@ebi.ac.uk}
   Niels Grewe$^{4}$,%
   \email{Niels Grewe - niels.grewe@uni-rostock.de}
   Fabian Neuhaus$^{5}$,%
   \email{Fabian Neuhaus - fabian.neuhaus@nist.gov}
   Chris Mungall$^{6}$,%
-  \email{Chris Mungall - cjmungall@lbl.gov} \\
+  \email{Chris Mungall - cjmungall@lbl.gov} \\  
+  Barry Smith$^{1}$,%
+  \email{Barry Smith - phismith@buffalo.edu} \\
   Ludger Jansen$^{4}$%
   \email{Ludger Jansen - ludger.jansen@uni-rostock.de} and
   Stefan Schulz$^{7,8}$%
   \email{Stefan Schulz - stefan.schulz@medunigraz.at}
 }
-   
-
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% Enter the authors' addresses here        %%
@@ -238,6 +239,8 @@ Statistics and Documentation, Medical University of Graz, Austria\\
 
 
 \begin{abstract}
+
+\todo{Rewrite abstract at the end}
 \textbf{Background:}
 OWL is a popular ontology development language which is supported by a wide range of tools
 such as editors and reasoners. It is increasingly being adopted by large scale biomedical
@@ -291,9 +294,9 @@ In conclusion, we present our recommendations.
 
 % Introduction to this paper, what is the point, what is the scope, what are the limitations
 
-This paper addresses an ontological puzzle that has arisen in the Open Biomedical Ontologies (OBO) community and in the current BFO 2 redesign project. However, it seems to be of general interest, as it addresses a weakness of all ontologies that use the popular Semantic Web Ontology language family OWL and propose an upper-level distinction between entities that are always there in their entirerty (continuants) and those which are composed of temporal parts (occurrents). 
+This paper addresses an ontological puzzle that has arisen in the Open Biomedical Ontologies (OBO) Foundry community and in the current BFO 2 redesign project (CITE). However, these issues seem to be of general interest, as they addresse a weakness of a large number of ontologies that use the popular Semantic Web Ontology language family OWL and propose an upper-level distinction between entities that are always there in their entirerty (continuants) and those which are composed of temporal parts (occurrents). 
 
-But not only do entities need to be differentiated based on their temporal mode of existence, temporal aspects also have to be taken into account when specifying the relationships between those entities. One particular problem arises when the topic domain in question includes not only static, but also dynamic aspects of reality. This is the case for most of the life sciences, where continuants not only persist, but also continuously change over time. The shape and the constitution of biological organisms are in continuous
+But not only do entities need to be differentiated based on their temporal mode of existence, temporal aspects also have to be taken into account when specifying the relationships between those entities. A particular problem arises when the topic domain in question includes not only static, but also dynamic aspects of reality. This is the case for most of the life sciences, where continuants like organisms, shapes, disorders not only persist, but also continuously change over time. The shape and the constitution of biological organisms are in continuous
 flux. They continuously gain and lose parts, qualities, and dispositions. Consequently, any relational expression which makes reference to a particular continuant can have different truth values at different times and would therefore be ambiguous if time were not made explicit in the statement.
 
 
@@ -325,15 +328,15 @@ The concluding section presents our recommendations for the community.
 
 Basic Formal Ontology (BFO) is an upper level ontology designed to serve as a foundation from which domain ontologies can be built \cite{BFO2:Graz}.The use of shared upper level classes and relationships mitigates problems that arise when several domain ontologies are used together.
 %in a research pipeline. 
-For example, the root structure of two ontologies might partially overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similar sounding relationships without clarifying whether the relationships are intended to mean the same thing (e.g. $\mirel{partOf}$, $\mirel{includedIn}$,... ). They may further re-implement or redefine classes that are defined differently elsewhere.
+For example, the root structure of two ontologies might partially overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similarly named relationships without clarifying whether the relationships are intended to mean the same thing (e.g. $\mirel{partOf}$, $\mirel{includedIn}$,... ). They may further re-implement or redefine classes that are defined differently elsewhere.
 
-BFO offers a small set of foundational classes together with descriptive axioms, most of which make use of a set of foundational relationships intended to be used in multiple ontologies. Both classes and relationships are domain-independent, albeit it is clearly stated that BFO's focus is on the representation of natural and applied sciences, with biology and medicine as their most important representatives.  
-Thus, domain-specific relationships such as $\mirel{isTautomerOf}$ (a chemical relationship used in ChEBI) or $\mirel{isAbout}$ (a relation in the information artifact ontology) are out of scope for BFO itself, but in the scope of domain ontologies below BFO, according to the OBO Foundry criteria (CITE).  
+BFO offers a small set of foundational classes, together with descriptive axioms, most of which make use of a set of foundational relationships intended to be used in multiple ontologies. Both classes and relationships are domain-independent, albeit it is clearly stated that BFO's focus is on the representation of natural and applied sciences, with biology and medicine as their most important representatives.  
+Thus, domain-specific relationships such as $\mirel{isTautomerOf}$ (a chemical relationship used in ChEBI) or $\mirel{isAbout}$ (a relation in the information artifact ontology) are out of scope for BFO itself, but they should be covered by domain ontologies below BFO, according to the OBO Foundry criteria (CITE).  
 
-BFO subscribes to three-dimensionalism and therefore the uppermost partition in its class hierarchy reflects temporal mode of existence: between \textit{continuant}, an entity that (1) exists in full at any time that it exists at all, and (2) continues to exist self-identically for as long as it exists; and \textit{occurrent}, an entity that unfolds over a period of time and thus has temporal parts. For example, you are a continuant, while your life is an occurrent.  A cell is a continuant, while the process of cell division is an occurrent.  
+BFO subscribes to three-dimensionalism. As a consequence, the uppermost partition in its class hierarchy reflects temporal mode of existence: \textit{continuants} are entities that (1) exist in full at any time that they exists at all, and (2) continue to exist self-identically for as long as they exist; \textit{occurrents} are entities that unfold over a period of time and thus have temporal parts. For example, you are a continuant, while your life is an occurrent.  A cell is a continuant, while the process of cell division is an occurrent.  
 
 % TYPES AND INSTANCES
-BFO is, primarily, seen as an ontology of types (universals), based on which an isomorphic structure of classes can be derived. E.g., the extension of the type \emph{Material Object} is the isonomic class, all members of which are instances of this type. The realms of classes and individuals (or types and their instances) are strictly disjoint: no individual can be instantiated, and no class can be be member another class. 
+BFO is, primarily, seen as an ontology of types (universals), based on which an isomorphic structure of classes can be derived. E.g., the extension of the type \emph{Material Object} is the isonomic class all members of which are instances of this type. The realms of classes and individuals (or types and their instances) are strictly disjoint: no individual can be instantiated, and no class can be be member another class. 
 Table~1 gives a selection of core BFO classes and their definitions.
 
 BFO offers an extensive set of relations, including $\mirel{partOf}$, $\mirel{participatesIn}$, and $\mirel{inheresIn}$. 
@@ -341,45 +344,50 @@ Table~2 details these and others together with their definitions. Most of these 
 
 \subsection*{Web Ontology Language (OWL)}
 
-The Web Ontology Language (OWL), currently available as versions 1 and 2 \cite{grau2008} is a ontology development language which is supported by a wide range of tools such as editors and reasoners. Based on Description Logics (DL), a family of 
+The Web Ontology Language (OWL), currently available as versions 1 and 2 \cite{grau2008} is an ontology development language which is supported by a wide range of tools such as editors and reasoners. Based on Description Logics (DL), a family of 
 %knowledge 
 representation formalisms designed to build
 % large-scale
 %terminological knowledge 
 large scale ontologies
-\cite{baader2007dlhandbook}, OWL has been standardized and popularized by the Semantic Web Community. OWL arranges classes and relations in single or multiples hierarchies, defines constraining axioms on classes (TBox) on the one hand and, optionally, assertions about 
+\cite{baader2007dlhandbook}, OWL has been standardized and popularized by the Semantic Web Community. OWL arranges classes and relations in single or multiples hierarchies, defines constraining axioms on classes (TBox) and, optionally, assertions about 
 individuals (ABox). There is a broad range of DL dialects all of which are 
 decidable subsets of first-order logics (FOL). 
 Among the several dialects of OWL, its description logics profile 
 %OWL, and particularly its language profile 
 OWL-DL is increasingly being adopted by large scale biomedical
-ontologies such as the Gene Ontology \cite{go2000} and ChEBI \cite{chebinar2013}. Although OWL DL had been introduced as a member of the OWL 1 family, its syntax and semantics is covered by the specification of OWL 2, as every OWL DL ontology is also an OWL 2 ontology \cite{OWL2:direct}. For the remainder of this paper we will refer to OWL DL and the Direct Semantics, specified by the W3C \cite{OWL2:direct}.  
+ontologies such as the Gene Ontology \cite{go2000} and ChEBI \cite{chebinar2013}. Although OWL DL had been introduced as a member of the OWL 1 family, its syntax and semantics is covered by the specification of OWL 2, as every OWL DL ontology is also an OWL 2 ontology \cite{OWL2:direct}. For the remainder of this paper we will refer to OWL DL and the OWL 2 Direct Semantics, specified by the W3C \cite{OWL2:direct}.  
 
-NEEDS IMPROVEMENT
+\todo{NEEDS IMPROVEMENT}
 
 A limitation of most DL-based languages, including all OWL profiles, is the restriction of relational expressions to binary relationships (object properties). However, in nearly all scientific domains
 % the biomedical domain,
 %much of the knowledge that is 
-numerous statements that are supposed to be expressed in ontologies are linked to time in some fashion. For example, different developmental stages of an organism have different anatomical properties. 
+numerous statements that are supposed to be expressed in ontologies are linked to time.
+% in some fashion. 
+For example, different developmental stages of an organism have different anatomical properties. 
 Material objects are located at different places at different times, 
 atoms constitute different molecules at different times. 
-Representing this information accurately requires the use of ternary relations.  
+Representing this information accurately requires the use of ternary relations, with time as their third argument.  
 
 %
 %OWL 2 allows only binary relations, called
 %\emph{object properties}. 
 
-But while there has been work on expressive description logics that try to transcend this limitation (\cite{Calvanese:1997}) and also on description logics
-that explicitly account for temporality (e.g. \cite{Wolter:2001}), there is no strong push towards standardisation of those formalisms, and tools suitable for end users are not readily available. It has thus been acknowledged that there is a need for solutions that work within the confines of present technologies
-by \cite{Welty:2006}, who juxtaposes a reification approach, in which ternary relations are expressed as OWL classes to a four-dimensionalist approach, which allows continuants to have temporal parts.
+But while there has been work on expressive description logics that try to transcend this limitation \cite{Calvanese:1997} and also on description logics
+that explicitly account for temporality (e.g. \cite{Wolter:2001}), there is no strong push towards standardisation of those formalisms, and tools suitable for end users are not readily available. 
+%It has thus been acknowledged that there is a need for solutions 
+%that work within the confines of present technologies
+%by \cite{Welty:2006}, who juxtaposes a reification approach, 
+%in which ternary relations are expressed as OWL classes to a four-dimensionalist approach, which allows continuants to have temporal parts.
+Several attempts to tackle this problem within the confines of present technologies will be discussed in the next section. 
 
-In addition, OWL-DL object properties are limited to the level of individuals..
+In addition, OWL-DL object properties are limited to the level of individuals, in contrast to
 % (which 
 % requires the use of quantifiers in whatsoever class-level statement that includes
 % object properties). 
-This is not the case with other, graph-based formalisms 
-which encapsulate quantification
-and time reference into class-to-class relations. A concise set of such relations has been suggested as the OBO Relation Ontology (\cite{OBO:RO}), in which they are grounded in FOL as follows:
+other, graph-based formalisms, which encapsulate quantification
+and time reference into class-to-class relations. A concise set of such relations has been suggested as the OBO Relation Ontology \cite{OBO:RO}, in which they are grounded in FOL as follows:
 
 \begin{equation}
 \begin{split}
@@ -399,15 +407,14 @@ Most work on OBO Foundry ontologies has been at least intuitively committed to t
 are the extensions of BFO types or correspond to logical expressions formed by the extensions of BFO types, so-called defined classes)
 Individuals (the concrete entities that instantiate BFO types and / or are members of BFO classes). }
  
-
-The semantics of OWL follows the principles of set theory. 
+The semantics of OWL 2 (which also covers OWL-DL)) follows the principles of set theory. 
 OWL object properties are binary predicates between OWL individuals. They can optionally be connected by so-called property chains. 
 Well-formed class-level expression therefore require quantifiers when including object properties, such as $\mathtt{owl:allValuesFrom}$ ($\mathtt{only}$) or $\mathtt{owl:allValuesFrom}$ ($\mathtt{only}$).
 
 %% „$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$''
 
 For instance, the class expression $\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}$ contains all individual things
-that are part of at least one member of the class $\mclass{Cell}$ . 
+that are, necessarily, part of at least one member of the class $\mclass{Cell}$ . 
 Main constructors of OWL ontologies are $\mathtt{rdfs:subClassOf}$ (class subsumption), 
 $\mathtt{owl:equivalentClass}$ (class equivalence), 
 and $\mathtt{rdf:Type}$  (class membership) statements. 
@@ -420,40 +427,38 @@ intuitive syntax (compared to FOL), the presence of editing tools like Prot\'eg\
 and their support by DL reasoners like HermiT and Fact++, which perform 
 reasoning tasks like consistency and satisfiability checking. 
 %, which 
-%will be used in the evaluation. 
-%, instantiation, subclasses, object properties, quantification
-% How relationships between classes are actually interpreted as relationships between individuals
+%  will be used in the evaluation. 
+%  instantiation, subclasses, object properties, quantification
+%  How relationships between classes are actually interpreted as relationships between individuals
 
 \subsection*{The representation of time in DL axioms}
 
-In comparison to the OBO axiom 
-
+Both the OBO axiom 
+%
 \begin{equation}
 \begin{split}
 \mclass{CellMembrane}\;\mirel{partOf}\;\mclass{Cell}
 \end{split}
 \label{eq:cellobo}
 \end{equation}  
-
-to which the   
-OWL axiom
-
+%
+and the equivalent OWL axiom
+%
 \begin{equation}
 \begin{split}
 \mclass{CellMembrane}\;\mathtt{subClassOf}\;\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}
 \end{split}
 \label{eq:celldl}
 \end{equation}  
-
-is commonly considered equivalent to, the latter is 
-undefined with regard to time. This is not a side aspect, because it makes a 
-difference whether, e.g., a cell membrane is always part of some cell or 
-only at some time. 
+%
+are undefined with regard to time. This is not a side aspect, because it makes a 
+difference whether, e.g., a cell membrane is \emph{always} part of some cell or 
+only \emph{at some time}. 
 The lack of temporal definition of OWL statements is especially insatisfactory 
 when it comes to transitive properties like $\mirel{partOf}$ or $\mirel{locatedIn}$, 
 where the suppression of the temporal factor can produce plainly wrong entailments, 
 especially at the level of individuals like in the following example: 
-
+%
 \begin{equation}
 \begin{split}
 \mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Heart\#431234})  \\
@@ -461,16 +466,16 @@ especially at the level of individuals like in the following example:
 \end{split}
 \label{eq:trans}
 \end{equation}
-
+%
 Assuming that the thrombus was no longer in the heart when it was transplanted to Patient\#115678, then the entailment
-
+%
 \begin{equation}
 \begin{split}
 \mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Patient\#115678} 
 \end{split}
 \label{eq:transEntailment}
 \end{equation}
-
+%
 which follows from the transitivity property of the relation $\mirel{locatedIn}$ is obviously wrong. 
 What follows from this is far-reaching, although it has rarely ever been accounted for in practical OWL engineering: 
 The inability of OWL of expressing temporal contexts of the domain 
@@ -572,6 +577,37 @@ The details of how we conducted the evaluation are described in our Methods sect
 
 
 \todo[inline, size=\small]{Possible competency questions: (i) phased sortals, (ii) changing location at individual level (iii) TBox queries on anatomical objects (iv) TBox queries in which other than mereological relations occur (e.g. inherence, participation)}
+
+The following use cases (UC) and competency questions (CQ) will be used for a comparison of the two representational approaches we are proposing 
+
+\begin{itemize} 
+\item UC1: Every butterfly was a caterpillar at some time (TBox, phased sortal)
+\item UC2: Every electronic health record is on some computer storage at some time (TBox, permanent generic, dependent continuant)
+\item UC3: Every red blood cell has some hemoglobin molecule; every hemoglobin molecule has some Fe++ ion (TBox, collectives, transitivity)
+\item UC4: Every tooth is part of an organism at some time. Every portion of enamel is part of some tooth of some time. (TBox, temporary part)
+\item UC5: Every human tooth is located in some human organism at some time. Every human organism is located in some uterus at some time (TBox, temporary location)
+\item UC6: The blood specimen #bs4309123 was part of the blood of the patient #pat449154 (individual parthood, phased sortal (specimen))
+\item UC7: On Oct 10, 2013 a lab sample was at lab 1 between 6:01 and 7:37 UTC, then it was sent to lab 2 where it remained from 9:41 and 12:15 UTC (ABox individual location)
+\item UC8: Tibbles has a tail all time he exists and it is always the same tail.
+\item UC9: Chris' disjointness of parts 
+\end{itemize}
+
+The following competency questions are using the use cases above. They are formulated in a way that the should provoke contradictions in the ontology. 
+
+\begin{itemize} 
+\item CQ1: (using UC1): A butterfly that is a caterpillar  
+\item CQ2: (using UC2): An electronic health record that is not in any storage   
+\item CQ3: (using UC3): An red blood cell without Fe++;  
+\item CQ4: (using UC4): A portion of enamel that have never been part of any organism 
+\item CQ5: (using UC5): Every human tooth is located in some uterus at some time
+\item CQ6: (using UC6): A blood specimen that was never part of any organism
+\item CQ7: (using UC6): The lab sample was at lab 1 and at lab 2. The labs do not share any parts or spaces.
+\item CQ8: (using UC6): Tibbles' original tail was replaced by another one.
+
+\end{itemize}
+
+
+
 
 
 \section*{Methods}
@@ -787,11 +823,12 @@ the risk of errors in the ontology engineering process and decreases reasoning
 efficiency \cite{Grewe:2010}. To address the complexity problem, it has been suggested to
 select reification classes based on what seems ontologically ``fitting'' for the
 domain of an ontology \cite{Fiadeiro:2010}.
+\todo{unclear how transitive relations can be expressed by this without proliferation of object properties}
 
 \subsection*{Welty/Fikes: Fluents}
 The prototypical approach for dealing with temporally changing information in
 OWL within a four-dimensionalist framework was provided by 
-\cite{Welty:2006}. And while they agree that the 4D  approach is ``clearly 
+\cite{Welty:2006}. And while the proponents  agree that the 4D  approach is ``clearly 
 not something that immediately appeals to common sense'', they also claim
 that it ``gives us another tool to use when solving a practical problem.'' To this
 end, they present an ontology that models fluents, i.e. ``relations that hold
@@ -807,10 +844,10 @@ time slices. For example, temporary relatedness could be expressed as in
 \end{equation}
 %
 This is by far one of the most straightforward translations of the
-four-dimensionalist commitment, but it suffers from considerable verbosity. This
-increases even more if permanent relatedness is concerned. In this case, the
-above expression would have to be amended to include a
-``$\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{only}$'' clause to ensure that
+four-dimensionalist commitment, but it suffers from considerable verbosity. It
+gets even worse if permanent relatedness is concerned. In this case, the
+above expression would have to be amended to include an
+$\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{only}$ clause to ensure that
 all time slices of the entity are appropriately related to a time slice of the
 other entity.
 
@@ -859,6 +896,7 @@ any proposal to address the problem of time-dependent relation and should be
 used to supplement our initial requirements.
 
 \subsection*{Gangemi: Descriptions and Situations}
+\todo{should specify what is meant by situations here}
 Aldo Gangemi's DnS pattern \cite{Gangemi:DnS} deserves mention because it treats
 time-dependence of relations as a special case of perspectivity which can be
 accounted for by the very heavy-duty reification mechanism of descriptions and
@@ -871,7 +909,8 @@ arbitrary facts.
 
 Notably, though, Gangemi reminds us of the fact that OWL 2's $\mathtt{hasKey}$
 axiom can be used circumvent the problem of possible duplication of instances
-for the same relational $n$-tuple: If a situation $\mclass{S}$ were to use the properties
+for the same relational $n$-tuple: If a situation $\mclass{S}$ \todo{don't understand}
+were to use the properties
 $\mrelb{hasTimeStamp}$, $\mrelb{hasSubject}$, and $\mrelb{hasObject}$, the axiom
 \begin{equation}
 \mclass{S}\;\mathtt{hasKey}(\mrelb{hasTimeStamp}, \mrelb{hasSubject},
@@ -996,7 +1035,7 @@ The reasoning is the following: If we want to express that the classes $A$ and $
 Histories can be related by occurrent parthood relations, such as every phase (temporal part) of the history of a cell nucleus is part of the history of some cell (not necessarily of the same cell).  
 
 
-If we want to express that all instances of the class $A$ are always located in some instance of the class $B$ we can express it, in OWL in the following way:
+If we want to express that all instances of the class $A$ are always located in some instance of the class $B$ we can express it, in OWL-DL in the following way:
 
 
 \begin{equation}
@@ -1054,25 +1093,39 @@ However, the inclusion of history phases does not allow a distinction between lo
 
 We can define a \emph{temporal qualification} of a
 continuant as the result of regarding the continuant in as far as it exists only
-within a certain portion of time. A temporal qualification is 
-characterised by its spatial co-extension with its continuant over the time
-period that it qualifies.
+within a certain portion of time. A temporal qualification of a continuant entity is 
+not an additional entity, it \emph{is} the continuant entity, as \emph{referred to}
+over a specific period of time, which is within the time the continuant entity
+exists.
 
-A temporally qualified continuant (TQC) is thus a way of referring to a continuant
-during a portion of time. Formally, we can describe it as a tuple \pair{a}{t}
+Formally, a temporally qualified continuant (TQC) is a tuple \pair{a}{t}
 where $a$ is an instance
-of a continuant and $t$ is a portion of time. 
+of a continuant and $t$ is an instance of a temporal region. 
 
-There are several axioms needed to link TQCs to the continuants that they are
-temporal qualifications of and to ensure that TQC portions of time do not exceed the
-allowed portion of time that the corresponding continuant instance spans over
-(most of these are similar to the proposals presented above).
-Instantiation of a TQC is thus not time-indexed, while normal instantiation of
-continuants is time indexed as in the examples above. 
+TQC's are introduced only in the context of the OWL representation of
+an ontology. In the FOL representation of the same ontology, the relevant
+entities are instantiated and related in a time-indexed fashion 
+as per the higher available expressivity. 
+We will give a translation from TQC representation in OWL to 
+FOL representation using ternary relations. 
 
+For every continuant there is a temporal qualification that is \textit{maximal} in that it covers the full temporal region over which that continuant exists. The temporal region over which the continuant exists matches the temporal region within which the history of the continuant unfolds. When instances of continuants are created in an OWL knowledge base without specifying the temporal qualification, it is assumed that the maximal qualification is what is intended. 
 
-We will use the notation \TQC{A} to denote the class of temporally qualified
-continuants which range over continuants of type \mclass{A}.
+A separate temporal qualification of the same continuant entity is a different individual in the OWL ontology (related to a different temporal region), but not a different instance in the world that is being modelled. All of the different temporal qualifications of the same continuant entity share the property of having the same maximal temporal qualification. 
+
+The following additional relations are introduced into the ontology to support modelling the temporal qualification of continuants:
+\begin{itemize}
+	\item \mirel{hasMax} (inverse \mirel{maxOf}) relates a TQC instance to its related instance with the maximal temporal extension (which may be itself)
+	\item \mirel{atSomeTime} relates a TQC with each other TQC that represents the same continuant
+	\item \mirel{atSomeTime} $\equiv$ \mirel{hasMax} $\circ$ \mirel{maxOf} 
+	\item \mirel{maxOf} \texttt{subPropertyOf} \mirel{atSomeTime} (not necessary if hasMax is reflexive)
+	\item \mirel{hasTime} relates a TQC with its defining temporal region. 
+\end{itemize}
+
+All TQCs must have exactly one temporal region. Thus, instantiation of continuants represented in OWL using the TQC pattern is time indexed -- i.e. a temporal region must always be specified in instantiation of a TQC. However, implementers may wish to assume for the sake of usability that when instances of continuants are created in an OWL knowledge base without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
+
+For clarity in the remainder of this discussion, we will use the notation \TQC{A} to denote the class of temporal qualifications of
+continuants of type \mclass{A}. 
 
 \begin{equation}
 \forall x:\; (\mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t_0,t_1:\;(
@@ -1080,18 +1133,17 @@ continuants which range over continuants of type \mclass{A}.
 \mirel{within}(t_1,t_0)))
 \end{equation}
 The intended meaning of the predicate \mirel{equals} is identity.  
-We further introduce a relation \mirel{continuantOf} to link a TQC to the continuant
-that it is a TQC of. That is, 
+The relation \mirel{hasMax} links a TQC to the max TQC for that continuant. That is, 
 \begin{equation}
 \forall x\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t:\;(
-\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{continuantOf}(a,x))
+\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{hasMax}(a,x))
 \end{equation}
 
 In the next sections, we will discuss the representation of the three different
 temporal strengths, linking from the standard representation in BFO FOL through
 the introduction of temporally qualified continuants to the standard
-representation in OWL, showing how these different temporal strengths can be
-implemented through this method in a binary relationship framework such as OWL,
+representation in OWL-DL, showing how these different temporal strengths can be
+implemented through this method in a binary relationship framework such as OWL-DL,
 though this representation will require relations that refer to ternary
 predicates in the FOL model, such as \mrelb{continuantOf}, to remain primitive.
 
@@ -1101,6 +1153,7 @@ We rephrase the definition (\ref{eq:temporarily:cls}) given above by inserting
 temporally qualified continuants and derive the form that the relationship takes
 for temporally qualified continuants and a binary relationship. This is a fairly
 transparent translation:
+\todo{introduce the meaning of <.,.>} 
 \begin{equation}
 \begin{split}
 \mclass{TemporarilyRelated}(\mclass{A},\mclass{B})& =_{def}\;
@@ -1110,7 +1163,7 @@ transparent translation:
 \mrelb{rel}(\pair{a}{t_1},\pair{b}{t_1}) \wedge \mirel{within}(t_1,t))
 \end{split}
 \end{equation}
-
+\todo{specify the meaning of ``within''} 
 We then use the \mrelb{continuantOf} relation and the TQC notation to eliminate
 the tuples:
 \begin{equation}
@@ -1124,6 +1177,9 @@ the tuples:
 \end{split}
 \label{eq:usesSame}
 \end{equation}
+\todo{check use of () and ;  } 
+
+\todo{$t_1$ seems superfluous here} 
 
 This means that the logical form of the expression of temporary relatedness is that
 at least one temporal qualification of \mclass{A} is related to some temporally
@@ -1146,6 +1202,9 @@ continuants to express that they are TQCs of the same continuant,
 expressed in the above axiom (\ref{eq:usesSame}) as $(\mrelb{continuantOf}(a,x)
 \wedge \mrelb{continuantOf}(a,y))$, which allows us to express temporary relatedness in OWL as follows:
 
+
+\todo{hasSameContinuant - what about introducing hasMaxContinunant to avoid the reference to non temporally qualified continuants?} 
+
 \begin{equation}
 \TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some
 (}\mrelb{rel}\;\mathtt{some}\;\TQC{B}) 
@@ -1159,6 +1218,10 @@ this for \emph{named} individuals.}
 \begin{equation}
 \mclass{A}\;\mathtt{hasKey}(\mrelb{continuantOf})
 \end{equation}
+
+
+\todo{A Box issues to be discussed separately ?} 
+
 
 \subsection*{Usability and simplification}
 Since the above axiom (\ref{eq:tqc:temp}) makes a claim about the class \TQC{A},
@@ -1175,6 +1238,9 @@ ease of use by the end user. Thus, we introduce a new relationship,
 \TQC{B}) 
 \end{split}
 \end{equation}
+
+
+\todo{could this be a bridge between TR and TQC ?} 
 
 Unfortunately, the above statement cannot be formulated in OWL 2 due to its
 strict constraints on object properties. Neither can it be implemented in a
@@ -1200,6 +1266,8 @@ sensitivity (e.g. permanent generic relatedness) Additional measures that allevi
 obvious: If something is related at all times to some entity, it is related to
 that entity at some time.
 
+
+\todo{all this wouldn't be needed for the ``radical'' TQC approach} 
 
 \subsection*{Permanent Generic Relatedness}
 Permanent generic relatedness is considered by some to be the most common
@@ -1236,10 +1304,10 @@ every occurrence of axioms such as the following:
 By replacing, we mean to imply that we advise against using \mrelpg{rel} as an
 object property, which would not be harmful in itself, but at least
 counter-intuitive. Instances of \mclass{A} satisfying
-(\ref{eq:tqc:pg:shorthand} would require a pair of instances \pair{a}{b}, where
-$a$ is said to be permanently generically related to $b$, which is (a)
+formula \ref{eq:tqc:pg:shorthand} would require a pair of instances \pair{a}{b}, where
+$a$ is said to be permanently generically related to $b$, which is (i)
 meaningless since generic relatedness pertains to a type, not an instance and
-(b) misleading since it is not enforced by the model.
+(ii) misleading since it is not enforced by the model.
 
 Still, the availability of permanent generic relatedness is noteworthy because
 it would not be possible in OWL 2 in absence of temporally qualified
@@ -1283,7 +1351,7 @@ If we do introduce an explicit object property, could we hope to arrive at
 implementing something like permanent specific relatedness
 (\ref{eq:specifically:cls})? Unfortunately, this assumption proves to be too na\"ive.
 
-It would require an additional axiom to ensure that only TQCs of the same instance are involved
+It would require an additional axiom to ensure that only TQCs of the same continuant instance are involved
 for the second relatum. Unfortunately, we cannot provide an
 accurate translation of this kind of relatedness into OWL 2, though we can
 achieve the following first order translation in TQC-talk:
@@ -1302,6 +1370,12 @@ time, which is incompatible with any OWL translation.
 
 
 Nice and good evaluation of the different approaches goes here
+
+\section*{Discussion}
+
+\todo{many of the issues raised by Alan and Chris in the mailing list discussions}
+
+
 
 \section*{Conclusions}
 
