@@ -1,0 +1,189 @@
+\section*{Representing Time}
+
+\subsection*{The representation of time in DL axioms}
+
+Both the OBO axiom
+%
+\begin{equation}
+\begin{split}
+\mclass{CellMembrane}\;\mirel{partOf}\;\mclass{Cell}
+\end{split}
+\label{eq:cellobo}
+\end{equation}  
+%
+and the equivalent OWL axiom
+%
+\begin{equation}
+\begin{split}
+\mclass{CellMembrane}\;\mathtt{subClassOf}\;\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}
+\end{split}
+\label{eq:celldl}
+\end{equation}  
+%
+are undefined with regard to time. This is not a side aspect, because it makes a
+difference whether, e.g., a cell membrane is \emph{always} part of some cell or
+only \emph{at some time}.
+The lack of temporal definition of OWL statements is especially insatisfactory
+when it comes to transitive properties like $\mirel{partOf}$ or $\mirel{locatedIn}$,
+where the suppression of the temporal factor can produce plainly wrong entailments,
+especially at the level of individuals like in the following example:
+%
+\begin{equation}
+\begin{split}
+\mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Heart\#431234})  \\
+\mirel{locatedIn} (\mirel{Heart\#431234}, \mirel{Patient\#900812})
+\end{split}
+\label{eq:trans}
+\end{equation}
+%
+Assuming that the thrombus was no longer in the heart when it was transplanted to Patient\#115678, then the entailment
+%
+\begin{equation}
+\begin{split}
+\mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Patient\#115678}
+\end{split}
+\label{eq:transEntailment}
+\end{equation}
+%
+which follows from the transitivity property of the relation $\mirel{locatedIn}$ is obviously wrong.
+What follows from this is far-reaching, although it has rarely ever been accounted for in practical OWL engineering:
+The inability of OWL of expressing temporal contexts of the domain
+entities to be represented, produces ambiguous statements that may entail unintended reasoning consequences.
+
+\subsection*{Strengths of Relatedness}
+
+We make the distinction between different temporal strengths of relatedness.
+
+\subsubsection{Temporary Relatedness (TR)}
+
+Informally: for all a instances of \mclass{A} there is some time $t$ and some instance $b$ of
+\mclass{B} such that $a$ is related to $b$ at $t$. Examples:
+\begin{enumerate}[(a)]
+\item for all apple seeds there is
+some apple such that the seed is part of the apple at some time.
+\item for all
+trees there is some leaf such that the leaf is part of the tree at some time.
+\end{enumerate}
+
+Formally:
+\begin{equation}
+\begin{split}
+\mclass{TemporarilyRelated}(\mclass{A},\mclass{B}) =_{def}&\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow
+\exists b, t^\prime:\;(\mrelt{inst}(\mclass{B},b,t^\prime) \wedge
+\mrelt{rel}(a,b,t^\prime) \wedge \mirel{within}(t^\prime,t))
+\end{split}
+\label{eq:temporarily:cls}
+\end{equation}
+
+\subsubsection{Permanent Generic Relatedness (PGR)}
+
+Informally: for all instances $a$ of \mclass{A} there is, at all times $t$ that
+$a$ exists,
+some instance $b$ of \mclass{B} such that $a$ is related to $b$ at $t$, but not necessarily
+always the same $b$ at all times $t$. Examples:
+\begin{enumerate}[(a)]
+\item all cells have a water molecule as
+part at all times, but not always the same water molecule.
+\item every bacteria colony has some bacteria as parts at all times, but not
+always the same bacteria.
+\end{enumerate}
+
+
+\begin{equation}
+\begin{split}
+\mclass{PermanentlyGenericallyRelated}(\mclass{A},\mclass{B}) =_{def}&\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow
+\exists b:\;(\mrelt{inst}(\mclass{B},b,t) \wedge
+\mrelt{rel}(a,b,t))
+\end{split}
+\label{eq:generically:cls}
+\end{equation}
+
+
+\subsubsection{Permanent Specific Relatedness (PSR)}
+
+Informally, for all instances $a$ of \mclass{A} there is, at all times $t$ that $a$ exists, an
+instance $b$ of \mclass{B} such that $a$ is related to $b$ at $t$; in this case it is always the
+same $b$ at all times $t$. Examples:
+\begin{enumerate}[(a)]
+\item a human being has a brain as part at all times, and it is necessarily the same brain.
+\item a radioactively marked molecule of DNA has the radioactive isotope as part
+at all times, and it is necessarily the same atom.
+\end{enumerate}
+
+\begin{equation}
+\begin{split}
+\mclass{Permanently}&\mclass{SpecificallyRelated}(\mclass{A},\mclass{B}) =_{def}\;
+\forall a, t:\; \mrelt{inst}(\mclass{A}, a, t) \\
+&\ \rightarrow
+\exists b:\;\big(\mrelt{inst}(\mclass{B},b,t) \wedge
+\mrelt{rel}(a,b,t))
+\\
+&\quad\quad \wedge \forall t^\prime: (\mrelt{inst}(\mclass{A},a,t^\prime)
+\rightarrow (\mrelt{rel}(a,b,t^\prime) \wedge
+\mrelt{inst}(\mclass{B},b,t^\prime))\big)
+\end{split}
+\label{eq:specifically:cls}
+\end{equation}
+
+
+\subsection*{Use Cases and Competency Questions}
+
+In which we set out our important and super relevant use cases. Straight from the biology.
+
+
+We furthermore describe the points we are going to evaluate against.
+\begin{enumerate}
+    \item completeness,
+    \item user friendliness, and
+    \item performance profile
+\end{enumerate}
+The details of how we conducted the evaluation are described in our Methods section at the end.
+
+
+
+\todo[inline, size=\small]{Possible competency questions: (i) phased sortals, (ii) changing location at individual level (iii) TBox queries on anatomical objects (iv) TBox queries in which other than mereological relations occur (e.g. inherence, participation)}
+
+The following use cases (UC) and competency questions (CQ) will be used for a comparison of the two representational approaches we are proposing. 
+
+The use cases will be structured as follows: For each temporal mode of existence (TR, PGR, PSR) we will have four use cases: Tbox (t), Abox (a) mereologic (m+), non-mereologic (m-). In addition we will have a TBox and an ABox use case for a non-rigid class. 
+
+\begin{itemize}
+\item TR\_tm+: Every tooth is part of an organism at some time
+\item TR\_tm:- Every apple is green at some time
+\item TR\_am+: The blood specimen \#bs430912 is in  the lab \#lab996 at time tk
+\item TR\_am-: Joe's myocardium is enlarged at time tk
+
+\item PGR\_tm+: Every red blood cell always includes some oxygen molecule 
+\item PGR\_tm-: Every electronic health record is always on some computer storage
+\item PGR\_am+: Joe's blood always consists of some blood cells 
+\item PGR\_am-: Joe's health record always resides on some electronic storage medium
+
+\item PSR\_tm+: Every human has a brain and it is always the same brain
+\item PSR\_tm-: Every mammal (or even primate) has the same sex during his life 
+\item PSR\_am+: Joe has `Joe's brain' as a proper part during his lifetime 
+\item PSR\_am-: Tibbles has the same sex during his life 
+
+\item NR\_t: Every fetus is an embryo at some time
+\item NR\_a: Joe was a medical student from 2001-10-01 to 2007-06-30
+
+Participation is another use case that should be handled. 
+PARTICIPATION EXAMPLES GO HERE.
+Development process of gastrulation which starts with one anatomical part and goes on to another anatomical part? See gastrulation wikipedia page. 
+I see this part. Which phases/stages could my organism be in?
+During neural development the cells are doing something specific. Existence of process defines phase.
+
+\todo[inline, size=\small]{Alan has a worked out example of the phases of life of some moth organism.}
+\todo[inline, size=\small]{Embryo has this part but the fetus does not have that part.}
+\todo[inline, size=\small]{Joe's income when he was a medical student was lower than his income after he graduated.}
+\todo[inline, size=\small]{An assertion about joe as a medical student shouldn't make it on to Joe in general.}
+
+
+
+\end{itemize}
+
+
+
