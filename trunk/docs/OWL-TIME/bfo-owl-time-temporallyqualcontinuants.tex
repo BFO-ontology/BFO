@@ -1,0 +1,278 @@
+
+We can define a \emph{temporal qualification} of a
+continuant as the result of regarding the continuant in as far as it exists only
+within a certain portion of time. A temporal qualification of a continuant entity is
+not an additional entity, it \emph{is} the continuant entity, as \emph{referred to}
+over a specific period of time, which is within the time the continuant entity
+exists.
+
+Formally, a temporally qualified continuant (TQC) is a tuple \pair{a}{t}
+where $a$ is an instance
+of a continuant and $t$ is an instance of a temporal region.
+
+TQC's are introduced only in the context of the OWL representation of
+an ontology. In the FOL representation of the same ontology, the relevant
+entities are instantiated and related in a time-indexed fashion
+as per the higher available expressivity.
+We will give a translation from TQC representation in OWL to
+FOL representation using ternary relations.
+
+For every continuant there is a temporal qualification that is \textit{maximal} in that it covers the full temporal region over which that continuant exists. The temporal region over which the continuant exists matches the temporal region within which the history of the continuant unfolds. When instances of continuants are created in an OWL knowledge base without specifying the temporal qualification, it is assumed that the maximal qualification is what is intended.
+
+A separate temporal qualification of the same continuant entity is a different individual in the OWL ontology (related to a different temporal region), but not a different instance in the world that is being modelled. All of the different temporal qualifications of the same continuant entity share the property of having the same maximal temporal qualification.
+
+The following additional relations are introduced into the ontology to support modelling the temporal qualification of continuants:
+\begin{itemize}
+    \item \mirel{hasMax} (inverse \mirel{maxOf}) relates a TQC instance to its related instance with the maximal temporal extension (which may be itself)
+    \item \mirel{atSomeTime} relates a TQC with each other TQC that represents the same continuant
+    \item \mirel{atSomeTime} $\equiv$ \mirel{hasMax} $\circ$ \mirel{maxOf}
+    \item \mirel{maxOf} \texttt{subPropertyOf} \mirel{atSomeTime} (not necessary if hasMax is reflexive)
+    \item \mirel{hasTime} relates a TQC with its defining temporal region.
+\end{itemize}
+
+All TQCs must have exactly one temporal region. Thus, instantiation of continuants represented in OWL using the TQC pattern is time indexed -- i.e. a temporal region must always be specified in instantiation of a TQC. However, implementers may wish to assume for the sake of usability that when instances of continuants are created in an OWL knowledge base without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
+
+For clarity in the remainder of this discussion, we will use the notation \TQC{A} to denote the class of temporal qualifications of
+continuants of type \mclass{A}.
+
+\begin{equation}
+\forall x:\; (\mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t_0,t_1:\;(
+\mrelt{inst}(\mclass{A},a,t_0) \wedge \mirel{equals}(x,a,t_1) \wedge
+\mirel{within}(t_1,t_0)))
+\end{equation}
+The intended meaning of the predicate \mirel{equals} is identity.  
+The relation \mirel{hasMax} links a TQC to the max TQC for that continuant. That is,
+\begin{equation}
+\forall x\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t:\;(
+\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{hasMax}(a,x))
+\end{equation}
+
+In the next sections, we will discuss the representation of the three different
+temporal strengths, linking from the standard representation in BFO FOL through
+the introduction of temporally qualified continuants to the standard
+representation in OWL-DL, showing how these different temporal strengths can be
+implemented through this method in a binary relationship framework such as OWL-DL,
+though this representation will require relations that refer to ternary
+predicates in the FOL model, such as \mrelb{continuantOf}, to remain primitive.
+
+\subsection*{Temporary Relatedness}
+
+We rephrase the definition (\ref{eq:temporarily:cls}) given above by inserting
+temporally qualified continuants and derive the form that the relationship takes
+for temporally qualified continuants and a binary relationship. This is a fairly
+transparent translation:
+\todo{introduce the meaning of <.,.>}
+\begin{equation}
+\begin{split}
+\mclass{TemporarilyRelated}(\mclass{A},\mclass{B})& =_{def}\;
+\forall a, t:\; \mrelb{inst}(\mclass{A}, \pair{a}{t}) \\
+&\ \rightarrow
+\exists b, t_1:\;(\mrelb{inst}(\mclass{B}\pair{b}{t_1}) \wedge
+\mrelb{rel}(\pair{a}{t_1},\pair{b}{t_1}) \wedge \mirel{within}(t_1,t))
+\end{split}
+\end{equation}
+\todo{specify the meaning of ``within''}
+We then use the \mrelb{continuantOf} relation and the TQC notation to eliminate
+the tuples:
+\begin{equation}
+\begin{split}
+\mclass{Temporarily}&\mclass{Related}(\mclass{A},\mclass{B}) =_{def}\;
+\forall x:\; \mrelb{inst}(\TQC{A}, x)
+ \rightarrow
+\exists a,y,z,t_1:\;(\mrelb{inst}(\TQC{A},y) \wedge \\ & \mrelb{inst}(\TQC{B},z)
+ \wedge \mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(a,y) \wedge
+\mrelb{rel}(y,z)
+\end{split}
+\label{eq:usesSame}
+\end{equation}
+\todo{check use of () and ;  }
+
+\todo{$t_1$ seems superfluous here}
+
+This means that the logical form of the expression of temporary relatedness is that
+at least one temporal qualification of \mclass{A} is related to some temporally
+qualified \mclass{B} instance.
+However, we need another axiom to constrain \mrelb{rel} in the above to ensure that the
+portions of time are appropriately overlapping, since \mrelt{rel} holds at one time
+only:
+\begin{equation}
+\begin{split}
+\forall x,y:\;& \mrelb{rel}(x,y) \rightarrow \exists a,b,t,t_1:\;
+(\mirel{equals}(x,\pair{a}{t})\wedge \mirel{equals}(y,\pair{b}{t_1})\\
+& \wedge \mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(b,y) \wedge
+\mrelt{rel}(a,b,t_1) \wedge \mirel{within}(t_1,t))
+\end{split}
+\end{equation}
+
+Now we have derived a binary expression \mrelb{rel} we are free to use this in OWL
+axioms. We introduce the relation \mrelb{hasSameContinuant} between temporally qualified
+continuants to express that they are TQCs of the same continuant,
+expressed in the above axiom (\ref{eq:usesSame}) as $(\mrelb{continuantOf}(a,x)
+\wedge \mrelb{continuantOf}(a,y))$, which allows us to express temporary relatedness in OWL as follows:
+
+
+\todo{hasSameContinuant - what about introducing hasMaxContinunant to avoid the reference to non temporally qualified continuants?}
+
+\begin{equation}
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some
+(}\mrelb{rel}\;\mathtt{some}\;\TQC{B})
+\label{eq:tqc:temp}
+\end{equation}
+
+Additionally, we ensure that sharing a temporal qualification amounts to being
+the same continuant:\footnote{Implementers should note that OWL 2 only mandates
+this for \emph{named} individuals.}
+
+\begin{equation}
+\mclass{A}\;\mathtt{hasKey}(\mrelb{continuantOf})
+\end{equation}
+
+
+\todo{A Box issues to be discussed separately ?}
+
+
+\subsection*{Usability and simplification}
+Since the above axiom (\ref{eq:tqc:temp}) makes a claim about the class \TQC{A},
+it is less ideal from a usability perspective. We would rather like to say
+something about the target continuant classes \mclass{A} and \mclass{B} in our OWL version, for
+ease of use by the end user. Thus, we introduce a new relationship,
+\mreltemp{rel}, which obtains between continuants, and should be interpreted as follows:
+
+
+\begin{equation}
+\begin{split}
+\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\mathtt{some}\mclass{B}\;\rightarrow\\
+&\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some}\;(\mrelb{rel}\;\mathtt{some}\;
+\TQC{B})
+\end{split}
+\end{equation}
+
+
+\todo{could this be a bridge between TR and TQC ?}
+
+Unfortunately, the above statement cannot be formulated in OWL 2 due to its
+strict constraints on object properties. Neither can it be implemented in a
+rule language, since it would induce the generation of new individuals in its
+consequent, which violated DL safety. Still there is an avenue for hiding the
+complexity by using a macro processing engine, such as OPPL (\cite{OPPL}), in
+which processing instructions such as these could be employed:
+
+\begin{lstlisting}
+?x:CLASS[subClassOf Continuant],
+?y:OBJECTPROPERTY?MATCH("temporarily_(.*)"),
+?z:CLASS[subClassOf Continuant]
+SELECT ?x subClassOf ?y some ?z
+BEGIN
+  ADD ?x subClassOf continuantOf some ?y.GROUPS(1)
+    some hasContinuant ?z,
+  REMOVE ?x subClassOf ?y some ?z
+END;
+\end{lstlisting}
+This can easily be adopted or parameterised for other axiom types or types of temporal
+sensitivity (e.g. permanent generic relatedness) Additional measures that alleviate the burden of this approach would be making
+\mrelb{rel} a sub-object-property of \mreltemp{rel}, which quite natural and
+obvious: If something is related at all times to some entity, it is related to
+that entity at some time.
+
+
+\todo{all this wouldn't be needed for the ``radical'' TQC approach}
+
+\subsection*{Permanent Generic Relatedness}
+Permanent generic relatedness is considered by some to be the most common
+interpretation of temporally unspecified relations in biology. We have
+previously defined it in (\ref{eq:generically:cls}), which can
+now rephrased using the TCQ approach as follows:
+\begin{equation}
+\forall x:\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists y :\;
+\mrelb{inst}(\TQC{B}, y) \wedge \mrelb{rel}(x,y)
+\label{eq:tqc:pg}
+\end{equation}
+
+Informally, this means that, whatever temporal qualification of an instance of
+\mclass{A} we choose, it will alway be \mirel{rel}-related to some temporal
+qualification of type \mclass{B}, but we neither care nor enforce which one.
+
+This is the easiest and most elegant translation case from the FOL perspective.
+Moving to OWL, the above axiom (\ref{eq:tqc:pg}) appears as:
+
+\begin{equation}
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{rel}\;\mathtt{some}\;\TQC{B}
+\label{eq:tqc:pg:owl}
+\end{equation}
+
+Again, we can use a kind of macro expansion to bridge a shorthand for this type
+of relatedness (e.g. \mrelpg{rel}) back to the
+underlying relationship. Thus we would use (\ref{eq:tqc:pg:owl}) to replace
+every occurrence of axioms such as the following:
+\begin{equation}
+\mclass{A}\;\mathtt{subClassOf}\;\mrelpg{rel}\;\mathtt{some}\;\mclass{B}  
+\label{eq:tqc:pg:shorthand}
+\end{equation}
+
+By replacing, we mean to imply that we advise against using \mrelpg{rel} as an
+object property, which would not be harmful in itself, but at least
+counter-intuitive. Instances of \mclass{A} satisfying
+formula \ref{eq:tqc:pg:shorthand} would require a pair of instances \pair{a}{b}, where
+$a$ is said to be permanently generically related to $b$, which is (i)
+meaningless since generic relatedness pertains to a type, not an instance and
+(ii) misleading since it is not enforced by the model.
+
+Still, the availability of permanent generic relatedness is noteworthy because
+it would not be possible in OWL 2 in absence of temporally qualified
+continuants (not only instantiation of classes, but also of object property
+tuples is rigid). This is afforded by the fact that we do not introduce an
+explicit object property for generic permanent relatedness.
+
+Since permanent generic relatedness matches the presumed default interpretation
+of \mrelb{rel} in most existing biomedical ontologies, upgrade paths for these
+ontologies need to be considered. We believe that, from a user perspective, the
+most convenient way would be to relegate all relations that require
+temporalisation into a specific branch (say,
+\mrelb{temporallySensitivelyRelated}) and employ something like the following
+preprocessing instruction:
+\begin{lstlisting}
+?x:CLASS[subClassOf Continuant],
+?y:OBJECTPROPERTY?[subPropertyOf temporallySensitivelyRelated],
+?z:CLASS[subClassOf Continuant]
+SELECT ?x subClassOf ?y some ?z WHERE
+  FAIL ?x subClassOf hasContinuant some Continuant,
+  ?y MATCH("^(.(?<!temporarily_))*\$")
+  FAIL ?z subClassOf hasContinuant some Continuant,
+BEGIN
+  ADD hasContinuant some ?x subClassOf ?y some continuantOf some ?z,
+  REMOVE ?x subClassOf ?y some ?z
+END;
+\end{lstlisting}
+This allows users to do away with \mrelpg{rel} and have expressions about
+continuants converted into expressions about temporal qualifications transformed
+seamlessly. There are two downsides to this. Firstly, this approach moves
+ontology engineering even more towards procedures that are familiar to
+software engineers but not to scientists from the field of application.
+Secondly, the above expression requires a reasoner to work, which might be
+costly to do after every edit.
+
+On the other hand, it is subject to debate whether adopting an edit-compile-test
+approach in ontology engineering could in fact be useful for improving ontology quality.
+
+\subsection*{Permanent Specific Relatedness}
+If we do introduce an explicit object property, could we hope to arrive at
+implementing something like permanent specific relatedness
+(\ref{eq:specifically:cls})? Unfortunately, this assumption proves to be too na\"ive.
+
+It would require an additional axiom to ensure that only TQCs of the same continuant instance are involved
+for the second relatum. Unfortunately, we cannot provide an
+accurate translation of this kind of relatedness into OWL 2, though we can
+achieve the following first order translation in TQC-talk:
+ \begin{equation}
+\begin{split}
+\forall x:\; \mrelb{inst}&(\TQC{A},x) \rightarrow \\
+ \exists y:&\;\mrelb{inst}(\TQC{B},y) \wedge \mrelb{rel}(x,y)\wedge\\
+ & \forall x_1,a:\; ((\mrelb{inst}(\TQC{A},x_1) \wedge
+\mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(a,x_1))\wedge\\
+&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \mrelb{continuantOf}(b,y)  
+\wedge \mrelb{continuantOf}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
+\end{split}
+\end{equation}
+This would require three variables ($x$,~$y$,~$y_1$) to be bound at the same
+time, which is incompatible with any OWL translation.
+
