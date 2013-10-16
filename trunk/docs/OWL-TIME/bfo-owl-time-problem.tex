@@ -23,10 +23,10 @@ and the equivalent OWL axiom
 are undefined with regard to time. This is not a side aspect, because it makes a
 difference whether, e.g., a cell membrane is \emph{always} part of some cell or
 only \emph{at some time}.
-The lack of temporal definition of OWL statements is especially insatisfactory
+The lack of temporal definition of OWL statements is especially unsatisfactory
 when it comes to transitive properties like $\mirel{partOf}$ or $\mirel{locatedIn}$,
 where the suppression of the temporal factor can produce plainly wrong entailments,
-especially at the level of individuals like in the following example:
+especially at the level of individuals, such as in the following example:
 %
 \begin{equation}
 \begin{split}
@@ -46,13 +46,13 @@ Assuming that the thrombus was no longer in the heart when it was transplanted t
 \end{equation}
 %
 which follows from the transitivity property of the relation $\mirel{locatedIn}$ is obviously wrong.
-What follows from this is far-reaching, although it has rarely ever been accounted for in practical OWL engineering:
-The inability of OWL of expressing temporal contexts of the domain
-entities to be represented, produces ambiguous statements that may entail unintended reasoning consequences.
+This has a far-reaching consequence, although it has rarely been explicitly remarked on in practical OWL engineering:
+The inability of OWL by default to explicate the temporal contexts of domain 
+entities produces temporally ambiguous statements that may entail unintended reasoning consequences for real data. (A lack of an explicit treatment of temporal context has previously been implicated in an assessment of the quality of existential restrictions in OBO Foundry ontologies \cite{boeker2011}.)
 
 \subsection*{Strengths of Relatedness}
 
-We make the distinction between different temporal strengths of relatedness.
+We can make the following distinction between different temporal strengths of relatedness.
 
 \subsubsection{Temporary Relatedness (TR)}
 
