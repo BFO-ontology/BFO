@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY UC "http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10" >
+]>
+
+
+<rdf:RDF xmlns="&UC;#"
+     xml:base="http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:UC="http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10">
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Apple -->
+
+    <owl:Class rdf:about="&UC;#Apple">
+        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
+        <rdfs:subClassOf rdf:resource="&UC;#TR_tm-"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000999"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000086"/>
+                        <owl:someValuesFrom rdf:resource="&UC;#GreenColor"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#BloodCell -->
+
+    <owl:Class rdf:about="&UC;#BloodCell">
+        <rdfs:subClassOf rdf:resource="&UC;#Cell"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Brain -->
+
+    <owl:Class rdf:about="&UC;#Brain">
+        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Cell -->
+
+    <owl:Class rdf:about="&UC;#Cell">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Color -->
+
+    <owl:Class rdf:about="&UC;#Color">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#ComputerStorage -->
+
+    <owl:Class rdf:about="&UC;#ComputerStorage">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Embryo -->
+
+    <owl:Class rdf:about="&UC;#Embryo">
+        <rdfs:subClassOf rdf:resource="&UC;#Organism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Fetus -->
+
+    <owl:Class rdf:about="&UC;#Fetus">
+        <rdfs:subClassOf rdf:resource="&UC;#Organism"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000999"/>
+                <owl:someValuesFrom rdf:resource="&UC;#Embryo"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#GreenColor -->
+
+    <owl:Class rdf:about="&UC;#GreenColor">
+        <rdfs:subClassOf rdf:resource="&UC;#Color"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#HealthRecord -->
+
+    <owl:Class rdf:about="&UC;#HealthRecord">
+        <rdfs:subClassOf rdf:resource="&UC;#InformationEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#HumanOrganism -->
+
+    <owl:Class rdf:about="&UC;#HumanOrganism">
+        <rdfs:subClassOf rdf:resource="&UC;#MammalOrganism"/>
+        <rdfs:subClassOf rdf:resource="&UC;#PSR_tm+"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="&UC;#Brain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#InformationEntity -->
+
+    <owl:Class rdf:about="&UC;#InformationEntity">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Lab -->
+
+    <owl:Class rdf:about="&UC;#Lab">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#MammalOrganism -->
+
+    <owl:Class rdf:about="&UC;#MammalOrganism">
+        <rdfs:subClassOf rdf:resource="&UC;#Organism"/>
+        <rdfs:subClassOf rdf:resource="&UC;#PSR_tm-"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&UC;#Sex"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#MedicalStudent -->
+
+    <owl:Class rdf:about="&UC;#MedicalStudent">
+        <rdfs:subClassOf rdf:resource="&UC;#Student"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#MolecularEntity -->
+
+    <owl:Class rdf:about="&UC;#MolecularEntity">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Myocardium -->
+
+    <owl:Class rdf:about="&UC;#Myocardium">
+        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#NR_t -->
+
+    <owl:Class rdf:about="&UC;#NR_t">
+        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Organism -->
+
+    <owl:Class rdf:about="&UC;#Organism">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#OrganismPart -->
+
+    <owl:Class rdf:about="&UC;#OrganismPart">
+        <rdfs:subClassOf rdf:resource="&UC;#Organism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#OxygenMolecule -->
+
+    <owl:Class rdf:about="&UC;#OxygenMolecule">
+        <rdfs:subClassOf rdf:resource="&UC;#MolecularEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PGR_tm+ -->
+
+    <owl:Class rdf:about="&UC;#PGR_tm+">
+        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PGR_tm- -->
+
+    <owl:Class rdf:about="&UC;#PGR_tm-">
+        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+        <rdfs:comment>Every mammal has the same sex during his life </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PSR_tm+ -->
+
+    <owl:Class rdf:about="&UC;#PSR_tm+">
+        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PSR_tm- -->
+
+    <owl:Class rdf:about="&UC;#PSR_tm-">
+        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+        <rdfs:comment>Every human has a brain and it is always the same brain</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PortionOfBlood -->
+
+    <owl:Class rdf:about="&UC;#PortionOfBlood">
+        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#RedBloodCell -->
+
+    <owl:Class rdf:about="&UC;#RedBloodCell">
+        <rdfs:subClassOf rdf:resource="&UC;#BloodCell"/>
+        <rdfs:subClassOf rdf:resource="&UC;#PGR_tm+"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000124"/>
+                <owl:someValuesFrom rdf:resource="&UC;#OxygenMolecule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Sex -->
+
+    <owl:Class rdf:about="&UC;#Sex">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Student -->
+
+    <owl:Class rdf:about="&UC;#Student">
+        <rdfs:subClassOf rdf:resource="&UC;#HumanOrganism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#TR_tm+ -->
+
+    <owl:Class rdf:about="&UC;#TR_tm+">
+        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+        <rdfs:comment>Every tooth is part of an organism at some time</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#TR_tm- -->
+
+    <owl:Class rdf:about="&UC;#TR_tm-">
+        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+        <rdfs:comment>Every apple is green at some time</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Tooth -->
+
+    <owl:Class rdf:about="&UC;#Tooth">
+        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
+        <rdfs:subClassOf rdf:resource="&UC;#TR_tm+"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000999"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+                        <owl:someValuesFrom rdf:resource="&UC;#Organism"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#USE_CASES -->
+
+    <owl:Class rdf:about="&UC;#USE_CASES"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
