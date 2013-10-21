@@ -3,6 +3,7 @@
 
 <!DOCTYPE rdf:RDF [
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
@@ -12,13 +13,14 @@
 
 <rdf:RDF xmlns="&UC;#"
      xml:base="http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:UC="http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10">
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+    <owl:Ontology rdf:about="&obo;bfo_tqc_uc.owl">
+        <owl:imports rdf:resource="&obo;bfo_tqc.owl"/>
     </owl:Ontology>
     
 
@@ -48,6 +50,47 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000086 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000086"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000124 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000124"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000176 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000176"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000178 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000178"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000999 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000999"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -56,18 +99,42 @@
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Apple -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000015 -->
 
-    <owl:Class rdf:about="&UC;#Apple">
-        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
-        <rdfs:subClassOf rdf:resource="&UC;#TR_tm-"/>
+    <owl:Class rdf:about="&obo;BFO_0000015"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000019 -->
+
+    <owl:Class rdf:about="&obo;BFO_0000019"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000031 -->
+
+    <owl:Class rdf:about="&obo;BFO_0000031"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
+
+    <owl:Class rdf:about="&obo;BFO_0000040"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Apple -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Apple">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#OrganismPart"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#STR_cm-"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000999"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000086"/>
-                        <owl:someValuesFrom rdf:resource="&UC;#GreenColor"/>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                        <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#GreenColor"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
             </owl:Restriction>
@@ -76,289 +143,599 @@
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#BloodCell -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#BiologicalLife -->
 
-    <owl:Class rdf:about="&UC;#BloodCell">
-        <rdfs:subClassOf rdf:resource="&UC;#Cell"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#BiologicalLife">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Brain -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#BirthProcess -->
 
-    <owl:Class rdf:about="&UC;#Brain">
-        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#BirthProcess">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Cell -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#BloodCell -->
 
-    <owl:Class rdf:about="&UC;#Cell">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#BloodCell">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Cell"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Color -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#BloodSpecimen -->
 
-    <owl:Class rdf:about="&UC;#Color">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#BloodSpecimen">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#VolumeOfBlood"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#ComputerStorage -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Brain -->
 
-    <owl:Class rdf:about="&UC;#ComputerStorage">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Brain">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#OrganismPart"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Embryo -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#BreathingProcess -->
 
-    <owl:Class rdf:about="&UC;#Embryo">
-        <rdfs:subClassOf rdf:resource="&UC;#Organism"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#BreathingProcess">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PGR_cp2"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Fetus -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE -->
 
-    <owl:Class rdf:about="&UC;#Fetus">
-        <rdfs:subClassOf rdf:resource="&UC;#Organism"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Cat -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Cat">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Mammal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Cell -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Cell">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Color -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Color">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#ComputerStorage -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#ComputerStorage">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Embryo -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Embryo">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Organism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Enlarged -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Enlarged">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Size"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Fecundation -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Fecundation">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#STR_cp2"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Fetus -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Fetus">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#NR_t"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Organism"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000999"/>
-                <owl:someValuesFrom rdf:resource="&UC;#Embryo"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#Embryo"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#GreenColor -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#GreenColor -->
 
-    <owl:Class rdf:about="&UC;#GreenColor">
-        <rdfs:subClassOf rdf:resource="&UC;#Color"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#GreenColor">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Color"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#HealthRecord -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#HealthRecord -->
 
-    <owl:Class rdf:about="&UC;#HealthRecord">
-        <rdfs:subClassOf rdf:resource="&UC;#InformationEntity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#HumanOrganism -->
-
-    <owl:Class rdf:about="&UC;#HumanOrganism">
-        <rdfs:subClassOf rdf:resource="&UC;#MammalOrganism"/>
-        <rdfs:subClassOf rdf:resource="&UC;#PSR_tm+"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#HealthRecord">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#InformationEntity"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PGR_cm-"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="&UC;#Brain"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#ComputerStorage"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#InformationEntity -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#HighSchoolStudent -->
 
-    <owl:Class rdf:about="&UC;#InformationEntity">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#HighSchoolStudent">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Student"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Lab -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Human -->
 
-    <owl:Class rdf:about="&UC;#Lab">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#MammalOrganism -->
-
-    <owl:Class rdf:about="&UC;#MammalOrganism">
-        <rdfs:subClassOf rdf:resource="&UC;#Organism"/>
-        <rdfs:subClassOf rdf:resource="&UC;#PSR_tm-"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Human">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Mammal"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PSR_cm+"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&UC;#Sex"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#Brain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>should be:
+
+&apos;has continuant part&apos; some 
+    (Brain
+     and (&apos;part of continuant&apos; some  Self ))
+
+But this is not processed by reasoner</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#InformationEntity -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#InformationEntity">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000031"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Lab -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Lab">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Mammal -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Mammal">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PSR_cm-"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Vertebrate"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#Sex"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>correctly:
+
+&apos;has quality&apos; some (Sex and &apos;quality of some Self)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#MedicalStudent -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#MedicalStudent">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Student"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#MolecularEntity -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#MolecularEntity">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Myocardium -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Myocardium">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#OrganismPart"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#NON_RIGID_CLASS_USE_CASE -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#NON_RIGID_CLASS_USE_CASE">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#NR_i -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#NR_i">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#NON_RIGID_CLASS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#NR_t -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#NR_t">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#NON_RIGID_CLASS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Organism -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Organism">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PSR_cp1"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BiologicalLife"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#MedicalStudent -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#OrganismPart -->
 
-    <owl:Class rdf:about="&UC;#MedicalStudent">
-        <rdfs:subClassOf rdf:resource="&UC;#Student"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#OrganismPart">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#MolecularEntity -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#OxygenMolecule -->
 
-    <owl:Class rdf:about="&UC;#MolecularEntity">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#OxygenMolecule">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#MolecularEntity"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Myocardium -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE -->
 
-    <owl:Class rdf:about="&UC;#Myocardium">
-        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#USE_CASE"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#NR_t -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE -->
 
-    <owl:Class rdf:about="&UC;#NR_t">
-        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#USE_CASE"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Organism -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PGR_cm+ -->
 
-    <owl:Class rdf:about="&UC;#Organism">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PGR_cm+">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#OrganismPart -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PGR_cm- -->
 
-    <owl:Class rdf:about="&UC;#OrganismPart">
-        <rdfs:subClassOf rdf:resource="&UC;#Organism"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#OxygenMolecule -->
-
-    <owl:Class rdf:about="&UC;#OxygenMolecule">
-        <rdfs:subClassOf rdf:resource="&UC;#MolecularEntity"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PGR_tm+ -->
-
-    <owl:Class rdf:about="&UC;#PGR_tm+">
-        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PGR_tm- -->
-
-    <owl:Class rdf:about="&UC;#PGR_tm-">
-        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PGR_cm-">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE"/>
         <rdfs:comment>Every mammal has the same sex during his life </rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PSR_tm+ -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PGR_cp2 -->
 
-    <owl:Class rdf:about="&UC;#PSR_tm+">
-        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PGR_cp2">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PSR_tm- -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PGR_im+ -->
 
-    <owl:Class rdf:about="&UC;#PSR_tm-">
-        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PGR_im+">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PGR_im- -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PGR_im-">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PGR_ip -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PGR_ip">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PSR_cm+ -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PSR_cm+">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PSR_cm- -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PSR_cm-">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE"/>
         <rdfs:comment>Every human has a brain and it is always the same brain</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#PortionOfBlood -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PSR_cp1 -->
 
-    <owl:Class rdf:about="&UC;#PortionOfBlood">
-        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PSR_cp1">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#RedBloodCell -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PSR_cp2 -->
 
-    <owl:Class rdf:about="&UC;#RedBloodCell">
-        <rdfs:subClassOf rdf:resource="&UC;#BloodCell"/>
-        <rdfs:subClassOf rdf:resource="&UC;#PGR_tm+"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PSR_cp2">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PSR_im+ -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PSR_im+">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PSR_im- -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PSR_im-">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PSR_ip -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PSR_ip">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PERMANENT_SPECIFIC_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#PortionOfBlood -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#PortionOfBlood">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#OrganismPart"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#RedBloodCell -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#RedBloodCell">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#BloodCell"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PGR_cm+"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000124"/>
-                <owl:someValuesFrom rdf:resource="&UC;#OxygenMolecule"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000124"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#OxygenMolecule"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Sex -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE -->
 
-    <owl:Class rdf:about="&UC;#Sex">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#USE_CASE"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Student -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#STR_cm+ -->
 
-    <owl:Class rdf:about="&UC;#Student">
-        <rdfs:subClassOf rdf:resource="&UC;#HumanOrganism"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#TR_tm+ -->
-
-    <owl:Class rdf:about="&UC;#TR_tm+">
-        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#STR_cm+">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE"/>
         <rdfs:comment>Every tooth is part of an organism at some time</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#TR_tm- -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#STR_cm- -->
 
-    <owl:Class rdf:about="&UC;#TR_tm-">
-        <rdfs:subClassOf rdf:resource="&UC;#USE_CASES"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#STR_cm-">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE"/>
         <rdfs:comment>Every apple is green at some time</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#Tooth -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#STR_cp1 -->
 
-    <owl:Class rdf:about="&UC;#Tooth">
-        <rdfs:subClassOf rdf:resource="&UC;#OrganismPart"/>
-        <rdfs:subClassOf rdf:resource="&UC;#TR_tm+"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#STR_cp1">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#STR_cp2 -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#STR_cp2">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#CLASS_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#STR_im+ -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#STR_im+">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#STR_im- -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#STR_im-">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#STR_ip -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#STR_ip">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#INDIVIDUAL_LEVEL_USE_CASE"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#SPECIFIC_TEMPORARY_RELATEDNESS_USE_CASE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Sex -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Sex">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Size -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Size">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Student -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Student">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Human"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#TemporalPartOfBiologicalLife -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#TemporalPartOfBiologicalLife">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000139"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BiologicalLife"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PSR_cp2"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000999"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#Organism"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Tooth -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Tooth">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#OrganismPart"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#STR_cm+"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
-                        <owl:someValuesFrom rdf:resource="&UC;#Organism"/>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                        <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#Organism"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
             </owl:Restriction>
@@ -367,9 +744,354 @@
     
 
 
-    <!-- http://www.semanticweb.org/schulz/ontologies/2013/9/untitled-ontology-10#USE_CASES -->
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#USE_CASE -->
 
-    <owl:Class rdf:about="&UC;#USE_CASES"/>
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#USE_CASE"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Vertebrate -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#Vertebrate">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Organism"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#STR_cp1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#VolumeOfAir -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#VolumeOfAir">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#VolumeOfBlood -->
+
+    <owl:Class rdf:about="&obo;bfo_tqc_uc.owl#VolumeOfBlood">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#2001-10-01_to_2007-06-30 -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#2001-10-01_to_2007-06-30">
+        <rdf:type rdf:resource="&obo;BFO_0000008"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#20131020 -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#20131020">
+        <rdf:type rdf:resource="&obo;BFO_0000008"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#J_m_enlarged_20131020 -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#J_m_enlarged_20131020">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Enlarged"/>
+        <obo:BFO_0000996 rdf:resource="&obo;bfo_tqc_uc.owl#20131020"/>
+        <obo:BFO_0000999 rdf:resource="&obo;bfo_tqc_uc.owl#J_m_enlarged_max"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#J_m_enlarged_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#J_m_enlarged_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Enlarged"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Joe_20131020 -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Joe_20131020">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Human"/>
+        <obo:BFO_0000996 rdf:resource="&obo;bfo_tqc_uc.owl#20131020"/>
+        <obo:BFO_0000999 rdf:resource="&obo;bfo_tqc_uc.owl#Joe_max"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Joe_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Joe_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Human"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#PSR_ip"/>
+        <rdfs:comment>
+Added as General Class axiom:
+
+&apos;at some time&apos; value Joe_max subclassOf &apos;participates in&apos; value Joes_life  </rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Joes_breathing_process -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Joes_breathing_process">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#BreathingProcess"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#PGR_ip"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#VolumeOfAir"/>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Joes_health_record_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Joes_health_record_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#HealthRecord"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#PGR_im-"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#PSR_im-"/>
+        <rdfs:comment>Added as General Class axiom:
+
+
+&apos;at some time&apos; value Joes_health_record_max subclassOf &apos;generically depends on&apos; some ComputerStorage</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Joes_life -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Joes_life">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#BiologicalLife"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Joes_myocardium_20131020 -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Joes_myocardium_20131020">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Myocardium"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#STR_im-"/>
+        <obo:BFO_0000996 rdf:resource="&obo;bfo_tqc_uc.owl#20131020"/>
+        <obo:BFO_0000086 rdf:resource="&obo;bfo_tqc_uc.owl#J_m_enlarged_20131020"/>
+        <obo:BFO_0000999 rdf:resource="&obo;bfo_tqc_uc.owl#Joes_myocardium_max"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Joes_myocardium_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Joes_myocardium_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Myocardium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#John_2001-10-01_to_2007-06-30 -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#John_2001-10-01_to_2007-06-30">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Human"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#MedicalStudent"/>
+        <obo:BFO_0000996 rdf:resource="&obo;bfo_tqc_uc.owl#2001-10-01_to_2007-06-30"/>
+        <obo:BFO_0000999 rdf:resource="&obo;bfo_tqc_uc.owl#John_max"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#John_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#John_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Human"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#NR_i"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Mary_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Mary_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Human"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#PSR_im+"/>
+        <rdfs:comment>Added as General Class axiom:
+
+
+&apos;at some time&apos; value Mary_max subclassOf &apos;has continuant part&apos; some (&apos;at some time&apos; value Marys_brain_max)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Marys_birth -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Marys_birth">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#STR_ip"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;bfo_tqc_uc.owl#BirthProcess"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
+                        <owl:someValuesFrom>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+                                <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Mary_max"/>
+                            </owl:Restriction>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Marys_blood_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Marys_blood_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#PGR_im+"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#VolumeOfBlood"/>
+        <rdfs:comment>Added as General Class axiom:
+
+&apos;at some time&apos; value Marys_blood_max subclassOf &apos;has continuant part&apos; some BloodCell</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Marys_brain_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Marys_brain_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Brain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Tibbles_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Tibbles_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Cat"/>
+        <rdfs:comment>Added as General Class axiom:
+
+&apos;at some time&apos; value Tibbles_max subclassOf &apos;has quality&apos; some (&apos;at some time&apos; value Tibbles_sex_max)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#Tibbles_sex_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#Tibbles_sex_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Sex"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#bs430912_20131020 -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#bs430912_20131020">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#BloodSpecimen"/>
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#STR_im+"/>
+        <obo:BFO_0000996 rdf:resource="&obo;bfo_tqc_uc.owl#20131020"/>
+        <obo:BFO_0000171 rdf:resource="&obo;bfo_tqc_uc.owl#lab996"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#bs430912_max -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#bs430912_max">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#BloodSpecimen"/>
+        <obo:BFO_0000999 rdf:resource="&obo;bfo_tqc_uc.owl#bs430912_20131020"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tqc_uc.owl#lab996 -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tqc_uc.owl#lab996">
+        <rdf:type rdf:resource="&obo;bfo_tqc_uc.owl#Lab"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+                        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_brain_max"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Mary_max"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Joes_life"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Joe_max"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BloodCell"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_blood_max"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+                        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Tibbles_sex_max"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Tibbles_max"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#ComputerStorage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Joes_health_record_max"/>
+    </owl:Restriction>
 </rdf:RDF>
 
 
