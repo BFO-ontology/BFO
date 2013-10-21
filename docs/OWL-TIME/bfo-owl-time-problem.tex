@@ -130,6 +130,9 @@ at all times, and it is necessarily the same atom.
 
 \subsection*{Use Cases and Competency Questions}
 
+\todo[inline, size=\small]{Shouldn't the use cases go into the Methods section?}
+
+
 \todo[inline, size=\small]{Possible competency questions: (i) phased sortals, (ii) changing location at individual level (iii) class-level queries on anatomical objects (iv) class-level queries in which other than mereological relations occur (e.g. inherence, participation)}
 
 The following use cases (UC) and competency questions (CQ) will be used for a comparison of the two representational approaches we are proposing. 
@@ -140,34 +143,36 @@ class-level (c), individual-level (i) mereologic (m+), non-mereologic (m-), part
 \begin{itemize}
 \item STR\_cm+: Every tooth is part of an organism at some time
 \item STR\_cm-: Every apple is green at some time
-\item STR\_cp1: Every human participates in some birth process at some time
+\item STR\_cp1: Every vertebrate participates in some birth process at some time
 \item STR\_cp2: Every fecundation has some spermatozoon as participant at some time
-\item STR\_im+: The blood specimen \#bs430912 is in  the lab \#lab996 at time tk
-\item STR\_im-: Joe's myocardium is enlarged at time tk
-\item STR\_cp:  Joe participated in the process Joe's birth
+\item STR\_im+: The blood specimen \#bs430912 is in the lab \#lab996 at time \#20131020
+\item STR\_im-: Joe's myocardium is enlarged at time \#20131020
+\item STR\_ip:  Mary participated in the process Mary's birth
 
 \item PGR\_cm+: Every red blood cell always includes some oxygen molecule 
 \item PGR\_cm-: Every electronic health record is always on some computer storage
 \item PGR\_cp1: Every ?  \todo{TODO!}
 \item PGR\_cp2: Every breathing process has always some volume of air as participant 
-\item PGR\_im+: Joe's blood always consists of some blood cells 
+\item PGR\_im+: Mary's blood always consists of some blood cell 
 \item PGR\_im-: Joe's health record always resides on some electronic storage medium
 \item PGR\_ip:  Joe's breathing process has always some volume of air as participant
 
 \item PSR\_cm+: Every human has a brain and it is always the same brain
-\item PSR\_cm-: Every mammal (or even primate) has the same sex during his life 
+\item PSR\_cm-: Every mammal has the same sex during his life 
 \item PSR\_cp1: Every organism always participates in its life, and it is always the same
-\item PSR\_cp2: Every life is always participates of some organism, and it is always the same
-\item PSR\_im+: Joe has `Joe's brain' as a proper part during his lifetime 
+\item PSR\_cp2: Every biological life always has some organism as participant, and it is always the same
+\item PSR\_im+: Mary has `Mary's brain' as a proper part during her lifetime 
 \item PSR\_im-: Tibbles has the same sex during his life 
-\item PSR\_cp+: Joe participates in his life
+\item PSR\_ip: Joe participates in his life
 
 \item NR\_t: Every fetus is an embryo at some time
-\item NR\_a: Joe was a medical student from 2001-10-01 to 2007-06-30
+\item NR\_i: John was a medical student from 2001-10-01 to 2007-06-30
 
-Participation is another use case that should be handled. 
+For the implementation of the use cases as OWL files see supplementary data.
 
-PARTICIPATION EXAMPLES GO HERE.
+\todo[inline, size=\small]{Competency questions could be formulated in a ways that should provoke insatisfiability.}
+
+
 
 Development process of gastrulation which starts with one anatomical part and goes on to another anatomical part? See gastrulation wikipedia page. 
 I see this part. Which phases/stages could my organism be in?
@@ -186,6 +191,7 @@ We will use these use cases and competency questions to evaluate two proposed de
     \item performance profile
 \end{enumerate}
 The details of how we conducted the evaluation are described in our Methods section.
+
 
 \end{itemize}
 
