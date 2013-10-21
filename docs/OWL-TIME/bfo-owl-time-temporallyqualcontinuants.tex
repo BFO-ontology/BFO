@@ -55,7 +55,7 @@ implemented through this method in a binary relationship framework such as OWL-D
 though this representation will require relations that refer to ternary
 predicates in the FOL model, such as \mrelb{continuantOf}, to remain primitive.
 
-\subsection*{Temporary Relatedness}
+\subsection*{Some Time Relatedness}
 
 We rephrase the definition (\ref{eq:temporarily:cls}) given above by inserting
 temporally qualified continuants and derive the form that the relationship takes
@@ -64,7 +64,7 @@ transparent translation:
 \todo{introduce the meaning of <.,.>}
 \begin{equation}
 \begin{split}
-\mclass{TemporarilyRelated}(\mclass{A},\mclass{B})& =_{def}\;
+\mclass{SomeTimeRelated}(\mclass{A},\mclass{B})& =_{def}\;
 \forall a, t:\; \mrelb{inst}(\mclass{A}, \pair{a}{t}) \\
 &\ \rightarrow
 \exists b, t_1:\;(\mrelb{inst}(\mclass{B}\pair{b}{t_1}) \wedge
@@ -76,7 +76,7 @@ We then use the \mrelb{continuantOf} relation and the TQC notation to eliminate
 the tuples:
 \begin{equation}
 \begin{split}
-\mclass{Temporarily}&\mclass{Related}(\mclass{A},\mclass{B}) =_{def}\;
+\mclass{SomeTime}&\mclass{Related}(\mclass{A},\mclass{B}) =_{def}\;
 \forall x:\; \mrelb{inst}(\TQC{A}, x)
  \rightarrow
 \exists a,y,z,t_1:\;(\mrelb{inst}(\TQC{A},y) \wedge \\ & \mrelb{inst}(\TQC{B},z)
@@ -89,7 +89,7 @@ the tuples:
 
 \todo{$t_1$ seems superfluous here}
 
-This means that the logical form of the expression of temporary relatedness is that
+This means that the logical form of the expression of some time relatedness is that
 at least one temporal qualification of \mclass{A} is related to some temporally
 qualified \mclass{B} instance.
 However, we need another axiom to constrain \mrelb{rel} in the above to ensure that the
