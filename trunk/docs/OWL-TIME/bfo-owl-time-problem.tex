@@ -1,6 +1,6 @@
 \section*{Representing Time}
 
-\subsection*{The representation of time in DL axioms}
+\subsection*{The representation of time in OWL axioms}
 
 Both the OBO axiom
 %
@@ -40,21 +40,20 @@ Assuming that the thrombus was no longer in the heart when it was transplanted t
 %
 \begin{equation}
 \begin{split}
-\mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Patient\#115678}
+\mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Patient\#115678})
 \end{split}
 \label{eq:transEntailment}
 \end{equation}
 %
-which follows from the transitivity property of the relation $\mirel{locatedIn}$ is obviously wrong.
-This has a far-reaching consequence, although it has rarely been explicitly remarked on in practical OWL engineering:
-The inability of OWL by default to explicate the temporal contexts of domain 
-entities produces temporally ambiguous statements that may entail unintended reasoning consequences for real data. (A lack of an explicit treatment of temporal context has previously been implicated in an assessment of the quality of existential restrictions in OBO Foundry ontologies \cite{boeker2011}.)
+which follows from the transitivity property of the relation $\mirel{locatedIn}$, is obviously wrong.
+
+This has a far-reaching consequence: by default, OWL statements of this form are temporally ambiguous in a way that may entail unintended reasoning consequences when domain ontologies are used with real data. (A lack of an explicit treatment of temporal context has previously been implicated in an assessment of the quality of existential restrictions in OBO Foundry ontologies \cite{boeker2011}.)
 
 \subsection*{Strengths of Relatedness}
 
-We can make the following distinction between different temporal strengths of relatedness.
+We can make the following distinction between different temporal \emph{strengths} of relatedness.
 
-\subsubsection{Temporary Relatedness (TR)}
+\subsubsection*{Some Time Relatedness (STR)}
 
 Informally: for all a instances of \mclass{A} there is some time $t$ and some instance $b$ of
 \mclass{B} such that $a$ is related to $b$ at $t$. Examples:
@@ -77,7 +76,7 @@ Formally:
 \label{eq:temporarily:cls}
 \end{equation}
 
-\subsubsection{Permanent Generic Relatedness (PGR)}
+\subsubsection*{Permanent Generic Relatedness (PGR)}
 
 Informally: for all instances $a$ of \mclass{A} there is, at all times $t$ that
 $a$ exists,
@@ -89,7 +88,6 @@ part at all times, but not always the same water molecule.
 \item every bacteria colony has some bacteria as parts at all times, but not
 always the same bacteria.
 \end{enumerate}
-
 
 \begin{equation}
 \begin{split}
@@ -103,7 +101,7 @@ always the same bacteria.
 \end{equation}
 
 
-\subsubsection{Permanent Specific Relatedness (PSR)}
+\subsubsection*{Permanent Specific Relatedness (PSR)}
 
 Informally, for all instances $a$ of \mclass{A} there is, at all times $t$ that $a$ exists, an
 instance $b$ of \mclass{B} such that $a$ is related to $b$ at $t$; in this case it is always the
@@ -132,58 +130,48 @@ at all times, and it is necessarily the same atom.
 
 \subsection*{Use Cases and Competency Questions}
 
-In which we set out our important and super relevant use cases. Straight from the biology.
-
-
-We furthermore describe the points we are going to evaluate against.
-\begin{enumerate}
-    \item completeness,
-    \item user friendliness, and
-    \item performance profile
-\end{enumerate}
-The details of how we conducted the evaluation are described in our Methods section at the end.
-
-
-
-\todo[inline, size=\small]{Possible competency questions: (i) phased sortals, (ii) changing location at individual level (iii) TBox queries on anatomical objects (iv) TBox queries in which other than mereological relations occur (e.g. inherence, participation)}
+\todo[inline, size=\small]{Possible competency questions: (i) phased sortals, (ii) changing location at individual level (iii) class-level queries on anatomical objects (iv) class-level queries in which other than mereological relations occur (e.g. inherence, participation)}
 
 The following use cases (UC) and competency questions (CQ) will be used for a comparison of the two representational approaches we are proposing. 
 
-The use cases will be structured as follows: For each temporal mode of existence (TR, PGR, PSR) we will have four use cases: 
-Tbox (t), Abox (a) mereologic (m+), non-mereologic (m-), participation (p), with quantification over the participant (p1) and over the process (p2). In addition we will have a TBox and an ABox use case for a non-rigid class. 
+The use cases will be structured as follows: For each temporal mode of existence (STR, PGR, PSR) we will have four use cases: 
+class-level (c), individual-level (i) mereologic (m+), non-mereologic (m-), participation (p), with quantification over the participant (p1) and over the process (p2). In addition we will have a class-level and an individual-level use case for a non-rigid class. 
 
 \begin{itemize}
-\item TR\_tm+: Every tooth is part of an organism at some time
-\item TR\_tm-: Every apple is green at some time
-\item TR\_tp1: Every human participates in some birth process at some time
-\item TR\_tp2: Every fecundation has some spermatozoon as participant at some time
-\item TR\_am+: The blood specimen \#bs430912 is in  the lab \#lab996 at time tk
-\item TR\_am-: Joe's myocardium is enlarged at time tk
-\item TR\_tp:  Joe participated in the process Joe's birth
+\item STR\_cm+: Every tooth is part of an organism at some time
+\item STR\_cm-: Every apple is green at some time
+\item STR\_cp1: Every human participates in some birth process at some time
+\item STR\_cp2: Every fecundation has some spermatozoon as participant at some time
+\item STR\_im+: The blood specimen \#bs430912 is in  the lab \#lab996 at time tk
+\item STR\_im-: Joe's myocardium is enlarged at time tk
+\item STR\_cp:  Joe participated in the process Joe's birth
 
-\item PGR\_tm+: Every red blood cell always includes some oxygen molecule 
-\item PGR\_tm-: Every electronic health record is always on some computer storage
-\item PGR\_tp1: Every ?  
-\item PGR\_tp2: Every breathing process has always some volume of air as participant 
-\item PGR\_am+: Joe's blood always consists of some blood cells 
-\item PGR\_am-: Joe's health record always resides on some electronic storage medium
-\item PGR\_ap:  Joe's breathing process has always some volume of air as participant
+\item PGR\_cm+: Every red blood cell always includes some oxygen molecule 
+\item PGR\_cm-: Every electronic health record is always on some computer storage
+\item PGR\_cp1: Every ?  \todo{TODO!}
+\item PGR\_cp2: Every breathing process has always some volume of air as participant 
+\item PGR\_im+: Joe's blood always consists of some blood cells 
+\item PGR\_im-: Joe's health record always resides on some electronic storage medium
+\item PGR\_ip:  Joe's breathing process has always some volume of air as participant
 
-\item PSR\_tm+: Every human has a brain and it is always the same brain
-\item PSR\_tm-: Every mammal (or even primate) has the same sex during his life 
-\item PSR\_tp1: Every organism always participates in its life, and it is always the same
-\item PSR\_tp2: Every life is always participates of some organism, and it is always the same
-\item PSR\_am+: Joe has `Joe's brain' as a proper part during his lifetime 
-\item PSR\_am-: Tibbles has the same sex during his life 
-\item PSR\_tp+: Joe participates in his life
+\item PSR\_cm+: Every human has a brain and it is always the same brain
+\item PSR\_cm-: Every mammal (or even primate) has the same sex during his life 
+\item PSR\_cp1: Every organism always participates in its life, and it is always the same
+\item PSR\_cp2: Every life is always participates of some organism, and it is always the same
+\item PSR\_im+: Joe has `Joe's brain' as a proper part during his lifetime 
+\item PSR\_im-: Tibbles has the same sex during his life 
+\item PSR\_cp+: Joe participates in his life
 
 \item NR\_t: Every fetus is an embryo at some time
 \item NR\_a: Joe was a medical student from 2001-10-01 to 2007-06-30
 
 Participation is another use case that should be handled. 
+
 PARTICIPATION EXAMPLES GO HERE.
+
 Development process of gastrulation which starts with one anatomical part and goes on to another anatomical part? See gastrulation wikipedia page. 
 I see this part. Which phases/stages could my organism be in?
+
 During neural development the cells are doing something specific. Existence of process defines phase.
 
 \todo[inline, size=\small]{Alan has a worked out example of the phases of life of some moth organism.}
@@ -191,7 +179,13 @@ During neural development the cells are doing something specific. Existence of p
 \todo[inline, size=\small]{Joe's income when he was a medical student was lower than his income after he graduated.}
 \todo[inline, size=\small]{An assertion about joe as a medical student shouldn't make it on to Joe in general.}
 
-
+We will use these use cases and competency questions to evaluate two proposed design patterns for temporalization against the following functional criteria:
+\begin{enumerate}
+    \item technical completeness, 
+    \item user friendliness, and
+    \item performance profile
+\end{enumerate}
+The details of how we conducted the evaluation are described in our Methods section.
 
 \end{itemize}
 
