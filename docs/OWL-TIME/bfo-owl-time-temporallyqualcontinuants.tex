@@ -69,22 +69,19 @@ transparent translation:
 \end{split}
 \end{equation}
 \todo{specify the meaning of ``within'' DID ABOVE}
-We then use the \mrelb{continuantOf} relation and the TQC notation to eliminate
+We then use the \mrelb{atSomeTime} and \mrelb{hasMax} relations and the TQC notation to eliminate
 the tuples:
 \begin{equation}
 \begin{split}
 \mclass{SomeTime}&\mclass{Related}(\mclass{A},\mclass{B}) =_{def}\;
 \forall x:\; \mrelb{inst}(\TQC{A}, x)
  \rightarrow
-\exists a,y,z,t_1:\;(\mrelb{inst}(\TQC{A},y) \wedge \\ & \mrelb{inst}(\TQC{B},z)
- \wedge \mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(a,y) \wedge
-\mrelb{rel}(y,z)
+\exists y,z \; \mrelb{inst}(\TQC{A},y) \wedge \\ & \mrelb{inst}(\TQC{B},z)
+ \wedge \mrelb{atSomeTime}(y,x) \wedge \mrelb{rel}(y,z)
 \end{split}
 \label{eq:usesSame}
 \end{equation}
 \todo{check use of () and ;  }
-
-\todo{$t_1$ seems superfluous here}
 
 This means that the logical form of the expression of some time relatedness is that
 at least one temporal qualification of \mclass{A} is related to some temporally
@@ -94,24 +91,16 @@ portions of time are appropriately overlapping, since \mrelt{rel} holds at one t
 only:
 \begin{equation}
 \begin{split}
-\forall x,y:\;& \mrelb{rel}(x,y) \rightarrow \exists a,b,t,t_1:\;
-(\mirel{equals}(x,\pair{a}{t})\wedge \mirel{equals}(y,\pair{b}{t_1})\\
-& \wedge \mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(b,y) \wedge
-\mrelt{rel}(a,b,t_1) \wedge \mirel{within}(t_1,t))
+\forall x,y:\;& \mrelb{rel}(x,y) \rightarrow \exists t,t_1:\;
+(\mrelb{hasTime}(x, t) \wedge \mrelb{hasTime}(y,t_1) \wedge \mirel{within}(t_1,t))
 \end{split}
 \end{equation}
 
 Now we have derived a binary expression \mrelb{rel} we are free to use this in OWL
-axioms. We introduce the relation \mrelb{hasSameContinuant} between temporally qualified
-continuants to express that they are TQCs of the same continuant,
-expressed in the above axiom (\ref{eq:usesSame}) as $(\mrelb{continuantOf}(a,x)
-\wedge \mrelb{continuantOf}(a,y))$, which allows us to express temporary relatedness in OWL as follows:
-
-
-\todo{hasSameContinuant - what about introducing hasMaxContinunant to avoid the reference to non temporally qualified continuants?}
+axioms. Temporary relatedness is thus expressed in OWL as follows:
 
 \begin{equation}
-\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{atSomeTime}\;\mathtt{some
 (}\mrelb{rel}\;\mathtt{some}\;\TQC{B})
 \label{eq:tqc:temp}
 \end{equation}
@@ -119,60 +108,61 @@ expressed in the above axiom (\ref{eq:usesSame}) as $(\mrelb{continuantOf}(a,x)
 Additionally, we ensure that sharing a temporal qualification amounts to being
 the same continuant:\footnote{Implementers should note that OWL 2 only mandates
 this for \emph{named} individuals.}
-
+\todo{FIX FOR NEW APPROACH}
 \begin{equation}
-\mclass{A}\;\mathtt{hasKey}(\mrelb{continuantOf})
+\mclass{A}\;\mathtt{hasKey}(\mrelb{hasMax})
 \end{equation}
 
 
 \todo{A Box issues to be discussed separately ?}
 
 
-\subsection*{Usability and simplification}
-Since the above axiom (\ref{eq:tqc:temp}) makes a claim about the class \TQC{A},
-it is less ideal from a usability perspective. We would rather like to say
-something about the target continuant classes \mclass{A} and \mclass{B} in our OWL version, for
-ease of use by the end user. Thus, we introduce a new relationship,
-\mreltemp{rel}, which obtains between continuants, and should be interpreted as follows:
+%\subsection*{Usability and simplification}
+%\todo{I THINK THIS SECTION IS NOT RELEVANT ANY LONGER AS IT CURRENTLY STANDS}
+%Since the above axiom (\ref{eq:tqc:temp}) makes a claim about the class \TQC{A},
+%it is less ideal from a usability perspective. We would rather like to say
+%something about the target continuant classes \mclass{A} and \mclass{B} in our OWL version, for
+%ease of use by the end user. Thus, we introduce a new relationship,
+%\mreltemp{rel}, which obtains between continuants, and should be interpreted as follows:
+
+%
+%\begin{equation}
+%\begin{split}
+%\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\mathtt{some}\mclass{B}\;\rightarrow\\
+%&\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some}\;(\mrelb{rel}\;\mathtt{some}\;
+%\TQC{B})
+%\end{split}
+%\end{equation}
+
+%
+%\todo{could this be a bridge between TR and TQC ?}
+
+%Unfortunately, the above statement cannot be formulated in OWL 2 due to its
+%strict constraints on object properties. Neither can it be implemented in a
+%rule language, since it would induce the generation of new individuals in its
+%consequent, which violated DL safety. Still there is an avenue for hiding the
+%complexity by using a macro processing engine, such as OPPL (\cite{OPPL}), in
+%which processing instructions such as these could be employed:
+
+%\begin{lstlisting}
+%?x:CLASS[subClassOf Continuant],
+%?y:OBJECTPROPERTY?MATCH("temporarily_(.*)"),
+%?z:CLASS[subClassOf Continuant]
+%SELECT ?x subClassOf ?y some ?z
+%BEGIN
+%  ADD ?x subClassOf continuantOf some ?y.GROUPS(1)
+%    some hasContinuant ?z,
+%  REMOVE ?x subClassOf ?y some ?z
+%END;
+%\end{lstlisting}
+%This can easily be adopted or parameterised for other axiom types or types of temporal
+%sensitivity (e.g. permanent generic relatedness) Additional measures that alleviate the burden of this approach would be making
+%\mrelb{rel} a sub-object-property of \mreltemp{rel}, which quite natural and
+%obvious: If something is related at all times to some entity, it is related to
+%that entity at some time.
 
 
-\begin{equation}
-\begin{split}
-\mclass{A}\;&\mathtt{subClassOf}\;\mreltemp{rel}\;\mathtt{some}\mclass{B}\;\rightarrow\\
-&\TQC{A}\;\mathtt{subClassOf}\;\mrelb{hasSameContinuant}\;\mathtt{some}\;(\mrelb{rel}\;\mathtt{some}\;
-\TQC{B})
-\end{split}
-\end{equation}
-
-
-\todo{could this be a bridge between TR and TQC ?}
-
-Unfortunately, the above statement cannot be formulated in OWL 2 due to its
-strict constraints on object properties. Neither can it be implemented in a
-rule language, since it would induce the generation of new individuals in its
-consequent, which violated DL safety. Still there is an avenue for hiding the
-complexity by using a macro processing engine, such as OPPL (\cite{OPPL}), in
-which processing instructions such as these could be employed:
-
-\begin{lstlisting}
-?x:CLASS[subClassOf Continuant],
-?y:OBJECTPROPERTY?MATCH("temporarily_(.*)"),
-?z:CLASS[subClassOf Continuant]
-SELECT ?x subClassOf ?y some ?z
-BEGIN
-  ADD ?x subClassOf continuantOf some ?y.GROUPS(1)
-    some hasContinuant ?z,
-  REMOVE ?x subClassOf ?y some ?z
-END;
-\end{lstlisting}
-This can easily be adopted or parameterised for other axiom types or types of temporal
-sensitivity (e.g. permanent generic relatedness) Additional measures that alleviate the burden of this approach would be making
-\mrelb{rel} a sub-object-property of \mreltemp{rel}, which quite natural and
-obvious: If something is related at all times to some entity, it is related to
-that entity at some time.
-
-
-\todo{all this wouldn't be needed for the ``radical'' TQC approach}
+%\todo{all this wouldn't be needed for the ``radical'' TQC approach}
 
 \subsection*{Permanent Generic Relatedness}
 Permanent generic relatedness is considered by some to be the most common
@@ -197,61 +187,63 @@ Moving to OWL, the above axiom (\ref{eq:tqc:pg}) appears as:
 \label{eq:tqc:pg:owl}
 \end{equation}
 
-Again, we can use a kind of macro expansion to bridge a shorthand for this type
-of relatedness (e.g. \mrelpg{rel}) back to the
-underlying relationship. Thus we would use (\ref{eq:tqc:pg:owl}) to replace
-every occurrence of axioms such as the following:
-\begin{equation}
-\mclass{A}\;\mathtt{subClassOf}\;\mrelpg{rel}\;\mathtt{some}\;\mclass{B}  
-\label{eq:tqc:pg:shorthand}
-\end{equation}
+%Again, we can use a kind of macro expansion to bridge a shorthand for this type
+%of relatedness (e.g. \mrelpg{rel}) back to the
+%underlying relationship. Thus we would use (\ref{eq:tqc:pg:owl}) to replace
+%every occurrence of axioms such as the following:
+%\begin{equation}
+%\mclass{A}\;\mathtt{subClassOf}\;\mrelpg{rel}\;\mathtt{some}\;\mclass{B}  
+%\label{eq:tqc:pg:shorthand}
+%\end{equation}
 
-By replacing, we mean to imply that we advise against using \mrelpg{rel} as an
-object property, which would not be harmful in itself, but at least
-counter-intuitive. Instances of \mclass{A} satisfying
-formula \ref{eq:tqc:pg:shorthand} would require a pair of instances \pair{a}{b}, where
-$a$ is said to be permanently generically related to $b$, which is (i)
-meaningless since generic relatedness pertains to a type, not an instance and
-(ii) misleading since it is not enforced by the model.
+%By replacing, we mean to imply that we advise against using \mrelpg{rel} as an
+%object property, which would not be harmful in itself, but at least
+%counter-intuitive. Instances of \mclass{A} satisfying
+%formula \ref{eq:tqc:pg:shorthand} would require a pair of instances \pair{a}{b}, where
+%$a$ is said to be permanently generically related to $b$, which is (i)
+%meaningless since generic relatedness pertains to a type, not an instance and
+%(ii) misleading since it is not enforced by the model.
 
-Still, the availability of permanent generic relatedness is noteworthy because
-it would not be possible in OWL 2 in absence of temporally qualified
-continuants (not only instantiation of classes, but also of object property
-tuples is rigid). This is afforded by the fact that we do not introduce an
-explicit object property for generic permanent relatedness.
+The availability and elegance of permanent generic relatedness in this design pattern is noteworthy because
+it would not be possible in OWL 2 in the absence of temporally qualified
+continuants, as instantiation of classes and of object property
+tuples is rigid. %This is afforded by the fact that we do not introduce an
+%explicit object property for generic permanent relatedness.
 
-Since permanent generic relatedness matches the presumed default interpretation
-of \mrelb{rel} in most existing biomedical ontologies, upgrade paths for these
-ontologies need to be considered. We believe that, from a user perspective, the
-most convenient way would be to relegate all relations that require
-temporalisation into a specific branch (say,
-\mrelb{temporallySensitivelyRelated}) and employ something like the following
-preprocessing instruction:
-\begin{lstlisting}
-?x:CLASS[subClassOf Continuant],
-?y:OBJECTPROPERTY?[subPropertyOf temporallySensitivelyRelated],
-?z:CLASS[subClassOf Continuant]
-SELECT ?x subClassOf ?y some ?z WHERE
-  FAIL ?x subClassOf hasContinuant some Continuant,
-  ?y MATCH("^(.(?<!temporarily_))*\$")
-  FAIL ?z subClassOf hasContinuant some Continuant,
-BEGIN
-  ADD hasContinuant some ?x subClassOf ?y some continuantOf some ?z,
-  REMOVE ?x subClassOf ?y some ?z
-END;
-\end{lstlisting}
-This allows users to do away with \mrelpg{rel} and have expressions about
-continuants converted into expressions about temporal qualifications transformed
-seamlessly. There are two downsides to this. Firstly, this approach moves
-ontology engineering even more towards procedures that are familiar to
-software engineers but not to scientists from the field of application.
-Secondly, the above expression requires a reasoner to work, which might be
-costly to do after every edit.
+%Since permanent generic relatedness matches the presumed default interpretation
+%of \mrelb{rel} in most existing biomedical ontologies, upgrade paths for these
+%ontologies need to be considered. We believe that, from a user perspective, the
+%most convenient way would be to relegate all relations that require
+%temporalisation into a specific branch (say,
+%\mrelb{temporallySensitivelyRelated}) and employ something like the following
+%preprocessing instruction:
+%\begin{lstlisting}
+%?x:CLASS[subClassOf Continuant],
+%?y:OBJECTPROPERTY?[subPropertyOf temporallySensitivelyRelated],
+%?z:CLASS[subClassOf Continuant]
+%SELECT ?x subClassOf ?y some ?z WHERE
+%  FAIL ?x subClassOf hasContinuant some Continuant,
+%  ?y MATCH("^(.(?<!temporarily_))*\$")
+%  FAIL ?z subClassOf hasContinuant some Continuant,
+%BEGIN
+%  ADD hasContinuant some ?x subClassOf ?y some continuantOf some ?z,
+%  REMOVE ?x subClassOf ?y some ?z
+%END;
+%\end{lstlisting}
+%This allows users to do away with \mrelpg{rel} and have expressions about
+%continuants converted into expressions about temporal qualifications transformed
+%seamlessly. There are two downsides to this. Firstly, this approach moves
+%ontology engineering even more towards procedures that are familiar to
+%software engineers but not to scientists from the field of application.
+%Secondly, the above expression requires a reasoner to work, which might be
+%costly to do after every edit.
 
-On the other hand, it is subject to debate whether adopting an edit-compile-test
-approach in ontology engineering could in fact be useful for improving ontology quality.
+%On the other hand, it is subject to debate whether adopting an edit-compile-test
+%approach in ontology engineering could in fact be useful for improving ontology quality.
 
 \subsection*{Permanent Specific Relatedness}
+Permanent specific relatedness cannot elegantly be accommodated within the TQC design pattern. 
+
 If we do introduce an explicit object property, could we hope to arrive at
 implementing something like permanent specific relatedness
 (\ref{eq:specifically:cls})? Unfortunately, this assumption proves to be too na\"ive.
@@ -260,6 +252,8 @@ It would require an additional axiom to ensure that only TQCs of the same contin
 for the second relatum. Unfortunately, we cannot provide an
 accurate translation of this kind of relatedness into OWL 2, though we can
 achieve the following first order translation in TQC-talk:
+
+\todo{UPGRADE PROPOSAL TO LATEST TQC VERSION, i.e. remove continuantOf relation}
  \begin{equation}
 \begin{split}
 \forall x:\; \mrelb{inst}&(\TQC{A},x) \rightarrow \\
