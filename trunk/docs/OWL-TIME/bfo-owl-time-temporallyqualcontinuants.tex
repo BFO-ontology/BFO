@@ -25,22 +25,22 @@ The following additional relations are introduced into the ontology to support m
 \begin{itemize}
     \item \mirel{hasMax} (inverse \mirel{maxOf}) relates a TQC instance to its related instance with the maximal temporal extension (which may be itself)
     \item \mirel{atSomeTime} relates a TQC with each other TQC that represents the same continuant
-    \item \mirel{atSomeTime} $\equiv$ \mirel{hasMax} $\circ$ \mirel{maxOf}
+    \item Note that \mirel{atSomeTime} $\equiv$ \mirel{hasMax} $\circ$ \mirel{maxOf}
     \item \mirel{maxOf} \texttt{subPropertyOf} \mirel{atSomeTime} (not necessary if hasMax is reflexive)
     \item \mirel{hasTime} relates a TQC with its defining temporal region.
 \end{itemize}
 
-All TQCs must have exactly one temporal region. Thus, instantiation of continuants represented in OWL using the TQC pattern is time indexed -- i.e. a temporal region must always be specified in instantiation of a TQC. However, implementers may wish to assume for the sake of usability that when instances of continuants are created in an OWL knowledge base without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
+All TQCs must have exactly one temporal region (thus, the \mirel{hasTime} relation is functional). It follows that instantiation of continuants represented in OWL using the TQC pattern is necessarily time indexed -- i.e. a temporal region must always be specified in instantiation of a TQC. However, implementers may wish to assume for the sake of usability that when instances of continuants are created in an OWL knowledge base without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
 
 For clarity in the remainder of this discussion, we will use the notation \TQC{A} to denote the class of temporal qualifications of
-continuants of type \mclass{A}.
+continuants of type \mclass{A}. Note that in the OWL version of an ontology using the TQC design pattern, \emph{only} TQCs will be included in the ontology. However, we need to distinguish between \TQC{A} and \mclass{A} for the purpose of showing the translation from OWL to FOL. The following equation relates an instance of \TQC{A} (represented in OWL) to an instance of \TQC{A} (represented in FOL). 
 
 \begin{equation}
 \forall x:\; (\mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t_0,t_1:\;(
 \mrelt{inst}(\mclass{A},a,t_0) \wedge \mirel{equals}(x,a,t_1) \wedge
 \mirel{within}(t_1,t_0)))
 \end{equation}
-The intended meaning of the predicate \mirel{equals} is identity.  
+The intended meaning of the predicate \mirel{equals} is identity, and \mirel{within} specifies inclusion for temporal regions.  
 The relation \mirel{hasMax} links a TQC to the max TQC for that continuant. That is,
 \begin{equation}
 \forall x\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t:\;(
@@ -58,7 +58,7 @@ We rephrase the definition (\ref{eq:temporarily:cls}) given above by inserting
 temporally qualified continuants and derive the form that the relationship takes
 for temporally qualified continuants and a binary relationship. This is a fairly
 transparent translation:
-\todo{introduce the meaning of <.,.>}
+\todo{introduce the meaning of <.,.> YES, WE DID IT ABOVE (a TQC is a tuple...)}
 \begin{equation}
 \begin{split}
 \mclass{SomeTimeRelated}(\mclass{A},\mclass{B})& =_{def}\;
@@ -68,7 +68,7 @@ transparent translation:
 \mrelb{rel}(\pair{a}{t_1},\pair{b}{t_1}) \wedge \mirel{within}(t_1,t))
 \end{split}
 \end{equation}
-\todo{specify the meaning of ``within''}
+\todo{specify the meaning of ``within'' DID ABOVE}
 We then use the \mrelb{continuantOf} relation and the TQC notation to eliminate
 the tuples:
 \begin{equation}
