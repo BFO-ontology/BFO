@@ -1,6 +1,8 @@
 \section*{Representing Time}
 
-\subsection*{The representation of time in OWL axioms}
+
+\subsection*{\\
+The underspecification of time representations in OWL axioms}
 
 Both the OBO axiom
 %
@@ -20,7 +22,10 @@ and the equivalent OWL axiom
 \label{eq:celldl}
 \end{equation}  
 %
-are undefined with regard to time. This is not a side aspect, because it makes a
+are undefined with regard to time. 
+\todo{The OWL axiom is, but I am not sure whether the OBO axiom is, I also have my concern re OWL - OBO equivalence}
+
+This is not a side aspect, because it makes a
 difference whether, e.g., a cell membrane is \emph{always} part of some cell or
 only \emph{at some time}.
 The lack of temporal definition of OWL statements is especially unsatisfactory
@@ -51,7 +56,17 @@ This has a far-reaching consequence: by default, OWL statements of this form are
 
 \subsection*{Strengths of Relatedness}
 
-We can make the following distinction between different temporal \emph{strengths} of relatedness.
+We will propose a distinction between different temporal \emph{strengths} of relatedness. Before, however, we need to further characterise the ontological status of time, as referred to by the symbol $t$in our further deliberations. We refrain from a distinction between time intervals and time points, as the latter can be approximated by infinitesimally small intervals. 
+We axiomatically assume that any ternary relation that holds for a time interval, holds also true for any of its subintervals, including time points. 
+
+Formally:
+\begin{equation}
+\begin{split}
+\forall a, b, t, t^\prime:\; \mrelt{rel}(a, b, t) \wedge \mirel{within}(t^\prime,t) \rightarrow 
+\mrelt{rel}(a,b,t^\prime)  
+\end{split}
+\label{eq:temporarily:temp}
+\end{equation}
 
 \subsubsection*{Some Time Relatedness (STR)}
 
@@ -127,185 +142,3 @@ at all times, and it is necessarily the same atom.
 \label{eq:specifically:cls}
 \end{equation}
 
-
-\subsection*{Use Cases and Competency Questions}
-
-\todo[inline, size=\small]{Shouldn't the use cases go into the Methods section?}
-
-
-\todo[inline, size=\small]{Possible competency questions: (i) phased sortals, (ii) changing location at individual level (iii) class-level queries on anatomical objects (iv) class-level queries in which other than mereological relations occur (e.g. inherence, participation)}
-
-The following use cases (UC) and competency questions (CQ) will be used for a comparison of the two representational approaches we are proposing. 
-
-The use cases will be structured as follows: For each temporal mode of existence (STR, PGR, PSR) we will have four use cases: 
-class-level (c), individual-level (i) mereologic (m+), non-mereologic (m-), participation (p), with quantification over the participant (p1) and over the process (p2). In addition we will have a class-level and an individual-level use case for a non-rigid class. 
-
-\begin{itemize}
-\item STR\_cm+: Every tooth is part of an organism at some time. Challenged by: \\ ``tooth that is never part of an organism'': insatisfiable \\
-``tooth that is part of something that is not an organism or organism part'': satisfiable 
-
-
-\item STR\_cm-: Every apple is green at some time
-\\
-Challenged by: \\ ``apple that is never green'': insatisfiable \\
-``apple that is red at all times'': insatisfiable 
-
-
-\item STR\_cp1: Every vertebrate participates in some birth process at some time\\
-Challenged by: \\ ``Vertebrate that never participates in any birth process'': insatisfiable \\
-``Vertebrate that at some time does not participate in a birth process'': insatisfiable 
-
-
-
-\item STR\_cp2: Every fecundation has some spermatozoon as participant at some time
-\\
-Challenged by: \\ ``Fecundation event for which there is never any spermatozoon that participates'': insatisfiable \\
-``Phase of fecundation in which there is no spermatozoon participating'': satisfiable 
-
-
-
-
-\item STR\_im+: The blood specimen \#bs430912 is in the lab \#lab996 at time \#20131020
-
-Challenged by: \\ ``The blood specimen \#bs430912 is in the lab \#lab100 at time \#20131020. Both labs do not share parts'' ==> unsatifiable
-
-
-
-\item STR\_im-: Joe's left ankle is swollen at time \#20131020
-
-Challenged by: \\ ``Joe's left ankle is not swollen at time \#20131021'' ==> satifiable
-\\ ``Joe's left ankle at time \#20131020 is not swollen'' ==> unsatifiable
-
-
-
-\item STR\_ip:  Mary participated in the process Mary's birth
-
-Challenged by: \\``There is a time in which Mary is not a participant of her birth''  ==> satifiable
-
-%%%%%%%
-
-
-\item PGR\_cm+: Every red blood cell always includes some oxygen molecule 
-
-
-
-
-
-
-
-Challenged by: \\``There are red blood cells without oxygen molecules''  ==> unsatifiable
-
-
-\item PGR\_cm-: Every electronic health record is always on some computer storage
-
-Challenged by: \\``There are electronic health record that are not on a computer storage''  ==> unsatifiable
-
-
-\item PGR\_cp1: Every ?  \todo{any idea?}
-\item PGR\_cp2: Every breathing process has always some volume of air as participant 
-
-Challenged by: \\``There are breathing processes in which no air volume participates''  ==> unsatifiable
-
-
-\item PGR\_im+: Mary's blood always consists of some blood cell 
-
-Challenged by: \\``There is a time in which Mary's blood is devoid of blood cells''  ==> unsatifiable
-
-\item PGR\_im-: Joe's electronic health record always resides on some electronic storage medium
-
-Challenged by: \\``There is a time in which Joe's electronic health is not on an electronic storage''  ==> unsatifiable
-
-
-\item PGR\_ip:  Joe's breathing process has always some volume of air as participant
-
-Challenged by: \\``Joe's breathing process is without air at some time''  ==> unsatifiable
-
-%%%%%%%%%%%
-
-\item PSR\_cm+: Every human has a brain and it is always the same brain
-
-Challenged by: \\``A human who has more than one brain''  ==> unsatifiable
-
-\todo[inline, size=\small]{``This is rather tricky with TQC. One could express it as: for all temporal 
-instances of Human there is always some temporal instance of brain related. For all human instance which has the same "max" 
-all related brain instances must also have the same "max" ''}
-
-
-
-
-
-\item PSR\_cm-: Every mammal has the same sex during its life
-
-Challenged by: \\``A mammal that has more than one sex''  ==> unsatifiable
-
- 
-\item PSR\_cp1: Every organism always participates in its life, and it is always the same
-
-Challenged by: \\``An  organism that participates in two different lifes''  ==> unsatifiable
-
-
-\item PSR\_cp2: Every biological life always has some organism as participant, and it is always the same
-
-Challenged by: \\``A life that has more than one organism as participant''  ==> unsatifiable
-
-
-\item PSR\_im+: Mary has `Mary's brain' as a proper part during her lifetime 
-
-Challenged by: \\``Mary gets a new brain during her lifetime''  ==> unsatifiable
-
-
-\item PSR\_im-: Tibbles has the same sex during his life 
-
-Challenged by: \\``Tibbles changes his sex during his life''  ==> unsatifiable
-
-
-\item PSR\_ip: Joe participates in his life and not in any other life
-
-Challenged by: \\``Joe participates in more than one life''  ==> unsatifiable
-
-
-%%%%%%%%%%%
-
-
-\item NR\_t: Every fetus is an embryo at some time. Nothing can be both an embryo and a fetus at the same time. Vertebrate embryoes have a chorda at some time
-
-Challenged by: \\ ``There are fetuses that were never embryoes''  ==> unsatifiable
-
-
-
-
-\item NR\_i: John was a medical student from 2001-10-01 to 2007-06-30
-
-Challenged by: \\ ``Every person which is a medical student was a high school student at some time''   
-John was never a high school student. ==> unsatisfiable
-
-
-
-
-For the implementation of the use cases and competency questions as OWL axioms see supplementary data.
- 
-
-Development process of gastrulation which starts with one anatomical part and goes on to another anatomical part? See gastrulation wikipedia page. 
-I see this part. Which phases/stages could my organism be in?
-
-During neural development the cells are doing something specific. Existence of process defines phase.
-
-\todo[inline, size=\small]{Alan has a worked out example of the phases of life of some moth organism.}
-\todo[inline, size=\small]{Embryo has this part but the fetus does not have that part.}
-\todo[inline, size=\small]{Joe's income when he was a medical student was lower than his income after he graduated.}
-\todo[inline, size=\small]{An assertion about joe as a medical student shouldn't make it on to Joe in general.}
-
-We will use these use cases and competency questions to evaluate two proposed design patterns for temporalization against the following functional criteria:
-\begin{enumerate}
-    \item technical completeness, 
-    \item user friendliness, and
-    \item performance profile
-\end{enumerate}
-The details of how we conducted the evaluation are described in our Methods section.
-
-\end{itemize}
-
-
-
-
- 
