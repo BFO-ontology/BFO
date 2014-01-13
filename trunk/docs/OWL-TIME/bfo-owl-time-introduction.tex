@@ -2,11 +2,14 @@
 
 % Introduction to this paper, what is the point, what is the scope, what are the limitations
 
-This paper addresses a challenge that has arisen in the context of the Open Biomedical Ontologies (OBO) Foundry \cite{Smith2007} community, in particular in relation to the implementation of the Basic Formal Ontology (BFO, \cite{BFO2:Graz}) version 2 which uses the Web Ontology Language (OWL, \cite{grau2008}). However, the problem is of general interest to the biomedical ontology and data standards community, as it exposes and addresses a weakness of a large number of bio-ontologies that use OWL and model dynamic aspects of their domain. 
+This paper addresses a challenge that has arisen in the context of the Open Biomedical Ontologies (OBO) Foundry \cite{Smith2007} community, in particular in relation to the implementation of the Basic Formal Ontology (BFO, \cite{BFO2:Graz}) version 2, which uses the Web Ontology Language (OWL, \cite{grau2008}). However, the problem is of general interest to the %biomedical 
+ontology and data standards communities. It exposes and addresses a weakness of a large number of biomedical ontologies that use OWL and represent time-related
+%dynamic 
+aspects of their domain. Insofar the problem is not restricted to the life science context, and it seems relevant to virtually all domains, in which objects change over time.   
 
-According to BFO and many other foundational ontologies, a useful upper-level distinction is between those entities that exist in full at all times at which they exist (continuants), and those that unfold in time (occurrents). This is a distinction according to temporal mode of existence. Temporal information is also relevant when specifying the relationships between continuant entities, particularly (as for most of the life sciences), where continuants such as organisms, shapes, and disorders not only persist, but also continuously change over time. They continuously gain and lose parts, qualities, and dispositions. Consequently, any relational expression which makes reference to a particular continuant can have different truth values at different times and would therefore be ambiguous if time were not made explicit in the statement. 
+According to BFO and other foundational ontologies, a useful upper-level distinction is between those entities that exist in full at all times at which they exist (continuants), and those that unfold in time (occurrents). This is a distinction according to temporal mode of existence. Temporal information is also relevant when specifying the relationships between continuant entities, particularly (as for most of the life sciences), where continuants such as organisms and their parts, molecules, shapes, and disorders not only persist, but also continuously change over time. They continuously gain and lose parts, qualities, and dispositions. Consequently, any relational expression which makes reference to a particular continuant can have different truth values at different times and would therefore be ambiguous if time were not made explicit in the statement. 
 
-The Relation Ontology (RO, \cite{OBO:RO}) proposed patterns for the definition of biological relationships to be used throughout bio-ontologies such as the Gene Ontology \cite{go2000}, ChEBI \cite{chebinar2013} and various anatomy ontologies \cite{uberon2012}, including \mirel{partOf}, \mirel{hasPart}, \mirel{participatesIn}, and  \mirel{instanceOf}. The paper specified exactly how relations at the class level were to be interpreted with regard to time. That is, in order to capture the statement that every red blood cell has some oxygen molecule located in it, the class-level relation statement \mclass{RedBloodCell} \mirel{locationOf} \mclass{OxygenMolecule} (i.e. the red blood cell is the location for the oxygen molecule) should be interpreted as the following first-order logic (FOL) statement: 
+The Relation Ontology (RO, \cite{OBO:RO}) proposed patterns for the definition of biological relations to be used throughout bio-ontologies such as the Gene Ontology \cite{go2000}, ChEBI \cite{chebinar2013} and various anatomy ontologies \cite{uberon2012}. The relations proposed include \mirel{partOf}, \mirel{hasPart}, \mirel{participatesIn}, and  \mirel{instanceOf}. The Relation Ontology specifies exactly how relations at the class level were to be interpreted with regard to time. That is, in order to capture the statement that every red blood cell has some oxygen molecule located in it, the class-level relation statement \mclass{RedBloodCell} \mirel{locationOf} \mclass{OxygenMolecule} (i.e. the red blood cell is the location for the oxygen molecule) should be interpreted as the following first-order logic (FOL) statement: 
 \begin{equation}
 \forall x \forall t : \mirel{instanceOf}(x, \mclass{RedBloodCell}, t) \rightarrow 
 \exists y : \mirel{instanceOf}(y, \mclass{OxygenMolecule}, t) \wedge \mirel{locationOf}(x, y, t)
@@ -14,11 +17,22 @@ The Relation Ontology (RO, \cite{OBO:RO}) proposed patterns for the definition o
 
 This equation says that at all times that a red blood cell exists, there exists some oxygen molecule (importantly, not necessarily the same one at different times) that is located in the red blood cell \emph{at that time}. Note that instantiation of continuants such as red blood cells and oxygen molecules is also time-indexed in this pattern. 
 
-Many of the foundational relations contained in the RO were subsequently merged into the BFO during the redesign project, such that BFO now provides definitions for relations of parthood, participation and instantiation among many others. The BFO reference specification follows the RO pattern and offers the definitions of these relations, allocating a time index to every relation in which a continuant is one of the relata. 
+Most of the RO relations 
+%contained in the RO 
+were subsequently merged into the BFO during the redesign project, such that BFO, in its second version, now provides definitions for relations of parthood, participation and instantiation among many others. The BFO reference specification follows the RO pattern and offers the definitions of these relations, allocating a time index to every relation in which a continuant is one of the relata. 
 
-The challenge is that, as can be seen in the above formula, relational expressions with a time index are \emph{ternary}, that is, they take three parameters -- the two relata and the time index. However, the OWL language, for reasons of implementation and reasoning efficiency, allows only \emph{binary} relations. Ternary relations cannot be directly expressed in standard OWL expressions. Thus, when relations such as partOf are used at the class level in bio-ontologies in practical OWL implementations (also in OBO implementations, since the semantics for the OBO language is assigned by translation to OWL), the time index is lost, which can have surprising consequences for practical reasoning. 
+The challenge is that, as can be seen in the above formula, relational expressions with a time index are \emph{ternary}, that is, they take three parameters -- the two relata (which are particulars), and the time index. However, the OWL language, for reasons of implementation and reasoning efficiency, allows only \emph{binary} relations. 
+%Ternary relations cannot be directly expressed in standard OWL expressions. 
+Thus, when relations such as \textbf{partOf} are used in class level axioms
+%in bio-ontologies 
+in practical OWL implementations 
+%(also in OBO implementations, since the semantics for the OBO language is assigned by translation to OWL), 
+the time index is lost, which can have surprising reasoning consequences. 
+\todo{The relation between OBO and OWL should be elucidated in more detail}
+
 
 The objective of this paper is the presentation and discussion of OWL design patterns that partly mitigate this limitation. It is organised as follows:\todo{Revise}
+
 In the remainder of this Background, we give an overview of the OWL language and BFO ontology into which our proposal will be embedded, and outline our use cases and competency questions.
 Thereafter, we survey the existing approaches to the representation of time-dependent information in
 we propose and discuss different design patterns and evaluate them against the given use cases in the context of their completeness, user friendliness, and performance profile for common reasoning tasks.
@@ -30,28 +44,36 @@ Basic Formal Ontology (BFO) is an upper level ontology designed to serve as a fo
 %in a research pipeline.
 For example, the root structure of two ontologies might partially overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similarly named relationships without clarifying whether the relationships are intended to mean the same thing (e.g. $\mirel{partOf}$, $\mirel{includedIn}$,... ). They may further re-implement or redefine classes that are defined differently elsewhere.
 
-BFO offers a small set of foundational classes, together with descriptive axioms, most of which make use of a set of foundational relationships intended to be used in multiple ontologies. Both classes and relationships are domain-independent, although it is clearly stated that BFO's focus is on the representation of natural and applied sciences, with biology and medicine as their most important representatives.  
-Thus, domain-specific relationships such as $\mirel{isTautomerOf}$ (a chemical relationship used in ChEBI) or $\mirel{isAbout}$ (a relation in the information artifact ontology) are out of scope for BFO itself, but they should be covered by domain ontologies below BFO, defined according to the RO recommendations.  
+BFO offers a small set of foundational classes, together with descriptive axioms, most of which make use of a set of foundational relations
+\todo{``relationships'' or ``relations''? I would prefer the latter }
+intended to be used in multiple ontologies. Both classes and relationships are domain-independent, although it is clearly stated that BFO's focus is on the representation of natural and applied sciences, with biology and medicine as their most important representatives.  
+Thus, domain-specific relations such as $\mirel{isTautomerOf}$ (a chemical relation used in ChEBI) or $\mirel{isAbout}$ (in the information artifact ontology) are out of scope for BFO itself, but they should be covered by domain ontologies below BFO, defined according to the RO recommendations.  
 
 The uppermost partition in the BFO class hierarchy reflects temporal mode of existence: \textit{continuants} are entities that (1) exist in full at any time that they exists at all, and (2) continue to exist self-identically for as long as they exist; \textit{occurrents} are entities that unfold over a period of time and thus have temporal parts. For example, you are a continuant, while your life is an occurrent.  A cell is a continuant, while the process of cell division is an occurrent.  
 
 % TYPES AND INSTANCES
-BFO is, primarily, seen as an ontology of types (classes) rather than instances (individuals). In ontology, types specify general classes of instances which share important features. For example, you and I are both instances of the type Human Being; a red blood cell in my vein and a white blood cell in yours are both instances of the type Cell. The realms of classes and individuals (or types and their instances) are strictly disjoint: no individual can be instantiated, and no class can be an instance member of another class. The relation \mirel{instanceOf} links instances to their types. A single instance may have many different types. 
+BFO is, primarily, seen as an ontology of types (universals) rather than particulars (individuals). Types extend to general classes of particulars which share important features. For example, you and I are both particulars that instantiate the type \emph{Human Being}; a red blood cell in my vein and a white blood cell in yours are both particulars that instantiate the type Cell. Types and classes are often used as synonyms, but there are subtle differences: classes can be defined using the common logical operations such as negation: the result may be a class \emph{Non-smoker}, for which, however, there is no single type it is the extension of.  
+
+The realms of types and individuals (or classes and their members) 
+are strictly disjoint: no individual can be instantiated, and no class can be a member of another class. The relation \mirel{instanceOf} links individuals to their types. A single instance may instantiate many different types (or analogously, be member of many different classes). 
+
+In the remainder of this paper we will simplify our model to classes (independently of whether they are extensions of types) and individuals (which are members of classes). 
 
 \todo{(TODO)} Table~1 gives a selection of core BFO classes and their definitions.
 
-BFO offers an extensive set of relations, including $\mirel{partOf}$, $\mirel{participatesIn}$, and $\mirel{inheresIn}$.
-\todo{(TODO)} Table~2 details these and others together with their definitions. Most of these relations relate individuals, not classes or types, but may be used in axioms at the class level subject to an appropriate quantification.
+Whereas BFO 1.x was restricted to a tree of mutually disjoint classes, BFO 2.0 now offers an extensive\todo{exact number?} set of relations, including $\mirel{partOf}$, $\mirel{participatesIn}$, and $\mirel{inheresIn}$.
+\todo{(TODO)} Table~2 details these and others together with their definitions. Most of these relations relate individuals, not classes or types, but they may be used in class-level axioms, 
+subject to an appropriate quantification.
 
 \subsection*{Web Ontology Language (OWL)}
 
-The Web Ontology Language (OWL) is an ontology development language which is supported by a wide range of tools including ontology editors such as Prot\'eg\'e and automated reasoners (version 2 is the current version, \cite{grau2008}). Based on Description Logics (DL), a family of
-representation formalisms designed to build large scale ontologies 
-\cite{baader2007dlhandbook}, OWL has been standardized and popularized by the Semantic Web Community. OWL allows classes and relations to be organized in hierarchies, and allows constraining axioms on classes to be formalized. Optionally, assertions about individuals can also be captured. 
+OWL (Web Ontology Language) is a family of ontology development languages, which were developed in the context of the Semantic Web, standardised by the the W3C, and which are supported by a wide range of tools including ontology editors such as Prot\'eg\'e and automated reasoners. OWL version 2 is the current one \cite{grau2008}), proposing several language profiles of different expressiveness. All but the profile called OWL full are based on Description Logics (DL), a family of
+representation formalisms designed to build large scale ontologies \cite{baader2007dlhandbook}, all of which are decidable fragments of first-order logics. 
+Thes allows classes and relations to be organized in hierarchies, and allows constraining axioms on classes to be formalized. Optionally, assertions about individuals can also be captured. 
 
 OWL is increasingly being used in bio-ontologies such as the GO and ChEBI, and this in turn has been driving further biological applications. For example, aspects of OWL expressivity in ChEBI axioms has recently been used to implement an enhanced measure for class-class similarity \cite{ferreira2013exploiting}.
 
-OWL comprises several different ``profiles'', most of which correspond to DL dialects that are decidable subsets of first-order logics (FOL).
+%OWL comprises several different ``profiles'', most of which correspond to DL dialects that are decidable subsets of first-order logics (FOL).
 
 As discussed, proper representation of temporal quantification requires the use of ternary relations, with time as their third argument. While there has been work on expressive description logics which might underlie future OWL extensions that try to transcend this limitation \cite{Calvanese:1997} and also on description logics that explicitly account for temporality (e.g. \cite{Wolter:2001}), there is as yet no strong push towards standardisation of those formalisms, and tools suitable for end users are not readily available. For the remainder of this paper, therefore, we will work within the expressivity of the core DL profile of OWL 2 which is specified in \cite{OWL2:direct}.  
 
@@ -62,12 +84,12 @@ Individuals (the concrete entities that instantiate BFO types and / or are membe
 The semantics of OWL follows the principles of set theory. OWL object properties are binary predicates between OWL individuals. %They can optionally be connected by so-called property chains.
 Well-formed class-level expression therefore require quantifiers when including object properties, such as $\forall$ (\texttt{only}) or $\exists$ (\texttt{some}).
 
-%% „$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$''
+%% ?$\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}$''
 
 For instance, the class expression $\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}$ specifies the class that contains all individual things
 that are necessarily part of at least one member of the class $\mclass{Cell}$.
-The main axiom types available in OWL ontologies are $\mathtt{rdfs:subClassOf}$, with which it is possible to specify the class subsumption hierarchy,
-$\mathtt{owl:equivalentClass}$, with which class logical equivalences can be captured, and and $\mathtt{rdf:Type}$, with which individuals can be assigned to the classes they are members of.
+The main axiom types available in OWL ontologies are $\mathtt{rdfs:subClassOf}$, which allow the construction of class subsumption hierarchies,
+$\mathtt{owl:equivalentClass}$, with which class logical equivalences can be captured, and $\mathtt{rdf:Type}$, with which individuals can be assigned to the classes they are members of.
 For example, $\mclass{CellMembrane}\;\mathtt{subClassOf}\;\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}$
 means that every member of the class $\mclass{CellMembrane}$ is
 part of at least one member of the class $\mclass{Cell}$.
