@@ -30,7 +30,7 @@ The following additional relations are introduced into the ontology to support m
     \item \mirel{hasTime} relates a TQC with its defining temporal region.
 \end{itemize}
 
-All TQCs must have exactly one temporal region (thus, the \mirel{hasTime} relation is functional). It follows that instantiation of continuants represented in OWL using the TQC pattern is necessarily time indexed -- i.e. a temporal region must always be specified in instantiation of a TQC. However, implementers may wish to assume for the sake of usability that when instances of continuants are created in an OWL knowledge base without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
+All TQCs must have exactly one temporal region (thus, the \mirel{hasTime} relation is functional). It follows that instantiation of continuants represented in OWL using the TQC pattern is necessarily time indexed -- i.e. a temporal region must always be specified in instantiation of a TQC. However, implementers may wish to assume for the sake of usability that when instances of continuants are created in an OWL knowledge base without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo[inline, size=\tiny]{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
 
 For clarity in the remainder of this discussion, we will use the notation \TQC{A} to denote the class of temporal qualifications of
 continuants of type \mclass{A}. Note that in the OWL version of an ontology using the TQC design pattern, \emph{only} TQCs will be included in the ontology. However, we need to distinguish between \TQC{A} and \mclass{A} for the purpose of showing the translation from OWL to FOL. The following equation relates an instance of \TQC{A} (represented in OWL) to an instance of \TQC{A} (represented in FOL). 
@@ -58,7 +58,7 @@ We rephrase the definition (\ref{eq:temporarily:cls}) given above by inserting
 temporally qualified continuants and derive the form that the relationship takes
 for temporally qualified continuants and a binary relationship. This is a fairly
 transparent translation:
-\todo{introduce the meaning of <.,.> YES, WE DID IT ABOVE (a TQC is a tuple...)}
+\todo[inline, size=\tiny]{introduce the meaning of <.,.> YES, WE DID IT ABOVE (a TQC is a tuple...)}
 \begin{equation}
 \begin{split}
 \mclass{SomeTimeRelated}(\mclass{A},\mclass{B})& =_{def}\;
@@ -68,7 +68,7 @@ transparent translation:
 \mrelb{rel}(\pair{a}{t_1},\pair{b}{t_1}) \wedge \mirel{within}(t_1,t))
 \end{split}
 \end{equation}
-\todo{specify the meaning of ``within'' DID ABOVE}
+\todo[inline, size=\tiny]{specify the meaning of ``within'' DID ABOVE}
 We then use the \mrelb{atSomeTime} and \mrelb{hasMax} relations and the TQC notation to eliminate
 the tuples:
 \begin{equation}
@@ -81,7 +81,7 @@ the tuples:
 \end{split}
 \label{eq:usesSame}
 \end{equation}
-\todo{check use of () and ;  }
+\todo[inline, size=\tiny]{check use of () and ;  }
 
 This means that the logical form of the expression of some time relatedness is that
 at least one temporal qualification of \mclass{A} is related to some temporally
@@ -108,17 +108,17 @@ axioms. Temporary relatedness is thus expressed in OWL as follows:
 Additionally, we ensure that sharing a temporal qualification amounts to being
 the same continuant:\footnote{Implementers should note that OWL 2 only mandates
 this for \emph{named} individuals.}
-\todo{FIX FOR NEW APPROACH}
+\todo[inline, size=\tiny]{FIX FOR NEW APPROACH}
 \begin{equation}
 \mclass{A}\;\mathtt{hasKey}(\mrelb{hasMax})
 \end{equation}
 
 
-\todo{A Box issues to be discussed separately ?}
+\todo[inline, size=\tiny]{A Box issues to be discussed separately ?}
 
 
 %\subsection*{Usability and simplification}
-%\todo{I THINK THIS SECTION IS NOT RELEVANT ANY LONGER AS IT CURRENTLY STANDS}
+%\todo[inline, size=\tiny]{I THINK THIS SECTION IS NOT RELEVANT ANY LONGER AS IT CURRENTLY STANDS}
 %Since the above axiom (\ref{eq:tqc:temp}) makes a claim about the class \TQC{A},
 %it is less ideal from a usability perspective. We would rather like to say
 %something about the target continuant classes \mclass{A} and \mclass{B} in our OWL version, for
@@ -135,7 +135,7 @@ this for \emph{named} individuals.}
 %\end{equation}
 
 %
-%\todo{could this be a bridge between TR and TQC ?}
+%\todo[inline, size=\tiny]{could this be a bridge between TR and TQC ?}
 
 %Unfortunately, the above statement cannot be formulated in OWL 2 due to its
 %strict constraints on object properties. Neither can it be implemented in a
@@ -162,7 +162,7 @@ this for \emph{named} individuals.}
 %that entity at some time.
 
 
-%\todo{all this wouldn't be needed for the ``radical'' TQC approach}
+%\todo[inline, size=\tiny]{all this wouldn't be needed for the ``radical'' TQC approach}
 
 \subsection*{Permanent Generic Relatedness}
 Permanent generic relatedness is considered by some to be the most common
@@ -253,7 +253,7 @@ for the second relatum. Unfortunately, we cannot provide an
 accurate translation of this kind of relatedness into OWL 2, though we can
 achieve the following first order translation in TQC-talk:
 
-\todo{UPGRADE PROPOSAL TO LATEST TQC VERSION, i.e. remove continuantOf relation}
+\todo[inline, size=\tiny]{UPGRADE PROPOSAL TO LATEST TQC VERSION, i.e. remove continuantOf relation}
  \begin{equation}
 \begin{split}
 \forall x:\; \mrelb{inst}&(\TQC{A},x) \rightarrow \\

@@ -1,8 +1,8 @@
-\section*{Discussion}
+
 
 Nice and good evaluation of the different approaches goes here
 
-\todo{many of the issues raised by Alan and Chris in the mailing list discussions}
+\todo[inline, size=\tiny]{many of the issues raised by Alan and Chris in the mailing list discussions}
 
 \section*{Survey of existing approaches}
 
@@ -56,7 +56,7 @@ binary \mirel{hasPart} could no longer be taken for granted.
 %\subsubsection*{Default Reinterpretation}
 %On the default reinterpretation of the OWL direct semantics to preserve the RO
 % generic relatedness default reading.
-\todo{I fused the default interpretation with the ``standard'' interpretation. Both mean the same IMHO}
+\todo[inline, size=\tiny]{I fused the default interpretation with the ``standard'' interpretation. Both mean the same IMHO}
 %
 % DIRECT SEMANTICS ALREADY INTRODUCED ABOVE
 %Obviously, the interpretation must be equivalent to the OWL 2 direct semantics
@@ -77,7 +77,7 @@ possible elucidation  which consists in a modification of the interpretation
 function. We here make explicit what seems to be trivial for many OWL DL users, \emph{viz.}
 that a DL formula is to be interpreted as the set of possible worlds over which the formula holds,
 which would also include all temporal contexts.
-\todo{Check this argument}.
+\todo[inline, size=\tiny]{Check this argument}.
 
 The general strategy of this interpretation is to augment the
 interpretations of class members and object properties in the OWL model with an
@@ -197,7 +197,7 @@ $$
 \mrelt{rel}(a,b,t)
 $$
 
-would then be transformed into the following statement:\todo{Changed from list of statements to proper axiom}
+would then be transformed into the following statement:\todo[inline, size=\tiny]{Changed from list of statements to proper axiom}
 \begin{equation}
 \exists x: \mclass{C_\mrelt{rel}}(x) \wedge
 \mrelb{R_1}(x,a) \wedge
@@ -212,7 +212,7 @@ the risk of errors in the ontology engineering process and decreases reasoning
 efficiency \cite{Grewe:2010}. To address the complexity problem, it has been suggested to
 select reification classes based on what seems ontologically ``fitting'' for the
 domain of an ontology \cite{Fiadeiro:2010}.
-\todo{unclear how transitive relations can be expressed by this without proliferation of object properties}
+\todo[inline, size=\tiny]{unclear how transitive relations can be expressed by this without proliferation of object properties}
 
 \subsection*{Welty/Fikes: Fluents}
 The prototypical approach for dealing with temporally changing information in
@@ -285,7 +285,7 @@ any proposal to address the problem of time-dependent relation and should be
 used to supplement our initial requirements.
 
 \subsection*{Gangemi: Descriptions and Situations}
-\todo{should specify what is meant by situations here}
+\todo[inline, size=\tiny]{should specify what is meant by situations here}
 Aldo Gangemi's DnS pattern \cite{Gangemi:DnS} deserves mention because it treats
 time-dependence of relations as a special case of perspectivity which can be
 accounted for by the very heavy-duty reification mechanism of descriptions and
@@ -298,7 +298,7 @@ arbitrary facts.
 
 Notably, though, Gangemi reminds us of the fact that OWL 2's $\mathtt{hasKey}$
 axiom can be used circumvent the problem of possible duplication of instances
-for the same relational $n$-tuple: If a situation $\mclass{S}$ \todo{don't understand}
+for the same relational $n$-tuple: If a situation $\mclass{S}$ \todo[inline, size=\tiny]{don't understand}
 were to use the properties
 $\mrelb{hasTimeStamp}$, $\mrelb{hasSubject}$, and $\mrelb{hasObject}$, the axiom
 \begin{equation}

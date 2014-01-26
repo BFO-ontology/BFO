@@ -1,11 +1,11 @@
-\section*{Background}
+
 
 % Introduction to this paper, what is the point, what is the scope, what are the limitations
 
 This paper addresses a challenge that has arisen in the context of the Open Biomedical Ontologies (OBO) Foundry \cite{Smith2007} community, in particular in relation to the implementation of the Basic Formal Ontology (BFO, \cite{BFO2:Graz}) version 2, which uses the Web Ontology Language (OWL, \cite{grau2008}). However, the problem is of general interest to the %biomedical 
 ontology and data standards communities. It exposes and addresses a weakness of a large number of biomedical ontologies that use OWL and represent time-related
 %dynamic 
-aspects of their domain. Insofar the problem is not restricted to the life science context, and it seems relevant to virtually all domains, in which objects change over time.   
+aspects of their domain. Insofar the problem is not restricted to the life science context, and it seems relevant to virtually all domains, in which objects change over time, or are related with each other dependent on temporal contexts.   
 
 According to BFO and other foundational ontologies, a useful upper-level distinction is between those entities that exist in full at all times at which they exist (continuants), and those that unfold in time (occurrents). This is a distinction according to temporal mode of existence. Temporal information is also relevant when specifying the relationships between continuant entities, particularly (as for most of the life sciences), where continuants such as organisms and their parts, molecules, shapes, and disorders not only persist, but also continuously change over time. They continuously gain and lose parts, qualities, and dispositions. Consequently, any relational expression which makes reference to a particular continuant can have different truth values at different times and would therefore be ambiguous if time were not made explicit in the statement. 
 
@@ -28,10 +28,10 @@ Thus, when relations such as \textbf{partOf} are used in class level axioms
 in practical OWL implementations 
 %(also in OBO implementations, since the semantics for the OBO language is assigned by translation to OWL), 
 the time index is lost, which can have surprising reasoning consequences. 
-\todo{The relation between OBO and OWL should be elucidated in more detail}
+\todo[inline, size=\tiny]{The relation between OBO and OWL should be elucidated in more detail}
 
 
-The objective of this paper is the presentation and discussion of OWL design patterns that partly mitigate this limitation. It is organised as follows:\todo{Revise}
+The objective of this paper is the presentation and discussion of OWL design patterns that partly mitigate this limitation. It is organised as follows:\todo[inline, size=\tiny]{Revise}
 
 In the remainder of this Background, we give an overview of the OWL language and BFO ontology into which our proposal will be embedded, and outline our use cases and competency questions.
 Thereafter, we survey the existing approaches to the representation of time-dependent information in
@@ -45,7 +45,7 @@ Basic Formal Ontology (BFO) is an upper level ontology designed to serve as a fo
 For example, the root structure of two ontologies might partially overlap, without explicit mappings clarifying the intended interrelationships (e.g. having classes such as `process' and `event'; `object' and `thing'). Or the ontologies may make use of similarly named relationships without clarifying whether the relationships are intended to mean the same thing (e.g. $\mirel{partOf}$, $\mirel{includedIn}$,... ). They may further re-implement or redefine classes that are defined differently elsewhere.
 
 BFO offers a small set of foundational classes, together with descriptive axioms, most of which make use of a set of foundational relations
-\todo{``relationships'' or ``relations''? I would prefer the latter }
+\todo[inline, size=\tiny]{``relationships'' or ``relations''? I would prefer the latter }
 intended to be used in multiple ontologies. Both classes and relationships are domain-independent, although it is clearly stated that BFO's focus is on the representation of natural and applied sciences, with biology and medicine as their most important representatives.  
 Thus, domain-specific relations such as $\mirel{isTautomerOf}$ (a chemical relation used in ChEBI) or $\mirel{isAbout}$ (in the information artifact ontology) are out of scope for BFO itself, but they should be covered by domain ontologies below BFO, defined according to the RO recommendations.  
 
@@ -59,10 +59,10 @@ are strictly disjoint: no individual can be instantiated, and no class can be a 
 
 In the remainder of this paper we will simplify our model to classes (independently of whether they are extensions of types) and individuals (which are members of classes). 
 
-\todo{(TODO)} Table~1 gives a selection of core BFO classes and their definitions.
+\todo[inline, size=\tiny]{(TODO)} Table~1 gives a selection of core BFO classes and their definitions.
 
-Whereas BFO 1.x was restricted to a tree of mutually disjoint classes, BFO 2.0 now offers an extensive\todo{exact number?} set of relations, including $\mirel{partOf}$, $\mirel{participatesIn}$, and $\mirel{inheresIn}$.
-\todo{(TODO)} Table~2 details these and others together with their definitions. Most of these relations relate individuals, not classes or types, but they may be used in class-level axioms, 
+Whereas BFO 1.x was restricted to a tree of mutually disjoint classes, BFO 2.0 now offers an extensive\todo[inline, size=\tiny]{exact number?} set of relations, including $\mirel{partOf}$, $\mirel{participatesIn}$, and $\mirel{inheresIn}$.
+\todo[inline, size=\tiny]{(TODO)} Table~2 details these and others together with their definitions. Most of these relations relate individuals, not classes or types, but they may be used in class-level axioms, 
 subject to an appropriate quantification.
 
 \subsection*{Web Ontology Language (OWL)}
