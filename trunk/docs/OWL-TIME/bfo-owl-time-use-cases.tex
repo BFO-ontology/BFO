@@ -27,25 +27,25 @@ The use cases will be structured as follows: For each temporal mode of existence
 class-level (c), individual-level (i) mereologic (m+), non-mereologic (m-), participation (p), with quantification over the participant (p1) and over the process (p2). In addition we will have a class-level and an individual-level use case for a non-rigid class. 
 
 \begin{itemize}
-\item STR\_cm+: Every tooth is part of an organism at some time. Challenged by: \\ ``tooth that is never part of an organism'': insatisfiable \\
+\item STR\_cm+: Every tooth is part of an organism at some time. Challenged by: \\ ``tooth that is never part of an organism'': unsatisfiable \\
 ``tooth that is part of something that is not an organism or organism part'': satisfiable 
 
 
 \item STR\_cm-: Every apple is green at some time
 \\
-Challenged by: \\ ``apple that is never green'': insatisfiable \\
-``apple that is red at all times'': insatisfiable 
+Challenged by: \\ ``apple that is never green'': unsatisfiable \\
+``apple that is red at all times'': unsatisfiable 
 
 
 \item STR\_cp1: Every vertebrate participates in some birth process at some time\\
-Challenged by: \\ ``Vertebrate that never participates in any birth process'': insatisfiable \\
-``Vertebrate that at some time does not participate in a birth process'': insatisfiable 
+Challenged by: \\ ``Vertebrate that never participates in any birth process'': unsatisfiable \\
+``Vertebrate that at some time does not participate in a birth process'': satisfiable 
 
 
 
 \item STR\_cp2: Every fecundation has some spermatozoon as participant at some time
 \\
-Challenged by: \\ ``Fecundation event for which there is never any spermatozoon that participates'': insatisfiable \\
+Challenged by: \\ ``Fecundation event for which there is never any spermatozoon that participates'': unsatisfiable \\
 ``Phase of fecundation in which there is no spermatozoon participating'': satisfiable 
 
 
@@ -53,60 +53,60 @@ Challenged by: \\ ``Fecundation event for which there is never any spermatozoon 
 
 \item STR\_im+: The blood specimen \#bs430912 is in the lab \#lab996 during the whole time interval \#20131020
 
-Challenged by: \\ ``The blood specimen \#bs430912 is in the lab \#lab100 during the whole time interval \#20131020. Both labs do not share parts'' $\rightarrow$ unsatifiable
+Challenged by: \\ ``The blood specimen \#bs430912 is in the lab \#lab100 during the whole time interval \#20131020. Both labs do not share parts'' $\rightarrow$ unsatisfiable
 
 
 
 \item STR\_im-: Joe's left ankle is swollen during the whole time interval \#20131020
 
-Challenged by: \\ ``Joe's left ankle is not during the whole time interval \#20131021'' $\rightarrow$ satifiable
+Challenged by: \\ ``Joe's left ankle is not during the whole time interval \#20131021'' $\rightarrow$ satisfiable
 \\ 
-``Joe's left ankle during the whole time interval \#20131020 is not swollen'' $\rightarrow$ unsatifiable
+``Joe's left ankle during the whole time interval \#20131020 is not swollen'' $\rightarrow$ unsatisfiable
 
 
 
 \item STR\_ip:  Mary participated in the process Mary's birth
 
-Challenged by: \\``There is a time in which Mary is not a participant of her birth''  $\rightarrow$ satifiable
+Challenged by: \\``There is a time in which Mary is not a participant of her birth''  $\rightarrow$ satisfiable
 
 %%%%%%%
 
 
 \item PGR\_cm+: Every red blood cell always includes some oxygen molecule 
 
-Challenged by: \\``There are red blood cells without oxygen molecules''  $\rightarrow$ unsatifiable
+Challenged by: \\``There are red blood cells without oxygen molecules''  $\rightarrow$ unsatisfiable
 
 
 \item PGR\_cm-: Every electronic health record is always on some computer storage
 
-Challenged by: \\``There are electronic health record that are not on a computer storage''  $\rightarrow$ unsatifiable
+Challenged by: \\``There are electronic health record that are not on a computer storage''  $\rightarrow$ unsatisfiable
 
 
 \item PGR\_cp1: Every ?  \todo[inline, size=\tiny]{any idea?}
 
 \item PGR\_cp2: Every breathing process has always some volume of air as participant 
 
-Challenged by: \\``There are breathing processes in which no air volume participates''  $\rightarrow$ unsatifiable
+Challenged by: \\``There are breathing processes in which no air volume participates''  $\rightarrow$ unsatisfiable
 
 
 \item PGR\_im+: Mary's blood always consists of some blood cell 
 
-Challenged by: \\``There is a time in which Mary's blood is devoid of blood cells''  $\rightarrow$ unsatifiable
+Challenged by: \\``There is a time in which Mary's blood is devoid of blood cells''  $\rightarrow$ unsatisfiable
 
 \item PGR\_im-: Joe's electronic health record always resides on some electronic storage medium
 
-Challenged by: \\``There is a time in which Joe's electronic health is not on an electronic storage''  $\rightarrow$ unsatifiable
+Challenged by: \\``There is a time in which Joe's electronic health is not on an electronic storage''  $\rightarrow$ unsatisfiable
 
 
 \item PGR\_ip:  Joe's breathing process has always some volume of air as participant
 
-Challenged by: \\``Joe's breathing process is without air at some time''  $\rightarrow$ unsatifiable
+Challenged by: \\``Joe's breathing process is without air at some time''  $\rightarrow$ unsatisfiable
 
 %%%%%%%%%%%
 
 \item PSR\_cm+: Every human has a brain and it is always the same brain
 
-Challenged by: \\``A human who has more than one brain''  $\rightarrow$ unsatifiable
+Challenged by: \\``A human who has more than one brain''  $\rightarrow$ unsatisfiable
 
 \todo[inline, size=\small]{``This is rather tricky with TQC. One could express it as: for all temporal 
 instances of Human there is always some temporal instance of brain related. For all human instance which has the same "max" 
@@ -115,32 +115,32 @@ all related brain instances must also have the same "max" ''}
 
 \item PSR\_cm-: Every mammal has the same sex during its life
 
-Challenged by: \\``A mammal that has more than one sex''  $\rightarrow$ unsatifiable
+Challenged by: \\``A mammal that has more than one sex''  $\rightarrow$ unsatisfiable
 
  
 \item PSR\_cp1: Every organism always participates in its life, and it is always the same
 
-Challenged by: \\``An  organism that participates in two different lifes''  $\rightarrow$ unsatifiable
+Challenged by: \\``An  organism that participates in two different lifes''  $\rightarrow$ unsatisfiable
 
 
 \item PSR\_cp2: Every biological life always has some organism as participant, and it is always the same
 
-Challenged by: \\``A life that has more than one organism as participant''  $\rightarrow$ unsatifiable
+Challenged by: \\``A life that has more than one organism as participant''  $\rightarrow$ unsatisfiable
 
 
 \item PSR\_im+: Mary has `Mary's brain' as a proper part during her lifetime 
 
-Challenged by: \\``Mary gets a new brain during her lifetime''  $\rightarrow$ unsatifiable
+Challenged by: \\``Mary gets a new brain during her lifetime''  $\rightarrow$ unsatisfiable
 
 
 \item PSR\_im-: Tibbles has the same sex during his life 
 
-Challenged by: \\``Tibbles changes his sex during his life''  $\rightarrow$ unsatifiable
+Challenged by: \\``Tibbles changes his sex during his life''  $\rightarrow$ unsatisfiable
 
 
 \item PSR\_ip: Joe participates in his life and not in any other life
 
-Challenged by: \\``Joe participates in more than one life''  $\rightarrow$ unsatifiable
+Challenged by: \\``Joe participates in more than one life''  $\rightarrow$ unsatisfiable
 
 
 %%%%%%%%%%%
@@ -148,14 +148,14 @@ Challenged by: \\``Joe participates in more than one life''  $\rightarrow$ unsat
 
 \item NR\_t: Every fetus is an embryo at some time. Nothing can be both an embryo and a fetus at the same time. Vertebrate embryoes have a chorda at some time
 
-Challenged by: \\ ``There are fetuses that were never embryoes''  $\rightarrow$ unsatifiable
+Challenged by: \\ ``There are fetuses that were never embryoes''  $\rightarrow$ unsatisfiable
 
 
 
 
 \item NR\_i: John was a medical student from 2001-10-01 to 2007-06-30
 
-Challenged by: \\ ``Every person which is a medical student was a high school student at some time''   
+Challenged by: \\ ``Every person who is a medical student was a high school student at some time''   
 John was never a high school student. $\rightarrow$ unsatisfiable
 
 For the implementation of the use cases and competency questions as OWL axioms see supplementary data.
