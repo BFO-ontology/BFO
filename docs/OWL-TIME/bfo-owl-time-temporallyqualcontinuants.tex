@@ -33,7 +33,7 @@ The following additional relations are introduced into the ontology to support m
 All TQCs must have exactly one temporal region (thus, the \mirel{hasTime} relation is functional). It follows that instantiation of continuants represented in OWL using the TQC pattern is necessarily time indexed -- i.e. a temporal region must always be specified in instantiation of a TQC. However, implementers may wish to assume for the sake of usability that when instances of continuants are created in an OWL knowledge base without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo[inline, size=\tiny]{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
 
 For clarity in the remainder of this discussion, we will use the notation \TQC{A} to denote the class of temporal qualifications of
-continuants of type \mclass{A}. Note that in the OWL version of an ontology using the TQC design pattern, \emph{only} TQCs will be included in the ontology. However, we need to distinguish between \TQC{A} and \mclass{A} for the purpose of showing the translation from OWL to FOL. The following equation relates an instance of \TQC{A} (represented in OWL) to an instance of \TQC{A} (represented in FOL). 
+continuants of type \mclass{A}. Note that in the OWL version of an ontology using the TQC design pattern, \emph{only} TQCs (and non-continuant types e.g. occurrents) will be included in the ontology. However, we need to distinguish between \TQC{A} and \mclass{A} for the purpose of showing the translation from OWL to FOL. The following equation relates an instance of \TQC{A} (represented in OWL) to an instance of \mclass{A} (represented in FOL). 
 
 \begin{equation}
 \forall x:\; (\mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t_0,t_1:\;(
@@ -49,7 +49,7 @@ The relation \mirel{hasMax} links a TQC to the max TQC for that continuant. That
 
 In the next sections, we will discuss the representation of the three different
 temporal strengths, linking from the standard representation in BFO FOL through
-the introduction of temporally qualified continuants to the standard
+the introduction of temporally qualified continuants to the proposed
 representation in OWL.
 
 \subsection*{Some Time Relatedness}
@@ -253,15 +253,15 @@ for the second relatum. Unfortunately, we cannot provide an
 accurate translation of this kind of relatedness into OWL 2, though we can
 achieve the following first order translation in TQC-talk:
 
-\todo[inline, size=\tiny]{UPGRADE PROPOSAL TO LATEST TQC VERSION, i.e. remove continuantOf relation}
+\todo[inline, size=\tiny]{This formula seems really wrong}
  \begin{equation}
 \begin{split}
 \forall x:\; \mrelb{inst}&(\TQC{A},x) \rightarrow \\
  \exists y:&\;\mrelb{inst}(\TQC{B},y) \wedge \mrelb{rel}(x,y)\wedge\\
  & \forall x_1,a:\; ((\mrelb{inst}(\TQC{A},x_1) \wedge
-\mrelb{continuantOf}(a,x) \wedge \mrelb{continuantOf}(a,x_1))\wedge\\
-&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \mrelb{continuantOf}(b,y)  
-\wedge \mrelb{continuantOf}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
+\mrelb{hasMax}(a,x) \wedge \mrelb{hasMax}(a,x_1))\wedge\\
+&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \mrelb{hasMax}(b,y)  
+\wedge \mrelb{hasMax}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
 \end{split}
 \end{equation}
 This would require three variables ($x$,~$y$,~$y_1$) to be bound at the same
