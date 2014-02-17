@@ -122,6 +122,7 @@
 			   occupied-by "has spatiotemporal occupant"
 			   spans "occupies temporal region"
 			   span-of "has temporal occupant" 
+			   fiat-object "fiat object part"
 			   )
 			 handle)))
 	      (and matched
