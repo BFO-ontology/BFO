@@ -35,10 +35,11 @@
         <dc:contributor>Stefan Schulz</dc:contributor>
         <dc:contributor>Bill Duncan</dc:contributor>
         <dc:contributor>Alan Ruttenberg</dc:contributor>
+        <dc:contributor>Jie Zheng</dc:contributor>
         <dc:contributor>James A. Overton</dc:contributor>
-        <rdfs:comment xml:lang="en">The http://purl.obolibary.org/obo/bfo/classes.owl variant of BFO (&quot;bfo_classes.owl&quot;) includes only the class hierarchy and annotations from the full OWL version of BFO 2: http://purl.obolibary.org/obo/bfo.owl (&quot;bfo.owl&quot;). There are no object properties or logical axioms that use the object properties in bfo_classes.owl. As the logical axioms in the bfo_classes.owl variant are limited to subclass and disjoint assertions they are much weaker than the logical axioms in bfo.owl.
+        <rdfs:comment xml:lang="en">The http://purl.obolibary.org/obo/bfo/classes-only.owl variant of BFO (&quot;bfo_classes_only.owl&quot;) includes only the class hierarchy and annotations from the full OWL version of BFO 2: http://purl.obolibary.org/obo/bfo.owl (&quot;bfo.owl&quot;). There are no object properties or logical axioms that use the object properties in bfo_classes_only.owl. As the logical axioms in the bfo_classes_only.owl variant are limited to subclass and disjoint assertions they are much weaker than the logical axioms in bfo.owl.
  
-If you plan to use the relations that define BFO 2, you should import bfo.owl instead of bfo_classes.owl. To the extent that the relations are used without importing bfo.owl, be mindful that they should be used in a manner consistent with their use in bfo.owl. Otherwise if your ontology is imported by a another ontology that imports bfo.owl there may be inconsistencies. 
+If you plan to use the relations that define BFO 2, you should import bfo.owl instead of bfo_classes_only.owl. To the extent that the relations are used without importing bfo.owl, be mindful that they should be used in a manner consistent with their use in bfo.owl. Otherwise if your ontology is imported by a another ontology that imports bfo.owl there may be inconsistencies. 
  
 See the BFO 2 release notes for further information about BFO 2. Please note that the current release of bfo.owl uses temporal relations when the subject or object is a continuant, a major change from BFO 1.</rdfs:comment>
         <dc:contributor>Thomas Bittner</dc:contributor>
@@ -54,7 +55,7 @@ See the BFO 2 release notes for further information about BFO 2. Please note tha
         <foaf:homepage rdf:resource="http://ifomis.org/bfo"/>
         <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/2012-07-20/Reference"/>
         <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/2014-05-03/ReleaseNotes"/>
-        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/bfo/2014-05-03/classes.owl"/>
+        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/bfo/2014-05-03/classes-only.owl"/>
         <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/dev/bfo.clif"/>
         <foaf:mbox rdf:resource="mailto:bfo-owl-devel@googlegroups.com"/>
     </owl:Ontology>
@@ -764,8 +765,8 @@ See the BFO 2 release notes for further information about BFO 2. Please note tha
         <obo:IAO_0000112 xml:lang="en">certain people have a predisposition to colon cancer</obo:IAO_0000112>
         <obo:IAO_0000112 xml:lang="en">children are innately disposed to categorize objects in certain ways.</obo:IAO_0000112>
         <obo:BFO_0000179>disposition</obo:BFO_0000179>
-        <obo:IAO_0000116 xml:lang="en">BFO 2 Reference: Dispositions exist along a strength continuum. Weaker forms of disposition are realized in only a fraction of triggering cases. These forms occur in a significant number of cases of a similar type [89</obo:IAO_0000116>
-        <obo:IAO_0000112 xml:lang="en">the cell wall is disposed to filter chemicals in endocitosis and exocitosis</obo:IAO_0000112>
+        <obo:IAO_0000116 xml:lang="en">BFO 2 Reference: Dispositions exist along a strength continuum. Weaker forms of disposition are realized in only a fraction of triggering cases. These forms occur in a significant number of cases of a similar type.</obo:IAO_0000116>
+        <obo:IAO_0000112 xml:lang="en">the cell wall is disposed to filter chemicals in endocytosis and exocytosis</obo:IAO_0000112>
         <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
     </owl:Class>
     <owl:Axiom>
