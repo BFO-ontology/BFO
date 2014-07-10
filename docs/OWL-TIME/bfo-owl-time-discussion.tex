@@ -1,23 +1,23 @@
+%%%
+%%% Nice and good evaluation of the different approaches goes here
+%%%\todo[inline, size=\tiny]{many of the issues raised by Alan and Chris in the mailing list discussions}
 
-
-Nice and good evaluation of the different approaches goes here
-
-\todo[inline, size=\tiny]{many of the issues raised by Alan and Chris in the mailing list discussions}
-
-\section*{Survey of existing approaches}
+%\section*{Survey of existing approaches}
+In the following, we will provide a survey of existing approaches and discuss them in the light of our models. 
 
 \subsection*{Histories in BFO 2}
 
-In BFO 2, work is under way to sketch out a more detailed theory of the
+BFO 2, which is currently available as an advanced draft \cite{BFO2:ref}, 
+sketches out a more detailed theory of the
 relationship between continuants and occurrents
 %(SPAN objects)
 they participate in. Specifically, BFO 2 makes the assumption that for each material object there
 exists a special process, the \emph{history} of the object, which encompasses
 ``the totality of processes taking place in the spatiotemporal region occupied by
-the entity.'' \cite{BFO2:ref} This means that there is a one to one correspondence between continuants
+the entity.'' This means that there is a one to one correspondence between continuants
 %(on the SNAP side)
 and certain processes, which effectively
-provides a ``bridge'' between the 3D and the 4D perspective. No complete formal theory
+provides a ``bridge'' between a 3D and a 4D perspective. No complete formal theory
 of histories, which have previously been described in \cite{cornucopia}, is available as of yet.
 
 
@@ -27,11 +27,11 @@ As explicit semantics for modelling temporal dynamics are not available in OWL
 2, modellers tend to implicitly treat object properties as committing to a
 ``for all times'' interpretation in order to avoid obvious problems with the
 entailed models. For instance, in an anatomy ontology like the Foundational Model of Anatomy (FMA), the object
-property \mirel{hasPart} is transitive, and used in axioms such as
+property \mirel{has\_part} is transitive, and used in axioms such as
 %
 \begin{equation}
 \begin{split}
-\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{LobeOfLung}
+\mclass{Lung}\;\mathtt{subClassOf}\;\mirel{has\_part}\;\mathtt{some}\;\mclass{LobeOfLung}
 \end{split}
 \label{eq:lung}
 \end{equation}    
@@ -40,23 +40,23 @@ and
 %
 \begin{equation}
 \begin{split}
-\mclass{LobeOfLung}\;\mathtt{subClassOf}\;\mirel{hasPart}\;\mathtt{some}\;\mclass{BronchiopulmonarySegment}
+\mclass{LobeOfLung}\;\mathtt{subClassOf}\;\mirel{has\_part}\;\mathtt{some}\;\mclass{BronchiopulmonarySegment}
 \end{split}
 \label{eq:lunglobe}
 \end{equation}    
 %
 %
 If the underlying interpretation were ``part for some time'', transitivity of the
-binary \mirel{hasPart} could no longer be taken for granted.
+binary \mirel{has\_part} could no longer be taken for granted.
 %, as two
-%\mirel{hasPart} assertions to be chained could belong to two different SNAP
+%\mirel{has\_part} assertions to be chained could belong to two different SNAP
 %ontologies.
 %\subsection*{Strategies Advanced in Related Work}
 %Existing Design Patterns
 %\subsubsection*{Default Reinterpretation}
 %On the default reinterpretation of the OWL direct semantics to preserve the RO
 % generic relatedness default reading.
-\todo[inline, size=\tiny]{I fused the default interpretation with the ``standard'' interpretation. Both mean the same IMHO}
+%\todo[inline, size=\tiny]{I fused the default interpretation with the ``standard'' interpretation. Both mean the same IMHO}
 %
 % DIRECT SEMANTICS ALREADY INTRODUCED ABOVE
 %Obviously, the interpretation must be equivalent to the OWL 2 direct semantics
@@ -68,7 +68,7 @@ binary \mirel{hasPart} could no longer be taken for granted.
 %classes of continuants using binary object properties and leave the exact
 %interpretation unexplained.
 
-It is surprising that has not been spotted earlier that virtually all OWL ontologies contain axioms on
+It is surprising that it has not been spotted earlier that virtually all OWL ontologies contain axioms on
 classes of continuants using binary object properties and leave the exact interpretation re time unexplained.
 In a similar vein RDF encoded triple data abound in which the temporal context is ignored, or, at best, derivable from the context.
 
@@ -77,7 +77,7 @@ possible elucidation  which consists in a modification of the interpretation
 function. We here make explicit what seems to be trivial for many OWL DL users, \emph{viz.}
 that a DL formula is to be interpreted as the set of possible worlds over which the formula holds,
 which would also include all temporal contexts.
-\todo[inline, size=\tiny]{Check this argument}.
+%\todo[inline, size=\tiny]{Check this argument}.
 
 The general strategy of this interpretation is to augment the
 interpretations of class members and object properties in the OWL model with an
@@ -140,7 +140,7 @@ the difference between specific and generic permanent relatedness for the time
 being, this interpretation of
 OWL 2 at least successfully mimics the semantics of class level
 relations intended by the relations ontology (RO, \cite{OBO:RO}) and allows us to think of
-the syntactical forms represented in table \ref{tab:syntaces} as equivalent.
+the syntactical forms represented in Table \ref{tab:syntaces} as equivalent.
 \begin{table}
 \caption{Syntactical representations of (permanent) relatedness expressions}
 \label{tab:syntaces}
@@ -167,14 +167,14 @@ $\qquad\;\mrelt{rel}(a,b,t)\big)$\\
 This approach  also retains standard transitivity semantics of OWL 2 object
 properties, so that quantification over time maintains transitivity of the
 relation in question.
-This can be shown, e.g. for the transitive relation \mirel{hasPart}: if an organism has
+This can be shown, e.g. for the transitive relation \mirel{has\_part}: if an organism has
 some heart at any time, and if this heart has some heart valve at any time, then
 the organism has some heart valve at any time:
 
 \begin{prooftree}
-\AxiomC{$\mclass{A}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{B}$}
-\AxiomC{$\mclass{B}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{C}$}
-\BinaryInfC{$\mclass{A}\;\mathtt{subClassOf}\;\mrelb{hasPart}\;\mathtt{some}\;\mclass{C}$}
+\AxiomC{$\mclass{A}\;\mathtt{subClassOf}\;\mrelb{has\_part}\;\mathtt{some}\;\mclass{B}$}
+\AxiomC{$\mclass{B}\;\mathtt{subClassOf}\;\mrelb{has\_part}\;\mathtt{some}\;\mclass{C}$}
+\BinaryInfC{$\mclass{A}\;\mathtt{subClassOf}\;\mrelb{has\_part}\;\mathtt{some}\;\mclass{C}$}
 \end{prooftree}
 And while there is nothing to be gained by actually modifying OWL 2 to use this
 interpretation, it is very important that ontology engineers are aware of the
@@ -228,7 +228,7 @@ time slices. For example, temporary relatedness could be expressed as in
 (\ref{eq:leaf}).
 %
 \begin{equation}
-\mclass{Leaf}\;\mathtt{subClassOf}\;\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{some}\;(\mrelb{hasPart}\;\mathtt{some}\;(\mrelb{timeSliceOf}\;\mathtt{some}\;\mclass{Tree}))
+\mclass{Leaf}\;\mathtt{subClassOf}\;\mathtt{inverseOf}(\mrelb{time\_slice\_of})\;\mathtt{some}\;(\mrelb{has\_part}\;\mathtt{some}\;(\mrelb{time\_slice\_of}\;\mathtt{some}\;\mclass{Tree}))
 \label{eq:leaf}
 \end{equation}
 %
@@ -236,13 +236,13 @@ This is by far one of the most straightforward translations of the
 four-dimensionalist commitment, but it suffers from considerable verbosity. It
 gets even worse if permanent relatedness is concerned. In this case, the
 above expression would have to be amended to include an
-$\mathtt{inverseOf}(\mrelb{timeSliceOf})\;\mathtt{only}$ clause to ensure that
+$\mathtt{inverseOf}(\mrelb{time\_slice\_of})\;\mathtt{only}$ clause to ensure that
 all time slices of the entity are appropriately related to a time slice of the
 other entity.
 
 \subsection*{Zamborlini/Guizzardi: Moments, Relators and Qua-Individuals}
 The commitment that some relational expressions are in fact better accounted for
-as proper entities is also prominent in Zamborlini and Guizzardi treatment of
+as proper entities is also prominent in Zamborlini and Guizzardi's treatment of
 contingent properties \cite{Zamborlini:Guizzardi}. For them, certain ``material
 relations'' only hold by virtue of a separate truthmaker, the so called
 \emph{relator}, which is formed by combining the ``qua individuals'' that
@@ -300,20 +300,93 @@ Notably, though, Gangemi reminds us of the fact that OWL 2's $\mathtt{hasKey}$
 axiom can be used circumvent the problem of possible duplication of instances
 for the same relational $n$-tuple: If a situation $\mclass{S}$ \todo[inline, size=\tiny]{don't understand}
 were to use the properties
-$\mrelb{hasTimeStamp}$, $\mrelb{hasSubject}$, and $\mrelb{hasObject}$, the axiom
+$\mrelb{has\_timeStamp}$, $\mrelb{has\_subject}$, and $\mrelb{has\_object}$, the axiom
 \begin{equation}
-\mclass{S}\;\mathtt{hasKey}(\mrelb{hasTimeStamp}, \mrelb{hasSubject},
-\mrelb{hasObject})
+\mclass{S}\;\mathtt{hasKey}(\mrelb{has\_timeStamp}, \mrelb{has\_subject},
+\mrelb{has\_object})
 \end{equation}
 would ensure that duplicate entities would be coalesced in the model.
 
 
+\subsection*{Temporal extension to Description Logics}
 
-\subsection{Performance}
-Setting the hasMax relation to be functional creates problems with the reasoning with Fact++ as it appears not to terminate when executed, while HermiT does terminate. (Check). Setting hasMax and maxOf to be reflexive causes an inconsistency (explanations hint at an interference with existsAt). 
+Extensions to description logics to include temporal notions have been proposed by ... 
 
-\subsection{Relevance (or not) to other top-level ontologies}
+We have not considered these approaches because they are not covered by the OWL specification and 
+do not yet provide mature tools like editors and reasoners. 
 
+\subsection*{Performance}
+The benchmark results show no great differences between TR and TQC, 
+however with quite lower classification times for Fact++ compared with HermiT. 
+If adding examples the decrease in performance is more accentuated for TQC compared to TR, 
+which is explained by the lower number of A-Box axioms in the latter, due to the 
+impossibility of representing specific times. 
+
+We also observed that declaring the has\_max relation as functional has a negative
+impact on the Fact++ reasoner, which fails to terminate, while 
+HermiT does terminate. (Check). Setting has\_max and max\_of to be reflexive 
+causes inconsistencies (explanations hint at an interference with existsAt). 
+
+\subsection*{Relevance (or not) to other top-level ontologies}
+\todo{todo[inline, size=\tiny]{do we need this subsection?}}
 %%However, the proposal sketched here could potentially be implemented in other top-level
 %%ontologies that are sufficiently similar to BFO, including DOLCE \cite{DOLCE:ref} and \cite{GFO:ref}.
 % I don’t think GFO has quite the same occurrent-continuant distinction 
+
+
+\subsection*{Patterns}
+
+From a usability point of view, TR may have an advantage due to the embedding
+of a complex meaning within relations. While the higher number of relations might 
+complicate navigation in relation hierarchies, the axioms built out of them appear 
+more straightforward. However, this requires that users completely understand the 
+meaning of each relation. This is a challenge especially with the inverse relations, 
+and the unintuitive fact that, e.g. `has part at all times' is not the inverse of 
+`part of at all times'.
+
+TQR is the leaner ontology, due to a much more concise set of relations. However, 
+it requires a fundamental understanding of the meaning of TQCs. Syntactically,  
+most axioms look the same as in the modelling strategies that ignore temporal qualification.
+This might be a advantage for the adaption of existing domain ontologies.
+The expression of ``some time'' relatedness requires an additional nesting, using the relation
+``at\_some\_time'', which connects temporal instances of the same continuant. 
+In particular, four patterns can be distinguished:
+
+\begin{itemize}
+\item
+Class-level assertion $A$ valid for a given TQC individual $c$:
+%
+\begin{equation}
+\begin{split}
+\minst{c}\;\mathtt{Type}\;\mclass{A}
+\end{split}
+\end{equation}    
+%
+\item
+Class-level assertion $A$ valid for all related temporal slices of a given TQC individual $c$:
+%
+\begin{equation}
+\begin{split}
+\mirel{at\_some\_time}\;\mathtt{value}\;\minst{c}\;\mathtt{subClassOf}\;\mclass{A}
+\end{split}
+\end{equation}    
+%
+\item
+Class-level assertion $A$ valid for at least one temporal slice for each member of a TQC class $C$:
+%
+\begin{equation}
+\begin{split}
+\mclass{C}\;\mathtt{subClassOf}\;\mirel{at\_some\_time}\;\mathtt{some}\;\mclass{A}
+\end{split}
+\end{equation}    
+%
+\item
+Class-level assertion $A$ valid for all related temporal slices of all members of a TQC class $C$:
+%
+\begin{equation}
+\begin{split}
+\mclass{C}\;\mathtt{subClassOf}\;\mclass{A}
+\end{split}
+\end{equation}    
+%
+\end{itemize}

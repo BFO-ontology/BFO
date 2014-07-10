@@ -1,7 +1,7 @@
 
-We can define a \emph{temporal qualification} of a
-continuant as the result of regarding the continuant in as far as it exists only
-within a certain portion of time. A temporal qualification of a continuant entity is
+A \emph{temporal qualification} of a
+continuant is the result of regarding the continuant in as far as it exists only
+within a certain portion of time. However, a temporally qualified entity is
 not an additional entity, it \emph{is} the continuant entity, as \emph{referred to}
 over a specific period of time, which is within the time the continuant entity
 exists.
@@ -17,20 +17,40 @@ as per the higher available expressivity.
 We will give a translation from TQC representation in OWL to
 FOL representation using ternary relations.
 
-For every continuant there is a temporal qualification that is \textit{maximal} in that it covers the full temporal region over which that continuant exists. The temporal region over which the continuant exists matches the temporal region within which the history of the continuant unfolds. When instances of continuants are created in an OWL knowledge base without specifying the temporal qualification, it is assumed that the maximal qualification is what is intended.
+For every continuant there is a temporal qualification that is \textit{maximal} 
+in that it covers the full temporal region over which that continuant exists. 
+The temporal region over which the continuant exists matches the temporal region 
+within which the history of the continuant unfolds. When instances of continuants 
+are created in OWL, without specifying the temporal qualification, 
+it is assumed that the maximal qualification is what is intended.
 
-A separate temporal qualification of the same continuant entity is a different individual in the OWL ontology (related to a different temporal region), but not a different instance in the world that is being modelled. All of the different temporal qualifications of the same continuant entity share the property of having the same maximal temporal qualification.
+A separate temporal qualification of the same continuant entity is 
+a different individual in the OWL ontology (related to a different 
+temporal region), but not a different entity in the domain being 
+represented. All of the different temporal qualifications of the 
+same continuant entity share the property of having the same \emph{maximal} 
+temporal qualification.
 
-The following additional relations are introduced into the ontology to support modelling the temporal qualification of continuants:
+The following additional binary relations (hence, representable as WOL object properties) 
+are introduced into the ontology to support 
+TQCs:
 \begin{itemize}
-    \item \mirel{hasMax} (inverse \mirel{maxOf}) relates a TQC instance to its related instance with the maximal temporal extension (which may be itself)
-    \item \mirel{atSomeTime} relates a TQC with each other TQC that represents the same continuant
-    \item Note that \mirel{atSomeTime} $\equiv$ \mirel{hasMax} $\circ$ \mirel{maxOf}
-    \item \mirel{maxOf} \texttt{subPropertyOf} \mirel{atSomeTime} (not necessary if hasMax is reflexive)
-    \item \mirel{hasTime} relates a TQC with its defining temporal region.
+    \item \mirel{has\_max} (inverse \mirel{max\_of}) relates a random TQC instance to its related instance 
+    with the maximal temporal extension (which may be itself)
+    \item \mirel{at\_some\_time} relates a TQC with each other TQC that represents the same continuant. We have
+    chosen this name for a more intuitive understanding of OWL axioms where it is employed.
+    \item The relation \mirel{at\_some\_time} is equivalent to the concatenation \mirel{has\_max} $\circ$ \mirel{max\_of}
+    \item \mirel{max\_of} is a subrelation of \mirel{at\_some\_time}, which is not necessary if \mirel{has\_max} is represented as a 
+    reflexive relation)
+    \item \mirel{has\_time} relates a TQC with its defining temporal region.
 \end{itemize}
 
-All TQCs must have exactly one temporal region (thus, the \mirel{hasTime} relation is functional). It follows that instantiation of continuants represented in OWL using the TQC pattern is necessarily time indexed -- i.e. a temporal region must always be specified in instantiation of a TQC. However, implementers may wish to assume for the sake of usability that when instances of continuants are created in an OWL knowledge base without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo[inline, size=\tiny]{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
+
+All TQCs must have exactly one temporal region (thus, the \mirel{has\_time} relation should be
+considered functional). It follows that instantiation of continuants represented in OWL using 
+the TQC pattern is necessarily time indexed -- i.e. a temporal region must always be specified 
+in any instantiation of a TQC. However, for the sake of usability, implementers may wish to assume  
+that when instances of continuants are created in OWL without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo[inline, size=\tiny]{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
 
 For clarity in the remainder of this discussion, we will use the notation \TQC{A} to denote the class of temporal qualifications of
 continuants of type \mclass{A}. Note that in the OWL version of an ontology using the TQC design pattern, \emph{only} TQCs (and non-continuant types e.g. occurrents) will be included in the ontology. However, we need to distinguish between \TQC{A} and \mclass{A} for the purpose of showing the translation from OWL to FOL. The following equation relates an instance of \TQC{A} (represented in OWL) to an instance of \mclass{A} (represented in FOL). 
@@ -41,10 +61,10 @@ continuants of type \mclass{A}. Note that in the OWL version of an ontology usin
 \mirel{within}(t_1,t_0)))
 \end{equation}
 The intended meaning of the predicate \mirel{equals} is identity, and \mirel{within} specifies inclusion for temporal regions.  
-The relation \mirel{hasMax} links a TQC to the max TQC for that continuant. That is,
+The relation \mirel{has\_max} links a TQC to the max TQC for that continuant. That is,
 \begin{equation}
 \forall x\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t:\;(
-\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{hasMax}(a,x))
+\mrelt{inst}(\mclass{A}, a,t) \wedge \mrelb{has\_max}(a,x))
 \end{equation}
 
 In the next sections, we will discuss the representation of the three different
@@ -69,7 +89,7 @@ transparent translation:
 \end{split}
 \end{equation}
 %
-We then use the \mrelb{atSomeTime} and \mrelb{hasMax} relations and the TQC notation to eliminate
+We then use the \mrelb{at\_some\_time} and \mrelb{has\_max} relations and the TQC notation to eliminate
 the tuples:
 \begin{equation}
 \begin{split}
@@ -77,13 +97,13 @@ the tuples:
 \forall x:\; \mrelb{inst}(\TQC{A}, x)
  \rightarrow
 \exists y,z \; \mrelb{inst}(\TQC{A},y) \wedge \\ & \mrelb{inst}(\TQC{B},z)
- \wedge \mrelb{atSomeTime}(y,x) \wedge \mrelb{rel}(y,z)
+ \wedge \mrelb{at\_some\_time}(y,x) \wedge \mrelb{rel}(y,z)
 \end{split}
 \label{eq:usesSame}
 \end{equation}
 \todo[inline, size=\tiny]{check use of () and ;  }
 
-This means that the logical form of the expression of some time relatedness is that
+This means that the logical form of the expression of `some time relatedness' is that
 at least one temporal qualification of \mclass{A} is related to some temporally
 qualified \mclass{B} instance.
 However, we need another axiom to constrain \mrelb{rel} in the above to ensure that the
@@ -92,7 +112,7 @@ only:
 \begin{equation}
 \begin{split}
 \forall x,y:\;& \mrelb{rel}(x,y) \rightarrow \exists t,t_1:\;
-(\mrelb{hasTime}(x, t) \wedge \mrelb{hasTime}(y,t_1) \wedge \mirel{within}(t_1,t))
+(\mrelb{has\_time}(x, t) \wedge \mrelb{has\_time}(y,t_1) \wedge \mirel{within}(t_1,t))
 \end{split}
 \end{equation}
 
@@ -100,7 +120,7 @@ Now we have derived a binary expression \mrelb{rel} we are free to use this in O
 axioms. Temporary relatedness is thus expressed in OWL as follows:
 
 \begin{equation}
-\TQC{A}\;\mathtt{subClassOf}\;\mrelb{atSomeTime}\;\mathtt{some
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{at\_some\_time}\;\mathtt{some
 (}\mrelb{rel}\;\mathtt{some}\;\TQC{B})
 \label{eq:tqc:temp}
 \end{equation}
@@ -110,7 +130,7 @@ the same continuant:\footnote{Implementers should note that OWL 2 only mandates
 this for \emph{named} individuals.}
 \todo[inline, size=\tiny]{FIX FOR NEW APPROACH}
 \begin{equation}
-\mclass{A}\;\mathtt{hasKey}(\mrelb{hasMax})
+\mclass{A}\;\mathtt{hasKey}(\mrelb{has\_max})
 \end{equation}
 
 
@@ -176,7 +196,7 @@ now rephrased using the TCQ approach as follows:
 \end{equation}
 
 Informally, this means that, whatever temporal qualification of an instance of
-\mclass{A} we choose, it will alway be \mirel{rel}-related to some temporal
+\mclass{A} we choose, it will always be \mirel{rel}-related to some temporal
 qualification of type \mclass{B}, but we neither care nor enforce which one.
 
 This is the easiest and most elegant translation case from the FOL perspective.
@@ -254,16 +274,50 @@ accurate translation of this kind of relatedness into OWL 2, though we can
 achieve the following first order translation in TQC-talk:
 
 \todo[inline, size=\tiny]{This formula seems really wrong}
+
  \begin{equation}
 \begin{split}
 \forall x:\; \mrelb{inst}&(\TQC{A},x) \rightarrow \\
  \exists y:&\;\mrelb{inst}(\TQC{B},y) \wedge \mrelb{rel}(x,y)\wedge\\
  & \forall x_1,a:\; ((\mrelb{inst}(\TQC{A},x_1) \wedge
-\mrelb{hasMax}(a,x) \wedge \mrelb{hasMax}(a,x_1))\wedge\\
-&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \mrelb{hasMax}(b,y)  
-\wedge \mrelb{hasMax}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
+\mrelb{has\_max}(a,x) \wedge \mrelb{has\_max}(a,x_1))\wedge\\
+&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \mrelb{has\_max}(b,y)  
+\wedge \mrelb{has\_max}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
 \end{split}
 \end{equation}
+
 This would require three variables ($x$,~$y$,~$y_1$) to be bound at the same
 time, which is incompatible with any OWL translation.
+
+
+\todo[inline, size=\tiny]{The following according to Niels' proposal}
+
+A possible way of expressing (most of) the notion of `permanent specific 
+relatedness' is a syntactic variant of the `some time relatedness' pattern:
+ 
+\begin{equation}
+\begin{split}
+\mclass{Permanent}&\mclass{SpecificallyRelated}(\mclass{A},\mclass{B}) =_{def}\;
+\forall x:\; \mrelb{inst}(\TQC{A}, x)
+ \rightarrow
+\exists y,z \; \mrelb{inst}(\TQC{A},y) \wedge \\ & \mrelb{inst}(\TQC{B},z)
+ \wedge \mrelb{has\_max}(y,x) \wedge \mrelb{rel}(y,z)
+\end{split}
+\label{eq:usesPermSpec}
+\end{equation}
+ 
+
+In the same way as in formula \ref{} we can translate this straightforwardly into OWL
+axioms. Temporary relatedness is thus expressed in OWL as follows:
+
+\begin{equation}
+\TQC{A}\;\mathtt{subClassOf}\;\mrelb{has\_max}\;\mathtt{some
+(}\mrelb{rel}\;\mathtt{some}\;\TQC{B})
+\label{eq:tqc:temp2}
+\end{equation}
+
+
+
+
+
 

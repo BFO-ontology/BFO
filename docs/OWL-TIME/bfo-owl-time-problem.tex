@@ -8,35 +8,32 @@ Both the OBO axiom
 %
 \begin{equation}
 \begin{split}
-\mclass{CellMembrane}\;\mirel{partOf}\;\mclass{Cell}
+\mclass{CellMembrane}\;\mirel{continuant\_part\_of}\;\mclass{Cell}
 \end{split}
 \label{eq:cellobo}
-\end{equation}  
+\end{equation}
 %
-and the equivalent OWL axiom
+and the OWL axiom (often considered equivalent)
 %
 \begin{equation}
 \begin{split}
-\mclass{CellMembrane}\;\mathtt{subClassOf}\;\mirel{partOf}\;\mathtt{some}\;\mclass{Cell}
+\mclass{CellMembrane}\;\mathtt{subClassOf}\;\mirel{continuant\_part\_of}\;\mathtt{some}\;\mclass{Cell}
 \end{split}
 \label{eq:celldl}
-\end{equation}  
+\end{equation}
 %
-are undefined with regard to time. 
-\todo[inline, size=\tiny]{The OWL axiom is, but I am not sure whether the OBO axiom is, I also have my concern re OWL - OBO equivalence}
-
-This is not a side aspect, because it makes a
+do not exhibit any explicit commitment with regard to time. This is not a side aspect, because it makes a
 difference whether, e.g., a cell membrane is \emph{always} part of some cell or
-only \emph{at some time}.
+only \emph{at some time}. 
 The lack of temporal definition of OWL statements is especially unsatisfactory
-when it comes to transitive properties like $\mirel{partOf}$ or $\mirel{locatedIn}$,
+when it comes to transitive properties like $\mirel{continuant\_part\_of}$ or $\mirel{located\_in}$,
 where the suppression of the temporal factor can produce plainly wrong entailments,
 especially at the level of individuals, such as in the following example:
 %
 \begin{equation}
 \begin{split}
-\mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Heart\#431234})  \\
-\mirel{locatedIn} (\mirel{Heart\#431234}, \mirel{Patient\#900812})
+\mirel{located\_in} (\mirel{Thrombus\#39874}, \mirel{Heart\#431234})  \\
+\mirel{located\_in} (\mirel{Heart\#431234}, \mirel{Patient\#900812})
 \end{split}
 \label{eq:trans}
 \end{equation}
@@ -45,26 +42,27 @@ Assuming that the thrombus was no longer in the heart when it was transplanted t
 %
 \begin{equation}
 \begin{split}
-\mirel{locatedIn} (\mirel{Thrombus\#39874}, \mirel{Patient\#115678})
+\mirel{located\_in} (\mirel{Thrombus\#39874}, \mirel{Patient\#115678})
 \end{split}
 \label{eq:transEntailment}
 \end{equation}
 %
-which follows from the transitivity property of the relation $\mirel{locatedIn}$, is obviously wrong.
+which follows from the transitivity property of the relation $\mirel{located\_in}$, is obviously wrong.
 
 This has a far-reaching consequence: by default, OWL statements of this form are temporally ambiguous in a way that may entail unintended reasoning consequences when domain ontologies are used with real data. (A lack of an explicit treatment of temporal context has previously been implicated in an assessment of the quality of existential restrictions in OBO Foundry ontologies \cite{boeker2011}.)
 
 \subsection*{Strengths of Relatedness}
 
 We will propose a distinction between different temporal \emph{strengths} of relatedness. Before, however, we need to further characterise the ontological status of time, as referred to by the symbol $t$
-in our further deliberations. We refrain from a distinction between time intervals and time points, as the latter can be approximated by infinitesimally small intervals. 
-We axiomatically assume that any ternary relation that holds for a time interval, holds also true for any of its subintervals, including time points. 
+in our further deliberations. We refrain from a distinction between time intervals and time points, as the latter can be approximated by infinitesimally small intervals.
+We restrict ourselves to those ternary relations $\mrelt{rel}$ for which it can be assumed that whenever they hold for a time interval, 
+they also hold for any of its subintervals, including time points. E.g., if a car is located in a garage during a whole day, it is located therein at any moment or time interval within this day. If a patient's cholesterol level is elevated during a whole year, it is elevated at any shorter amount of time during this year. 
 
 Formally:
 \begin{equation}
 \begin{split}
-\forall a, b, t, t^\prime:\; \mrelt{rel}(a, b, t) \wedge \mirel{within}(t^\prime,t) \rightarrow 
-\mrelt{rel}(a,b,t^\prime)  
+\forall a, b, t, t^\prime:\; \mrelt{rel}(a, b, t) \wedge \mirel{within}(t^\prime,t) \rightarrow
+\mrelt{rel}(a,b,t^\prime)
 \end{split}
 \label{eq:temporarily:temp}
 \end{equation}
@@ -116,6 +114,7 @@ always the same bacteria.
 \label{eq:generically:cls}
 \end{equation}
 
+This case is the standard interpretation of OBO binary class-level relations such as in formula (\ref{eq:cellobo}), according to \cite{OBO:RO}.
 
 \subsubsection*{Permanent Specific Relatedness (PSR)}
 

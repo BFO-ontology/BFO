@@ -1,0 +1,473 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{[#1]}
+\providecommand{\urlprefix}{}
+
+\bibitem{Smith2007}
+Smith B, Ashburner M, Rosse C, Bard J, Bug W, Ceusters W, Goldberg LJ, Eilbeck
+  K, Ireland A, Mungall CJ, {The OBI Consortium}, Leontis N, Rocca-Serra P,
+  Ruttenberg A, Sansone SA, Scheuermann RH, Shah N, Whetzel PL, Lewis S:
+  \textbf{The {OBO Foundry}: coordinated evolution of ontologies to support
+  biomedical data integration.} \emph{Nature Biotechnology} 2007,
+  \textbf{25}(11):1251--1255.
+
+\bibitem{BFO2:Graz}
+{BFO 2 OWL Group}: \textbf{{BFO 2 OWL Preview
+  Release}}\urlprefix\url{[http://purl.obolibrary.org/obo/bfo/2012-11-15-bugfix/bfo.owl]}.
+
+\bibitem{grau2008}
+Grau BC, Horrocks I, Motik B, Parsia B, Patel-Schneider P, Sattler U:
+  \textbf{{OWL} 2: The next step for {OWL}}. \emph{Web Semantics} 2008,
+  \textbf{6}:309--322,
+  \urlprefix\url{[http://portal.acm.org/citation.cfm?id=1464505.1464604]}.
+
+\bibitem{OBO:RO}
+Smith B, et~al.: \textbf{Relations in biomedical ontologies}. \emph{Genome
+  Biology} 2005, \textbf{6}(5):R46,
+  \urlprefix\url{[http://genomebiology.com/2005/6/5/R46]}.
+
+\bibitem{go2000}
+{The Gene Ontology Consortium}: \textbf{Gene ontology: tool for the unification
+  of biology}. \emph{Nat. Genet.} 2000, \textbf{25}:25--9.
+
+\bibitem{chebinar2013}
+Hastings J, {de Matos} P, Dekker A, Ennis M, Harsha B, Kale N, Muthukrishnan V,
+  Owen G, Turner S, Williams M, Steinbeck C: \textbf{The {ChEBI} reference
+  database and ontology for biologically relevant chemistry: enhancements for
+  2013}. \emph{Nucleic Acids Research} 2013, \textbf{41(Database
+  issue)}:D456--63.
+
+\bibitem{uberon2012}
+Mungall CJ, Torniai C, Gkoutos GV, Lewis SE, Haendel MA: \textbf{Uberon, an
+  integrative multi-species anatomy ontology}. \emph{Genome Biology} 2012,
+  \textbf{13}.
+
+\bibitem{baader2007dlhandbook}
+Baader F, Calvanese D, McGuiness D, Nardi D, Patel-Schneider P:
+  \emph{Description Logic Handbook, 2nd Edition}. Cambridge University Press
+  2007.
+
+\bibitem{ferreira2013exploiting}
+Ferreira JD, Hastings J, Couto FM: \textbf{Exploiting disjointness axioms to
+  improve semantic similarity measures}. \emph{Bioinformatics} 2013,
+  \textbf{29}:2781--2787.
+
+\bibitem{Calvanese:1997}
+Calvanese D, De~Giacomo G, Lenzerini M: \textbf{Conjunctive Query Containment
+  in Description Logics with n-ary Relations}. In \emph{Proceedings of the 1997
+  Description Logic Workshop (DL’97)}. Edited by Brachman R, et~al.
+  1997:5--9.
+
+\bibitem{Wolter:2001}
+Wolter F, Zakharyashev M, Mosurovicz M: \textbf{Temporalizing Description
+  Logic: a point based approach}. \emph{Bulletin of the Italian Association for
+  Artificial Intelligence} 2001, \textbf{14}:16--20.
+
+\bibitem{OWL2:direct}
+Motik B, Patel-Schneider P, Cuenca~Grau B: \textbf{OWL 2 Web Ontology Language
+  Direct Semantics} 2009,
+  \urlprefix\url{[http://www.w3.org/TR/2009/REC-owl2-direct-semantics-20091027/]}.
+
+\bibitem{boeker2011}
+Boeker M, Tudose I, Hastings J, Schober D, Schulz S: \textbf{Unintended
+  consequences of existential quantifications in biomedical ontologies}.
+  \emph{BMC Bioinformatics} 2011, \textbf{12}(456).
+
+\bibitem{BFO2:ref}
+Smith Bt: \textbf{Basic Formal Ontology 2.0. Draft Specification and User's
+  Guide} 2012,
+  \urlprefix\url{[http://purl.obolibrary.org/obo/bfo/2012-07-20/Reference]}.
+
+\bibitem{Jansen:Schulz}
+Jansen L, Schulz S: \textbf{Crisp islands in vague seas. Cases of determinate
+  parthood relations in biological objects}. In \emph{Mereology and the
+  Sciences}. Edited by Calosi C, Graziani P, Springer 2014.
+
+\bibitem{cornucopia}
+Smith B, Grenon P: \textbf{The Cornucopia of Formal-Ontological Relations}.
+  \emph{Dialectica} 2004, \textbf{58}(3):279--296.
+
+\bibitem{OWL2:structural}
+Motik B, Patel-Schneider P, Parsia B: \textbf{OWL 2 Web Ontology Language
+  Structural Specification and Functional-Style Syntax} 2009,
+  \urlprefix\url{[http://www.w3.org/TR/2009/REC-owl2-syntax-20091027/]}.
+
+\bibitem{ODP:nary}
+Aranguren M, et~al.: \textbf{Nary Relationship}. In \emph{Ontology Design
+  Pattern Public Catalog}
+  2009\urlprefix\url{[http://www.gong.manchester.ac.uk/odp/html/Nary_Relationship.html]}.
+
+\bibitem{Grewe:2010}
+Grewe N: \textbf{A generic reification strategy for n-ary relations in DL}. In
+  \emph{Proceedings of the 2nd workshop of the GI-Fachgruppe 'Ontologien in
+  Biomedizin und Lebenswissenschaften' (OBML) : Mannheim, Germany, Sep 9–10}.
+  Edited by Herre H, et~al. 2010:N1–5.
+
+\bibitem{Fiadeiro:2010}
+Severi P, Fiadeiro J, Ekserdjian D: \textbf{Guiding Reification in OWL through
+  Aggregation}. In \emph{Proceedings of the 2010 Description Logic Workshop
+  (DL2010)}. Edited by Haarslev V, Toman D, Weddell G 2010:416--427.
+
+\bibitem{Welty:2006}
+Welty C, Fikes R: \textbf{A Resuable Ontology for Fluents in OWL}. In
+  \emph{Proceedings of FOIS-2006}. Edited by Bennett B, Fellbaum C
+  2006:226--236.
+
+\bibitem{Zamborlini:Guizzardi}
+Zamborlini V, Guizzardi G: \textbf{On the Representation of Temporally Changing
+  Information in OWL.} In \emph{EDOCW}, IEEE Computer Society 2010:283--292,
+  \urlprefix\url{[http://dblp.uni-trier.de/db/conf/edoc/edoc2010w.html#ZamborliniG10]}.
+
+\bibitem{Gangemi:DnS}
+Gangemi A: \textbf{Super-duper Schema: an OWL2+RIF DnS Pattern}. In
+  \emph{Proceedings of DeepKR Challenge Workshop at KCAP11}. Edited by Chaudry
+  V
+  2011\urlprefix\url{[http://www.ai.sri.com/halo/public/dkrckcap2011/Gangemi.pdf]}.
+
+\end{thebibliography}
+
+\newcommand{\BMCxmlcomment}[1]{}
+
+\BMCxmlcomment{
+
+<refgrp>
+
+<bibl id="B1">
+  <title><p>The {OBO Foundry}: coordinated evolution of ontologies to support
+  biomedical data integration.</p></title>
+  <aug>
+    <au><snm>Smith</snm><fnm>B</fnm></au>
+    <au><snm>Ashburner</snm><fnm>M</fnm></au>
+    <au><snm>Rosse</snm><fnm>C</fnm></au>
+    <au><snm>Bard</snm><fnm>J</fnm></au>
+    <au><snm>Bug</snm><fnm>W</fnm></au>
+    <au><snm>Ceusters</snm><fnm>W</fnm></au>
+    <au><snm>Goldberg</snm><fnm>LJ</fnm></au>
+    <au><snm>Eilbeck</snm><fnm>K</fnm></au>
+    <au><snm>Ireland</snm><fnm>A</fnm></au>
+    <au><snm>Mungall</snm><fnm>CJ</fnm></au>
+    <au><cnm>{The OBI Consortium}</cnm></au>
+    <au><snm>Leontis</snm><fnm>N</fnm></au>
+    <au><snm>Rocca Serra</snm><fnm>P</fnm></au>
+    <au><snm>Ruttenberg</snm><fnm>A</fnm></au>
+    <au><snm>Sansone</snm><fnm>SA</fnm></au>
+    <au><snm>Scheuermann</snm><fnm>RH</fnm></au>
+    <au><snm>Shah</snm><fnm>N</fnm></au>
+    <au><snm>Whetzel</snm><fnm>PL</fnm></au>
+    <au><snm>Lewis</snm><fnm>S</fnm></au>
+  </aug>
+  <source>Nature Biotechnology</source>
+  <pubdate>2007</pubdate>
+  <volume>25</volume>
+  <issue>11</issue>
+  <fpage>1251</fpage>
+  <lpage>-1255</lpage>
+</bibl>
+
+<bibl id="B2">
+  <title><p>{BFO 2 OWL Preview Release}</p></title>
+  <aug>
+    <au><cnm>{BFO 2 OWL Group}</cnm></au>
+  </aug>
+  <url>http://purl.obolibrary.org/obo/bfo/2012-11-15-bugfix/bfo.owl</url>
+</bibl>
+
+<bibl id="B3">
+  <title><p>{OWL} 2: The next step for {OWL}</p></title>
+  <aug>
+    <au><snm>Grau</snm><fnm>BC</fnm></au>
+    <au><snm>Horrocks</snm><fnm>I</fnm></au>
+    <au><snm>Motik</snm><fnm>B</fnm></au>
+    <au><snm>Parsia</snm><fnm>B</fnm></au>
+    <au><snm>Patel Schneider</snm><fnm>P</fnm></au>
+    <au><snm>Sattler</snm><fnm>U</fnm></au>
+  </aug>
+  <source>Web Semantics</source>
+  <publisher>Amsterdam, The Netherlands, The Netherlands: Elsevier Science
+  Publishers B. V.</publisher>
+  <pubdate>2008</pubdate>
+  <volume>6</volume>
+  <fpage>309</fpage>
+  <lpage>-322</lpage>
+  <url>http://portal.acm.org/citation.cfm?id=1464505.1464604</url>
+</bibl>
+
+<bibl id="B4">
+  <title><p>Relations in biomedical ontologies</p></title>
+  <aug>
+    <au><snm>Smith</snm><fnm>B</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>Genome Biology</source>
+  <pubdate>2005</pubdate>
+  <volume>6</volume>
+  <issue>5</issue>
+  <fpage>R46</fpage>
+  <url>http://genomebiology.com/2005/6/5/R46</url>
+</bibl>
+
+<bibl id="B5">
+  <title><p>Gene ontology: tool for the unification of biology</p></title>
+  <aug>
+    <au><cnm>{The Gene Ontology Consortium}</cnm></au>
+  </aug>
+  <source>Nat. Genet.</source>
+  <pubdate>2000</pubdate>
+  <volume>25</volume>
+  <fpage>25</fpage>
+  <lpage>-9</lpage>
+</bibl>
+
+<bibl id="B6">
+  <title><p>The {ChEBI} reference database and ontology for biologically
+  relevant chemistry: enhancements for 2013</p></title>
+  <aug>
+    <au><snm>Hastings</snm><fnm>J</fnm></au>
+    <au><snm>{de Matos}</snm><fnm>P</fnm></au>
+    <au><snm>Dekker</snm><fnm>A</fnm></au>
+    <au><snm>Ennis</snm><fnm>M</fnm></au>
+    <au><snm>Harsha</snm><fnm>B</fnm></au>
+    <au><snm>Kale</snm><fnm>N</fnm></au>
+    <au><snm>Muthukrishnan</snm><fnm>V</fnm></au>
+    <au><snm>Owen</snm><fnm>G</fnm></au>
+    <au><snm>Turner</snm><fnm>S</fnm></au>
+    <au><snm>Williams</snm><fnm>M</fnm></au>
+    <au><snm>Steinbeck</snm><fnm>C</fnm></au>
+  </aug>
+  <source>Nucleic Acids Research</source>
+  <pubdate>2013</pubdate>
+  <volume>41(Database issue)</volume>
+  <fpage>D456</fpage>
+  <lpage>63</lpage>
+</bibl>
+
+<bibl id="B7">
+  <title><p>Uberon, an integrative multi-species anatomy ontology</p></title>
+  <aug>
+    <au><snm>Mungall</snm><fnm>CJ</fnm></au>
+    <au><snm>Torniai</snm><fnm>C</fnm></au>
+    <au><snm>Gkoutos</snm><fnm>GV</fnm></au>
+    <au><snm>Lewis</snm><fnm>SE</fnm></au>
+    <au><snm>Haendel</snm><fnm>MA</fnm></au>
+  </aug>
+  <source>Genome Biology</source>
+  <pubdate>2012</pubdate>
+  <volume>13</volume>
+</bibl>
+
+<bibl id="B8">
+  <title><p>Description Logic Handbook, 2nd Edition</p></title>
+  <aug>
+    <au><snm>Baader</snm><fnm>F</fnm></au>
+    <au><snm>Calvanese</snm><fnm>D</fnm></au>
+    <au><snm>McGuiness</snm><fnm>D</fnm></au>
+    <au><snm>Nardi</snm><fnm>D</fnm></au>
+    <au><snm>Patel Schneider</snm><fnm>P</fnm></au>
+  </aug>
+  <publisher>Cambridge University Press</publisher>
+  <pubdate>2007</pubdate>
+</bibl>
+
+<bibl id="B9">
+  <title><p>Exploiting disjointness axioms to improve semantic similarity
+  measures</p></title>
+  <aug>
+    <au><snm>Ferreira</snm><fnm>JD</fnm></au>
+    <au><snm>Hastings</snm><fnm>J</fnm></au>
+    <au><snm>Couto</snm><fnm>FM</fnm></au>
+  </aug>
+  <source>Bioinformatics</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2013</pubdate>
+  <volume>29</volume>
+  <fpage>2781</fpage>
+  <lpage>2787</lpage>
+</bibl>
+
+<bibl id="B10">
+  <title><p>Conjunctive Query Containment in Description Logics with n-ary
+  Relations</p></title>
+  <aug>
+    <au><snm>Calvanese</snm><fnm>D</fnm></au>
+    <au><snm>De Giacomo</snm><fnm>G</fnm></au>
+    <au><snm>Lenzerini</snm><fnm>M</fnm></au>
+  </aug>
+  <source>Proceedings of the 1997 Description Logic Workshop (DL’97)</source>
+  <editor>Brachman, R and others</editor>
+  <pubdate>1997</pubdate>
+  <fpage>5</fpage>
+  <lpage>-9</lpage>
+</bibl>
+
+<bibl id="B11">
+  <title><p>Temporalizing Description Logic: a point based approach</p></title>
+  <aug>
+    <au><snm>Wolter</snm><fnm>F</fnm></au>
+    <au><snm>Zakharyashev</snm><fnm>M</fnm></au>
+    <au><snm>Mosurovicz</snm><fnm>M</fnm></au>
+  </aug>
+  <source>Bulletin of the Italian Association for Artificial
+  Intelligence</source>
+  <pubdate>2001</pubdate>
+  <volume>14</volume>
+  <fpage>16</fpage>
+  <lpage>-20</lpage>
+</bibl>
+
+<bibl id="B12">
+  <title><p>OWL 2 Web Ontology Language Direct Semantics</p></title>
+  <aug>
+    <au><snm>Motik</snm><fnm>B</fnm></au>
+    <au><snm>Patel Schneider</snm><fnm>PF</fnm></au>
+    <au><snm>Cuenca Grau</snm><fnm>B</fnm></au>
+  </aug>
+  <pubdate>2009</pubdate>
+  <url>http://www.w3.org/TR/2009/REC-owl2-direct-semantics-20091027/</url>
+</bibl>
+
+<bibl id="B13">
+  <title><p>Unintended consequences of existential quantifications in
+  biomedical ontologies</p></title>
+  <aug>
+    <au><snm>Boeker</snm><fnm>M</fnm></au>
+    <au><snm>Tudose</snm><fnm>I</fnm></au>
+    <au><snm>Hastings</snm><fnm>J</fnm></au>
+    <au><snm>Schober</snm><fnm>D</fnm></au>
+    <au><snm>Schulz</snm><fnm>S</fnm></au>
+  </aug>
+  <source>BMC Bioinformatics</source>
+  <pubdate>2011</pubdate>
+  <volume>12</volume>
+  <issue>456</issue>
+</bibl>
+
+<bibl id="B14">
+  <title><p>Basic Formal Ontology 2.0. Draft Specification and User's
+  Guide</p></title>
+  <aug>
+    <au><snm>Smith</snm><fnm>Bt</fnm></au>
+  </aug>
+  <pubdate>2012</pubdate>
+  <url>http://purl.obolibrary.org/obo/bfo/2012-07-20/Reference</url>
+</bibl>
+
+<bibl id="B15">
+  <title><p>Crisp islands in vague seas. Cases of determinate parthood
+  relations in biological objects</p></title>
+  <aug>
+    <au><snm>Jansen</snm><fnm>L</fnm></au>
+    <au><snm>Schulz</snm><fnm>S</fnm></au>
+  </aug>
+  <source>Mereology and the Sciences</source>
+  <publisher>Springer</publisher>
+  <editor>Calosi, C and Graziani, P</editor>
+  <pubdate>2014</pubdate>
+</bibl>
+
+<bibl id="B16">
+  <title><p>The Cornucopia of Formal-Ontological Relations</p></title>
+  <aug>
+    <au><snm>Smith</snm><fnm>B</fnm></au>
+    <au><snm>Grenon</snm><fnm>P</fnm></au>
+  </aug>
+  <source>Dialectica</source>
+  <pubdate>2004</pubdate>
+  <volume>58</volume>
+  <issue>3</issue>
+  <fpage>279</fpage>
+  <lpage>-296</lpage>
+</bibl>
+
+<bibl id="B17">
+  <title><p>OWL 2 Web Ontology Language Structural Specification and
+  Functional-Style Syntax</p></title>
+  <aug>
+    <au><snm>Motik</snm><fnm>B</fnm></au>
+    <au><snm>Patel Schneider</snm><fnm>PF</fnm></au>
+    <au><snm>Parsia</snm><fnm>B</fnm></au>
+  </aug>
+  <pubdate>2009</pubdate>
+  <url>http://www.w3.org/TR/2009/REC-owl2-syntax-20091027/</url>
+</bibl>
+
+<bibl id="B18">
+  <title><p>Nary Relationship</p></title>
+  <aug>
+    <au><snm>Aranguren</snm><fnm>ME</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>Ontology Design Pattern Public Catalog</source>
+  <pubdate>2009</pubdate>
+  <url>http://www.gong.manchester.ac.uk/odp/html/Nary_Relationship.html</url>
+</bibl>
+
+<bibl id="B19">
+  <title><p>A generic reification strategy for n-ary relations in
+  DL</p></title>
+  <aug>
+    <au><snm>Grewe</snm><fnm>N</fnm></au>
+  </aug>
+  <source>Proceedings of the 2nd workshop of the GI-Fachgruppe 'Ontologien in
+  Biomedizin und Lebenswissenschaften' (OBML) : Mannheim, Germany, Sep
+  9–10</source>
+  <editor>Herre, H. and others</editor>
+  <pubdate>2010</pubdate>
+  <fpage>N1–5</fpage>
+</bibl>
+
+<bibl id="B20">
+  <title><p>Guiding Reification in OWL through Aggregation</p></title>
+  <aug>
+    <au><snm>Severi</snm><fnm>P</fnm></au>
+    <au><snm>Fiadeiro</snm><fnm>J</fnm></au>
+    <au><snm>Ekserdjian</snm><fnm>D</fnm></au>
+  </aug>
+  <source>Proceedings of the 2010 Description Logic Workshop (DL2010)</source>
+  <editor>Haarslev, V AND Toman, D and Weddell, G</editor>
+  <pubdate>2010</pubdate>
+  <fpage>416</fpage>
+  <lpage>-427</lpage>
+</bibl>
+
+<bibl id="B21">
+  <title><p>A Resuable Ontology for Fluents in OWL</p></title>
+  <aug>
+    <au><snm>Welty</snm><fnm>C</fnm></au>
+    <au><snm>Fikes</snm><fnm>R</fnm></au>
+  </aug>
+  <source>Proceedings of FOIS-2006</source>
+  <editor>Bennett, B and Fellbaum, C</editor>
+  <pubdate>2006</pubdate>
+  <fpage>226</fpage>
+  <lpage>-236</lpage>
+</bibl>
+
+<bibl id="B22">
+  <title><p>On the Representation of Temporally Changing Information in
+  OWL.</p></title>
+  <aug>
+    <au><snm>Zamborlini</snm><fnm>V</fnm></au>
+    <au><snm>Guizzardi</snm><fnm>G</fnm></au>
+  </aug>
+  <source>EDOCW</source>
+  <publisher>IEEE Computer Society</publisher>
+  <pubdate>2010</pubdate>
+  <fpage>283</fpage>
+  <lpage>292</lpage>
+  <url>http://dblp.uni-trier.de/db/conf/edoc/edoc2010w.html#ZamborliniG10</url>
+</bibl>
+
+<bibl id="B23">
+  <title><p>Super-duper Schema: an OWL2+RIF DnS Pattern</p></title>
+  <aug>
+    <au><snm>Gangemi</snm><fnm>A</fnm></au>
+  </aug>
+  <source>Proceedings of DeepKR Challenge Workshop at KCAP11</source>
+  <editor>Chaudry, Vinay</editor>
+  <pubdate>2011</pubdate>
+  <url>http://www.ai.sri.com/halo/public/dkrckcap2011/Gangemi.pdf</url>
+</bibl>
+
+</refgrp>
+} % end of \BMCxmlcomment
