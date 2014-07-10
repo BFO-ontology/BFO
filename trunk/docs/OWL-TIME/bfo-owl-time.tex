@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
-%%                                      %
-%  bmc_article.tex            ver: 1.06 %
-%                                       %
+%%  %
+%  bmc_article.tex    ver: 1.06 %
+%   %
 
 %%IMPORTANT: do not delete the first line of this template
 %%It must be present to enable the BMC Submission system to
@@ -9,38 +9,38 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                     %%
+%% %%
 %%  LaTeX template for BioMed Central  %%
-%%     journal article submissions     %%
-%%                                     %%
-%%         <14 August 2007>            %%
-%%                                     %%
-%%                                     %%
-%% Uses:                               %%
+%% journal article submissions %%
+%% %%
+%% <14 August 2007>    %%
+%% %%
+%% %%
+%% Uses:   %%
 %% cite.sty, url.sty, bmc_article.cls  %%
-%% ifthen.sty. multicol.sty           %%
-%%                             %%
-%%                                     %%
+%% ifthen.sty. multicol.sty   %%
+%% %%
+%% %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                                                 %%    
-%% For instructions on how to fill out this Tex template           %%
+%% %%    
+%% For instructions on how to fill out this Tex template   %%
 %% document please refer to Readme.pdf and the instructions for    %%
-%% authors page on the biomed central website                      %%
-%% http://www.biomedcentral.com/info/authors/                      %%
-%%                                                                 %%
-%% Please do not use \input{...} to include other tex files.       %%
-%% Submit your LaTeX manuscript as one .tex document.              %%
-%%                                                                 %%
-%% All additional figures and files should be attached             %%
-%% separately and not embedded in the \TeX\ document itself.       %%
-%%                                                                 %%
-%% BioMed Central currently use the MikTex distribution of         %%
-%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
-%% http://www.miktex.org                                           %%
-%%                                                                 %%
+%% authors page on the biomed central website  %%
+%% http://www.biomedcentral.com/info/authors/  %%
+%% %%
+%% Please do not use \input{...} to include other tex files.   %%
+%% Submit your LaTeX manuscript as one .tex document.  %%
+%% %%
+%% All additional figures and files should be attached %%
+%% separately and not embedded in the \TeX\ document itself.   %%
+%% %%
+%% BioMed Central currently use the MikTex distribution of %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from  %%
+%% http://www.miktex.org   %%
+%% %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% vim: spelllang=en
@@ -58,6 +58,9 @@
 
 %\usepackage{times}
 \usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{graphicx} 
+\usepackage{rotating}
 \usepackage[british]{babel}
 %\usepackage[usename,dvipsnames]{xcolor}
 %\usepackage[]{hyperref}
@@ -94,12 +97,15 @@
 \newcommand{\mirel}[1]{\ensuremath{\mathrm{\mathbf{#1}}}}
 %  Class expressions:
 \newcommand{\mclass}[1]{\ensuremath{\mathit{#1}}}
+\newcommand{\minst}[1]{\ensuremath{\mathbf{#1}}}
 %  arity-indexed relations:
 \newcommand{\mrel}[2]{\mirel{#1^#2}}
 %  binary relations:
-\newcommand{\mrelb}[1]{\mrel{#1}{2}}
+%\newcommand{\mrelb}[1]{\mrel{#1}{2}}
+\newcommand{\mrelb}[1]{\mrel{#1}{b}}
 %  ternary relations:
-\newcommand{\mrelt}[1]{\mrel{#1}{3}}
+%\newcommand{\mrelt}[1]{\mrel{#1}{3}}
+\newcommand{\mrelt}[1]{\mrel{#1}{t}}
 %  DL interpretation function
 \newcommand{\dlint}[1]{\ensuremath{#1^{\mathcal{I}}}}
 %  ordered pairs:
@@ -113,19 +119,19 @@
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-%%                                             %%
+%% %%
 %%  If you wish to display your graphics for   %%
-%%  your own use using includegraphic or       %%
-%%  includegraphics, then comment out the      %%
-%%  following two lines of code.               %%   
-%%  NB: These line *must* be included when     %%
-%%  submitting to BMC.                         %%
-%%  All figure files must be submitted as      %%
-%%  separate graphics through the BMC          %%
+%%  your own use using includegraphic or   %%
+%%  includegraphics, then comment out the  %%
+%%  following two lines of code.   %%   
+%%  NB: These line *must* be included when %%
+%%  submitting to BMC. %%
+%%  All figure files must be submitted as  %%
+%%  separate graphics through the BMC  %%
 %%  submission process, not included in the    %%
-%%  submitted article.                         %%
-%%                                             %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
+%%  submitted article. %%
+%% %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
 \def\includegraphic{}
@@ -142,14 +148,14 @@
 \newboolean{publ}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                              %%
+%%  %%
 %% You may change the following style settings  %%
-%% Should you wish to format your article       %%
+%% Should you wish to format your article   %%
 %% in a publication style for printing out and  %%
-%% sharing with colleagues, but ensure that     %%
+%% sharing with colleagues, but ensure that %%
 %% before submitting to BMC that the style is   %%
-%% returned to the Review style setting.        %%
-%%                                              %%
+%% returned to the Review style setting.    %%
+%%  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 
@@ -169,13 +175,13 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the title of your article here     %%
-%%                                          %%
+%%  %%
+%% Enter the title of your article here %%
+%%  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \lstset{
-language=SQL,                             % Code langugage
+language=SQL, % Code langugage
 basicstyle=\ttfamily,
 columns=flexible,
 deletekeywords = { some },
@@ -183,20 +189,20 @@ morekeywords = { BEGIN, END, GROUPS, CLASS, OBJECTPROPERTY, FAIL, REMOVE},
 sensitive = true
 }
 
-\title{Patterns for representing time-dependent information in OWL~2 ontologies}
+\title{Patterns for representing time-dependent content in OWL~2 ontologies}
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the authors here                   %%
-%%                                          %%
+%%  %%
+%% Enter the authors here   %%
+%%  %%
 %% Ensure \and is entered between all but   %%
-%% the last two authors. This will be       %%
+%% the last two authors. This will be   %%
 %% replaced by a comma in the final article %%
-%%                                          %%
+%%  %%
 %% Ensure there are no trailing spaces at   %%
-%% the ends of the lines                    %%         
-%%                                          %%
+%% the ends of the lines    %% 
+%%  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author{Alan Ruttenberg$^{1}$,%
@@ -207,31 +213,31 @@ sensitive = true
   \email{Niels Grewe - niels.grewe@uni-rostock.de}
   Fabian Neuhaus$^{5}$,%
   \email{Fabian Neuhaus - fabian.neuhaus@nist.gov}
-  Chris Mungall$^{6}$,%
+  Chris Mungall$^{7}$,%
   \email{Chris Mungall - cjmungall@lbl.gov} \\  
   Barry Smith$^{1}$,%
   \email{Barry Smith - phismith@buffalo.edu} 
-  Ludger Jansen$^{4}$%
-  \email{Ludger Jansen - ludger.jansen@uni-rostock.de} and
-  Stefan Schulz$^{7,8}$%
+  Ludger Jansen$^{4,5}$%
+  \email{Ludger Jansen - ludger.jansen@uni-muenster.de} and
+  Stefan Schulz$^{8,9}$%
   \email{Stefan Schulz - stefan.schulz@medunigraz.at}
 }
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the authors' addresses here        %%
-%%                                          %%
+%%  %%
+%% Enter the authors' addresses here    %%
+%%  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \address{%
     \iid(1)Institute for Health Informatics, State University of New York, Buffalo, NY, USA\\
     \iid(2)Cheminformatics and Metabolism, European Bioinformatics Institute (EMBL-EBI), Cambridge, UK\\
     \iid(3)Department of Philosophy, University of Geneva, Switzerland\\
     \iid(4)Institute of Philosophy, University of Rostock, Germany\\
-    \iid(5)National Institute of Standards and Technology\\
-    \iid(6)Genomics Division, Lawrence Berkeley National Laboratory, Berkeley, CA, USA\\
-    \iid(7)Institute for Medical Informatics,
-Statistics and Documentation, Medical University of Graz, Austria\\
-    \iid(8)Institute of Medical Biometry and Medical Informatics, University Medical Center Freiburg, Germany
+    \iid(5)Institute of Philosophy, University of M\"unster, Germany\\
+    \iid(6)University of Magdeburg, Germany \\
+    \iid(7)Genomics Division, Lawrence Berkeley National Laboratory, Berkeley, CA, USA\\
+    \iid(8)Institute for Medical Informatics, Statistics and Documentation, Medical University of Graz, Austria\\
+    \iid(9)Institute of Medical Biometry and Medical Informatics, University Medical Center Freiburg, Germany
 }%
 
 \maketitle
@@ -252,14 +258,24 @@ Representing this information accurately often requires the use of ternary relat
 additional parameter), not supported in OWL.
 
 \textbf{Results:}
-In this paper we present several design patterns for working around this limitation. Firstly, we
-describe the use cases motivating the need for an explicit representation of temporality in the context of
-OWL and biomedical ontologies. Secondly, we propose and discuss different design patterns and
-evaluate them against the given use cases in the context of their completeness, user friendliness, and
-performance profile for common reasoning tasks.
+In this paper we present two patterns that address this limitation, emph{viz.} TR 
+(temporalized relations), which embeds temporalization into OWL object properties, 
+and TQC (temporally qualified continuants), which assumes all continuant instances
+to be referred to in the context of a time point or 
+interval. 
+A series of 23 modelling examples was created, each of which represented a different
+type of modelling problems. Each of them was challenged by one formally expressed 
+competency question. A comparison to a manually created reference standard yielded
+16 of 23 concordances for TQC and 8 of 23 for TR.  
 
 \textbf{Conclusions:}
-In conclusion, we present our recommendations.
+We found the TQC approach more powerful for addressing modelling problems and
+getting the correct entailments. TR offers a more compact representation but
+does not allow for explicit time reference for A-Box entities. 
+Interaction with user communities and scaling experiments will be necessary to
+reach a decision about which should be the appropriate approach to be followed
+for an OWL version of BFO. 
+
 
 \textbf{Keywords: }biomedical ontology, time, temporal reasoning, OWL, BFO
 
@@ -269,69 +285,82 @@ In conclusion, we present our recommendations.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% The Main Body begins here                %%
-%%                                          %%
-%% Please refer to the instructions for     %%
-%% authors on:                              %%
+%%  %%
+%% The Main Body begins here    %%
+%%  %%
+%% Please refer to the instructions for %%
+%% authors on:  %%
 %% http://www.biomedcentral.com/info/authors%%
-%% and include the section headings         %%
-%% accordingly for your article type.       %%
-%%                                          %%
+%% and include the section headings %%
+%% accordingly for your article type.   %%
+%%  %%
 %% See the Results and Discussion section   %%
 %% for details on how to create sub-sections%%
-%%                                          %%
-%% use \cite{...} to cite references        %%
-%%  \cite{koon} and                         %%
+%%  %%
+%% use \cite{...} to cite references    %%
+%%  \cite{koon} and %%
 %%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
 %%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
-%%                                          %%
+%%  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Background}
 \todo[inline, size=\tiny]{bfo-owl-time-introduction}
+\vspace{6pt}
 \input{bfo-owl-time-introduction}
-
-\todo[inline, size=\tiny]{bfo-owl-time-problem}
+%\todo[inline, size=\tiny]{bfo-owl-time-problem}
+\vspace{6pt}
 \input{bfo-owl-time-problem}
 
 \section*{Methods}
-\todo[inline, size=\tiny]{bfo-owl-time-use-cases}
+%\todo[inline, size=\tiny]{bfo-owl-time-use-cases}
+\vspace{6pt}
 \input{bfo-owl-time-use-cases}
 
 \section*{Proposed Design Patterns}
 \subsection*{Temporalized Relations (TR)}
-\todo[inline, size=\tiny]{bfo-owl-time-temporalizedrelations}
+%\todo[inline, size=\tiny]{bfo-owl-time-temporalizedrelations}
+\vspace{6pt}
 \input{bfo-owl-time-temporalizedrelations}
 
 \subsection*{Temporally Qualified Continuants (TQC)}
-\todo[inline, size=\tiny]{bfo-owl-time-temporallyqualcontinuants}
+%\todo[inline, size=\tiny]{bfo-owl-time-temporallyqualcontinuants}
+\vspace{6pt}
 \input{bfo-owl-time-temporallyqualcontinuants}
 
-
-
 \section*{Results}
-\todo[inline, size=\tiny]{bfo-owl-time-results}
+%\todo[inline, size=\tiny]{bfo-owl-time-results}
+\vspace{6pt}
 \input{bfo-owl-time-results}
 	
 
 \section*{Discussion}
-\todo[inline, size=\tiny]{bfo-owl-time-discussion}
+%\todo[inline, size=\tiny]{bfo-owl-time-discussion}
+\vspace{6pt}
 \input{bfo-owl-time-discussion}
 	
 \section*{Conclusions}
+%\todo[inline, size=\tiny]{bfo-owl-time-discussion}
+\vspace{6pt}
+\input{bfo-owl-time-conclusions}
 
-Summary
-
-Recommendations of which approach to follow under which circumstances
-
+ 
 
 \bigskip
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Author's contributions}
-Every author made very important contributions to everything.
+\section*{Author's contributions in alphabetical order}
 
+Niels Grewe produced the first formalization of the TQC approach and described the related work.
+Chris Mungall participated in the discussion of the TR approach. 
+Janna Hastings contributed to the foundations of the TQC approach and participated in the editing of the final version.
+Ludger Jansen contriTQC formalizations and the related work. 
+Fabian Neuhaus refined the TQC approach. 
+Alan Ruttenberg formulated the TR approach and implemented the TR version of BFO. 
+Barry Smith is the main author of BFO 2 and contributed to discussions around TR and TQC. 
+Stefan Schulz contributed to the first sketch of TQC, created the used cases and competency questions, the OWL implementations for the TQR scenarios
+and the examples, performed the experiments and edited the final version.
+ 
     
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -345,104 +374,118 @@ Melissa Haendel, David Osumi-Sutherland, Colin Batchelor and \ldots for helpful 
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                  The Bibliography                       %%
-%%                                                         %%              
-%%  Bmc_article.bst  will be used to                       %%
-%%  create a .BBL file for submission, which includes      %%
-%%  XML structured for BMC.                                %%
-%%  After submission of the .TEX file,                     %%
-%%  you will be prompted to submit your .BBL file.         %%
-%%                                                         %%
-%%                                                         %%
-%%  Note that the displayed Bibliography will not          %%
+%%  The Bibliography   %%
+%% %%  
+%%  Bmc_article.bst  will be used to   %%
+%%  create a .BBL file for submission, which includes  %%
+%%  XML structured for BMC.    %%
+%%  After submission of the .TEX file, %%
+%%  you will be prompted to submit your .BBL file. %%
+%% %%
+%% %%
+%%  Note that the displayed Bibliography will not  %%
 %%  necessarily be rendered by Latex exactly as specified  %%
-%%  in the online Instructions for Authors.                %%
-%%                                                         %%
+%%  in the online Instructions for Authors.    %%
+%% %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
 {\ifthenelse{\boolean{publ}}{\footnotesize}{\small}
  \bibliographystyle{bmc_article}  % Style BST file
- \bibliography{bfo-owl-time} }     % Bibliography file (usually '*.bib' )
+ \bibliography{bfo-owl-time} } % Bibliography file (usually '*.bib' )
 
 %%%%%%%%%%%
 
 \ifthenelse{\boolean{publ}}{\end{multicols}}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                               %%
-%% Figures                       %%
-%%                               %%
+%%   %%
+%% Figures   %%
+%%   %%
 %% NB: this is for captions and  %%
 %% Titles. All graphics must be  %%
 %% submitted separately and NOT  %%
 %% included in the Tex document  %%
-%%                               %%
+%%   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%
 %% Do not use \listoffigures as most will included as separate files
 
+\newpage
+
 \section*{Figures}
-  \subsection*{Figure 1 - Sample figure title}
-      A short description of the figure content
-      should go here.
 
-  \subsection*{Figure 2 - Sample figure title}
-      Figure legend text.
+ 
+ 
+\begin{figure}[h]
+\centering
+\includegraphics[width=120mm]{bfograph.png}
+\caption{Classes and relations in BFO 2.0}
+\label{fig:bfoclass}
+\end{figure}
 
+\newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=120mm]{trgraph.png}
+\caption{Permanent generic location as inclusion of histories. The object $a$ 
+(depicted as a spatiotemporal ``worm'')is always included in some member of 
+the class $B$, \emph{viz} $b_1$, $b_2$, $b_3$, $b_4$.}
+\label{fig:trgraph}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                               %%
-%% Tables                        %%
-%%                               %%
+%%   %%
+%% Tables    %%
+%%   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 %% Use of \listoftables is discouraged.
 %%
 \section*{Tables}
-  \subsection*{Table 1 - BFO Classes}
-    In this table we present the core BFO classes with their definitions.  \par \mbox{}
-    \par
-    \mbox{
-      \begin{tabular}{|c|c|}
-        \hline \multicolumn{2}{|c|}{BFO Classes}\\ \hline
-        A1 & B2  \\ \hline
-        A2 & ... \\ \hline
-        A3 & ..  \\ \hline
-      \end{tabular}
-      }
 
-  \subsection*{Table 2 - BFO Relations}
-    In this table we present a selection of BFO relations together with their definitions.
-     \par \mbox{}
-    \par
-    \mbox{
-      \begin{tabular}{|c|c|c|}
-        \hline \multicolumn{3}{|c|}{BFO Relations}\\ \hline
-        A1 & B2  & C3 \\ \hline
-        A2 & ... & .. \\ \hline
-        A3 & ..  & .  \\ \hline
-      \end{tabular}
-      }      
+\todo[inline, size=\tiny]{Big table, encompassing all examples and competency questions.
+The source of this table is an Excel spreadsheet, from which a PDF file was created}   
 
+
+Table 1. Results \\
+
+examples and competency questions for both TR and TQC approaches. For each example and modelling 
+approach the satisfiability is given: Y = satisfiable and N = not satisfiable. The reasoning 
+example can be inspected in the additional files. 
+
+ 
+\newpage
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                               %%
-%% Additional Files              %%
-%%                               %%
+%%   %%
+%% Additional Files  %%
+%%   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\section*{Additional Files}
-%  \subsection*{Additional file 1 --- Sample additional file title}
-%    Additional file descriptions text (including details of how to
-%    view the file, if it is in a non-standard format or the file extension).  This might
-%    refer to a multi-page table or a figure.
+\section*{Additional Files}
+  
+  
+\subsection*{BFO OWL with temporalized relations}
+This file (bfo\_tr.owl) corresponds to ``BFO OWL Graz'' as released in July 2012. It includes temporalized 
+relations such as ``has continuant part at all times'', ``inheres in at some time'' etc.
 
-%  \subsection*{Additional file 2 --- Sample additional file title}
-%    Additional file descriptions text.
+\subsection*{BFO OWL with temporally qualified continuants}
+This file (bfo\_tqc.owl)corresponds does not include temporalized relations and strictly follows the relations
+as provided by the BFO reference guide. All ternary relations are reduced to binary object properties involving temporally qualified continuants (TQCs).
+For the handling of TQCs additional object properties were added, as described in this paper. 
+
+\subsection*{examples for temporalized relations}
+This file (bfo\_tr\_uc.owl)contains the examples as described in this paper. 
+It imports bfo\_tr.owl.
+
+\subsection*{examples for temporally qualified continuants}
+This file (bfo\_tqc\_uc.owl)contains the examples as described in this paper. 
+It imports bfo\_tqc.owl.
 
 
 \end{bmcformat}

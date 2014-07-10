@@ -1,164 +1,173 @@
 \subsection*{Overview}
-The metholology we pursue in this work serves one major goal, \emph{viz.} to find an optimal way to represent time-related aspects in OWL ontologies. 
-It can be summarized as follows:
+The methodology we pursue in this work serves one major goal, \emph{viz.} to find an optimal way to represent time-related aspects in OWL ontologies. 
+Two competing modeling approaches 
+are introduced and discussed, \emph{Temporalized Relations} (TR) and \emph{Temporally Qualified Continuants} (TQC). Whereas TR integrates time 
+aspects into the definition of OWL object properties, TQC considers all instantiations of continuant classes as temporal slices of continuants. 
+The approach pursued in this paper can be summarized as follows:
 
 \begin{itemize}
 \item
-Formulation of time-sensitive use cases and competency questions, which represent typical representational tasks and reasoning requirements
+Formulation of time-sensitive examples and competency questions, which represent typical representational tasks and reasoning requirements. 
 \item
-Formalization of the first approach (Temporalized Relations), which embeds time aspects into OWL object properties.
+Formalization of the TR approach.
 \item 
-Formalization of the second approach (Temporally Qualified Continuants), which represents time aspects by temporal slices of continuants.  
+Formalization of the TQC approach.
+\item 
+Representation of examples by both TR and TQC. 
+\item 
+Evaluation by competency questions. 
+
 \end{itemize}
-The results will the consist in corresponding OWL models on which the use cases and competency questions will be tested. 
 
 
-\subsection*{Use Cases and Competency Questions}
+\subsection*{Examples and Competency Questions}
  
-The following use cases (UC) and competency questions (CQ) will be used for a comparison of the two representational approaches we are proposing. 
-
+The following Examples (EX) and competency questions (CQ) will be used for a comparison of the two representational approaches. 
 %They address  phased sortals, changing location at individual level (iii) class-level queries on anatomical objects (iv) class-level queries in which other than mereological relations occur (e.g. inherence, participation)}
-
-
-
-
-
-The use cases will be structured as follows: For each temporal mode of existence (STR, PGR, PSR) we will have four use cases: 
-class-level (c), individual-level (i) mereologic (m+), non-mereologic (m-), participation (p), with quantification over the participant (p1) and over the process (p2). In addition we will have a class-level and an individual-level use case for a non-rigid class. 
+For each temporal mode of existence (STR, PGR, PSR) examples are created according to the following criteria:  
+class-level (c), individual-level (i) mereologic (m+), non-mereologic (m-), participation (p), 
+with quantification over the participant (p1) and over the process (p2). 
+In addition we will have a class-level and an individual-level examples for a non-rigid class. 
 
 \begin{itemize}
-\item STR\_cm+: Every tooth is part of an organism at some time. Challenged by: \\ ``tooth that is never part of an organism'': unsatisfiable \\
-``tooth that is part of something that is not an organism or organism part'': satisfiable 
+\item STR\_cm+: Every tooth is part of an organism at some time. Challenged by: 
+\\ ``tooth for which there is a time it is not part of any organism '': satisfiable \\
+%``tooth that is part of something that is not an organism or organism part'': satisfiable 
 
 
 \item STR\_cm-: Every apple is green at some time
 \\
-Challenged by: \\ ``apple that is never green'': unsatisfiable \\
-``apple that is red at all times'': unsatisfiable 
+Challenged by: 
+%\\ ``apple that is never green'': unsatisfiable 
+\\
+``apple that is only red at some time'': satisfiable 
 
 
 \item STR\_cp1: Every vertebrate participates in some birth process at some time\\
-Challenged by: \\ ``Vertebrate that never participates in any birth process'': unsatisfiable \\
+Challenged by: \\  
 ``Vertebrate that at some time does not participate in a birth process'': satisfiable 
 
 
 
 \item STR\_cp2: Every fecundation has some spermatozoon as participant at some time
 \\
-Challenged by: \\ ``Fecundation event for which there is never any spermatozoon that participates'': unsatisfiable \\
-``Phase of fecundation in which there is no spermatozoon participating'': satisfiable 
+Challenged by: \\ 
+``Fecundation event for which there is never any spermatozoon that participates'': unsatisfiable \\
+%``Phase of fecundation in which there is no spermatozoon participating'': satisfiable 
 
 
 
 
-\item STR\_im+: The blood specimen \#bs430912 is in the lab \#lab996 during the whole time interval \#20131020
-
-Challenged by: \\ ``The blood specimen \#bs430912 is in the lab \#lab100 during the whole time interval \#20131020. Both labs do not share parts'' $\rightarrow$ unsatisfiable
+\item STR\_im+: ``The blood specimen bs430912 is in the lab lab996 during the whole time interval 2013-10-20.'' 
 
 
-
-\item STR\_im-: Joe's left ankle is swollen during the whole time interval \#20131020
-
-Challenged by: \\ ``Joe's left ankle is not during the whole time interval \#20131021'' $\rightarrow$ satisfiable
-\\ 
-``Joe's left ankle during the whole time interval \#20131020 is not swollen'' $\rightarrow$ unsatisfiable
+Challenged by: \\ ``The blood specimen bs430912 is in the lab lab100 during the whole time interval 2013-10-20. The labs do not share any facilities
+'' $\rightarrow$ unsatisfiable
 
 
 
-\item STR\_ip:  Mary participated in the process Mary's birth
+\item STR\_im-: ``Joe`s left ankle is swollen during the whole time interval 2013-10-20''
 
-Challenged by: \\``There is a time in which Mary is not a participant of her birth''  $\rightarrow$ satisfiable
+
+Challenged by: 
+``There is a time within the interval 2013-10-20 in which his ankle is not swollen '' $\rightarrow$ unsatisfiable
+
+
+
+\item STR\_ip:  ``Mary participated in the process of Mary`s birth''
+
+Challenged by: \\``There is a time in which Mary is not a participant in any birth process''  $\rightarrow$ satisfiable
 
 %%%%%%%
 
 
-\item PGR\_cm+: Every red blood cell always includes some oxygen molecule 
-
+\item PGR\_cm+: ``Every red blood cell always includes some oxygen molecule''
 Challenged by: \\``There are red blood cells without oxygen molecules''  $\rightarrow$ unsatisfiable
 
 
-\item PGR\_cm-: Every electronic health record is always on some computer storage
+\item PGR\_cm-: ``Every electronic health record is always on some computer storage''
 
-Challenged by: \\``There are electronic health record that are not on a computer storage''  $\rightarrow$ unsatisfiable
-
-
-\item PGR\_cp1: Every ?  \todo[inline, size=\tiny]{any idea?}
-
-\item PGR\_cp2: Every breathing process has always some volume of air as participant 
-
-Challenged by: \\``There are breathing processes in which no air volume participates''  $\rightarrow$ unsatisfiable
+Challenged by: \\``There are electronic health records that are not on a computer storage''  $\rightarrow$ unsatisfiable
 
 
-\item PGR\_im+: Mary's blood always consists of some blood cell 
+\item PGR\_cp1: ``Every organism always participates in some ecologic process''
 
-Challenged by: \\``There is a time in which Mary's blood is devoid of blood cells''  $\rightarrow$ unsatisfiable
-
-\item PGR\_im-: Joe's electronic health record always resides on some electronic storage medium
-
-Challenged by: \\``There is a time in which Joe's electronic health is not on an electronic storage''  $\rightarrow$ unsatisfiable
+Challenged by: \\``There are organisms that do not participate in any ecologic process at some time''  $\rightarrow$ unsatisfiable
 
 
-\item PGR\_ip:  Joe's breathing process has always some volume of air as participant
+\item PGR\_cp2: ``Every breathing process has always some volume of air as participant'' 
 
-Challenged by: \\``Joe's breathing process is without air at some time''  $\rightarrow$ unsatisfiable
+Challenged by: \\``There are parts of breathing processes in which no air volume participates''  $\rightarrow$ unsatisfiable
+
+
+\item PGR\_im+: ``Mary`s blood always has as part some blood cell ''
+Challenged by: \\``There is a time in which Mary`s blood is devoid of blood cells''  $\rightarrow$ unsatisfiable
+
+\item PGR\_im-: ``Joe`s electronic health record always resides on some electronic storage medium''
+
+Challenged by: \\``There is a time in which Joe`s electronic health record is on hard disk A and another time in which it is only on a different storage''  
+$\rightarrow$ satisfiable
+
+
+\item PGR\_ip:  ``Joe`s breathing process has always some volume of air as participant''
+
+Challenged by: \\``Joe`s breathing process is without air at some time''  $\rightarrow$ unsatisfiable
 
 %%%%%%%%%%%
 
-\item PSR\_cm+: Every human has a brain and it is always the same brain
+\item PSR\_cm+: ``Every human has a brain and it is always the same brain ''
 
-Challenged by: \\``A human who has more than one brain''  $\rightarrow$ unsatisfiable
+Challenged by: \\``There is a time in which Joe does not have his first brain''  $\rightarrow$ unsatisfiable
 
-\todo[inline, size=\small]{``This is rather tricky with TQC. One could express it as: for all temporal 
-instances of Human there is always some temporal instance of brain related. For all human instance which has the same "max" 
-all related brain instances must also have the same "max" ''}
+%\todo[inline, size=\small]{``This is rather tricky with TQC. One could express it as: for all temporal 
+%instances of Human there is always some temporal instance of brain related. For all human instance which has the same "max" 
+%all related brain instances must also have the same "max" ''}
 
 
-\item PSR\_cm-: Every mammal has the same sex during its life
+\item PSR\_cm-: ``Every mammal has the same biological sex during its life''
 
-Challenged by: \\``A mammal that has more than one sex''  $\rightarrow$ unsatisfiable
+Challenged by: \\``A mammal that is male at some time and female at some other time''  $\rightarrow$ unsatisfiable
 
  
-\item PSR\_cp1: Every organism always participates in its life, and it is always the same
+\item PSR\_cp1: ``Every organism always participates in its life, and it is always the same''
 
-Challenged by: \\``An  organism that participates in two different lifes''  $\rightarrow$ unsatisfiable
-
-
-\item PSR\_cp2: Every biological life always has some organism as participant, and it is always the same
-
-Challenged by: \\``A life that has more than one organism as participant''  $\rightarrow$ unsatisfiable
+Challenged by: \\``Joe participates in two different lifes''  $\rightarrow$ unsatisfiable
 
 
-\item PSR\_im+: Mary has `Mary's brain' as a proper part during her lifetime 
+\item PSR\_cp2: ``Every biological life always has some organism as participant, and it is always the same''
 
-Challenged by: \\``Mary gets a new brain during her lifetime''  $\rightarrow$ unsatisfiable
-
-
-\item PSR\_im-: Tibbles has the same sex during his life 
-
-Challenged by: \\``Tibbles changes his sex during his life''  $\rightarrow$ unsatisfiable
+Challenged by: \\``A life that has for some time a human as participant and for some other time another organism as participant''  $\rightarrow$ unsatisfiable
 
 
-\item PSR\_ip: Joe participates in his life and not in any other life
+\item PSR\_im+: ``Mary has `Mary`s brain' as a proper part during her lifetime''
 
-Challenged by: \\``Joe participates in more than one life''  $\rightarrow$ unsatisfiable
+Challenged by: \\``There is a time in which Mary has no brain''  $\rightarrow$ unsatisfiable
+
+
+\item PSR\_im-: ``Tibbles, a male cat, has the same sex during his life'' 
+
+Challenged by: \\``Tibbles is female at some time during his life''  $\rightarrow$ unsatisfiable
+
+
+\item PSR\_ip: ``Joe participates in his life and not in any other life''
+
+Challenged by: \\``Joe participates in a human life and part of his life is a cat life''  $\rightarrow$ unsatisfiable
 
 
 %%%%%%%%%%%
 
 
-\item NR\_t: Every fetus is an embryo at some time. Nothing can be both an embryo and a fetus at the same time. Vertebrate embryoes have a chorda at some time
+\item NR\_t: ``Every fetus is an embryo at some time. Nothing can be both an embryo and a fetus at the same time''
 
-Challenged by: \\ ``There are fetuses that were never embryoes''  $\rightarrow$ unsatisfiable
-
-
+Challenged by: \\ ``There are fetuses that were never embryos''  $\rightarrow$ unsatisfiable
 
 
-\item NR\_i: John was a medical student from 2001-10-01 to 2007-06-30
+\item NR\_i: ``John was a medical student from 2001-10-01 to 2007-06-30. Every person who is a medical student was a high school student at some time''
 
-Challenged by: \\ ``Every person who is a medical student was a high school student at some time''   
-John was never a high school student. $\rightarrow$ unsatisfiable
+Challenged by: \\ ``John was never a high school student''
+ $\rightarrow$ unsatisfiable
 
-For the implementation of the use cases and competency questions as OWL axioms see supplementary data.
+%For the implementation of the examples and competency questions as OWL axioms see supplementary data.
  
 %
 %Development process of gastrulation which starts with one anatomical part and goes on to another anatomical part? See gastrulation wikipedia page. 
@@ -168,17 +177,20 @@ For the implementation of the use cases and competency questions as OWL axioms s
 %
 %\todo[inline, size=\small]{Alan has a worked out example of the phases of life of some moth organism.}
 %\todo[inline, size=\small]{Embryo has this part but the fetus does not have that part.}
-%\todo[inline, size=\small]{Joe's income when he was a medical student was lower than his income after he graduated.}
+%\todo[inline, size=\small]{Joe`s income when he was a medical student was lower than his income after he graduated.}
 %\todo[inline, size=\small]{An assertion about joe as a medical student shouldn't make it on to Joe in general.}
 %
 
-\subsection*{Evaluation methods}
-We will use these use cases and competency questions to evaluate two proposed design patterns for temporalization against the following functional criteria:
-\begin{enumerate}
-    \item technical completeness, 
-    \item user friendliness, and
-    \item performance profile
-\end{enumerate}
+\subsection*{Formalization of both TR and TQR}
+Based on the BFO 2 technical specification \cite{BFO2:ref} both approaches are expressed in first order logics (FOL). FOL expressions are then 
+transformed in a way that essentially preserves the semantics but is fully based in binary relations. From this formalism, corresponding 
+OWL axioms can be derived.  
 
-
+\subsection*{OWL Implementation and evaluation methods}
+The TR approach has already been implemented as an OWL ontology. On this basis we develop the TQR ontology by removing all TR-specific relations and add 
+the additional content required for the TQC solution, using Prot\'eg\'e 4.3. These OWL files are then imported into the specific ontologies that 
+implement the examples. We will then assess the examples against competency questions formulated as DL queries. For each example and 
+either ontology (TR vs. TQC) we investigate whether (i) the modelling approach captures the intended semantic, (ii) whether it provides a correct 
+answer to the related competency question, (iii) whether the solution is user-friendly, and (iv), whether it shows a good computational performance.   
+  
 \end{itemize}

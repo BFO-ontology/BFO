@@ -1,23 +1,109 @@
-\section*{Results}
-
+%%%
+%%% RESULTS
+%%%
 \subsection*{OWL models}
 
+% 23 cqs - TR 9 concording - TQC 6 concording - TR 5 incomplete models 
+
+
 According to the specifications two OWL models for BFO were used. 
-The first one, implementing the TR (temporalized relations) approach, is a minor update to the BFO2OWL ``Graz'' release (July 2012), with 78 object properties. 
-The second one was newly built following the BFO2 specification and extending the set of object properties only by ..., with a total number of 58 object properties. 
+The first one, implementing the TR (temporalized relations) approach, is a minor update to the BFO2OWL ``Graz'' release 
+(July 2012), with 78 object properties. 
+The second one was newly built following the BFO2 specification and extending the set of object properties 
+only by ``\textbf{at some time}'', ``\textbf{has max}'' and ``\textbf{spans}'', with a total number of 58 object properties. 
 
-\todo[inline, size=\tiny]{follows: detailed description with examples of modelling }
+The results of the OWL implementations of the examples can be inspected in the additional files. 
+Table \ref{tab:results} provides an overview of the results. Each of the 23 examples had been implemented in both TQR and TR. In TR
+the models for STR\_im+, STR\_im-, PGR\_im-, NR\_t and NR\_i were underspecified, 
+as the TR implementation does not address specific time intervals. 
 
-\todo[inline, size=\tiny]{please review (and complete) the OWL models at
-http:\/\/tinyurl.com\/bfo2owl.  }
+Of those competency questions for which satisfiability was expected (n= 5), the TR model 
+was satisfiable in one case, whereas the TQC model was satisfiable in all cases.  
+
+Of the competency questions for which insatisfiability was expected (n= 18), 
+this could be confirmed by the TR model in seven cases, whereas it was obtained by the TQC model in eleven cases. 
+
+\begin{table}
+\caption{Overview of results of competency question. Comparison between TR and TQC.  The asterisk 
+marks those examples which could con be fully modelled.}
+\label{tab:results}
+{
+\begin{tabular}{p{10.9em}cp{10.5em}}
+\parskip=0cm
+\parbox{10.9em}{(see separate PDF file)} \\
+\end{tabular}
+}
+\end{table}
 
 
 
 
-\subsection*{Evaluation}
-\todo[inline, size=\tiny]{follows: detailed description with examples of modelling
-For each use case compare the both approaches. Requires consensus about the use cases and CQs by all authors}
 
 
+In detail the following observations are considered noteworthy for the TR approach:
+
+\begin{itemize}
+\item
+As the TR models of some time relatedness do not make their semantics explicit, an important
+class of modeling patterns are too strong. Generally spoken, if $A$ is ``all time related'' to $B$,
+it is also ``some time related''. For instance, we want to say that although every anatomical structure 
+is part of an organism at least during some time, there are anatomical structures that exist even severed 
+from the body, e.g. teeth. In TR this produces a contradiction, due to the abovementioned reason, whereas 
+in TQC the statement there are temporal slices (TQCs) in which the parthood predicate does not hold perfectly   
+harmonizes with the statement that it holds with other TQCs.
+
+\item
+As TR does not provide sufficient resources that would allow for stating a relatedness during a 
+certain time, important inferences such as that an object cannot be at a place p' at a given time 
+because it is already at p (which does not share parts with p') cannot be drawn. However, TQR here
+reaches its limits if the reasoning has to account for different, possibly overlapping time intervals. 
+An example is our example with the swollen ankle. Both approaches fail to demonstrate the contradiction 
+in the statement that the ankle is swollen during a given time period but is not swollen during an interval
+within that period.  
+
+\todo{find related work, e.g. re Allan's interval calculus and DL}
+
+\item
+As a consequence of the previous observation, the representation of phased sortals, here 
+the embryo / fetus example, is incomplete and leads to inconsistencies in case the phased sortal classes 
+are introduced as disjoint. A distinction between (i) $c$ being a member of $C_1$ at one time and 
+$C_2$ at a different time, and (ii) $c$ being a member of the intersection of the classes $C_1$ 
+and $C_2$ is not possible.
 
 
+\item
+As generic all time relatedness can only be expressed in TR for mereological relations, we would 
+expect a wrong result in the example with a generically dependent continuant, \emph{viz} 
+the electronic health record. What happens is that in PGR\_cm- the TR model produces a correct
+result, however based on an incomplete premise, \emph{viz.} stating that the data are on a storage 
+device only for some time (which allows for the unintended model that they are not stored anywhere
+for some time). 
+
+\item
+As expected, TR fares better where the specific all time relatedness. The advantage is exemplified
+in the PSR\_cm+ reasoning example, where the (wrong) model in which a human gets a brain transplant
+is rejected. However, both TR and TQC approaches fail with the example
+of changing sex in mammals.
+  
+\end{itemize}
+  
+Classification times were measured for the DL classifiers Fact++ and HermiT 1.3.8. using an 8 core lenovo Think Pad T530 laptop with 
+8 GByte memory, cr. \ref{tab:perf}.
+
+
+\begin{table}
+\caption{Classification times of ontologies in ms}
+\label{tab:perf}
+\centering
+\begin{tabular}{ l c c c c }
+\hline
+ &  {\bf TR} & {\bf TQC} & {\bf TR + examples} & {\bf TQC + examples} \\
+Fact++	 & 217	& 185	& 1,008 & 2,050 \\
+HermiT & 2,580 & 1,736 & 41,801 & 38,665\\ 
+\end{tabular}
+\label{tab:cases}
+\end{table}
+
+
+  
+  
