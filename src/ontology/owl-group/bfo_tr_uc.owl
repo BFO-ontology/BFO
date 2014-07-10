@@ -20,7 +20,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="&obo;bfo_tr_uc.owl">
-        <owl:imports rdf:resource="&obo;bfo.owl"/>
+        <owl:imports rdf:resource="&obo;bfo_tr.owl"/>
     </owl:Ontology>
     
 
@@ -33,19 +33,125 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <owl:AnnotationProperty rdf:about="&obo;BFO_0000996"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000171 -->
+
     <owl:AnnotationProperty rdf:about="&obo;BFO_0000171"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000996 -->
+
+    <owl:AnnotationProperty rdf:about="&obo;BFO_0000996"/>
     
 
 
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Datatypes
+    // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000056 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000056"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000057 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000057"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000080 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000080"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000082 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000082"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000084 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000084"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000086 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000086"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000110 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000110"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000117 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000117"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000132 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000132"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000139 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000139"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000158 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000158"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000166 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000166"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000167 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000167"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000176 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000176"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000178 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000178"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000184 -->
+
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000184"/>
     
 
 
@@ -57,6 +163,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000008 -->
+
+    <owl:Class rdf:about="&obo;BFO_0000008"/>
     
 
 
@@ -87,6 +199,7 @@
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#AnatomicalObjectQuality -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#AnatomicalObjectQuality">
+        <rdfs:label>anatomical object quality</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
     </owl:Class>
     
@@ -95,6 +208,7 @@
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Ankle -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Ankle">
+        <rdfs:label>ankle</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#OrganismPart"/>
     </owl:Class>
     
@@ -103,14 +217,15 @@
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Apple -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Apple">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000053"/>
-                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#GreenColor"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
+        <rdfs:label>apple</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#OrganismPart"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#STR_cm-"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#GreenColor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment>
 
 Apple that was not green at some time
@@ -129,7 +244,24 @@ Apple and not (&apos;at some time&apos; some (&apos;has quality&apos; some (not 
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#BiologicalLife -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#BiologicalLife">
+        <rdfs:label>biological life</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PSR_cp2"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Organism"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#BiologicalSex -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#BiologicalSex">
+        <rdfs:label>biological sex</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
     </owl:Class>
     
 
@@ -137,6 +269,7 @@ Apple and not (&apos;at some time&apos; some (&apos;has quality&apos; some (not 
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#BirthProcess -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#BirthProcess">
+        <rdfs:label>birth process</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
     </owl:Class>
     
@@ -145,6 +278,7 @@ Apple and not (&apos;at some time&apos; some (&apos;has quality&apos; some (not 
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#BloodCell -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#BloodCell">
+        <rdfs:label>blood cell</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Cell"/>
     </owl:Class>
     
@@ -153,6 +287,7 @@ Apple and not (&apos;at some time&apos; some (&apos;has quality&apos; some (not 
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#BloodSpecimen -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#BloodSpecimen">
+        <rdfs:label>blood specimen</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#VolumeOfBlood"/>
     </owl:Class>
     
@@ -161,6 +296,7 @@ Apple and not (&apos;at some time&apos; some (&apos;has quality&apos; some (not 
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Brain -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Brain">
+        <rdfs:label>brain</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#OrganismPart"/>
     </owl:Class>
     
@@ -169,6 +305,7 @@ Apple and not (&apos;at some time&apos; some (&apos;has quality&apos; some (not 
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#BreathingProcess -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#BreathingProcess">
+        <rdfs:label>breathing process</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PGR_cp2"/>
         <rdfs:comment>Expressed by general class axiom</rdfs:comment>
@@ -190,7 +327,28 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Cat -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Cat">
+        <rdfs:label>cat</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Mammal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#CatLife -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#CatLife">
+        <rdfs:label>cat life</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#BiologicalLife"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                        <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Cat"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&obo;bfo_tr_uc.owl#HumanLife"/>
     </owl:Class>
     
 
@@ -198,6 +356,7 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Cell -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Cell">
+        <rdfs:label>cell</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
     </owl:Class>
     
@@ -206,6 +365,7 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Chorda -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Chorda">
+        <rdfs:label>chorda</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#OrganismPart"/>
     </owl:Class>
     
@@ -214,6 +374,7 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Color -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Color">
+        <rdfs:label>color</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
     </owl:Class>
     
@@ -222,7 +383,17 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#ComputerStorage -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#ComputerStorage">
+        <rdfs:label>computer storage</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#EcologicProcess -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#EcologicProcess">
+        <rdfs:label>ecologic process</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
     </owl:Class>
     
 
@@ -230,8 +401,15 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#ElectronicHealthRecord -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#ElectronicHealthRecord">
+        <rdfs:label>electronic health record</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#InformationEntity"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PGR_cm-"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#ComputerStorage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment>ElectronicHealthRecord and not (&apos;generically depends on&apos; some ComputerStorage) ==&gt; unsatisfiable</rdfs:comment>
     </owl:Class>
     
@@ -240,6 +418,7 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Embryo -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Embryo">
+        <rdfs:label>embryo</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Organism"/>
         <owl:disjointWith rdf:resource="&obo;bfo_tr_uc.owl#Fetus"/>
     </owl:Class>
@@ -249,6 +428,7 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Fecundation -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Fecundation">
+        <rdfs:label>fecundation</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#STR_cp2"/>
         <rdfs:subClassOf>
@@ -261,9 +441,20 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     
 
 
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#FemaleBiologicalSex -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#FemaleBiologicalSex">
+        <rdfs:label>female biological sex</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#BiologicalSex"/>
+        <owl:disjointWith rdf:resource="&obo;bfo_tr_uc.owl#MaleBiologicalSex"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Fetus -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Fetus">
+        <rdfs:label>fetus</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#NR_t"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Organism"/>
         <rdfs:comment>
@@ -277,6 +468,7 @@ Fetus and not (&apos;at some time&apos; some Embryo)</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#GreenColor -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#GreenColor">
+        <rdfs:label>green color</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Color"/>
         <owl:disjointWith rdf:resource="&obo;bfo_tr_uc.owl#RedColor"/>
     </owl:Class>
@@ -286,6 +478,7 @@ Fetus and not (&apos;at some time&apos; some Embryo)</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#HighSchoolStudent -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#HighSchoolStudent">
+        <rdfs:label>high school student</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Student"/>
     </owl:Class>
     
@@ -324,6 +517,7 @@ Fetus and not (&apos;at some time&apos; some Embryo)</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Human -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Human">
+        <rdfs:label>human</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Mammal"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PSR_cm+"/>
         <rdfs:subClassOf>
@@ -343,6 +537,25 @@ But this is not processed by reasoner</rdfs:comment>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#HumanLife -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#HumanLife">
+        <rdfs:label>human life</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#BiologicalLife"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                        <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Human"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#INDIVIDUAL_LEVEL_USE_CASE -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#INDIVIDUAL_LEVEL_USE_CASE">
@@ -355,6 +568,7 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#InformationEntity -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#InformationEntity">
+        <rdfs:label>information entity</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000031"/>
     </owl:Class>
     
@@ -363,6 +577,7 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Lab -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Lab">
+        <rdfs:label>lab</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
     </owl:Class>
     
@@ -371,7 +586,17 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#LeftAnkle -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#LeftAnkle">
+        <rdfs:label>left ankle</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Ankle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#MaleBiologicalSex -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#MaleBiologicalSex">
+        <rdfs:label>male biological sex</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#BiologicalSex"/>
     </owl:Class>
     
 
@@ -379,8 +604,29 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Mammal -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Mammal">
+        <rdfs:label>mammal</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PSR_cm-"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Vertebrate"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                        <owl:allValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#FemaleBiologicalSex"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                        <owl:allValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#MaleBiologicalSex"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#BiologicalSex"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment>correctly:
 
 &apos;has quality&apos; some (Sex and &apos;quality of some Self)</rdfs:comment>
@@ -391,6 +637,7 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#MedicalStudent -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#MedicalStudent">
+        <rdfs:label>medical student</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Student"/>
     </owl:Class>
     
@@ -399,6 +646,7 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#MolecularEntity -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#MolecularEntity">
+        <rdfs:label>molecular entity</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
     </owl:Class>
     
@@ -433,8 +681,22 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Organism -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Organism">
+        <rdfs:label>organism</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PGR_cp1"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PSR_cp1"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000166"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#BiologicalLife"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#EcologicProcess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -442,6 +704,7 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#OrganismPart -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#OrganismPart">
+        <rdfs:label>organism part</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
     </owl:Class>
     
@@ -450,6 +713,7 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#OxygenMolecule -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#OxygenMolecule">
+        <rdfs:label>oxygen molecule</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#MolecularEntity"/>
     </owl:Class>
     
@@ -486,6 +750,14 @@ But this is not processed by reasoner</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#CLASS_LEVEL_USE_CASE"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE"/>
         <rdfs:comment>Every mammal has the same sex during his life </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#PGR_cp1 -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#PGR_cp1">
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PERMANENT_GENERIC_RELATEDNESS_USE_CASE"/>
     </owl:Class>
     
 
@@ -592,6 +864,7 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#PortionOfBlood -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#PortionOfBlood">
+        <rdfs:label>portion of blood</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#OrganismPart"/>
     </owl:Class>
     
@@ -600,6 +873,7 @@ But this is not processed by reasoner</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#RedBloodCell -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#RedBloodCell">
+        <rdfs:label>red blood cell</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#BloodCell"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PGR_cm+"/>
         <rdfs:comment>
@@ -612,6 +886,7 @@ RedBloodCell and (not (&apos;location of&apos; some OxygenMolecule)) ==&gt; unsa
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#RedColor -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#RedColor">
+        <rdfs:label>red color</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Color"/>
     </owl:Class>
     
@@ -700,17 +975,10 @@ Tooth and  (&apos;at some time&apos; some (&apos;part of continuant&apos; some (
     
 
 
-    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Sex -->
-
-    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Sex">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Spermatozoon -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Spermatozoon">
+        <rdfs:label>spermatozoon</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Cell"/>
     </owl:Class>
     
@@ -719,6 +987,7 @@ Tooth and  (&apos;at some time&apos; some (&apos;part of continuant&apos; some (
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Student -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Student">
+        <rdfs:label>student</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Human"/>
     </owl:Class>
     
@@ -727,16 +996,8 @@ Tooth and  (&apos;at some time&apos; some (&apos;part of continuant&apos; some (
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Swollen -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Swollen">
+        <rdfs:label>swollen</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#AnatomicalObjectQuality"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#TemporalPartOfBiologicalLife -->
-
-    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#TemporalPartOfBiologicalLife">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
-        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PSR_cp2"/>
     </owl:Class>
     
 
@@ -774,6 +1035,7 @@ Tooth and  (&apos;at some time&apos; some (&apos;part of continuant&apos; some (
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Tooth -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Tooth">
+        <rdfs:label>tooth</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#OrganismPart"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#STR_cm+"/>
         <rdfs:subClassOf>
@@ -797,6 +1059,7 @@ Tooth and  (&apos;at some time&apos; some (&apos;part of continuant&apos; some (
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Vertebrate -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Vertebrate">
+        <rdfs:label>vertebrate</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Organism"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#STR_cp1"/>
         <rdfs:subClassOf>
@@ -820,6 +1083,7 @@ Vertebrate and  (&apos;at some time&apos; some ( not (&apos;participates in&apos
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#VolumeOfAir -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#VolumeOfAir">
+        <rdfs:label>volume of air</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
     </owl:Class>
     
@@ -828,6 +1092,7 @@ Vertebrate and  (&apos;at some time&apos; some ( not (&apos;participates in&apos
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#VolumeOfBlood -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#VolumeOfBlood">
+        <rdfs:label>volume of blood</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
     </owl:Class>
     
@@ -848,6 +1113,7 @@ Vertebrate and  (&apos;at some time&apos; some ( not (&apos;participates in&apos
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#2001-10-01_to_2007-06-30">
         <rdf:type rdf:resource="&obo;BFO_0000008"/>
+        <rdfs:label>2001-20-01 to 2007-06-30</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -856,6 +1122,7 @@ Vertebrate and  (&apos;at some time&apos; some ( not (&apos;participates in&apos
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#20131020">
         <rdf:type rdf:resource="&obo;BFO_0000008"/>
+        <rdfs:label>2013-10-20</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -864,6 +1131,25 @@ Vertebrate and  (&apos;at some time&apos; some ( not (&apos;participates in&apos
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#20131021">
         <rdf:type rdf:resource="&obo;BFO_0000008"/>
+        <rdfs:label>2013-10-21</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Hard_disk_A -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Hard_disk_A">
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#ComputerStorage"/>
+        <rdfs:label>hard disk A</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Hard_disk_B -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Hard_disk_B">
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#ComputerStorage"/>
+        <rdfs:label>hard disk B</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -872,7 +1158,48 @@ Vertebrate and  (&apos;at some time&apos; some ( not (&apos;participates in&apos
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joe">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Human"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#CatLife"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&obo;bfo_tr_uc.owl#BiologicalLife"/>
+                                    </owl:Class>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#HumanLife"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&obo;bfo_tr_uc.owl#BiologicalLife"/>
+                                    </owl:Class>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000166"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#BiologicalLife"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label>Joe</rdfs:label>
         <obo:BFO_0000996 rdf:resource="&obo;bfo_tr_uc.owl#20131020"/>
+        <obo:BFO_0000178 rdf:resource="&obo;bfo_tr_uc.owl#Joes_first_brain"/>
+        <obo:BFO_0000178 rdf:resource="&obo;bfo_tr_uc.owl#Joes_second_brain"/>
     </owl:NamedIndividual>
     
 
@@ -882,10 +1209,36 @@ Vertebrate and  (&apos;at some time&apos; some ( not (&apos;participates in&apos
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joes_breathing_process">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#BreathingProcess"/>
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#PGR_ip"/>
+        <rdfs:label>Joe&apos;s breathing process</rdfs:label>
         <rdfs:comment>
 Challenged by:
 
 &apos;has temporal part&apos; some (process and not (&apos;has participant&apos; some VolumeOfAir)) ==&gt; inconsistent</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Joes_first_brain -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joes_first_brain">
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Brain"/>
+        <rdfs:label>Joe&apos;s first brain</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Joes_health_record -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joes_health_record">
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#ElectronicHealthRecord"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#ComputerStorage"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label>Joe&apos;s health record</rdfs:label>
+        <obo:BFO_0000084 rdf:resource="&obo;bfo_tr_uc.owl#Hard_disk_A"/>
     </owl:NamedIndividual>
     
 
@@ -895,6 +1248,23 @@ Challenged by:
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joes_left_ankle">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#LeftAnkle"/>
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#STR_im-"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Swollen"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                        <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Swollen"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdf:type>
+        <rdfs:label>Joe&apos;s left ankle</rdfs:label>
         <rdfs:comment>
 
 
@@ -908,18 +1278,11 @@ not ( &apos;has quality&apos; some Enlarged)
     
 
 
-    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Joes_left_ankle_max -->
-
-    <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joes_left_ankle_max">
-        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#LeftAnkle"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Joes_left_ankle_swollen -->
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joes_left_ankle_swollen">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Swollen"/>
+        <rdfs:label>Joe&apos;s left ankle swollen</rdfs:label>
         <obo:BFO_0000996 rdf:resource="&obo;bfo_tr_uc.owl#20131020"/>
     </owl:NamedIndividual>
     
@@ -928,7 +1291,17 @@ not ( &apos;has quality&apos; some Enlarged)
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Joes_life -->
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joes_life">
-        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#BiologicalLife"/>
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#HumanLife"/>
+        <rdfs:label>Joe&apos;s life</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Joes_second_brain -->
+
+    <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Joes_second_brain">
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Brain"/>
+        <rdfs:label>Joe&apos;s second brain</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -938,6 +1311,12 @@ not ( &apos;has quality&apos; some Enlarged)
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#John">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Human"/>
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#MedicalStudent"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;bfo_tr_uc.owl#HighSchoolStudent"/>
+            </owl:Class>
+        </rdf:type>
+        <rdfs:label>John</rdfs:label>
         <obo:BFO_0000996 rdf:resource="&obo;bfo_tr_uc.owl#2001-10-01_to_2007-06-30"/>
     </owl:NamedIndividual>
     
@@ -948,12 +1327,9 @@ not ( &apos;has quality&apos; some Enlarged)
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Mary">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Human"/>
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#PSR_im+"/>
-        <rdfs:comment>Added as General Class axiom:
-
-
-&apos;at some time&apos; value Mary_max subclassOf &apos;has continuant part&apos; some (&apos;at some time&apos; value Marys_brain_max)
-
-Competence question: &apos;at some time&apos; some (not &apos;participates in&apos; value Marys_birth)</rdfs:comment>
+        <rdfs:label>Mary</rdfs:label>
+        <obo:BFO_0000056 rdf:resource="&obo;bfo_tr_uc.owl#Marys_birth"/>
+        <obo:BFO_0000110 rdf:resource="&obo;bfo_tr_uc.owl#Marys_brain"/>
     </owl:NamedIndividual>
     
 
@@ -961,7 +1337,9 @@ Competence question: &apos;at some time&apos; some (not &apos;participates in&ap
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Marys_birth -->
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Marys_birth">
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#BirthProcess"/>
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#STR_ip"/>
+        <rdfs:label>Mary&apos;s birth</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -971,14 +1349,17 @@ Competence question: &apos;at some time&apos; some (not &apos;participates in&ap
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Marys_blood">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#PGR_im+"/>
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#VolumeOfBlood"/>
-        <rdfs:comment>Added as General Class axiom:
-
-&apos;at some time&apos; value Marys_blood_max subclassOf &apos;has continuant part&apos; some BloodCell
-
-
-challenged by:
-
-&apos;at some time&apos; value Marys_blood_max and not (&apos;has continuant part&apos; some BloodCell) </rdfs:comment>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&obo;bfo_tr_uc.owl#BloodCell"/>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label>Mary&apos;s blood</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -987,6 +1368,7 @@ challenged by:
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Marys_brain">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Brain"/>
+        <rdfs:label>Mary&apos;s brain</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -995,9 +1377,18 @@ challenged by:
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Tibbles">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Cat"/>
-        <rdfs:comment>Added as General Class axiom:
-
-&apos;at some time&apos; value Tibbles_max subclassOf &apos;has quality&apos; some (&apos;at some time&apos; value Tibbles_sex_max)</rdfs:comment>
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#PSR_im-"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&obo;bfo_tr_uc.owl#MaleBiologicalSex"/>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label>Tibbles</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1005,7 +1396,9 @@ challenged by:
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#Tibbles_sex -->
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#Tibbles_sex">
-        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Sex"/>
+        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#MaleBiologicalSex"/>
+        <rdfs:label>Tibble&apos;s sex</rdfs:label>
+        <obo:BFO_0000080 rdf:resource="&obo;bfo_tr_uc.owl#Tibbles"/>
     </owl:NamedIndividual>
     
 
@@ -1014,11 +1407,9 @@ challenged by:
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#bs430912">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#BloodSpecimen"/>
-        <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#STR_im+"/>
-        <rdfs:comment>
-
-located in lab100_2013 causes unsatisfiability as expected</rdfs:comment>
+        <rdfs:label>bs 430912</rdfs:label>
         <obo:BFO_0000996 rdf:resource="&obo;bfo_tr_uc.owl#20131020"/>
+        <obo:BFO_0000171 rdf:resource="&obo;bfo_tr_uc.owl#lab100"/>
         <obo:BFO_0000171 rdf:resource="&obo;bfo_tr_uc.owl#lab996"/>
     </owl:NamedIndividual>
     
@@ -1028,6 +1419,7 @@ located in lab100_2013 causes unsatisfiability as expected</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#lab100">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Lab"/>
+        <rdfs:label>lab 100</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1036,10 +1428,83 @@ located in lab100_2013 causes unsatisfiability as expected</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="&obo;bfo_tr_uc.owl#lab996">
         <rdf:type rdf:resource="&obo;bfo_tr_uc.owl#Lab"/>
+        <rdfs:label>lab 996</rdfs:label>
     </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000132"/>
+                        <owl:someValuesFrom>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&obo;BFO_0000184"/>
+                                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#BloodCell"/>
+                            </owl:Restriction>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000184"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#Marys_blood"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000082"/>
+                        <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#lab996"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000082"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#lab100"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000132"/>
+                        <owl:someValuesFrom>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&obo;BFO_0000184"/>
+                                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#VolumeOfAir"/>
+                            </owl:Restriction>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000139"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#Joes_breathing_process"/>
+    </owl:Restriction>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#Hard_disk_A"/>
+            <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#Hard_disk_B"/>
+        </owl:distinctMembers>
+    </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
 
