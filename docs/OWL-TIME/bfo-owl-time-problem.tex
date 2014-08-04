@@ -4,7 +4,7 @@
 \subsection*{\\
 The underspecification of time representations in OWL axioms}
 
-Both the OBO axiom
+Both an axiom in the OBO representational syntax \todo{more on OBO} 
 %
 \begin{equation}
 \begin{split}
@@ -22,8 +22,8 @@ and the OWL axiom (often considered equivalent)
 \label{eq:celldl}
 \end{equation}
 %
-do not exhibit any explicit commitment with regard to time. This is not a side aspect, because it makes a
-difference whether, e.g., a cell membrane is \emph{always} part of some cell or
+do not exhibit any explicit commitment with regard to time. This is not a side issue, because it makes a
+difference whether, for example, a cell membrane is \emph{always} part of some cell or
 only \emph{at some time}. 
 The lack of temporal definition of OWL statements is especially unsatisfactory
 when it comes to transitive properties like $\mirel{continuant\_part\_of}$ or $\mirel{located\_in}$,
@@ -38,7 +38,7 @@ especially at the level of individuals, such as in the following example:
 \label{eq:trans}
 \end{equation}
 %
-Assuming that the thrombus was no longer in the heart when it was transplanted to Patient\#115678, then the entailment
+Assuming that the thrombus was no longer in the heart when it was transplanted to Patient\#115678, then the inference to
 %
 \begin{equation}
 \begin{split}
@@ -47,16 +47,20 @@ Assuming that the thrombus was no longer in the heart when it was transplanted t
 \label{eq:transEntailment}
 \end{equation}
 %
-which follows from the transitivity property of the relation $\mirel{located\_in}$, is obviously wrong.
+which follows from the transitivity of the relation $\mirel{located\_in}$, is obviously invalid.
 
-This has a far-reaching consequence: by default, OWL statements of this form are temporally ambiguous in a way that may entail unintended reasoning consequences when domain ontologies are used with real data. (A lack of an explicit treatment of temporal context has previously been implicated in an assessment of the quality of existential restrictions in OBO Foundry ontologies \cite{boeker2011}.)
+This has a far-reaching consequence: by default, OWL statements are temporally ambiguous in a way that may entail unintended consequences when domain ontologies are used for reasoning with real data. (A lack of an explicit treatment of temporal context has previously been implicated in an assessment of the quality of existential restrictions in OBO Foundry ontologies \cite{boeker2011}.)
 
 \subsection*{Strengths of Relatedness}
 
-We will propose a distinction between different temporal \emph{strengths} of relatedness. Before, however, we need to further characterise the ontological status of time, as referred to by the symbol $t$
-in our further deliberations. We refrain from a distinction between time intervals and time points, as the latter can be approximated by infinitesimally small intervals.
-We restrict ourselves to those ternary relations $\mrelt{rel}$ for which it can be assumed that whenever they hold for a time interval, 
-they also hold for any of its subintervals, including time points. E.g., if a car is located in a garage during a whole day, it is located therein at any moment or time interval within this day. If a patient's cholesterol level is elevated during a whole year, it is elevated at any shorter amount of time during this year. 
+We can now propose a distinction between different temporal \emph{strengths} of relatedness. These are to be satisfied by temporally qualified such as parthood defined in the OBO Relation Ontology  and apply to relations between continuants only. 
+We begin by characterising the ontological status of regions of time , henceforth referred to by the symbol $t$. We refrain from drawing a distinction between time intervals and time points, assuming that the latter can be approximated by infinitesimally small intervals.
+We restrict ourselves to those ternary relations for which it can be assumed that whenever they hold for a time interval, 
+they also hold for any of its subintervals, including time points. For example, if a car is located in a garage during a day, then it is located therein at any time interval during that day. If a patient's cholesterol level is elevated for a whole year, it is elevated over any duration of time during this year. 
+In the following, ternary relations are marked by the superscript $^t$, like in $\mrelt{rel}$, from which binary relations are  distinguished by
+$^b$, like in $\mrelb{rel}$.  
+
+
 
 Formally:
 \begin{equation}
@@ -67,13 +71,15 @@ Formally:
 \label{eq:temporarily:temp}
 \end{equation}
 
-\subsubsection*{Some Time Relatedness (STR)}
+These are called time-distributive relations.
 
-Informally: for all a instances of \mclass{A} there is some time $t$ and some instance $b$ of
+\subsubsection*{Temporary Generic Relatedness (TGR)}
+
+Informally: for all $a$ instances of \mclass{A} there is some time $t$ and some instance $b$ of
 \mclass{B} such that $a$ is related to $b$ at $t$. Examples:
 \begin{enumerate}[(a)]
 \item for all apple seeds there is
-some apple such that the seed is part of the apple at some time.
+some apple such that the seed is part of the apple at some time;
 \item for all
 trees there is some leaf such that the leaf is part of the tree at some time.
 \end{enumerate}
@@ -92,14 +98,14 @@ Formally:
 
 \subsubsection*{Permanent Generic Relatedness (PGR)}
 
-Informally: for all instances $a$ of \mclass{A} there is, at all times $t$ that
+Informally: for all instances $a$ of \mclass{A} there is, at all times $t$ for which
 $a$ exists,
 some instance $b$ of \mclass{B} such that $a$ is related to $b$ at $t$, but not necessarily
 always the same $b$ at all times $t$. Examples:
 \begin{enumerate}[(a)]
 \item all cells have a water molecule as
-part at all times, but not always the same water molecule.
-\item every bacteria colony has some bacteria as parts at all times, but not
+part at all times, but not always the same water molecule;
+\item every bacterial colony has some bacteria as parts at all times, but not
 always the same bacteria.
 \end{enumerate}
 
@@ -114,17 +120,17 @@ always the same bacteria.
 \label{eq:generically:cls}
 \end{equation}
 
-This case is the standard interpretation of OBO binary class-level relations such as in formula (\ref{eq:cellobo}), according to \cite{OBO:RO}.
+It is as PGR relations that the standard interpretation of OBO binary class-level relations are understood such as in formula (\ref{eq:cellobo}) above, according to \cite{OBO:RO}.
 
 \subsubsection*{Permanent Specific Relatedness (PSR)}
 
 Informally, for all instances $a$ of \mclass{A} there is, at all times $t$ that $a$ exists, an
-instance $b$ of \mclass{B} such that $a$ is related to $b$ at $t$; in this case it is always the
+instance $b$ of \mclass{B} such that $a$ is related to $b$ at $t$; in this case it is the
 same $b$ at all times $t$. Examples:
 \begin{enumerate}[(a)]
-\item a human being has a brain as part at all times, and it is necessarily the same brain.
+\item a human being has a brain as part at all times, and it is necessarily the same brain;
 \item a radioactively marked molecule of DNA has the radioactive isotope as part
-at all times, and it is necessarily the same atom.
+at all times, and it is necessarily the same radioactive isotope.
 \end{enumerate}
 
 \begin{equation}
