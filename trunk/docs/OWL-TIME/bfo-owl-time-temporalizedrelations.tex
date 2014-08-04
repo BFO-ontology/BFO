@@ -1,13 +1,13 @@
 
-Of the three patterns \emph{some time relatedness} (STR), \emph{permanent generic relatedness} (PGR), and \emph{permanent specific relatedness} (PSR), STR and PSR have in common that they can be asserted between individuals: a token $a$ can be temporarily related to a token $b$, e.g. 
+Of the three types of relational patterns, \emph{viz.} \emph{Temporary Generic Relatedness} (TGR), \emph{permanent generic relatedness} (PGR), and \emph{permanent specific relatedness} (PSR), TGR and PSR have in common that they can be asserted between individuals: a token $a$ can be temporarily related to a token $b$, e.g. 
 a specific leaf is temporarily part of a specific plant, or a specific human, e.g. Barack Obama, 
-is temporarily located at a specific place, e.g. in his plane Air Force One.
+is temporarily located at a specific place, e.g. insite Air Force One.
 
-In a similar way, two individuals can be permanently related, such as, e.g., your body mass 
-is permanently inherent in your body, or the planet Earth is permanently part of our solar system.
+In a similar way, two individuals can be permanently related, for example via relations of structural dependence or essential parthood as in 
+your body mass being permanently inherent in your body, or the sun being permanently part of our solar system.
 
-This allows, in both cases to hide the time argument within a so-called temporalized relation.
-The STR pattern is introduced as follows:  
+This means that in all such cases  we can hide the time argument within a so-called temporalized relation. We will in the following call this approach ``binarization''. 
+For TGR the corresponding binarized (superscript $^b$) derivates of ternary (superscript $^t$) relations are introduced as follows:  
 
 \begin{equation}
 \begin{split}
@@ -16,7 +16,7 @@ The STR pattern is introduced as follows:
 \label{eq:temporarily:ind}
 \end{equation}
 
-This relation can be used in first-order logics axioms such as the individual-level axiom
+This relation schema can be used in FOL expressions such as the individual-level expression
 
 \begin{equation}
 \begin{split}
@@ -56,11 +56,11 @@ Analogously, the PSR pattern is introduced as follows:
 \label{eq:permanently:ind}
 \end{equation}
 %
-This relation can be used in an FOL axiom such as individual-level axiom
+This relation can be used in an FOL assertion such as:
 %
 \begin{equation}
 \begin{split}
-\mrelb{located\_in\_at\_all\_times} \;(\mathrm{Earth}, \mathrm{Solar\_System})  
+\mrelb{located\_in\_at\_all\_times} \;(\mathrm{Sun}, \mathrm{Solar\_System})  
 \end{split}
 \label{eq:earth}
 \end{equation}
@@ -77,7 +77,8 @@ or in the class-level axiom
 \label{eq:spine}
 \end{equation}
 %  
-There are several properties that have to be considered for the practical use of temporalized relations. In case a ternary relation is transitive, e.g.  
+Different sorts of temporalized relations behave differently as concerns properties such as transitivity.
+In case a ternary relation is transitive, i.e.  
 %
 \begin{equation}
 \begin{split}
@@ -86,11 +87,10 @@ There are several properties that have to be considered for the practical use of
 \label{eq:trtrans}
 \end{equation}    
 %
-the derived binary STR relation is not, because the implied time argument (cf. Formula \ref{eq:temporarily:ind}) is 
+the derived binarized relation is not transitive, if the underlying relation TGR (cf. Formula \ref{eq:temporarily:ind}) is 
 not necessarily identical for the conjoints in a transitive chain. If Obama is in Air Force One at some time, 
 and Air Force One is in Oklahoma City Air Logistics Complex (OC-ALC) at some time, this does not imply that Obama 
-was ever at OC-ALC. 
-Yet there is no problem with inverse STR relations: 
+was ever at OC-ALC. For the property of having an inverse relation, however, TGR relations face no problem.  
 % 
 \begin{equation}
 \begin{split}
@@ -108,60 +108,64 @@ trivially entails
 \label{eq:trinv2}
 \end{equation}    
 %
-If Obama is contained in Air Force One at some time, them Air Force One is the container of Obama at some time.
+If Obama is contained in Air Force One at some time, then Air Force One is the container of Obama at some time.
 
-This is different with PSR. Here, it can be shown that transitivity is maintained: As the relation holds, according to Formula (\ref{eq:permanently:ind}) for all times in which the first argument exists, this is also the case for the second argument which becomes the first one in a transitivity chain.
-However, we cannot assume that the inverse relation of a ternary relation carries over to the binary PSR relation. According to Formula (\ref{eq:permanently:ind}), the scope of the quantification over time is only the first argument. It entails the existence of the second argument for the time of the existence of the first one, which, however, does not preclude that the second one outlives the first one. If we say that a certain vertebrate organism always has a spine, this does not preclude that the spine may still exist centuries after the animal's death.    
-This means that the inverse of $\mrelb{has\_continuant\_part\_at\_some\_time}$ is not $\mrelb{part\_of\_continuant\_at\_some\_time}$, but something like $\mrelb{part\_of\_continuant\_at\_some\_time\_at\_which\_the\_whole\_exists}$.  
+Matetrs are different with PSR relations. Here, it can be shown that transitivity is maintained, because by \ref{eq:permanently:ind} each such relation holds, 
+for all times at which the first argument exists, this is also the case for the second argument, which thereby becomes the first argument of the next link in a transitivity chain.
+Binatry PSR relations, however, face problems when it comes to the existence of inverses. 
+Again from (\ref{eq:permanently:ind}), we see that the scope of the quantification over time is confined to the first argument. This entails the existence of the second argument only at times when the first argument exists. This however, does not preclude that the second might outlive the first. If we say that a certain vertebrate organism always has a spine, this does not preclude that the spine may still exist centuries after the animal's death.    
+This means that the inverse of $\mrelb{has\_continuant\_part\_at\_some\_time}$ is not $\mrelb{part\_of\_continuant\_at\_some\_time}$ \todo{}, but something like $\mrelb{part\_of\_continuant\_at\_some\_time\_at\_which\_the\_whole\_exists}$.  
 
-So far we have not considered the PGR case. Being the standard interpretation of class level 
-relations in OBO-RO \cite{OBO:RO} it has influenced the development of biomedical ontologies 
-for nearly a decade. On closer scrutiny, there is some evidence that many instances of OBO 
-relation assertions would rather correspond to STR, such as in the Foundational Model of Anatomy 
-under real-world conditions: every human heart was part of some human organism, but after 
-the death of the organism it may still continue to exist (in preparation, e.g., for transplantation). 
+But it is the PGR case which is the standard interpretation of class level 
+relations in OBO-RO \cite{OBO:RO}, and thus it is PGR that has influenced the development of biomedical ontologies 
+for nearly a decade. On closer scrutiny, we can now see that some instances of OBO 
+relational assertions correspond not to PGR but to TGR, for example in the Foundational Model of Anatomy 
+every human heart is asserted to be part of some human organism. Under real-world conditions the heart may still continue to exist 
+after the death of the organism (undergoing preparation for transplantation). 
 Every human may have had teeth, but toothless humans are still humans and teeth can outlive their bearers. 
-In other cases, PGR may be interpreted as PSR, especially in the case of dependent continuants: 
-the redness of a red blood cell always inheres in it. Or the surface of your body cannot jump to 
+In other cases, PGR relations may be specialized as PSR, especially in the case of dependent continuants: 
+the same redness of a red blood cell inheres in the cell as long as the cell exists. 
+Or the surface of your body or the headache in your head cannot migrate to 
 a different body. Nevertheless there are enough cases in which PGR is the only acceptable interpretation, 
 especially if we consider PSR as a specialization of PGR.
 
-A major drawback for the temporalized relations approach here is the fact that PGR cannot be expressed 
-by a relation between individual entities. For instance, the statement ``every cell 
-nucleus is part of some cell at all times'' does not mean that a certain cell nucleus is part of a 
-certain cell. It may become part of a different cell if the original cell fuses with another one and 
-thus becomes a different individual. It is therefore not possible to assert PGR at the level of individuals. 
-Therefore, the OBO ``standard case'' cannot be directly expressed using a temporalized relation.
+A major drawback for the temporalized relations approach is the fact that a PGR relation cannot be expressed 
+by means of a relation between individual entities. For instance, the statement ``every cell 
+nucleus is part of some cell at all times at which the nucleus exists'' does not mean that a certain cell nucleus is part of a 
+certain cell. It may become part of a different cell if the original cell fuses with another one. 
+It is therefore not possible to assert PGR relations at the level of individuals. 
+Therefore, the OBO standard case cannot be directly expressed using a temporalized relation.
 
-However, there is a way to use temporalized relations to represent at least part of the knowledge 
-for which PGR would be the most correct temporal strength.
+However, there is a way to use temporalized relations to represent at least part of what is 
+involved when we use relations for which PGR would be the most correct temporal strength.
 
-The reasoning is the following: If we want to express that the classes $A$ and $B$ are related by a 
-permanent generic relationship, such as $A$ obo:$\mclass{located\_in}$ $B$, we may resort to 
+The reasoning is the following: If we want to express that classes $A$ and $B$ are related by a PGR 
+relationship, such as $A$ obo:$\mclass{located\_in}$ $B$\todo{BS: Give a real example}, we may resort to 
 \emph{histories}, which are occurrents and can therefore be related by binary relations. According 
 to BFO 2, a history is a complete process that is the sum of the totality of processes taking place 
 in the spatiotemporal region occupied by a material entity or site. Thus, the history of a continuant 
-$c$ can be seen as a four-dimentional spacetime ``worm'' with a temporal extension that equals the 
-timespan $t$ during which $c$ exists and a three-dimensional spatial extension indexed by each point 
+$c$ can be seen as a four-dimentional spacetime worm with a temporal extension that equals the 
+timespan $t$ during which $c$ exists and a series of three-dimensional spatial extensions each 
+of which is indexed indexed by some point 
 $t_i \in t$. 
 
-Histories can be related by occurrent parthood relations, such as every phase (temporal part) 
+Histories can be related by occurrent parthood relations, as in every phase (temporal part) 
 of the history of a cell nucleus is part of the history of some cell (not necessarily of the same cell).  
 
 Continuants and their histories are related by the $\mrelb{has\_history}$ relation 
 (inverse: $\mrelb{history\_of})$.
 
 If we want to express that all instances of the class $A$ are always located in some instance of the 
-class $B$ we can express this in FOL in the following way, with $\mrelb{temporal\_part\_of}$ being 
-a relation that holds between two occurrents when the former is a phase or subprocess (a slice or 
-segment) of the latter. $\mrelb{occurrent\_part\_of}$ is the general inclusion relation between two 
-occurrents. Fig.\ \ref{fig:trgraph} visualizes a situation, in which \emph{viz}that every member of the class $A$ 
--- here depicted by the object $a$ -- is always located in some member of $B$, here represented by the 
+class $B$ we can express this in FOL by using the $\mrelb{temporal\_part\_of}$ relation, which holds 
+between two occurrents when the former is a phase or subprocess (a slice or 
+segment) of the latter, as contrasted with $\mrelb{occurrent\_part\_of}$, which is the general inclusion relation between two 
+occurrents. Fig.\ \ref{fig:trgraph} visualizes a situation, in which every member of the class $A$ 
+-- for instance $a$ -- is always located in some member of $B$, here represented by the 
 four objects $b_1$ to $b_4$. This is expressed by the fact that any temporal part of the history of $a$ 
 is part of the history of some member of $B$. 
 
 
-Formally:
+Formally, with $h_a$ representing the history of $a$ :
 
 \begin{equation}
 \begin{split}
@@ -232,7 +236,7 @@ Formally:
 %
 %as it can be trivially shown.
 
-However, the inclusion of history phases does not allow a distinction between location and parthood \cite{Jansen:Schulz}, so that the relation between a pregnant organism and an embryo or foetus would not be distinguished between the relation between an organism and its brain.
+However, the inclusion of phases of histories does not allow a distinction between location and parthood \cite{Jansen:Schulz}, so that the relation between a pregnant organism and an embryo or foetus would not be distinguished between the relation between an organism and its brain. \todo{BS: this could be fixed by taking sites into account. steschu: Example? }
 
 
 \todo[inline, size=\tiny]{This section should be revised by Alan. Especially the following issues should be discussed: (i) PGR for continuant - continuant relations which are not mereological, such as inherence, concretization, (ii) application to process participants}
