@@ -2,114 +2,36 @@
 
 % Introduction to this paper, what is the point, what is the scope, what are the limitations
 
-This paper addresses a challenge that has arisen in the context of the
-Open Biomedical Ontologies (OBO) Foundry \cite{Smith2007} use of BFO
-as an upper level ontology. The Basic Formal Ontology(BFO) is defined
-in a reference document \cite{BF02:reference} in english, with
-reference to expressions in first order logic.
+This paper addresses a challenge that has arisen in the context of the Open Biomedical Ontologies (OBO) Foundry \cite{Smith2007} community, in particular in relation to the implementation of the Basic Formal Ontology (BFO, \cite{BFO2:Graz}) version 2, in formalizations that use the Web Ontology Language (OWL, \cite{grau2008}). 
+We will refer to BFO in what follows exclusively in relation to these OWL formalizations. 
+The problem is of general interest to the %biomedical 
+ontology 
+%and data standards 
+community as a whole, because it exposes and addresses a general weakness 
+%of a large number of biomedical ontologies 
+of ontologies and other semantic artefacts that
+use OWL and represent time-related
+%dynamic 
+aspects of their domain. 
+The problem is not restricted to the life science context, and is, in fact, relevant to all domains in which objects change over time, or are related to each other in ways that depend on temporal contexts.   
 
-For many years there has been an an ongoing effort to express BFO
-using the Web Ontolology Language(OWL). The goal of the OWL version of
-BFO (henceforth wBFO) is to allow one to create ontologies based on
-BFO and which, to the extent possible, allow one to express what what
-is expressible according to the formal theory. Because of the
-availability of practical OWL reasoners, the hope is to take advantage
-of those reasoners to do sound, if not complete, tasks such as
-consistency checking, subsumption, and computing the answers to
-queries.
+According to BFO and other foundational ontologies, a useful upper-level distinction is between those entities that exist in full at all times at which they exist (continuants), and those that unfold in time (occurrents). This is a distinction according to temporal mode of existence. Temporal information is also relevant when specifying the relationships between continuant entities, particularly -- as for most of the life sciences -- where continuants such as organisms and their parts, molecules, shapes, and disorders not only persist, but also continuously change over time. They continuously gain and lose parts, qualities, and dispositions. Consequently, any relational expression which makes reference to a particular continuant can have different truth values at different times and would therefore be ambiguous if time were not made explicit in the statement. 
 
-
-% in particular in relation to the implementation of the Basic Formal
-% Ontology (BFO, \cite{BFO2:Graz}) version 2, in formalizations that use
-% the Web Ontology Language (OWL, \cite{grau2008}). 
-
-(BFO, \cite{BFO2:Graz})
-
-% %We will refer to BFO in what follows exclusively in relation to these OWL formalizations. 
-
-% The problem is of general interest to the %biomedical 
-% ontology 
-% %and data standards 
-% community as a whole, because it exposes and addresses a general weakness 
-% %of a large number of biomedical ontologies 
-% of ontologies and other semantic artefacts that
-% use OWL and represent time-related
-% %dynamic 
-% aspects of their domain. 
-% The problem is not restricted to the life science context, and is, in fact, relevant to all domains in which objects change over time, or are related to each other in ways that depend on temporal contexts.   
-
-According to BFO and other foundational ontologies, a useful
-upper-level distinction is between those entities maintain their
-identities over time while changing (continuants), and those that
-unfold in time, or have temporal parts (occurrents).  The distinction
-is as to how entities of each type exist in time.  In this paper we
-focus on temporal issues involving continuants.  In the life sciences,
-continuants are such as organisms and their parts, molecules, shapes, and
-habitats. All of these entities change over time. Organisms develop,
-changing shape, gaining and losing parts. Molecules gain, lose, and
-share elections - the basis of chemistry. Habitats have changing
-growth or humidity, or alternately become wet and dry, or are occupied
-by different organisms over time.
-
-As such, most expressions that relate continuants to continuants or
-other entities can hold some times, but not others. BFO represents
-this by having relations that might change in time, including
-instantiation, have a temporal index - a third argument
-which is a temporal region over which the relation holds.
-
-The Relation Ontology (RO, \cite{OBO:RO}) proposed patterns for the
-definition of biological relations to be used throughout
-bio-ontologies such as the Gene Ontology \cite{go2000}, ChEBI
-\cite{chebinar2013} and various anatomy ontologies \cite{uberon2012}.
-\todo{cite ontologies that existed around that time. Uberon, at least,
-  did not} The relations proposed include \mirel{part\_of},
-\mirel{has\_part}, \mirel{located\_in}, \mirel{participates\_in}, and
-\mirel{instance\_of}. At the time those relations were originally
-defined, the relations were asserted between classes, a shortcut in
-OBO format, which was not typically used to represent
-instances. \cite{OBO:RO} formalized the meaning of these shortcuts
-by expressing their meaning in terms of quantified sentences over
-instances.
-
-% The Relation Ontology defines how to interpret
-% relations between classes in terms of quantified sentences over
-% particulars, as at the time relations we so being inserted, but
-% without a formal basis.
-
-As an example, an assertion \mclass{RedBloodCell}
-\mirel{location\_of} \mclass{OxygenMolecule}. This has the form of being a relation between classes but is defined in terms of 
-instances, namely that that at all times, every instance of red blood cell has, located in it, some instance of oxygen molecule \emph{at that time}.  In first-order logic (FOL):
+The Relation Ontology (RO, \cite{OBO:RO}) proposed patterns for the definition of biological relations to be used throughout bio-ontologies such as the Gene Ontology \cite{go2000}, ChEBI \cite{chebinar2013} and various anatomy ontologies \cite{uberon2012}. The relations proposed include 
+\mirel{part\_of}, \mirel{has\_part}, \mirel{located\_in}, \mirel{participates\_in}, and  \mirel{instance\_of}. The Relation Ontology specifies exactly how relations at the class level were to be interpreted with regard to time. That is, in order to capture the statement that every red blood cell has some oxygen molecule located in it, the class-level relation statement \mclass{RedBloodCell} \mirel{location\_of} \mclass{OxygenMolecule} (i.e. the red blood cell is the location for the oxygen molecule) should be interpreted as the following first-order logic (FOL) statement: 
 \begin{equation}
 \forall x \forall t : \mirel{instance\_of}(x, \mclass{RedBloodCell}, t) \rightarrow 
 \exists y : \mirel{instance\_of}(y, \mclass{OxygenMolecule}, t) \wedge \mirel{located\_in}(y, x, t)
 \end{equation}
 
+This equation says that at all times that a red blood cell exists, there exists some oxygen molecule (importantly, not necessarily the same one at different times) that is located in the red blood cell \emph{at that time}. Note that instantiation of continuants such as red blood cells and oxygen molecules is also time-indexed in this pattern. 
 
-
-Note that the order of the quantification matters, with
-the temporal quantification the outer one. Thus a specific oxygen
-molecule need not be located in in the red blood cell, so long as
-there is some oxygen molecule - which one perhaps could change over
-time. Also note that instantiation of continuants such as red blood
-cells and oxygen molecules is also time-indexed in this pattern,
-admitting that those particulars might change type.
-
-The problem arises when we attempt to construct wBFO. Since OWL
-properties relate two entities, it isn't clear how to represent the
-extra dependence on time. BFO 1.1 did not address this issue, ignoring
-the time argument. However, as the use of OWL, and the representation
-of instances increased motivated, in part by an increasing desire to
-use OWL to represent clinical records. As the development of a second
-version of BFO was started, the decision was made to try to address
-this issue. As many of the relations defined in the original RO were
-considered essential to define terms in BFO, most of the RO relations
+Most of the RO relations 
 %contained in the RO 
-were merged into the BFO. The second version of BFO, now provides
-definitions for foundational relations like parthood, participation,
-instantiation, among others. The BFO reference specification uses the
-FOL formulation of relations, having a third time argument where the
-relation may hold only over some temporal regions. Most such relations
-are those that have a continuant one of their relata.
+were subsequently merged into the BFO during the redesign project, such that BFO, in its second version, now provides definitions for foundational 
+relations like parthood, participation, instantiation, among others. The BFO reference specification follows the RO pattern, 
+% and offers the definitions of these relations, 
+allocating a time index to every relation in which a continuant is one of the relata. 
 
 The challenge is that, as can be seen in the above formula, relational expressions with a time index are \emph{ternary}, that is, they take three parameters, \emph{viz.} the two relata (which are particulars), and the time index. However, all current variants of the OWL language, for reasons of implementation and reasoning efficiency, allows only \emph{binary} relations. 
 %Ternary relations cannot be directly expressed in standard OWL expressions. 
