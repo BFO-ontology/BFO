@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/example/alanr/untitled-ontology-440#"
+     xml:base="http://purl.obolibrary.org/obo/example/alanr/untitled-ontology-440"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/example/alanr/tcq-counterexample-1">
+        <rdfs:comment>Show a case of PGR transitivity that is incorrectly entailed,
+
+Strategy show that it is consistent that
+x generically has part of type y
+y generically has part of type z
+y can&apos;t exist when z exists
+
+two stages of a life
+a, b
+three material entities
+x,y,z
+
+X subclass of spans some A
+X and spans some B equivalentTo: Nothing
+y subclass of spans some B
+Y subclass of spans some A equivalentTo: Nothing
+
+
+Z subclass of hastime some B
+Z subclass of hastime some A equivalentTo: Nothing
+
+Now create an instances x, y, z,a,b of their respective types
+
+assert:
+x has-part y
+
+Note this is not found to be inconsistent, because there aren&apos;t constraints that say TCQs have to have consistent spans.
+
+assert:
+y has-part z
+
+this entails
+x has-part z
+
+That&apos;s not correct, showing that the representation generates unsound entailments
+
+
+</rdfs:comment>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo_tqc.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001000 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001000">
+        <rdfs:label xml:lang="en">A</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001001 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001001">
+        <rdfs:label xml:lang="en">B</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001002 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001002">
+        <rdfs:label xml:lang="en">X</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000996"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001000"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001003 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001003">
+        <rdfs:label xml:lang="en">Y</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000996"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001004 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001004">
+        <rdfs:label xml:lang="en">Z</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000996"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Nothing -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Nothing">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001003"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000996"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001000"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001004"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000996"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001000"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001002"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000996"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001001"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001005 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001005">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001002"/>
+        <rdfs:label xml:lang="en">x</rdfs:label>
+        <obo:BFO_0000178 rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001006"/>
+        <obo:BFO_0000996 rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001008"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001006 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001006">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001003"/>
+        <rdfs:label xml:lang="en">y</rdfs:label>
+        <obo:BFO_0000178 rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001007"/>
+        <obo:BFO_0000996 rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001009"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001007 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001007">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001004"/>
+        <rdfs:label xml:lang="en">z</rdfs:label>
+        <obo:BFO_0000996 rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001009"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001008 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001008">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001000"/>
+        <rdfs:label xml:lang="en">a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/EXAMPLE_0001009 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/EXAMPLE_0001009">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/EXAMPLE_0001001"/>
+        <rdfs:label xml:lang="en">b</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
