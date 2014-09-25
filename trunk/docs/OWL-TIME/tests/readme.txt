@@ -1,0 +1,1 @@
+I copied the BFO files into this directory in order to avoid problems when loading the use cases.
