@@ -1,0 +1,73 @@
+The goal of this work is to validate the approach of embedding
+temporal qualification into OWL relations so as to be able to express
+BFO in OWL without ignoring time.
+
+The basis of the approach is to define a 'bfo reading', which is the
+results of translation (the 'bfo mapping') of axioms from OWL into
+first order logic that in terms of terms defined in the BFO2
+reference. Symbolically we will write the BFO mapping as the function
+BM with domain OWL axiom and range BFO2 compatible FOL
+expression (call the class of such expressions BFOL).
+
+There are then two requirements on BM.
+
+The first requirement is that it should be the case that every axiom
+in an OWL file that is aimed to express something to be interpreted
+relative to the BFO ontology must be able to be translated by the BM
+into an instance of BR.
+
+The second requirement is that BM should be sound. Diagramatically
+this is expressed as
+
+A-OWL -- BM -> BFOL
+|               ^
+entailment      |
+|         consistent with
+v               |
+E-OWL -- BM -> BFOL
+
+In other words, consider the original set of BFO OWL axioms
+A-OWL. After running a reasoner we get an additional set of inferred
+axioms B-OWL. All the inferred axioms of B-OWL should be able to be
+translated by BM. In addition BM(E-OWL) should not be
+inconsistent with BM(A-OWL).
+
+The prototype example of a  BFO reading is a temporal relation such as
+
+participates-in-at-some-time 
+
+BM needs to translate
+
+x participates-in-at-some-time y  ->  (forall (x y) (exists (t) (participates-in x y t)))
+
+In the below we attempt to use the facilities of SNARK to define BM
+and check the constraints.
+
+There are a number of different facilities in SNARK that can be used
+to define BM. In the below we take the approach of creating
+biconditionals relating two-place OWL relations to three-place
+relations and use SNARK's sort mechanism to express the domain and
+range constraints / scope of quantification.
+
+Potential alternatives would be to use SNARK's rewrite facility, or to
+use it's temporal reasoning module.b
+
+Of particular concern is behavior of negation in OWL - we want to
+verify that negations and entailments that stem from them translate
+sensibly. I'm also concerned about property chains.
+
+Note that we are not aiming for completeness, which would mean that
+
+BM(A-OWL) iff BM(B-OWL)
+
+We just need that BM(A-OWL) => BM(B-OWL)
+
+(I think that's the right way to say it, but it should be checked)
+
+Issues to work on:
+- Negation of the 2-place relations
+- Add exists_at to expressions
+- temporal-region vs 0-dimensional-temporal-region in the at-some-time relations
+- Neither temporal-region nor 1-dimensional temporal region are not constrained to be a single time interval. Does this matter?
+
+
