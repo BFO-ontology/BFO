@@ -7,6 +7,9 @@ In the following, we will provide a survey of existing approaches and discuss th
 
 \subsection*{Histories in BFO 2}
 
+\todo[inline, size=\tiny]{LJ: move to TR section?}
+
+
 BFO 2, which is currently available as an advanced draft \cite{BFO2:ref}, 
 sketches out a more detailed theory of the
 relationship between continuants and occurrents
@@ -17,8 +20,8 @@ exists a special process, the \emph{history} of the object, which encompasses
 the entity.'' This means that there is a one to one correspondence between continuants
 %(on the SNAP side)
 and certain processes, which effectively
-provides a ``bridge'' between a 3D and a 4D perspective. No complete formal theory
-of histories, which have previously been described in \cite{cornucopia}, is available as of yet.
+provides a ``bridge'' between a 3D and a 4D perspective. 
+Histories have been previously discussed in \cite{cornucopia},but there is still no complete formal theory for them.
 
 
 \subsection*{Conventional Modellers' Strategy for Temporalised Relations in OWL DL}
@@ -26,7 +29,7 @@ of histories, which have previously been described in \cite{cornucopia}, is avai
 As explicit semantics for modelling temporal dynamics are not available in OWL
 2, modellers tend to implicitly treat object properties as committing to a
 ``for all times'' interpretation in order to avoid obvious problems with the
-entailed models. For instance, in an anatomy ontology like the Foundational Model of Anatomy (FMA), the object
+entailed models. For instance, in the Foundational Model of Anatomy (FMA), the object
 property \mirel{has\_part} is transitive, and used in axioms such as
 %
 \begin{equation}
@@ -69,10 +72,10 @@ binary \mirel{has\_part} could no longer be taken for granted.
 %interpretation unexplained.
 
 It is surprising that it has not been spotted earlier that virtually all OWL ontologies contain axioms on
-classes of continuants using binary object properties and leave the exact interpretation re time unexplained.
+classes of continuants using binary object properties and leave the exact interpretation with respect to time unexplained.
 In a similar vein RDF encoded triple data abound in which the temporal context is ignored, or, at best, derivable from the context.
 
-To address this mismatch and try to understand it better we sketch here a
+To address this mismatch we sketch here a
 possible elucidation  which consists in a modification of the interpretation
 function. We here make explicit what seems to be trivial for many OWL DL users, \emph{viz.}
 that a DL formula is to be interpreted as the set of possible worlds over which the formula holds,
@@ -319,7 +322,7 @@ do not yet provide mature tools like editors and reasoners.
 The benchmark results show no great differences between TR and TQC, 
 however with quite lower classification times for Fact++ compared with HermiT. 
 If adding examples the decrease in performance is more accentuated for TQC compared to TR, 
-which is explained by the lower number of A-Box axioms in the latter, due to the 
+which is explained by the lower number of assertions about individuals in the latter, due to the 
 impossibility of representing specific times. 
 
 We also observed that declaring the has\_max relation as functional has a negative
@@ -344,7 +347,7 @@ meaning of each relation. This is a challenge especially with the inverse relati
 and the unintuitive fact that, e.g. `has part at all times' is not the inverse of 
 `part of at all times'.
 
-TQR is the leaner ontology, due to a much more concise set of relations. However, 
+TQC is the leaner ontology, due to a much more concise set of relations. However, 
 it requires a fundamental understanding of the meaning of TQCs. Syntactically,  
 most axioms look the same as in the modelling strategies that ignore temporal qualification.
 This might be a advantage for the adaption of existing domain ontologies.

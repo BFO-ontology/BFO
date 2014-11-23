@@ -6,7 +6,7 @@
 % 23 cqs - TR 9 concording - TQC 6 concording - TR 5 incomplete models 
 
 
-According to the specifications two OWL models for BFO were used. 
+According to the specifications two different OWL models for BFO have been developed. 
 The first one, implementing the TR (temporalized relations) approach, is a minor update to the BFO2OWL ``Graz'' release 
 (July 2012), with 78 object properties. 
 The second one was newly built following the BFO2 specification and extending the set of object properties 
@@ -17,8 +17,14 @@ Table \ref{tab:results} provides an overview of the results. Each of the 23 exam
 the models for STR\_im+, STR\_im-, PGR\_im-, NR\_t and NR\_i were underspecified, 
 as the TR implementation does not address specific time intervals. 
 
+
+\todo[inline, size=\tiny]{Numbers will have to be adjusted}
+
 Of those competency questions for which satisfiability was expected (n= 5), the TR model 
 was satisfiable in one case, whereas the TQC model was satisfiable in all cases.  
+
+
+\todo[inline, size=\tiny]{Ludger: additional tasks for these results would be good}
 
 Of the competency questions for which insatisfiability was expected (n= 18), 
 this could be confirmed by the TR model in seven cases, whereas it was obtained by the TQC model in eleven cases. 
@@ -40,24 +46,33 @@ marks those examples which could con be fully modelled.}
 
 
 
-In detail the following observations are considered noteworthy for the TR approach:
+In detail the following observations are considered noteworthy for the comparison between the two approaches. :
 
 \begin{itemize}
 \item
-As the TR models of some time relatedness do not make their semantics explicit, an important
-class of modeling patterns are too strong. Generally spoken, if $A$ is ``all time related'' to $B$,
-it is also ``some time related''. For instance, we want to say that although every anatomical structure 
-is part of an organism at least during some time, there are anatomical structures that exist even severed 
-from the body, e.g. teeth. In TR this produces a contradiction, due to the abovementioned reason, whereas 
-in TQC the statement there are temporal slices (TQCs) in which the parthood predicate does not hold perfectly   
+TR models do not make their semantics explicit, and therefore they are too strong for a certain class of
+modelling requirements. 
+%Generally spoken, if $A$ is permanently related to $B$,
+%it is also temporarily related because the ``at some time'' relations are subrelations of the ``at all time'' relations. 
+For instance, we want to say that every tooth is part of an organism at least during some time,
+but it can have an independent existence outside the organism during some other time. 
+from the body, e.g. teeth. Introducing ``extracted tooth'' as a defined subclass of tooth, it would inherit the axiom that each 
+instance of tooth is part of some body at some time, which does not hold for anything as long at it instantiates this subclass.   
+
+\todo[inline, size=\tiny]{to be discussed more in detail, after introducing additional examples}
+
+
+In TR this produces a contradiction, due to the abovementioned reason, whereas 
+in the TQC approach the statement there are temporal slices (TQCs) in which the parthood predicate does not hold perfectly   
 harmonizes with the statement that it holds with other TQCs.
+\todo[inline, size=\tiny]{contradiction needs to be demonstrated.}
 
 \item
 As TR does not provide sufficient resources that would allow for stating a relatedness during a 
 certain time, important inferences such as that an object cannot be at a place p' at a given time 
-because it is already at p (which does not share parts with p') cannot be drawn. However, TQR here
+because it is already at p (which does not share parts with p') cannot be drawn. However, also TQR here
 reaches its limits if the reasoning has to account for different, possibly overlapping time intervals. 
-An example is our example with the swollen ankle. Both approaches fail to demonstrate the contradiction 
+A case in question is our example with the swollen ankle. Both approaches fail to demonstrate the contradiction 
 in the statement that the ankle is swollen during a given time period but is not swollen during an interval
 within that period.  
 
@@ -72,23 +87,25 @@ and $C_2$ is not possible.
 
 
 \item
-As generic all time relatedness can only be expressed in TR for mereological relations, we would 
+As generical permanent relatedness can only be expressed in TR for mereological relations, we would 
 expect a wrong result in the example with a generically dependent continuant, \emph{viz} 
 the electronic health record. What happens is that in PGR\_cm- the TR model produces a correct
-result, however based on an incomplete premise, \emph{viz.} stating that the data are on a storage 
-device only for some time (which allows for the unintended model that they are not stored anywhere
-for some time). 
+result, however based on an incomplete premise, \emph{viz.} that every data instance is on some storage 
+device only for some time. This model would also hold for data instances that are not stored anywhere
+during a ceratin time. 
 
 \item
-As expected, TR fares better where the specific all time relatedness. The advantage is exemplified
+As it should have been expected, TR fares better with specific permanent relatedness. The advantage is exemplified
 in the PSR\_cm+ reasoning example, where the (wrong) model in which a human gets a brain transplant
-is rejected. However, both TR and TQC approaches fail with the example
-of changing sex in mammals.
+is rejected. However, both TR and TQC approaches fail with the example of changing sex in mammals.
   
 \end{itemize}
   
 Classification times were measured for the DL classifiers Fact++ and HermiT 1.3.8. using an 8 core lenovo Think Pad T530 laptop with 
-8 GByte memory, cr. \ref{tab:perf}.
+8 GByte memory, cf. Table \ref{tab:perf}.
+
+\todo[inline, size=\tiny]{Results of table 2 should be discussed. How many runs have been measured?}
+
 
 
 \begin{table}

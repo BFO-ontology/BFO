@@ -9,8 +9,8 @@ such relationships require time as a third parameter.
 Up to now, builders of OWL ontologies have tacitly assumed relational expressions
 in OWL to range over all instants in time. This assumption falls short of 
 expressing relationships that do not hold for all times the relata exists, 
-which entails improper and underspecified expressions both an A-box and 
-a T-Box level. 
+which entails improper and underspecified expressions both regarding assertions about
+individuals and about classes.  
 
 Two principally different approaches have been introduced, \emph{viz.} TR 
 (temporalized relations), which embeds temporalization into OWL object properties, 
@@ -19,9 +19,9 @@ to be temporally qualified, i.e. referred to in the context of a time point or
 interval. Whereas both approaches manage quite well to distinguish between 
 temporary and permanent relatedness, they fundamentally differ in their account 
 of the latter. Here, TQC offers a straightforward solution for what we call 
-generic relatedness, which focuses of the type of the relata rather than on 
+generic relatedness, which focuses the type of the relata rather than on 
 the individual permanence of relationship. In contrast, TR prefers 
-permanent relatedness and only offers an indirect approach to represent 
+permanent specific relatedness and only offers an indirect approach to represent 
 generic relatedness, which is furthermore limited to the spatial inclusion 
 relation (expressed as the spatiotemporal inclusion relation between the 
 \emph{histories} or the related continuants.
@@ -35,15 +35,18 @@ to the theoretically established reference standard.
 As a result, concordance with the reference standard was achieved for 16 of 23 
 representations using the TQC approach, and 8 of 23 using TR. The lower result for 
 TR is affected by its limited expressiveness regarding time-indexed relationships
-at an A-box level. Since the reference to time is contained in the (primitive)
+at the level of individuals. Since the reference to time is contained in the (primitive)
 meaning the object properties, it offers no resource of precisely expressing 
 time-related assertions on the level of individuals. 
-This is possible with TQC. Each A-Box statement in which a continuant 
+This is possible with TQC. Each individual-level statement in which a continuant 
 is involved is necessarily time indexed. Statements that range about continuants
-at several time instants require T-Box expressions, as classes of TQCs have to be built.
+at several time instants require class-level expressions, as classes of TQCs have to be built.
 More advanced querying, e.g. involving nested time intervals are not supported.
 They may require an additional rule language, which, however lies beyond the scope
 of this paper. 
+
+\todo[inline, size=\tiny]{reference to Batsakis / Petrakis 2012}
+
 
 The decision whether to prefer TR or TQC as basis of an OWL version of BFO2, will 
 have to been taken after more case studies and in dialogue with the BFO user community. 
