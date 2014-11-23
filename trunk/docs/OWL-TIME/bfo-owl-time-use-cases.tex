@@ -1,7 +1,7 @@
 \subsection*{Overview}
+
 Our goal here is to find an optimal way to represent, distinctively, the three temporal relatedness patterns TGR, PGR, and PSR in OWL ontologies. 
-Two competing approaches 
-are introduced and discussed, \emph{Temporalized Relations} (TR) and \emph{Temporally Qualified Continuants} (TQC). Whereas TR integrates time 
+Two competing approaches are introduced and discussed, \emph{Temporalized Relations} (TR) and \emph{Temporally Qualified Continuants} (TQC). Whereas TR integrates time 
 aspects into the definition of OWL object properties, TQC provides a way to model all instantiations of continuant classes as temporal slices of continuants. 
 The approach pursued in this paper can be summarized as follows:
 
@@ -22,24 +22,30 @@ Evaluation of TR and TQC inlight of the identified competency questions.
 
 \subsection*{Examples and Competency Questions}
  
-The following Examples (EX) and competency questions (CQ) will be used for the comparison of the two representational approaches. 
+The following examples (EX) and competency questions (CQ) will be used for the comparison of the two representational approaches. 
 %They address  phased sortals, changing location at individual level (iii) class-level queries on anatomical objects (iv) class-level queries in which other than mereological relations occur (e.g. inherence, participation)}
-For each temporal kind of relatedness(TGR, PGR, PSR), examples are created according to the following criteria:  
-class-level (c), individual-level (i) mereological (m+), non-mereological (m-), participation (p), 
-with quantification over the participant (p1) and over the process (p2). 
+For each temporal kind of relatedness (TGR, PGR, PSR), examples are created according to the following criteria:  
+class-level (c), individual-level (i) mereotopological (m+), non-mereotopological (m-), participation (p), 
+with quantification over the participant (p1) and over the process (p2).  
 In addition we will provide a class-level and an individual-level examples for a non-rigid classes, i.e. OWL classes whose members may not instantiate this class for all of their lifetime, such as \emph{Student} or \emph{Embryo} \cite{OntoClean}. 
 For each CQ, its conformance to the corresponding EX is analyzed by the authors and decided of whether it is satisfiable with regard to the premise stated in the corresponding EX. Satisfiability of the example $i$ means that there is at least one truth-making interpretation of the logical theory, consisting of the ontology $O$, together with the example $EX_i$ and the competency querstion $CQ_i$.  \todo{copy the modified wording of the UCs and CQs to the Excel table}
  
- 
+\todo{motivating the choice of examples}
+
 \begin{itemize}
-\item STR\_cm+: Every tooth is part of an organism at some time. \\
+\item TGR\_cm+: Every tooth is part of an organism at some time. \\
 Challenged by: 
 \\ ``tooth for which there is a time it is not part of any organism '': 
 $\rightarrow$ \emph{satisfiable} \\
-%``tooth that is part of something that is not an organism or organism part'': \emph{satisfiable} 
+ 
+\item TGR\_cm+: Every human has no teeth at some time in their life. (For every human there is 
+a time it lacks any part of type tooth)\\
+Challenged by:
+\\``A human having teeth at some time'':
+$\rightarrow$ \emph{satisfiable} \\
 
 
-\item STR\_cm-: Every apple is green at some time
+\item TGR\_cm-: Every apple is green at some time
 \\
 Challenged by: 
 %\\ ``apple that is never green'': \emph{unsatisfiable} 
@@ -48,21 +54,21 @@ Challenged by:
 $\rightarrow$ \emph{satisfiable} 
 
 
-\item STR\_cp1: Every vertebrate participates in some birth process at some time\\
+\item TGR\_cp1: Every vertebrate participates in some birth process at some time\\
 Challenged by: \\  
 ``Vertebrate that at some time does not participate in a birth process'': 
 $\rightarrow$ \emph{satisfiable} 
 
 
 
-\item STR\_cp2: Every fecundation has some spermatozoon as participant at some time
+\item TGR\_cp2: Every fecundation has some spermatozoon as participant at some time
 \\
 Challenged by: \\ 
 ``Fecundation event for which there is never any spermatozoon that participates'': 
 $\rightarrow$ \emph{unsatisfiable} \\
 %``Phase of fecundation in which there is no spermatozoon participating'': \emph{satisfiable} 
 
-\item STR\_im+: ``The blood specimen bs430912 is in the lab996 during the whole time interval 2013-10-20.'' 
+\item TGR\_im+: ``The blood specimen bs430912 is in the lab996 during the whole time interval 2013-10-20.'' 
 
 
 Challenged by: \\ ``The blood specimen bs430912 is in the lab lab100 during the whole time interval 2013-10-20. The two labs are in different places'' 
@@ -70,7 +76,7 @@ $\rightarrow$ \emph{unsatisfiable}
 
 
 
-\item STR\_im-: ``Joe's left ankle is swollen during the whole time interval 2013-10-20''
+\item TGR\_im-: ``Joe's left ankle is swollen during the whole time interval 2013-10-20''
 
 
 Challenged by: 
@@ -79,7 +85,7 @@ $\rightarrow$ \emph{unsatisfiable}
 
 
 
-\item STR\_ip:  ``Mary participated in the process of Mary's birth''
+\item TGR\_ip:  ``Mary participated in the process of Mary's birth''
 
 Challenged by: \\``There is a time in which Mary is not a participant in any birth process''  
 $\rightarrow$ \emph{satisfiable}
@@ -87,10 +93,15 @@ $\rightarrow$ \emph{satisfiable}
 %%%%%%%
 
 
-\item PGR\_cm+: ``Every red blood cell always includes some oxygen molecule''
+\item 
+PGR\_cm+: ``Every red blood cell always includes some oxygen molecule''
 Challenged by: \\``There are red blood cells without oxygen molecules''  
 $\rightarrow$ \emph{unsatisfiable}
 
+\item
+PGR\_cm+: ``No apple has ever any tooth as part''
+Challenged by: \\``There are apples that have teeth at some time''  
+$\rightarrow$ \emph{unsatisfiable}
 
 \item PGR\_cm-: ``Every electronic health record is always in some computer storage medium''
 
@@ -128,17 +139,29 @@ $\rightarrow$ \emph{unsatisfiable}
 
 %%%%%%%%%%%
 
-\item PSR\_cm+: ``Every human has a brain and it is always the same brain ''
-
+\item 
+PSR\_cm+: ``Every human has a brain and it is always the same brain ''\\
 Challenged by: \\``There is a time in which Joe does not have his original brain''  
 $\rightarrow$ \emph{unsatisfiable}
+
+PSR\_cm+: ``Every brain ventricle is part of a brain and it is always of the same brain ''\\
+Challenged by: \\``A brain ventricle that is part of a human brain at some time 
+and that is not part of any human brain at another time''
+ 
+$\rightarrow$ \emph{unsatisfiable}
+
+PSR\_cm+: ``No cell includes always the same volume of water during its lifetime ''\\
+Challenged by: \\``A cell that always includes the same volume of water as long as it exists''
+ 
+$\rightarrow$ \emph{unsatisfiable}
+
 
 %\todo[inline, size=\small]{``This is rather tricky with TQC. One could express it as: for all temporal 
 %instances of Human there is always some temporal instance of brain related. For all human instance which has the same "max" 
 %all related brain instances must also have the same "max" ''}
 
 
-\item PSR\_cm-: ``Every mammal has the same biological sex during its entire life''
+\item PSR\_cm-: ``Every mammal has the same genetic sex during its entire life''
 
 Challenged by: \\``A mammal that is biologically male at some time and biologically female at some other time''  
 $\rightarrow$ \emph{unsatisfiable}
@@ -162,7 +185,7 @@ Challenged by: \\``There is a time during which Mary has no brain''
 $\rightarrow$ \emph{unsatisfiable}
 
 
-\item PSR\_im-: ``Tibbles, a male cat, has the same sex during his life'' 
+\item PSR\_im-: ``Tibbles, a male cat, has the same genetic sex during his life'' 
 
 Challenged by: \\``Tibbles is female at some time during his life''  
 $\rightarrow$ \emph{unsatisfiable}
@@ -189,6 +212,8 @@ $\rightarrow$ \emph{unsatisfiable}
 Challenged by: \\ ``John was never a high school student''
  $\rightarrow$ \emph{unsatisfiable}
 
+\end{itemize}
+
 %For the implementation of the examples and competency questions as OWL axioms see supplementary data.
  
 %
@@ -204,16 +229,17 @@ Challenged by: \\ ``John was never a high school student''
 %
 
 \subsection*{Formalization of both TR and TQR}
-Both approaches are expressed in first order logic (FOL). FOL expressions are then 
+Both approaches were expressed in first order logic (FOL). FOL expressions are then 
 transformed in a way that essentially preserves the semantics on the basis of the BFO 2 technical specification \cite{BFO2:ref}, but  
 use exclusively binary relations. From the resulting formulas, corresponding OWL axioms can then be derived.  
 
 \subsection*{OWL Implementation and evaluation methods}
-The TR approach has already been implemented as an OWL ontology \cite{BFO2:Graz}. We develop the TQR ontology by removing all TR-specific relations 
+The TR approach has already been implemented as an OWL ontology \cite{BFO2:Graz}. For this paper we have develop the TQR ontology by 
+removing all TR-specific relations 
 from the TR ontology and adding 
-the additional content required for the TQC solution, using Prot\'eg\'e 4.3. These OWL files are then imported into the specific ontologies that 
+the additional content required for the TQC solution, using Prot\'eg\'e 4.3. 
+These OWL files are then imported into the specific ontologies that 
 implement the examples. We then assess the two sets of treatment of these examples in light of the above introduced competency questions formulated as DL queries. 
 For each example and either the TR or the TQC ontology we investigate whether (i) the corresponding approach captures the intended semantics, 
 (ii) whether it provides a correct answer to the related competency question, (iii) whether the solution is user-friendly, and (iv), whether it has a good computational performance.   
   
-\end{itemize}

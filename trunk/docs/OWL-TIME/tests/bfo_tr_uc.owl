@@ -302,6 +302,21 @@ Apple and not (&apos;at some time&apos; some (&apos;has quality&apos; some (not 
     
 
 
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#BrainVentricle -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#BrainVentricle">
+        <rdfs:label>brain ventricle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#OrganismPart"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000177"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Brain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#BreathingProcess -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#BreathingProcess">
@@ -333,6 +348,16 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     
 
 
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#CatBrain -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#CatBrain">
+        <rdfs:label>cat brain</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Brain"/>
+        <owl:disjointWith rdf:resource="&obo;bfo_tr_uc.owl#HumanBrain"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#CatLife -->
 
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#CatLife">
@@ -358,6 +383,16 @@ BreathingProcess and &apos;has temporal part&apos; some (not (&apos;has particip
     <owl:Class rdf:about="&obo;bfo_tr_uc.owl#Cell">
         <rdfs:label>cell</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000170"/>
+                        <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#VolumeOfWater"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -520,11 +555,22 @@ Fetus and not (&apos;at some time&apos; some Embryo)</rdfs:comment>
         <rdfs:label>human</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Mammal"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#PSR_cm+"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#STR_cm+"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Brain"/>
             </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                        <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Tooth"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
         </rdfs:subClassOf>
         <rdfs:comment>should be:
 
@@ -533,6 +579,15 @@ Fetus and not (&apos;at some time&apos; some Embryo)</rdfs:comment>
      and (&apos;part of continuant&apos; some  Self ))
 
 But this is not processed by reasoner</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#HumanBrain -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#HumanBrain">
+        <rdfs:label>human brain</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tr_uc.owl#Brain"/>
     </owl:Class>
     
 
@@ -1098,6 +1153,15 @@ Vertebrate and  (&apos;at some time&apos; some ( not (&apos;participates in&apos
     
 
 
+    <!-- http://purl.obolibrary.org/obo/bfo_tr_uc.owl#VolumeOfWater -->
+
+    <owl:Class rdf:about="&obo;bfo_tr_uc.owl#VolumeOfWater">
+        <rdfs:label>volume of water</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -1436,6 +1500,20 @@ not ( &apos;has quality&apos; some Enlarged)
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&owl;Thing">
+        <rdfs:label>TR Thing</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // General axioms
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -1466,15 +1544,32 @@ not ( &apos;has quality&apos; some Enlarged)
             <owl:Class>
                 <owl:complementOf>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000082"/>
-                        <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#lab996"/>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                        <owl:someValuesFrom>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&obo;BFO_0000132"/>
+                                <owl:someValuesFrom>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&obo;BFO_0000184"/>
+                                        <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Tooth"/>
+                                    </owl:Restriction>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:complementOf>
             </owl:Class>
         </rdfs:subClassOf>
-        <owl:onProperty rdf:resource="&obo;BFO_0000082"/>
-        <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#lab100"/>
+        <owl:onProperty rdf:resource="&obo;BFO_0000184"/>
+        <owl:someValuesFrom rdf:resource="&obo;bfo_tr_uc.owl#Apple"/>
     </owl:Restriction>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#Hard_disk_A"/>
+            <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#Hard_disk_B"/>
+        </owl:distinctMembers>
+    </rdf:Description>
     <owl:Restriction>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1495,13 +1590,20 @@ not ( &apos;has quality&apos; some Enlarged)
         <owl:onProperty rdf:resource="&obo;BFO_0000139"/>
         <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#Joes_breathing_process"/>
     </owl:Restriction>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#Hard_disk_A"/>
-            <rdf:Description rdf:about="&obo;bfo_tr_uc.owl#Hard_disk_B"/>
-        </owl:distinctMembers>
-    </rdf:Description>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000082"/>
+                        <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#lab996"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000082"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tr_uc.owl#lab100"/>
+    </owl:Restriction>
 </rdf:RDF>
 
 

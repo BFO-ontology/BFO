@@ -204,6 +204,16 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                        <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#Tooth"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
         <rdfs:comment>
 
 Apple that was not green at some time
@@ -499,6 +509,22 @@ Fetus and not (&apos;at some time&apos; some Embryo)</rdfs:comment>
         <rdfs:label>human</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#Mammal"/>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PSR_cm+"/>
+        <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#STR_cm+"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="&obo;bfo_tqc_uc.owl#Tooth"/>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000998"/>
@@ -665,12 +691,6 @@ But this is not processed by reasoner</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&obo;bfo_tqc_uc.owl#PSR_cp1"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#EcologicProcess"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000998"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
@@ -678,6 +698,12 @@ But this is not processed by reasoner</rdfs:comment>
                         <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BiologicalLife"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#EcologicProcess"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Every organism participates always at some ecologic process</rdfs:comment>
@@ -1476,6 +1502,17 @@ not ( &apos;has quality&apos; some Enlarged)
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
                 <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_birth"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+                <owl:someValuesFrom>
                     <owl:Class>
                         <owl:complementOf>
                             <owl:Restriction>
@@ -1484,17 +1521,6 @@ not ( &apos;has quality&apos; some Enlarged)
                             </owl:Restriction>
                         </owl:complementOf>
                     </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdf:type>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_birth"/>
-                    </owl:Restriction>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
@@ -1685,65 +1711,6 @@ located in lab100_2013 causes unsatisfiability as expected</rdfs:comment>
     <owl:Restriction>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
-                        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_brain_max"/>
-                    </owl:Restriction>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
-        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Mary_max"/>
-    </owl:Restriction>
-    <owl:Restriction>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Joes_life"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
-        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Joe_max"/>
-    </owl:Restriction>
-    <owl:Restriction>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BloodCell"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:onProperty rdf:resource="&obo;BFO_0000998"/>
-        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_blood_max"/>
-    </owl:Restriction>
-    <owl:Class>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
-                        <owl:someValuesFrom>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                                <owl:allValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#MaleBiologicalSex"/>
-                            </owl:Restriction>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <owl:intersectionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="&obo;bfo_tqc_uc.owl#Mammal"/>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#FemaleBiologicalSex"/>
-            </owl:Restriction>
-        </owl:intersectionOf>
-    </owl:Class>
-    <owl:Restriction>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
                 <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BreathingProcess"/>
             </owl:Restriction>
@@ -1785,23 +1752,6 @@ located in lab100_2013 causes unsatisfiability as expected</rdfs:comment>
             </owl:Restriction>
         </owl:intersectionOf>
     </owl:Class>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&obo;bfo_tqc_uc.owl#Hard_disk_A_max"/>
-            <rdf:Description rdf:about="&obo;bfo_tqc_uc.owl#Hard_disk_B_max"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <owl:Restriction>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BloodCell"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
-        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_blood_max"/>
-    </owl:Restriction>
     <owl:Restriction>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1825,12 +1775,54 @@ located in lab100_2013 causes unsatisfiability as expected</rdfs:comment>
     <owl:Restriction>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BloodCell"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_blood_max"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
                 <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#ComputerStorage"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:onProperty rdf:resource="&obo;BFO_0000998"/>
         <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Joes_health_record_max"/>
+    </owl:Restriction>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&obo;bfo_tqc_uc.owl#Hard_disk_A_max"/>
+            <rdf:Description rdf:about="&obo;bfo_tqc_uc.owl#Hard_disk_B_max"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#BloodCell"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000998"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_blood_max"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+                        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Marys_brain_max"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Mary_max"/>
     </owl:Restriction>
     <owl:Restriction>
         <rdfs:subClassOf>
@@ -1858,6 +1850,40 @@ located in lab100_2013 causes unsatisfiability as expected</rdfs:comment>
         </rdfs:subClassOf>
         <owl:onProperty rdf:resource="&obo;BFO_0000998"/>
         <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Tibbles_max"/>
+    </owl:Restriction>
+    <owl:Class>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+                        <owl:someValuesFrom>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                                <owl:allValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#MaleBiologicalSex"/>
+                            </owl:Restriction>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&obo;bfo_tqc_uc.owl#Mammal"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&obo;bfo_tqc_uc.owl#FemaleBiologicalSex"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+    </owl:Class>
+    <owl:Restriction>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Joes_life"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:onProperty rdf:resource="&obo;BFO_0000999"/>
+        <owl:hasValue rdf:resource="&obo;bfo_tqc_uc.owl#Joe_max"/>
     </owl:Restriction>
 </rdf:RDF>
 

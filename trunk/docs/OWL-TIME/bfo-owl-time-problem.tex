@@ -17,7 +17,7 @@ and the OWL axiom (often considered equivalent)
 %
 \begin{equation}
 \begin{split}
-\mclass{CellMembrane}\;\mathtt{subClassOf}\;\mirel{continuant\_part\_of}\;\mathtt{some}\;\mclass{Cell}
+\mclass{CellMembrane}\;\mathtt{subClassOf}\;\mclass{continuant\_part\_of}\;\mathtt{some}\;\mclass{Cell}
 \end{split}
 \label{eq:celldl}
 \end{equation}
@@ -32,17 +32,27 @@ especially at the level of individuals, such as in the following example:
 %
 \begin{equation}
 \begin{split}
-\mirel{located\_in} (\mirel{Thrombus\#39874}, \mirel{Heart\#431234})  \\
-\mirel{located\_in} (\mirel{Heart\#431234}, \mirel{Patient\#900812})
+\mirel{located\_in} (\mirel{Thrombus\#398}, \mirel{Heart\#431})  \\
+\mirel{located\_in} (\mirel{Heart\#431}, \mirel{Patient\#900})
 \end{split}
 \label{eq:trans}
 \end{equation}
 %
-Assuming that the thrombus was no longer in the heart when it was transplanted to Patient\#115678, then the inference to
+If we now assume that \mirel{Heart\#431} is later transplanted to \mirel{Patient\#115}, we also have
+
+\begin{equation}
+\begin{split}
+\mirel{located\_in} (\mirel{Heart\#431}, \mirel{Patient\#115})
+\end{split}
+\label{eq:trans}
+\end{equation}
+
+This would entail that one of the patients is located within the other, which is plainly wrong. 
+Also, if we assume that the thrombus was no longer in the heart when it was transplanted to Patient\#115, then the inference to
 %
 \begin{equation}
 \begin{split}
-\mirel{located\_in} (\mirel{Thrombus\#39874}, \mirel{Patient\#115678})
+\mirel{located\_in} (\mirel{Thrombus\#398}, \mirel{Patient\#115})
 \end{split}
 \label{eq:transEntailment}
 \end{equation}
@@ -54,13 +64,12 @@ This has a far-reaching consequence: by default, OWL statements are temporally a
 \subsection*{Strengths of Relatedness}
 
 We can now propose a distinction between different temporal \emph{strengths} of relatedness. These are to be satisfied by temporally qualified such as parthood defined in the OBO Relation Ontology  and apply to relations between continuants only. 
-We begin by characterising the ontological status of regions of time , henceforth referred to by the symbol $t$. We refrain from drawing a distinction between time intervals and time points, assuming that the latter can be approximated by infinitesimally small intervals.
+We begin by characterising the ontological status of regions of time , henceforth referred to by the symbol $t$. 
+Times are either time intervals or time points. %, assuming that the latter can be approximated by infinitesimally small intervals.
 We restrict ourselves to those ternary relations for which it can be assumed that whenever they hold for a time interval, 
 they also hold for any of its subintervals, including time points. For example, if a car is located in a garage during a day, then it is located therein at any time interval during that day. If a patient's cholesterol level is elevated for a whole year, it is elevated over any duration of time during this year. 
 In the following, ternary relations are marked by the superscript $^t$, like in $\mrelt{rel}$, from which binary relations are  distinguished by
 $^b$, like in $\mrelb{rel}$.  
-
-
 
 Formally:
 \begin{equation}
@@ -75,7 +84,7 @@ These are called time-distributive relations.
 
 \subsubsection*{Temporary Generic Relatedness (TGR)}
 
-Informally: for all $a$ instances of \mclass{A} there is some time $t$ and some instance $b$ of
+Informally: for all instances $a$ of \mclass{A} there is some time $t$ and some instance $b$ of
 \mclass{B} such that $a$ is related to $b$ at $t$. Examples:
 \begin{enumerate}[(a)]
 \item for all apple seeds there is
@@ -120,7 +129,8 @@ always the same bacteria.
 \label{eq:generically:cls}
 \end{equation}
 
-It is as PGR relations that the standard interpretation of OBO binary class-level relations are understood such as in formula (\ref{eq:cellobo}) above, according to \cite{OBO:RO}.
+It is as PGR relations that the standard interpretation of OBO binary class-level relations are understood 
+such as in formula (\ref{eq:cellobo}) above, according to \cite{OBO:RO}.
 
 \subsubsection*{Permanent Specific Relatedness (PSR)}
 
@@ -147,4 +157,3 @@ at all times, and it is necessarily the same radioactive isotope.
 \end{split}
 \label{eq:specifically:cls}
 \end{equation}
-

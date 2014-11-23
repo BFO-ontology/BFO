@@ -1,11 +1,11 @@
-
 A \emph{temporal qualification} of a
 continuant is the result of regarding the continuant as something that exists only
 within a certain portion of time. The temporally qualified entity, whoever, is
 not an additional entity from the BFO point of view. 
 Rather the only entity which exists is the continuant referred to as it exists 
 over a specific period of time, which is within the time the continuant entity
-exists. TQCs are then best conceived as artifacts required to devise a model of BFO in WOL, rather than denizens of reality in their own right.
+exists. TQCs are then best conceived as artifacts required to devise a model of BFO in OWL, 
+rather than denizens of reality in their own right.
 
 Formally, a temporally qualified continuant (TQC) is represented as a tuple `\pair{a}{t}',
 where $a$ is an instance
@@ -32,20 +32,22 @@ represented. All of the different temporal qualifications of the
 same continuant entity share the property of having the same \emph{maximal} 
 temporal qualification.
 
-The following additional binary relations (hence, representable as WOL object properties) 
+The following additional binary relations (hence, representable as OWL object properties) 
 are introduced into the ontology to support 
 TQCs:
 \begin{itemize}
-    \item \mirel{has\_max} (inverse \mirel{max\_of}) relates a random TQC instance to its related instance 
-    with the maximal temporal extension (which may be itself)
-    \item \mirel{at\_some\_time} relates a TQC with each other TQC that represents the same continuant. We have
-    chosen this name for a more intuitive understanding of OWL axioms where it is employed.
-    \item The relation \mirel{at\_some\_time} is equivalent to the concatenation \mirel{has\_max} $\circ$ \mirel{max\_of}
+    \item \mirel{has\_max} (inverse \mirel{max\_of}) is a reflexive relation that relates any TQC instance to its related instance 
+    with the maximal temporal extension (which may be itself). Each TQC is related by \mirel{has\_max} to exactly one TQC. 
+    \item \mirel{at\_some\_time} is a reflexive, symmetric, and transitive relation that relates a TQC with each other TQC of the same continuant entity. This is 
+    expressed by their relation to the same maximal instance. We have
+    chosen this relation name for a more intuitive understanding of OWL axioms where it is employed. 
+     \mirel{at\_some\_time} is equivalent to the concatenation \mirel{has\_max} $\circ$ \mirel{max\_of}
     \item \mirel{max\_of} is a subrelation of \mirel{at\_some\_time}, which is not necessary if \mirel{has\_max} is represented as a 
     reflexive relation)
-    \item \mirel{has\_time} relates a TQC with its defining temporal region.
+    \item The asymmetric, irreflexive, and intransitive relation \mirel{has\_time} relates a TQC with its defining temporal region.
+    \item \mirel{within} is a reflexive and transitive relation between time intervals.
 \end{itemize}
-
+\todo[inline, size=\tiny]{Ludger: relation ``equals'' ?}
 
 All TQCs must have exactly one temporal region (thus, the \mirel{has\_time} relation should be
 considered functional). It follows that instantiation of continuants represented in OWL using 
@@ -54,7 +56,7 @@ in any instantiation of a TQC. However, for the sake of usability, implementers 
 that when instances of continuants are created in OWL without specifying the qualifying temporal region, the maximal qualification is what is intended. \todo[inline, size=\tiny]{This can be done with default values relating to the temporal region of the history? Also, how does a TQC relate to a history?}
 
 For clarity in the remainder of this discussion, we will use the notation \TQC{A} to denote the class of temporal qualifications of
-continuants of type \mclass{A}. Note that in the OWL version of an ontology using the TQC design pattern, \emph{only} TQCs (and non-continuant types e.g. occurrents) will be included in the ontology. However, we need to distinguish between \TQC{A} and \mclass{A} for the purpose of showing the translation from OWL to FOL. The following equation relates an instance of \TQC{A} (represented in OWL) to an instance of \mclass{A} (represented in FOL). 
+continuants of type \mclass{A}. Note that in the OWL version of an ontology using the TQC design pattern, \emph{only} TQCs (and non-continuant types e.g. occurrents) will be included in the ontology. However, we need to distinguish between \TQC{A} and \mclass{A} for detailing the translation between OWL and FOLand vice versa. The following equation relates an instance of \TQC{A} (represented in OWL) to an instance of \mclass{A} (represented in FOL). 
 
 \begin{equation}
 \forall x:\; (\mrelb{inst}(\TQC{A},x) \rightarrow \exists a,t_0,t_1:\;(
@@ -73,7 +75,7 @@ temporal strengths, linking from the standard representation in BFO FOL through
 the introduction of temporally qualified continuants to the proposed
 representation in OWL.
 
-\subsection*{Some Time Relatedness}
+\subsection*{Temporary Generic Relatedness for TQCs}
 
 We rephrase the definition (\ref{eq:temporarily:cls}) given above by inserting
 temporally qualified continuants and derive the form that the relationship takes
@@ -117,7 +119,7 @@ only:
 \end{split}
 \end{equation}
 
-Now we have derived a binary expression \mrelb{rel} we are free to use this in OWL
+Now we have derived a binary expression \mrelb{rel} and are free to use this in OWL
 axioms. Temporary relatedness is thus expressed in OWL as follows:
 
 \begin{equation}
@@ -133,7 +135,7 @@ this for \emph{named} individuals.}
 \begin{equation}
 \mclass{A}\;\mathtt{hasKey}(\mrelb{has\_max})
 \end{equation}
-
+\todo[inline, size=\tiny]{Ludger: could lead to difficulties}
 
 \todo[inline, size=\tiny]{A Box issues to be discussed separately ?}
 
@@ -185,11 +187,11 @@ this for \emph{named} individuals.}
 
 %\todo[inline, size=\tiny]{all this wouldn't be needed for the ``radical'' TQC approach}
 
-\subsection*{Permanent Generic Relatedness}
+\subsection*{Permanent Generic Relatedness for TQCs}
 Permanent generic relatedness is considered by some to be the most common
 interpretation of temporally unspecified relations in biology. We have
 previously defined it in (\ref{eq:generically:cls}), which can
-now rephrased using the TCQ approach as follows:
+now be rephrased using the TCQ approach as follows:
 \begin{equation}
 \forall x:\; \mrelb{inst}(\TQC{A},x) \rightarrow \exists y :\;
 \mrelb{inst}(\TQC{B}, y) \wedge \mrelb{rel}(x,y)
@@ -262,7 +264,7 @@ tuples is rigid. %This is afforded by the fact that we do not introduce an
 %On the other hand, it is subject to debate whether adopting an edit-compile-test
 %approach in ontology engineering could in fact be useful for improving ontology quality.
 
-\subsection*{Permanent Specific Relatedness}
+\subsection*{Permanent Specific Relatedness for TQCs}
 Permanent specific relatedness cannot elegantly be accommodated within the TQC design pattern. 
 
 If we do introduce an explicit object property, could we hope to arrive at
@@ -282,12 +284,12 @@ achieve the following first order translation in TQC-talk:
  \exists y:&\;\mrelb{inst}(\TQC{B},y) \wedge \mrelb{rel}(x,y)\wedge\\
  & \forall x_1,a:\; ((\mrelb{inst}(\TQC{A},x_1) \wedge
 \mrelb{has\_max}(a,x) \wedge \mrelb{has\_max}(a,x_1))\wedge\\
-&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \mrelb{has\_max}(b,y)  
+&\;\;\exists y_1,b:\;(\mrelb{inst}(\TQC{B},y_1) \wedge \mrelb{has\_max}(b,y)  
 \wedge \mrelb{has\_max}(b,y_1) \wedge\\&\;\;\;\mrelb{rel}(x_1,y_1)))
 \end{split}
 \end{equation}
 
-This would require three variables ($x$,~$y$,~$y_1$) to be bound at the same
+This would require three variables ($x$,~$y$,~$y_1$) to be bound by a quantifier at the same
 time, which is incompatible with any OWL translation.
 
 
