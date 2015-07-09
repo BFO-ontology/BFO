@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/bfo/core-classes.owl#"
+     xml:base="http://purl.obolibrary.org/obo/bfo/core-classes.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/2010-05-25/ruttenberg-classes.owl">
+        <dc:source>Pierre Grenon and Barry Smith: &quot;SNAP and SPAN: Towards Geospatial Dynamics&quot;</dc:source>
+        <dc:contributor>Andrew Spear</dc:contributor>
+        <dc:contributor>Alan Ruttenberg</dc:contributor>
+        <dc:contributor>Chris Mungall</dc:contributor>
+	<rdfs:comment>This document was an early experimental prototype of bfo2, not blessed by the working group. It is archived because it was used by some projects. There was very little change other than ids relative to earlier versions of BFO, and ids used here will be used in the ultimate release</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
+        <rdfs:label xml:lang="en">editor preferred term</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
+        <rdfs:label xml:lang="en">alternative term</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000116">
+        <rdfs:label xml:lang="en">editor note</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000112">
+        <rdfs:label xml:lang="en">example of usage</rdfs:label>
+    </owl:AnnotationProperty>
+    <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
+        <rdfs:label xml:lang="en">definition</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000001 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000001">
+        <rdfs:label xml:lang="en">entity</rdfs:label>
+        <obo:IAO_0000111 xml:lang="en">entity</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000002 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000002">
+        <rdfs:label xml:lang="en">continuant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+        <obo:IAO_0000115 xml:lang="en">An entity  that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a heart</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a person</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a symphony orchestra</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">continuant</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">endurant</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the color of a tomato</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of blood to coagulate</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the lawn and atmosphere in front of our building</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the mass of a cloud</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000003 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000003">
+        <rdfs:label xml:lang="en">occurrent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+        <obo:IAO_0000115 xml:lang="en">An entity  that has temporal parts and that happens, unfolds or develops through time. Sometimes also called perdurants.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a surgical operation as processual context for a nosocomical infection</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">occurrent</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">perdurant</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the life of an organism</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the most interesting part of Van Gogh&#39;s life</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal context occupied by a process of cellular meiosis</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the spatiotemporal region occupied by the development of a cancer tumor</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000004 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000004">
+        <rdfs:label xml:lang="en">independent continuant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:IAO_0000115 xml:lang="en">A continuant  that is a bearer of quality  and realizable entity  entities, in which other entities inhere and which itself cannot inhere in anything.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a chair</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a heart</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a leg</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a person</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a symphony orchestra</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">an organism</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">independent continuant</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">substantial entity</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the bottom right portion of a human torso</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the lawn and atmosphere in front of our building</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000005 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000005">
+        <rdfs:label xml:lang="en">dependent continuant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+        <obo:IAO_0000115 xml:lang="en">A continuant  that is either dependent on one or other independent continuant  bearers or inheres in or is borne by other entities.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">dependent continuant</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000007 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000007">
+        <rdfs:label xml:lang="en">process</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:IAO_0000115 xml:lang="en">A processual entity  that is a maximally connected spatiotemporal whole and has bona fide beginnings and endings corresponding to real discontinuities.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">process</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the life of an organism</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the process of cell-division</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the process of sleeping</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000008 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000008">
+        <rdfs:label xml:lang="en">temporal region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:IAO_0000116 xml:lang="en">All instances of occurrent [span:Occurrent] are temporal entities, that is, they enter in the relation of (temporal) location with temporal region [span:TemporalRegion] entities. As a particular case, the exact spatiotemporal location of a temporal region [span:TemporalRegion] is this region itself. Continuant [snap:Continuant] entities are not temporal entities in the technical sense just explained; they are related to time in a different way, not through temporal location but through a relation of existence at a time or during a period of time (see continuant [snap:Continuant].</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">An instance of temporal region [span:TemporalRegion] is a part of time. All parts of time are temporal region [span:TemporalRegion] entities and only temporal region [span:TemporalRegion] entities are parts of time. Time is the entire extent of the temporal universe, a designated individual, which is thus a temporal region itself.</obo:IAO_0000116>
+        <obo:IAO_0000115 xml:lang="en">An occurrent  that is part of time.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Time and temporal region [span:TemporalRegion] entities are entities in their own rights which exist independently of any entities which can be located at them. This view of time can be called &quot;absolutist&quot; or &quot;the container view&quot; in analogy to what is traditionally the case with space (see spatial region [snap:SpatialRegion].</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">temporal region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the duration of a surgical procedure</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the moment of death</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the time it takes to run a marathon</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000016 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000016">
+        <rdfs:label xml:lang="en">disposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+        <obo:IAO_0000115 xml:lang="en">A realizable entity  that essentially causes a specific process or transformation in the object  in which it inheres, under specific circumstances and in conjunction with the laws of nature. A general formula for dispositions is: X (object  has the disposition D to (transform, initiate a process) R under conditions C.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">disposition</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the disposition of a patient with a weakened immune system to contract disease</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of a vase to brake if dropped</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of blood to coagulate</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of metal to conduct electricity</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of vegetables to decay when not refrigerated</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000017 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000017">
+        <rdfs:label xml:lang="en">realizable entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <obo:IAO_0000115 xml:lang="en">A specifically dependent continuant  that inheres in continuant  entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">If a realizable entity [snap:RealizableEntity] inheres in a continuant [snap:Continuant], this does not imply that it is actually realized.</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">realizable entity</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the disposition of blood to coagulate</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of metal to conduct electricity</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of the reproductive organs</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of being a doctor</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000019 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000019">
+        <rdfs:label xml:lang="en">quality</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <obo:IAO_0000115 xml:lang="en">A specifically dependent continuant  that is exhibited if it inheres in an entity or entities at all (a categorical property).</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">quality</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the ambient temperature of air</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the circumference of a waist</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the color of a tomato</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the mass of a piece of gold</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the shape of a nose</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the weight of a chimpanzee</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000020 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000020">
+        <rdfs:label xml:lang="en">specifically dependent continuant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000005"/>
+        <obo:IAO_0000115 xml:lang="en">A continuant  that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</obo:IAO_0000115>
+        <obo:IAO_0000118 xml:lang="en">mode</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">property</obo:IAO_0000118>
+        <obo:IAO_0000111 xml:lang="en">specifically dependent continuant</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the color of a tomato</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the disposition of fish to decay</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of the heart in the body: to pump blood, to receive de-oxygenated and oxygenated blood, etc.</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the liquidity of blood</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the mass of a cloud</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of being a doctor</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the smell of mozzarella</obo:IAO_0000112>
+        <obo:IAO_0000118 xml:lang="en">trope</obo:IAO_0000118>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000021 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000021">
+        <rdfs:label xml:lang="en">temporal instant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000022"/>
+        <obo:IAO_0000115 xml:lang="en">A connected temporal region  comprising a single moment of time.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">right now</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">temporal instant</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the moment at which a child is born</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the moment at which a finger is detached in an industrial accident</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the moment of death</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000022 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000022">
+        <rdfs:label xml:lang="en">connected temporal region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <obo:IAO_0000115 xml:lang="en">A temporal region  every point of which is mediately or immediately connected with every other point of which.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">connected temporal region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the 1970s years</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the time from the beginning to the end of a heart attack</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the time taken up by cellular meiosis</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000023 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000023">
+        <rdfs:label xml:lang="en">role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+        <obo:IAO_0000115 xml:lang="en">A realizable entity  the manifestation of which brings about some result or end that is not essential to a continuant  in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant  in some kinds of natural, social or institutional contexts.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">role</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the role of a biological grandfather as legal guardian in the context of a system of laws</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a chemical compound in an experiment</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a patient relative as defined by a hospital administrative form</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a person as a surgeon</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a student in a university</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of a woman as a legal mother in the context of system of laws</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the role of ingested matter in digestion</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000025 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000025">
+        <rdfs:label xml:lang="en">object boundary</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of object  entities that exist at exactly the point where the object  is separated off from the rest of the existing entities in the world.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Boundaries are theoretically difficult entities to account for, however the intuitive notion of a physical boundary as a surface of some sort (whether inside or outside of a thing) will generally serve as a good guide for the use of this universal.</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">object boundary</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">substance boundary</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the outer surface of a cell or cell wall</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the surface of the earth</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the surface of the interior of the stomach</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the surface of the skin</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000029 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000029">
+        <rdfs:label xml:lang="en">site</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  consisting of a characteristic spatial shape in relation to some arrangement of other continuant  entities and of the medium which is enclosed in whole or in part by this characteristic spatial shape. Site  entities are entities that can be occupied by other continuant  entities.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">An instance of Site [snap:Site] is a mixture of independent continuant [snap:IndependentContinuant] entities which act as surrounding environments for other independent continuant [snap:IndependentContinuant] entities, most importantly for instances of object [snap:Object]. A site [snap:Site] is typically made of object [snap:Object] or fiat object part [snap:FiatObjectPart] entities and a surrounding medium in which is found an object [snap:Object] occupying the site [snap:Site]. Independent continuant [snap:IndependentContinuant] entities may be associated with others (which, then, are sites) through a relation of &quot;occupation&quot;. That relation is connected to, but distinct from, the relation of spatial location. Site [snap:Site] entities are not to be confused with spatial region [snap:SpatialRegion] entities. In BFO, site [snap:Site] allows for a so-called relational view of space which is different from the view corresponding to the class spatial region [snap:SpatialRegion] (see the comment on this class).</obo:IAO_0000116>
+        <obo:IAO_0000112 xml:lang="en">Maria&#39;s nostril or her intestines for a variety of bacteria</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a particular room in a particular hospital</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">site</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000031 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000031">
+        <rdfs:label xml:lang="en">generically dependent continuant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000005"/>
+        <obo:IAO_0000115 xml:lang="en">A continuant  that is dependent on one or other independent continuant  bearers. For every instance of A requires some instance of (an independent continuant  type) B but which instance of B serves can change from time to time.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a certain PDF file that exists in different and in several hard drives</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">generically dependent continuant</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000032 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000032">
+        <rdfs:label xml:lang="en">scattered temporal region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+        <obo:IAO_0000115 xml:lang="en">A temporal region  every point of which is not mediately or immediately connected with every other point of which.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">scattered temporal region</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the time occupied by the individual games of the World Cup</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the time occupied by the individual liaisons in a romantic affair</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000034 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000034">
+        <rdfs:label xml:lang="en">function</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+        <obo:IAO_0000115 xml:lang="en">A realizable entity  the manifestation of which is an essentially end-directed activity of a continuant  entity in virtue of that continuant  entity being a specific kind of entity in the kind or kinds of contexts that it is made for.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">function</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the digestive function of the stomach to nutriate the body</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of a birth canal to enable transport</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of a computer program to compute mathematical equations</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of a hammer to drive in nails</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of a judge in a court of law</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of an automobile to provide transportation</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of reproduction in the transmission of genetic material</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the function of the heart in the body: to pump blood, to receive de-oxygenated and oxygenated blood, etc.</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000035 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000035">
+        <rdfs:label xml:lang="en">process boundary</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+        <obo:IAO_0000115 xml:lang="en">A processual entity  that is the fiat or bona fide instantaneous temporal process boundary.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">birth</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">death</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">process boundary</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the detaching of a finger in an industrial accident</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the final separation of two cells at the end of cell-division</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the forming of a synapse</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the incision at the beginning of a surgery</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the onset of REM sleep</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000038 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000038">
+        <rdfs:label xml:lang="en">temporal interval</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000022"/>
+        <obo:IAO_0000115 xml:lang="en">A connected temporal region  lasting for more than a single moment of time.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">any continuous temporal duration during which a process occurs</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">temporal interval</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040">
+        <rdfs:label xml:lang="en">material entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is spatially extended whose identity is independent of that of other entities and can be maintained through time.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Examples: collection of random bacteria, a chair, dorsal surface of the body</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">Material entity [snap:MaterialEntity] subsumes object [snap:Object], fiat object part [snap:FiatObjectPart], and object aggregate [snap:ObjectAggregate], which assume a three level theory of granularity, which is inadequate for some domains, such as biology.</obo:IAO_0000116>
+        <obo:IAO_0000111 xml:lang="en">material entity</obo:IAO_0000111>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/bfo/core-classes.owl">
+        <dc:source>Pierre Grenon, Barry Smith and Louis Goldberg: &quot;Biodynamic Ontology: Applying BFO in the Biomedical Domain&quot;</dc:source>
+        <dc:source>Pierre Grenon: &quot;BFO in a Nutshell: A Bi-categorial Axiomatization of BFO and Comparison with DOLCE&quot;</dc:source>
+        <dc:source>Pierre Grenon: &quot;Nuts in BFO&#39;s Nutshell: Revisions to the Bi-categorial Axiomatization of BFO&quot;</dc:source>
+        <dc:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
+        <dc:source>Pierre Grenon: &quot;Spatio-temporality in Basic Formal Ontology: SNAP and SPAN, Upper-Level Ontology, and Framework for Formalization&quot;</dc:source>
+        <dc:contributor>Pierre Grenon</dc:contributor>
+        <dc:source>Barry Smith: &quot;Basic Tools of Formal Ontology&quot;</dc:source>
+        <dc:source>Barry Smith: &quot;Beyond Concepts: Ontology as Reality Representation&quot;</dc:source>
+        <dc:source>Barry Smith: &quot;Against Fantology&quot;</dc:source>
+        <dc:source>Barry Smith and Pierre Grenon: &quot;The Cornucopia of Formal Ontological Relations&quot;</dc:source>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.0.0.1453) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,127 @@
+format-version: 1.2
+
+[Typedef]
+id: BFO:0000050
+name: part of
+namespace: BFO
+inverse_of: BFO:0000051  ! has part
+domain: BFO:0000001 
+range: BFO:0000001 
+
+[Typedef]
+id: BFO:0000051
+name: has part
+namespace: BFO
+is_transitive: true
+
+[Typedef]
+id: BFO:0000052
+name: inheres in
+namespace: BFO
+is_functional: true
+inverse_of: BFO:0000053  ! bearer of
+
+[Typedef]
+id: BFO:0000053
+name: bearer of
+namespace: BFO
+domain: BFO:0000004 
+range: BFO:0000005 
+
+[Typedef]
+id: BFO:0000054
+name: realized by
+namespace: BFO
+
+[Typedef]
+id: BFO:0000055
+name: realizes
+namespace: BFO
+inverse_of: BFO:0000054  ! realized by
+domain: BFO:0000007 
+range: BFO:0000017 
+
+[Typedef]
+id: BFO:0000056
+name: participates in
+namespace: BFO
+
+[Typedef]
+id: BFO:0000057
+name: has participant
+namespace: BFO
+inverse_of: BFO:0000056  ! participates in
+domain: BFO:0000007 
+range: BFO:0000002 
+
+[Typedef]
+id: BFO:0000058
+name: is concretized as
+namespace: BFO
+
+[Typedef]
+id: BFO:0000059
+name: concretizes
+namespace: BFO
+inverse_of: BFO:0000058  ! is concretized as
+domain: BFO:0000031 
+range: BFO:0000020 
+
+[Typedef]
+id: BFO:0000060
+name: immediately preceded by
+namespace: BFO
+is_functional: true
+is_a: BFO:0000062  ! preceded by
+
+[Typedef]
+id: BFO:0000061
+name: immediately precedes
+namespace: BFO
+is_functional: true
+inverse_of: BFO:0000060  ! immediately preceded by
+is_a: BFO:0000063  ! precedes
+domain: BFO:0000007 
+range: BFO:0000007 
+
+[Typedef]
+id: BFO:0000062
+name: preceded by
+namespace: BFO
+is_transitive: true
+
+[Typedef]
+id: BFO:0000063
+name: precedes
+namespace: BFO
+is_transitive: true
+inverse_of: BFO:0000062  ! preceded by
+domain: BFO:0000007 
+range: BFO:0000007 
+
+[Typedef]
+id: BFO:0000064
+name: course of
+namespace: BFO
+
+[Typedef]
+id: BFO:0000065
+name: has course
+namespace: BFO
+inverse_of: BFO:0000064  ! course of
+domain: BFO:0000002 
+range: BFO:0000007 
+
+[Typedef]
+id: BFO:0000066
+name: occurs in
+namespace: BFO
+inverse_of: BFO:0000067  ! contains process
+domain: BFO:0000007 
+range: BFO:0000004 
+
+[Typedef]
+id: BFO:0000067
+name: contains process
+namespace: BFO
+

@@ -1,0 +1,179 @@
+BFO-FOL Change List
+
+alpha-2012-07-20
+
+- Added PDF bookmarking support
+- Updated formatting of intended interpretations of predicates to make variables clearer
+- Renamed 'specificallyDependsOn' to 'specificallyDependsOnAt' to mirror 'genericallyDependsOnAt'
+- Modifications through Revision 328 of the reference document:
+- Updated axiom identifiers where there was no change to the formalization
+- Changed all references to "time t" to "temporal region t"
+- Updated [015-002] per change to reference document
+- Updated [011-002] per change to reference document
+- Updated [027-001] to ensure that continuant parts occur at same time as the fiat object part exists, as with object aggregates
+- Added new axioms [131-003], [132-001], [153-001], [134-001], [135-001]
+- Updated [050-003] per change to reference document
+- Updated [052-002] per change to reference document
+- Updated [053-002] per change to reference document
+- Updated [056-002] per change to reference document
+- Updated [058-002] per change to reference document
+- Updated [060-002] per change to reference document
+- Updated [062-002] per change to reference document
+- Added axiom for elucidation [075-002]
+- Updated [078-002] per change to reference document
+- Demoted [117-002] from an axiom to a theorem, per change to reference document
+- Added primitive relation [132-001]
+- Added primitive category [138-001]
+- Updated [085-002] per change to reference document
+- Updated [090-003] per change to reference document
+- Updated [091-003] per change to reference document
+- Updated [094-005] per change to reference document
+- Changed [093-001] to a defined predicate
+- Deleted theorem [109-001] per reference document
+- Added new (unnumbered) definitions for hasProperContinuantPartOfAt and hasProperOccurrentPartOf from p. 20 of reference document
+- Demoted [025-004] from a defined to a primitive relation per change to reference document, added corresponding axiom
+- Added new (unnumbered) axiom from p. 42 of the reference document following [027-004]
+- Added previously missing axiom [034-002] to subcategorize Site under ImmaterialEntity
+- Added new (unnumbered) axiom from p. 46 of the reference document following [036-001]
+- Renamed 'locatedAt' [041-002] to 'occupiesSpatialRegionAt' per change to reference document 
+- Updated [047-002] per change to reference document
+- Renamed 'occupies' [082-003] to 'occupiesSpatioTemporalRegion' per change to reference document
+- Renamed 'spans' [132-001] to 'occupiesTemporalRegion' per change to reference document
+- Added new (unnumbered) defined relation 'occursIn' from p. 69 of reference document
+- Renamed 'projectsOnto' [080-003] to 'temporallyProjectsOnto' per change to reference document
+- Renamed 'projectsOntoAt' [081-003] to 'spatiallyProjectsOntoAt' per change to reference document
+- Added new (unnumbered) relation 'historyOf' from p. 70 of reference document
+- Added new (unnumbered) axiom from p. 70 of reference document
+- Added new (unnumbered) defined relation 'hasHistory' from p. 70 of reference document
+
+alpha-2012-05-21
+
+- Modifications per Revision 239 of the reference document:
+- Closed issues 56-58
+- Deleted axiom [114-001] per resolution of Issue 56
+- Deleted axiom [115-001] per resolution of Issue 57
+- Changed axiom [091-002] per resolution of Issue 58
+- Added new axioms, per additions to reference document: [120-001], [121-001], [122-001], [123-001], [124-001], [125-001], [126-001], [127-001], [128-001], [129-001], [130-001]
+- Changed axioms to theorems, per reference document: [111-002], [113-002]
+- Deleted theorems, per deletion from reference document: [010-001]
+- Changed elucidations, per change to reference document: [012-002]
+- Deleted definition of specificallyDependsOnAt [014-001], per change to reference document, replaced all uses with specificallyDependsOn, confirmed that specificallyDependsOn is always a ternary relation
+- Changed definition, per change to reference document: [017-002], [050-002], [083-002], [094-002]
+- Changed axioms, per change to reference document: [018-002], [054-002], [063-002], [090-002], [091-002]
+- Changed theorems [111-002] and [113-002] to qualify according to kind
+
+alpha-2012-05-16
+
+- Added issues 56-58
+- Defined ZeroDimensionalContinuantFiatBoundary [031-001], OneDimensionalContinuantFiatBoundary [032-001], and TwoDimensionalContinuantFiatBoundary [033-001]
+- Removed corresponding axioms for ZeroDimensionalContinuantFiatBoundary, etc.
+- Changed biconditional in previous formalization of [071-001] to conditional
+- Split [107-001] into two axioms [107-002] and [119-001] per change to reference document
+- Changed the particular quantification of t in [099-001] to universal
+- Removed extraneous initial AND in [013-001] from CLIF
+
+alpha-2012-03-12
+
+- Added Issue 55
+- Closed Issue 1, 3, 5, 7, 11, 12, 13, 14, 17, 20, 24, 26, 27, 30, 33, 41, 42, 44, 46, 51, 52, 53, 54, 55
+- Modifications per February 15th, 16th & 28th versions of reference document:
+- Replaced references to section numbers with specific cross-references, per addition in Feb 28th version of reference document
+- Changed definition of qualityOfAt
+- Deleted redundant defined categorial predicate OccurrentEntity
+- Changed axiom from elucidation of Occurrent per change to [079-001]
+- Deleted redundant theorems for [013-001]
+- Modifications per March 10th version of reference document:
+- Added axioms for transitivity and reflexivity of parthood relations
+- Changed axiom for ObjectAggregate [025-002]
+- Added axiom for revised elucidation of locatedAt [041-002]
+- Added axiom for transitivity of specific dependence [114-001]
+- Added defined relation properTemporalPartOf [116-001] and associated axiom [117-001]
+- Created axioms per resolutions of Issues 1, 17, 20, 26, 33, 41
+- Changed axiom for ObjectAggregate [025-002] per resolution of Issue 51
+
+alpha-2012-02-14
+
+- Closed Issues 8, 16, 18, 25, 28, 29, 31, 34, 35, 37, 39, 40, 48, 49
+- Added Issue 54
+- Fixed theorem from Section 2 about specific dependence on parts
+- Revised description of Issue 21 for greater clarity
+- Changed definition of SpecificallyDependentContinuant per resolution of Issue 25
+- Modifications per February 12th version of reference document:
+- Changed temporalPartOf  from primitive to defined predicate
+- Removed axiom from eludication of temporalPartOf
+- Changed ProcessBoundary to defined categorial predicate, per resolution of Issue 31
+- Added new axiom about ProcessBoundary from Section 3.1.1
+- Changed second partication axiom from Section 3.1.1
+- Changed axiom about participation and specific dependence from Section 3.1.1
+- Added axiom about participation and generic dependence from Section 3.1.1
+- Changed ProcessProfile to a primitive categorial predicate
+- Changed axiom from elucidation of processProfileOf
+- Deleted problematic axiom per resolution of Issue 18
+- Changed hasPartAt to hasContinuantPartAt
+- Changed hasPart to hasOccurrentPart
+
+alpha-2012-02-03
+
+- Closed Issues 9, 45, 47, 50
+- Added Issues 49-53
+- Revisions in descriptive text in comments
+- Modifications per January 29th version of reference document:
+- Added axiom from eludication of containedInAt from Section 2.1.2.2.4 per resolution of Issue 47
+- Moved previous definition of processProfileOf from definition to Axiom, per resolution of Issue 45.  Moved predicate from defined to primitive.
+- Fixed error in axiom about process profiles from Section 3.1.2
+- Fixed axiom from elucidation of object aggregate in Section 2.1.1.2 to specify that parts are not identical.
+- Moved ObjectAggregate to primitive categories from defined categories.
+- Deleted containedInAt relation and associated axiom
+- Revised chaining axioms in Section 2.1.2.2.4 to specify IndependentContinuant
+- Added new axiom from Section 2.2 about specific dependence and material entities
+- Dropped clause from definition of relationalQuality
+- Added new axiom from Section 2.2.2 about bearers of realizable dependent continuants
+- Added new axiom from Section 2.2.2.1 about specific dependence of realizable entities on material entities.
+- Added new defined categorial predicate OccurentEntity from Section 3.
+- Added two new axioms and one theorem from Section 3 about occupies relation.
+
+
+alpha-2012-01-24
+
+- Closed Issues 19, 23
+- Added Issues 46-48
+- Embedded additional LaTeX formatting in comments.
+- Added further expository text
+- Added axioms from elucidations
+- Modifications per January 22nd version of reference document:
+- Changed partOfAt to continuantPartOfAt
+- Changed partOf to occurrentPartOf
+- Changed properPartOfAt to properContinuantPartOfAt
+- Changed memberOfAt to memberPartOfAt
+- Moved chaining rules from section 2.1.2.3.4 from Theorems to Axioms
+- Added axiom about qualities of qualities from section 2.2
+- Modified axiom from elucidation of temporalPartOf per change in reference document
+- Modified definition of FiatObjectPart to move "not an object" out of scope of quantifier
+
+alpha-2012-01-10
+
+- Modifications per January 4th version of reference document:
+- Closed Issues 2, 4, 15, 22
+- Added Issues 41-45
+- Removed "Usage and Conformance Notes" section from end
+- Added memberOfAt relation
+- Added Axiom from Section 2.1.1.2
+- Added Axiom from Section 2.1.2.2
+- Revised definition of locatedInAt from Section 2.1.2.3.4, per change in reference document
+- Changed inheresIn relation to inheresInAt, per change in reference document
+- Added Axiom from Section 3.2
+- Added Axiom from Section 3.3
+
+alpha-2011-12-01
+
+- Embedded some LaTeX formatting to enable easier reading of PDF.
+- Changed order of presentation of relational and categorial predicates.
+- Added defined predicates for proper parts from Section 1 revision.
+- Added axioms for Sections 2.1 through end of document
+- Added Issues 7-40
+
+alpha-2011-11-27
+
+- Created file
+- Added axioms for Section 1 and first part of Section 2 of the reference document
+- Added Issues 1-6

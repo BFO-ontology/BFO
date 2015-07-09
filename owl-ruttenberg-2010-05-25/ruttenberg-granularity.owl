@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/bfo/granularity-classes.owl#"
+     xml:base="http://purl.obolibrary.org/obo/bfo/granularity-classes.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo/2010-05-25/granularity-classes.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
+        <rdfs:label xml:lang="en">editor preferred term</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
+        <rdfs:label xml:lang="en">alternative term</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000116">
+        <rdfs:label xml:lang="en">editor note</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000112">
+        <rdfs:label xml:lang="en">example of usage</rdfs:label>
+    </owl:AnnotationProperty>
+    <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
+        <rdfs:label xml:lang="en">definition</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000014 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000014">
+        <rdfs:label xml:lang="en">process aggregate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+        <obo:IAO_0000115 xml:lang="en">A processual entity  that is a mereological sum of process  entities and possesses non-connected boundaries.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a process of digestion and a process of thinking taken together</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">process aggregate</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the beating of the hearts of each of seven individuals in the room</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the playing of each of the members of an orchestra</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000024 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000024">
+        <rdfs:label xml:lang="en">fiat object part</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is part of an object  but is not demarcated by any physical discontinuities.</obo:IAO_0000115>
+        <obo:IAO_0000111 xml:lang="en">fiat object part</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">fiat substance part</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the dorsal and ventral surfaces of the body</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the east side of Saarbruecken</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the lower right portion of a human torso</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the upper and lower lobes of the left lung</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000027 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000027">
+        <rdfs:label xml:lang="en">object aggregate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is a mereological sum of separate object  entities and possesses non-connected boundaries.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a collection of random bacteria</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a flock of geese</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a group of commuters on the subway</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a heap of stones</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">object aggregate</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">substance aggregate</obo:IAO_0000118>
+        <obo:IAO_0000112 xml:lang="en">the patients in a hospital</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000030 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000030">
+        <rdfs:label xml:lang="en">object</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <obo:IAO_0000115 xml:lang="en">An independent continuant  that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial object  entities is independent of that of other entities and can be maintained through time.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">a chair</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a heart</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">a lung</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">an apple</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">an organism</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">object</obo:IAO_0000111>
+        <obo:IAO_0000118 xml:lang="en">substance</obo:IAO_0000118>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000033 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000033">
+        <rdfs:label xml:lang="en">fiat process part</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000007"/>
+        <obo:IAO_0000115 xml:lang="en">A processual entity  that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">chewing during a meal</obo:IAO_0000112>
+        <obo:IAO_0000111 xml:lang="en">fiat process part</obo:IAO_0000111>
+        <obo:IAO_0000112 xml:lang="en">the middle part of a rainstorm</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the most interesting part of Van Gogh&#39;s life</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">the worst part of a heart-attack</obo:IAO_0000112>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.0.0.1453) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,284 @@
+format-version: 1.2
+
+[Term]
+id: BFO:0000001
+name: entity
+namespace: BFO
+
+[Term]
+id: BFO:0000002
+name: continuant
+namespace: BFO
+def: "An entity  that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts." []
+synonym: "endurant" EXACT []
+is_a: BFO:0000001  ! entity
+
+[Term]
+id: BFO:0000003
+name: occurrent
+namespace: BFO
+def: "An entity  that has temporal parts and that happens, unfolds or develops through time. Sometimes also called perdurants." []
+synonym: "perdurant" EXACT []
+is_a: BFO:0000001  ! entity
+
+[Term]
+id: BFO:0000004
+name: independent continuant
+namespace: BFO
+def: "A continuant  that is a bearer of quality  and realizable entity  entities, in which other entities inhere and which itself cannot inhere in anything." []
+synonym: "substantial entity" EXACT []
+is_a: BFO:0000002  ! continuant
+
+[Term]
+id: BFO:0000005
+name: dependent continuant
+namespace: BFO
+def: "A continuant  that is either dependent on one or other independent continuant  bearers or inheres in or is borne by other entities." []
+is_a: BFO:0000002  ! continuant
+
+[Term]
+id: BFO:0000006
+name: spatial region
+namespace: BFO
+def: "A continuant  that is neither bearer of quality  entities nor inheres in any other entities." []
+is_a: BFO:0000002  ! continuant
+
+[Term]
+id: BFO:0000007
+name: process
+namespace: BFO
+def: "A processual entity  that is a maximally connected spatiotemporal whole and has bona fide beginnings and endings corresponding to real discontinuities." []
+is_a: BFO:0000015  ! processual entity
+
+[Term]
+id: BFO:0000008
+name: temporal region
+namespace: BFO
+def: "An occurrent  that is part of time." []
+is_a: BFO:0000003  ! occurrent
+
+[Term]
+id: BFO:0000009
+name: two dimensional region
+namespace: BFO
+def: "A spatial region  with two dimensions." []
+is_a: BFO:0000006  ! spatial region
+
+[Term]
+id: BFO:0000010
+name: scattered spatiotemporal region
+namespace: BFO
+def: "A space time region  that has spatial and temporal dimensions and every spatial and temporal point of which is not connected with every other spatial and temporal point of which." []
+is_a: BFO:0000011  ! spatiotemporal region
+
+[Term]
+id: BFO:0000011
+name: spatiotemporal region
+namespace: BFO
+def: "An occurrent  at or in which processual entity  entities can be located." []
+is_a: BFO:0000003  ! occurrent
+
+[Term]
+id: BFO:0000012
+name: spatiotemporal instant
+namespace: BFO
+def: "A connected space time region  at a specific moment." []
+is_a: BFO:0000013  ! connected spatiotemporal region
+
+[Term]
+id: BFO:0000013
+name: connected spatiotemporal region
+namespace: BFO
+def: "A space time region  that has temporal and spatial dimensions such that all points within the spatiotemporal region are mediately or immediately connected to all other points within the same space time region ." []
+is_a: BFO:0000011  ! spatiotemporal region
+
+[Term]
+id: BFO:0000014
+name: process aggregate
+namespace: BFO
+def: "A processual entity  that is a mereological sum of process  entities and possesses non-connected boundaries." []
+is_a: BFO:0000015  ! processual entity
+
+[Term]
+id: BFO:0000015
+name: processual entity
+namespace: BFO
+def: "An occurrent  that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity." []
+is_a: BFO:0000003  ! occurrent
+
+[Term]
+id: BFO:0000016
+name: disposition
+namespace: BFO
+def: "A realizable entity  that essentially causes a specific process or transformation in the object  in which it inheres, under specific circumstances and in conjunction with the laws of nature. A general formula for dispositions is: X (object  has the disposition D to (transform, initiate a process) R under conditions C." []
+is_a: BFO:0000017  ! realizable entity
+
+[Term]
+id: BFO:0000017
+name: realizable entity
+namespace: BFO
+def: "A specifically dependent continuant  that inheres in continuant  entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances." []
+is_a: BFO:0000020  ! specifically dependent continuant
+
+[Term]
+id: BFO:0000018
+name: zero dimensional region
+namespace: BFO
+def: "A spatial region  with no dimensions." []
+is_a: BFO:0000006  ! spatial region
+
+[Term]
+id: BFO:0000019
+name: quality
+namespace: BFO
+def: "A specifically dependent continuant  that is exhibited if it inheres in an entity or entities at all (a categorical property)." []
+is_a: BFO:0000020  ! specifically dependent continuant
+
+[Term]
+id: BFO:0000020
+name: specifically dependent continuant
+namespace: BFO
+def: "A continuant  that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same." []
+synonym: "mode" EXACT []
+synonym: "property" EXACT []
+synonym: "trope" EXACT []
+is_a: BFO:0000005  ! dependent continuant
+
+[Term]
+id: BFO:0000021
+name: temporal instant
+namespace: BFO
+def: "A connected temporal region  comprising a single moment of time." []
+is_a: BFO:0000022  ! connected temporal region
+
+[Term]
+id: BFO:0000022
+name: connected temporal region
+namespace: BFO
+def: "A temporal region  every point of which is mediately or immediately connected with every other point of which." []
+is_a: BFO:0000008  ! temporal region
+
+[Term]
+id: BFO:0000023
+name: role
+namespace: BFO
+def: "A realizable entity  the manifestation of which brings about some result or end that is not essential to a continuant  in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant  in some kinds of natural, social or institutional contexts." []
+is_a: BFO:0000017  ! realizable entity
+
+[Term]
+id: BFO:0000024
+name: fiat object part
+namespace: BFO
+def: "An independent continuant  that is part of an object  but is not demarcated by any physical discontinuities." []
+synonym: "fiat substance part" EXACT []
+is_a: BFO:0000004  ! independent continuant
+
+[Term]
+id: BFO:0000025
+name: object boundary
+namespace: BFO
+def: "An independent continuant  that is a lower dimensional part of a spatial entity, normally a closed two-dimensional surface. Boundaries are those privileged parts of object  entities that exist at exactly the point where the object  is separated off from the rest of the existing entities in the world." []
+synonym: "substance boundary" EXACT []
+is_a: BFO:0000004  ! independent continuant
+
+[Term]
+id: BFO:0000026
+name: one dimensional region
+namespace: BFO
+def: "A spatial region  with one dimension." []
+is_a: BFO:0000006  ! spatial region
+
+[Term]
+id: BFO:0000027
+name: object aggregate
+namespace: BFO
+def: "An independent continuant  that is a mereological sum of separate object  entities and possesses non-connected boundaries." []
+synonym: "substance aggregate" EXACT []
+is_a: BFO:0000004  ! independent continuant
+
+[Term]
+id: BFO:0000028
+name: three dimensional region
+namespace: BFO
+def: "A spatial region  with three dimensions." []
+is_a: BFO:0000006  ! spatial region
+
+[Term]
+id: BFO:0000029
+name: site
+namespace: BFO
+def: "An independent continuant  consisting of a characteristic spatial shape in relation to some arrangement of other continuant  entities and of the medium which is enclosed in whole or in part by this characteristic spatial shape. Site  entities are entities that can be occupied by other continuant  entities." []
+is_a: BFO:0000004  ! independent continuant
+
+[Term]
+id: BFO:0000030
+name: object
+namespace: BFO
+def: "An independent continuant  that is spatially extended, maximally self-connected and self-contained (the parts of a substance are not separated from each other by spatial gaps) and possesses an internal unity. The identity of substantial object  entities is independent of that of other entities and can be maintained through time." []
+synonym: "substance" EXACT []
+is_a: BFO:0000004  ! independent continuant
+
+[Term]
+id: BFO:0000031
+name: generically dependent continuant
+namespace: BFO
+def: "A continuant  that is dependent on one or other independent continuant  bearers. For every instance of A requires some instance of (an independent continuant  type) B but which instance of B serves can change from time to time." []
+is_a: BFO:0000005  ! dependent continuant
+
+[Term]
+id: BFO:0000032
+name: scattered temporal region
+namespace: BFO
+def: "A temporal region  every point of which is not mediately or immediately connected with every other point of which." []
+is_a: BFO:0000008  ! temporal region
+
+[Term]
+id: BFO:0000033
+name: fiat process part
+namespace: BFO
+def: "A processual entity  that is part of a process but that does not have bona fide beginnings and endings corresponding to real discontinuities." []
+is_a: BFO:0000015  ! processual entity
+
+[Term]
+id: BFO:0000034
+name: function
+namespace: BFO
+def: "A realizable entity  the manifestation of which is an essentially end-directed activity of a continuant  entity in virtue of that continuant  entity being a specific kind of entity in the kind or kinds of contexts that it is made for." []
+is_a: BFO:0000017  ! realizable entity
+
+[Term]
+id: BFO:0000035
+name: process boundary
+namespace: BFO
+def: "A processual entity  that is the fiat or bona fide instantaneous temporal process boundary." []
+is_a: BFO:0000015  ! processual entity
+
+[Term]
+id: BFO:0000036
+name: spatiotemporal interval
+namespace: BFO
+def: "A connected space time region  that endures for more than a single moment of time." []
+is_a: BFO:0000013  ! connected spatiotemporal region
+
+[Term]
+id: BFO:0000037
+name: processual context
+namespace: BFO
+def: "An occurrent  consisting of a characteristic spatial shape inhering in some arrangement of other occurrent  entities. processual context  entities are characteristically entities at or in which other occurrent  entities can be located or occur." []
+synonym: "setting" EXACT []
+is_a: BFO:0000015  ! processual entity
+
+[Term]
+id: BFO:0000038
+name: temporal interval
+namespace: BFO
+def: "A connected temporal region  lasting for more than a single moment of time." []
+is_a: BFO:0000022  ! connected temporal region
+
+[Term]
+id: BFO:0000040
+name: material entity
+namespace: BFO
+def: "An independent continuant  that is spatially extended whose identity is independent of that of other entities and can be maintained through time." []
+is_a: BFO:0000004  ! independent continuant
+

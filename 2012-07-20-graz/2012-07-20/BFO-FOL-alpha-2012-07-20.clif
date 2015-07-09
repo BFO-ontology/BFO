@@ -1,0 +1,1484 @@
+/*
+
+% The following should be uncommented and the preamble adjusted accordingly
+% for the final LaTeX compilation.
+
+%\usepackage{authblk}
+%\usepackage{bookmark}
+
+\newcommand{\DF}{\ensuremath{=_{df}}}
+
+% \begin{document}
+
+\title{BFO-FOL: A First-Order Logic Formalization of Basic Formal Ontology 2.0}
+
+% \author[A]{Thomas Bittner}
+% \author[B]{Mathias Brochhausen}
+% \author[A]{Randall R. Dipert}
+% \author[C]{Pierre Grenon}
+% \author[B]{Bill Hogan}
+% \author[D]{Leonard Jacuzzo}
+% \author[E]{Chris Mungall}
+% \author[F,G]{Fabian Neuhaus}
+% \author[A]{Mark Ressler}
+% \author[A]{Alan Ruttenberg}
+% \affil[A]{The University at Buffalo, Buffalo, NY, USA}
+% \affil[B]{University of Arkansas for Medical Sciences, Little Rock, AR, USA}
+% \affil[C]{European Bioinformatics Institute, Hinxton, UK}
+% \affil[D]{CTG, Buffalo, NY, USA}
+% \affil[E]{Lawrence Berkeley National Laboratory, Berkeley, CA, USA}
+% \affil[F]{National Institute of Standards and Technology, Gaithersburg, MD, USA}
+% \affil[G]{University of Maryland Baltimore County, MD, USA}
+
+\maketitle
+
+\begin{abstract}
+This article presents a first-order logic formalization of the revised 2.0 version of Basic Formal Ontology (BFO).
+\end{abstract}
+
+
+
+BFO-FOL is a formal system specifying the axioms and definitions for expressing Basic Formal Ontology version 2.0 in classical first-order formal logic.
+
+Basic Formal Ontology (BFO) is an upper level ontology initially developed by Barry Smith and Pierre Grenon.  The BFO specification is currently undergoing a major revision to version 2.0, which will be supported by a number of formal implementations, including implementations using OWL and CLIF, among others.  The first-order logic formalization in BFO-FOL will serve as a foundation for all such implementations.
+
+The BFO 2.0 specification is currently under development, so the formalization presented here represents the state of the specification at the time of writing.  The bracketed references of the form [\emph{nnn-nnn}] are to the correspondingly identified definitions, elucidations, axioms, and theorems in the BFO 2.0 specification document \cite{BFO2}.
+
+
+\section{Formalization}
+
+BFO-FOL is an extension of classical first-order formal logic with identity. It can be represented using any standard axiomatization of the logical calculus.  The formalization presented here uses the following symbols for negation, conjunction, disjunction, material implication, biconditional implication, universal and particular quantification, respectively: ${\neg,}\ {\wedge,}\ {\vee,}\ {\supset,}\ {\equiv,}\ {\forall,}\ {\exists}$.
+
+
+
+\section{Predicates}
+
+The predicates of BFO-FOL are divided into categorial predicates, which are intended to represent categories or universals, and relational predicates, which are intended to represent relations that hold between individuals within those categories.  
+
+According to the meta-theory of BFO, categorial predicates are interpreted as expressing the instantiation of the universal indicated by the categorial predicate name.  For example, $Object(a)$ signifies the instantiation of the universal $Object$ by the particular $a$.
+
+Where feasible, predicates have been defined in terms of more primitive predicates.  While it is preferable to minimize the number of primitive predicates, some predicates that would seem to be definable needed to be taken as primitive.  One reason is that the likely definitions for these predicates would rely on more primitive predicates that are not asserted as categories or relations in BFO.  For example, given the primitive category SpatialRegion, it would seem that the category OneDimensionalSpatialRegion should be definable in terms of that primitive category.  However, such a definition would need to rely on dimensions, and Dimension is not asserted as a category of BFO.
+
+
+
+\subsection{Primitive Categorial Predicates}
+
+The following categorial predicates are taken as primitive:
+
+\begin{description}
+
+\item[Entity(a)] --- Intended interpretation: ``$a$ is an entity''. [001-001]
+
+\item[Continuant(a)] --- ``$a$ is a continuant''. [008-002]
+
+\item[MaterialEntity(a)] --- ``$a$ is a material entity''. [019-002]
+
+\item[Object(a)] --- ``$a$ is an object''. [024-001]
+
+\item[ObjectAggregate(a)] --- ``$a$ is an object aggregate''. [025-004]
+
+\item[FiatObjectPart(a)] --- ``$a$ is a fiat object part''. [027-004]
+
+\item[Site(a)] --- ``$a$ is a site''. [034-002]
+
+\item[SpatialRegion(a)] -- ``$a$ is a spatial region''. [035-001]
+
+\item[ZeroDimensionalSpatialRegion(a)] -- ``$a$ is a zero-dimensional spatial region''. [037-001]
+
+\item[OneDimensionalSpatialRegion(a)] -- ``$a$ is a one-dimensional spatial region''. [038-001]
+
+\item[TwoDimensionalSpatialRegion(a)] -- ``$a$ is a two-dimensional spatial region''. [039-001]
+
+\item[ThreeDimensionalSpatialRegion(a)] -- ``$a$ is a three-dimensional spatial region''. [040-001]
+
+\item[Quality(a)] --- ``$a$ is a quality''. [055-001]
+
+\item[RealizableEntity(a)] --- ``$a$ is a realizable entity''. [058-002]
+
+\item[Role(a)] --- ``$a$ is a role''. [061-001]
+
+\item[Disposition(a)] --- ``$a$ is a disposition''. [062-002]
+
+\item[Function(a)] --- ``$a$ is a function''. [064-001]
+
+\item[Occurrent(a)] --- ``$a$ is an occurrent''. [077-002]
+
+\item[History(a)] --- ``$a$ is a history''.  [138-001]
+
+\item[SpatioTemporalRegion(a)] --- ``$a$ is a spatio-temporal region''. [095-001]
+
+\item[TemporalRegion(a)] --- ``$a$ is a temporal region''. [100-001]
+
+\item[ZeroDimensionalTemporalRegion(a)] --- ``$a$ is a zero-dimensional temporal region''. [102-001]
+
+\item[OneDimensionalTemporalRegion(a)] --- ``$a$ is a one-dimensional temporal region''. [103-001]
+
+\end{description}
+
+
+
+% NOTE: CLIF does not seem to have specific support for defined predicates, so
+%       for the defined predicates below, '\equiv' should be replaced by the 
+%       defined '\DF' command for the final LaTeX compilation, but only in the
+%       defined predicates sections. Further, the letter arguments should be
+%       replaced by their Greek equivalents, e.g. 'a' replaced by '$\alpha$'
+%       to make clear that these arguments are used in definitional schemata, 
+%       not as individual names in the system.
+
+
+\subsection{Defined Categorial Predicates}
+
+The following categorial predicates are defined as indicated:
+
+\begin{description}
+
+\item[IndependentContinuant(a)] --- ``$a$ is an independent continuant''.  [017-002]
+
+*/
+(iff (IndependentContinuant a)
+    (and (Continuant a)
+        (not (exists (b t) (specificallyDependsOnAt a b t)))
+    )
+)
+
+/*
+
+\item[ImmaterialEntity(a)] --- ``$a$ is an immaterial entity''. [028-001]
+
+*/
+
+(iff (ImmaterialEntity a)
+    (and (IndependentContinuant a)
+        (not (exists (b t) (and (MaterialEntity b)
+                                (continuantPartOfAt b a t)
+                            )
+            )
+        )
+    )
+)
+
+/*
+
+\item[ContinuantFiatBoundary(a)] --- ``$a$ is a continuant fiat boundary''. [029-001]
+
+*/
+
+(iff (ContinuantFiatBoundary a)
+    (and (ImmaterialEntity a)
+        (exists (b) (and (or (ZeroDimensionalSpatialRegion b)
+                            (OneDimensionalSpatialRegion b)
+                            (TwoDimensionalSpatialRegion b)
+                        )
+                        (forall (t) (locatedInAt a b t))
+                    )
+        )
+        (not (exists (c t) (and (SpatialRegion c)
+                                (continuantPartOfAt c a t)
+                            )
+            )
+        )
+    )
+)                            
+
+/*
+
+\item[ZeroDimensionalContinuantFiatBoundary(a)] --- ``$a$ is a zero-dimensional continuant fiat boundary''. [031-001]
+
+*/
+
+(iff (ZeroDimensionalContinuantFiatBoundary a)
+    (and (ContinuantFiatBoundary a)
+        (exists (b) (and (ZeroDimensionalSpatialRegion b)
+                        (forall (t) (locatedInAt a b t))
+                    )
+        )
+    )
+)
+
+/*
+
+\item[OneDimensionalContinuantFiatBoundary(a)] --- ``$a$ is a one-dimensional continuant fiat boundary''. [032-001]
+
+*/
+
+(iff (OneDimensionalContinuantFiatBoundary a)
+    (and (ContinuantFiatBoundary a)
+        (exists (b) (and (OneDimensionalSpatialRegion b)
+                        (forall (t) (locatedInAt a b t))
+                    )
+        )
+    )
+)
+
+/*
+
+\item[TwoDimensionalContinuantFiatBoundary(a)] --- ``$a$ is a two-dimensional continuant fiat boundary''. [033-001]
+
+*/
+
+(iff (TwoDimensionalContinuantFiatBoundary a)
+    (and (ContinuantFiatBoundary a)
+        (exists (b) (and (TwoDimensionalSpatialRegion b)
+                        (forall (t) (locatedInAt a b t))
+                    )
+        )
+    )
+)
+
+/*
+
+\item[SpecificallyDependentContinuant(a)] --- ``$a$ is a specifically dependent continuant''. [050-003]
+
+*/
+
+(iff (SpecificallyDependentContinuant a)
+    (and (Continuant a)
+        (forall (t) (if (existsAt a t)
+                        (exists (b) (and (IndependentContinuant b)
+                                        (not (SpatialRegion b))
+                                        (specificallyDependsOnAt a b t)
+                                    )
+                                )
+                    )
+        )
+    )
+)
+
+/*
+
+\item[RelationalSpecificallyDependentContinuant(a)] --- ``$a$ is a relational specifically dependent continuant''. [131-004]
+
+*/
+
+(iff (RelationalSpecificallyDependentContinuant a)
+    (and (SpecificallyDependentContinuant a)
+        (forall (t)(exists (b c) (and (not (SpatialRegion b))
+                        (not (SpatialRegion c))
+                        (not (= b c))
+                        (not (exists (d) (and (continuantPartOfAt d b t)
+                                                (continuantPartOfAt d c t)
+                                            )
+                            )
+                        )
+                        (specificallyDependsOnAt a b t)
+                        (specificallyDependsOnAt a c t)
+                    )
+                )
+        )
+    )
+)
+
+/*
+
+\item[RelationalQuality(a)] --- ``$a$ is a relational quality''. [057-001]
+
+*/
+
+(iff (RelationalQuality a)
+    (exists (b c t) (and (IndependentContinuant b)
+                        (IndependentContinuant c)
+                        (qualityOfAt a b t)
+                        (qualityOfAt a c t)
+                    )
+    )
+)
+
+/*
+
+\item[GenericallyDependentContinuant(a)] --- ``$a$ is a generically dependent continuant''. [074-001]
+
+*/
+
+(iff (GenericallyDependentContinuant a)
+    (and (Continuant a)
+        (exists (b t) (genericallyDependsOnAt a b t))
+    )
+)
+
+/*
+
+\item[Process(a)] --- ``$a$ is a process''. [083-003]
+
+*/
+
+(iff (Process a)
+    (and (Occurrent a)
+        (exists (b) (properTemporalPartOf b a))
+        (exists (c t) (and (MaterialEntity c)
+                        (specificallyDependsOnAt a c t)
+                    )
+        )
+    )
+)
+
+/*
+
+\item[ProcessBoundary(a)] --- ``$a$ is a process boundary''. [084-001]
+
+*/
+
+(iff (ProcessBoundary a)
+    (exists (p) (and (Process p)
+                    (temporalPartOf a p)
+                    (not (exists (b) (properTemporalPartOf b a)))
+                )
+    )
+)
+
+/*
+
+\item[ProcessProfile(a)] --- ``$a$ is a process profile''. [093-002]
+
+*/
+
+(iff (ProcessProfile a)
+    (exists (b) (and (Process b)
+                    (processProfileOf a b)
+                )
+    )
+)
+
+/*
+
+\end{description}
+
+
+
+
+
+
+
+
+\subsection{Primitive Relational Predicates}
+
+The following relational predicates are taken as primitive:
+
+\begin{description}
+
+\item[existsAt(a, t)] --- ``$a$ exists at temporal region $t$''. [118-002]
+
+\item[continuantPartOfAt(a, b, t)] --- ``$a$ is a part of $b$ at temporal region $t$'', where $a$ and $b$ are continuants. [002-001]
+
+\item[occurrentPartOf(a, b)] --- ``$a$ is a part of $b$'', where $a$ and $b$ are occurrents. [003-002]
+
+\item[specificallyDependsOnAt(a, b, t)] --- ``$a$ specifically depends on $b$ at temporal region $t$''. [012-002]
+
+\item[memberPartOfAt(a, b, t)] --- ``$a$ is a member of $b$ at temporal region $t$''. [026-004]
+
+\item[occupiesSpatialRegionAt(a, r, t)] --- ``$a$ occupies spatial region $r$ at temporal region $t$''. [041-002]
+
+\item[realizesAt(a, b, t)] --- ``$a$ realizes $b$ at temporal region $t$''. [059-003]
+
+\item[hasMaterialBasisAt(a, b, t)] --- ``$a$ has the material basis $b$ at temporal region $t$''. [071-002]
+
+\item[genericallyDependsOnAt(a, b, t)] --- ``$a$ generically depends on $b$ at temporal region $t$''. [072-002]
+
+\item[concretizesAt(a, b, t)] --- ``$a$ concretizes $b$ at temporal region $t$'' where $a$ is a specifically dependent continuant and $b$ is a generically dependent continuant. [075-002]
+
+\item[temporallyProjectsOnto(a, b)] --- ``$a$ projects onto $b$'', where $a$ is a spatiotemporal region, and $b$ is a temporal region. [080-003]
+
+\item[spatiallyProjectsOntoAt(a, b, t)] --- ``$a$ projects onto $b$ at temporal region $t$'', where $a$ is a spatiotemporal region and $b$ is a spatial region. [081-003]
+
+\item[occupiesSpatioTemporalRegion(a, r)] --- ``$a$ occupies spatio-temporal region $r$'', where $a$ is an occurrent, and $r$ is a spatiotemporal region. [082-003]
+
+\item[occupiesTemporalRegion(a, t)] --- ``$a$ occupies temporal region $t$'', where $a$ is an occurrent, and $t$ is a temporal region. [132-001]
+
+\item[hasParticipantAt(a, b, t)] --- ``$a$ has participant $b$ at temporal region $t$''. [086-003]
+
+\item[processProfileOf(a, b)] --- ``$a$ is a process profile of $b$''. [094-005]
+
+\item[historyOf(a, b)] --- ``$a$ is the history of $b$'', where $a$ is a history and $b$ is a material entity. [XXX-001]
+
+\end{description}
+
+
+
+
+
+
+\subsection{Defined Relational Predicates}
+
+The following relational predicates are defined as indicated:
+
+\begin{description}
+
+\item[properContinuantPartOfAt(a, b, t)] --- ``$a$ is a proper part of $b$ at temporal region $t$'', where $a$ and $b$ are continuants. [004-001]
+
+*/
+
+(iff (properContinuantPartOfAt a b t)
+    (and (continuantPartOfAt a b t)
+        (not (= a b))
+    )
+)
+
+/*
+
+\item[properOccurrentPartOf(a, b)] --- ``$a$ is a proper part of $b$'', where $a$ and $b$ are occurrents. [005-001]
+
+*/
+
+(iff (properOccurrentPartOf a b)
+    (and (occurrentPartOf a b)
+        (not (= a b))
+    )
+)
+
+/*
+
+\item[hasContinuantPartAt(a, b, t)] -- ``$a$ has $b$ as a part at temporal region $t$'', where $a$ and $b$ are continuants. [006-001]
+
+*/
+
+(iff    (hasContinuantPartAt a b t)
+    (continuantPartOfAt b a t)
+)
+
+/*
+
+\item[hasProperContinuantPartAt(a, b, t)] --- ``$a$ has $b$ as a proper part at temporal region $t$'', where $a$ and $b$ are continuants. [XXX-001]
+
+*/
+
+(iff (hasProperContinuantPartAt a b t)
+    (properContinuantPartOfAt b a t)
+)
+
+/*
+
+\item[hasOccurrentPart(a, b)] --- ``$a$ has $b$ as a part'', where $a$ and $b$ are occurrents. [007-001]
+
+*/
+
+(iff    (hasOccurrentPart a b)
+    (occurrentPartOf b a)
+)
+
+/*
+
+\item[hasProperOccurrentPart(a, b)] --- ``$a$ as $b$ as a proper part'', where $a$ and $b$ are occurrents. [XXX-001]
+
+*/
+
+(iff (hasProperOccurrentPart a b)
+    (properOccurrentPartOf b a)
+)
+
+/*
+
+\item[locatedInAt(a, b, t)] --- ``$a$ is located in $b$ at temporal region $t$''. [045-001]
+
+*/
+
+(iff (locatedInAt a b t)
+    (and (IndependentContinuant a) (IndependentContinuant b)
+        (exists (r_1 r_2) (and (occupiesSpatialRegionAt a r_1 t)
+                            (occupiesSpatialRegionAt b r_2 t)
+                            (continuantPartOfAt r_1 r_2 t)
+                        )
+        )
+    )
+)
+
+/*
+
+
+\item[inheresInAt(a, b, t)] --- ``$a$ inheres in $b$ at temporal region $t$''. [051-002]
+
+*/
+
+(iff (inheresInAt a b t)
+    (and (DependentContinuant a)
+        (IndependentContinuant b)
+        (not (SpatialRegion b))
+        (specificallyDependsOnAt a b t)
+    )
+)
+
+/*
+
+\item[bearerOfAt(a, b, t)] --- ``$a$ is the bearer of $b$ at temporal region $t$''. [053-004]
+
+*/
+
+(iff (bearerOfAt a b t)
+    (and (specificallyDependsOnAt b a t)
+        (IndependentContinuant a)
+        (not (SpatialRegion a))
+        (existsAt b t)
+    )
+)
+
+/*
+
+\item[qualityOfAt(a, b, t)] --- ``$a$ is a quality of $b$ at temporal region $t$''. [056-002]
+
+*/
+
+(iff (qualityOfAt a b t)
+    (and (Quality a)
+        (IndependentContinuant b)
+        (not (SpatialRegion b))
+        (specificallyDependsOnAt a b t)
+    )
+)
+
+
+/*
+
+\item[roleOfAt(a, b, t)] --- ``$a$ is a role of $b$ at temporal region $t$''. [065-001]
+
+*/
+
+(iff (roleOfAt a b t)
+    (and (Role a)
+        (inheresInAt a b t)
+    )
+)
+
+/*
+
+
+\item[dispositionOf(a, b, t)] --- ``$a$ is a disposition of $b$ at temporal region $t$''. [066-001]
+
+*/
+
+(iff (dispositionOf a b t)
+    (and (Disposition a)
+        (inheresInAt a b t)
+    )
+)
+
+/*
+
+\item[functionOf(a, b, t)] --- ``$a$ is a function of $b$ at temporal region $t$''. [067-001]
+
+*/
+
+(iff (functionOf a b t)
+    (and (Function a)
+        (inheresInAt a b t)
+    )
+)
+
+/*
+
+\item[hasRoleAt(a, b, t)] --- ``$a$ has the role $b$ at temporal region $t$''. [068-001]
+
+*/
+
+(iff (hasRoleAt a b t)
+    (roleOfAt b a t)
+)
+
+/*
+
+\item[hasDispositionAt(a, b, t)] --- ``$a$ has the disposition $b$ at temporal region $t$''. [069-001]
+
+*/
+
+(iff (hasDispositionAt a b t)
+    (dispositionOf b a t)
+)
+
+/*
+
+\item[hasFunctionAt(a, b, t)] --- ``$a$ has the function $b$ at temporal region $t$''. [070-001]
+
+*/
+
+(iff (hasFunctionAt a b t)
+    (functionOf b a t)
+)
+
+/*
+
+\item[temporalPartOf(a, b)] --- ``$a$ is a temporal part of $b$'', where $a$ and $b$ are occurrents. [078-003]
+
+*/
+
+(iff (temporalPartOf a b)
+    (and (occurrentPartOf a b)
+        (exists (t) (and (TemporalRegion t)
+                        (occupiesSpatioTemporalRegion a t)
+                    )
+        )
+        (forall (c t_1) (if (and (Occurrent c)
+                                (occupiesSpatioTemporalRegion c t_1)
+                                (occurrentPartOf t_1 r)
+                            )
+                            (iff (occurrentPartOf c a)
+                                (occurrentPartOf c b)
+                            )
+                        )
+        )
+    )
+)
+
+/*
+
+\item[properTemporalPartOf(a, b)] --- ``$a$ is a proper temporal part of $b$''. [116-001]
+
+*/
+
+(iff (properTemporalPartOf a b)
+    (and (temporalPartOf a b)
+        (not (= a b))
+    )
+)
+
+/*
+
+\item[occursIn(a, b] --- ``$a$ occurs in $b$'', where $a$ is a process and $b$ is a material or immaterial entity. [XXX-001]
+
+*/
+
+(iff (occursIn a b)
+    (and (Process a)
+        (or (MaterialEntity b)
+            (ImmaterialEntity b)
+        )
+        (exists (r) (and (SpatioTemporalRegion r)
+                        (occupiesSpatioTemporalRegion a r)
+                    )
+        )
+        (forall (t) (if (TemporalRegion t)
+                        (and (if (existsAt a t) (existsAt b t))
+                            (exists (s s_1) (and (SpatialRegion s)
+                                                (SpatialRegion s_1)
+                                                (spatiallyProjectsOntoAt a s t)
+                                                (occupiesSpatialRegionAt b s_1 t)
+                                                (properContinuantPartOfAt s s_1 t)
+                                            )
+                            )
+                        )
+                    )
+        )
+    )
+)
+
+/*
+
+\item[hasHistory(a, b)] --- ``$a$ has $b$ as its history''. [XXX-001]
+
+*/
+
+(iff (hasHistory a b) (historyOf b a) )
+
+/*
+
+\end{description}
+
+
+
+
+
+\section{Axioms}
+
+The following formulas are asserted as axioms in the system:
+
+\begin{flushright}
+
+*/
+
+(forall (x y t)
+    (if (and (continuantPartOfAt x y t)
+            (continuantPartOfAt y x t)
+        )
+        (= x y)
+    )
+)   // [120-001]
+
+(forall (x y z t)
+    (if (and (continuantPartOfAt x y t)
+            (continuantPartOfAt y z t)
+        )
+        (continuantPartOfAt x z t)
+    )
+)   // [110-001]
+
+(forall (x y t)
+    (if (and (continuantPartOfAt x y t)
+            (not (= x y))
+        )
+        (exists (z) (and (continuantPartOfAt z y t)
+                        (not (exists (w) (and (continuantPartOfAt w x t)
+                                            (continuantPartOfAt w z t)
+                                        )
+                                )
+                        )
+                    )
+        )
+    )
+)   // [121-001]
+
+(forall (x y t)
+    (if (exists (v) (and (continuantPartOfAt v x t)
+                        (continuantPartOfAt v y t)
+                    )
+        )
+        (exists (z) (forall (u w) (iff (iff (continuantPartOfAt w u t)
+                                            (and (continuantPartOfAt w x t)
+                                                (continuantPartOfAt w y t)
+                                            )
+                                        )
+                                        (= z u)
+                                    )
+                    )
+        )
+    )
+)   // [122-001]
+
+(forall (x y t)
+    (if (and (occurrentPartOf x y t)
+            (occurrentPartOf y x t)
+        )
+        (= x y)
+    )
+)   // [123-001]
+
+(forall (x y z)
+    (if (and (occurrentPartOf x y)
+            (occurrentPartOf y z)
+        )
+        (occurrentPartOf x z)
+    )
+)   // [112-001]
+
+(forall (x y t)
+    (if (and (occurrentPartOf x y t)
+            (not (= x y))
+        )
+        (exists (z) (and (occurrentPartOf z y t)
+                        (not (exists (w) (and (occurrentPartOf w x t)
+                                            (occurrentPartOf w z t)
+                                        )
+                                )
+                        )
+                    )
+        )
+    )
+)   // [124-001]
+
+(forall (x y t)
+    (if (exists (v) (and (occurrentPartOf v x t)
+                        (occurrentPartOf v y t)
+                    )
+        )
+        (exists (z) (forall (u w) (iff (iff (occurrentPartOf w u t)
+                                            (and (occurrentPartOf w x t)
+                                                (occurrentPartOf w y t)
+                                            )
+                                        )
+                                        (= z u)
+                                    )
+                    )
+        )
+    )
+)   // [125-001]
+
+(forall (x)
+    (if
+        (Continuant x)
+        (Entity x)
+    )
+)   // [008-002]
+
+(forall (x y t)
+    (if
+        (specificallyDependsOnAt x y t)
+            (not (exists (z)
+                    (and (continuantPartOfAt z x t)
+                        (continuantPartOfAt z y t)
+                    )
+                )
+            )
+    )
+)   // [012-002]
+
+(forall (x y)
+    (if (and (Continuant x)
+            (exists (t)(continuantPartOfAt y x t))
+        )
+        (Continuant y)
+    )
+)   // [009-002]
+
+(forall (x y)
+    (if (and (Continuant x)
+            (exists (t)(hasContinuantPartOfAt y x t))
+        )
+        (Continuant y)
+    )
+)   // [126-001]
+
+
+(forall (x)
+    (if (Material Entity x)
+        (exists (t) (and (TemporalRegion t)
+                        (existsAt x t)
+                    )
+        )
+    )
+)   // [011-002]
+
+(forall (x y t) (if (and (Occurrent x)
+                        (IndependentContinuant y)
+                        (specificallyDependsOnAt x y t)
+                    )
+                    (forall (t_1) 
+                        (if (existsAt x t_1)
+                                (specificallyDependsOnAt x y t_1)
+                        )
+                    )
+                )
+)   // [015-002]
+
+(forall (x y t) (if (and (Continuant x)
+                        (specificallyDependsOnAt x y t)
+                    )
+                    (forall (t_1) (if (existsAt x t_1)
+                                        (specificallyDependsOnAt x y t_1)
+                                    )
+                    )
+                )
+)   // [016-001]
+
+(forall (x y t) (if (and (Continuant x)
+                        (specificallyDependsOnAt x y t)
+                    )
+                    (existsAt x t)
+                )
+)   // [127-001]
+
+(forall (x y t) (if (and (Continuant x)
+                        (specificallyDependsOnAt x y t)
+                    )
+                    (existsAt y t)
+                )
+)   // [128-001]
+
+(forall (x y t) (if (and (Occurrent x)
+                        (Continuant y)
+                        (specificallyDependsOnAt x y t)
+                    )
+                    (forall (t_1) (if (existsAt y t_1)
+                                        (existsAt x t_1)
+                                    )
+                    )
+                )
+)   // [129-001]
+
+(forall (x y t) (if (and (Occurrent x)
+                        (Occurrent y)
+                        (specificallyDependsOnAt x y t)
+                    )
+                    (existsAt y t)
+                )
+)   // [130-001]
+
+(forall (x t) 
+    (if (and (IndependentContinuant x)
+            (existsAt x t)
+        )
+        (exists (y) (and (Entity y)
+                        (specificallyDependsOnAt y x t)
+                    )
+        )
+    )
+)   // [018-002]
+
+(forall (x) (if (MaterialEntity x)
+                (IndependentContinuant x)
+            )
+)   // [019-002]
+
+(forall (x) (if (and (Entity x)
+                    (exists (y t) (and (MaterialEntity y)
+                                    (continuantPartOfAt y x t)
+                                    )
+                    )
+                )
+                (MaterialEntity x)
+            )
+)   // [020-002]
+
+(forall (x) (if (ObjectAggregate x)
+                (and (MaterialEntity x)
+                    (forall (t) 
+                        (if (existsAt x t)
+                            (exists (y z)
+                                (and (Object y)
+                                    (Object z)
+                                    (memberPartOfAt y x t)
+                                    (memberPartOfAt z x t)
+                                    (not (= y z))
+                                )
+                            )
+                        )
+                    )
+                    (not (exists (w t_1) 
+                            (and (memberPartOfAt w x t_1)
+                                (not (Object w))
+                            )
+                        )
+                    )
+                )
+            )
+)   // [025-004]
+
+(forall (x) (if (FiatObjectPart x)
+        (and (MaterialEntity x)
+            (forall (t)(if (existsAt x t)
+                            (exists (y) (and (Object y)
+                                    (properContinuantPartOfAt x y t)
+                                )
+                            )
+                        )
+            )
+        )
+    )
+)   // [027-004]
+
+(forall (x t) (if (and (ContinuantFiatBoundary x)
+                        (existsAt x t)
+                    )
+                    (exists (y) (and (SpatialRegion y)
+                                    (occupiesSpatialRegionAt x y t) )
+                                )
+                )
+)   // [XXX-001]
+
+(forall (x) (if (Site x)
+                (ImmaterialEntity x)
+            )
+)   // [034-002]
+
+(forall (x t) (if (and (Site x) (existsAt x t))
+                    (exists (y) (and (ThreeDimensionalSpatialRegion y)
+                                    (occupiesSpatialRegionAt x y t)
+                                )
+                    )
+                )
+)   // [153-001]
+
+(forall (x) (if (SpatialRegion x)
+                (Continuant x)
+            )
+)   // [035-001]
+
+(forall (x y t) (if (and (SpatialRegion x)
+                        (continuantPartOfAt y x t)
+                    )
+                    (SpatialRegion y)
+                )
+)   // [036-001]
+
+(forall (x t) (if (and (MaterialEntity x) (existsAt x t))
+                    (exists (y) (and (ThreeDimensionalSpatialRegion y)
+                                    (occupiesSpatialRegionAt x y t)
+                                )
+                    )
+                )
+)   // [XXX-001]
+
+(forall (x) (if (ZeroDimensionalSpatialRegion x)
+                (SpatialRegion x)
+            )
+)   // [037-001]
+
+(forall (x) (if (OneDimensionalSpatialRegion x)
+                (SpatialRegion x)
+            )
+)   // [038-001]
+
+(forall (x) (if (TwoDimensionalSpatialRegion x)
+                (SpatialRegion x)
+            )
+)   // [039-001]
+
+(forall (x) (if (ThreeDimensionalSpatialRegion x)
+                (SpatialRegion x)
+            )
+)   // [040-001]
+
+(forall (x r t) (if (occupiesSpatialRegionAt x r t)
+                    (and (SpatialRegion r)
+                        (IndependentContinuant x)
+                    )
+                )
+)   // [041-002]
+
+(forall (r t) (if (Region r)
+                    (occupiesSpatialRegionAt r r t)
+                ) 
+) // [042-002]
+
+(forall (x y r_1 t) (if (and (occupiesSpatialRegionAt x r_1 t)
+                            (continuantPartOfAt y x t)
+                        )
+                        (exists (r_2) (and (continuantPartOfAt r_2 r_1 t)
+                                            (occupiesSpatialRegionAt y r_2 t)
+                                        )
+                        )
+                    )
+)   // [043-001]
+
+(forall (x y z t) (if (and (locatedInAt x y t)
+                            (locatedInAt y z t)
+                        )
+                        (locatedInAt x z t)
+                    )
+)   // [046-001]
+
+(forall (x t) (if (IndependentContinuant x)
+                    (exists (r) (and (SpatialRegion r)
+                                    (locatedInAt x r t)
+                                )
+                    )
+                )
+)   // [134-001]
+
+(forall (x r t) (if (and (IndependentContinuant x)
+                        (locatedInAt x r t)
+                    )
+                    (exists (r_1) (and (continuantPartOfAt r_1 r t)
+                                        (occupiesSpatialRegionAt x r_1 t)
+                                    )
+                    )
+                )
+)   // [135-001]
+                        
+
+(forall (x y t) (if (and (continuantPartOfAt x y t)
+                        (IndependentContinuant x)
+                    )
+                    (locatedInAt x y t)
+                )
+)   // [047-002]
+
+(forall (x y z t) (if (and (IndependentContinuant x)
+                            (IndependentContinuant y)
+                            (IndependentContinuant z)
+                            (continuantPartOfAt x y t)
+                            (locatedInAt y z t)
+                        )
+                        (locatedInAt x z t)
+                    )
+)   // [048-001]
+
+(forall (x y z t) (if (and (IndependentContinuant x)
+                            (IndependentContinuant y)
+                            (IndependentContinuant z)
+                            (locatedInAt x y t)
+                            (continuantPartOfAt y z t)
+                        )
+                        (locatedInAt x z t)
+                    )
+)   // [049-001]
+
+
+(forall (x) (if (exists (y t) (specificallyDependsOnAt x y t))
+                (not (MaterialEntity x))
+            )
+)   // [052-001]
+
+(forall (x y z t) (if (and (specificallyDependsOnAt x y t)
+                        (specificallyDependsOnAt y z t)
+                    )
+                    (specificallyDependsOnAt x z t)
+                )
+)   // [054-002]
+
+
+(forall (x) (if (Quality x)
+                (SpecificallyDependentContinuant x)
+            )
+)   // [055-001]
+
+(forall (x) (if (exists (t) (and (existsAt x t)
+                                (Quality x) 
+                            )
+                )
+                (forall (t_1) (if (existsAt x t_1)
+                                    (Quality x)
+                                )
+                )
+            )
+)   // [105-001]
+
+(forall (x) (if (RealizableEntity x)
+                (and (SpecificallyDependentContinuant x)
+                    (exists (y) (and (IndependentContinuant y)
+                                    (not (SpatialRegion y))
+                                    (inheresIn x y)
+                                )
+                    )
+                )
+            )
+)   // [058-002]
+
+(forall (x y t) (if (realizesAt x y t)
+                    (and (Process x)
+                        (or (Disposition y)
+                            (Role y)
+                        )
+                        (exists (z) (and (MaterialEntity z)
+                                        (hasParticipantAt x z t)
+                                        (bearerOfAt z y t)
+                                    )
+                        )
+                    )
+                )
+)   // [059-003]
+
+(forall (x t) (if (RealizableEntity x)
+                    (exists (y) (and (IndependentContinuant y)
+                                    (not (SpatialRegion y))
+                                    (bearerOfAt y x t)
+                                )
+                    )
+                )
+)   // [060-002]
+
+(forall (x) (if (Role x)
+                (RealizableEntity x)
+            )
+)   // [061-001]
+
+(forall (x) (if (Disposition x)
+                (and (RealizableEntity x)
+                    (exists (y) (and (MaterialEntity y)
+                                    (bearerOfAt x y t)
+                                )
+                    )
+                )
+            )
+)   // [062-002]
+
+(forall (x t) (if (and (RealizableEntity x)
+                        (existsAt x t)
+                    )
+                    (exists (y) (and (MaterialEntity y)
+                                    (specificallyDepends x y t)
+                                )
+                    )
+            )
+)   // [063-002]
+
+(forall (x) (if (Function x)
+                (Disposition x)
+            )
+)   // [064-001]
+
+(forall (x y t) (if (hasMaterialBasisAt x y t)
+                    (and (Disposition x)
+                        (MaterialEntity y)
+                        (exists (z) (and (bearerOfAt z x t)
+                                        (continuantPartOfAt y z t)
+                                        (exists (w) (and (Disposition w)
+                                                        (if (hasDisposition z w)
+                                                            (continuantPartOfAt y z t)
+                                                        )
+                                                    )
+                                        )
+                                    )
+                        )
+                    )
+                )
+)   // [071-002]
+
+(forall (x y) (if (exists (t) (genericallyDependsOnAt x y t))
+                    (forall (t_1) 
+                        (if (existsAt x t_1)
+                            (exists (z) (genericallyDependsOnAt x z t_1))
+                        )
+                    )
+                )
+)   // [073-001]
+
+(forall (x y t) (if (concretizesAt x y t)
+                    (and (SpecificallyDependentContinuant x)
+                        (GenericallyDependentContinuant y)
+                        (exists (z) (and (IndependentContinuant z)
+                                        (specificallyDependsOnAt x z t)
+                                        (genericallyDependsOnAt y z t)
+                                    )
+                        )
+                    )
+                )
+)   // [075-002]
+
+(forall (x y t) (if (genericallyDependsOnAt x y t)
+                        (exists (z) (and (concretizesAt z x t)
+                                        (specificallyDependsOnAt z y t)
+                                    )
+                        )
+                )
+)   // [076-001]
+
+(forall (x) (iff (Occurrent x)
+                (and (Entity x)
+                    (exists (y) (temporalPartOf y x))
+                )
+            )
+)   // [079-001]
+
+(forall (x) (if (TemporalRegion x)
+                (occupiesTemporalRegion x x)
+            )
+)   // [137-001]
+
+(forall (x) (if (ProcessBoundary x)
+                (exists (y) (and (ZeroDimensionalTemporalRegion y)
+                                (occupiesTemporalRegion x y)
+                            )
+                )
+            )
+)   // [085-002]
+
+
+(forall (x y t)
+    (if (hasParticipantAt x y t)
+        (Occurrent x)
+    )
+)   // [087-001]
+
+
+(forall (x y t)
+    (if (hasParticipantAt x y t)
+        (Continuant y)
+    )
+)   // [088-001]
+
+(forall (x y t) (if (hasParticipantAt x y t)
+                    (existsAt y t)
+                )
+)   // [089-001]
+
+(forall (x y t)
+    (if (and (hasParticipantAt x y t)
+            (SpecificallyDependentContinuant y)
+        )
+        (exists (z) (and (IndependentContinuant z)
+                        (not (SpatialRegion z))
+                        (specificallyDependsOnAt x z t)
+                        (specificallyDependsOnAt y z t)
+                    )
+        )
+    )
+)   // [090-003]
+
+
+(forall (x y t)
+    (if (and (hasParticipantAt x y t)
+            (GenericallyDependentContinuant y)
+        )
+        (exists (z) (and (IndependentContinuant z)
+                        (not (SpatialRegion z))
+                        (genericallyDependsOn y z t)
+                        (specificallyDependsOnAt x z t)
+                    )
+        )
+    )
+)   // [091-003]
+
+
+(forall (x y) (if (processProfileOf x y)
+        (and (properContinuantPartOf x y)
+            (exists (z t) (and (properOccurrentPartOf z y)
+                            (TemporalRegion t)
+                            (occupiesSpatioTemporalRegion x t) 
+                            (occupiesSpatioTemporalRegion y t) 
+                            (occupiesSpatioTemporalRegion z t) 
+                            (not (exists (w) (and (occurrentPartOf w x)
+                                                (occurrentPartOf w z)
+                                            )
+                                )
+                            )
+                        )
+            )
+        )
+    )
+)   // [094-005]
+
+
+(forall (x) (if (SpatioTemporalRegion x)
+                (Occurrent x)
+            )
+)   // [095-001]
+
+(forall (x y) (if (and (SpatioTemporalRegion x)
+                        (occurrentPartOf y x)
+                    )
+                    (SpatioTemporalRegion y)
+                )
+)   // [096-001]
+
+(forall (x) (if (SpatioTemporalRegion x)
+                (exists (y) (and (TemporalRegion y)
+                                (temporallyProjectsOnto x y)
+                            )
+                )
+            )
+)   // [098-001]
+
+(forall (x t) (if (SpatioTemporalRegion x)
+                (exists (y) (and (SpatialRegion y)
+                                (spatiallyProjectsOntoAt x y t)
+                            )
+                )
+            )
+)   // [099-001]
+
+
+(forall (r) (if (SpatioTemporalRegion r)
+                (occupiesSpatioTemporalRegion r r)
+            )
+)   // [107-002]
+
+(forall (x) (if (Occurrent x)
+                (exists (r) (and (SpatioTemporalRegion r)
+                                (occupiesSpatioTemporalRegion x r)
+                            )
+                )
+            )
+)   // [108-001]
+
+(forall (x) (if (TemporalRegion x)
+                (Occurrent x)
+            )
+)   // [100-001]
+
+(forall (r) (if (TemporalRegion r)
+                (occupiesTemporalRegion r r)
+            )
+)   // [119-002]
+
+(forall (x y) (if (and (TemporalRegion x)
+                        (occurrentPartOf y x)
+                    )
+                    (TemporalRegion y)
+                )
+)   // [101-001]
+
+(forall (x) (if (ZeroDimensionalTemporalRegion x)
+                (TemporalRegion x)
+            )
+)   // [102-001]
+
+(forall (x) (if (OneDimensionalTemporalRegion x)
+                (TemporalRegion x)
+            )
+)   // [103-001]
+
+(forall (x y z) (if (and (historyOf x y)
+                        (historyOf x z)
+                    )
+                    (= y z)
+                )
+)   // [XXX-001]
+
+/*
+
+\end{flushright}
+
+
+
+
+
+\section{Theorems}
+
+The following formulas are noted as theorems in the \emph{BFO 2.0 Draft Specification and User's Guide} and are derivable from the definitions and axioms of the system.  Of course, these explicitly noted theorems are only a small subset of what is derivable within BFO-FOL.
+
+\begin{flushright}
+
+*/
+
+(forall (x t) (if (Continuant x)
+                (continuantPartOfAt x x t)
+            )
+)   // [111-002]
+
+(forall (x) (if (Occurrent x)
+                (occurrentPartOf x x)
+            )
+) // [113-002]
+
+(forall (x y t)
+    (if (and (Entity x)
+            (or 
+                (continuantPartOfAt y x t)
+                (continuantPartOfAt x y t)
+                (occurrentPartOf x y)
+                (occurrentPartOf y x)
+            )
+        )
+        (not (specificallyDependsOnAt x y t))
+    )
+) // [013-002]
+
+
+(forall (x) (if (and (Entity x)
+                    (exists (y t) (and (MaterialEntity y)
+                                    (continuantPartOfAt x y t)
+                                    )
+                    )
+                )
+                (MaterialEntity x)
+            )
+)   // [021-002]
+
+(forall (x y t) (if (memberPartOfAt x y t)
+                    (continuantPartOfAt x y t)
+                )
+)  // [104-001]
+
+(forall (x y t) (if (specificallyDependsOnAt x y t)
+                    (exists (z) (and (IndependentContinuant z)
+                                    (not (SpatialRegion z))
+                                    (specificallyDependsOnAt x z t)
+                                )
+                    )
+                )
+)   // [136-001]
+
+
+(forall (x y) (if (properTemporalPartOf x y)
+                (exists (z) (and (properTemporalPartOf z y)
+                                (not (exists (w) (and (temporalPartOf w x)
+                                                    (temporalPartOf w z)
+                                                )
+                                        )
+                                )
+                            )
+                )
+            )
+)   // [117-002]
+
+(forall (x y z t) 
+    (if (and (RealizableEntity x)
+            (Process y)
+            (realizesAt y x t)
+            (bearerOfAt z x t)
+        )
+        (hasParticipantAt y z t)
+    )
+)   // [106-002]
+
+
+/*
+
+\end{flushright}
+
+\section{Conclusion}
+
+As noted above, the BFO 2.0 specification is currently under development, and thus the axiomatization of the specification in BFO-FOL is accordingly subject to modification and refinement.  Of particular interest is the question of what consequences can be derived from these definitions and axioms, both with regard to the formal consistency of BFO-FOL and with regard to whether these consequences would run counter to the basic principles and intentions of BFO.  Since BFO-FOL contains a large number of definitions and axioms, the working group is investigating formal tools capable of automating the investigation into these consequences.
+
+\begin{thebibliography}{99}
+
+\bibitem{BFO2}
+Barry Smith, et al. \emph{Basic Formal Ontology 2.0: Draft Specification and User's Guide}.  Manuscript.
+\end{thebibliography}
+
+*/
