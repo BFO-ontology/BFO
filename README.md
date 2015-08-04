@@ -35,9 +35,9 @@ Since then important contributions to BFO have been made by many people, includi
 
 Current Version: 2.0
 
-- [BFO 2.0 Specification and User's Guide](http://bfo.googlecode.com/svn/trunk/docs/bfo2-reference/BFO2-Reference.docx)
-- [BFO 2.0 OWL](http://purl.obolibrary.org/obo/bfo.owl) created by [James A. Overton](http://james.overton.ca), [Alan Ruttenberg](https://www.linkedin.com/in/alanruttenberg), [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39) and others
-- BFO 2.0 OBO created by [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39)
+- [BFO 2.0 Specification and User's Guide](https://github.com/BFO-ontology/BFO/raw/master/docs/bfo2-reference/BFO2-Reference.docx)
+- [BFO 2.0 OWL](https://raw.githubusercontent.com/BFO-ontology/BFO/master/releases/2.0/bfo.owl) created by [James A. Overton](http://james.overton.ca), [Alan Ruttenberg](https://www.linkedin.com/in/alanruttenberg), [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39) and others
+- [BFO 2.0 OBO](https://raw.githubusercontent.com/BFO-ontology/BFO/master/releases/2.0/bfo.obo) created by [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39)
 - [BFO 2.0 CLIF (draft)](https://ontohub.org/bfo) first-order logic version of BFO created by [Fabian Neuhaus](http://www.fabian-neuhaus.de/) and others
 
 Previous Version: 1.1.1
