@@ -11,7 +11,7 @@ Since then important contributions to BFO have been made by many people, includi
 - [Melanie Courtot](http://ca.linkedin.com/in/mcourtot)
 - [Randall Dipert](http://www.philosophy.buffalo.edu/people/faculty/dipert/)
 - [Janna Hastings](http://www.ebi.ac.uk/~hastings)
-- [Chris Mungall](http://www.fruitfly.org/~cjm)
+- [Chris Mungall](http://berkeleybop.org/person/chris-mungall)
 - [Darren Natale](http://pir.georgetown.edu/pirwww/aboutpir/natalebio.shtml)
 - [Fabian Neuhaus](http://www.fabian-neuhaus.de/)
 - [James A. Overton](http://james.overton.ca)
