@@ -12,12 +12,14 @@ Since then important contributions to BFO have been made by many people, includi
 - [Randall Dipert](http://www.philosophy.buffalo.edu/people/faculty/dipert/)
 - [Janna Hastings](http://www.ebi.ac.uk/~hastings)
 - [Chris Mungall](http://www.fruitfly.org/~cjm)
+- [Darren Natale](http://pir.georgetown.edu/pirwww/aboutpir/natalebio.shtml)
 - [Fabian Neuhaus](http://www.fabian-neuhaus.de/)
 - [James A. Overton](http://james.overton.ca)
 - [Bjoern Peters](http://www.liai.org/pages/faculty-peters)
+- [Ron Rudnicki](https://www.linkedin.com/pub/ron-rudnicki/4/b00/957)
 - [Alan Ruttenberg](http://sciencecommons.org/about/whoweare/ruttenberg)
 - [Stefan Schulz](http://purl.org/steschu)
-- Selja Seppälä
+- [Selja Seppälä](https://seljaseppala.wordpress.com/)
 - [Holger Stenzhorn](http://purl.org/holger)
 - [Jie Zheng] (http://cbil.upenn.edu/profile-staff_bio/39)
 
