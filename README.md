@@ -63,3 +63,7 @@ Previous Version: 1.1.1
 - Barry Smith, ["On Classifying Material Entities in Basic Formal Ontology"](http://ontology.buffalo.edu/smith/articles/material_entities.pdf)
 - [Selja Seppälä, Barry Smith and Werner Ceusters, "Applying the Realism-Based Ontology-Versioning Method for Tracking Changes in the Basic Formal Ontology"](http://ontology.buffalo.edu/smith/articles/fois2014.pdf)
 - Robert Arp, Barry Smith and Andrew Spear, [*Building Ontologies with Basic Formal Ontology*](http://mitpress.mit.edu/books/building-ontologies-basic-formal-ontology)
+
+<b>Code license:</b> [New BSD License](http://opensource.org/licenses/BSD-3-Clause)
+
+<b>Content license:</b> [Creative Commons 3.0 BY](http://creativecommons.org/licenses/by/3.0/) 
