@@ -78,30 +78,35 @@
  ((occurs-in contains-process)  :binary)
  ((profile-of has-profile) :binary )
  ((realizes realized-in) :binary )
-
+ ((inheres-in bearer-of) :binary)
+ 
+ #+temporal
  ((c-part-of c-has-part) :ternary (:issue 49)
   (:temporal (:all :some) (:all :some) "as Mathias suggests"))
 
+ #+temporal
  ((c-ppart-of c-has-ppart) :ternary (:issue 49)
   (:temporal (:all :some) (:all :some) "Mathias suggest not parallel to part of, seems not to alan"))
 
+ #+temporal
  ((c-part-of-object c-has-part-object) :ternary 
   (:temporal (:all ) (:all)))
 
+ #+temporal
  ((member-part-of has-member-part) :ternary (:issue 49)
   (:temporal (:all :some) (:all :some) "Seems to be similar enough to part of (parts aren't permanent or defining except at an instant, so offer full set")
   )
  
+ #+temporal
  ((located-in has-location) :ternary  (:issue 49)
   (:temporal (:some :all) (:some :all))
   )
 
+ #+temporal
  ((located-at-r r-location-of) :ternary  (:issue 49)
   (:temporal (:some) (:some) "Include some some for now, but note that the all versions can be used to define frames")
   )
 
- ((inheres-in bearer-of) :ternary (:issue 49)
-  (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too"))
  
  ((q-of has-q) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
@@ -119,17 +124,24 @@
  ((g-depends-on has-g-dep) :ternary (:temporal (:some) (:some) "Define some times in both directions agreeing with Mathias") (:issue 49))
 
 
+ #+temporal
  ((has-material-basis material-basis-of) :ternary (:temporal (:all) (:some :all) "Follow Mathias as at all times for the forward relation, both for the reverse relation") (:issue 49))
  
+ #+temporal
  ((concretizes concretized-by) :ternary (:temporal (:some :all) (:some :all)) (:issue 49) "Unsure of this one - Alan. Include both for now")
  
+ #+temporal
  ((st-projects-onto-s s-projection-of-st) :ternary (:temporal (:some) (:some) "Things tend to move and change shape in time, so at some times in both directions") (:issue 49))
  
  ((st-projects-onto-t t-projection-of-st) :binary)
  
+ #+temporal
  ((has-participant participates-in) :ternary (:temporal (:some :all) (:some :all) "at some times is parallels the class-class definition. At all times is permanent participation, requested by Stefan") (:issue 49))
  
  ((history-of has-history) :binary)
+ ((history-segment-of has-history-segment) :binary)
+ ((has-part-during during-which-part-of) :binary)
+ ((part-of-during during-which-has-part) :binary)
  ((spans span-of) :binary)
  
  )
@@ -167,9 +179,9 @@ entity(d)
 ----role
 --gdc
 -occurrent(d)
---process(d)
----process-profile
----history
+--process
+---history-segment
+----history
 --p-boundary
 --st-region
 --t-region(d)
@@ -203,9 +215,12 @@ during-which-exists
 -span-of
 -t-projection-of-st
 contains-process
--has-history
+-has-history-segment
+--has-history
 occurs-in
 -history-of
+part-of-during
+has-part-during
 ")
 
 ;; define the temporal property hierarchy. You can't have a temporal
@@ -217,6 +232,7 @@ occurs-in
 ;; superproperties (i.e. q-of at some time /-> inheres-in at all times)
 ;; Also consider: "during" variants of the properties, if we get histories.
 
+#+temporal
 (temporal-property-hierarchy "
 located-at-r_st 
 r-location-of_st
