@@ -8,7 +8,7 @@ non-reference-annotations.lisp - annotations that can't be found from the docume
 
 More documentation is forthcoming. For now this document explains the axiom syntax.
 
-A shorthand syntax for object property centered axiom writing, used in the BFO machine specification
+Section 1: A shorthand syntax for object property centered axiom writing, used in the BFO machine specification
 
 1. atemporal-relation-spec := '(' 'object-property' ':binary' property-and-inverse-handles [atemporal-relation-form]*  ')'
 2. temporal-relation-spec  := '(' 'object-property' ':temporal property-and-inverse-handles temporal-property-and-inverse-quantification [temporal-relation-form]*  ')'
@@ -95,4 +95,7 @@ Examples
    (p-boundary -> (and st-region (some t-part-of st-region)) :id 151)
 
 means: p-boundary subclass of occupies only (st-region and t-part-of some st-region)
+
+Section 2: Representing the class and property hierarchy
+
 

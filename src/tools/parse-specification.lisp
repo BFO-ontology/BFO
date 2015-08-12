@@ -23,22 +23,23 @@
 	  (* 2 (count-if 'consp (cdr (bfo-terms bfo)) :key 'car))))
 
 (defun read-bfo2-reference-spec ()
-  (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo2-reference.lisp")
+  (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo-reference-no-controversial-relations.lisp")
     (with-open-file (g "bfo:src;ontology;owl-group;specification;bfo2-uris.lisp")
       (let ((terms (read f))
 	    (class-tree (read f))
 	    (2-prop-tree (read f))
-	    (3-prop-tree (read f))
+	    #+temporal(3-prop-tree (read f))
 	    (tag2term (read f))
 	    (clif-term-exceptions (read f))
 	    (uris (eval-uri-reader-macro (read g)))
-	    (fol (read-fol-clif)))
+	    (fol (make-hash-table)) ;(read-fol-clif))
+)
 	(let* ((tag2term-filled
 		(loop for (ann term) in (cdr tag2term)
 		   collect (list (intern (string-upcase (#"replaceAll" ann "[ _]" "-")))
 				 (or term (intern (string-upcase (#"replaceAll" ann "[ _]" "-")))))))
 	       (struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree
-				   :3-prop-tree 3-prop-tree :uris uris :anntag2term tag2term-filled :fol-expressions fol))
+				   #+temporal :3-prop-tree #+temporal 3-prop-tree :uris uris :anntag2term tag2term-filled :fol-expressions fol))
 	       (term2clif (loop for (tag term) in tag2term-filled
 			     for exception = (second (assoc tag (cdr clif-term-exceptions) :test 'equalp))
 			     collect (list term (or exception
@@ -55,7 +56,7 @@
 							  )))))))))
 	    (setf (bfo-term2clif struct) term2clif)
 	    (parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
-	    (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
+	    #+temporal (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
 	    (parse-bfo2-tree (second class-tree) #'(setf bfo-class2subclass) struct)
 	    struct
 	    )))))

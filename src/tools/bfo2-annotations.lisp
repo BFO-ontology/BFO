@@ -26,12 +26,13 @@
      `(declaration (annotation-property ,!rdfs:isDefinedBy))
      `(declaration (annotation-property ,!dc:license))
      `(declaration (annotation-property ,!rdfs:seeAlso))
+     `(declaration (annotation-property ,!dc:publisher))
      `(declaration (annotation-property ,!dc:contributor))
      `(declaration (annotation-property ,!dc:member))
      `(declaration (annotation-property ,!foaf:homepage))
      `(declaration (annotation-property ,!foaf:mbox))
-     `(declaration (annotation-property ,!bfo-owl-spec-label))
-     `(declaration (annotation-property ,!bfo-fol-spec-label))
+;     `(declaration (annotation-property ,!bfo-owl-spec-label))
+;     `(declaration (annotation-property ,!bfo-fol-spec-label))
      (loop for (here-label prop) in (eval-uri-reader-macro *bfo2-ontprops*)
 	for label = (entity-label prop om)
 	collect `(declaration (annotation-property ,prop))
@@ -137,7 +138,7 @@
 	(axs nil))
     (with-bfo-uris bfo2
       (loop for (table type) in
-	   '((bfo-class2subclass class) (bfo-2prop2subprop object-property) (bfo-3prop2subprop Object-property))
+	   '((bfo-class2subclass class) (bfo-2prop2subprop object-property) #+temporal (bfo-3prop2subprop Object-property))
 	   do
 	   (maphash (lambda(c sc) 
 		      (loop for el in (cons c sc)
@@ -190,7 +191,7 @@
   (let ((found (or (assoc (intern (string-upcase tag)) (bfo-anntag2term bfo2) :test 'equalp)
 		   (assoc (intern (string-upcase (#"replaceAll" tag "[ _]" "-"))) (bfo-anntag2term bfo2) :test 'equalp))))
     (unless found
-      (error "What's this tag: ~a ?" tag))
+      (warn "What's this tag: ~a ?" tag))
     (let* ((found-or-translated
 	    (or (second found)
 		(intern (string-upcase (#"replaceAll" tag "[ _]" "-")))))

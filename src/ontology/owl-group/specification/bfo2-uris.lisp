@@ -60,8 +60,8 @@
  (has-t-ppart nil !obo:BFO_0000181) ;alanr assigned
  (occupies nil !obo:BFO_0000130)  
  (occupied-by nil !obo:BFO_0000126)
- (has-profile nil !obo:BFO_0000119)
- (profile-of nil !obo:BFO_0000133)
+; (has-profile nil !obo:BFO_0000119)
+; (profile-of nil !obo:BFO_0000133)
  (c-has-part_at nil !obo:BFO_0000110)
  (c-has-part_st nil !obo:BFO_0000178) ; alanr assigned
  (c-part-of_at nil !obo:BFO_0000177) ; alanr assigned
@@ -80,27 +80,27 @@
  (has-location_at nil !obo:BFO_0000170)
  (located-at-r_st nil !obo:BFO_0000083)
  (r-location-of_st nil !obo:BFO_0000123)
- (inheres-in_at nil !obo:BFO_0000052)
- (bearer-of_st nil !obo:BFO_0000053) 
- (bearer-of_at nil !obo:BFO_0000158)  ; alan assigned
+ (inheres-in nil !obo:BFO_0000052)
+ (bearer-of nil !obo:BFO_0000053) 
+#+temporal (bearer-of_at nil !obo:BFO_0000158)  ; alan assigned
  (s-depends-on_at nil !obo:BFO_0000070) 
  (s-depends-on_st nil !obo:BFO_0000169)  ; alanr assigned
  (has-s-dep_st nil !obo:BFO_0000125) 
  (has-s-dep_at nil !obo:BFO_0000168)  ; alanr assigned
  (g-depends-on_st nil !obo:BFO_0000084)
  (has-g-dep_st nil !obo:BFO_0000101)
- (q-of_at nil !obo:BFO_0000080)
- (has-q_st nil !obo:BFO_0000086)  
- (has-q_at nil !obo:BFO_0000159)   ; alan assigned
- (f-of_at nil !obo:BFO_0000079)
- (has-f_st nil !obo:BFO_0000085)
- (has-f_at nil !obo:BFO_0000160) ; alanr assigned
- (r-of_at nil !obo:BFO_0000081)
- (has-r_st nil !obo:BFO_0000087)
- (has-r_at nil !obo:BFO_0000161) ;alanr assigned
- (d-of_at nil !obo:BFO_0000107) 
- (has-d_st nil !obo:BFO_0000112)
- (has-d_at nil !obo:BFO_0000162) ;alanr assigned
+ (q-of nil !obo:BFO_0000080)
+ (has-q nil !obo:BFO_0000086)  
+; (has-q_at nil !obo:BFO_0000159)   ; alan assigned
+ (f-of nil !obo:BFO_0000079)
+ (has-f nil !obo:BFO_0000085)
+; (has-f_at nil !obo:BFO_0000160) ; alanr assigned
+ (r-of nil !obo:BFO_0000081)
+ (has-r nil !obo:BFO_0000087)
+; (has-r_at nil !obo:BFO_0000161) ;alanr assigned
+ (d-of nil !obo:BFO_0000107) 
+ (has-d nil !obo:BFO_0000112)
+; (has-d_at nil !obo:BFO_0000162) ;alanr assigned
  (realized-in nil !obo:BFO_0000054 (:issue 39))
  (realizes nil !obo:BFO_0000055 (:issue 39))
  (has-material-basis_at nil !obo:BFO_0000113)  
@@ -204,4 +204,18 @@
  (c-part-of-object_at nil !obo:BFO_0000186)
  (c-has-part-object_at nil !obo:BFO_0000187)
 
+;; needed to work with histories
+(history-segment-of nil !obo:BFO_0000188 (:issue 43))
+(has-history-segment nil !obo:BFO_0000189 (:issue 43))
+(history-segment nil !obo:BFO_0000190 (:issue 43))
+
+(has-part-during nil !obo:BFO_0000191)
+(during-which-part-of nil !obo:BFO_0000192)
+(part-of-during nil !obo:BFO_0000193)
+(during-which-has-part nil !obo:BFO_0000194)
 )
+
+;; annotation properties
+
+(bfo-owl-spec-label nil !obo:BFO_0000179)
+(bfo-fol-spec-label nil !obo:BFO_0000180)

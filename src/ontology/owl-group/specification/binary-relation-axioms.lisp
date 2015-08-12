@@ -16,8 +16,8 @@
   (range occurrent :id 105)
   (transitive :id 106)
   (reflexive occurrent :id 107)
-  (history -> (not process-profile :id _))
-  (process-profile +> process :id _)
+  #+temporal(history -> (not process-profile :id _))
+  #+temporal (process-profile +> process :id _)
   (st-region <-> st-region :id 108) ;; x o-part-of y and x :a st-region -> y :a st-region, x o-part-of y and y :a st-region -> x :a st-region
   (t-region <-> t-region :id 109) ;; x o-part-of y and x :a t-region -> y :a t-region
   (process -> process :id 110)  ;; x o-part-of y and x :a process -> y :a process    
@@ -84,6 +84,7 @@
    (< (st-region -> self :id 166))
    )
 
+#+temporal
 (object-property :binary
    (profile-of has-profile) 
    (inverses :id 152)
@@ -122,7 +123,7 @@
   (range history :id 173)
   (inverses :id  174)
   (functional :id 175)
-  (< (history +> material :is 176))
+  (< (history +> material :id 176))
   (< (functional :id 177)))
 
 (object-property :binary
@@ -132,4 +133,37 @@
   (inverses :id  181)
   )
 
-  
+;; needed to work with histories
+;; what about part relations. Use o-part-of?  
+(object-property :binary
+  (has-history-segment history-segment-of)
+  (domain material :id 182)
+  (range history-segment :id 183)
+  (inverses :id  184)
+  ;(< (functional :id 194)) WHY CANT I INCLUDE THIS WITHOUT ERROR
+  (< (history-segment +> material :id 185))
+
+)
+
+
+; butterfly_phase_of_organism has_part_during wing -> during butterfly_phase organism has_part wing
+; wing during_which_is_part_of butterfly_phase_of_organism  -> during butterfly_phase wing part_of organism
+
+(object-property :binary
+  (has-part-during during-which-part-of)
+  (domain material :id 186)
+  (range history-segment :id 187)
+  (inverses :id  188)
+  (< (history +> material :id 189)) ;; every ball-history has-during-which-part ball paint
+  (< (history-segment +> material :id 191)) ;; every segment of ball-history during-which-has-part part of ball
+;  (< (functional :id 190)) WHY CANT I INCLUDE THIS WITHOUT ERROR
+  )
+
+(object-property :binary
+  (part-of-during during-which-has-part)
+  (domain material :id 195)
+  (range history-segment :id 192)
+  (inverses :id  193)
+  )
+
+

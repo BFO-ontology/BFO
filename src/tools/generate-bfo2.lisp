@@ -3,13 +3,15 @@
 ;; Check that t-ppartof annotations are on it ratehr than t-partof
 
 
-(defun generate-bfo2 (bfo2 &aux can-reason? axioms violations)
+(defun generate-bfo2 (bfo2 &key (version-iri !obo:bfo/2012-07-20/bfo.owl) &aux can-reason? axioms violations )
+  (setq @ nil)
   (with-obo-metadata-uris
     (multiple-value-bind (ont can-reason? axioms)
 	(with-ontology bfo2-ont-pass1 (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2012-07-20/bfo.owl :base !obo: :collecting t
 						     :ontology-properties (generate-ontology-properties bfo2)
 						     :also-return-axioms t)
-	    ((as (generate-ontology-annotation-property-defs bfo2))
+	    (
+	     (as (setq a1 (generate-ontology-annotation-property-defs bfo2)))
 	     (as (generate-declarations bfo2))
 	     (as (generate-label-annotations bfo2))
 	     (as (generate-hierarchy bfo2))
@@ -20,10 +22,12 @@
 	     (as (gather-extra-gcis bfo2))
 	     (as (read-bfo-specific-annotation-properties bfo2))
 	     (as (generate-disjoints bfo2))
-	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;binary-relation-axioms.lisp"))
+	     (as (setq a2 (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;binary-relation-axioms.lisp")))
+	     #+temporal
 	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp"))
 	     )
 	  (setq @ bfo2-ont-pass1)
+
 	  (multiple-value-setq (violations cant-reason?) (check-profile bfo2-ont-pass1))
 	  (loop for violation in violations do (warn (#"toString" violation)))
 	  (if cant-reason?
@@ -38,11 +42,17 @@
 			(warn "inconsistent")
 			(progn
 			  (if (unsatisfiable-classes bfo2-ont-pass1)
-			    (warn "Unsatisfiable classes: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-classes bfo2-ont-pass1))))
+			      (warn "Unsatisfiable classes: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-classes bfo2-ont-pass1))))
 			  (if (unsatisfiable-properties bfo2-ont-pass1)
-			    (warn "Unsatisfiable properties: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-properties bfo2-ont-pass1)))))))))
+			      (warn "Unsatisfiable properties: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-properties bfo2-ont-pass1)))))))))
 	  (setq axioms (eval-uri-reader-macro axioms))
-	  (values bfo2-ont-pass1 can-reason?))
+	  (write-rdfxml bfo2-ont-pass1 "bfo:src;ontology;owl-group;bfo-generated-0.owl")
+	  (values bfo2-ont-pass1 can-reason?)
+)
+
+
+
+
 ;      (print-db ont can-reason? axioms)
       (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2012-07-20/bfo.owl :base !obo: :collecting t
 					     :ontology-properties (generate-ontology-properties bfo2)
@@ -60,7 +70,7 @@
 	(axs nil))
     (with-bfo-uris bfo2
       (loop for (table type) in
-	   '((bfo-class2subclass class) (bfo-2prop2subprop object-property) (bfo-3prop2subprop Object-property))
+	   '((bfo-class2subclass class) (bfo-2prop2subprop object-property) #+temporal (bfo-3prop2subprop Object-property))
 	   do
 	   (maphash (lambda(c sc) 
 		      (loop for el in (cons c sc)
@@ -76,7 +86,7 @@
   (let ((axs nil))
     (with-bfo-uris bfo2
       (loop for (table relation) in
-	   '((bfo-class2subclass subclassof) (bfo-2prop2subprop subobjectpropertyof) (bfo-3prop2subprop subobjectpropertyof))
+	   '((bfo-class2subclass subclassof) (bfo-2prop2subprop subobjectpropertyof) #+temporal (bfo-3prop2subprop subobjectpropertyof))
 	   do
 	   (maphash (lambda(super subs) 
 		      (loop for sub in subs
@@ -84,6 +94,7 @@
 		    (funcall table bfo2))))
     axs))     
 
+;; FIXME don't forget to add axiom annotations here.
 (defun generate-property-inverses (bfo2)
   (with-bfo-uris bfo2
     (loop with uris = (cdr (bfo-uris bfo2))
