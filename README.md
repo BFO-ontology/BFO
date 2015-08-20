@@ -2,7 +2,7 @@
 
 The Basic Formal Ontology (BFO) is a small, upper-level ontology that is designed for use in supporting information retrieval, analysis and integration in scientific and other domains. BFO is a genuine upper ontology. Thus it does not contain physical, chemical, biological or other terms which would properly fall within the coverage domains of the special sciences. BFO is used by more than 130 ontology-driven endeavors throughout the world.
 
-The BFO project was initiated in 2002 under the auspices of the project *Forms of Life* sponsored by the [Volkswagen Foundation](http://www.volkswagen-stiftung.de/english.html). The theory behind BFO was developed first by [Barry Smith](http://ontology.buffalo.edu/smith) and [Pierre Grenon](http://www.uni-saarland.de/~pgrenon) and presented in a series of publications listed [here](http://www.ifomis.org/bfo/publications).
+The BFO project was initiated in 2002 under the auspices of the project *Forms of Life* sponsored by the [Volkswagen Foundation](http://www.volkswagen-stiftung.de/english.html). The theory behind BFO was developed first by [Barry Smith](http://ontology.buffalo.edu/smith) and [Pierre Grenon](https://uk.linkedin.com/pub/pierre-grenon/8/386/399) and presented in a series of publications listed [here](http://www.ifomis.org/bfo/publications).
 
 Since then important contributions to BFO have been made by many people, including:
 
@@ -11,9 +11,9 @@ Since then important contributions to BFO have been made by many people, includi
 - [Melanie Courtot](http://ca.linkedin.com/in/mcourtot)
 - [Randall Dipert](http://www.philosophy.buffalo.edu/people/faculty/dipert/)
 - [Janna Hastings](http://www.ebi.ac.uk/~hastings)
-- [Chris Mungall](http://www.fruitfly.org/~cjm)
+- [Chris Mungall](http://berkeleybop.org/person/chris-mungall)
 - [Darren Natale](http://pir.georgetown.edu/pirwww/aboutpir/natalebio.shtml)
-- [Fabian Neuhaus](http://www.fabian-neuhaus.de/)
+- [Fabian Neuhaus](https://www.linkedin.com/pub/fabian-neuhaus/59/a77/b96)
 - [James A. Overton](http://james.overton.ca)
 - [Bjoern Peters](http://www.liai.org/pages/faculty-peters)
 - [Ron Rudnicki](https://www.linkedin.com/pub/ron-rudnicki/4/b00/957)
@@ -40,13 +40,13 @@ Current Version: 2.0
 - [BFO 2.0 Specification and User's Guide](https://github.com/BFO-ontology/BFO/raw/master/docs/bfo2-reference/BFO2-Reference.docx)
 - [BFO 2.0 OWL](https://raw.githubusercontent.com/BFO-ontology/BFO/master/releases/2.0/bfo.owl) created by [James A. Overton](http://james.overton.ca), [Alan Ruttenberg](https://www.linkedin.com/in/alanruttenberg), [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39) and others
 - [BFO 2.0 OBO](https://raw.githubusercontent.com/BFO-ontology/BFO/master/releases/2.0/bfo.obo) created by [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39)
-- [BFO 2.0 CLIF (draft)](https://ontohub.org/bfo) first-order logic version of BFO created by [Fabian Neuhaus](http://www.fabian-neuhaus.de/) and others
+- [BFO 2.0 CLIF (draft)](https://ontohub.org/bfo) first-order logic version of BFO created by [Fabian Neuhaus](https://www.linkedin.com/pub/fabian-neuhaus/59/a77/b96) and others
 
 Previous Version: 1.1.1
 
 - [OWL-DL](http://ifomis.uni-saarland.de/bfo/owl) - created by [Holger Stenzhorn](http://purl.org/holger) with large contributions from Andrew Spear and others ([HTML view](http://www.mygrid.org.uk/OWL/Presentation?url=http%3A%2F%2Fwww.ifomis.org%2Fbfo%2F1.1))
 - [Isabelle](http://ifomis.uni-saarland.de/bfo/fol) (FOL) - created by [Thomas Bittner](http://www.acsu.buffalo.edu/~bittner3)
-- [OBO](http://ifomis.uni-saarland.de/bfo/obo) - created by [Chris Mungall](http://www.fruitfly.org/~cjm)
+- [OBO](http://ifomis.uni-saarland.de/bfo/obo) - created by [Chris Mungall](http://berkeleybop.org/person/chris-mungall)
 
 ### Material
 
@@ -63,3 +63,7 @@ Previous Version: 1.1.1
 - Barry Smith, ["On Classifying Material Entities in Basic Formal Ontology"](http://ontology.buffalo.edu/smith/articles/material_entities.pdf)
 - [Selja Seppälä, Barry Smith and Werner Ceusters, "Applying the Realism-Based Ontology-Versioning Method for Tracking Changes in the Basic Formal Ontology"](http://ontology.buffalo.edu/smith/articles/fois2014.pdf)
 - Robert Arp, Barry Smith and Andrew Spear, [*Building Ontologies with Basic Formal Ontology*](http://mitpress.mit.edu/books/building-ontologies-basic-formal-ontology)
+
+<b>Code license:</b> [New BSD License](http://opensource.org/licenses/BSD-3-Clause)
+
+<b>Content license:</b> [Creative Commons 3.0 BY](http://creativecommons.org/licenses/by/3.0/) 

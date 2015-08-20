@@ -57,7 +57,7 @@
  (disposition :unary)
  (function :unary)
  (role :unary)
- (process-profile :unary)
+ ;(process-profile :unary)
  (0d-t-region :unary)
  (1d-t-region :unary)
  (0d-s-region :unary)
@@ -76,9 +76,16 @@
  ((t-ppart-of has-t-ppart) :binary)
  ((occupies occupied-by)  :binary)
  ((occurs-in contains-process)  :binary)
- ((profile-of has-profile) :binary )
+; ((profile-of has-profile) :binary )
  ((realizes realized-in) :binary )
  ((inheres-in bearer-of) :binary)
+ ((q-of has-q) :binary)
+ ((f-of has-f) :binary)
+ ((d-of has-d) :binary)
+ ((r-of has-r) :binary)
+ ((has-part-during during-which-part-of) :binary)
+ ((part-of-during during-which-has-part) :binary)
+ ((has-history-segment history-segment-of) :binary)
  
  #+temporal
  ((c-part-of c-has-part) :ternary (:issue 49)
@@ -107,20 +114,29 @@
   (:temporal (:some) (:some) "Include some some for now, but note that the all versions can be used to define frames")
   )
 
+ #+temporal
+ ((inheres-in bearer-of) :ternary (:issue 49)
+  (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too"))
  
+ #+temporal
  ((q-of has-q) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
 
+ #+temporal
  ((f-of has-f) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
 
+ #+temporal
  ((r-of has-r) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
 
+ #+temporal
  ((d-of has-d) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
   (:issue 49))
 
+ #+temporal
  ((s-depends-on has-s-dep) :ternary (:temporal (:all :some) (:some :all) "specific dependents inhere in there bearers for their whole life. Buf the s-dependence of a process on a partcipant can hold only at some times. So both. I think Mathias leaves out the process case? (I would be happy to leave it out of BFO altogether") (:issue 49))
+ #+temporal
  ((g-depends-on has-g-dep) :ternary (:temporal (:some) (:some) "Define some times in both directions agreeing with Mathias") (:issue 49))
 
 
@@ -133,15 +149,15 @@
  #+temporal
  ((st-projects-onto-s s-projection-of-st) :ternary (:temporal (:some) (:some) "Things tend to move and change shape in time, so at some times in both directions") (:issue 49))
  
+ #+temporal
  ((st-projects-onto-t t-projection-of-st) :binary)
  
  #+temporal
  ((has-participant participates-in) :ternary (:temporal (:some :all) (:some :all) "at some times is parallels the class-class definition. At all times is permanent participation, requested by Stefan") (:issue 49))
  
+ #+temporal
  ((history-of has-history) :binary)
- ((history-segment-of has-history-segment) :binary)
- ((has-part-during during-which-part-of) :binary)
- ((part-of-during during-which-has-part) :binary)
+ #+temporal
  ((spans span-of) :binary)
  
  )
@@ -204,8 +220,6 @@ o-has-part
 --has-t-ppart
 -has-t-part
 --has-t-ppart
-profile-of
-has-profile
 occupies
 occupied-by
 exists-at
@@ -218,9 +232,22 @@ contains-process
 -has-history-segment
 --has-history
 occurs-in
--history-of
+-history-segment-of
+--history-of
+bearer-of
+-has-q
+-has-r
+-has-d
+--has-f
+inheres-in
+-q-of
+-r-of
+-d-of
+--f-of
 part-of-during
+during-which-part-of
 has-part-during
+during-which-has-part
 ")
 
 ;; define the temporal property hierarchy. You can't have a temporal
@@ -234,77 +261,23 @@ has-part-during
 
 #+temporal
 (temporal-property-hierarchy "
-located-at-r_st 
-r-location-of_st
 s-depends-on_st
 -has-participant_st
 --has-participant_at
 -s-depends-on_at
 --history-of
---inheres-in_at
----q-of_at 
----r-of_at 
----d-of_at 
-----f-of_at 
 has-s-dep_st
 -participates-in_st
--bearer-of_st
---bearer-of_at
---has-q_st
----has-q_at
---has-d_st
----has-f_st
-----has-f_at
----has-d_at
---has-r_st
----has-r_at
--has-s-dep_at
 --participates-in_at
 ---has-history
---bearer-of_at
----has-q_at
----has-r_at 
----has-d_at
-----has-f_at
 g-depends-on_st
 has-g-dep_st
-has-material-basis_at
-material-basis-of_st
--material-basis-of_at
 concretizes_st 
 -concretizes_at 
 concretized-by_st
 -concretized-by_at
 st-projects-onto-s_st 
 s-projection-of-st_st
-c-part-of-object_at 
-c-has-part-object_at 
-c-part-of_st
--c-part-of-object_at
--c-part-of_at
--c-ppart-of_st
---c-ppart-of_at
----member-part-of_at
---member-part-of_st
----member-part-of_at
-c-part-of_at
--c-ppart-of_at
---member-part-of_at
-c-has-part_st
--c-has-part-object_at
--c-has-part_at
--c-has-ppart_st
---c-has-ppart_at
----has-member-part_at
---has-member-part_st
----has-member-part_at
-c-has-part_at
--c-has-ppart_at
---has-member-part_at
-located-in_st 
--located-in_at
-has-location_st
--has-location_at
 ")
 
 ;; Note: Uris moved to bfo2-uris.lisp so less likely to confuse bfo2 editors into thinking they need to use URIs.
@@ -381,14 +354,14 @@ has-location_st
  ("occurs-in")
  ("contains_process")
  ("process")
- ("process-profile")
+; ("process-profile")
  ("history")
  ("process-boundary" p-boundary)
  ("has-participant")
  ("participates-in")
  ("temporal-part-of" t-part-of)
  ("proper-temporal-part-of" t-ppart-of)
- ("process-profile-of" profile-of)
+; ("process-profile-of" profile-of)
  ("spatiotemporal-region" st-region)
  ("occurrent")
  ("temporal-region" t-region)

@@ -89,6 +89,7 @@
 				   (process-domain-narrowed-expression bfo2 form expression prop> prop< inverses? a-or-s reversed =def))))
 		       (t 
 			(setq axs (append
+				   ;(print-db  bfo2 form expression prop> prop< inverses? a-or-s reversed)
 				   (process-property-property-expression bfo2 form expression prop> prop< inverses? a-or-s reversed )
 				   axs)))
 		       ))))))
@@ -117,7 +118,8 @@
 		((eq operator '<-)
 		 (push `(,(if =def 'equivalent-classes 'sub-class-of) ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop< ,from)) axs))
 		((eq operator '<->)
-		 (warn "=def not processed on <-> operator ~a in ~a" operator expression)
+		 (when =def
+		   (warn "=def not processed on <-> operator ~a in ~a" operator expression))
 		 (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,from (object-all-values-from ,prop> ,to)) axs)
 		 (push `(sub-class-of ,@(maybe-object-property-annotations keys) ,to (object-all-values-from ,prop< ,from)) axs))
 		))))
@@ -190,12 +192,12 @@
 	   (and prop< (push `(transitive-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
 
 	  ((eq feature 'functional) ; if functional assert functional on > and inverse-functional on <, doesn't inherit
-	   (and prop> (push `(functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
-	   (and prop< (push `(inverse-functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
+	   (and prop> (push `(functional-object-property ,@(maybe-object-property-annotations (cdr expression) "a") ,prop>) axs))
+	   (and prop< (push `(inverse-functional-object-property ,@(maybe-object-property-annotations (cdr expression) "b") ,prop<) axs)))
 
 	  ((eq feature 'inverse-functional) ; if inverse-functional assert functional on > and inverse-functional on <, doesn't inherit
-	   (and prop> (push `(inverse-functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
-	   (and prop< (push `(functional-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop<) axs)))
+	   (and prop> (push `(inverse-functional-object-property ,@(maybe-object-property-annotations (cdr expression) "a") ,prop>) axs))
+	   (and prop< (push `(functional-object-property ,@(maybe-object-property-annotations (cdr expression) "b") ,prop<) axs)))
 
 	  ((eq feature 'symmetric) ; symmetric assert symmetric on > and <, doesn't inherit
 	   (and prop> (push `(symmetric-object-property ,@(maybe-object-property-annotations (cdr expression)) ,prop>) axs))
@@ -207,9 +209,9 @@
 	  ))
   axs)
 
-(defun maybe-object-property-annotations (keys)
+(defun maybe-object-property-annotations (keys &optional (idbump ""))
   (when (getf keys :id)
-    `((annotation !axiomid ,(make-uri nil (format nil "obo:bfo/axiom/~a" (getf keys :id)))))))
+    `((annotation !axiomid ,(make-uri nil (format nil "obo:bfo/axiom/~a~a" (getf keys :id) idbump))))))
 
 (defun class-expressionize (form)
   (cond ((eq form 'thing) !owl:Thing)

@@ -1,0 +1,101 @@
+There are several file used to specify BFO
+
+bfo2-uris.lisp - assignment of handles to URIs
+binary-relation-axioms.lisp - using the syntax described below
+temporal-relation-axioms.lisp - using the syntax described below (most will not be included in first post-graz release)
+bfo2-reference.lisp - connections so that the reference document can be mined for documentation
+non-reference-annotations.lisp - annotations that can't be found from the document.
+
+More documentation is forthcoming. For now this document explains the axiom syntax.
+
+Section 1: A shorthand syntax for object property centered axiom writing, used in the BFO machine specification
+
+1. atemporal-relation-spec := '(' 'object-property' ':binary' property-and-inverse-handles [atemporal-relation-form]*  ')'
+2. temporal-relation-spec  := '(' 'object-property' ':temporal property-and-inverse-handles temporal-property-and-inverse-quantification [temporal-relation-form]*  ')'
+3. property-and-inverse-handles:= '(' property-handle inverse-property-handle ')'
+4. all-some-specification := '(:all)'|'(:some)'|'(:all :some)'
+4a. inverses-form := '(inverses)'
+5. temporal-property-and-inverse-quantification := '(' 'temporal' all-some-specification all-some-specification ')
+6. atemporal-relation-form := domain-form | range-form | atemporal-property-property-form | arrow-form | local-reflexivity-form | domain-narrow-form
+7. temporal-relation-form :=  temporal-property-property-form | domain-form | range-form | arrow-form | domain-narrow-form
+8. domain-form := '(' 'domain' class-expression ')'
+9. range-form := '(' 'range' class-expression ')'
+10. atemporal-property-property-form :=  '(' 'irreflexive'|'transitive'|'symmetric'|'functional'|'inverse-functional'|'inverse' [axiom-option]* ')'
+11. temporal-property-property-form :=  '(' 'transitive-at-a-time'|'inverse-at-a-time' [axiom-option]* ')'
+12. local-reflexivity-form := '(' 'reflexive' class-handle ')'
+13. arrow-form := '(' class-expression ( subclass-of-only-operator | subclass-of-some-operator | 
+                                         subclass-of-some-and-only-operator | subclass-of-only-both-ways-operator )  
+                          class-expression ')'
+14. subclass-of-only-operator := '->'
+15. subclass-of-some-operator := '+>'
+16. subclass-of-some-and-only-operator := '-+>'
+17. subclass-of-only-both-ways-operator := '<->'
+18. class-expression := term-handle | connective-class-expression | not-class-expression | quantify-class-expression
+19. term-handle := ('a'-'z'|'0'-'9'|'-'|'_'|'.'|)+
+20. class-handle := term-handle | 'nothing' | 'thing'
+21. property-handle := term-handle
+22. inverse-property-handle := term-handle
+23. not-class-expression := '(' not' class-expression|self ')' 
+24. connective-class-expression := '(' 'and'|'or' class-expression class-expression [class-expression]* ')'
+25. quantify-class-expression := '(' 'some'|'only' relation-handle class-expression|self ')' 
+26. inverse-relation-context := '(<' arrow-form ')'
+27. at-some-time-relation-context := '(' 's' arrow-form ')'
+28. at-all-times-relation-context := '(' 'a' arrow-form ')'
+29. def-relation-context := '(' '=' arrow-form ')'
+30. axiom-option := axiom-id-option | cant-option
+31. axiom-id-option := ':id' axiom-id
+32. axiom-id := 1-9 [0-9]*
+33. cant-option := ':cant' string
+34. domain-narrow-form := (domain-narrowed property-and-inverse-handles)
+
+
+Context:
+
+Handles are related to their URIs in a separate file. The focus
+relation and its inverse handles are named in the form, and then are
+used implicitly in expressions within body. Temporal relations are
+binary relations that have, as part of their definition, a temporal
+quantification where the quantification is relative to the time the
+subject of the property exists. For BFO 2 initial version those will
+not be included.
+
+How the forms are interpreted:
+
+Assume we have already given property handles r and r'
+Basic forms
+  (domain c) -> the domain of r is c (the range of r' is c)
+  (range c)  -> the range of r is c (the domain of r' is c)
+  (transitive) -> the relation is transitive. Similar for irreflexive, symmetric, function, inverse-functional
+  (inverses) -> r and r' are asserted to be inverse properties
+  (c1 -> c2) -> c1 subclassOf r only c2
+  (c1 +> c2) -> c1 subclassOf r some c2
+  (c1 -+> c2) -> c1 subclassOf r some c2, c1 subclass r only c2
+  (c1 <-> c2) -> c1 subclassOf r only c2, c1 subclassOf r' only c2, 
+  (domain-narrowed-form (r1 r1')) -> let D be (domain r) and G be (range r) then: (D and r1 some G) equivalentTo: (r some G)
+
+The forms can be modified by various wrappers.
+(< form) the form is evaluated by r and r' are swapped
+(= form) the form is evaluated but instead of asserting subclassof equivalentclasses are used.
+(a form) for temporal relations, the form refers to just the at-all-times relation
+(s form) for temporal relations, the form inside applies to the at-some-time relation
+
+Annotations:
+
+:axiom-id numeric, unique. Given to have continuity and tracking of axioms.
+:cant "why not"
+
+Some axioms though true, can't be added for various reasons, for
+example they conflict with OWL's global constraints.
+
+Examples
+
+(object-property :binary 
+   (occupies occupied-by)
+...
+   (p-boundary -> (and st-region (some t-part-of st-region)) :id 151)
+
+means: p-boundary subclass of occupies only (st-region and t-part-of some st-region)
+
+Section 2: Representing the class and property hierarchy
+
+
