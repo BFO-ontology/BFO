@@ -22,44 +22,48 @@
 	  (count-if 'symbolp (cdr (bfo-terms bfo)) :key 'car)
 	  (* 2 (count-if 'consp (cdr (bfo-terms bfo)) :key 'car))))
 
-(defun read-bfo2-reference-spec ()
-  (with-open-file (f "bfo:src;ontology;owl-group;specification;bfo-reference-no-controversial-relations.lisp")
-    (with-open-file (g "bfo:src;ontology;owl-group;specification;bfo2-uris.lisp")
-      (let ((terms (read f))
-	    (class-tree (read f))
-	    (2-prop-tree (read f))
-	    #+temporal(3-prop-tree (read f))
-	    (tag2term (read f))
-	    (clif-term-exceptions (read f))
-	    (uris (eval-uri-reader-macro (read g)))
-	    (fol (make-hash-table)) ;(read-fol-clif))
-)
-	(let* ((tag2term-filled
-		(loop for (ann term) in (cdr tag2term)
-		   collect (list (intern (string-upcase (#"replaceAll" ann "[ _]" "-")))
-				 (or term (intern (string-upcase (#"replaceAll" ann "[ _]" "-")))))))
-	       (struct (make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree
-				   #+temporal :3-prop-tree #+temporal 3-prop-tree :uris uris :anntag2term tag2term-filled :fol-expressions fol))
-	       (term2clif (loop for (tag term) in tag2term-filled
-			     for exception = (second (assoc tag (cdr clif-term-exceptions) :test 'equalp))
-			     collect (list term (or exception
-						    (let ((tentative (apply 'concatenate 'string 
-									    (mapcar 'string-capitalize
-										    (split-at-char (string tag) #\-) ))))
-						      (if (eq :unary (bfo-term-arity term struct))
-							  tentative
-							  (progn
-							    (setf (char tentative  0) (char-downcase (char tentative 0)))
-							    (if (eq :ternary (bfo-term-arity term struct))
-								(concatenate 'string tentative "At")
-								tentative
-							  )))))))))
+(defun read-bfo2-reference-spec (&key (spec "bfo:src;ontology;owl-group;specification;bfo-reference-no-controversial-relations.lisp")
+				   (uris "bfo:src;ontology;owl-group;specification;bfo2-uris.lisp")
+				   (temporal nil))
+  (let ((*features* (if temporal (cons :temporal *features*) *features*)))
+    (with-open-file (f spec)
+      (with-open-file (g uris)
+	(let ((terms (read f))
+	      (class-tree (read f))
+	      (2-prop-tree (read f))
+	      (3-prop-tree (if temporal (read f)))
+	      (tag2term (read f))
+	      (clif-term-exceptions (read f))
+	      (uris (eval-uri-reader-macro (read g)))
+	      (fol (make-hash-table))	;(read-fol-clif))
+	      )
+	  (let* ((tag2term-filled
+		   (loop for (ann term) in (cdr tag2term)
+			 collect (list (intern (string-upcase (#"replaceAll" ann "[ _]" "-")))
+				       (or term (intern (string-upcase (#"replaceAll" ann "[ _]" "-")))))))
+		 (struct (apply 'make-bfo :terms terms :class-tree class-tree :2-prop-tree 2-prop-tree
+					  :uris uris :anntag2term tag2term-filled :fol-expressions fol
+					  (if temporal (list :3-prop-tree 3-prop-tree) nil)))
+		 (term2clif (loop for (tag term) in tag2term-filled
+				  for exception = (second (assoc tag (cdr clif-term-exceptions) :test 'equalp))
+				  collect (list term (or exception
+							 (let ((tentative (apply 'concatenate 'string 
+										 (mapcar 'string-capitalize
+											 (split-at-char (string tag) #\-) ))))
+							   (if (eq :unary (bfo-term-arity term struct))
+							       tentative
+							       (progn
+								 (setf (char tentative  0) (char-downcase (char tentative 0)))
+								 (if (eq :ternary (bfo-term-arity term struct))
+								     (concatenate 'string tentative "At")
+								     tentative
+								     )))))))))
 	    (setf (bfo-term2clif struct) term2clif)
 	    (parse-bfo2-tree (second 2-prop-tree) #'(setf bfo-2prop2subprop) struct)
-	    #+temporal (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct)
+	    (if temporal  (parse-bfo2-tree (second 3-prop-tree) #'(setf bfo-3prop2subprop) struct))
 	    (parse-bfo2-tree (second class-tree) #'(setf bfo-class2subclass) struct)
 	    struct
-	    )))))
+	    ))))))
 
 
 (defun active-iris (bfo2)

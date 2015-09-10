@@ -57,7 +57,7 @@
  (disposition :unary)
  (function :unary)
  (role :unary)
- (process-profile :unary)
+; (process-profile :unary)
  (0d-t-region :unary)
  (1d-t-region :unary)
  (0d-s-region :unary)
@@ -76,9 +76,17 @@
  ((t-ppart-of has-t-ppart) :binary)
  ((occupies occupied-by)  :binary)
  ((occurs-in contains-process)  :binary)
- ((profile-of has-profile) :binary )
+; ((profile-of has-profile) :binary )
  ((realizes realized-in) :binary )
  ((inheres-in bearer-of) :binary)
+ ((q-of has-q) :binary)
+ ((f-of has-f) :binary)
+ ((d-of has-d) :binary)
+ ((r-of has-r) :binary)
+ ((has-part-during during-which-part-of) :binary)
+ ((part-of-during during-which-has-part) :binary)
+ ((has-history-segment history-segment-of) :binary)
+
  
  #+temporal
  ((c-part-of c-has-part) :ternary (:issue 49)
@@ -108,20 +116,22 @@
   )
 
  
- ((q-of has-q) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
-  (:issue 49))
+;;  ((q-of has-q) :ternary (:unqualified :all :some)
+;; 	       (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+;;   (:issue 49))
 
- ((f-of has-f) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
-  (:issue 49))
+;;  ((f-of has-f) :ternary (:unqualified :all :some) (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+;;   (:issue 49))
 
- ((r-of has-r) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
-  (:issue 49))
+;;  ((r-of has-r) :ternary (:unqualified :all :some) (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+;;   (:issue 49))
 
- ((d-of has-d) :ternary (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
-  (:issue 49))
+;;  ((d-of has-d) :ternary (:unqualified :all :some) (:temporal (:all) (:some :all) "specific dependents inhere in their bearers for at all times they exist. So we defined all times for that direction and all and some times for the other. More broad than Mathias who suggests some times on the inverse too")
+;;   (:issue 49))
 
- ((s-depends-on has-s-dep) :ternary (:temporal (:all :some) (:some :all) "specific dependents inhere in there bearers for their whole life. Buf the s-dependence of a process on a partcipant can hold only at some times. So both. I think Mathias leaves out the process case? (I would be happy to leave it out of BFO altogether") (:issue 49))
- ((g-depends-on has-g-dep) :ternary (:temporal (:some) (:some) "Define some times in both directions agreeing with Mathias") (:issue 49))
+;; ((s-depends-on has-s-dep) :ternary (:unqualified :all :some) (:temporal (:all :some) (:some :all) "specific dependents inhere in there bearers for their whole life. Buf the s-dependence of a process on a partcipant can hold only at some times. So both. I think Mathias leaves out the process case? (I would be happy to leave it out of BFO altogether") (:issue 49))
+
+;;  ((g-depends-on has-g-dep) :ternary (:unqualified :all :some) (:temporal (:some) (:some) "Define some times in both directions agreeing with Mathias") (:issue 49))
 
 
  #+temporal
@@ -204,8 +214,6 @@ o-has-part
 --has-t-ppart
 -has-t-part
 --has-t-ppart
-profile-of
-has-profile
 occupies
 occupied-by
 exists-at
@@ -218,10 +226,22 @@ contains-process
 -has-history-segment
 --has-history
 occurs-in
--history-of
+-history-segment-of
+--history-of
+inheres-in
+-q-of
+-r-of
+-d-of
+--f-of
+bearer-of
+-has-q
+-has-r
+-has-d
+--has-f
 part-of-during
+during-which-part-of
 has-part-during
-")
+during-which-has-part")
 
 ;; define the temporal property hierarchy. You can't have a temporal
 ;; property be a sub of a binary or vice versa. Of course we can't
@@ -381,14 +401,14 @@ has-location_st
  ("occurs-in")
  ("contains_process")
  ("process")
- ("process-profile")
+; ("process-profile")
  ("history")
  ("process-boundary" p-boundary)
  ("has-participant")
  ("participates-in")
  ("temporal-part-of" t-part-of)
  ("proper-temporal-part-of" t-ppart-of)
- ("process-profile-of" profile-of)
+; ("process-profile-of" profile-of)
  ("spatiotemporal-region" st-region)
  ("occurrent")
  ("temporal-region" t-region)

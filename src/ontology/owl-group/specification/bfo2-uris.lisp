@@ -37,7 +37,7 @@
  (disposition !snap:Disposition !obo:BFO_0000016) 
  (function !snap:Function !obo:BFO_0000034) 
  (role !snap:Role !obo:BFO_0000023)  
- (process-profile nil !obo:BFO_0000144) 
+; (process-profile nil !obo:BFO_0000144) 
  (0d-t-region !span:TemporalInstant !obo:BFO_0000148) 
  (1d-t-region !span:TemporalInterval !obo:BFO_0000038)  
  (0d-s-region !snap:ZeroDimensionalRegion !obo:BFO_0000018) 

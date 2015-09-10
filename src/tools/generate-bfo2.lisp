@@ -23,8 +23,8 @@
 	     (as (read-bfo-specific-annotation-properties bfo2))
 	     (as (generate-disjoints bfo2))
 	     (as (setq a2 (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;binary-relation-axioms.lisp")))
-	     #+temporal
-	     (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp"))
+	     (if (member :temporal *features*)
+		 (as (read-and-process-axioms bfo2 "bfo:src;ontology;owl-group;specification;temporal-relation-axioms.lisp")))
 	     )
 	  (setq @ bfo2-ont-pass1)
 
@@ -70,7 +70,7 @@
 	(axs nil))
     (with-bfo-uris bfo2
       (loop for (table type) in
-	   '((bfo-class2subclass class) (bfo-2prop2subprop object-property) #+temporal (bfo-3prop2subprop Object-property))
+			     (list* '(bfo-class2subclass class) '(bfo-2prop2subprop object-property) (if (member :temporal *features*) '((bfo-3prop2subprop Object-property))))
 	   do
 	   (maphash (lambda(c sc) 
 		      (loop for el in (cons c sc)
@@ -86,7 +86,7 @@
   (let ((axs nil))
     (with-bfo-uris bfo2
       (loop for (table relation) in
-	   '((bfo-class2subclass subclassof) (bfo-2prop2subprop subobjectpropertyof) #+temporal (bfo-3prop2subprop subobjectpropertyof))
+	   (list* '(bfo-class2subclass sub-class-of) '(bfo-2prop2subprop sub-object-property-of) (if (member :temporal *features*) '((bfo-3prop2subprop Object-property))))
 	   do
 	   (maphash (lambda(super subs) 
 		      (loop for sub in subs

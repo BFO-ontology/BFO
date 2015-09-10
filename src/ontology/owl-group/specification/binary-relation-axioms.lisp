@@ -16,8 +16,8 @@
   (range occurrent :id 105)
   (transitive :id 106)
   (reflexive occurrent :id 107)
-  #+temporal(history -> (not process-profile :id _))
-  #+temporal (process-profile +> process :id _)
+;;  #+temporal(history -> (not process-profile :id _))
+;;  #+temporal (process-profile +> process :id _)
   (st-region <-> st-region :id 108) ;; x o-part-of y and x :a st-region -> y :a st-region, x o-part-of y and y :a st-region -> x :a st-region
   (t-region <-> t-region :id 109) ;; x o-part-of y and x :a t-region -> y :a t-region
   (process -> process :id 110)  ;; x o-part-of y and x :a process -> y :a process    
@@ -84,14 +84,14 @@
    (< (st-region -> self :id 166))
    )
 
-#+temporal
-(object-property :binary
-   (profile-of has-profile) 
-   (inverses :id 152)
-   (domain process-profile :id 153)
-   (range process :id 154)
-   (= (process-profile +> process :id 165))
-   )
+;; #+temporal
+;; (object-property :binary
+;;    (profile-of has-profile) 
+;;    (inverses :id 152)
+;;    (domain process-profile :id 153)
+;;    (range process :id 154)
+;;    (= (process-profile +> process :id 165))
+;;    )
 
 (object-property  :binary
    (realizes realized-in)

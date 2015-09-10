@@ -18,10 +18,11 @@
 	       if (consp (car entry)) collect (car entry) else collect entry))))
 
 (defun generate-ontology-annotation-property-defs (bfo2)
-  (let ((om (or (load-ontology "/Users/alanr/repos/information-artifact-ontology/trunk/src/ontology/ontology-metadata.owl")
+  (let ((om (or (ignore-errors (load-ontology "/Users/alanr/repos/information-artifact-ontology/trunk/src/ontology/ontology-metadata.owl"))
 		(ignore-errors
-		  (load-ontology "https://information-artifact-ontology.googlecode.com/svn/trunk/src/ontology/ontology-metadata.owl")))
+		  (load-ontology "http://purl.obolibrary.org/obo/iao/ontology-metadata.owl")))
 		  ))
+    (assert om () "Didn't load ontology metadata")
     (list*
      `(declaration (annotation-property ,!rdfs:isDefinedBy))
      `(declaration (annotation-property ,!dc:license))
@@ -68,7 +69,7 @@
 	      ("^r-q" "relational-q")
 	      ("\\br-l" "l")
 	      ("at-r" "at")
-	      ("profile-of" "process-profile-of")
+;	      ("profile-of" "process-profile-of")
 	      ("\\br\\b" "role")
 	      ("\\bq\\b" "quality")
 	      ("\\bf\\b" "function")
