@@ -28,7 +28,8 @@ Since then important contributions to BFO have been made by many people, includi
 
 ## News: BFO 2.0 Now Released
 
-- Following extensive discussions in the BFO community the decision has been made to release this version \[LINK\] as BFO 2.0 OWL. This includes all of the classes defined in the Specification and User's Guide, but only those of the relations for which we have remains authoritative, and is being implemented in the first-order logic version of BFO ([BFO 2.0 CLIF](https://ontohub.org/bfo)). Our plans to incorporate core relations into BFO 2.0 OWL have been postponed to version 2.1, an experimental version of which is available [here](http://www.ontobee.org/browser/index.php?o=BFO).
+- Following extensive discussions in the BFO community the decision has been made to release [this version](http://purl.obolibrary.org/obo/bfo/2.0/bfo.owl) as BFO 2.0 OWL. This includes all of the classes defined in the Specification and User's Guide, but only those of the relations for which we have remains authoritative, and is being implemented in the first-order logic version of BFO ([BFO 2.0 CLIF](https://ontohub.org/bfo)). Our plans to incorporate core relations into BFO 2.0 OWL have been postponed to version 2.1, an experimental version of which is available [here](http://purl.obolibrary.org/obo/bfo/2014-05-03/bfo.owl).
+- The tool that supprts automated conversion from BFO 1.1 to BFO 2.0 are available at: http://bfoconvert.hegroup.org/
 - [Event: Introduction to Basic Formal Ontology 2.0](http://ncorwiki.buffalo.edu/index.php/Basic_Formal_Ontology_2015) at [ICBO, Lisbon](http://icbo2015.fc.ul.pt/), July 28, 2015
 - [Building Ontologies with Basic Formal Ontology](http://mitpress.mit.edu/books/building-ontologies-basic-formal-ontology) published by MIT Press, August 2015
 
