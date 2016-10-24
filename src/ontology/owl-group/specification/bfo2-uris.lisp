@@ -172,7 +172,10 @@
 
  ;; coming and going out of existence
  (begins-to-exist-during nil !obo:BFO_0000068 (:maybe ruttenberg) (:issue 50))
+ (during-which-begins-to-exist nil !obo:BFO_0000195 (:maybe ruttenberg) (:issue 50))
  (ceases-to-exist-during nil !obo:BFO_0000069 (:maybe ruttenberg) (:issue 50))
+ (during-which-ceases-to-exist nil !obo:BFO_0000196 (:maybe ruttenberg) (:issue 50))
+ 
  (has-participant-beginning-to-exist nil !obo:BFO_0000077 (:issue 50)) 
  (has-participant-ceasing-to-exist nil !obo:BFO_0000078 (:issue 50))
 
@@ -192,7 +195,7 @@
  (c-boundary-of nil !obo:BFO_0000104 (:maybe schulz))
  (contained-in nil !obo:BFO_0000103 :obsolete)
  (1d-t-region-dup nil !obo:BFO_0000143 (:duplicate !obo:BFO_0000038))
- (projects-onto nil !obo:BFO_0000134 :not (:issue 41))
+ ;(projects-onto nil !obo:BFO_0000134 :not (:issue 41))
 
  (occurs-in nil !obo:BFO_0000066)
  (contains-process nil !obo:BFO_0000067)

@@ -18,7 +18,7 @@
 	       if (consp (car entry)) collect (car entry) else collect entry))))
 
 (defun generate-ontology-annotation-property-defs (bfo2)
-  (let ((om (or (ignore-errors (load-ontology "/Users/alanr/repos/information-artifact-ontology/trunk/src/ontology/ontology-metadata.owl"))
+  (let ((om (or (ignore-errors (load-ontology (truename "bfo:src;ontology;local;ontology-metadata.owl")))
 		(ignore-errors
 		  (load-ontology "http://purl.obolibrary.org/obo/iao/ontology-metadata.owl")))
 		  ))

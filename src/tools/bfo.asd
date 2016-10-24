@@ -3,7 +3,6 @@
 
 (in-package :asdf)
 
-;; bfo:**;**;*.* -> bfo/trunk/**/*.*
 
 (setf (logical-pathname-translations "bfo")
       `(

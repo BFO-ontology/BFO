@@ -10,6 +10,18 @@
   (range t-region :id 102))
 
 (object-property :binary
+  (begins-to-exist-during during-which-begins-to-exist)
+  (inverses :id 196)
+  (domain entity :id 197)
+  (range process :id 198))
+
+(object-property :binary
+  (ceases-to-exist-during during-which-ceases-to-exist)
+  (inverses :id 199)
+  (domain entity :id 200)
+  (range process :id 201))
+
+(object-property :binary
   (o-part-of o-has-part)
   (inverses :id 103 )
   (domain occurrent :id 104)

@@ -69,9 +69,9 @@
       (error "No id for ~a" class)))
 
 (defun bfo11->2 (&key (core? t) subset
-		 (dest "~/repos/bfo/trunk/src/ontology/bfo2-classes.owl")
+		 (dest "bfo:src;ontology;bfo2-classes.owl") 
 		 (uri "http://purl.obolibrary.org/obo/bfo/core-classes.owl"))
-  (let ((bfo (load-ontology "~/repos/bfo/trunk/bfo.owl")))
+  (let ((bfo (load-ontology (translate-logical-pathname "bfo:bfo.owl"))))
     (with-ontology bfonew (:collecting t :about uri
 				    :ontology-properties
 				    (and core? (loop for (ontprop val) in (sparql
@@ -159,5 +159,5 @@
       (write-rdfxml bfonew dest))))
 
 (bfo11->2)
-(bfo11->2 :core? nil :subset :region :dest "~/repos/bfo/trunk/src/ontology/bfo2-regions.owl" :uri "http://purl.obolibrary.org/obo/bfo/region-classes.owl")
-(bfo11->2 :core? nil :subset :granularity :dest "~/repos/bfo/trunk/src/ontology/bfo2-granularity.owl" :uri "http://purl.obolibrary.org/obo/bfo/granularity-classes.owl")
+(bfo11->2 :core? nil :subset :region :dest (translate-logical-pathname "bfo:src;ontology;bfo2-regions.owl") :uri "http://purl.obolibrary.org/obo/bfo/region-classes.owl")
+(bfo11->2 :core? nil :subset :granularity :dest (translate-logical-pathname "bfo:src;ontology;bfo2-granularity.owl") :uri "http://purl.obolibrary.org/obo/bfo/granularity-classes.owl")

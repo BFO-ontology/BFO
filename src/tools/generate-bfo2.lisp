@@ -3,7 +3,7 @@
 ;; Check that t-ppartof annotations are on it ratehr than t-partof
 
 
-(defun generate-bfo2 (bfo2 &key (version-iri !obo:bfo/2012-07-20/bfo.owl) &aux can-reason? axioms violations )
+(defun generate-bfo2 (bfo2 &key (version-iri (bfo-version-iri-today)) &aux can-reason? axioms violations )
   (setq @ nil)
   (with-obo-metadata-uris
     (multiple-value-bind (ont can-reason? axioms)
@@ -28,10 +28,9 @@
 	     )
 	  (setq @ bfo2-ont-pass1)
 
-	  (multiple-value-setq (violations cant-reason?) (check-profile bfo2-ont-pass1))
+	  (multiple-value-setq (violations can-reason?) (check-profile bfo2-ont-pass1))
 	  (loop for violation in violations do (warn (#"toString" violation)))
-	  (if cant-reason?
-	      (warn "Can't reason because of some profile violation (usually global restriction). Saving anyways")
+	  (if can-reason?
 	      (multiple-value-bind (result error) (ignore-errors (check-ontology bfo2-ont-pass1 :classify t))
 		(if error
 		    (if (typep error 'java::java-exception )
@@ -44,7 +43,8 @@
 			  (if (unsatisfiable-classes bfo2-ont-pass1)
 			      (warn "Unsatisfiable classes: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-classes bfo2-ont-pass1))))
 			  (if (unsatisfiable-properties bfo2-ont-pass1)
-			      (warn "Unsatisfiable properties: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-properties bfo2-ont-pass1)))))))))
+			      (warn "Unsatisfiable properties: ~{~a~^, ~}" (mapcar (lambda(e) (car (rdfs-label e bfo2-ont-pass1))) (unsatisfiable-properties bfo2-ont-pass1))))))))
+	      (warn "Can't reason because of some profile violation (usually global restriction). Saving anyways"))
 	  (setq axioms (eval-uri-reader-macro axioms))
 	  (write-rdfxml bfo2-ont-pass1 "bfo:src;ontology;owl-group;bfo-generated-0.owl")
 	  (values bfo2-ont-pass1 can-reason?)
@@ -54,7 +54,7 @@
 
 
 ;      (print-db ont can-reason? axioms)
-      (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri !obo:bfo/2012-07-20/bfo.owl :base !obo: :collecting t
+      (with-ontology bfo2-ont (:ontology-iri !obo:bfo.owl :version-iri version-iri :base !obo: :collecting t
 					     :ontology-properties (generate-ontology-properties bfo2)
 					     )
 	  ((as axioms)
@@ -64,6 +64,13 @@
 	(comment-obo-ids-in-owl-file "bfo:src;ontology;owl-group;bfo-generated-1.owl" "bfo:src;ontology;owl-group;bfo-generated-2.owl")
 	bfo2-ont
 	))))
+
+(defun bfo-version-iri-today ()
+  (let ((date (multiple-value-bind (second minute hour day month year dow dst zone)
+		  (decode-universal-time (get-universal-time))
+		(declare (ignore second minute hour dow dst zone))
+		(format nil "~4,'0D-~2,'0D-~2,'0D" year month day ))))
+    (make-uri (format nil "~abfo/~a/bfo.owl" (uri-full !obo:) date))))
 
 (defun generate-declarations (bfo2)
   (let ((seen (make-hash-table))

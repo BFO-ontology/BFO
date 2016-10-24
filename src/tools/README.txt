@@ -40,5 +40,5 @@ temporalized-relations.lisp - prototype of temporalized relations and
 
 ----------------------------------------------------------------
 
-See http://code.google.com/p/bfo
+See https://github.com/BFO-ontology/
 

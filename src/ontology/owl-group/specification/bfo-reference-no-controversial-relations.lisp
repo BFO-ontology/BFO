@@ -86,6 +86,11 @@
  ((has-part-during during-which-part-of) :binary)
  ((part-of-during during-which-has-part) :binary)
  ((has-history-segment history-segment-of) :binary)
+ ;; coming and going out of existence
+ ((part-of-during during-which-has-part) :binary)
+ ((has-history-segment history-segment-of) :binary)
+ ((begins-to-exist-during during-which-begins-to-exist) :binary)
+ ((ceases-to-exist-during during-which-ceases-to-exist) :binary)
  
  #+temporal
  ((c-part-of c-has-part) :ternary (:issue 49)
@@ -248,6 +253,10 @@ part-of-during
 during-which-part-of
 has-part-during
 during-which-has-part
+begins-to-exist-during
+during-which-begins-to-exist
+ceases-to-exist-during
+during-which-ceases-to-exist
 ")
 
 ;; define the temporal property hierarchy. You can't have a temporal

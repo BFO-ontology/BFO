@@ -75,7 +75,7 @@
 	     (definition (thing s)  `(annotation-assertion ,definition ,thing ,(@en s))))
       (with-ontology bfo-2-relations (:about !obo:bfo/core-relations.owl :collecting t)
 	  ((progv (mapcar 'car *bfo2-relations*) (mapcar 'second *bfo2-relations*)
-	     (with-label-vars-from "~/repos/bfo/trunk/src/ontology/owl-ruttenberg/bfo2-classes.owl"  
+	     (with-label-vars-from (namestring (truename "bfo:src;ontology;owl-ruttenberg;bfo2-classes.owl"))  
 	       (asq (imports !obo:bfo/core-classes.owl))
 	       (loop for (var uri) in *bfo2-relations* do
 		    (as `(declaration (object-property ,uri))
@@ -184,7 +184,7 @@
 		(nax 81 `(sub-object-property-of ,inheres-in ,s-depends-on))
 		(nax 82 `(sub-object-property-of ,is-part-of ,is-located-in))
 		))))
-	(write-rdfxml bfo-2-relations "~/repos/bfo/trunk/src/ontology/bfo2-relations.owl")))))
+	(write-rdfxml bfo-2-relations "bfo:src;ontology;bfo2-relations.owl")))))
 		
 ;(bfo2-relations)
 	     

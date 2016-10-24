@@ -33,6 +33,11 @@
 ;;   '(' relation-symbol (:binary|:temporal) props*  ')'
 ;;   '(' relation-symbol inverse-symbol ')' ( :binary | :temporal ) props* ')' 
 
+;; we've decided some relations have a default time quant and that some relations we will drop
+;; When there is a default the _at, _st suffices get dropped
+;; inheres-in and children should be _at and we won't do _st
+;; bearer-of and children should be _st and we won't do _at
+
 (terms
  (entity :unary)
  (continuant :unary)
@@ -153,7 +158,8 @@
  ((has-part-during during-which-part-of) :binary)
  ((part-of-during during-which-has-part) :binary)
  ((spans span-of) :binary)
- 
+ ((begins-to-exist-during during-which-begins-to-exist) :binary)
+ ((ceases-to-exist-during during-which-ceases-to-exist) :binary)
  )
 
 ;; define the class hierarchy (unary symbols). This is done from the
