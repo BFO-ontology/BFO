@@ -21,7 +21,7 @@ Since then important contributions to BFO have been made by many people, includi
 - [Stefan Schulz](http://purl.org/steschu)
 - [Selja Seppälä](https://seljaseppala.wordpress.com/)
 - [Holger Stenzhorn](http://purl.org/holger)
-- [Jie Zheng] (http://cbil.upenn.edu/profile-staff_bio/39)
+- [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39)
 
 ... and by more than hundred other members of the [BFO Discussion Group](http://groups.google.com/group/bfo-discuss).
 
