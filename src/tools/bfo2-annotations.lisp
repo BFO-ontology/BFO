@@ -29,7 +29,7 @@
      `(declaration (annotation-property ,!rdfs:seeAlso))
      `(declaration (annotation-property ,!dc:publisher))
      `(declaration (annotation-property ,!dc:contributor))
-     `(declaration (annotation-property ,!dc:member))
+;     `(declaration (annotation-property ,!dc:member))
      `(declaration (annotation-property ,!foaf:homepage))
      `(declaration (annotation-property ,!foaf:mbox))
 ;     `(declaration (annotation-property ,!bfo-owl-spec-label))
