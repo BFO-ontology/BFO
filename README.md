@@ -28,7 +28,7 @@ Since then important contributions to BFO have been made by many people, includi
 
 ## News: BFO 2.0 Now Released
 
-- Following extensive discussions in the BFO community the decision has been made to release [this version](http://purl.obolibrary.org/obo/bfo/2.0/bfo.owl) as BFO 2.0 OWL. This includes all of the classes defined in the Specification and User's Guide, but only those of the relations for which we have remains authoritative, and is being implemented in the first-order logic version of BFO ([BFO 2.0 CLIF](https://ontohub.org/bfo)). Our plans to incorporate core relations into BFO 2.0 OWL have been postponed to version 2.1, an experimental version of which is available [here](http://purl.obolibrary.org/obo/bfo/2014-05-03/bfo.owl).
+- Following extensive discussions in the BFO community the decision has been made to release [this version](http://purl.obolibrary.org/obo/bfo.owl) as BFO 2.0 OWL. This includes all of the classes defined in the Specification and User's Guide, but only those of the relations for which we have remains authoritative, and is being implemented in the first-order logic version of BFO ([BFO 2.0 CLIF](https://ontohub.org/bfo)). Our plans to incorporate core relations into BFO 2.0 OWL have been postponed to version 2.1, an experimental version of which is available [here](http://purl.obolibrary.org/obo/bfo/2014-05-03/bfo.owl).
 - The tool that supprts automated conversion from BFO 1.1 to BFO 2.0 are available at: http://bfoconvert.hegroup.org/
 - [Event: Introduction to Basic Formal Ontology 2.0](http://ncorwiki.buffalo.edu/index.php/Basic_Formal_Ontology_2015) at [ICBO, Lisbon](http://icbo2015.fc.ul.pt/), July 28, 2015
 - [Building Ontologies with Basic Formal Ontology](http://mitpress.mit.edu/books/building-ontologies-basic-formal-ontology) published by MIT Press, August 2015
@@ -39,7 +39,7 @@ Since then important contributions to BFO have been made by many people, includi
 Current Version: 2.0
 
 - BFO 2.0 Specification and User's Guide ([doc](https://github.com/BFO-ontology/BFO/raw/master/docs/bfo2-reference/BFO2-Reference.docx)) ([pdf](https://github.com/BFO-ontology/BFO/raw/master/docs/bfo2-reference/BFO2-Reference.pdf))
-- [BFO 2.0 OWL](https://raw.githubusercontent.com/BFO-ontology/BFO/master/releases/2.0/bfo.owl) created by [James A. Overton](http://james.overton.ca), [Alan Ruttenberg](https://www.linkedin.com/in/alanruttenberg), [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39) and others
+- [BFO 2.0 OWL](http://purl.obolibrary.org/obo/bfo.owl) created by [James A. Overton](http://james.overton.ca), [Alan Ruttenberg](https://www.linkedin.com/in/alanruttenberg), [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39) and others
 - [BFO 2.0 OBO](https://raw.githubusercontent.com/BFO-ontology/BFO/master/releases/2.0/bfo.obo) created by [Jie Zheng](http://cbil.upenn.edu/profile-staff_bio/39)
 - [BFO 2.0 CLIF (draft)](https://ontohub.org/bfo) first-order logic version of BFO created by [Fabian Neuhaus](https://www.linkedin.com/pub/fabian-neuhaus/59/a77/b96) and others
 
