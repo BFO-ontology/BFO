@@ -67,4 +67,4 @@ Previous Version: 1.1.1
 
 <b>Code license:</b> [New BSD License](http://opensource.org/licenses/BSD-3-Clause)
 
-<b>Content license:</b> [Creative Commons 3.0 BY](http://creativecommons.org/licenses/by/3.0/) 
+<b>Content license:</b> [Creative Commons 4.0 BY](http://creativecommons.org/licenses/by/4.0/) 
