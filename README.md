@@ -52,8 +52,8 @@ Previous Version: 1.1.1
 ### Material
 
 - [Visualization of BFO 2.0 hierarchy](http://ontology.buffalo.edu/bfo/BFO2.png)
-- [Discussion Group](http://ifomis.uni-saarland.de/bfo/discussion)
-- [Video introduction to BFO](http://youtu.be/Yl6_M1sQEAQ)
+- [Discussion Group](https://groups.google.com/forum/#!forum/bfo-discuss)
+- [Video introduction to BFO](https://www.youtube.com/channel/UC8rDbmRGP6A2bs6tn0AOErQ)
 
 ### Publications
 
