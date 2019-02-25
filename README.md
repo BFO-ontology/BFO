@@ -47,7 +47,7 @@ Previous Version: 1.1.1
 
 - [OWL-DL](http://ifomis.uni-saarland.de/bfo/owl) - created by [Holger Stenzhorn](http://purl.org/holger) with large contributions from Andrew Spear and others ([HTML view](http://www.mygrid.org.uk/OWL/Presentation?url=http%3A%2F%2Fwww.ifomis.org%2Fbfo%2F1.1))
 - [Isabelle](http://ifomis.uni-saarland.de/bfo/fol) (FOL) - created by [Thomas Bittner](http://www.acsu.buffalo.edu/~bittner3)
-- [OBO](http://ifomis.uni-saarland.de/bfo/obo) - created by [Chris Mungall](http://berkeleybop.org/person/chris-mungall)
+- [OBO](http://ifomis.uni-saarland.de/bfo/obo) - created by [Chris Mungall](http://biosciences.lbl.gov/profiles/chris-mungall/)
 
 ### Material
 
