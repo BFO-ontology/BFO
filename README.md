@@ -2,7 +2,7 @@
 
 The Basic Formal Ontology (BFO) is a small, upper-level ontology that is designed for use in supporting information retrieval, analysis and integration in scientific and other domains. BFO is a genuine upper ontology. Thus it does not contain physical, chemical, biological or other terms which would properly fall within the coverage domains of the special sciences. BFO is used by more than 130 ontology-driven endeavors throughout the world.
 
-The BFO project was initiated in 2002 under the auspices of the project *Forms of Life* sponsored by the [Volkswagen Foundation](http://www.volkswagen-stiftung.de/english.html). The theory behind BFO was developed first by [Barry Smith](http://ontology.buffalo.edu/smith) and [Pierre Grenon](https://uk.linkedin.com/pub/pierre-grenon/8/386/399) and presented in a series of publications listed [here](http://www.ifomis.org/bfo/publications).
+The BFO project was initiated in 2002 under the auspices of the project *Forms of Life* sponsored by the [Volkswagen Foundation](https://www.volkswagenstiftung.de/en). The theory behind BFO was developed first by [Barry Smith](http://ontology.buffalo.edu/smith) and [Pierre Grenon](https://uk.linkedin.com/pub/pierre-grenon/8/386/399) and presented in a series of publications listed [here](http://www.ifomis.org/bfo/publications).
 
 Since then important contributions to BFO have been made by many people, including:
 
