@@ -11,10 +11,10 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo.owl">
-        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/bfo/2019-02-21/bfo.owl"/>
+        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/bfo/2019-08-26/bfo.owl"/>
         <obo:IAO_0000116 xml:lang="en">BFO 2 Reference: BFO does not claim to provide complete coverage of entities of all types. It seeks only to provide coverage of those entities studied by empirical science together with those entities which affect or are involved in human activities such as data processing and planning - coverage that is sufficiently broad to provide assistance to those engaged in building domain ontologies for purposes of data annotation.</obo:IAO_0000116>
-        <obo:IAO_0000116>BFO 2 Reference: BFO’s treatment of continuants and occurrents - as also its treatment of regions, rests on a dichotomy between space and time, and on the view that there are two perspectives on reality - earlier called the ‘SNAP’ and ‘SPAN’ perspectives, both of which are essential to the non-reductionist representation of reality as we understand it from the best available science</obo:IAO_0000116>
-        <obo:IAO_0000116>BFO 2 Reference: For both terms and relational expressions in BFO, we distinguish between primitive and defined. ‘Entity’ is an example of a  primitive term. Primitive terms in a highest-level ontology such as BFO are terms that are so basic to our understanding of reality that there is no way of defining them in a non-circular fashion. For these, therefore, we can provide only elucidations, supplemented by examples and by axioms.</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO 2 Reference: BFO&apos;s treatment of continuants and occurrents - as also its treatment of regions, rests on a dichotomy between space and time, and on the view that there are two perspectives on reality - earlier called the &apos;SNAP&apos; and &apos;SPAN&apos; perspectives, both of which are essential to the non-reductionist representation of reality as we understand it from the best available science.</obo:IAO_0000116>
+        <obo:IAO_0000116>BFO 2 Reference: For both terms and relational expressions in BFO, we distinguish between primitive and defined. &apos;Entity&apos; is an example of a  primitive term. Primitive terms in a highest-level ontology such as BFO are terms that are so basic to our understanding of reality that there is no way of defining them in a non-circular fashion. For these, therefore, we can provide only elucidations, supplemented by examples and by axioms.</obo:IAO_0000116>
         <dc:contributor>Alan Ruttenberg</dc:contributor>
         <dc:contributor>Albert Goldfain</dc:contributor>
         <dc:contributor>Barry Smith</dc:contributor>
@@ -43,8 +43,8 @@
         <dc:contributor>Thomas Bittner</dc:contributor>
         <dc:contributor>Werner Ceusters</dc:contributor>
         <dc:contributor>Yongqun &quot;Oliver&quot; He</dc:contributor>
-        <terms:license>http://creativecommons.org/licenses/by/4.0/</terms:license>
-        <rdfs:comment xml:lang="en">Please see the project site https://github.com/BFO-ontology/BFO, the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel , the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://purl.obolibrary.org/obo/bfo/dev/bfo2-reference.docx . This ontology is generated from a specification at https://github.com/BFO-ontology/BFO/tree/master/src/ontology/owl-group/specification/ and with the code that generates the OWL version in https://github.com/BFO-ontology/BFO/tree/master/src/tools/. A very early version of BFO version 2 in CLIF is at http://purl.obolibrary.org/obo/bfo/dev/bfo.clif</rdfs:comment>
+        <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+        <rdfs:comment xml:lang="en">Please see the project site https://github.com/BFO-ontology/BFO, the bfo2 owl discussion group http://groups.google.com/group/bfo-owl-devel, the bfo2 discussion group http://groups.google.com/group/bfo-devel, the tracking google doc http://goo.gl/IlrEE, and the current version of the bfo2 reference http://purl.obolibrary.org/obo/bfo/dev/bfo2-reference.docx. This ontology is generated from a specification at https://github.com/BFO-ontology/BFO/tree/master/src/ontology/owl-group/specification/ and with the code that generates the OWL version in https://github.com/BFO-ontology/BFO/tree/master/src/tools/. A very early version of BFO version 2 in CLIF is at http://purl.obolibrary.org/obo/bfo/dev/bfo.clif.</rdfs:comment>
         <rdfs:comment xml:lang="en">The BSD license on the BFO project site refers to code used to build BFO.</rdfs:comment>
         <rdfs:comment>This BFO 2.0 version represents a major update to BFO and is not strictly backwards compatible with BFO 1.1. The previous OWL version of BFO, version 1.1.1 will remain available at http://ifomis.org/bfo/1.1 and will no longer be updated. The BFO 2.0 OWL is a classes-only specification. The incorporation of core relations has been held over for a later version.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo/dev/bfo.clif"/>
@@ -54,6 +54,7 @@
         <rdfs:seeAlso rdf:resource="http://groups.google.com/group/bfo-owl-devel"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/bfo/dev/owl"/>
         <rdfs:seeAlso rdf:resource="https://github.com/BFO-ontology/BFO/tree/master/src/tools/"/>
+        <foaf:homepage rdf:resource="http://basic-formal-ontology.org/"/>
         <foaf:homepage rdf:resource="http://ifomis.org/bfo"/>
         <foaf:homepage rdf:resource="https://github.com/BFO-ontology/BFO"/>
         <foaf:mbox rdf:resource="mailto:bfo-owl-devel@googlegroups.com"/>
@@ -224,6 +225,12 @@
     
 
 
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
     <!-- http://www.w3.org/2000/01/rdf-schema#isDefinedBy -->
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
@@ -239,6 +246,12 @@
     <!-- http://xmlns.com/foaf/0.1/homepage -->
 
     <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/homepage"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/mbox -->
+
+    <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/mbox"/>
     
 
 
