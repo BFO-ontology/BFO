@@ -33,7 +33,7 @@
         <dc:contributor>Albert Goldfain</dc:contributor>
         <obo:IAO_0000116>BFO 2 Reference: For both terms and relational expressions in BFO, we distinguish between primitive and defined. ‘Entity’ is an example of a  primitive term. Primitive terms in a highest-level ontology such as BFO are terms that are so basic to our understanding of reality that there is no way of defining them in a non-circular fashion. For these, therefore, we can provide only elucidations, supplemented by examples and by axioms.</obo:IAO_0000116>
         <dc:contributor>Yongqun &quot;Oliver&quot; He</dc:contributor>
-        <terms:license>http://creativecommons.org/licenses/by/4.0/</terms:license>
+        <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
         <dc:contributor>Melanie Courtot</dc:contributor>
         <dc:contributor>Bjoern Peters</dc:contributor>
         <dc:contributor>Alan Ruttenberg</dc:contributor>
