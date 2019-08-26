@@ -3,6 +3,7 @@
 #
 # This Makefile is used to build artifacts for the BFO 2.0 classes only ontology.
 #
+# Run `make` to build both OWL and OBO format BFO classes only release files.
 
 ### Configuration
 #
@@ -50,11 +51,16 @@ bfo_classes_only.owl: src/ontology/owl-group/bfo_classes_only_dev.owl | build/ro
 	--version-iri "$(OBO)/bfo/$(TODAY)/bfo.owl" \
 	--output $@
 
+bfo_classes_only.obo: bfo_classes_only.owl | build/robot.jar
+	$(ROBOT) convert \
+	--input $< \
+	--output $@
+
 ### 
 #
 # Full build
 .PHONY: all
-all: bfo_classes_only.owl
+all: bfo_classes_only.owl | bfo_classes_only.obo
 
 # Remove generated files
 .PHONY: clean
