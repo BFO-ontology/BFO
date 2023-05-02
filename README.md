@@ -31,7 +31,7 @@ Since then important contributions to BFO have been made by many people, includi
 - Following extensive discussions in the BFO community the decision has been made to release [this version](http://purl.obolibrary.org/obo/bfo.owl) as BFO 2.0 OWL. This includes all of the classes defined in the Specification and User's Guide, but only those of the relations for which we have remains authoritative, and is being implemented in the first-order logic version of BFO ([BFO 2.0 CLIF](https://ontohub.org/bfo)). Our plans to incorporate core relations into BFO 2.0 OWL have been postponed to version 2.1, an experimental version of which is available [here](http://purl.obolibrary.org/obo/bfo/2014-05-03/bfo.owl).
 - The tool that supprts automated conversion from BFO 1.1 to BFO 2.0 are available at: http://bfoconvert.hegroup.org/
 - [Event: Introduction to Basic Formal Ontology 2.0](http://ncorwiki.buffalo.edu/index.php/Basic_Formal_Ontology_2015) at [ICBO, Lisbon](http://icbo2015.fc.ul.pt/), July 28, 2015
-- [Building Ontologies with Basic Formal Ontology](http://mitpress.mit.edu/books/building-ontologies-basic-formal-ontology) published by MIT Press, August 2015
+- [Building Ontologies with Basic Formal Ontology](https://direct.mit.edu/books/book/4044/Building-Ontologies-with-Basic-Formal-Ontology) published by MIT Press, August 2015
 
 
 ## Implementations
@@ -59,11 +59,11 @@ Previous Version: 1.1.1
 
 - Pierre Grenon and Barry Smith: ["*SNAP* and *SPAN*: Towards Dynamic Spatial Ontology"](http://ontology.buffalo.edu/smith/articles/SNAP_SPAN.pdf)
 - Pierre Grenon, Barry Smith and Louis Goldberg: ["Biodynamic Ontology: Applying *BFO* in the Biomedical Domain"](http://ontology.buffalo.edu/medo/biodynamic.pdf)
-- Barry Smith, Werner Ceusters, *et al*. ["Relations in Biomedical Ontologies"](http://genomebiology.com/2005/6/5/R46)
+- Barry Smith, Werner Ceusters, *et al*. ["Relations in Biomedical Ontologies"](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2005-6-5-r46)
 - Barry Smith, ["Classifying Processes: An Essay in Applied Ontology"](http://ontology.buffalo.edu/smith/articles/Classifying_Processes.pdf)
-- Barry Smith, ["On Classifying Material Entities in Basic Formal Ontology"](http://ontology.buffalo.edu/smith/articles/material_entities.pdf)
+- Barry Smith, ["On Classifying Material Entities in Basic Formal Ontology"](http://ontology.buffalo.edu/smith/articles/Material_Entities.pdf)
 - Selja Seppälä, Barry Smith and Werner Ceusters, ["Applying the Realism-Based Ontology-Versioning Method for Tracking Changes in the Basic Formal Ontology"](http://ontology.buffalo.edu/smith/articles/fois2014.pdf)
-- Robert Arp, Barry Smith and Andrew Spear, [*Building Ontologies with Basic Formal Ontology*](http://mitpress.mit.edu/books/building-ontologies-basic-formal-ontology)
+- Robert Arp, Barry Smith and Andrew Spear, [*Building Ontologies with Basic Formal Ontology*](https://direct.mit.edu/books/book/4044/Building-Ontologies-with-Basic-Formal-Ontology)
 
 <b>Code license:</b> [New BSD License](http://opensource.org/licenses/BSD-3-Clause)
 
